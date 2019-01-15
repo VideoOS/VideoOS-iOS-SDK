@@ -1,0 +1,1 @@
+../../../../../VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/Subspec/MQTT/MQTTbyMosquitto/VPUPMQTTSession.h

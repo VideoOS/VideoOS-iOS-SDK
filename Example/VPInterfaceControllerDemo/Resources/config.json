@@ -1,0 +1,37 @@
+{
+    "user_id": [
+                "120078662",
+                "120078661",
+                "120078663",
+                "120078664",
+                "120078665"
+                ],
+    "platform_id": [
+                    "566638eebb54b35300809730",
+                    "556c38e7ec69d5bf655a0fb2",
+                    "5a658c13085bd4e05736a985",
+                    "575e6e087c395e0501980c89",
+                    "5697915cc882688701d6d563"
+                    ],
+    "creative_name": [
+                      "wp-wedge-001"
+                      ],
+    "room_id": [
+                "https://static.videojj.com/online/video/Team%20Video%2B%2B_We_Are_Young.mp4",
+                "http://qa-video.oss-cn-beijing.aliyuncs.com/mp4/victoria90s.mp4",
+                "34",
+                "2121651",
+                "2121652",
+                "2121655"
+                ],
+    "cate": [
+             "",
+             "jingji",
+             "lol",
+             "hearthstone",
+             "fortnite",
+             "overwatch",
+             "dota1",
+             "dota2",
+             ]
+}

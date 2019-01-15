@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="VPMediaControlView">
+            <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSc-0a-Ksv" userLabel="TopControlView">
+                    <rect key="frame" x="0.0" y="0.0" width="667" height="60"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00/00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvG-pN-udB" userLabel="timeLabel">
+                            <rect key="frame" x="572" y="33" width="90" height="14.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="48i-nF-Nor"/>
+                                <constraint firstAttribute="width" constant="90" id="NbP-9A-QGL"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <slider opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="BTH-mh-Bwy" userLabel="playbackSlider">
+                            <rect key="frame" x="53" y="25" width="516" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="xr0-u4-R62"/>
+                            </constraints>
+                            <connections>
+                                <action selector="playbackSliderTouchCancel:" destination="iN0-l3-epB" eventType="touchCancel" id="gRH-6u-Xow"/>
+                                <action selector="playbackSliderTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="Yg1-7w-D6J"/>
+                                <action selector="playbackSliderTouchUpInside:" destination="iN0-l3-epB" eventType="touchUpInside" id="Nm2-iL-27a"/>
+                                <action selector="playbackSliderTouchUpOutside:" destination="iN0-l3-epB" eventType="touchUpOutside" id="Xyp-zO-4Ez"/>
+                            </connections>
+                        </slider>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvt-Zn-yzx" userLabel="backButton">
+                            <rect key="frame" x="10" y="20" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="ByC-bV-op0"/>
+                                <constraint firstAttribute="width" constant="40" id="ujU-b4-ke7"/>
+                            </constraints>
+                            <state key="normal" image="button_video_back"/>
+                            <connections>
+                                <action selector="backButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="WWi-ya-SQ5"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="BTH-mh-Bwy" firstAttribute="centerY" secondItem="gvt-Zn-yzx" secondAttribute="centerY" id="3dh-iv-AXZ"/>
+                        <constraint firstAttribute="height" constant="60" id="AGI-We-a3m"/>
+                        <constraint firstItem="gvt-Zn-yzx" firstAttribute="leading" secondItem="sSc-0a-Ksv" secondAttribute="leading" constant="10" id="Bdr-Io-h1p"/>
+                        <constraint firstAttribute="trailing" secondItem="bvG-pN-udB" secondAttribute="trailing" constant="5" id="HOK-ce-Ukf"/>
+                        <constraint firstItem="bvG-pN-udB" firstAttribute="centerY" secondItem="gvt-Zn-yzx" secondAttribute="centerY" id="MNq-dG-tfU"/>
+                        <constraint firstItem="bvG-pN-udB" firstAttribute="leading" secondItem="BTH-mh-Bwy" secondAttribute="trailing" constant="5" id="rUa-HO-d6I"/>
+                        <constraint firstItem="BTH-mh-Bwy" firstAttribute="leading" secondItem="gvt-Zn-yzx" secondAttribute="trailing" constant="5" id="wxG-Wa-nQY"/>
+                        <constraint firstItem="gvt-Zn-yzx" firstAttribute="top" secondItem="sSc-0a-Ksv" secondAttribute="top" constant="20" id="y5O-mL-rsK"/>
+                    </constraints>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVH-Ls-kRv" userLabel="BottomControlView">
+                    <rect key="frame" x="0.0" y="325" width="667" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHA-SV-XKb" userLabel="playButton">
+                            <rect key="frame" x="313" y="5" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="FHA-SV-XKb" secondAttribute="height" id="utE-VS-pCy"/>
+                            </constraints>
+                            <state key="normal" image="button_video_play"/>
+                            <connections>
+                                <action selector="playButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="umR-wJ-Zf6"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="em2-Bv-Eub">
+                            <rect key="frame" x="613" y="10" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="..."/>
+                            <connections>
+                                <action selector="moreButtonDidClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="gsA-TJ-wbN"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="FHA-SV-XKb" firstAttribute="centerY" secondItem="yVH-Ls-kRv" secondAttribute="centerY" id="BYF-Vd-yqz"/>
+                        <constraint firstItem="FHA-SV-XKb" firstAttribute="top" secondItem="yVH-Ls-kRv" secondAttribute="top" constant="5" id="FYw-Em-gC0"/>
+                        <constraint firstAttribute="height" constant="50" id="fQJ-lW-WCZ"/>
+                        <constraint firstAttribute="bottom" secondItem="FHA-SV-XKb" secondAttribute="bottom" constant="5" id="hBR-eJ-dBA"/>
+                        <constraint firstItem="FHA-SV-XKb" firstAttribute="centerX" secondItem="yVH-Ls-kRv" secondAttribute="centerX" id="nip-kz-0wm"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="sSc-0a-Ksv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FCU-Js-7fA"/>
+                <constraint firstAttribute="bottom" secondItem="yVH-Ls-kRv" secondAttribute="bottom" id="TUP-pU-pnQ"/>
+                <constraint firstAttribute="trailing" secondItem="yVH-Ls-kRv" secondAttribute="trailing" id="Y5f-fD-gw9"/>
+                <constraint firstItem="yVH-Ls-kRv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YoP-rC-o8F"/>
+                <constraint firstAttribute="trailing" secondItem="sSc-0a-Ksv" secondAttribute="trailing" id="aOy-c8-y24"/>
+                <constraint firstItem="sSc-0a-Ksv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="epZ-Vg-9Tr"/>
+            </constraints>
+            <connections>
+                <outlet property="backButton" destination="gvt-Zn-yzx" id="tMk-bl-rwE"/>
+                <outlet property="bottomControlView" destination="yVH-Ls-kRv" id="lda-Kt-9ff"/>
+                <outlet property="playButton" destination="FHA-SV-XKb" id="9eX-sy-VVg"/>
+                <outlet property="playbackSlider" destination="BTH-mh-Bwy" id="RTr-Af-Mnj"/>
+                <outlet property="timeLabel" destination="bvG-pN-udB" id="ORO-xT-IRt"/>
+                <outlet property="topControlView" destination="sSc-0a-Ksv" id="k2z-SH-Fsn"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="button_video_back" width="40" height="40"/>
+        <image name="button_video_play" width="66" height="66"/>
+    </resources>
+</document>

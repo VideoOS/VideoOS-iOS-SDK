@@ -1,0 +1,1 @@
+../../../../../VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/Common/MQTT/VPUPMQTTObserverProtocol.h

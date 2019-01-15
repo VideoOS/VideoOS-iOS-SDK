@@ -1,0 +1,1 @@
+../../../SVGAPlayer/Source/SVGA.h

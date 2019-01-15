@@ -1,0 +1,1 @@
+../../../../../VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/Subspec/MQTT/MQTTbyMosquitto/libmosquitto/vpup_will_mosq.h

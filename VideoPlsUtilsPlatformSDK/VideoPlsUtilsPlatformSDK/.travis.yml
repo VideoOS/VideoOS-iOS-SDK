@@ -1,0 +1,29 @@
+# references:
+# * http://www.objc.io/issue-6/travis-ci.html
+# * https://github.com/supermarin/xcpretty#usage
+
+osx_image: xcode7.3
+language: objective-c
+
+env:
+  global:
+    - LC_CTYPE=en_US.UTF-8
+    - LANG=en_US.UTF-8
+
+
+before_install:
+    - env
+    - locale
+    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+    - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+    - pod --version
+    - pod setup --silent > /dev/null
+    - pod repo
+    - pod repo update
+    - xcpretty --version
+    - xcodebuild -version
+    - xcodebuild -showsdks
+
+
+script:
+- pod spec lint --use-libraries --verbose

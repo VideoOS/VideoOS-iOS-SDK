@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "77BC0C420CB1F3BF8DF56060498975560892A2C3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5554B8585560643D190266381CEAB53E255799C0" : 9223372036854775807,
+    "77BC0C420CB1F3BF8DF56060498975560892A2C3" : 9223372036854775807,
+    "B22DF9EA47F6B222CB1D08BAD6073C6FB45DA970" : 9223372036854775807,
+    "17E612EBFE6B6CA578BAD0BA61E3D223474DF243" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9CD6DB20-9F84-4365-992F-7C8CF183AB7B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5554B8585560643D190266381CEAB53E255799C0" : "VideoPlsUtilsPlatformSDK\/",
+    "77BC0C420CB1F3BF8DF56060498975560892A2C3" : "VideoPlsInterfaceView\/",
+    "B22DF9EA47F6B222CB1D08BAD6073C6FB45DA970" : "VideoPlsLiveSDK\/",
+    "17E612EBFE6B6CA578BAD0BA61E3D223474DF243" : "VideoPlsCytronSDK\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "VideoPlsInterfaceViewSDK",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "VideoPlsInterfaceViewSDK.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/Zard1096\/VideoPlsCytronSDKPod.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "17E612EBFE6B6CA578BAD0BA61E3D223474DF243"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/Zard1096\/VideoPlsUtilsPlatformPod.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5554B8585560643D190266381CEAB53E255799C0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/Zard1096\/VideoPlsInterfaceViewSDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "77BC0C420CB1F3BF8DF56060498975560892A2C3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/Zard1096\/VideoPlsLiveSDKPod.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B22DF9EA47F6B222CB1D08BAD6073C6FB45DA970"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "VideoPlsLuaViewManagerSDK",
+  "version": "0.0.1",
+  "summary": "VideoPls Lua View Manager.",
+  "description": "'VideoPls Lua View Manager for iOS to show within backend'",
+  "homepage": "https://git.coding.net/Zard1096/VideoPlsWorkspace.git",
+  "license": {
+    "type": "MIT",
+    "file": "VideoPlsLuaViewManagerSDK/LICENSE"
+  },
+  "authors": {
+    "Zard1096": "mr.zardqi@gmail.com",
+    "LiShaoshuai": "lishaoshuai1990@gmail.com",
+    "Bill": "fuleiac@gmail.com"
+  },
+  "source": {
+    "git": "https://gitlab.videojj.com/Mobile/VideoPls-iOS-SDK",
+    "tag": "0.0.1"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "VideoPlsLuaViewManagerSDK/VideoPlsLuaViewManagerSDK/**/*.{h,m}",
+  "dependencies": {
+    "VideoPlsUtilsPlatformSDK": [
+      "0.0.1"
+    ],
+    "VPLuaViewSDK": [
+
+    ]
+  },
+  "frameworks": [
+    "WebKit",
+    "CoreMedia"
+  ],
+  "libraries": [
+    "sqlite3",
+    "z"
+  ]
+}

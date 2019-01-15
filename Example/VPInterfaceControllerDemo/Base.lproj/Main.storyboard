@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mlz-F6-GGg">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="HWB-Yt-e2o">
+            <objects>
+                <navigationController id="mlz-F6-GGg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="u7e-KK-ko9">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9iQ-TP-ml9" kind="relationship" relationship="rootViewController" id="xD3-aI-P5E"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yWL-by-fkb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1165" y="47"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bTa-J1-Vh4">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="9iQ-TP-ml9" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6b0-cI-lLH"/>
+                        <viewControllerLayoutGuide type="bottom" id="tAa-b9-ter"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="View" id="sFO-6v-ebG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTE-Su-qZv">
+                                <rect key="frame" x="27.5" y="300" width="320" height="80"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="jBh-rY-2xp"/>
+                                    <constraint firstAttribute="height" constant="80" id="nXk-Jg-FxV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="点播">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="videoButtonDidClick:" destination="9iQ-TP-ml9" eventType="touchUpInside" id="JK8-Vf-syy"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择平台类型" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKs-U9-vGm">
+                                <rect key="frame" x="61" y="89" width="254" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vd6-UI-lW2">
+                                <rect key="frame" x="67.5" y="220" width="320" height="80"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="eqM-bL-Tkv"/>
+                                    <constraint firstAttribute="height" constant="80" id="weL-fB-krr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="直播">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="liveButtonDidClick:" destination="9iQ-TP-ml9" eventType="touchUpInside" id="ZOP-HK-FwU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Vd6-UI-lW2" firstAttribute="top" secondItem="HKs-U9-vGm" secondAttribute="bottom" constant="40" id="KZx-tP-4Mo"/>
+                            <constraint firstItem="HKs-U9-vGm" firstAttribute="top" secondItem="6b0-cI-lLH" secondAttribute="bottom" constant="25" id="Nlo-5B-ZFm"/>
+                            <constraint firstItem="PTE-Su-qZv" firstAttribute="top" secondItem="Vd6-UI-lW2" secondAttribute="bottom" constant="40" id="SSR-qC-MyI"/>
+                            <constraint firstItem="PTE-Su-qZv" firstAttribute="centerX" secondItem="sFO-6v-ebG" secondAttribute="centerX" id="URd-b4-H2x"/>
+                            <constraint firstItem="HKs-U9-vGm" firstAttribute="centerX" secondItem="sFO-6v-ebG" secondAttribute="centerX" id="YHd-9b-CnI"/>
+                            <constraint firstItem="Vd6-UI-lW2" firstAttribute="centerX" secondItem="sFO-6v-ebG" secondAttribute="centerX" id="tid-Sw-fsZ"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="JtW-Ge-crQ"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="liveButton" destination="Vd6-UI-lW2" id="h9l-jY-KuL"/>
+                        <outlet property="videoButton" destination="PTE-Su-qZv" id="sDk-5f-LjN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ijC-KI-V92" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.28185907046478" y="103.2"/>
+        </scene>
+    </scenes>
+</document>

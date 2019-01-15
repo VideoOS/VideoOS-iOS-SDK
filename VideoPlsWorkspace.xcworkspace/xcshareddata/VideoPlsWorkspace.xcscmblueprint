@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "77BC0C420CB1F3BF8DF56060498975560892A2C3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AA4806A4ED077E7952D316C16F6440CB4630A8F3" : 0,
+    "77BC0C420CB1F3BF8DF56060498975560892A2C3" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AA2E3051-7C57-4DE1-9BE0-648FAA5642C7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AA4806A4ED077E7952D316C16F6440CB4630A8F3" : "VideoPlsWorkspace\/LuaViewSDK\/",
+    "77BC0C420CB1F3BF8DF56060498975560892A2C3" : "VideoPlsWorkspace\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "VideoPlsWorkspace",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "VideoPlsWorkspace.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/Zard1096\/VideoPlsWorkspace.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "77BC0C420CB1F3BF8DF56060498975560892A2C3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/Zard1096\/LuaViewSDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AA4806A4ED077E7952D316C16F6440CB4630A8F3"
+    }
+  ]
+}

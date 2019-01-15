@@ -1,0 +1,442 @@
+{
+    "totalRecord": 2,
+    "resMsg": "处理成功",
+    "attachInfo": null,
+    "resCode": "00",
+    "launchInfoList": [ {
+                       "id": "fdcc4b0a-03a7-4697-b64f-9c93b7d55409",
+                       "template": "os_wedge.lua",
+                       "videoStartTime": 5000,
+                       "videoEndTime": 23000,
+                       "clockStartTime": null,
+                       "clockEndTime": null,
+                       "duration": 20000,
+                       "data": {
+                       "isShowAds": true,
+                       "creativeName": "wp-wedge-001",
+                       "interactionTemplateId": 35,
+                       "isShowClose": false,
+                       "positionX": 0,
+                       "positionY": 0,
+                       "videoDuration": 60,
+                       "repeatTimes": 5,
+                       "isShowCountdown": false,
+                       "videoUrl": "http://qa-video.oss-cn-beijing.aliyuncs.com/mp4/xfxz0227tvc.mp4",
+                       "closeAfter": 10000,
+                       "width": 1,
+                       "linkUrl": "http://baidu.com",
+                       "interactionTypeId": 54,
+                       "ratio": 1,
+                       "needShowOnPortrait": true
+                       }
+    },
+    {
+        "id": "5aa5fa5133edbf375fe43fff",
+        "videoStartTime": 1000,
+        "videoEndTime": 38968,
+        "duration": 20000,
+        "template": "os_card.lua",
+        "creativeId": "234",
+        "sumHotspot": 3,
+        "hotspotOrder": 1,
+        "data": {
+            "hotspotArray": [{
+                "title": "点击该卡牌，赢取领大奖",
+                "imageUrl": "http://os-open-static.videojj.com/dev/6e7d6627-1fb2-45b7-b242-9cceb537c2db.png",
+                "exposureTrackLink": "http://www.baidu.com",
+                "clickTrackLink": "http://www.baidu.com"
+            },
+            {
+                "title": "点击该卡牌，赢取领大奖",
+                "imageUrl": "http://os-open-static.videojj.com/dev/6e7d6627-1fb2-45b7-b242-9cceb537c2db.png",
+                "exposureTrackLink": "http://www.baidu.com",
+                "clickTrackLink": "http://www.baidu.com"
+            }, {
+                "title": "点击该卡牌，赢取领大奖",
+                "imageUrl": "http://os-open-static.videojj.com/dev/6e7d6627-1fb2-45b7-b242-9cceb537c2db.png",
+                "exposureTrackLink": "http://www.baidu.com",
+                "clickTrackLink": "http://www.baidu.com"
+            }
+            ],
+            "collect": {
+                "content": "收集卡牌获得可口可乐京东大礼包快来视频中找到你的幸运",
+                "imageUrl": "http://os-open-static.videojj.com/dev/6e7d6627-1fb2-45b7-b242-9cceb537c2db.png",
+                "btnTitle": "领取奖励",
+                "exposureTrackLink": "http://www.baidu.com",
+                "clickTrackLink": "http://www.baidu.com",
+                "linkType": 2,
+                "linkUrl": "http://www.baidu.com"
+            },
+            "success": {
+                "title": "恭喜你获的奖励！",
+                "imageUrl": "http://os-open-static.videojj.com/dev/6e7d6627-1fb2-45b7-b242-9cceb537c2db.png",
+                "itemId": "id"
+            },
+            "needShowOnPortrait": true,
+            "isShowClose": true,
+            "isShowAds": true,
+            "repeatTimes": 5
+        }
+    },
+    {
+        "id": "5aa5fa5133edbf375fe43fff",
+        "videoStartTime": 1000,
+        "videoEndTime": 38968,
+        "duration": 20000,
+        "template": "os_cloud.lua",
+        "data": {
+            "width": 0.15,
+            "ratio": 0.1,
+            "positionX": 0.2,
+            "positionY": 0.5,
+            "needShowOnPortrait": true,
+            "isShowClose": false,
+            "isShowAds": true,
+            "linkUrl": "http://videojj.com",
+            "imageUrl": "http://os-open-static.videojj.com/dev/6e7d6627-1fb2-45b7-b242-9cceb537c2db.png"
+        }
+    },
+    {
+        "id": "5aa5fa5133edbf375fe43fff",
+        "videoStartTime": 1000,
+        "videoEndTime": 38968,
+        "duration": 20000,
+        "template": "os_vote.lua",
+        "creativeId": 38968,
+        "sumHotPoint": 1,
+        "hotPointOrde": 0,
+        "data": {
+            "imageUrl": "http://os-open-static.videojj.com/dev/7d172652-c0ff-4311-b05c-773ae2ba4c89.jpg",
+            "exposureTrackLink": "http://www.baidu.com",
+            "clickTrackLink": "http://www.baidu.com",
+            "voteTitle": "快来选择你喜欢的小姐姐吧",
+            "voteImageUrl": "http://os-open-static.videojj.com/dev/6e7d6627-1fb2-45b7-b242-9cceb537c2db.png",
+            "voteList": [{
+                "imageUrl": "http://os-open-static.videojj.com/dev/6e7d6627-1fb2-45b7-b242-9cceb537c2db.png",
+                "title": "第一位",
+                "voteNumber": 10
+            }, {
+                "imageUrl": "http://os-open-static.videojj.com/dev/de6940ef-37bc-43b0-ab4e-be8ee33fbb9c.jpg",
+                "title": "第二位",
+                "voteNumber": 0
+            }, {
+                "imageUrl": "http://os-open-static.videojj.com/dev/6e7d6627-1fb2-45b7-b242-9cceb537c2db.png",
+                "title": "第三位",
+                "voteNumber": 0
+            }],
+            "voteBtnImage": "http://os-open-static.videojj.com/dev/de6940ef-37bc-43b0-ab4e-be8ee33fbb9c.jpg",
+            "voteBtnExposureTrackLink": "http://www.baidu.com",
+            "voteBtnClickTrackLink": "http://www.baidu.com",
+            "voteRule": "每个人只有一次投票机会，请大家选择好了，在投递！",
+            "isShowClose": true,
+            "repeatTimes": 5
+        }
+    },
+    {
+        "id": "138525f1-a496-49de-885f-f91b34162637",
+        "template": "template-dev-video-manage-platformd47f999f.lua",
+        "videoStartTime": 20000,
+        "videoEndTime": 40000,
+        "clockStartTime": null,
+        "clockEndTime": null,
+        "duration": 20000,
+        "data": {
+            "isShowAds": true,
+            "creativeName": "气泡测试素材",
+            "readonly": false,
+            "interactionTemplateId": 99,
+            "roles": [{
+                "roleAvatar": "http://os-open-static.videojj.com/dev/6e7d6627-1fb2-45b7-b242-9cceb537c2db.png",
+                "roleName": "测试一"
+            }, {
+                "roleAvatar": "http://os-open-static.videojj.com/dev/de6940ef-37bc-43b0-ab4e-be8ee33fbb9c.jpg",
+                "roleName": "测试二"
+            }],
+            "messages": [{
+                "duration": 3,
+                "messageType": 1,
+                "name": "梦浅浅",
+                "userType": 1,
+                "avatar": "http://os-open-static.videojj.com/dev/6e7d6627-1fb2-45b7-b242-9cceb537c2db.png",
+                "content": "明天就周末了，这周周末天气很好，有什么好玩的地方可以去玩吗？"
+            }, {
+                "duration": 2,
+                "messageType": 1,
+                "name": "秦珞音",
+                "userType": 1,
+                "avatar": "http://os-open-static.videojj.com/dev/de6940ef-37bc-43b0-ab4e-be8ee33fbb9c.jpg",
+                "content": "淮海路那面最近有一家商场在搞周年庆活动，周末去那面商场逛逛"
+            }, {
+                "duration": 2,
+                "messageType": 1,
+                "userType": 2,
+                "content": "好啊，一起去逛逛。"
+            }, {
+                "duration": 3,
+                "messageType": 1,
+                "userType": 2,
+                "content": "周末在家太无聊了，去外面活动活动。"
+            }, {
+                "duration": 3,
+                "messageType": 2,
+                "clickTrackLink": "http://www.baidu.com",
+                "exposureTrackLink": "http://www.baidu.com",
+                "name": "梦浅浅",
+                "link": "http://www.baidu.com",
+                "userType": 1,
+                "avatar": "http://os-open-static.videojj.com/dev/6e7d6627-1fb2-45b7-b242-9cceb537c2db.png",
+                "content": {
+                    "attachInfo": null,
+                    "creativeFileId": 220,
+                    "width": 1200,
+                    "resCode": "00",
+                    "fileUrl": "http://videojj-mobile.oss-cn-beijing.aliyuncs.com/resource/pr_article/shop1.jpg",
+                    "resMsg": "处理成功",
+                    "height": 759
+                }
+            }, {
+                "duration": 3,
+                "messageType": 2,
+                "clickTrackLink": "http://www.baidu.com",
+                "exposureTrackLink": "http://www.baidu.com",
+                "link": "nil",
+                "userType": 2,
+                "content": {
+                    "attachInfo": null,
+                    "creativeFileId": 221,
+                    "width": 1024,
+                    "resCode": "00",
+                    "fileUrl": "http://videojj-mobile.oss-cn-beijing.aliyuncs.com/resource/pr_article/shop2.jpg",
+                    "resMsg": "处理成功",
+                    "height": 719
+                }
+            }, {
+                "duration": 2,
+                "messageButtons": [{
+                    "clickTrackLink": "http://www.baidu.com",
+                    "exposureTrackLink": "http://www.baidu.com",
+                    "link": "http://www.baidu.com",
+                    "title": "商场一"
+                }, {
+                    "clickTrackLink": "http://www.baidu.com",
+                    "exposureTrackLink": "http://www.baidu.com",
+                    "link": "http://www.baidu.com",
+                    "title": "商场二"
+                }],
+                "messageType": 3,
+                "name": "秦珞音",
+                "userType": 1,
+                "avatar": "http://os-open-static.videojj.com/dev/de6940ef-37bc-43b0-ab4e-be8ee33fbb9c.jpg"
+            }],
+            "interactionTypeId": 121,
+            "isShowClose": true,
+            "errorSchema": {}
+        }
+    },
+    {
+        "id": "5aa5fa5133edbf375fe43fff4",
+        "videoStartTime": 10000,
+        "videoEndTime": 389680,
+        "videoActivatedStartTime": 10000,
+        "videoActivatedEndTime": 600000,
+        "duration": 200000,
+        "template": "os_bubble.lua",
+        "data": {
+            "width": 0.354,
+            "ratio": 0.66,
+            "positionX": 0,
+            "positionY": 0.17,
+            "needShowOnPortrait": true,
+            "linkUrl": "http://www.baidu.com",
+            "tagTip": "",
+            "tagImage": "http://consolecdn.videojj.com/images/console/gift.png",
+            "windowTitle": "气泡",
+            "windowButtonMore": "点击前往",
+            "isShowClose": true,
+            "isShowAds": true,
+            "messages": [
+                {
+                    "userType": 1,
+                    "id": "1",
+                    "name": "张珊",
+                    "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                    "content": "三人行必有我师焉~",
+                    "messageType": 1,
+                    "link": "url",
+                    "aspectRatio": 1.3,
+                    "isMutex": true,
+                    "duration":3,
+                    "messageButtons": [{
+                        "title": "leave",
+                        "link": "url",
+                        "inner_messages": [{
+                            "userType": 1,
+                            "id": "1",
+                            "name": "张珊",
+                            "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                            "content": "三人行必有我师焉~",
+                            "messageType": 1,
+                            "link": "url"
+                        }]
+                    }]
+                },
+                {
+                    "userType": 1,
+                    "id": "1",
+                    "name": "张珊",
+                    "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                    "content": "三人行必有我师焉~",
+                    "messageType": 1,
+                    "link": "url",
+                    "aspectRatio": 1.3,
+                    "isMutex": true,
+                    "duration":3,
+                    "messageButtons": [{
+                        "title": "leave",
+                        "link": "url",
+                        "inner_messages": [{
+                            "userType": 1,
+                            "id": "1",
+                            "name": "张珊",
+                            "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                            "content": "三人行必有我师焉~",
+                            "messageType": 1,
+                            "link": "url"
+                        }]
+                    }]
+                },
+                {
+                "userType": 2,
+                "id": "1",
+                "name": "张珊",
+                "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                "content": "三人行必有我师焉~",
+                "messageType": 1,
+                "link": "url",
+                "aspectRatio": 1.3,
+                "isMutex": true,
+                "duration":3,
+                "messageButtons": [{
+                    "title": "leave",
+                    "link": "url",
+                    "inner_messages": [{
+                        "userType": 1,
+                        "id": "1",
+                        "name": "张珊",
+                        "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                        "content": "三人行必有我师焉~",
+                        "messageType": 1,
+                        "link": "url"
+                    }]
+                }]
+            }, {
+                "userType": 2,
+                "id": "1",
+                "name": "张珊",
+                "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                "content": "三人行必有我师ce'shi'shu'shu'du's'd'hu'shu'du's'du's'd's'd'j's'k'j焉~",
+                "messageType": 1,
+                "link": "url",
+                "aspectRatio": 1.3,
+                "isMutex": true,
+                "duration":2,
+                "messageButtons": [{
+                    "title": "leave",
+                    "link": "url",
+                    "inner_messages": [{
+                        "userType": 1,
+                        "id": "1",
+                        "name": "张珊",
+                        "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                        "content": "三人行必有我师焉~",
+                        "messageType": 1,
+                        "link": "url"
+                    }]
+                }]
+            }, {
+                "userType": 1,
+                "id": "1",
+                "name": "张珊",
+                "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                "content": {
+                    "width": 362,
+                    "fileUrl": "http://os-open-static.videojj.com/dev/43f4330d-ef33-45eb-bf6f-390f5071758a.png",
+                    "height": 543
+                },
+                "messageType": 2,
+                "link": "https://www.baidu.com",
+                "aspectRatio": 1.3,
+                "isMutex": true,
+                "duration":3,
+                "messageButtons": [{
+                    "title": "leave",
+                    "link": "url",
+                    "inner_messages": [{
+                        "userType": 1,
+                        "id": "1",
+                        "name": "张珊",
+                        "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                        "content": "三人行必有我师焉~",
+                        "messageType": 1,
+                        "link": "url"
+                    }]
+                }]
+            }, {
+                "userType": 2,
+                "id": "1",
+                "name": "张珊",
+                "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                "content": {
+                    "width": 145,
+                    "fileUrl": "http://consolecdn.videojj.com/images/console/gift.png",
+                    "height": 205
+                },
+                "messageType": 2,
+                "link": "https://www.baidu.com",
+                "aspectRatio": 1.3,
+                "isMutex": true,
+                "duration":3,
+                "messageButtons": [{
+                    "title": "leave",
+                    "link": "url",
+                    "inner_messages": [{
+                        "userType": 1,
+                        "id": "1",
+                        "name": "张珊",
+                        "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                        "content": "三人行必有我师焉~",
+                        "messageType": 1,
+                        "link": "url"
+                    }]
+                }]
+            }, {
+                "userType": 2,
+                "id": "1",
+                "name": "张珊",
+                "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                "content": "三人行必有我师焉~",
+                "messageType": 3,
+                "link": "url",
+                "aspectRatio": 1.3,
+                "isMutex": true,
+                "duration":2,
+                "messageButtons": [{
+                    "title": "测试十个字",
+                    "link": "https://wwww.baidu.com",
+                    "inner_messages": [{
+                        "userType": 1,
+                        "id": "1",
+                        "name": "张珊",
+                        "avatar": "http://consolecdn.videojj.com/images/console/gift.png",
+                        "content": "三人行必有我师焉~",
+                        "messageType": 1,
+                        "link": "url"
+                    }]
+                }, {
+                    "title": "stay",
+                    "link": "https://wwww.baidu.com"
+                }]
+            }]
+        }
+    }]
+}

@@ -1,0 +1,1 @@
+../../../SVGAPlayer/Source/SVGAVideoEntity.h
