@@ -84,7 +84,7 @@ Photos.framework
 
 2. 利用生成的`config`初始化`InterfaceController`， `interfaceController.view`就是生成的互动层，将这个`view`添加到播放器层之上就可以了。根据接入的`SDK`的需求可能有一些特殊的接口，放在相应的文件中，如需要调用，将对应文件`import`就可以调用了,详细作用请看注释。
 
-```
+```objective-c
     //配置信息
     VPInterfaceControllerConfig *config = [[VPInterfaceControllerConfig alloc] init];
     config.identifier = videoUrl; //or roomId
@@ -113,7 +113,7 @@ Photos.framework
  
 3. 接着，设置当前互动层显示区域，代码如下所示
 
-```
+```objective-c
     [interfaceController notifyVideoScreenChanged:type];
 ```
 互动层加载完成、视频加载完成，建议调用更新方法，旋转横竖屏之后必须调用更新方法
