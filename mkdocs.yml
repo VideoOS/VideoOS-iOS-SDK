@@ -1,4 +1,4 @@
-site_name: VideoOS-iOS-SDK
+site_name: VideoOS iOS SDK
 repo_url: https://github.com/VideoOS/VideoOS-iOS-SDK
 nav:
   - 'SDK集成': 'index.md'
