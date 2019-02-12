@@ -389,6 +389,7 @@ function show(args)
     end
     --加载网络请求通用参数
     local paramData = {
+        videoId = Native:nativeVideoID(),
         commonParam = Native:commonParam()
     }
     local paramDataString = Native:tableToJson(paramData)

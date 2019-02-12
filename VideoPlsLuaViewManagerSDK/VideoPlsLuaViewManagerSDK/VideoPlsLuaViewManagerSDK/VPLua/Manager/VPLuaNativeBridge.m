@@ -292,6 +292,7 @@ static NSMutableDictionary* httpAPICache() {
         {"preloadImage", preloadImage},
         {"preloadVideo", preloadVideo},
         {"copyStringToPasteBoard", copyStringToPasteBoard},
+        {"videoOShost", videoOShost},
         {NULL, NULL}
     };
     lv_createClassMetaTable(L,META_TABLE_NativeObject);
@@ -424,8 +425,7 @@ static int appKey(lua_State *L) {
 }
 
 static int platformID(lua_State *L) {
-    VPLuaBaseNode *luaNode = [VPLuaNativeBridge luaNodeFromLuaState:L];
-    NSString *platformId = luaNode.luaController.videoInfo.platformID;
+    NSString *platformId = [VPLuaSDK sharedSDK].videoInfo.platformID;
     if(!platformId) {
         platformId = @"";
     }
@@ -434,8 +434,7 @@ static int platformID(lua_State *L) {
 }
 
 static int nativeVideoID(lua_State *L) {
-    VPLuaBaseNode *luaNode = [VPLuaNativeBridge luaNodeFromLuaState:L];
-    NSString *nativeVideoID = luaNode.luaController.videoInfo.nativeID;
+    NSString *nativeVideoID = [VPLuaSDK sharedSDK].videoInfo.nativeID;
     if(!nativeVideoID) {
         nativeVideoID = @"";
     }
@@ -444,8 +443,7 @@ static int nativeVideoID(lua_State *L) {
 }
 
 static int getPlatformId(lua_State *L) {
-    VPLuaBaseNode *luaNode = [VPLuaNativeBridge luaNodeFromLuaState:L];
-    NSString *platformId = luaNode.luaController.videoInfo.platformID;
+    NSString *platformId = [VPLuaSDK sharedSDK].videoInfo.platformID;
     if(!platformId) {
         platformId = @"";
     }
@@ -454,8 +452,7 @@ static int getPlatformId(lua_State *L) {
 }
 
 static int getVideoId(lua_State *L) {
-    VPLuaBaseNode *luaNode = [VPLuaNativeBridge luaNodeFromLuaState:L];
-    NSString *videoId = luaNode.luaController.videoInfo.nativeID;
+    NSString *videoId = [VPLuaSDK sharedSDK].videoInfo.nativeID;
     if(!videoId) {
         videoId = @"";
     }
@@ -620,14 +617,14 @@ static int cancel(lua_State *L) {
                 NSString *value = [cacheData objectForKey:apiId];
                 [LVUtil unregistry:L key:value];
             }
-            [[VPLuaNativeBridge luaNodeFromLuaState:L].networkManager.httpManager cancelAPIRequest:api];
+            [[VPLuaNetworkManager Manager].httpManager cancelAPIRequest:api];
         }
     }
     return 0;
 }
 
 static int cancelAll(lua_State *L) {
-    [[VPLuaNativeBridge luaNodeFromLuaState:L].networkManager.httpManager cancelAll];
+    [[VPLuaNetworkManager Manager].httpManager cancelAll];
     return 0;
 }
 
@@ -660,6 +657,7 @@ static int httpRequest(lua_State *L, VPUPRequestMethodType methodType) {
         
         BOOL needToCheck = NO;
         __weak NSObject *handleObject = nil;
+        BOOL needToCallBack = NO;
         
         for(int i = 3; i <= argN; i++) {
             int type = lua_type(L, i);
@@ -669,6 +667,7 @@ static int httpRequest(lua_State *L, VPUPRequestMethodType methodType) {
             
             if( type == LUA_TFUNCTION ) {
                 [LVUtil registryValue:L key:bRequestMethod stack:i];
+                needToCallBack = YES;
             }
             
             if (type == LUA_TBOOLEAN) {
@@ -693,6 +692,10 @@ static int httpRequest(lua_State *L, VPUPRequestMethodType methodType) {
 //        __weak typeof(cell) weakCell = cell;
         NSString *apiId = [NSString stringWithFormat:@"%ld",api.apiId];
         api.apiCompletionHandler = ^(id  _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
+            //没有回调，网络请求不处理回调
+            if (!needToCallBack) {
+                return;
+            }
             if ([httpAPICache() objectForKey:apiId]) {
                 [httpAPICache() removeObjectForKey:apiId];
             }
@@ -720,14 +723,14 @@ static int httpRequest(lua_State *L, VPUPRequestMethodType methodType) {
                 lua_checkstack32(l);
                 lv_pushNativeObject(l, responseObject);
                 NSString *errorInfo = [error description];
-                lv_pushNativeObject(l, @"errorInfo");
+                lv_pushNativeObject(l, errorInfo);
                 [LVUtil call:l lightUserData:bRequestMethod key1:"callback" key2:NULL nargs:2];
                 [LVUtil unregistry :l key:bRequestMethod];
             }
 //            [weakCell apiComplete:responseObject error:error response:response requestMethod:bRequestMethod];
         };
         [httpAPICache() setObject:api forKey:apiId];
-        [[VPLuaNativeBridge luaNodeFromLuaState:L].networkManager.httpManager sendAPIRequest:api];
+        [[VPLuaNetworkManager Manager].httpManager sendAPIRequest:api];
         lua_pushinteger(L, api.apiId);
         [VPLuaNativeBridge saveCacheData:[NSString stringWithFormat:@"%ld",api.apiId] value:bRequestMethod luaState:L];
         return 1;
@@ -787,7 +790,7 @@ static int upload(lua_State *L) {
 //            [weakCell apiComplete:responseObject error:error response:response requestMethod:bRequestMethod];
         };
         
-        [[VPLuaNativeBridge luaNodeFromLuaState:L].networkManager.httpManager sendAPIRequest:api];
+        [[VPLuaNetworkManager Manager].httpManager sendAPIRequest:api];
         
     }
     return 0;
@@ -838,8 +841,7 @@ static int getIdentity(lua_State *L) {
 }
 
 static int getSSID(lua_State *L) {
-    VPLuaBaseNode *luaNode = [VPLuaNativeBridge luaNodeFromLuaState:L];
-    NSString *ssid = luaNode.luaController.videoInfo.ssid;
+    NSString *ssid = [VPLuaSDK sharedSDK].videoInfo.ssid;
     if(!ssid) {
         ssid = @"";
     }
@@ -876,7 +878,7 @@ static int trackApi(lua_State *L) {
         
         VPLuaTrackApi *api = [[VPLuaTrackApi alloc] initWithTrackEventCat:cat params:data];
         
-        [[VPLuaNativeBridge luaNodeFromLuaState:L].networkManager.httpManager sendAPIRequest:api];
+        [[VPLuaNetworkManager Manager].httpManager sendAPIRequest:api];
         
     }
     return 0;
@@ -1037,8 +1039,7 @@ static int unZipFile(lua_State *L) {
 }
 
 static int getVideoCategory(lua_State *L) {
-    VPLuaBaseNode *luaNode = [VPLuaNativeBridge luaNodeFromLuaState:L];
-    NSString *category = luaNode.luaController.videoInfo.category;
+    NSString *category = [VPLuaSDK sharedSDK].videoInfo.category;
     if(!category) {
         category = @"";
     }
@@ -1047,8 +1048,7 @@ static int getVideoCategory(lua_State *L) {
 }
 
 static int getConfigExtendJSONString(lua_State *L) {
-    VPLuaBaseNode *luaNode = [VPLuaNativeBridge luaNodeFromLuaState:L];
-    NSString *extendJSONString = luaNode.luaController.videoInfo.extendJSONString;
+    NSString *extendJSONString = [VPLuaSDK sharedSDK].videoInfo.extendJSONString;
     if(!extendJSONString) {
         extendJSONString = @"";
     }
@@ -1305,7 +1305,7 @@ static int preloadImage(lua_State *L) {
         if( lua_type(L, 2) == LUA_TTABLE ) {
             NSArray *array = lv_luaValueToNativeObject(L, 2);
             if ([array isKindOfClass:[NSArray class]] && array.count > 0) {
-                [[VPLuaNativeBridge luaNodeFromLuaState:L].networkManager.imageManager prefetchURLs:array];
+                [[VPLuaNetworkManager Manager].imageManager prefetchURLs:array];
             }
         }
     }
@@ -1317,7 +1317,7 @@ static int preloadVideo(lua_State *L) {
         if( lua_type(L, 2) == LUA_TTABLE ) {
             NSArray *array = lv_luaValueToNativeObject(L, 2);
             if ([array isKindOfClass:[NSArray class]] && array.count > 0) {
-                [[VPLuaNativeBridge luaNodeFromLuaState:L].networkManager.videoManager prefetchURLs:array];
+                [[VPLuaNetworkManager Manager].videoManager prefetchURLs:array];
             }
         }
     }
@@ -1333,6 +1333,11 @@ static int copyStringToPasteBoard(lua_State *L) {
         }
     }
     return 0;
+}
+
+static int videoOShost(lua_State *L) {
+    lua_pushstring(L, [VPLuaServerHost UTF8String]);
+    return 1;
 }
 
 @end

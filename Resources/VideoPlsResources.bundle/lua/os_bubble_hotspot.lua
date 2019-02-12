@@ -27,6 +27,7 @@ local bubbleShowAllTime = 13000
 
 local loadBubbleCount = 0
 local totalBubbleCount = 0
+local showlaunchPlanCount = 0;
 --[[
 userType 1 左边用户
 userType 2 右边用户
@@ -34,6 +35,37 @@ messageType 1 文本
 messageType 2 图片
 messageType 3 选择
 ]] --
+
+local function getHotspotExposureTrackLink(data, index)
+    if (data == nil or index == nil) then
+        return nil
+    end
+    local hotspotTrackLinkTable = data.hotspotTrackLink
+    if (hotspotTrackLinkTable == nil) then
+        return nil
+    end
+    local indexHotspotTrackLinkTable = hotspotTrackLinkTable[index]
+    if (indexHotspotTrackLinkTable == nil) then
+        return nil
+    end
+    return indexHotspotTrackLinkTable.exposureTrackLink
+end
+
+local function getHotspotClickTrackLink(data, index)
+    if (data == nil or index == nil) then
+        return nil
+    end
+    local hotspotTrackLinkTable = data.hotspotTrackLink
+    if (hotspotTrackLinkTable == nil) then
+        return nil
+    end
+    local indexHotspotTrackLinkTable = hotspotTrackLinkTable[index]
+    if (indexHotspotTrackLinkTable == nil) then
+        return nil
+    end
+    return indexHotspotTrackLinkTable.clickTrackLink
+end
+
 local function linkUrl(data) --获取linkUrl
     if (data == nil) then
         return nil
@@ -51,13 +83,18 @@ local function closeView()
         Native:widgetEvent(eventTypeClose, bubble.id, adTypeName, actionTypeNone, "")
         Native:deleteBatchCacheData({ bubble.id })
     end
-    osTrack(cat_type_close, bubble.id)
     Native:destroyView()
 end
 
 local function clickView(url, ise)
     Native:widgetEvent(eventTypeClick, bubble.id, adTypeName, actionTypeOpenUrl, url)
-    osTrack(cat_type_click_link, bubble.id, ise)
+    local clickLinkUrl = getHotspotClickTrackLink(bubble.data, 1)
+    if (clickLinkUrl ~= nil) then
+        Native:get(clickLinkUrl)
+    end
+    if (bubble.launchPlanId ~= nil) then
+        osTrack(bubble.launchPlanId, 3, 2)
+    end
 end
 
 local function registerWindow()
@@ -184,6 +221,7 @@ local function getScrollViewLocation(data)
     bubble.width = width
     bubble.height = height
     bubble.scale = width / 236.5
+    bubble.textDefaultWidth = 141 * bubble.scale
     return x, y, width, height
 end
 
@@ -302,7 +340,7 @@ local function createUserTypeLeftWithMessageTextIOS(data, index) --左边用户�
         return nil
     end
 
-    textWidth, textHeight = Native:stringSizeWithWidth(message:text(), 140, 12)
+    textWidth, textHeight = Native:stringSizeWithWidth(message:text(), bubble.textDefaultWidth, 12)
     message:frame(bubbleAngleWidth + bubbleImageSpace, bubbleImageSpace, textWidth, textHeight)
     messageBubbleImage:frame(0, 0, textWidth + bubbleImageSpace * 2 + bubbleAngleWidth, textHeight + bubbleImageSpace * 2)
     messageBackground:frame(37 * bubble.scale, 39 * bubble.scale, textWidth + bubbleImageSpace * 2 + bubbleAngleWidth, textHeight + bubbleImageSpace * 2)
@@ -423,7 +461,6 @@ local function createUserTypeLeftWithMessageImage(data, index) --左边用户云
     if (contentImageUrl ~= nil) then
         message:image(contentImageUrl, function(status)
             if status == true then
-                osTrack(cat_type_show, bubble.id, data.id)
             end
         end)
     end
@@ -538,7 +575,6 @@ local function createUserTypeLeftWithMessageImageIOS(data, index) --左边用户
     if (contentImageUrl ~= nil) then
         message:image(contentImageUrl, function(status)
             if status == true then
-                osTrack(cat_type_show, bubble.id, data.id)
             end
         end)
     end
@@ -626,7 +662,7 @@ local function createUserTypeRightWithMessageTextIOS(data, index) --左边用户
         return nil
     end
 
-    textWidth, textHeight = Native:stringSizeWithWidth(message:text(), 140, 12)
+    textWidth, textHeight = Native:stringSizeWithWidth(message:text(), bubble.textDefaultWidth, 12)
     message:frame(bubbleImageSpace, bubbleImageSpace, textWidth, textHeight)
     messageBubbleImage:frame(0, 0, textWidth + bubbleImageSpace * 2 + bubbleAngleWidth, textHeight + bubbleImageSpace * 2)
     messageBackground:frame(bubble.scrollviewWidth - messageBubbleImage:width(), 19, messageBubbleImage:width(), messageBubbleImage:height())
@@ -709,7 +745,6 @@ local function createUserTypeRightWithMessageImage(data, index) --左边用户�
         if (contentImageUrl ~= nil) then
             message:image(contentImageUrl, function(status)
                 if status == true then
-                    osTrack(cat_type_show, bubble.id, data.id)
                 end
             end)
         end
@@ -814,7 +849,6 @@ local function createUserTypeRightWithMessageImageIOS(data, index) --左边用�
         if (contentImageUrl ~= nil) then
             message:image(contentImageUrl, function(status)
                 if status == true then
-                    osTrack(cat_type_show, bubble.id, data.id)
                 end
             end)
         end
@@ -987,7 +1021,7 @@ local function createBubbleOption(message, k)
     elseif (type == 5) then
         optionView = createUserMessageSelect(message, k)
     end
-    return optionView
+    return optionView, type
 end
 
 local function createAllBubbleOption(messages)
@@ -1033,7 +1067,7 @@ local function addBubbleOption(messages)
     end
     print("LuaView addBubbleOption 22")
     local data = messages[loadBubbleCount]
-    local optionView = createBubbleOption(data, loadBubbleCount)
+    local optionView, type = createBubbleOption(data, loadBubbleCount)
     if (optionView ~= nil) then
         bubble.views[bubbleIndex] = optionView
         bubble.scrollview:addView(optionView)
@@ -1043,7 +1077,12 @@ local function addBubbleOption(messages)
     bubble.loadTimer = performWithDelay(function()
         addBubbleOption(messages)
     end, data.duration * 1000)
-
+    if (bubble.launchPlanId ~= nil and showlaunchPlanCount == 0) then
+        if (type == 5 or linkUrl(messages[loadBubbleCount]) ~= nil) then
+            showlaunchPlanCount = showlaunchPlanCount + 1
+            osTrack(bubble.launchPlanId, 2, 2)
+        end
+    end
     if 1 == 1 then
         return
     end
@@ -1181,6 +1220,7 @@ function createUserMessageSelect(data, index) --左边用户云泡 显示问题
 end
 
 local function registerMedia() --监听屏幕方向
+    local mediaPausedStatus = false;
     -- body
     -- 注册window callback通知
     local callbackTable = {
@@ -1200,11 +1240,16 @@ local function registerMedia() --监听屏幕方向
         onMediaPause = function()
             bubble.luaview:hide()
             bubble.loadTimer:cancel()
+            mediaPausedStatus = true
         end,
         onMediaPlay = function()
-            if(Native:isPortraitScreen()==false)then
+            if (Native:isPortraitScreen() == false) then
                 bubble.luaview:show()
             end
+            if (mediaPausedStatus == false) then
+                return
+            end
+            mediaPausedStatus = false
             createNextBubbleMessage(bubble.messagesTable)
         end,
         onMediaProgress = function(progress)
@@ -1270,6 +1315,13 @@ function itemClick(data)
 end
 
 local function onCreate(data)
+    local showLinkUrl = getHotspotExposureTrackLink(data, 1)
+    if (showLinkUrl ~= nil) then
+        Native:get(showLinkUrl)
+    end
+    if (bubble.launchPlanId ~= nil) then
+        osTrack(bubble.launchPlanId, 1, 2)
+    end
     getScrollViewLocation(data)
     bubble.luaview = createParent()
     performWithDelay(function()
@@ -1322,11 +1374,14 @@ function show(args)
     if (args == nil or bubble.luaview ~= nil) then
         return
     end
+    showlaunchPlanCount = 0
     local dataTable = args.data
     if (dataTable == nil) then
         return
     end
+    bubble.launchPlanId = dataTable.launchPlanId
     bubble.id = dataTable.id
+
     setBubbleTime(dataTable)
     Native:widgetEvent(eventTypeShow, bubble.id, bubble.id, adTypeBubble, "") --todo 修改参数为table
     Native:saveCacheData(bubble.id, tostring(eventTypeShow))
@@ -1334,7 +1389,6 @@ function show(args)
     bubble.media = registerMedia()
     bubble.window = registerWindow()
     onCreate(dataTable)
-    osTrack(cat_type_show, bubble.id, nil)
     checkMqttHotspotToSetClose(dataTable, function()
         closeView()
     end)

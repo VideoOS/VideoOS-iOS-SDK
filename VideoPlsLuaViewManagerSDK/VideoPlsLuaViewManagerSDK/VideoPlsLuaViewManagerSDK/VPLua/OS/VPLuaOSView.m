@@ -66,6 +66,7 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
         if (extendInfo) {
             self.videoInfo.extendJSONString = VPUP_DictionaryToJson(extendInfo);
         }
+        [VPLuaSDK sharedSDK].videoInfo = self.videoInfo;
         SEL checkLuaFiles = NSSelectorFromString(@"checkLuaFiles");
         Class sdkClass = NSClassFromString(@"VPLuaSDK");
         

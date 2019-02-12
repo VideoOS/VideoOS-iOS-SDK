@@ -9,12 +9,43 @@ require "os_config"
 require "os_string"
 require "os_constant"
 require "os_util"
+require "os_track"
 voteWindow = object:new()
 local adTypeName = "voteWindow"
 local scale = getScale()
 local OS_ICON_WEDGE_CLOSE = "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"
 local OS_ICON_PRELOAD = "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"
 local OS_NO_LOGIN_INFO = "您还未登录,请先登录"
+
+local function getHotspotExposureTrackLink(data, index)
+    if (data == nil or index == nil) then
+        return nil
+    end
+    local hotspotTrackLinkTable = data.infoTrackLink
+    if (hotspotTrackLinkTable == nil) then
+        return nil
+    end
+    local indexHotspotTrackLinkTable = hotspotTrackLinkTable[index]
+    if (indexHotspotTrackLinkTable == nil) then
+        return nil
+    end
+    return indexHotspotTrackLinkTable.exposureTrackLink
+end
+
+local function getHotspotClickTrackLink(data, index)
+    if (data == nil or index == nil) then
+        return nil
+    end
+    local hotspotTrackLinkTable = data.infoTrackLink
+    if (hotspotTrackLinkTable == nil) then
+        return nil
+    end
+    local indexHotspotTrackLinkTable = hotspotTrackLinkTable[index]
+    if (indexHotspotTrackLinkTable == nil) then
+        return nil
+    end
+    return indexHotspotTrackLinkTable.clickTrackLink
+end
 
 local function closeView()
     Native:widgetEvent(eventTypeClose, voteWindow.id, adTypeName, actionTypeNone, "")
@@ -108,6 +139,13 @@ local function getUserVoteInfo(callback)
         end
         local dataTable = response.businessInfo
         if (dataTable == nil) then
+            local showLinkUrl = getHotspotExposureTrackLink(voteWindow.data, 1)
+            if (showLinkUrl ~= nil) then
+                Native:get(showLinkUrl)
+            end
+            if (voteWindow.launchPlanId ~= nil) then
+                osTrack(voteWindow.launchPlanId, 2, 1)
+            end
             if callback ~= nil then
                 callback()
             end
@@ -116,6 +154,14 @@ local function getUserVoteInfo(callback)
         if dataTable.isVote == true then
             voteWindow.section = dataTable.vote
             showVoteResult()
+        else
+            local showLinkUrl = getHotspotExposureTrackLink(voteWindow.data, 1)
+            if (showLinkUrl ~= nil) then
+                Native:get(showLinkUrl)
+            end
+            if (voteWindow.launchPlanId ~= nil) then
+                osTrack(voteWindow.launchPlanId, 2, 1)
+            end
         end
     end)
 end
@@ -234,6 +280,13 @@ end
 
 --未上传时传递index，对应count+1，已上传不需要+1
 function showVoteResult(index)
+    local clickLinkUrl = getHotspotClickTrackLink(voteWindow.data, 1)
+    if (clickLinkUrl ~= nil) then
+        Native:get(clickLinkUrl)
+    end
+    if (voteWindow.launchPlanId ~= nil) then
+        osTrack(voteWindow.launchPlanId, 3, 1)
+    end
     if voteWindow.voteCount == nil then
         voteWindow.isVoted = true
         voteWindow.needShowVoteResult = true
@@ -1095,6 +1148,10 @@ function show(args)
     print("LuaView os vote window" .. Native:tableToJson(args))
     voteWindow.loadingCount = 0
     voteWindow.id = "os_vote_window" .. tostring(args.data.id)
+    voteWindow.launchPlanId = args.data.launchPlanId
+    if (voteWindow.launchPlanId ~= nil) then
+        osTrack(voteWindow.launchPlanId, 1, 1)
+    end
     setConfig(args.data)
     onCreate(args.data)
 
@@ -1120,6 +1177,14 @@ function show(args)
                 voteWindow.voteWindowScrollview:reload()
             else
                 voteWindow.needShowVoteResult = true
+            end
+        else
+            local showLinkUrl = getHotspotExposureTrackLink(args.data, 1)
+            if (showLinkUrl ~= nil) then
+                Native:get(showLinkUrl)
+            end
+            if (voteWindow.launchPlanId ~= nil) then
+                osTrack(voteWindow.launchPlanId, 2, 1)
             end
         end
     else

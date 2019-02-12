@@ -99,6 +99,7 @@ static int lvNewVPLuaLabel(lua_State *L) {
     // lua Labe构造方法创建的对象对应的方法列表
     const struct luaL_Reg memberFunctions [] = {
         {"textShadow",    textShadow},
+        {"textBold",    textBold},
         {NULL, NULL}
     };
     
@@ -125,6 +126,18 @@ static int textShadow (lua_State *L) {
                 shadow.shadowColor = color;
                 label.attributedText = [[NSAttributedString alloc] initWithString:label.text attributes:@{NSShadowAttributeName: shadow}];
             }
+        }
+    }
+    return 0;
+}
+
+static int textBold (lua_State *L) {
+    LVUserDataInfo * user = (LVUserDataInfo *)lua_touserdata(L, 1);// 获取第一个参数永远是self(lua的userdata, 对象自身)
+    if( user ) {
+        VPLuaLabel* label = (__bridge VPLuaLabel *)(user->object);// 当前userdata对应的native对象
+        if ([label isKindOfClass:[VPLuaLabel class]]) {// 检查类型是否匹配(其实可以不用检查一般一定是对的)
+            UIFont *font = [UIFont boldSystemFontOfSize:label.font.pointSize];
+            label.font = font;
         }
     }
     return 0;

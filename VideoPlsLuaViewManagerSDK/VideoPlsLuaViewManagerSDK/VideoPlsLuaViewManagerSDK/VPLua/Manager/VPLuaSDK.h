@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const VPLuaServerHost;
 extern NSString *const VPLuaScriptServerUrl;
+
+@class VPLuaVideoInfo;
 
 typedef NS_ENUM(NSUInteger, VPLuaOSType) {
     VPLuaOSTypeDefault          = 0,
@@ -20,6 +23,7 @@ typedef NS_ENUM(NSUInteger, VPLuaOSType) {
 
 @property (nonatomic, readonly, copy) NSString *luaVersion;
 @property (nonatomic, readonly, assign) VPLuaOSType type;
+@property (nonatomic, weak) VPLuaVideoInfo *videoInfo;
 
 + (instancetype)sharedSDK;
 

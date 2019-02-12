@@ -27,7 +27,9 @@
         self.lv_luaviewCore = LV_LUASTATE_VIEW(l);// 获取luaview运行内核
         self.clipsToBounds = YES;// 默认出界不可见
         self.delegate = self;
+        [[AVAudioSession sharedInstance] setActive:YES error:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(volumeChanged:) name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
+        [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     }
     return self;
 }
@@ -44,6 +46,7 @@
         lua_pushnumber(l, volume);
     }
     [self lv_callLuaCallback:@"onChangeVolume" key2:nil argN:1];
+    [self updateCurrentPlayerVolume:volume];
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {

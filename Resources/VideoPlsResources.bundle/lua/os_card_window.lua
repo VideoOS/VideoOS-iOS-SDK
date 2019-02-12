@@ -9,6 +9,7 @@ require "os_config"
 require "os_string"
 require "os_constant"
 require "os_util"
+require "os_track"
 cardWindow = object:new()
 local adTypeName = "cardWindow"
 local scale = getScale()
@@ -45,6 +46,36 @@ local function startShowAnimation(view, duration)
     view:alpha(0)
     local anim = Animation():alpha(1.0):duration(duration):with(view):start()
     return anim
+end
+
+local function getHotspotExposureTrackLink(data, index)
+    if (data == nil or index == nil) then
+        return nil
+    end
+    local hotspotTrackLinkTable = data.infoTrackLink
+    if (hotspotTrackLinkTable == nil) then
+        return nil
+    end
+    local indexHotspotTrackLinkTable = hotspotTrackLinkTable[index]
+    if (indexHotspotTrackLinkTable == nil) then
+        return nil
+    end
+    return indexHotspotTrackLinkTable.exposureTrackLink
+end
+
+local function getHotspotClickTrackLink(data, index)
+    if (data == nil or index == nil) then
+        return nil
+    end
+    local hotspotTrackLinkTable = data.infoTrackLink
+    if (hotspotTrackLinkTable == nil) then
+        return nil
+    end
+    local indexHotspotTrackLinkTable = hotspotTrackLinkTable[index]
+    if (indexHotspotTrackLinkTable == nil) then
+        return nil
+    end
+    return indexHotspotTrackLinkTable.clickTrackLink
 end
 
 local function closeView()
@@ -410,18 +441,22 @@ local function setCardContentImageView(data, cardContentImageView, isPortrait)
     cardContentImageView:frame(x, y, w, h)
 end
 
-local function setCardCloseImageView(data, cardCloseImageView, isPortrait)
-    if (data == nil or cardCloseImageView == nil) then
+local function setCardCloseImageView(data, cardCloseLayout, cardCloseImageView, isPortrait)
+    if (data == nil or cardCloseLayout == nil or cardCloseImageView == nil) then
         return
     end
-    local x, y, w, h = 0, 0, 0, 0
+    --    local x, y, w, h = 0, 0, 0, 0
+    local size = cardWindow.portraitHeight * 0.083
     if (isPortrait) then
-        x = 350 * scale
-        y = 8 * scale
-        w = 15 * scale
-        h = 15 * scale
-        cardCloseImageView:frame(x, y, w, h)
+        --        x = 350 * scale
+        --        y = 8 * scale
+        --        w = 15 * scale
+        --        h = 15 * scale
+        cardCloseLayout:frame(0, 0, size, size)
+        cardCloseImageView:frame(0, 0, 15 * scale, 15 * scale)
         cardCloseImageView:show()
+        cardCloseLayout:align(Align.RIGHT)
+        cardCloseImageView:align(Align.CENTER)
     else
         cardCloseImageView:hide()
     end
@@ -434,7 +469,7 @@ local function rotationScreen(isPortrait)
     setCardTopContentViewSize(cardWindow.data, cardWindow.cardWindowTopContentView, isPortrait)
     setCardBlurViewViewSize(cardWindow.data, cardWindow.cardBlurImageView, isPortrait)
     setCardBottomViewSize(cardWindow.data, cardWindow.cardBottomView, cardWindow.cardFlexView, cardWindow.cardFlexLabel, isPortrait)
-    setCardCloseImageView(cardWindow.data, cardWindow.cardCloseImageView, isPortrait)
+    setCardCloseImageView(cardWindow.data, cardWindow.cardCloseLayout, cardWindow.cardCloseImageView, isPortrait)
     if (cardWindow.collectStatus ~= 3) then
         if (cardWindow.cardImageLayout3 ~= nil) then
             cardWindow.cardImageLayout1:rotation(0)
@@ -575,12 +610,16 @@ local function createCardBottomView(data, isPortrait)
 end
 
 local function createCardCloseImageView(data, isPortrait)
+    local cardCloseLayout = View()
+    cardCloseLayout:align(Align.RIGHT)
     local cardCloseImageView = Image(Native)
+    cardCloseImageView:align(Align.CENTER)
     cardCloseImageView:scaleType(ScaleType.FIT_XY)
     cardCloseImageView:image(Data(OS_ICON_WEDGE_CLOSE))
     cardCloseImageView:hide()
-    setCardCloseImageView(data, cardCloseImageView, isPortrait)
-    return cardCloseImageView
+    setCardCloseImageView(data, cardCloseLayout, cardCloseImageView, isPortrait)
+    cardCloseLayout:addView(cardCloseImageView)
+    return cardCloseLayout, cardCloseImageView
 end
 
 local function createTitleView(data, isPortrait)
@@ -782,7 +821,13 @@ local function collectState(data)
         --TODO领奖操作逻辑处理
         cardWindow.collectStatus = 3
         postUserCardInfo()
-
+        local clickLinkUrl = getHotspotClickTrackLink(data, 1)
+        if (clickLinkUrl ~= nil) then
+            Native:get(clickLinkUrl)
+        end
+        if (cardWindow.launchPlanId ~= nil) then
+            osTrack(cardWindow.launchPlanId, 3, 1)
+        end
         if collectTable.linkType == 2 then
             Native:widgetEvent(eventTypeClick, cardWindow.id, adTypeName, actionTypeOpenUrl, collectTable.linkUrl)
             performWithDelay(function()
@@ -795,7 +840,7 @@ local function collectState(data)
         cardWindow.cardWindowTopContentView:removeAllViews()
         local isPortrait = Native:isPortraitScreen()
         setCardBlurViewViewSize(cardWindow.data, cardWindow.cardBlurImageView, isPortrait)
-        setCardCloseImageView(cardWindow.data, cardWindow.cardCloseImageView, isPortrait)
+        setCardCloseImageView(cardWindow.data, cardWindow.cardCloseLayout, cardWindow.cardCloseImageView, isPortrait)
         setCardTitleViewSize(cardWindow.data, cardWindow.cardTitleLabel, isPortrait)
         setCardContentImageView(cardWindow.data, cardWindow.cardContentImageView, isPortrait)
         cardWindow.cardWindowTopContentView:addView(cardWindow.cardBlurImageView)
@@ -833,7 +878,7 @@ local function successState(data)
     cardWindow.cardWindowTopContentView:removeAllViews()
     local isPortrait = Native:isPortraitScreen()
     setCardBlurViewViewSize(cardWindow.data, cardWindow.cardBlurImageView, isPortrait)
-    setCardCloseImageView(cardWindow.data, cardWindow.cardCloseImageView, isPortrait)
+    setCardCloseImageView(cardWindow.data, cardWindow.cardCloseLayout, cardWindow.cardCloseImageView, isPortrait)
     setCardTitleViewSize(cardWindow.data, cardWindow.cardTitleLabel, isPortrait)
     setCardContentImageView(cardWindow.data, cardWindow.cardContentImageView, isPortrait)
     cardWindow.cardWindowTopContentView:addView(cardWindow.cardBlurImageView)
@@ -872,6 +917,10 @@ local function successState(data)
 end
 
 local function onCreate(data)
+    if (cardWindow.launchPlanId ~= nil) then
+        osTrack(cardWindow.launchPlanId, 1, 1)
+    end
+
     local isPortrait = Native:isPortraitScreen()
     cardWindow.media = registerMedia()
     cardWindow.window = registerWindow()
@@ -882,7 +931,7 @@ local function onCreate(data)
     cardWindow.cardBlurImageView = createCardBlurView(data, isPortrait)
     cardWindow.cardWindowTopContentView:addView(cardWindow.cardBlurImageView)
 
-    cardWindow.cardCloseImageView = createCardCloseImageView(data, isPortrait)
+    cardWindow.cardCloseLayout, cardWindow.cardCloseImageView = createCardCloseImageView(data, isPortrait)
     cardWindow.cardBottomView, cardWindow.cardFlexView, cardWindow.cardFlexLabel = createCardBottomView(data, isPortrait)
 
     -- 首先判断状态
@@ -906,7 +955,7 @@ local function onCreate(data)
     cardWindow.cardBottomView:addView(cardWindow.cardFlexView)
     cardWindow.cardBottomView:addView(cardWindow.cardFlexLabel)
 
-    cardWindow.cardWindowTopContentView:addView(cardWindow.cardCloseImageView)
+    cardWindow.cardWindowTopContentView:addView(cardWindow.cardCloseLayout)
     cardWindow.cardWindowTopContentView:addView(cardWindow.cardTitleLabel)
     cardWindow.cardWindowTopContentView:addView(cardWindow.cardContentImageView)
 
@@ -939,22 +988,10 @@ local function onCreate(data)
     cardWindow.cardWindowView:onClick(function()
     end)
 
-    cardWindow.cardCloseImageView:onClick(function()
+    cardWindow.cardCloseLayout:onClick(function()
         local isPortrait = Native:isPortraitScreen()
         if (isPortrait) then
             startViewTranslationAnim(cardWindow.cardWindowView, 0, 438 * scale, {
-                onCancel = function()
-                    closeView()
-                end,
-                onEnd = function()
-                    closeView()
-                end,
-                onPause = function()
-                    closeView()
-                end
-            })
-        else
-            startViewTranslationAnim(cardWindow.cardWindowView, 200 * scale, 0, {
                 onCancel = function()
                     closeView()
                 end,
@@ -1031,6 +1068,7 @@ local function setConfig(data)
     cardWindow.collectStatus = 1
     cardWindow.collectCount = 1
     cardWindow.id = "os_card_window" .. tostring(data.id) .. tostring(data.hotspotOrder)
+    cardWindow.launchPlanId = data.launchPlanId
     cardWindow.isHotOrder1 = false
     cardWindow.isHotOrder2 = false
     cardWindow.isHotOrder3 = false
@@ -1052,6 +1090,15 @@ local function setConfig(data)
         cardWindow.collectStatus = checkCollectStatus()
         if cardWindow.userCardInfo.collectStatus == 1 then
             postUserCardInfo()
+        end
+        if (cardWindow.collectStatus == 2) then
+            local showLinkUrl = getHotspotExposureTrackLink(data, 1)
+            if (showLinkUrl ~= nil) then
+                Native:get(showLinkUrl)
+            end
+            if (cardWindow.launchPlanId ~= nil) then
+                osTrack(cardWindow.launchPlanId, 2, 1)
+            end
         end
     else
         if cardWindow.hotspotOrder == 1 then
@@ -1089,6 +1136,7 @@ function show(args)
         return
     end
     setConfig(args.data)
+
     onCreate(args.data)
     -- postUserCardInfo()
 end

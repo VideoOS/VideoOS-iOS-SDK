@@ -13,6 +13,7 @@
 #import "VPUPGeneralInfo.h"
 
 //NSString *const VPLuaScriptServerUrl = @"http://dev-videopublicapi.videojj.com/videoos-api/api/fileVersion";
+NSString *const VPLuaServerHost = @"http://os-open.videojj.com/videoos-api";
 NSString *const VPLuaScriptServerUrl = @"http://os-open.videojj.com/videoos-api/api/fileVersion";
 //NSString *const VPLuaScriptServerUrl = @"http://videopublicapi.videojj.com/videoos-api/api/fileVersion";
 
