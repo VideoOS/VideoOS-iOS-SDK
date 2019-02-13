@@ -12,13 +12,13 @@ Pod::Spec.new do |s|
                    *live os
                    DESC
 
-  s.homepage     = "https://www.showdoc.cc/web/#/oslua?page_id=547028714523632"
-  s.license      = { :type => "MIT", :file => "LICENSE" }
+  s.homepage     = "http://videojj.com/videoos-open"
+  s.license      = { :type => "GPL-3.0", :file => "LICENSE" }
   s.author       = 'VideoPls'
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://gitlab.videojj.com/Mobile/VideoPls-iOS-SDK.git",
+  s.source       = { :git => "https://github.com/VideoOS/VideoOS-iOS-SDK.git",
                      :tag => s.version.to_s
                     }
 
@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
     spec.public_header_files = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/**/*.{h}"
     spec.header_dir = "VideoPlsUtilsPlatformSDK"
     spec.dependency 'AFNetworking'
-    spec.dependency 'SDWebImage', '4.2.2'
+    spec.dependency 'SDWebImage',
     spec.dependency 'SVGAPlayer', '2.1.1'
     spec.dependency 'MQTTClient'
   end
