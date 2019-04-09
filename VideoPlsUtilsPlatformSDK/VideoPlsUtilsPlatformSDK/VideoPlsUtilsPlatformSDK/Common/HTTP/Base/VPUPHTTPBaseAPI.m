@@ -101,7 +101,7 @@
 
 - (NSUInteger)hash {
     NSMutableString *hashStr = [NSMutableString stringWithFormat:@"%@ %@", [self requestParameters], self.requestURL.absoluteString];
-    return [hashStr hash];
+    return [[VPUPMD5Util md5HashString:hashStr] hash];
 }
 
 - (NSString *)description {
