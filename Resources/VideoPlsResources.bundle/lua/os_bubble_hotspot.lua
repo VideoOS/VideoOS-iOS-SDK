@@ -28,6 +28,13 @@ local bubbleShowAllTime = 13000
 local loadBubbleCount = 0
 local totalBubbleCount = 0
 local showlaunchPlanCount = 0;
+
+local OS_BUBBLE_CLOSE = "iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAANAAAAKAAAAA0AAAANAAAB+IoRfI4AAAHESURBVEgNhJRBTgJBEEWRAJmFIZiwk8WcgCuw8gq6wh0bohvCEOL06HgKohsPwAHYuPVe/ld2TXpGEjr5dHVV/V9d3T30ev/HVeLKZM+EhbAUnoV9xJPmR4HYrUCuj1TDfa3ZE4by5sKDUAiIvwihA3zEyCE3F+AyXOtvdeb3Wr47YSe8Ce9CLbxGVJqBr2vZ5JALBy4aZ4dXv1H0XkAIMrN34QW6cxp3DhpotYYXYRcksDN2i0BX9NIaDlw00PLOvIadKy0j1CoyGAwuiVedHC8GD82h0Ixc1k6gdeuk3+97gXI8HnfFLEYBYuKUQpVw0EALzVywwbP0I3Nxm6fTaTWfz2vFIYbRaNTEo21+cshVThccIa/Rnv5MBs+z6SYeRYnAZrP5Wq1WB8URKbMsqwA2PmLkKBfRMjlG7wptatgHx7dQCwRtVzoS7IDQ8Xj8Lorig/VkMjFg4yMWNxIix7uCXwtoLwT74vnweASe5HdihV1wu91+Ksc2gJ1sAF5IunEdNNFeCva3ArlVSOsq3gNHFFx4vV4fAEWSwmV6f3Aj/AXz12Wt2c6TBE+0++C4FAsUOJ1OPwAbH7F4Zw2nowN3/wsAAP//Y+jNTwAAAchJREFUhZQ9TsNAEIWXyEQuUBSkdKTwCXyFVHAEqEKXJoImigPCXjCnQNBwgBwgDS334n3LjllHlljpZWdn3ryZ/XGcc+5RaAQ/hDzP/XQ6Jd6s1+u3w+HwDbDxEYMzlBt95D4I7l5g8Sz0EsbjMeua+Ha7/djv918UANj4iMGJ3F6+/GgSvxPcUngSeoWyLCMJkq+q6v1IuCtMDA7cmJMWQxPtW8EtBI6vFYKwZj+ZTLCb1WoVuo+C4ajsKK0BOHBjjhUivxXQpoabC5XwKoRCsbO6LMt2s9l8RiEEau4j3glH6onBEfeFeLIrtNBE+0JwuXAjQLRuwjybzTzF5CepSe8h2sEPB+5xvtZook2NMAr97oRuV6PRyBJrHYlPOjV/8BFTXthdkmO7QbMQupHJuhRIspcSBIcKRF6vYOKjiD0sNE+FME7ifKb5WmC7vWJad6L/2FYEDbTQZFiNzjiXEwLCHCNzuIdoDxVM45aDBlqMrsjv8u+XLtjyTqAzkluBXdqRUNDWxODAJedKsJ3IHB5WnXMtBDrjefIt8OFZ9zbjIwYHbiHYnZiWXMMjJfAs58JCWAr8XSEMsPERg9M9YdmphpbO/QAEn2PTz/v3hwAAAABJRU5ErkJggg=="
+local OS_BUBBLE_PROMPT = "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"
+local OS_BUBBLE_DEFAULT_IMAGE = "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAEGWlDQ1BrQ0dDb2xvclNwYWNlR2VuZXJpY1JHQgAAOI2NVV1oHFUUPrtzZyMkzlNsNIV0qD8NJQ2TVjShtLp/3d02bpZJNtoi6GT27s6Yyc44M7v9oU9FUHwx6psUxL+3gCAo9Q/bPrQvlQol2tQgKD60+INQ6Ium65k7M5lpurHeZe58853vnnvuuWfvBei5qliWkRQBFpquLRcy4nOHj4g9K5CEh6AXBqFXUR0rXalMAjZPC3e1W99Dwntf2dXd/p+tt0YdFSBxH2Kz5qgLiI8B8KdVy3YBevqRHz/qWh72Yui3MUDEL3q44WPXw3M+fo1pZuQs4tOIBVVTaoiXEI/MxfhGDPsxsNZfoE1q66ro5aJim3XdoLFw72H+n23BaIXzbcOnz5mfPoTvYVz7KzUl5+FRxEuqkp9G/Ajia219thzg25abkRE/BpDc3pqvphHvRFys2weqvp+krbWKIX7nhDbzLOItiM8358pTwdirqpPFnMF2xLc1WvLyOwTAibpbmvHHcvttU57y5+XqNZrLe3lE/Pq8eUj2fXKfOe3pfOjzhJYtB/yll5SDFcSDiH+hRkH25+L+sdxKEAMZahrlSX8ukqMOWy/jXW2m6M9LDBc31B9LFuv6gVKg/0Szi3KAr1kGq1GMjU/aLbnq6/lRxc4XfJ98hTargX++DbMJBSiYMIe9Ck1YAxFkKEAG3xbYaKmDDgYyFK0UGYpfoWYXG+fAPPI6tJnNwb7ClP7IyF+D+bjOtCpkhz6CFrIa/I6sFtNl8auFXGMTP34sNwI/JhkgEtmDz14ySfaRcTIBInmKPE32kxyyE2Tv+thKbEVePDfW/byMM1Kmm0XdObS7oGD/MypMXFPXrCwOtoYjyyn7BV29/MZfsVzpLDdRtuIZnbpXzvlf+ev8MvYr/Gqk4H/kV/G3csdazLuyTMPsbFhzd1UabQbjFvDRmcWJxR3zcfHkVw9GfpbJmeev9F08WW8uDkaslwX6avlWGU6NRKz0g/SHtCy9J30o/ca9zX3Kfc19zn3BXQKRO8ud477hLnAfc1/G9mrzGlrfexZ5GLdn6ZZrrEohI2wVHhZywjbhUWEy8icMCGNCUdiBlq3r+xafL549HQ5jH+an+1y+LlYBifuxAvRN/lVVVOlwlCkdVm9NOL5BE4wkQ2SMlDZU97hX86EilU/lUmkQUztTE6mx1EEPh7OmdqBtAvv8HdWpbrJS6tJj3n0CWdM6busNzRV3S9KTYhqvNiqWmuroiKgYhshMjmhTh9ptWhsF7970j/SbMrsPE1suR5z7DMC+P/Hs+y7ijrQAlhyAgccjbhjPygfeBTjzhNqy28EdkUh8C+DU9+z2v/oyeH791OncxHOs5y2AtTc7nb/f73TWPkD/qwBnjX8BoJ98VQNcC+8AAAAcaURPVAAAAAIAAAAAAAAACgAAACgAAAAKAAAACgAAAFC91KuHAAAAHElEQVQ4EWJ4//4D2YiBbJ1AjaOaSQz5IRpgAAAAAP//Zj9XwQAAABlJREFUY3j//gPZiIFsnUCNo5pJDPkhGmAA15NiHWOru6gAAAAASUVORK5CYII="
+local OS_BUBBLE_LEFT_IMAGE = "iVBORw0KGgoAAAANSUhEUgAAACYAAAAgCAYAAAB+ZAqzAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAQAAAAKAAAABAAAAAQAAACAaVNqY8AAAHNSURBVFgJvJW/SgNBEMYTjWBhYSHExsJGRPEJfBOT2vcQRYKFdYhP4DsIgnbBVxAbbYIiVhL/xd93t9+6Z4gmkMvAtzM7Ozfz7ezeXaWCDAaDeVCV/Z8oTvGOw66DJuiALuiBN9APtnxaa4B68tzfNQneTYJrzEcSZC0ltM1cBZ/AuKJYPbOV1Iw57cs0QZfgqOBkgk87EtGFoGMC5sfgHVg+MDT/BF92Bls+r3lJHW2BLCe69ru+CBwCyQ3YB6tDQcHB2jq4AhYVTInYP0orNt3QNfOsHrpIDscGeAWWFwwVb4MTcABOwTl4BJJJCeVP/YwiqK5J7sGO9o4eInemCCQlmHuGRx3btCQl587FKyOmy+A2VNPb5DujzuhhafkmOTbCxxKT07H6zlWzSx7auMnCQ0hlImNlnkKQybUCl7xrJDbTNeyLKRSaNIVPQgTjp0QkY+eCvUeAWqtXfVaiU5J0MkLpgHNOCORWsJ+BxDvKZ+WMrqGPcPxDRH44s1cW3Qz1Z9k1vWCSRiRkA6fvm75jErc4n5U7ulbxOKkZ/5PY/sJ7F+VSyrP7dLpuVKZNDL0I7oDEwfms3NH3rDeK2BL1/ftxcLmUitn73wAAAP//9dLobgAAAWdJREFUxZVNTsMwEIVbwoIF+/YMoJ6oHKg3QMptUHc9BCtWFRyg/IX3zHyRSx1VqeRgaTqT2p73ZfyT2SxrXdfN/Sh/K3uVuX3/ukl/DxlWAgLsRhjPgfI1IRJF2BfBompPAfQ5IRhF2B2BBVAT/jGAPiYEQ6stgV0H2MM/VIzVWZfA2GcLgb0FHGtfs3hoWHNxAhbVYjnbIKHENcHQOF1GKKV+FYD3it+DhjeqAUdua93BUfQaQNU2QQJgDTByb6IgSXsIjL3WiGRbEQ4oa1CMpF0Ey8k1YSl7qQAHlHMvc81BKDo0getj9QeOfRG8o5zn5lCrgEpaaJ/1SgKcK8eymsQnaQygx3L6PN+5qNQ4KKiVALhGsQ8Eb6yw86fEgvY5qOO8T4+pea5zsKcug8rg+tOipL5KWhmXsMKzzWM9p78SFPc50bnIK9E8T6bYX4i1zII72V52CHPs/9znMf2NrtiVHzx9P38GfaKoW0+kAAAAAElFTkSuQmCC"
+local OS_BUBBLE_RIGHT_IMAGE = "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"
+
 --[[
 userType 1 左边用户
 userType 2 右边用户
@@ -230,7 +237,7 @@ local function createUserTypeLeftWithMessageText(data, index) --左边用户云�
         return nil
     end
     local userParent = View()
-
+    local pos = 0;
     local icon = Image(Native)
     icon:image("os_bubble_item_icon_bg")
     icon:placeHolderImage("os_bubble_item_icon_bg")
@@ -251,8 +258,11 @@ local function createUserTypeLeftWithMessageText(data, index) --左边用户云�
     message:anchorPoint(0, 0)
     message:scale(0)
     userParent:onLayout(function()
-        message:backgroundColor(0xFFFFFF)
-        message:backgroundColor("os_message_left_bg")
+        pos = pos + 1
+        if (pos <= 2) then
+            message:backgroundColor(0xFFFFFF)
+            message:backgroundColor("os_message_left_bg")
+        end
     end)
     startViewScaleAnim(message, bubbleAnimScale, {
         onStart = function()
@@ -305,7 +315,7 @@ local function createUserTypeLeftWithMessageTextIOS(data, index) --左边用户�
 
     local icon = Image(Native)
     icon:cornerRadius(2.0)
-    icon:placeHolderImage("os_bubble_image_default")
+    icon:placeHolderImage(Data(OS_BUBBLE_DEFAULT_IMAGE))
     icon:stretch(5, 5)
     icon:frame(0, 18 * bubble.scale, 32 * bubble.scale, 32 * bubble.scale)
 
@@ -320,8 +330,7 @@ local function createUserTypeLeftWithMessageTextIOS(data, index) --左边用户�
     userParent:addView(messageBackground)
 
     local messageBubbleImage = Image(Native)
-    messageBubbleImage:placeHolderImage("os_message_left_bg")
-    messageBubbleImage:image("os_message_left_bg")
+    messageBubbleImage:image(Data(OS_BUBBLE_LEFT_IMAGE))
     messageBubbleImage:stretch(22, 16)
     messageBubbleImage:scaleType(ScaleType.FIT_XY)
     messageBackground:addView(messageBubbleImage)
@@ -493,7 +502,7 @@ local function createUserTypeLeftWithMessageImageIOS(data, index) --左边用户
     userParent:frame(0, 0, bubble.scrollviewWidth, bubble.height * 0.5)
 
     local icon = Image(Native)
-    icon:placeHolderImage("os_bubble_image_default")
+    icon:placeHolderImage(Data(OS_BUBBLE_DEFAULT_IMAGE))
     icon:stretch(5, 5)
     icon:frame(0, 18 * bubble.scale, 32 * bubble.scale, 32 * bubble.scale)
     icon:cornerRadius(2.0)
@@ -505,12 +514,12 @@ local function createUserTypeLeftWithMessageImageIOS(data, index) --左边用户
 
     local prompt = Image(Native)
     prompt:size(33 * bubble.scale, 30 * bubble.scale)
-    prompt:placeHolderImage("os_bubble_prompt")
+    prompt:placeHolderImage(Data(OS_BUBBLE_PROMPT))
     prompt:image(OS_ICON_BUBBLE_PROMPT_LEFT)
     prompt:hide()
 
     local message = Image(Native)
-    message:placeHolderImage("os_bubble_image_default")
+    message:placeHolderImage(Data(OS_BUBBLE_DEFAULT_IMAGE))
     message:stretch(5, 5)
     message:anchorPoint(0, 0)
     message:cornerRadius(13.0)
@@ -587,7 +596,7 @@ local function createUserTypeRightWithMessageText(data, index) --左边用户云
         return nil
     end
     local userParent = View()
-
+    local pos = 0
     local message = Label(Native)
     message:textColor(0xFFFFFF)
     message:margin(76 * bubble.scale, 19 * bubble.scale, 0, 0)
@@ -599,8 +608,11 @@ local function createUserTypeRightWithMessageText(data, index) --左边用户云
     message:anchorPoint(bubble.width, 40)
     message:scale(0)
     userParent:onLayout(function()
-        message:backgroundColor(0xFFFFFF)
-        message:backgroundColor("os_message_right_bg")
+        pos = pos + 1
+        if (pos <= 2) then
+            message:backgroundColor(0xFFFFFF)
+            message:backgroundColor("os_message_right_bg")
+        end
     end)
     startViewScaleAnim(message, bubbleAnimScale, {
         onStart = function()
@@ -642,8 +654,7 @@ local function createUserTypeRightWithMessageTextIOS(data, index) --左边用户
     userParent:addView(messageBackground)
 
     local messageBubbleImage = Image(Native)
-    messageBubbleImage:placeHolderImage("os_message_right_bg")
-    messageBubbleImage:image("os_message_right_bg")
+    messageBubbleImage:image(Data(OS_BUBBLE_RIGHT_IMAGE))
     messageBubbleImage:stretch(16, 16)
     messageBubbleImage:scaleType(ScaleType.FIT_XY)
     messageBackground:addView(messageBubbleImage)
@@ -784,12 +795,12 @@ local function createUserTypeRightWithMessageImageIOS(data, index) --左边用�
 
     local prompt = Image(Native)
     prompt:size(33 * bubble.scale, 30 * bubble.scale)
-    prompt:placeHolderImage("os_bubble_prompt")
+    prompt:placeHolderImage(Data(OS_BUBBLE_PROMPT))
     prompt:image(OS_ICON_BUBBLE_PROMPT_RIGHT)
     prompt:hide()
 
     local message = Image(Native)
-    message:placeHolderImage("os_bubble_image_default")
+    message:placeHolderImage(Data(OS_BUBBLE_DEFAULT_IMAGE))
     message:cornerRadius(13.0)
     local messageWidth = 141 * bubble.scale
     local messageHeight
@@ -907,7 +918,7 @@ end
 local function createBackView(data)
     local backView = Image(Native)
     backView:frame(bubble.x + bubble.width, bubble.y - 26 * bubble.scale, 26 * bubble.scale, 26 * bubble.scale)
-    backView:placeHolderImage("os_bubble_back")
+    backView:placeHolderImage(Data(OS_BUBBLE_CLOSE))
     backView:image(OS_ICON_CLOSE)
     backView:onClick(function()
         closeView()
@@ -1206,7 +1217,7 @@ function createUserMessageSelect(data, index) --左边用户云泡 显示问题
     selectRightView:onClick(rightBtnClickFunction)
 
     if (System.ios()) then
-        userParent:height(selectLeftView:y() + selectLeftView:height())
+        userParent:height(selectLeftView:y() + selectLeftView:height() + 10)
     else
         local marginView = View()
         marginView:margin(bubble.scrollviewWidth, 0, 0, 0)

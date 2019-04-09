@@ -174,8 +174,11 @@ local function setLuaViewSize(luaview, isPortrait) --设置当前容器大小
     end
     local screenWidth, screenHeight = System.screenSize()
     if (isPortrait) then
-        local videoWidth, videoHight = Native:getVideoSize(0)
-        luaview:frame(0, 0, math.min(screenWidth, screenHeight), videoHight)
+        local videoWidth, videoHight, y = Native:getVideoSize(0)
+        if System.android() then
+            y = 0.0
+        end
+        luaview:frame(0, y, math.min(screenWidth, screenHeight), videoHight)
     else
         luaview:frame(0, 0, math.max(screenWidth, screenHeight), math.min(screenWidth, screenHeight))
     end
@@ -587,7 +590,7 @@ function getRedEnvelopeInfo(callback)
             end
             return
         end
-    end)
+    end, redEnvelope.luaview)
     table.insert(redEnvelope.requestIds, requestId)
 end
 

@@ -105,7 +105,7 @@ local function getVoteCountInfo()
             return
         end
         vote.data.data.voteCount = dataTable
-    end)
+    end, vote.luaview)
 end
 
 local function getUserVoteInfo()
@@ -145,7 +145,7 @@ local function getUserVoteInfo()
             return
         end
         vote.data.data.userVote = dataTable
-    end)
+    end, vote.luaview)
 end
 
 --获取竖屏位置 ratio=3.762  dataTable.width=0.237  positionX=0.745  positionY=0.613
@@ -245,8 +245,11 @@ local function setLuaViewSize(luaview, isPortrait) --设置当前容器大小
     end
     local screenWidth, screenHeight = System.screenSize()
     if (isPortrait) then
-        local videoWidth, videoHight = Native:getVideoSize(0)
-        luaview:frame(0, 0, math.min(screenWidth, screenHeight), videoHight)
+        local videoWidth, videoHight, y = Native:getVideoSize(0)
+        if System.android() then
+            y = 0.0
+        end
+        luaview:frame(0, y, math.min(screenWidth, screenHeight), videoHight)
     else
         luaview:frame(0, 0, math.max(screenWidth, screenHeight), math.min(screenWidth, screenHeight))
     end

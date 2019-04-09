@@ -107,7 +107,7 @@ local function postUserRedEnvelopeInfo()
         if (dataTable == nil) then
             return
         end
-    end)
+    end, redEnvelopeWindow.luaView)
     table.insert(redEnvelopeWindow.requestIds, requestId)
 end
 

@@ -16,7 +16,7 @@ OS_HTTP_GET_SIMULATION_TAG = OS_HTTP_HOST .. "/simulation/queryInfo"
 OS_HTTP_GET_STARTS = OS_HTTP_HOST .. "/statistic"
 
 --网络请求RSA Public Key
-OS_HTTP_PUBLIC_KEY = "inekcndsaqwertyi" --"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCBlxdQe+B3bCL3+km31ABB23sXUB0A3owEBodWlPeikgfEw/JfbZXuiKFoIqAbjmzpDvAE4PYAU4wBjE01wRNLg4KLJyorGLkx6I6gHE67mZqLryepxZdwd8MwzQCsoN3+PAQYUJz54Flc6e14l/LVDyggw/HN/OD9iXC027IVDQIDAQAB"
+OS_HTTP_PUBLIC_KEY = Native:appSecret() --"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCBlxdQe+B3bCL3+km31ABB23sXUB0A3owEBodWlPeikgfEw/JfbZXuiKFoIqAbjmzpDvAE4PYAU4wBjE01wRNLg4KLJyorGLkx6I6gHE67mZqLryepxZdwd8MwzQCsoN3+PAQYUJz54Flc6e14l/LVDyggw/HN/OD9iXC027IVDQIDAQAB"
 --icon url
 local OS_ICON_HEAD = "http://videojj-mobile.oss-cn-beijing.aliyuncs.com/resource/os/"
 if Native:isDebug() == false then

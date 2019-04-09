@@ -163,7 +163,7 @@ local function getUserVoteInfo(callback)
                 osTrack(voteWindow.launchPlanId, 2, 1)
             end
         end
-    end)
+    end, voteWindow.luaview)
 end
 
 local function postUserVoteInfo(voteIndex)
@@ -207,7 +207,7 @@ local function postUserVoteInfo(voteIndex)
         if (dataTable == nil) then
             return
         end
-    end)
+    end, voteWindow.luaview)
 end
 
 local function getVoteCountInfo()

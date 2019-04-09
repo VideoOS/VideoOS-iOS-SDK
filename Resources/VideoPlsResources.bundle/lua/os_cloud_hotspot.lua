@@ -116,8 +116,11 @@ local function setLuaViewSize(luaview, isPortrait) --设置当前容器大小
     end
     local screenWidth, screenHeight = System.screenSize()
     if (isPortrait) then
-        local videoWidth, videoHight = Native:getVideoSize(0)
-        luaview:frame(0, 0, math.min(screenWidth, screenHeight), videoHight)
+        local videoWidth, videoHight, y = Native:getVideoSize(0)
+        if System.android() then
+            y = 0.0
+        end
+        luaview:frame(0, y, math.min(screenWidth, screenHeight), videoHight)
     else
         luaview:frame(0, 0, math.max(screenWidth, screenHeight), math.min(screenWidth, screenHeight))
     end
@@ -222,7 +225,7 @@ end
 local function setDefaultValue(data) --设置默认大小值
     if (data == nil) then
     end
-    data.data.width = 0.12 --横屏宽最大值 160 高120 (分辨率750*1334)
+    data.data.width = 0.375 --横屏宽最大值 500 高400 (分辨率750*1334)
     data.data.ratio = 4.0 / 3.0 -- 160 / 120
     data.data.positionX = 0.037
     data.data.positionY = 0.751

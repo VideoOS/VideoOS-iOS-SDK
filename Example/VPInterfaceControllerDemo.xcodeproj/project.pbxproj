@@ -328,14 +328,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh",
 				"${PODS_ROOT}/../Resources/VideoPlsResources.bundle",
-				"${PODS_ROOT}/../Resources/VideoPlsDefaultImages.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/VideoPlsResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/VideoPlsDefaultImages.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

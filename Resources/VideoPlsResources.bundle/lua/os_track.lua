@@ -26,12 +26,27 @@ function osTrack(launchPlanId, eventType, type)
     if (type == nil) then
         return
     end
-    Native:post(OS_HTTP_GET_STARTS, {
-        videoId = vid,
-        type = tostring(type),
-        eventType = tostring(eventType),
-        launchPlanId = tostring(launchPlanId)
-    })
+
+    local params = {}
+    local appkey = Native:appKey()
+    if appkey ~= nil then
+        params = {
+            videoId = vid,
+            type = tostring(type),
+            eventType = tostring(eventType),
+            launchPlanId = tostring(launchPlanId),
+            appKey = tostring(appkey)
+        }
+    else
+        params = {
+            videoId = vid,
+            type = tostring(type),
+            eventType = tostring(eventType),
+            launchPlanId = tostring(launchPlanId)
+        }
+    end
+
+    Native:post(OS_HTTP_GET_STARTS, params)
 end
 
 function osThirdPartyTrack(url)

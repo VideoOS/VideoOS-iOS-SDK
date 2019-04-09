@@ -13,7 +13,7 @@
 ##### Podfile
 ```
 platform :ios, '8.0'
-pod 'VideoPls-iOS-SDK', '~> 1.0'
+pod 'VideoOS-iOS-SDK', '~> 1.0'
 ```
 如果你使用的是swift开发，请确保添加 `use_frameworks!` 
 ```

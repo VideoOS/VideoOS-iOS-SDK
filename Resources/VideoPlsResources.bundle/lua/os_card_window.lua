@@ -163,7 +163,7 @@ local function postUserCardInfo()
         if (dataTable == nil) then
             return
         end
-    end)
+    end, cardWindow.luaView)
     table.insert(cardWindow.requestIds, requestId)
 end
 
@@ -205,7 +205,7 @@ local function getUserCardInfo()
             return
         end
         cardWindow.data.data.userCardInfo = dataTable
-    end)
+    end, cardWindow.luaView)
     table.insert(cardWindow.requestIds, requestId)
 end
 
