@@ -42,4 +42,8 @@
     [VPLuaSDK setIdentity:identity];
 }
 
++ (void)setAppKey:(NSString *)appKey appSecret:(NSString *)appSecret {
+    [VPLuaSDK setAppKey:appKey appSecret:appSecret];
+}
+
 @end

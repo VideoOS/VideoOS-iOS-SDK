@@ -49,17 +49,23 @@
 - (void)getLuaVersionInfoWithVersionUrl:(NSString *)url {
     __weak typeof(self) weakSelf = self;
     VPUPHTTPGeneralAPI *api = [[VPUPHTTPGeneralAPI alloc] init];
+    if ([VPLuaSDK sharedSDK].appKey && [VPLuaSDK sharedSDK].appKey.length > 0) {
+        NSMutableDictionary *headers = [NSMutableDictionary dictionaryWithCapacity:0];
+        [headers addEntriesFromDictionary:api.apiRequestHTTPHeaderField];
+        [headers setObject:[VPLuaSDK sharedSDK].appKey forKey:@"appKey"];
+        api.apiRequestHTTPHeaderField = headers;
+    }
     api.baseUrl = url;
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
     NSString *commonParamString = VPUP_DictionaryToJson(@{@"commonParam":[VPLuaCommonInfo commonParam]});
-    api.requestParameters = @{@"data":[VPUPAESUtil aesEncryptString:commonParamString key:VPLuaRequestPublicKey initVector:VPLuaRequestPublicKey]};
+    api.requestParameters = @{@"data":[VPUPAESUtil aesEncryptString:commonParamString key:[VPLuaSDK sharedSDK].appSecret initVector:[VPLuaSDK sharedSDK].appSecret]};
     api.apiCompletionHandler = ^(id  _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
         
         if (error || !responseObject || ![responseObject objectForKey:@"encryptData"]) {
             [weakSelf error:error type:VPLuaScriptManagerErrorTypeGetVersion];
             return;
         }
-        NSString *dataString = [VPUPAESUtil aesDecryptString:[responseObject objectForKey:@"encryptData"] key:VPLuaRequestPublicKey initVector:VPLuaRequestPublicKey];
+        NSString *dataString = [VPUPAESUtil aesDecryptString:[responseObject objectForKey:@"encryptData"] key:[VPLuaSDK sharedSDK].appSecret initVector:[VPLuaSDK sharedSDK].appSecret];
         NSDictionary *data = VPUP_JsonToDictionary(dataString);
         if (weakSelf.nativeVersion && [data objectForKey:weakSelf.nativeVersion]) {
             data = [data objectForKey:weakSelf.nativeVersion];

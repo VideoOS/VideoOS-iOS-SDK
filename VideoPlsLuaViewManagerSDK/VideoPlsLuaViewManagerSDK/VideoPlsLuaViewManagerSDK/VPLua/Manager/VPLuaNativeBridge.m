@@ -232,6 +232,7 @@ static NSMutableDictionary* httpAPICache() {
         {"deviceBuildVersion", deviceBuildVersion},
         {"packageName", packageName},
         {"appKey", appKey},
+        {"appSecret", appSecret},
         {"nativeVideoID", nativeVideoID},
         {"platformID", platformID},
         {"destroyView", destroyView},
@@ -420,7 +421,12 @@ static int sdkVersion(lua_State *L) {
 }
 
 static int appKey(lua_State *L) {
-    lua_pushstring(L, [VPUPGeneralInfo mainVPSDKAppKey].UTF8String);
+    lua_pushstring(L, [VPLuaSDK sharedSDK].appKey.UTF8String);
+    return 1;
+}
+
+static int appSecret(lua_State *L) {
+    lua_pushstring(L, [VPLuaSDK sharedSDK].appSecret.UTF8String);
     return 1;
 }
 
@@ -676,6 +682,7 @@ static int httpRequest(lua_State *L, VPUPRequestMethodType methodType) {
             }
             
             if (type == LUA_TUSERDATA) {
+                //判定发起网络请求的页面是否释放
                 LVUserDataInfo * user = (LVUserDataInfo *)lua_touserdata(L, i);
                 if (user) {
                     handleObject = (__bridge NSObject *)user->object;

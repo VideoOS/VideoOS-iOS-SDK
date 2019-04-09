@@ -45,4 +45,6 @@
  */
 + (void)setIdentity:(NSString *)identity;
 
++ (void)setAppKey:(NSString *)appKey appSecret:(NSString *)appSecret;
+
 @end

@@ -8,12 +8,14 @@
 
 #import "VPWebViewController.h"
 #import <WebKit/WebKit.h>
+#import <Masonry/Masonry.h>
 
 typedef void (^WebViewCloseHandler)(void);
 
 @interface VPWebViewController ()
 
 @property (nonatomic, strong) WKWebView *webView;
+@property (nonatomic, strong) UIButton *closeBtn;
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, copy) WebViewCloseHandler closeHandle;
 
@@ -42,10 +44,30 @@ typedef void (^WebViewCloseHandler)(void);
     UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *image = [UIImage imageNamed:@"button_close"];
     [closeBtn setImage:image forState:UIControlStateNormal];
-    closeBtn.frame = CGRectMake(self.view.bounds.size.width - 30 - 20, 20, 30, 30);
+    CGFloat y = 0;
+    if ([VPWebViewController isIPHONEX]) {
+        if (self.view.bounds.size.width < self.view.bounds.size.height) {
+            y = 24;
+        }
+    }
+    
+    closeBtn.frame = CGRectMake(self.view.bounds.size.width - 30 - 20, y + 20, 30, 30);
     [self.view addSubview:closeBtn];
     [closeBtn addTarget:self action:@selector(closeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     closeBtn.backgroundColor = [UIColor grayColor];
+    self.closeBtn = closeBtn;
+    
+    [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.view);
+        make.height.equalTo(self.view);
+    }];
+    
+//    [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(self.view.mas_right).with.offset(-20);
+//        make.top.equalTo(self.view.mas_top).with.offset(20);
+//        make.width.mas_equalTo(30);
+//        make.height.mas_equalTo(30);
+//    }];
 }
 
 - (void)loadUrl:(NSString *)url close:(void (^)(void))closeHandle {
@@ -70,6 +92,20 @@ typedef void (^WebViewCloseHandler)(void);
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (void)viewDidLayoutSubviews {
+    CGFloat y = 0;
+    if ([VPWebViewController isIPHONEX]) {
+        if (self.view.bounds.size.width < self.view.bounds.size.height) {
+            y = 24;
+        }
+    }
+    self.closeBtn.frame = CGRectMake(self.view.bounds.size.width - 30 - 20, y + 20, 30, 30);
+}
+
 /*
 #pragma mark - Navigation
 
@@ -79,5 +115,21 @@ typedef void (^WebViewCloseHandler)(void);
     // Pass the selected object to the new view controller.
 }
 */
+
++ (BOOL)isIPHONEX {
+    BOOL iPhoneXSeries = NO;
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPhone) {
+        return iPhoneXSeries;
+    }
+    
+    if (@available(iOS 11.0, *)) {
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        if (mainWindow.safeAreaInsets.bottom > 0.0) {
+            iPhoneXSeries = YES;
+        }
+    }
+    
+    return iPhoneXSeries;
+}
 
 @end

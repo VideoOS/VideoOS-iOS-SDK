@@ -10,11 +10,13 @@
 #import "VPLuaScriptManager.h"
 #import "VPUPPathUtil.h"
 #import "VPLuaNetworkManager.h"
+#import "VPUPSDKInfo.h"
 #import "VPUPGeneralInfo.h"
+#import "VPLuaCommonInfo.h"
 
 //NSString *const VPLuaScriptServerUrl = @"http://dev-videopublicapi.videojj.com/videoos-api/api/fileVersion";
-NSString *const VPLuaServerHost = @"http://os-open.videojj.com/videoos-api";
-NSString *const VPLuaScriptServerUrl = @"http://os-open.videojj.com/videoos-api/api/fileVersion";
+NSString *const VPLuaServerHost = @"http://os-saas.videojj.com/os-api-saas";
+NSString *const VPLuaScriptServerUrl = @"http://os-saas.videojj.com/os-api-saas/api/fileVersion";
 //NSString *const VPLuaScriptServerUrl = @"http://videopublicapi.videojj.com/videoos-api/api/fileVersion";
 
 @interface VPLuaSDK ()<VPLuaScriptManagerDelegate>
@@ -22,6 +24,8 @@ NSString *const VPLuaScriptServerUrl = @"http://os-open.videojj.com/videoos-api/
 @property (nonatomic, strong) VPLuaScriptManager *luaScriptManager;
 @property (nonatomic, copy) NSString *luaVersion;
 @property (nonatomic, assign) VPLuaOSType type;
+@property (nonatomic, copy) NSString *appKey;
+@property (nonatomic, copy) NSString *appSecret;
 
 @end
 
@@ -32,6 +36,7 @@ NSString *const VPLuaScriptServerUrl = @"http://os-open.videojj.com/videoos-api/
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedSDK = [[self alloc] init];
+        _sharedSDK.appSecret = VPLuaRequestPublicKey;
     });
     return _sharedSDK;
 }
@@ -57,11 +62,30 @@ NSString *const VPLuaScriptServerUrl = @"http://os-open.videojj.com/videoos-api/
     [VPLuaSDK sharedSDK].type = type;
 }
 
++ (void)setAppKey:(NSString *)appKey appSecret:(NSString *)appSecret {
+    [VPLuaSDK sharedSDK].appKey = appKey;
+    [VPLuaSDK sharedSDK].appSecret = appSecret;
+    VPUPSDKInfo *sdkinfo = [[VPUPSDKInfo alloc] init];
+    sdkinfo.mainVPSDKAppKey = appKey;
+//    VPUPSDKInfo *sdkinfo = [VPUPSDKInfo initSDKInfoWithSDKType:VPUPMainSDKTypeVideoOS SDKVersion:[VPLuaSDK  sharedSDK].luaVersion appKey:appKey];
+    [VPUPGeneralInfo setSDKInfo:sdkinfo];
+}
+
 + (void)checkLuaFiles {
-    NSString *mainLuaPath = [[VPUPPathUtil luaOSPath] stringByAppendingString:@"/main.lua"];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:mainLuaPath]) {
-        NSBundle *videoplsBundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"VideoPlsResources" withExtension:@"bundle"]];
-        NSString *bundleLuaPath = [[videoplsBundle bundlePath] stringByAppendingPathComponent:@"lua"];
+    NSString *cacheLuaVersionPath = [[VPUPPathUtil luaOSPath] stringByAppendingString:@"/lua_version.json"];
+    NSDictionary *cacheLuaVersionDict = nil;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:cacheLuaVersionPath]) {
+        cacheLuaVersionDict = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:cacheLuaVersionPath] options:NSJSONReadingMutableContainers error:nil];
+    }
+    
+    
+    NSBundle *videoplsBundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"VideoPlsResources" withExtension:@"bundle"]];
+    NSString *bundleLuaPath = [[videoplsBundle bundlePath] stringByAppendingPathComponent:@"lua"];
+    NSString *luaVersionPath = [bundleLuaPath stringByAppendingString:@"/lua_version.json"];
+    NSDictionary *luaVersionDict = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:luaVersionPath] options:NSJSONReadingMutableContainers error:nil];
+    
+    if (![[luaVersionDict objectForKey:@"version"] isEqualToString:[cacheLuaVersionDict objectForKey:@"version"]]) {
+        
         NSArray* array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleLuaPath error:nil];
         NSError *error = nil;
         for (NSString *file in array) {

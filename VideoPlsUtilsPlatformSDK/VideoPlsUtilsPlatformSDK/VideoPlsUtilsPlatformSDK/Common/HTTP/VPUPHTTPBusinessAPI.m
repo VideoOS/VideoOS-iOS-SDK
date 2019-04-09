@@ -69,11 +69,7 @@
         
         NSString *appKey = [[VPUPGeneralInfo mainVPSDKAppKey] copy];
         if(VPUP_IsStringTrimExist(appKey)) {
-            NSString *base64AppKey = [VPUPBase64Util base64EncryptionString:appKey];
-            if(VPUP_IsStringTrimExist(base64AppKey)) {
-                [headerField setObject:base64AppKey forKey:@"appkey"];
-            }
-            
+            [headerField setObject:appKey forKey:@"appKey"];
         }
     } @catch(NSException *exception) {
         

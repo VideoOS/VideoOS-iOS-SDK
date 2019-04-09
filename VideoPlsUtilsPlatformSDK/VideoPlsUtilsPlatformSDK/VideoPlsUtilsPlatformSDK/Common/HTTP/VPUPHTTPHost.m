@@ -80,6 +80,11 @@
                          @"test-va.videojj.com",
                          @"test-va.videojj.com"],
                        
+                       @[@"os-saas.videojj.com",
+                         @"os-saas.videojj.com",
+                         @"test-os-saas.videojj.com",
+                         @"dev-os-saas.videojj.com"],
+        
                        @[@"os-open.videojj.com",
                          @"os-open.videojj.com",
                          @"test-os-open.videojj.com",

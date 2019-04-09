@@ -12,7 +12,7 @@ project 'Example/VPInterfaceControllerDemo'
 
 target 'VPInterfaceControllerDemo' do
 
-pod 'VideoPls-iOS-SDK', :path => '.'
+pod 'VideoOS-iOS-SDK', :path => '.'
 
 pod 'Bugly'
 pod 'UMengAnalytics-NO-IDFA'

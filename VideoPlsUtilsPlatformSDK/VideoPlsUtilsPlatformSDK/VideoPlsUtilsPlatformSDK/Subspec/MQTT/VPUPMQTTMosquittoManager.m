@@ -236,13 +236,14 @@ static dispatch_queue_t mqtt_manager_queue() {
     NSString *password = nil;
     NSString *clientID = nil;
     
-    NSString *identifier = [NSString stringWithFormat:@"%@", [VPUPGeneralInfo userIdentity]];
-    identifier = [identifier stringByAppendingString:[NSString stringWithFormat:@"%lu",(unsigned long)[VPUPRandomUtil randomNumberByLength:999]]];
-    
-    unsigned char *customer_id = (unsigned char *)malloc(sizeof(unsigned char) * 12);
-    vpup_mqtt_default_customer_id(customer_id);
-    NSString *customerID = [NSString stringWithUTF8String:(const char *)customer_id];
-    clientID = [NSString stringWithFormat:@"%@@@@%@",customerID,identifier];
+//    NSString *identifier = [NSString stringWithFormat:@"%@", [VPUPGeneralInfo userIdentity]];
+//    identifier = [identifier stringByAppendingString:[NSString stringWithFormat:@"%lu",(unsigned long)[VPUPRandomUtil randomNumberByLength:999]]];
+//
+//    unsigned char *customer_id = (unsigned char *)malloc(sizeof(unsigned char) * 12);
+//    vpup_mqtt_default_customer_id(customer_id);
+//    NSString *customerID = [NSString stringWithUTF8String:(const char *)customer_id];
+//    clientID = [NSString stringWithFormat:@"%@@@@%@",customerID,identifier];
+    clientID = [mqttConfig objectForKey:@"clientId"];
     
 //    unsigned char *user_name = (unsigned char *)malloc(sizeof(unsigned char) * 17);
 //    vpup_mqtt_default_user_name(user_name);
@@ -267,7 +268,7 @@ static dispatch_queue_t mqtt_manager_queue() {
                                                               password:[password mutableCopy]
                                                               clientID:[clientID mutableCopy]];
     
-    free(customer_id);
+//    free(customer_id);
 //    free(user_name);
 //    free(password_key);
     return config;

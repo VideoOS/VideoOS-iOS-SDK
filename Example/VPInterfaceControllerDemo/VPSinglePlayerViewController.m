@@ -1063,26 +1063,12 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
 }
 
 - (VPIVideoPlayerSize *)videoPlayerSize {
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
     VPIVideoPlayerSize *videoPlayerSize = [[VPIVideoPlayerSize alloc] init];
-    if (_player.videoNowRect.size.height > 0) {
-        if (_currentPlayerOrientationType == VPIVideoPlayerOrientationPortraitFullScreen || _currentPlayerOrientationType == VPIVideoPlayerOrientationLandscapeFullScreen) {
-            videoPlayerSize.portraitFullScreenWidth = _player.videoNowRect.size.height > _player.videoNowRect.size.width ? _player.videoNowRect.size.width : _player.videoNowRect.size.height;
-            videoPlayerSize.portraitFullScreenHeight = _player.videoNowRect.size.height > _player.videoNowRect.size.width ? _player.videoNowRect.size.height : _player.videoNowRect.size.width;
-            videoPlayerSize.portraitSmallScreenHeight = videoPlayerSize.portraitFullScreenWidth * videoPlayerSize.portraitFullScreenWidth / videoPlayerSize.portraitFullScreenHeight;
-        }
-        else {
-                videoPlayerSize.portraitFullScreenWidth = _player.videoNowRect.size.width;
-                videoPlayerSize.portraitFullScreenHeight = _player.videoNowRect.size.width * _player.videoNowRect.size.width / _player.videoNowRect.size.height;
-                videoPlayerSize.portraitSmallScreenHeight = _player.videoNowRect.size.height;
-        }
-    }
-    else {
-        CGSize screenSize = [UIScreen mainScreen].bounds.size;
-        videoPlayerSize.portraitFullScreenWidth = screenSize.width < screenSize.height ? screenSize.width : screenSize.height;
-        videoPlayerSize.portraitFullScreenHeight = screenSize.width < screenSize.height ? screenSize.height : screenSize.width;
-        videoPlayerSize.portraitSmallScreenHeight = videoPlayerSize.portraitFullScreenWidth * 9.0/16.0;
-    }
-    videoPlayerSize.portraitSmallScreenOriginY = 0;
+    videoPlayerSize.portraitFullScreenWidth = screenSize.width < screenSize.height ? screenSize.width : screenSize.height;
+    videoPlayerSize.portraitFullScreenHeight = screenSize.width < screenSize.height ? screenSize.height : screenSize.width;
+    videoPlayerSize.portraitSmallScreenHeight = videoPlayerSize.portraitFullScreenWidth * 9.0/16.0;
+    videoPlayerSize.portraitSmallScreenOriginY = 0.0;
     if ([VPSinglePlayerViewController isIPHONEX]) {
         videoPlayerSize.portraitSmallScreenOriginY = 44.0;
     }
@@ -1100,22 +1086,19 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
 */
 
 + (BOOL)isIPHONEX {
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-    
-    if (([deviceString isEqualToString:@"iPhone10,3"]) ||       //国行、日行
-        ([deviceString isEqualToString:@"iPhone10,6"])) {       //美行
-        return YES;
+    BOOL iPhoneXSeries = NO;
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPhone) {
+        return iPhoneXSeries;
     }
     
-    if ([deviceString isEqualToString:@"x86_64"]) {
-        if ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO) {
-            return YES;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        if (mainWindow.safeAreaInsets.bottom > 0.0) {
+            iPhoneXSeries = YES;
         }
     }
     
-    return NO;
+    return iPhoneXSeries;
 }
 
 @end

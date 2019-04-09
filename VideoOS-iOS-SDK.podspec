@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency 'VPLuaViewSDK'
-  s.resources    = "Resources/VideoPlsResources.bundle", "Resources/VideoPlsDefaultImages.bundle"
+  s.resources    = "Resources/VideoPlsResources.bundle"
 
   s.subspec 'Platform' do |spec|
     spec.source_files   = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/**/*.{h,m,c}"
