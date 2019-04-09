@@ -1,1 +1,0 @@
-../../../../../VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/Subspec/MQTT/vpup_mqtt_default_config.h

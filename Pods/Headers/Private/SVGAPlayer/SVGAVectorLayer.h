@@ -1,1 +1,0 @@
-../../../SVGAPlayer/Source/SVGAVectorLayer.h

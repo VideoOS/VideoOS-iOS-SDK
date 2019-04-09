@@ -1,1 +1,0 @@
-../../../VPLuaViewSDK/IOS/lua/lua/lgc.h
