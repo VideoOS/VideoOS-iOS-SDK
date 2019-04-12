@@ -25,7 +25,7 @@
 
 #import "VPIConfigSDK.h"
 
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import "VideoPlsUtilsPlatformSDK.h"
 #import "VPLuaSDK.h"
 
 @implementation VPIConfigSDK

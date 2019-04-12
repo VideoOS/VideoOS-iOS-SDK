@@ -28,7 +28,7 @@
 
 
 #import "LuaViewCore.h"
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import "VideoPlsUtilsPlatformSDK.h"
 
 //cont
 //static NSMutableArray<VPLuaNodeController *> *avaliableControllers;

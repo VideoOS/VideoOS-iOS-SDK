@@ -11,7 +11,7 @@
 #import "LView.h"
 #import "LVStyledString.h"
 #import "LVHeads.h"
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import "VideoPlsUtilsPlatformSDK.h"
 
 
 typedef NS_ENUM(NSInteger, VPLuaSVGAViewCallback) {

@@ -11,9 +11,9 @@
 #import "LVStruct.h"
 #import "LuaViewCore.h"
 #import "LVUtil.h"
-#import <VideoPlsUtilsPlatformSDK/VPUPInterfaceDataServiceManager.h>
-#import <VideoPlsUtilsPlatformSDK/VPUPLifeCycle.h>
-#import <VideoPlsUtilsPlatformSDK/VPUPNotificationCenter.h>
+#import "VPUPInterfaceDataServiceManager.h"
+#import "VPUPLifeCycle.h"
+#import "VPUPNotificationCenter.h"
 
 NSString *const VPLuaMediaStartNotification = @"VPLuaMediaStartNotification";
 NSString *const VPLuaMediaPlayNotification = @"VPLuaMediaPlayNotification";

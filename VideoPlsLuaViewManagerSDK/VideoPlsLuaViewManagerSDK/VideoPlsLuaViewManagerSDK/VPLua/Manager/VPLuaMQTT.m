@@ -9,9 +9,9 @@
 #import "VPLuaMQTT.h"
 #import "LVHeads.h"
 #import "LuaViewCore.h"
-#import <VideoPlsUtilsPlatformSDK/VPUPMQTTHeader.h>
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
-#import <VideoPlsUtilsPlatformSDK/VPUPMessageTransferStation.h>
+#import "VPUPMQTTHeader.h"
+#import "VideoPlsUtilsPlatformSDK.h"
+#import "VPUPMessageTransferStation.h"
 #import "VPLuaServiceManager.h"
 
 NSString *const VPLuaMQTTClientMessageNotification = @"VPLuaMQTTClientMessageNotification";

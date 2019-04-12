@@ -26,17 +26,17 @@
 #import "VPInterfaceController.h"
 #import "VPInterfaceClickThroughView.h"
 
-#import <VideoPlsLuaViewManagerSDK/VPLuaOSView.h>
-#import <VideoPlsLuaViewManagerSDK/VPLuaMedia.h>
-#import <VideoPlsLuaViewManagerSDK/VPLuaVideoInfo.h>
-#import <VideoPlsLuaViewManagerSDK/VPLuaPage.h>
-#import <VideoPlsLuaViewManagerSDK/VPLuaNativeBridge.h>
-#import <VideoPlsLuaViewManagerSDK/VPLuaSDK.h>
+#import "VPLuaOSView.h"
+#import "VPLuaMedia.h"
+#import "VPLuaVideoInfo.h"
+#import "VPLuaPage.h"
+#import "VPLuaNativeBridge.h"
+#import "VPLuaSDK.h"
 
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
-#import <VideoPlsUtilsPlatformSDK/VPUPInterfaceDataServiceManager.h>
-#import <VideoPlsUtilsPlatformSDK/VPUPRoutes.h>
-#import <VideoPlsUtilsPlatformSDK/VPUPRoutesConstants.h>
+#import "VideoPlsUtilsPlatformSDK.h"
+#import "VPUPInterfaceDataServiceManager.h"
+#import "VPUPRoutes.h"
+#import "VPUPRoutesConstants.h"
 
 #import "VPInterfaceStatusNotifyDelegate.h"
 #import "VPIUserLoginInterface.h"

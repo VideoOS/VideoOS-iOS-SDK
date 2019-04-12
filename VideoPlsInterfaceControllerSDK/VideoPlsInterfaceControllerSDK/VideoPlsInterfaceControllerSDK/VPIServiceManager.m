@@ -24,7 +24,7 @@
 //
 
 #import "VPIServiceManager.h"
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import "VideoPlsUtilsPlatformSDK.h"
 
 @implementation VPIServiceManager
 

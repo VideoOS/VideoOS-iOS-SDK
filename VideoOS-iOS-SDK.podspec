@@ -36,9 +36,10 @@ Pod::Spec.new do |s|
     spec.public_header_files = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/**/*.{h}"
     spec.header_dir = "VideoPlsUtilsPlatformSDK"
     spec.dependency 'AFNetworking'
-    spec.dependency 'SDWebImage'   #SDWebImage建议使用4.2.2，最新版本的SDWebImage会导致相同地址的gif在第二次加载时无法播放
+    spec.dependency 'SDWebImage', '~>4.2.2'   #SDWebImage建议使用4.2.2，最新版本的SDWebImage会导致相同地址的gif在第二次加载时无法播放
     spec.dependency 'SVGAPlayer', '2.1.1'
     spec.dependency 'MQTTClient'
+    spec.xcconfig = {'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1'}
   end
   s.subspec 'LuaManager' do |spec|
    spec.source_files   = "VideoPlsLuaViewManagerSDK/VideoPlsLuaViewManagerSDK/**/*.{h,m}"

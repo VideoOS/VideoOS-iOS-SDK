@@ -6,7 +6,7 @@
 //  Copyright © 2017 videopls. All rights reserved.
 //
 
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import "VideoPlsUtilsPlatformSDK.h"
 
 @interface VPLuaTrackApi : VPUPHTTPBusinessAPI
 

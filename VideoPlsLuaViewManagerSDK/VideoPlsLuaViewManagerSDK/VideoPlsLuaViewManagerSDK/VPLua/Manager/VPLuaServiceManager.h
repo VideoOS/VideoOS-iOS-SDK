@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <VideoPlsUtilsPlatformSDK/VPUPMessageTransferStation.h>
+#import "VPUPMessageTransferStation.h"
 
 @interface VPLuaServiceManager : NSObject
 

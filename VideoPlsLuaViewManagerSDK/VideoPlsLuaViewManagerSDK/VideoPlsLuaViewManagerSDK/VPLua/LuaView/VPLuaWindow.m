@@ -7,7 +7,7 @@
 //
 
 #import "VPLuaWindow.h"
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import "VideoPlsUtilsPlatformSDK.h"
 #import "VPLuaBaseNode.h"
 #import "LVStruct.h"
 #import "LuaViewCore.h"

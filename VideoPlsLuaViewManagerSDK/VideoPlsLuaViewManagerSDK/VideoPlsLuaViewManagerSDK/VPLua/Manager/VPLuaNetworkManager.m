@@ -7,7 +7,7 @@
 //
 
 #import "VPLuaNetworkManager.h"
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import "VideoPlsUtilsPlatformSDK.h"
 
 static VPLuaNetworkManager *manager = nil;
 static dispatch_once_t onceToken;

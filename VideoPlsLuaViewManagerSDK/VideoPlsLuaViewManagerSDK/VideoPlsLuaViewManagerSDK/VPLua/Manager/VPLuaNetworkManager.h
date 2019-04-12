@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <VideoPlsUtilsPlatformSDK/VPUPPrefetchHeader.h>
+#import "VPUPPrefetchHeader.h"
 
 @protocol VPUPHTTPAPIManager;
 @protocol VPUPLoadImageManager;

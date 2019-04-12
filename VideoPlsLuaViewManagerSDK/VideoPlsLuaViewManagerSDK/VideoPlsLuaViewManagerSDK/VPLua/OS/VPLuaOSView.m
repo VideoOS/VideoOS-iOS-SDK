@@ -7,7 +7,7 @@
 //
 
 #import "VPLuaOSView.h"
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import "VideoPlsUtilsPlatformSDK.h"
 #import "VideoPlsLuaViewSDK.h"
 #import "VPLuaServiceManager.h"
 #import "VPUPRSAUtil.h"

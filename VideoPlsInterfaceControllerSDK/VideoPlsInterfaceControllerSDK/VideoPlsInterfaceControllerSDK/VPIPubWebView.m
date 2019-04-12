@@ -8,7 +8,7 @@
 
 #import "VPIPubWebView.h"
 #import "VPIUserLoginInterface.h"
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import "VideoPlsUtilsPlatformSDK.h"
 
 @interface VPIPubWebView()
 

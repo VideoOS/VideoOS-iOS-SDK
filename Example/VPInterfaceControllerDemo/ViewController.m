@@ -10,11 +10,10 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "VPSinglePlayerViewController.h"
-#import <VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import <VideoOS-iOS-SDK/VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
+#import <VideoOS-iOS-SDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
 #import "PrivateConfig.h"
 
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
 #import "VPLiveTypeSelectViewController.h"
 #import <AFNetworking/AFNetworking.h>
 

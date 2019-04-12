@@ -52,7 +52,7 @@
 #import "sys/utsname.h"
 
 #import "VPLuaVideoPlayerSize.h"
-#import <VideoPlsUtilsPlatformSDK/VPUPInterfaceDataServiceManager.h>
+#import "VPUPInterfaceDataServiceManager.h"
 
 #import "VPLuaMacroDefine.h"
 #import "VPLuaSDK.h"

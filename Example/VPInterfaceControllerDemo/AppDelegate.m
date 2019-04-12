@@ -7,10 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import <VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
+#import <VideoOS-iOS-SDK/VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
 #import <UMMobClick/MobClick.h>
 #import <Bugly/Bugly.h>
-#import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import <VideoOS-iOS-SDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
 
 @interface AppDelegate ()
 
@@ -28,8 +28,8 @@
     version = [version stringByAppendingString:@"_"];
     version = [version stringByAppendingString: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *) kCFBundleVersionKey]];
     [MobClick setAppVersion:version];
-    [VPIConfigSDK setAppKey:@"e3095ad4-5927-40eb-b6e5-a43b7f1e966b" appSecret:@"b28a1f82e6c147d8"];
-    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
+    [VPIConfigSDK setAppKey:@"b3423144-3bd7-4b1c-8771-1ca606b600b4" appSecret:@"40f913f5ecbb4225"];
+//    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
     [VPIConfigSDK initSDK];
     return YES;
 }
