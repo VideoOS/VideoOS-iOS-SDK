@@ -98,7 +98,7 @@
     static NSArray *schemeArray = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        schemeArray = @[@"http",@"http",@"http",@"http"];
+        schemeArray = @[@"https",@"https",@"http",@"http"];
     });
     return schemeArray;
 }
