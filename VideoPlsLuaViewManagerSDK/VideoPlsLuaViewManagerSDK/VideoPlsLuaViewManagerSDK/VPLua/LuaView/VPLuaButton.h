@@ -6,7 +6,7 @@
 //  Copyright © 2017年 videopls. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-#import "LVButton.h"
+#import <VPLuaViewSDK/LVButton.h>
 
 @interface VPLuaButton : LVButton
 

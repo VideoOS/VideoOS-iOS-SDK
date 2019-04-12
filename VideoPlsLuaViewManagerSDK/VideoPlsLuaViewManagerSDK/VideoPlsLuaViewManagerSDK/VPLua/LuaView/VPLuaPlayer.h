@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "LVHeads.h"
+#import <VPLuaViewSDK/LVHeads.h>
 #import "VideoPlsUtilsPlatformSDK.h"
 
 @interface VPLuaPlayer : VPUPVideoClip<LVProtocal, LVClassProtocal>

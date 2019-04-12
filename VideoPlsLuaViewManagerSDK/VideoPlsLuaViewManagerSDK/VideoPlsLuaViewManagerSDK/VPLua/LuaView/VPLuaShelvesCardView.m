@@ -9,8 +9,8 @@
 #import "VPLuaShelvesCardView.h"
 #import "VPLuaNativeBridge.h"
 
-#import "LuaViewCore.h"
-#import "LVBaseView.h"
+#import <VPLuaViewSDK/LuaViewCore.h>
+#import <VPLuaViewSDK/LVBaseView.h>
 
 //#import "VPMShelvesViewDelegate.h"//TODO IN MALL
 

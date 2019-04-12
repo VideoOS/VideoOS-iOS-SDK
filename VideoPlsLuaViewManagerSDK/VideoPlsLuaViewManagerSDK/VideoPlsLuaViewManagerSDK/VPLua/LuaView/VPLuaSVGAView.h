@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LVHeads.h"
+#import <VPLuaViewSDK/LVHeads.h>
 
 @interface VPLuaSVGAView : UIView<LVProtocal, LVClassProtocal>
 

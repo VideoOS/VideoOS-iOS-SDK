@@ -7,8 +7,8 @@
 //
 
 #import "VPLuaScrollView.h"
-#import "LuaViewCore.h"
-#import "LVBaseView.h"
+#import <VPLuaViewSDK/LuaViewCore.h>
+#import <VPLuaViewSDK/LVBaseView.h>
 
 
 @interface VPLuaScrollView()

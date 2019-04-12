@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "VPUPHTTPAPIManager.h"
-#import "LVHeads.h"
-#import "LVNativeObjBox.h"
+#import <VPLuaViewSDK/LVHeads.h>
+#import <VPLuaViewSDK/LVNativeObjBox.h>
 
 #import "VPLuaBaseNode.h"
 #import "VPLuaNetworkManager.h"

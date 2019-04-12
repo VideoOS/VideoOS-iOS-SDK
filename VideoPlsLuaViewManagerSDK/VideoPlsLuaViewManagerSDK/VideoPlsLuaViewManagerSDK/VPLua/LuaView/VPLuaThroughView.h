@@ -6,7 +6,7 @@
 //  Copyright © 2017年 videopls. All rights reserved.
 //
 
-#import "LVCustomPanel.h"
+#import <VPLuaViewSDK/LVCustomPanel.h>
 
 @interface VPLuaThroughView : LVCustomPanel
 

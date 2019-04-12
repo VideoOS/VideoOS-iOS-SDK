@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LVScrollView.h"
+#import <VPLuaViewSDK/LVScrollView.h>
 
 @interface VPLuaScrollView : LVScrollView
 

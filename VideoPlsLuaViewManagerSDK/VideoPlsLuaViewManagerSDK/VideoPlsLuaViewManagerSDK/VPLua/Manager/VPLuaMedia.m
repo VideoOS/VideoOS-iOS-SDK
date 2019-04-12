@@ -8,9 +8,9 @@
 
 #import "VPLuaMedia.h"
 #import "VPLuaBaseNode.h"
-#import "LVStruct.h"
-#import "LuaViewCore.h"
-#import "LVUtil.h"
+#import <VPLuaViewSDK/LVStruct.h>
+#import <VPLuaViewSDK/LuaViewCore.h>
+#import <VPLuaViewSDK/LVUtil.h>
 #import "VPUPInterfaceDataServiceManager.h"
 #import "VPUPLifeCycle.h"
 #import "VPUPNotificationCenter.h"

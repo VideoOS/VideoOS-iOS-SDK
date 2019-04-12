@@ -8,11 +8,11 @@
 
 #import "VPLuaGradientView.h"
 
-#import "LVUtil.h"
-#import "LVStruct.h"
-#import "LVBaseView.h"
-#import "LView.h"
-#import "LVHeads.h"
+#import <VPLuaViewSDK/LVUtil.h>
+#import <VPLuaViewSDK/LVStruct.h>
+#import <VPLuaViewSDK/LVBaseView.h>
+#import <VPLuaViewSDK/LView.h>
+#import <VPLuaViewSDK/LVHeads.h>
 
 @interface VPLuaGradientView()
 

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "LVHeads.h"
-#import "LVBaseView.h"
+#import <VPLuaViewSDK/LVHeads.h>
+#import <VPLuaViewSDK/LVBaseView.h>
 
 @interface VPLuaGradientView : LVBaseView
 

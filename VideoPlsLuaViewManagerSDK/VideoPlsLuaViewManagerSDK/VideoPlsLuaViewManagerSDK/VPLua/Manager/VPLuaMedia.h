@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LVHeads.h"
-#import "LVNativeObjBox.h"
+#import <VPLuaViewSDK/LVHeads.h>
+#import <VPLuaViewSDK/LVNativeObjBox.h>
 
 @class VPLuaBaseNode;
 

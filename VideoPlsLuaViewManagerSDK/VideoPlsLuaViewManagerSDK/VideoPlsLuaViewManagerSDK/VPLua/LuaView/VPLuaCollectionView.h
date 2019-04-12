@@ -6,7 +6,7 @@
 //  Copyright © 2017年 videopls. All rights reserved.
 //
 
-#import "LVCollectionView.h"
+#import <VPLuaViewSDK/LVCollectionView.h>
 
 @interface VPLuaCollectionView : LVCollectionView
 

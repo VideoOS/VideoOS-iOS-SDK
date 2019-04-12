@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LVTextField.h"
+#import <VPLuaViewSDK/LVTextField.h>
 
 @interface VPLuaTextField : LVTextField
 

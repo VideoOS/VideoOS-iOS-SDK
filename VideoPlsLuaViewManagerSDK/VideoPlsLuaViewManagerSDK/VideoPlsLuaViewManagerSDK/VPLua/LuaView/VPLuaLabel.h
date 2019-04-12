@@ -6,8 +6,8 @@
 //  Copyright © 2017年 videopls. All rights reserved.
 //
 
-#import "LVLabel.h"
 #import <UIKit/UIKit.h>
+#import <VPLuaViewSDK/LVLabel.h>
 
 @interface VPLuaLabel : LVLabel
 

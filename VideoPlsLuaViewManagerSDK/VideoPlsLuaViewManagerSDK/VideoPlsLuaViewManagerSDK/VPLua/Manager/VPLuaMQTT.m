@@ -7,8 +7,8 @@
 //
 
 #import "VPLuaMQTT.h"
-#import "LVHeads.h"
-#import "LuaViewCore.h"
+#import <VPLuaViewSDK/LVHeads.h>
+#import <VPLuaViewSDK/LuaViewCore.h>
 #import "VPUPMQTTHeader.h"
 #import "VideoPlsUtilsPlatformSDK.h"
 #import "VPUPMessageTransferStation.h"

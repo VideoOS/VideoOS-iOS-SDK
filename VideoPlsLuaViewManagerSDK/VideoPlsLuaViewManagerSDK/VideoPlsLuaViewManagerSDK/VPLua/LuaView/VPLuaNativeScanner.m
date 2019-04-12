@@ -10,8 +10,8 @@
 #import "VideoPlsUtilsPlatformSDK.h"
 
 #import "VPLuaBaseNode.h"
-#import "LVStruct.h"
-#import "LuaViewCore.h"
+#import <VPLuaViewSDK/LVStruct.h>
+#import <VPLuaViewSDK/LuaViewCore.h>
 
 @interface VPLuaNativeScanner() <VPUPImagePickerControllerDelegate>
 

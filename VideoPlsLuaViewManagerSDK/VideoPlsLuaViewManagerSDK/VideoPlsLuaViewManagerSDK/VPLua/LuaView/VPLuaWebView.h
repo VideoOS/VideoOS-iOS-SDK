@@ -8,7 +8,7 @@
 
 #import "VPUPBasicWebView.h"
 
-#import "LVHeads.h"
+#import <VPLuaViewSDK/LVHeads.h>
 
 @interface VPLuaWebView : VPUPBasicWebView
 

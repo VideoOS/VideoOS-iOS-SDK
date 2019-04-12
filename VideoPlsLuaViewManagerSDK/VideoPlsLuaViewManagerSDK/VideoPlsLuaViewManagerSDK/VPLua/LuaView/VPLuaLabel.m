@@ -9,8 +9,8 @@
 #import "VPLuaLabel.h"
 //#import "VPUPViewScaleUtil.h"
 #import "VPLuaMacroDefine.h"
-#import "LuaViewCore.h"
-#import "LVBaseView.h"
+#import <VPLuaViewSDK/LuaViewCore.h>
+#import <VPLuaViewSDK/LVBaseView.h>
 
 @implementation VPLuaLabel
 

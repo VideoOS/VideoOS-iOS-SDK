@@ -6,7 +6,7 @@
 //  Copyright © 2017年 videopls. All rights reserved.
 //
 
-#import "LVRefreshHeader.h"
+#import <VPLuaViewSDK/LVRefreshHeader.h>
 
 @interface VPLuaNormalRefreshHeader : LVRefreshHeader
 

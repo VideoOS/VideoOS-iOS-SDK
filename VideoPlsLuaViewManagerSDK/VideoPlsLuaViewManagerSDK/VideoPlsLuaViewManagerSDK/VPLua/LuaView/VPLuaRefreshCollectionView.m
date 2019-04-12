@@ -8,9 +8,9 @@
 
 #import "VPLuaRefreshCollectionView.h"
 #import "VPLuaNormalRefreshHeader.h"
-#import "LuaViewCore.h"
-#import "LVHeads.h"
-#import "UIScrollView+LVRefresh.h"
+#import <VPLuaViewSDK/LuaViewCore.h>
+#import <VPLuaViewSDK/LVHeads.h>
+#import <VPLuaViewSDK/UIScrollView+LVRefresh.h>
 
 @interface VPLuaRefreshCollectionView()
 

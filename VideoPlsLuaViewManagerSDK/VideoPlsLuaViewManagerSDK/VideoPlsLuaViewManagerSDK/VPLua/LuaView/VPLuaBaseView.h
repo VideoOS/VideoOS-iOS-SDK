@@ -7,7 +7,7 @@
 //
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "LView.h"
+#import <VPLuaViewSDK/LView.h>
 
 @interface VPLuaBaseView : LView
 

@@ -13,8 +13,8 @@
 #import "VPUPMD5Util.h"
 #import "VPUPHexColors.h"
 
-#import "LVBaseView.h"
-#import "LuaViewCore.h"
+#import <VPLuaViewSDK/LVBaseView.h>
+#import <VPLuaViewSDK/LuaViewCore.h>
 
 @interface VPLuaWebView() <VPUPBasicWebViewDelegate>
 

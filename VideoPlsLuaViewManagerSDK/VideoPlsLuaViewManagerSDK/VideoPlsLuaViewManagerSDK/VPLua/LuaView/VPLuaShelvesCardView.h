@@ -8,7 +8,7 @@
 
 #import "VPLuaShelvesCardView.h"
 
-#import "LVHeads.h"
+#import <VPLuaViewSDK/LVHeads.h>
 
 @interface VPLuaShelvesCardView : UIView
 

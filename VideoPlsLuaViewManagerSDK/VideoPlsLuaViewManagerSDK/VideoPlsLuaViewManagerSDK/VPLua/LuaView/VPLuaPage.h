@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LVHeads.h"
-#import "LVNativeObjBox.h"
-#import "NSObject+LuaView.h"
+#import <VPLuaViewSDK/LVHeads.h>
+#import <VPLuaViewSDK/LVNativeObjBox.h>
+#import <VPLuaViewSDK/NSObject+LuaView.h>
 
 extern NSString *const VPLuaPageWillAppearNotification;
 extern NSString *const VPLuaPageDidAppearNotification;

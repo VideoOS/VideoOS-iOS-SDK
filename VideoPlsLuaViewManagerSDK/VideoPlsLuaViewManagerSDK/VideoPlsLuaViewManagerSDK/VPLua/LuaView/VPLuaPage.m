@@ -7,8 +7,8 @@
 //
 
 #import "VPLuaPage.h"
-#import "LVHeads.h"
-#import "LuaViewCore.h"
+#import <VPLuaViewSDK/LVHeads.h>
+#import <VPLuaViewSDK/LuaViewCore.h>
 
 NSString *const VPLuaPageWillAppearNotification = @"VPLuaPageWillAppearNotification";
 NSString *const VPLuaPageDidAppearNotification = @"VPLuaPageDidAppearNotification";

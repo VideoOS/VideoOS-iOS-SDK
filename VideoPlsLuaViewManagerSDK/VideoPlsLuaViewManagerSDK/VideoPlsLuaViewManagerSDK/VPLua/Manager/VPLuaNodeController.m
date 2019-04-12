@@ -27,7 +27,7 @@
 #import "VPLuaVideoPlayerSize.h"
 
 
-#import "LuaViewCore.h"
+#import <VPLuaViewSDK/LuaViewCore.h>
 #import "VideoPlsUtilsPlatformSDK.h"
 
 //cont

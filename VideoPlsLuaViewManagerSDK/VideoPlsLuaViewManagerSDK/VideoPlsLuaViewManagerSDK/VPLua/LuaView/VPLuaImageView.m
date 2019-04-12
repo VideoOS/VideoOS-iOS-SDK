@@ -16,10 +16,10 @@
 #import "VPLuaNativeBridge.h"
 //#import "VPMGoodsListLoadingImage.h"
 
-#import "LVData.h"
-#import "LVBitmap.h"
-#import "LVBaseView.h"
-#import "LVNinePatchImage.h"
+#import <VPLuaViewSDK/LVData.h>
+#import <VPLuaViewSDK/LVBitmap.h>
+#import <VPLuaViewSDK/LVBaseView.h>
+#import <VPLuaViewSDK/LVNinePatchImage.h>
 
 
 static NSString *const VPDefaultImageBundle = @"VideoPlsDefaultImages";

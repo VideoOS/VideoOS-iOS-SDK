@@ -11,7 +11,7 @@
 #import "VPUPHTTPGeneralAPI.h"
 #import "VPUPHTTPAPIManager.h"
 #import "VPUPJsonUtil.h"
-#import "LVZipArchive.h"
+#import <VPLuaViewSDK/LVZipArchive.h>
 #import "VPLuaCommonInfo.h"
 #import "VPUPRSAUtil.h"
 #import "VPUPBase64Util.h"

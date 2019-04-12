@@ -7,10 +7,10 @@
 //
 
 #import "VPLuaPlayer.h"
-#import "LVBaseView.h"
-#import "LView.h"
-#import "LVStyledString.h"
-#import "LVHeads.h"
+#import <VPLuaViewSDK/LVBaseView.h>
+#import <VPLuaViewSDK/LView.h>
+#import <VPLuaViewSDK/LVStyledString.h>
+#import <VPLuaViewSDK/LVHeads.h>
 #import <AVFoundation/AVFoundation.h>
 
 @interface VPLuaPlayer () <VPUPVideoClipProtocol>

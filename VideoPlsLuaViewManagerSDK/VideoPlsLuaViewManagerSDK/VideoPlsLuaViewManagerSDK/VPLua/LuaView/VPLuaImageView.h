@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "VPUPFLAnimatedImageView.h"
-#import "LView.h"
-#import "LVHeads.h"
+#import <VPLuaViewSDK/LView.h>
+#import <VPLuaViewSDK/LVHeads.h>
 
 @interface VPLuaImageView : VPUPFLAnimatedImageView<LVProtocal, LVClassProtocal>
 
