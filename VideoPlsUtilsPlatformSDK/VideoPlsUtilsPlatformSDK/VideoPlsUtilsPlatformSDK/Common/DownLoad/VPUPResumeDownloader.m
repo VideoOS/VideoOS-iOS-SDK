@@ -134,6 +134,9 @@ static NSMutableDictionary *getResumeDictionary(NSData *data) {
     // Make sure downloadTargetPath is always a file, not directory.
     if (isDirectory) {
         NSString *fileName = [request.URL lastPathComponent];
+        if (!fileName) {
+            fileName = @"temp";
+        }
         downloadTargetPath = [NSString pathWithComponents:@[downloadPath, fileName]];
     } else {
         downloadTargetPath = downloadPath;
