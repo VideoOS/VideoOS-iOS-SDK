@@ -6,7 +6,7 @@
 //  Copyright © 2018年 videopls. All rights reserved.
 //
 
-#import "SVGAParser.h"
+#import <SVGAPlayer/SVGAParser.h>
 
 @interface VPUPSVGAParser : SVGAParser
 
