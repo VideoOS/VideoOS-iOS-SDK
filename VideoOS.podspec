@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
 
-  s.name         = "VideoOS-iOS-SDK"
+  s.name         = "VideoOS"
   s.version      = "1.1.0"
   s.summary      = "Official VideoPls SDK for iOS to access VideoPls Platform with features like video os, and live os"
 
@@ -23,10 +23,10 @@ Pod::Spec.new do |s|
                     }
 
   s.libraries = 'z', 'sqlite3'
-  s.weak_frameworks = 'AVFoundation', 'CoreTelephony', 'SystemConfiguration', 'ImageIO', 'MobileCoreServices', 'WebKit', 'Photos'
+  s.weak_frameworks = 'UIKit', 'Foundation','AVFoundation', 'CoreTelephony', 'SystemConfiguration', 'ImageIO', 'MobileCoreServices', 'WebKit', 'Photos', 'CoreData', 'WebKit','CoreMedia','Accelerate'
 
   s.requires_arc = true
-
+  s.default_subspec = 'Interface'
   s.dependency 'VPLuaViewSDK'
   s.resources    = "Resources/VideoPlsResources.bundle"
 
@@ -45,14 +45,14 @@ Pod::Spec.new do |s|
    spec.source_files   = "VideoPlsLuaViewManagerSDK/VideoPlsLuaViewManagerSDK/**/*.{h,m}"
    spec.public_header_files = "VideoPlsLuaViewManagerSDK/VideoPlsLuaViewManagerSDK/**/*.{h}"
    spec.header_dir = "VideoPlsLuaViewManagerSDK"
-   spec.dependency 'VideoOS-iOS-SDK/Platform'
+   spec.dependency 'VideoOS/Platform'
   end
   s.subspec 'Interface' do |spec|
    spec.source_files   = "VideoPlsInterfaceControllerSDK/VideoPlsInterfaceControllerSDK/**/*.{h,m}"
    spec.public_header_files = "VideoPlsInterfaceControllerSDK/VideoPlsInterfaceControllerSDK/**/*.{h}"
    spec.exclude_files = "VideoPlsInterfaceControllerSDK/VideoPlsInterfaceControllerSDK/VideoPlsInterfaceControllerSDK/{VPIPubWebView,VPIStoreAPIConfig}.{h,m}"
    spec.header_dir = "VideoPlsInterfaceControllerSDK"
-   spec.dependency 'VideoOS-iOS-SDK/LuaManager'
+   spec.dependency 'VideoOS/LuaManager'
   end
 
 end

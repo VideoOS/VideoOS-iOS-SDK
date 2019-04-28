@@ -13,7 +13,7 @@
 ##### Podfile
 ```
 platform :ios, '8.0'
-pod 'VideoOS-iOS-SDK'
+pod 'VideoOS'
 ```
 如果你使用的是swift开发，请确保添加 `use_frameworks!` 
 ```
@@ -148,7 +148,7 @@ VPInterfaceStatusNotifyDelegate ```- (void)vp_interfaceActionNotify```, 会回�
 5. 最佳位置为加载控制栏的下方,并且于手势层的上方,请不要将 cytronView 放 入包含手势操作的 View 中。
 6. `SDK`目前支持系统为 ios8 以上。
 7. 存在bundle包时请将bundle包放入资源文件中,使SDK能正常调用。
-8. SDWebImage不兼容问题,可以在Pods的工程中VideoOS-iOS-SDK Target中添加宏VPUPSDWebImage=1解决
+8. SDWebImage不兼容问题,可以在Pods的工程中VideoOS Target中添加宏VPUPSDWebImage=1解决
  
 ## 本地化部署配置（开源版本）
 
