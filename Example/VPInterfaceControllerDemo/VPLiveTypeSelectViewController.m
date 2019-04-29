@@ -13,7 +13,7 @@
 #import "VPSinglePlayerViewController.h"
 #import "VPTextField.h"
 
-#import <VideoOS-iOS-SDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import <VideoOS/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
 
 
 @interface VPLiveSettingView : UIView <UIGestureRecognizerDelegate>

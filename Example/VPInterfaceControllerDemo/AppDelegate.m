@@ -7,10 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import <VideoOS-iOS-SDK/VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
+#import <VideoOS/VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
 #import <UMMobClick/MobClick.h>
 #import <Bugly/Bugly.h>
-#import <VideoOS-iOS-SDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import <VideoOS/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
 
 @interface AppDelegate ()
 

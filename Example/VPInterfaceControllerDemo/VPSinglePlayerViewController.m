@@ -10,12 +10,12 @@
 #import "VPAVPlayerController.h"
 #import "VPMediaControlView.h"
 #import "PrivateConfig.h"
-#import <VideoOS-iOS-SDK/VideoPlsInterfaceControllerSDK/VPInterfaceController.h>
-#import <VideoOS-iOS-SDK/VideoPlsInterfaceControllerSDK/VPIUserInfo.h>
-#import <VideoOS-iOS-SDK/VideoPlsInterfaceControllerSDK/VPIUserLoginInterface.h>
+#import <VideoOS/VideoPlsInterfaceControllerSDK/VPInterfaceController.h>
+#import <VideoOS/VideoPlsInterfaceControllerSDK/VPIUserInfo.h>
+#import <VideoOS/VideoPlsInterfaceControllerSDK/VPIUserLoginInterface.h>
 #import "sys/utsname.h"
 
-#import <VideoOS-iOS-SDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import <VideoOS/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
 
 #import <Masonry/Masonry.h>
 #import "VPVideoSettingView.h"

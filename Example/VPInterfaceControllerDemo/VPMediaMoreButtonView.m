@@ -7,7 +7,7 @@
 //
 
 #import "VPMediaMoreButtonView.h"
-#import <VideoOS-iOS-SDK/VideoPlsUtilsPlatformSDK/VPUPDebugSwitch.h>
+#import <VideoOS/VideoPlsUtilsPlatformSDK/VPUPDebugSwitch.h>
 
 
 @implementation VPMediaMoreButtonView
