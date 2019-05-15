@@ -31,6 +31,151 @@
                        }
     },
     {
+        "creativeId": 442,
+        "data": {
+            "isShowAds": true,
+            "creativeName": "卡牌2张+有广告&有关闭*道具",
+            "interactionTypeName": "卡牌",
+            "creativeIdList": [
+                1251,
+                1252,
+                1253,
+                1254
+            ],
+            "interactionTemplateId": 245,
+            "hotspotArray": [
+                {
+                    "imageUrl": "http://os-open-static.videojj.com/test/a09b6672-8a30-4f00-b71b-7998f047153d.png",
+                    "title": "香蜜卡牌1"
+                },
+                {
+                    "imageUrl": "http://os-open-static.videojj.com/test/a3ceac3f-e303-445f-892a-39c53b0858b8.png",
+                    "title": "香蜜卡牌2"
+                }
+            ],
+            "isShowClose": true,
+            "creativeId": "442",
+            "infoTrackLink": 1,
+            "readonly": false,
+            "success": {
+                "itemId": "1000",
+                "title": "恭喜你收集成功啦！〜"
+            },
+            "interactionTypeId": "205",
+            "collect": {
+                "btnTitle": "领奖去咯",
+                "imageUrl": "http://os-open-static.videojj.com/test/c079ffee-54ca-4615-8c50-680813d2d9f7.jpeg",
+                "linkUrl": "",
+                "linkType": 1,
+                "content": "收集香密沉沉小锦觅凤凰cp照，解琐神秘奖励〜"
+            },
+            "errorSchema": {}
+        },
+        "duration": 10000,
+        "hotspotOrder": 1,
+        "hotspotTrackLink": [
+            {
+                "clickTrackLink": "http://clickc.admaster.com.cn/c/a122445,b3176288,c3925,i0,m101,8a2,8b3,h",
+                "exposureTrackLink": "http://v.admaster.com.cn/i/a122445,b3176288,c3925,i0,m202,8a2,8b3,h"
+            },
+            {
+                "clickTrackLink": "http://clickc.admaster.com.cn/c/a122445,b3176289,c3925,i0,m101,8a2,8b3,h",
+                "exposureTrackLink": "http://v.admaster.com.cn/i/a122445,b3176289,c3925,i0,m202,8a2,8b3,h"
+            }
+        ],
+        "id": "10e2c51a-cbd3-45c5-9b45-343568971b0f",
+        "infoTrackLink": [
+            {
+                "clickTrackLink": "http://clickc.admaster.com.cn/c/a122445,b3176291,c3925,i0,m101,8a2,8b3,h",
+                "exposureTrackLink": "http://v.admaster.com.cn/i/a122445,b3176291,c3925,i0,m202,8a2,8b3,h"
+            }
+        ],
+        "launchPlanId": 1275,
+        "sumHotspot": 2,
+        "template": "os_card_hotspot.lua",
+        "videoEndTime": 28000,
+        "videoStartTime": 18000
+    },
+    {
+        "creativeId": 451,
+        "data": {
+            "isShowAds": true,
+            "creativeName": "投票7个+无关闭无规则",
+            "interactionTypeName": "投票",
+            "creativeIdList": [
+                1276,
+                1277,
+                1278,
+                1279,
+                1280,
+                1281,
+                1282,
+                1283,
+                1284,
+                1285
+            ],
+            "voteTitle": "以下角色你最喜欢谁呢",
+            "interactionTemplateId": 247,
+            "voteList": [
+                {
+                    "imageUrl": "http://os-open-static.videojj.com/test/a27910aa-091d-4248-9d33-d84314bbd41f.jpeg",
+                    "title": "龙龙龙龙龙"
+                },
+                {
+                    "imageUrl": "http://os-open-static.videojj.com/test/ed61cdaa-4524-4ace-9469-fd4ddc650658.jpeg",
+                    "title": "凤凤凤凤凤"
+                },
+                {
+                    "imageUrl": "http://os-open-static.videojj.com/test/0bde717f-0145-4b62-9742-e14b11ef86a2.jpeg",
+                    "title": "葡萄葡萄呀"
+                },
+                {
+                    "imageUrl": "http://os-open-static.videojj.com/test/412fac69-ea26-42da-b335-3b38cdaa9ff6.jpeg",
+                    "title": "第四个选项"
+                },
+                {
+                    "imageUrl": "http://os-open-static.videojj.com/test/6c6f2e82-915f-4026-aadc-27116f71f65a.jpeg",
+                    "title": "孔雀孔雀啊"
+                },
+                {
+                    "imageUrl": "http://os-open-static.videojj.com/test/bbf3c1e7-121c-4b69-ad20-f9c5b657dc40.jpeg",
+                    "title": "第六个选项"
+                },
+                {
+                    "imageUrl": "http://os-open-static.videojj.com/test/f7102734-5680-4ce1-bd49-049e1bda48d8.jpeg",
+                    "title": "第七个选项"
+                }
+            ],
+            "isShowClose": false,
+            "voteImageUrl": "http://os-open-static.videojj.com/test/f2ae0a87-fe88-4e38-9b8f-bf4a90cf9ef0.jpeg",
+            "infoTrackLink": 1,
+            "readonly": false,
+            "imageUrl": "http://os-open-static.videojj.com/test/71ba03e2-95a0-4bac-93d7-8a4d3fabe991.jpeg",
+            "interactionTypeId": "207",
+            "errorSchema": {}
+        },
+        "duration": 15000,
+        "hotspotOrder": 0,
+        "hotspotTrackLink": [
+            {
+                "clickTrackLink": "http://clickc.admaster.com.cn/c/a122445,b3176283,c3925,i0,m101,8a2,8b3,h",
+                "exposureTrackLink": "http://v.admaster.com.cn/i/a122445,b3176283,c3925,i0,m202,8a2,8b3,h"
+            }
+        ],
+        "id": "0952a370-372a-4714-b676-ac65a5c2b411",
+        "infoTrackLink": [
+            {
+                "clickTrackLink": "http://clickc.admaster.com.cn/c/a122445,b3176284,c3925,i0,m101,8a2,8b3,h",
+                "exposureTrackLink": "http://v.admaster.com.cn/i/a122445,b3176284,c3925,i0,m202,8a2,8b3,h"
+            }
+        ],
+        "launchPlanId": 1284,
+        "sumHotspot": 1,
+        "template": "os_vote_finance_hotspot.lua",
+        "videoEndTime": 175000,
+        "videoStartTime": 160000
+    },
+    {
         "id": "5aa5fa5133edbf375fe43fff",
         "videoStartTime": 1000,
         "videoEndTime": 38968,

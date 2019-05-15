@@ -565,7 +565,7 @@ function getRedEnvelopeInfo(callback)
     -- print("[LuaView] "..paramDataString)
     -- print("[LuaView] "..OS_HTTP_GET_MOBILE_QUERY)
     print("[LuaView] " .. Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
-    local requestId = Native:post(OS_HTTP_GET_MOBILE_QUERY, {
+    local requestId = redEnvelope.request:post(OS_HTTP_GET_MOBILE_QUERY, {
         bu_id = buId,
         device_type = deviceType,
         data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
@@ -602,6 +602,7 @@ function show(args)
 
     redEnvelope.id = redEnvelope.data.id
     redEnvelope.launchPlanId = redEnvelope.data.launchPlanId
+    redEnvelope.request = HttpRequest()
     getRedEnvelopeInfo(function()
         onCreate(redEnvelope.data)
     end)

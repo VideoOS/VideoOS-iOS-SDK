@@ -33,6 +33,7 @@
 		D022A0E520C7EDCD00F46029 /* VPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0E420C7EDCD00F46029 /* VPTextField.m */; };
 		D078CD78214A04BD008946CC /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = D078CD77214A04BD008946CC /* config.json */; };
 		D078CD7B214A054D008946CC /* VPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D078CD7A214A054D008946CC /* VPWebViewController.m */; };
+		D0C76AC52283C93D00C4791F /* VPVideoAppSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C76AC32283C93C00C4791F /* VPVideoAppSettingView.m */; };
 		D0DA384621A7E2F20014A855 /* VPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DA384521A7E2F20014A855 /* VPLoginViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,8 @@
 		D078CD77214A04BD008946CC /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		D078CD79214A054D008946CC /* VPWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPWebViewController.h; sourceTree = "<group>"; };
 		D078CD7A214A054D008946CC /* VPWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPWebViewController.m; sourceTree = "<group>"; };
+		D0C76AC32283C93C00C4791F /* VPVideoAppSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPVideoAppSettingView.m; sourceTree = "<group>"; };
+		D0C76AC42283C93C00C4791F /* VPVideoAppSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPVideoAppSettingView.h; sourceTree = "<group>"; };
 		D0DA384421A7E2F20014A855 /* VPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLoginViewController.h; sourceTree = "<group>"; };
 		D0DA384521A7E2F20014A855 /* VPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLoginViewController.m; sourceTree = "<group>"; };
 		F5D5F0ACF62048D7E569DF7F /* Pods-VPInterfaceControllerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPInterfaceControllerDemo.release.xcconfig"; path = "../Pods/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +147,8 @@
 		069D54371F04DC6D001E5324 /* VPInterfaceControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D0C76AC42283C93C00C4791F /* VPVideoAppSettingView.h */,
+				D0C76AC32283C93C00C4791F /* VPVideoAppSettingView.m */,
 				D0DA384421A7E2F20014A855 /* VPLoginViewController.h */,
 				D0DA384521A7E2F20014A855 /* VPLoginViewController.m */,
 				D078CD76214A04BD008946CC /* Resources */,
@@ -264,6 +269,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -323,15 +329,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh",
 				"${PODS_ROOT}/../Resources/VideoPlsResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/VideoPlsResources.bundle",
 			);
@@ -371,6 +373,7 @@
 				D022A0E020C6932B00F46029 /* VPVideoSettingView.m in Sources */,
 				0689653C1F15F2BB0054736C /* VPMediaControlView.m in Sources */,
 				D022A0E520C7EDCD00F46029 /* VPTextField.m in Sources */,
+				D0C76AC52283C93D00C4791F /* VPVideoAppSettingView.m in Sources */,
 				D022A0DD20C688C900F46029 /* VPLiveTypeSelectViewController.m in Sources */,
 				C42CDB951F33289F00DD42D0 /* PrivateConfig.m in Sources */,
 				069D543A1F04DC6D001E5324 /* main.m in Sources */,

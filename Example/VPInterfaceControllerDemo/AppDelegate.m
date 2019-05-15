@@ -28,8 +28,8 @@
     version = [version stringByAppendingString:@"_"];
     version = [version stringByAppendingString: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *) kCFBundleVersionKey]];
     [MobClick setAppVersion:version];
-    [VPIConfigSDK setAppKey:@"b3423144-3bd7-4b1c-8771-1ca606b600b4" appSecret:@"40f913f5ecbb4225"];
-//    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
+    [VPIConfigSDK setAppKey:@"921ac192-a38b-4b09-905d-e0c352ec624a" appSecret:@"6cc1f566c36e4165"];
+    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
     [VPIConfigSDK initSDK];
     return YES;
 }

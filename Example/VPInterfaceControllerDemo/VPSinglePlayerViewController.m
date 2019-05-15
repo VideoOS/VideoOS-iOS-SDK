@@ -21,7 +21,8 @@
 #import "VPVideoSettingView.h"
 #import "VPWebViewController.h"
 #import "VPLoginViewController.h"
-#import <VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
+#import <VideoOS/VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
+#import "VPVideoAppSettingView.h"
 
 @interface VPSinglePlayerViewController() <VPInterfaceStatusNotifyDelegate, UITableViewDataSource,
 #ifdef VP_MALL
@@ -70,7 +71,9 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
 @property (nonatomic, weak) UIButton *videoButton;
 @property (nonatomic, weak) UIButton *mallButton;
 @property (nonatomic, weak) UIButton *closeInfoViewButton;
+@property (nonatomic, weak) UIButton *appInfoViewButton;
 @property (nonatomic, weak) VPVideoSettingView *settingView;
+@property (nonatomic, weak) VPVideoAppSettingView *appSettingView;
 
 @end
 
@@ -316,6 +319,15 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     [closeInfoViewButton addTarget:self action:@selector(closeInfoViewButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     self.closeInfoViewButton = closeInfoViewButton;
     
+    UIButton *appInfoViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [appInfoViewButton setImage:whiteImage forState:UIControlStateNormal];
+    [appInfoViewButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [appInfoViewButton setTitle:@"APP" forState:UIControlStateNormal];
+    appInfoViewButton.titleEdgeInsets = UIEdgeInsetsMake(0, -whiteImage.size.width, 0, 0);
+    [self.view addSubview:appInfoViewButton];
+    [appInfoViewButton addTarget:self action:@selector(appInfoViewButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+    self.appInfoViewButton = appInfoViewButton;
+    
     [settingButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view.mas_right);
         make.bottom.equalTo(self.view.mas_bottom).with.offset(-40);
@@ -342,9 +354,17 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
         make.bottom.equalTo(mallButton.mas_top).with.offset(-10);
     }];
     
+    [appInfoViewButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(whiteImage.size.width);
+        make.height.mas_equalTo(whiteImage.size.height);
+        make.centerX.equalTo(settingButton.mas_centerX);
+        make.bottom.equalTo(closeInfoViewButton.mas_top).with.offset(-10);
+    }];
+    
     videoButton.hidden = YES;
     mallButton.hidden = YES;
     closeInfoViewButton.hidden = YES;
+    appInfoViewButton.hidden = YES;
 }
 
 - (void)settingButtonDidClicked:(id)sender {
@@ -352,11 +372,13 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
         self.mallButton.hidden = NO;
         self.videoButton.hidden = NO;
         self.closeInfoViewButton.hidden = NO;
+        self.appInfoViewButton.hidden = NO;
     }
     else {
         self.mallButton.hidden = YES;
         self.videoButton.hidden = YES;
         self.closeInfoViewButton.hidden = YES;
+        self.appInfoViewButton.hidden = YES;
     }
 }
 
@@ -425,6 +447,37 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     _mediaControlView.hidden = NO;
     [_interfaceController start];
     [self deviceOrientationChange:nil];
+}
+
+- (void)appInfoViewButtonDidClicked:(id)sender {
+    VPVideoAppSettingView *appSettingView = [[VPVideoAppSettingView alloc] initWithFrame:self.view.bounds data:self.mockConfigData];
+    [self.view addSubview:appSettingView];
+    [appSettingView.applyButton addTarget:self action:@selector(appSettingViewApplyButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [appSettingView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
+    self.appSettingView = appSettingView;
+}
+
+- (void)appSettingViewApplyButtonDidClicked:(id)sender {
+    if (self.appSettingView.appKeyTextField.text.length > 0 && self.appSettingView.appSecretTextField.text.length == 16) {
+        [PrivateConfig shareConfig].environment = self.settingView.environmentControl.selectedSegmentIndex;
+        [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:[PrivateConfig shareConfig].environment];
+        [VPIConfigSDK setAppKey:self.appSettingView.appKeyTextField.text appSecret:self.appSettingView.appSecretTextField.text];
+        
+        [self.appSettingView.appKeyTextField resignFirstResponder];
+        [self.appSettingView.appSecretTextField resignFirstResponder];
+        [self.appSettingView removeFromSuperview];
+        self.appSettingView = nil;
+        [self dismissPlayerViewController];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入正确格式的AppKey和AppSecret" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 -(id)userLogin {

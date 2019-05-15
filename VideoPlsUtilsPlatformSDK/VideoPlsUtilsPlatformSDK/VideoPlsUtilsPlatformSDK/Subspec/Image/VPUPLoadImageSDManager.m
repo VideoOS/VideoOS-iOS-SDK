@@ -34,6 +34,8 @@
 #import <SDWebImage/UIView+WebCacheOperation.h>
 #import <SDWebImage/NSData+ImageContentType.h>
 #import <SDWebImage/SDWebImagePrefetcher.h>
+#import <SDWebImage/SDImageCache.h>
+#import <SDWebImage/SDWebImageDownloader.h>
 
 #define NSSDWebImageManager SDWebImageManager
 #define NSSDWebImagePrefetcher SDWebImagePrefetcher
@@ -61,13 +63,44 @@
     }
 #endif
 
+//3.8.0
+typedef void(^progressBlock)(NSInteger receivedSize,NSInteger expectedSize);
+typedef void(^completed)(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL);
+
+//4.2.2 5.0.0
+typedef void(^downloaderProgressBlock)(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL);
+typedef void(^internalCompletionBlock)(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL);
+
 static NSSDWebImageManager* webImageManager() {
     static NSSDWebImageManager *webImageManager = nil;
     
     if(!webImageManager) {
-        NSSDImageCache *imageCache = [[NSSDImageCache alloc] initWithNamespace:@"videopls"];
-        NSSDWebImageDownloader *imageDownloader = [[NSSDWebImageDownloader alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        webImageManager = [[NSSDWebImageManager alloc] initWithCache:imageCache downloader:imageDownloader];
+        NSSDImageCache *imageCache = [[NSSDImageCache alloc]initWithNamespace:@"videopls"];
+        NSSDWebImageDownloader *imageDownloader = [[NSSDWebImageDownloader alloc] init];
+        
+        //5.0.1
+        SEL loader = @selector(initWithCache:loader:);
+        
+        //3.8.8  4.0.0
+        SEL downloader = @selector(initWithCache:downloader:);
+        
+        //5.0.1
+        if ([NSSDWebImageManager instanceMethodSignatureForSelector:loader] != nil) {
+            
+            NSSDWebImageManager * manager = [[NSSDWebImageManager alloc]init];
+            IMP imp = [manager methodForSelector:loader];
+            SDWebImageManager * (*func)(id,SEL,SDImageCache *,SDWebImageDownloader *) = (void *)imp;
+            webImageManager = func(manager,loader,imageCache,imageDownloader);
+            
+            //3.8.8  4.0.0
+        }else if ([NSSDWebImageManager instanceMethodSignatureForSelector:downloader] != nil) {
+            
+            NSSDWebImageManager * manager = [[NSSDWebImageManager alloc]init];
+            IMP imp = [manager methodForSelector:downloader];
+            SDWebImageManager * (*func)(id,SEL,SDImageCache *,SDWebImageDownloader *) = (void *)imp;
+            webImageManager = func(manager,downloader,imageCache,imageDownloader);
+        }
+        
     }
     
     return webImageManager;
@@ -87,6 +120,14 @@ static NSSDWebImagePrefetcher* prefetchImageManager() {
     
     return prefetchImageManager;
 }
+
+@interface VPUPLoadImageSDManager()
+
+@property(copy,nonatomic) progressBlock                 progressblock;
+@property(copy,nonatomic) completed                     completedblock;
+@property(copy,nonatomic) downloaderProgressBlock       downloaderProgressBlock;
+@property(copy,nonatomic) internalCompletionBlock       internalCompletionBlock;
+@end
 
 @implementation VPUPLoadImageSDManager
 
@@ -271,62 +312,148 @@ static NSSDWebImagePrefetcher* prefetchImageManager() {
         });
     }
     
-    id <SDWebImageOperation> operation =
-    [webImageManager() loadImageWithURL:url
-                                options:options
-                               progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-                                   if(blockConfig.progressBlock) {
-                                       blockConfig.progressBlock(receivedSize, expectedSize);
-                                   }
-                               }
-                              completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-                                  __strong __typeof (wself) sself = wself;
-                                  __strong __typeof (wview) sview = wview;
-                                  
-                                  if(!sview) {
-                                      return ;
-                                  }
-                                  dispatch_main_async_safe(^{
-                                      if(!sview) {
-                                          return ;
-                                      }
-                                      if (image && (options & SDWebImageAvoidAutoSetImage)) {
-                                          if(!error) {
-                                              [sself imageLoadCompleteWithView:sview currentContentMode:currentContentMode originalBackgroundColor:originalBackgroundColor];
-                                          }
-                                          if(blockConfig.completedBlock) {
-                                              blockConfig.completedBlock(image, error, (VPUPImageCacheType)cacheType, url);
-                                          }
-                                          return;
-                                      }
-                                      else if(image) {
-                                          [sself setImage:image imageData:data view:sview config:blockConfig];
-                                          [sview setNeedsLayout];
-                                      }
-                                      else {
-                                          if ((options & SDWebImageDelayPlaceholder)) {
-                                              [sself setImage:blockConfig.placeholder imageData:nil view:sview config:blockConfig];
-                                              [sview setNeedsLayout];
-                                          }
-                                      }
-                                      if(finished) {
-                                          if(!error) {
-                                              [sself imageLoadCompleteWithView:sview currentContentMode:currentContentMode originalBackgroundColor:originalBackgroundColor];
-                                          }
-                                          if(blockConfig.completedBlock) {
-                                              blockConfig.completedBlock(image, error, (VPUPImageCacheType)cacheType, url);
-                                          }
-                                      }
-                                      
-                                  });
-                              }];
-    [view sd_setImageLoadOperation:operation forKey:validOperationKey];
+    //4.2.2  5.0.0
+    self.downloaderProgressBlock = ^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        if (blockConfig.progressBlock) {
+            blockConfig.progressBlock(receivedSize, expectedSize);
+        }
+    };
+    self.internalCompletionBlock = ^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+        __strong __typeof (wself) sself = wself;
+        __strong __typeof (wview) sview = wview;
+        
+        if(!sview) {
+            return ;
+        }
+        dispatch_main_async_safe(^{
+            if(!sview) {
+                return ;
+            }
+            if (image && (options & SDWebImageAvoidAutoSetImage)) {
+                if(!error) {
+                    [sself imageLoadCompleteWithView:sview currentContentMode:currentContentMode originalBackgroundColor:originalBackgroundColor];
+                }
+                if(blockConfig.completedBlock) {
+                    blockConfig.completedBlock(image, error, (VPUPImageCacheType)cacheType, url);
+                }
+                return;
+            }
+            else if(image) {
+                
+                [sself setImage:image imageData:data view:sview config:blockConfig];
+                [sview setNeedsLayout];
+            }
+            else {
+                if ((options & SDWebImageDelayPlaceholder)) {
+                    [sself setImage:blockConfig.placeholder imageData:nil view:sview config:blockConfig];
+                    [sview setNeedsLayout];
+                }
+            }
+            if(finished) {
+                if(!error) {
+                    [sself imageLoadCompleteWithView:sview currentContentMode:currentContentMode originalBackgroundColor:originalBackgroundColor];
+                }
+                if(blockConfig.completedBlock) {
+                    blockConfig.completedBlock(image, error, (VPUPImageCacheType)cacheType, url);
+                }
+            }
+            
+        });
+        
+    };
+    
+    //3.8.0
+    self.progressblock = ^(NSInteger receivedSize, NSInteger expectedSize) {
+        if (blockConfig.progressBlock) {
+            blockConfig.progressBlock(receivedSize, expectedSize);
+        }
+    };
+    self.completedblock = ^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        __strong __typeof (wself) sself = wself;
+        __strong __typeof (wview) sview = wview;
+        
+        if(!sview) {
+            return ;
+        }
+        dispatch_main_async_safe(^{
+            if(!sview) {
+                return ;
+            }
+            if (image && (options & SDWebImageAvoidAutoSetImage)) {
+                if(!error) {
+                    [sself imageLoadCompleteWithView:sview currentContentMode:currentContentMode originalBackgroundColor:originalBackgroundColor];
+                }
+                if(blockConfig.completedBlock) {
+                    blockConfig.completedBlock(image, error, (VPUPImageCacheType)cacheType, url);
+                }
+                return;
+            }
+            else if(image) {
+                
+                [sself setImage:image imageData:UIImagePNGRepresentation(image) view:sview config:blockConfig];
+                [sview setNeedsLayout];
+            }
+            else {
+                if ((options & SDWebImageDelayPlaceholder)) {
+                    [sself setImage:blockConfig.placeholder imageData:nil view:sview config:blockConfig];
+                    [sview setNeedsLayout];
+                }
+            }
+            if(finished) {
+                if(!error) {
+                    [sself imageLoadCompleteWithView:sview currentContentMode:currentContentMode originalBackgroundColor:originalBackgroundColor];
+                }
+                if(blockConfig.completedBlock) {
+                    blockConfig.completedBlock(image, error, (VPUPImageCacheType)cacheType, url);
+                }
+            }
+            
+        });
+    };
+    
+    
+    SEL downloadImageWithURL = @selector(downloadImageWithURL:options:progress:completed:);
+    
+    SEL loadImageWithURL = @selector(loadImageWithURL:options:progress:completed:);
+    
+    //3.8.0
+    if ([[webImageManager() class] instanceMethodSignatureForSelector:downloadImageWithURL] != nil) {
+        
+        IMP imp = [webImageManager() methodForSelector: downloadImageWithURL];
+        id (*func)(id,SEL,NSURL*,SDWebImageOptions,progressBlock,completed) = (void *)imp;
+        id <SDWebImageOperation> operation = func(webImageManager(),
+                                                  downloadImageWithURL,
+                                                  url,
+                                                  options,
+                                                  self.progressblock,
+                                                  self.completedblock
+                                                  );
+        [view sd_setImageLoadOperation:operation forKey:validOperationKey];
+        
+        //4.2.2  5.0.1
+    }else if ([[webImageManager() class] instanceMethodSignatureForSelector:loadImageWithURL] != nil) {
+        
+        IMP imp = [webImageManager() methodForSelector: loadImageWithURL];
+        
+        id (*func)(id,SEL,NSURL*,SDWebImageOptions,downloaderProgressBlock,internalCompletionBlock) = (void *)imp;
+        id <SDWebImageOperation> operation = func(webImageManager(),
+                                                  loadImageWithURL,
+                                                  url,
+                                                  options,
+                                                  self.downloaderProgressBlock,
+                                                  self.internalCompletionBlock
+                                                  );
+        [view sd_setImageLoadOperation:operation forKey:validOperationKey];
+    }
+    
 }
 
 #endif
 
 - (void)clearMemory {
-    [[webImageManager() imageCache] clearMemory];
+    SDImageCache * cache = [webImageManager() imageCache];
+    [cache clearMemory];
+    
 }
 
 #ifdef VPUPSDWebImage
@@ -399,7 +526,9 @@ static NSSDWebImagePrefetcher* prefetchImageManager() {
                 imageView.loopCompletionBlock = ^(NSUInteger loopCountRemaining) {
                     if(loopCountRemaining == 0) {
                         [((VPUPFLAnimatedFrameImage *)weakImageView.animatedImage) cleanCache];
-                        [webImageManager().imageCache clearMemory];
+//                        [webImageManager().imageCache clearMemory];
+                        SDImageCache * cache = [webImageManager() imageCache];
+                        [cache clearMemory];
                     }
                     if(loopCompleteBlock) {
                         loopCompleteBlock(loopCountRemaining);
@@ -407,13 +536,40 @@ static NSSDWebImagePrefetcher* prefetchImageManager() {
                 };
             }
             else {
-                SDImageFormat imageFormat = [NSData sd_imageFormatForImageData:data];
-                if (imageFormat == SDImageFormatGIF) {
-                    imageView.animatedImage = [VPUPFLAnimatedImage animatedImageWithGIFData:data];
-                    imageView.image = nil;
-                } else {
-                    imageView.image = image;
-                    imageView.animatedImage = nil;
+                //4.2.2 5.0.0
+                SEL imageFormatForImag = @selector(sd_imageFormatForImageData:);
+                //3.8.0
+                SEL contentTypeForImage = @selector(sd_contentTypeForImageData:);
+                
+                //4.2.2  5.0.0
+                if ([NSData methodSignatureForSelector:imageFormatForImag] != nil) {
+                    
+                    IMP imp = [NSData methodForSelector:imageFormatForImag];
+                    NSInteger *(*func)(id,SEL,NSData*) = (void *)imp;
+                    NSInteger *integer = func([NSData class],imageFormatForImag,data);
+                    
+                    if ((int)integer == 2) {
+                        imageView.animatedImage = [VPUPFLAnimatedImage animatedImageWithGIFData:data];
+                        imageView.image = nil;
+                    }else {
+                        imageView.image = image;
+                        imageView.animatedImage = nil;
+                    }
+                    
+                    //3.8.0
+                }else if ([NSData methodSignatureForSelector:contentTypeForImage] != nil) {
+                    IMP imp = [NSData methodForSelector:contentTypeForImage];
+                    NSString *(*func)(id,SEL,NSData*) = (void *)imp;
+                    NSString *imageName = func([NSData class],contentTypeForImage,data);
+                    
+                    if ([imageName isEqualToString:@"image/gif"]) {
+                        imageView.animatedImage = [VPUPFLAnimatedImage animatedImageWithGIFData:data];
+                        imageView.image = nil;
+                    }else {
+                        imageView.image = image;
+                        imageView.animatedImage = nil;
+                    }
+                    
                 }
             }
             return;

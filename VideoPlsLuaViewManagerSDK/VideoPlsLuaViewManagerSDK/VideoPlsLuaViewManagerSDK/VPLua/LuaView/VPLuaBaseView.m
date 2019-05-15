@@ -26,6 +26,7 @@
 #import "VPLuaPage.h"
 #import "VPLuaPlayer.h"
 #import "VPLuaScrollView.h"
+#import "VPLuaHttpRequest.h"
 
 @implementation VPLuaBaseView
 
@@ -52,6 +53,7 @@
         [VPLuaPlayer lvClassDefine:self.luaviewCore.l globalName:@"MediaPlayer"];
         [VPLuaGradientView lvClassDefine:self.luaviewCore.l globalName:@"GradientView"];
         [VPLuaScrollView lvClassDefine:self.luaviewCore.l globalName:@"ScrollView"];
+        [VPLuaHttpRequest lvClassDefine:self.luaviewCore.l globalName:@"HttpRequest"];
     }
     return self;
 }

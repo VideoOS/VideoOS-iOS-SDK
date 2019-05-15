@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <VideoPlsInterfaceControllerSDK/VPInterfaceController.h>
+#import <VideoOS/VideoPlsInterfaceControllerSDK/VPInterfaceController.h>
 
 @interface VPSinglePlayerViewController : UIViewController
 

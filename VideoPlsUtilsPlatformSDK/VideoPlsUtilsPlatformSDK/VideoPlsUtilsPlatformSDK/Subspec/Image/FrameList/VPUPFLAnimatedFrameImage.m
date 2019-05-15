@@ -35,6 +35,16 @@
 
 #define MEGABYTE (1024 * 1024)
 
+
+//3.8.0
+typedef void(^progressBlock)(NSInteger receivedSize,NSInteger expectedSize);
+typedef void(^completed)(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL);
+
+//4.2.2
+
+typedef void(^downloaderProgressBlock)(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL);
+typedef void(^internalCompletionBlock)(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL);
+
 // This is how the fastest browsers do it as per 2012: http://nullsleep.tumblr.com/post/16524517190/animated-gif-minimum-frame-delay-browser-compatibility
 const NSTimeInterval kVPUPFLAnimatedFrameImageDelayTimeIntervalMinimum = 0.02;
 
@@ -70,6 +80,10 @@ typedef NS_ENUM(NSUInteger, VPUPFLAnimatedFrameImageFrameCacheSize) {
 @property (nonatomic, strong, readonly) NSMutableArray<VPUPImageFrame *> *frames;
 @property (nonatomic, weak) NSSDWebImageManager *webImageManater;
 
+@property(copy,nonatomic) progressBlock progressblock;
+@property(copy,nonatomic) completed     completedblock;
+@property(copy,nonatomic) downloaderProgressBlock       downloaderProgressBlock;
+@property(copy,nonatomic) internalCompletionBlock       internalCompletionBlock;
 @end
 
 
@@ -259,25 +273,91 @@ typedef NS_ENUM(NSUInteger, VPUPFLAnimatedFrameImageFrameCacheSize) {
 - (void)imageAtIndex:(NSUInteger)index completeHandler:(void(^)(UIImage *))completeHander {
     __weak typeof(self) weakSelf = self;
     NSURL *imageUrl = [[_frames objectAtIndex:index] imageURL];
-    [_webImageManater loadImageWithURL:imageUrl
-                               options:NSSDWebImageRetryFailed
-                              progress:nil
-                             completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSSDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-                                 if (weakSelf.isPredrawingEnabled) {
-                                     if([weakSelf respondsToSelector:NSSelectorFromString(@"predrawnImageFromImage:")]) {
-                                         SEL selector = NSSelectorFromString(@"predrawnImageFromImage:");
-                                         IMP imp = [weakSelf methodForSelector:selector];
-                                         id (*function)(id, SEL, UIImage *) = (void *)imp;
-                                         id result = function(weakSelf, selector, image);
-                                         if([result isKindOfClass:[UIImage class]]) {
-                                             image = (UIImage *)result;
-                                         }
-                                     }
-                                 }
-                                 if(completeHander) {
-                                     completeHander(image);
-                                 }
-                             }];
+    
+    //4.2.2
+    self.downloaderProgressBlock = ^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        
+    };
+    self.internalCompletionBlock = ^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+        
+        if (weakSelf.isPredrawingEnabled) {
+            if([weakSelf respondsToSelector:NSSelectorFromString(@"predrawnImageFromImage:")]) {
+                SEL selector = NSSelectorFromString(@"predrawnImageFromImage:");
+                IMP imp = [weakSelf methodForSelector:selector];
+                id (*function)(id, SEL, UIImage *) = (void *)imp;
+                id result = function(weakSelf, selector, image);
+                if([result isKindOfClass:[UIImage class]]) {
+                    image = (UIImage *)result;
+                }
+            }
+        }
+        if(completeHander) {
+            completeHander(image);
+        }
+        
+    };
+    
+    //3.8.0
+    self.progressblock = ^(NSInteger receivedSize, NSInteger expectedSize) {
+        
+    };
+    self.completedblock = ^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        if (weakSelf.isPredrawingEnabled) {
+            if([weakSelf respondsToSelector:NSSelectorFromString(@"predrawnImageFromImage:")]) {
+                SEL selector = NSSelectorFromString(@"predrawnImageFromImage:");
+                IMP imp = [weakSelf methodForSelector:selector];
+                id (*function)(id, SEL, UIImage *) = (void *)imp;
+                id result = function(weakSelf, selector, image);
+                if([result isKindOfClass:[UIImage class]]) {
+                    image = (UIImage *)result;
+                }
+            }
+        }
+        if(completeHander) {
+            completeHander(image);
+        }
+    };
+    
+    
+    SEL downloadImageWithURL = @selector(downloadImageWithURL:options:progress:completed:);
+    
+    SEL loadImageWithURL = @selector(loadImageWithURL:options:progress:completed:);
+    
+    //3.8.0
+    if ([[_webImageManater class] instanceMethodSignatureForSelector:downloadImageWithURL] != nil) {
+        
+        IMP imp = [_webImageManater methodForSelector: downloadImageWithURL];
+        id (*func)(id,SEL,NSURL*,SDWebImageOptions,progressBlock,completed) = (void *)imp;
+        func(_webImageManater,downloadImageWithURL,imageUrl,NSSDWebImageRetryFailed,self.progressblock,self.completedblock);
+        
+        //4.2.2  5.0.1
+    }else if ([[_webImageManater class] instanceMethodSignatureForSelector:loadImageWithURL] != nil) {
+        
+        IMP imp = [_webImageManater methodForSelector: loadImageWithURL];
+        void (*func)(id,SEL,NSURL*,SDWebImageOptions,downloaderProgressBlock,internalCompletionBlock) = (void *)imp;
+        func(_webImageManater,loadImageWithURL,imageUrl,NSSDWebImageRetryFailed,self.downloaderProgressBlock,self.internalCompletionBlock);
+    }
+
+    
+//    [_webImageManater loadImageWithURL:imageUrl
+//                               options:NSSDWebImageRetryFailed
+//                              progress:nil
+//                             completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSSDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+//                                 if (weakSelf.isPredrawingEnabled) {
+//                                     if([weakSelf respondsToSelector:NSSelectorFromString(@"predrawnImageFromImage:")]) {
+//                                         SEL selector = NSSelectorFromString(@"predrawnImageFromImage:");
+//                                         IMP imp = [weakSelf methodForSelector:selector];
+//                                         id (*function)(id, SEL, UIImage *) = (void *)imp;
+//                                         id result = function(weakSelf, selector, image);
+//                                         if([result isKindOfClass:[UIImage class]]) {
+//                                             image = (UIImage *)result;
+//                                         }
+//                                     }
+//                                 }
+//                                 if(completeHander) {
+//                                     completeHander(image);
+//                                 }
+//                             }];
 }
 
 

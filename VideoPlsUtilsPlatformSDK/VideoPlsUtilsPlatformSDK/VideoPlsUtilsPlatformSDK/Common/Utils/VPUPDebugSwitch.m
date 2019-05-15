@@ -15,58 +15,58 @@
 #import "VPUPLifeCycle.h"
 
 
-@interface _VPUPUIApplicationSwizzling : NSObject
-
-@end
-
-@implementation _VPUPUIApplicationSwizzling
-
-+ (void)startExchangeImplementations {
-
-    Class applicationClass = [UIApplication class];
-    
-    if(class_getInstanceMethod(applicationClass, @selector(sendEvent:))) {
-        
-        Method vpupSendEventMethod = class_getInstanceMethod(self, @selector(vpup_sendEvent:));
-        
-        Method swizzledMethod = class_getInstanceMethod(applicationClass, @selector(vpup_sendEvent:));
-        
-        if (!swizzledMethod) {
-            if (!class_addMethod(applicationClass, @selector(vpup_sendEvent:), method_getImplementation(vpupSendEventMethod),  method_getTypeEncoding(vpupSendEventMethod))) {
-                return;
-            }
-        }
-        
-        Method originalMethod = class_getInstanceMethod(applicationClass, @selector(sendEvent:));
-        Method newSwizzledMethod = class_getInstanceMethod(applicationClass, @selector(vpup_sendEvent:));
-        
-        if (originalMethod && newSwizzledMethod) {
-            method_exchangeImplementations(originalMethod, newSwizzledMethod);
-        }
-    }
-}
-
-+ (void)stopExchangeImplementations {
-    Class applicationClass = [UIApplication class];
-    Method originalMethod = class_getInstanceMethod(applicationClass, @selector(sendEvent:));
-    Method swizzledMethod = class_getInstanceMethod(applicationClass, @selector(vpup_sendEvent:));
-    if (originalMethod && swizzledMethod) {
-        method_exchangeImplementations(originalMethod, swizzledMethod);
-    }
-}
-
-- (void)vpup_sendEvent:(UIEvent *)event {
-    if(event.type == UIEventTypeTouches) {
-        UITouchPhase phase = [event.allTouches anyObject].phase;
-        if(phase == UITouchPhaseBegan) {
-            [[VPUPNotificationCenter defaultCenter] postNotificationName:@"VPUPNotifyScreenTouch" object:nil userInfo:@{@"event":event}];
-        }
-    }
-    
-    [self vpup_sendEvent:event];
-}
-
-@end
+//@interface _VPUPUIApplicationSwizzling : NSObject
+//
+//@end
+//
+//@implementation _VPUPUIApplicationSwizzling
+//
+//+ (void)startExchangeImplementations {
+//
+//    Class applicationClass = [UIApplication class];
+//
+//    if(class_getInstanceMethod(applicationClass, @selector(sendEvent:))) {
+//
+//        Method vpupSendEventMethod = class_getInstanceMethod(self, @selector(vpup_sendEvent:));
+//
+//        Method swizzledMethod = class_getInstanceMethod(applicationClass, @selector(vpup_sendEvent:));
+//
+//        if (!swizzledMethod) {
+//            if (!class_addMethod(applicationClass, @selector(vpup_sendEvent:), method_getImplementation(vpupSendEventMethod),  method_getTypeEncoding(vpupSendEventMethod))) {
+//                return;
+//            }
+//        }
+//
+//        Method originalMethod = class_getInstanceMethod(applicationClass, @selector(sendEvent:));
+//        Method newSwizzledMethod = class_getInstanceMethod(applicationClass, @selector(vpup_sendEvent:));
+//
+//        if (originalMethod && newSwizzledMethod) {
+//            method_exchangeImplementations(originalMethod, newSwizzledMethod);
+//        }
+//    }
+//}
+//
+//+ (void)stopExchangeImplementations {
+//    Class applicationClass = [UIApplication class];
+//    Method originalMethod = class_getInstanceMethod(applicationClass, @selector(sendEvent:));
+//    Method swizzledMethod = class_getInstanceMethod(applicationClass, @selector(vpup_sendEvent:));
+//    if (originalMethod && swizzledMethod) {
+//        method_exchangeImplementations(originalMethod, swizzledMethod);
+//    }
+//}
+//
+//- (void)vpup_sendEvent:(UIEvent *)event {
+//    if(event.type == UIEventTypeTouches) {
+//        UITouchPhase phase = [event.allTouches anyObject].phase;
+//        if(phase == UITouchPhaseBegan) {
+//            [[VPUPNotificationCenter defaultCenter] postNotificationName:@"VPUPNotifyScreenTouch" object:nil userInfo:@{@"event":event}];
+//        }
+//    }
+//
+//    [self vpup_sendEvent:event];
+//}
+//
+//@end
 
 
 
@@ -162,8 +162,8 @@ static VPUPDebugSwitch *sharedDebugSwitch = nil;
     if(!_enableDebugPanel) {
         _enableDebugPanel = YES;
 //        [[VPUPNotificationCenter defaultCenter] postNotificationName:VPUPDebugVideoStartNotification object:nil];
-        [self registerAudioRouteNotification];
-        [_VPUPUIApplicationSwizzling startExchangeImplementations];
+//        [self registerAudioRouteNotification];
+//        [_VPUPUIApplicationSwizzling startExchangeImplementations];
     }
 }
 
@@ -171,8 +171,8 @@ static VPUPDebugSwitch *sharedDebugSwitch = nil;
     if(_enableDebugPanel) {
         _enableDebugPanel = NO;
 //        [[VPUPNotificationCenter defaultCenter] postNotificationName:VPUPDebugVideoStopNotification object:nil];
-        [self removeAudioRouteNotification];
-        [_VPUPUIApplicationSwizzling stopExchangeImplementations];
+//        [self removeAudioRouteNotification];
+//        [_VPUPUIApplicationSwizzling stopExchangeImplementations];
     }
 }
 

@@ -11,6 +11,7 @@
 typedef NS_ENUM(NSUInteger, VPLuaScriptManagerErrorType) {
     VPLuaScriptManagerErrorTypeGetVersion,
     VPLuaScriptManagerErrorTypeDownloadFile,
+    VPLuaScriptManagerErrorTypFileMD5,
     VPLuaScriptManagerErrorTypeUnzip,
     VPLuaScriptManagerErrorTypeWriteVersionFile
 };

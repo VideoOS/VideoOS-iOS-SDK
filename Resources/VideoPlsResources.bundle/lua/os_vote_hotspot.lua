@@ -84,7 +84,7 @@ local function getVoteCountInfo()
     -- print("[LuaView] "..paramDataString)
     -- print("[LuaView] "..OS_HTTP_GET_COMMON_QUERY)
     -- print("[LuaView] "..Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
-    Native:post(OS_HTTP_GET_COMMON_QUERY, {
+    vote.request:post(OS_HTTP_GET_COMMON_QUERY, {
         bu_id = buId,
         device_type = deviceType,
         data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
@@ -124,7 +124,7 @@ local function getUserVoteInfo()
     -- print("[LuaView] "..paramDataString)
     -- print("[LuaView] "..OS_HTTP_GET_MOBILE_QUERY)
     -- print("[LuaView] "..Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
-    Native:post(OS_HTTP_GET_MOBILE_QUERY, {
+    vote.request:post(OS_HTTP_GET_MOBILE_QUERY, {
         bu_id = buId,
         device_type = deviceType,
         data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
@@ -429,7 +429,7 @@ local function configSize(data)
     if (System.android()) then
         dataTable.portraitPositionY = 0.65
     else
-        dataTable.portraitPositionY = 0.75
+        dataTable.portraitPositionY = 0.65
     end
     dataTable.landscapePositionY = 0.65
 end
@@ -504,7 +504,7 @@ function show(args)
     end
     vote.id = args.data.id
     vote.launchPlanId = args.data.launchPlanId
-
+    vote.request = HttpRequest()
     onCreate(args.data)
     getVoteCountInfo()
     getUserVoteInfo()

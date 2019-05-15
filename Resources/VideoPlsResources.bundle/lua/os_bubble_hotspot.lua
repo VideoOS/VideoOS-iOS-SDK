@@ -237,7 +237,6 @@ local function createUserTypeLeftWithMessageText(data, index) --左边用户云�
         return nil
     end
     local userParent = View()
-    local pos = 0;
     local icon = Image(Native)
     icon:image("os_bubble_item_icon_bg")
     icon:placeHolderImage("os_bubble_item_icon_bg")
@@ -258,11 +257,8 @@ local function createUserTypeLeftWithMessageText(data, index) --左边用户云�
     message:anchorPoint(0, 0)
     message:scale(0)
     userParent:onLayout(function()
-        pos = pos + 1
-        if (pos <= 2) then
-            message:backgroundColor(0xFFFFFF)
-            message:backgroundColor("os_message_left_bg")
-        end
+        message:backgroundColor(0xFFFFFF)
+        message:backgroundColor("os_message_left_bg")
     end)
     startViewScaleAnim(message, bubbleAnimScale, {
         onStart = function()
@@ -516,6 +512,7 @@ local function createUserTypeLeftWithMessageImageIOS(data, index) --左边用户
     prompt:size(33 * bubble.scale, 30 * bubble.scale)
     prompt:placeHolderImage(Data(OS_BUBBLE_PROMPT))
     prompt:image(OS_ICON_BUBBLE_PROMPT_LEFT)
+    prompt:scaleType(ScaleType.FIT_XY)
     prompt:hide()
 
     local message = Image(Native)
@@ -797,6 +794,7 @@ local function createUserTypeRightWithMessageImageIOS(data, index) --左边用�
     prompt:size(33 * bubble.scale, 30 * bubble.scale)
     prompt:placeHolderImage(Data(OS_BUBBLE_PROMPT))
     prompt:image(OS_ICON_BUBBLE_PROMPT_RIGHT)
+    prompt:scaleType(ScaleType.FIT_XY)
     prompt:hide()
 
     local message = Image(Native)

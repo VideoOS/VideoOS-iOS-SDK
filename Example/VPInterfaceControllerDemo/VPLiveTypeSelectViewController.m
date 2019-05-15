@@ -12,8 +12,10 @@
 #import "PrivateConfig.h"
 #import "VPSinglePlayerViewController.h"
 #import "VPTextField.h"
+#import "VPVideoAppSettingView.h"
 
 #import <VideoOS/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
+#import <VideoOS/VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
 
 
 @interface VPLiveSettingView : UIView <UIGestureRecognizerDelegate>
@@ -313,6 +315,8 @@
 
 @property (nonatomic, weak) UIButton *mallButton;
 @property (nonatomic, weak) UIButton *liveButton;
+@property (nonatomic, weak) UIButton *appInfoViewButton;
+@property (nonatomic, strong) VPVideoAppSettingView *appSettingView;
 
 @end
 
@@ -378,6 +382,15 @@
     [liveButton addTarget:self action:@selector(liveButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     self.liveButton = liveButton;
     
+    UIButton *appInfoViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [appInfoViewButton setImage:whiteImage forState:UIControlStateNormal];
+    [appInfoViewButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [appInfoViewButton setTitle:@"APP" forState:UIControlStateNormal];
+    appInfoViewButton.titleEdgeInsets = UIEdgeInsetsMake(0, -whiteImage.size.width, 0, 0);
+    [self.view addSubview:appInfoViewButton];
+    [appInfoViewButton addTarget:self action:@selector(appInfoViewButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+    self.appInfoViewButton = appInfoViewButton;
+    
     [anchorButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(320);
         make.height.mas_equalTo(80);
@@ -410,8 +423,17 @@
         make.centerX.equalTo(setButton.mas_centerX);
         make.bottom.equalTo(liveButton.mas_top).with.offset(-10);
     }];
+    
+    [appInfoViewButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(whiteImage.size.width);
+        make.height.mas_equalTo(whiteImage.size.height);
+        make.centerX.equalTo(setButton.mas_centerX);
+        make.bottom.equalTo(mallButton.mas_top).with.offset(-10);
+    }];
+    
     liveButton.hidden = YES;
     mallButton.hidden = YES;
+    appInfoViewButton.hidden = YES;
     
     [PrivateConfig shareConfig].platformID = @"556c38e7ec69d5bf655a0fb2";
     [PrivateConfig shareConfig].identifier = @"40";
@@ -446,10 +468,12 @@
     if (self.mallButton.hidden == YES) {
         self.mallButton.hidden = NO;
         self.liveButton.hidden = NO;
+        self.appInfoViewButton.hidden = NO;
     }
     else {
         self.mallButton.hidden = YES;
         self.liveButton.hidden = YES;
+        self.appInfoViewButton.hidden = YES;
     }
 }
 
@@ -466,6 +490,36 @@
         make.right.equalTo(self.view.mas_right);
         make.bottom.equalTo(self.view.mas_bottom);
     }];
+}
+
+- (IBAction)appInfoViewButtonDidClicked:(id)sender {
+    VPVideoAppSettingView *appSettingView = [[VPVideoAppSettingView alloc] initWithFrame:self.view.bounds data:self.configData];
+    [self.view addSubview:appSettingView];
+    [appSettingView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.navigationController.navigationBar.mas_bottom);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
+    [appSettingView.applyButton addTarget:self action:@selector(appSettingViewApplyButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+    self.appSettingView = appSettingView;
+}
+
+- (void)appSettingViewApplyButtonDidClicked:(id)sender {
+    if (self.appSettingView.appKeyTextField.text.length > 0 && self.appSettingView.appSecretTextField.text.length == 16) {
+        [PrivateConfig shareConfig].environment = self.appSettingView.environmentControl.selectedSegmentIndex;
+        [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:[PrivateConfig shareConfig].environment];
+        [VPIConfigSDK setAppKey:self.appSettingView.appKeyTextField.text appSecret:self.appSettingView.appSecretTextField.text];
+        
+        [self.appSettingView.appKeyTextField resignFirstResponder];
+        [self.appSettingView.appSecretTextField resignFirstResponder];
+        [self.appSettingView removeFromSuperview];
+        self.appSettingView = nil;
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入正确格式的AppKey和AppSecret" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 /*

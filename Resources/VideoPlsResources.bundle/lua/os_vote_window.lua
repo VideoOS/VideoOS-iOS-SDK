@@ -115,7 +115,7 @@ local function getUserVoteInfo(callback)
     --     print("==[LuaView] "..userInfoTable.uid)
     -- print("[LuaView] "..OS_HTTP_GET_MOBILE_QUERY)
     -- print("[LuaView] "..Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
-    Native:post(OS_HTTP_GET_MOBILE_QUERY, {
+    voteWindow.request:post(OS_HTTP_GET_MOBILE_QUERY, {
         bu_id = buId,
         device_type = deviceType,
         data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
@@ -187,7 +187,7 @@ local function postUserVoteInfo(voteIndex)
     print("[LuaView] " .. paramDataString)
     print("[LuaView] " .. OS_HTTP_POST_MOBILE_QUERY)
     print("[LuaView] " .. Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
-    Native:post(OS_HTTP_POST_MOBILE_QUERY, {
+    voteWindow.request:post(OS_HTTP_POST_MOBILE_QUERY, {
         bu_id = buId,
         device_type = deviceType,
         data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
@@ -240,7 +240,7 @@ local function getVoteCountInfo()
     print("[LuaView] " .. paramDataString)
     print("[LuaView] " .. OS_HTTP_GET_COMMON_QUERY)
     --print("[LuaView] "..Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
-    Native:post(OS_HTTP_GET_COMMON_QUERY, {
+    voteWindow.request:post(OS_HTTP_GET_COMMON_QUERY, {
         bu_id = buId,
         device_type = deviceType,
         data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
@@ -1149,6 +1149,7 @@ function show(args)
     voteWindow.loadingCount = 0
     voteWindow.id = "os_vote_window" .. tostring(args.data.id)
     voteWindow.launchPlanId = args.data.launchPlanId
+    voteWindow.request = HttpRequest()
     if (voteWindow.launchPlanId ~= nil) then
         osTrack(voteWindow.launchPlanId, 1, 1)
     end

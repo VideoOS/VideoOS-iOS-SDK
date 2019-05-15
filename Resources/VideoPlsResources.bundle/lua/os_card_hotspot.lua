@@ -583,7 +583,7 @@ function getUserCardInfo(callback)
     -- print("[LuaView] "..paramDataString)
     -- print("[LuaView] "..OS_HTTP_GET_MOBILE_QUERY)
     -- print("[LuaView] "..Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
-    local requestId = Native:post(OS_HTTP_GET_MOBILE_QUERY, {
+    local requestId = card.request:post(OS_HTTP_GET_MOBILE_QUERY, {
         bu_id = buId,
         device_type = deviceType,
         data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
@@ -624,6 +624,7 @@ function show(args)
     card.data = args.data
     card.launchPlanId = card.data.launchPlanId
     card.id = card.data.id
+    card.request = HttpRequest()
     print("LuaView card id " .. card.id)
     if (card.hotspotOrder == nil) then
         local hotspotOrder = card.data.hotspotOrder

@@ -15,8 +15,8 @@
 #import "VPLuaCommonInfo.h"
 
 //NSString *const VPLuaScriptServerUrl = @"http://dev-videopublicapi.videojj.com/videoos-api/api/fileVersion";
-NSString *const VPLuaServerHost = @"http://os-saas.videojj.com/os-api-saas";
-NSString *const VPLuaScriptServerUrl = @"http://os-saas.videojj.com/os-api-saas/api/fileVersion";
+NSString *const VPLuaServerHost = @"https://os-saas.videojj.com/os-api-saas";
+NSString *const VPLuaScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas/api/detailedFileVersion";
 //NSString *const VPLuaScriptServerUrl = @"http://videopublicapi.videojj.com/videoos-api/api/fileVersion";
 
 @interface VPLuaSDK ()<VPLuaScriptManagerDelegate>

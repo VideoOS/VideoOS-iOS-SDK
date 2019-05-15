@@ -207,6 +207,10 @@ local function registerMqtt(data)
     else
         topicString = nativeVideoID
     end
+
+    if System.ios() then
+        topicString = topicString .. '/'
+    end
     topic[topicString] = 0
     --print("register "..Native:nativeVideoID())
 
@@ -244,7 +248,7 @@ local function getTaglist()
     local paramDataString = Native:tableToJson(paramData)
     --print("[LuaView] "..paramDataString)
     --print("[LuaView] "..Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
-    Native:post(OS_HTTP_GET_TAG_LIST, {
+    mainNode.request:post(OS_HTTP_GET_TAG_LIST, {
         bu_id = buId,
         device_type = deviceType,
         data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
@@ -300,7 +304,7 @@ local function getSimulationTag()
     local paramDataString = Native:tableToJson(paramData)
     --print("[LuaView] "..paramDataString)
     --print("[LuaView] "..Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
-    Native:post(OS_HTTP_GET_SIMULATION_TAG, {
+    mainNode.request:post(OS_HTTP_GET_SIMULATION_TAG, {
         bu_id = buId,
         device_type = deviceType,
         data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
@@ -352,7 +356,7 @@ local function getResourcelist()
     local paramDataString = Native:tableToJson(paramData)
     -- print("[LuaView] getResourcelist")
     --print("[LuaView] "..Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
-    Native:post(OS_HTTP_GET_RESOURCE_LIST, {
+    mainNode.request:post(OS_HTTP_GET_RESOURCE_LIST, {
         bu_id = buId,
         device_type = deviceType,
         data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
@@ -416,6 +420,7 @@ function show(args)
     end
 
     mainNode.media = registerMedia()
+    mainNode.request = HttpRequest()
 
     if System.ios() then
         deviceType = 1
@@ -427,7 +432,7 @@ function show(args)
     }
     local paramDataString = Native:tableToJson(paramData)
     --print("luaview "..Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
-    Native:post(OS_HTTP_GET_CONFIG, {
+    mainNode.request:post(OS_HTTP_GET_CONFIG, {
         bu_id = buId,
         device_type = deviceType,
         target_id = roomId,

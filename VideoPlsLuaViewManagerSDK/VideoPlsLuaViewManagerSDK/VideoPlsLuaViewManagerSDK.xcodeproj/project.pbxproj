@@ -85,6 +85,8 @@
 		D05369982051067100A4F8C6 /* VPLuaMQTT.h in Headers */ = {isa = PBXBuildFile; fileRef = D05369962051067100A4F8C6 /* VPLuaMQTT.h */; };
 		D05369992051067100A4F8C6 /* VPLuaMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = D05369972051067100A4F8C6 /* VPLuaMQTT.m */; };
 		D053699A2051067100A4F8C6 /* VPLuaMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = D05369972051067100A4F8C6 /* VPLuaMQTT.m */; };
+		D05D93EB22811A1E003FBF3C /* VPLuaHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D05D93E922811A1E003FBF3C /* VPLuaHttpRequest.h */; };
+		D05D93EC22811A1E003FBF3C /* VPLuaHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D05D93EA22811A1E003FBF3C /* VPLuaHttpRequest.m */; };
 		D05DCC60200DDAC200E294F2 /* VPLuaTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = D05DCC5E200DDAC200E294F2 /* VPLuaTextField.h */; };
 		D05DCC61200DDAC200E294F2 /* VPLuaTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D05DCC5F200DDAC200E294F2 /* VPLuaTextField.m */; };
 		D08CBCD320A411B300BE5C9D /* VPLuaPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D08CBCD120A411B300BE5C9D /* VPLuaPlayer.h */; };
@@ -182,6 +184,8 @@
 		D018AF131FC6B90B00BC0BC8 /* liblibVideoPlsLuaViewManagerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibVideoPlsLuaViewManagerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05369962051067100A4F8C6 /* VPLuaMQTT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaMQTT.h; sourceTree = "<group>"; };
 		D05369972051067100A4F8C6 /* VPLuaMQTT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaMQTT.m; sourceTree = "<group>"; };
+		D05D93E922811A1E003FBF3C /* VPLuaHttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaHttpRequest.h; sourceTree = "<group>"; };
+		D05D93EA22811A1E003FBF3C /* VPLuaHttpRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaHttpRequest.m; sourceTree = "<group>"; };
 		D05DCC5E200DDAC200E294F2 /* VPLuaTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaTextField.h; sourceTree = "<group>"; };
 		D05DCC5F200DDAC200E294F2 /* VPLuaTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaTextField.m; sourceTree = "<group>"; };
 		D08CBCD120A411B300BE5C9D /* VPLuaPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaPlayer.h; sourceTree = "<group>"; };
@@ -316,6 +320,8 @@
 				D0BD1AB121300BA400A087F2 /* VPLuaCommonInfo.m */,
 				D0BD1ABD2138DE2100A087F2 /* VPLuaSDK.h */,
 				D0BD1ABE2138DE2100A087F2 /* VPLuaSDK.m */,
+				D05D93E922811A1E003FBF3C /* VPLuaHttpRequest.h */,
+				D05D93EA22811A1E003FBF3C /* VPLuaHttpRequest.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 				D0114C3E1FCFBFCD00E75EF7 /* VPLuaTrackApi.h in Headers */,
 				D0928C3F207CC135008AB5EC /* VPLuaPage.h in Headers */,
 				D05369982051067100A4F8C6 /* VPLuaMQTT.h in Headers */,
+				D05D93EB22811A1E003FBF3C /* VPLuaHttpRequest.h in Headers */,
 				D0114C2B1FCFBFCD00E75EF7 /* VPLuaThroughView.h in Headers */,
 				D0BD1ABF2138DE2100A087F2 /* VPLuaSDK.h in Headers */,
 				D0114C3B1FCFBFCD00E75EF7 /* VPLuaNodeController.h in Headers */,
@@ -498,6 +505,7 @@
 				D0114C1A1FCFBFCD00E75EF7 /* VPLuaButton.m in Sources */,
 				D0114C2C1FCFBFCD00E75EF7 /* VPLuaThroughView.m in Sources */,
 				D05DCC61200DDAC200E294F2 /* VPLuaTextField.m in Sources */,
+				D05D93EC22811A1E003FBF3C /* VPLuaHttpRequest.m in Sources */,
 				D08CBCD420A411B300BE5C9D /* VPLuaPlayer.m in Sources */,
 				D0114C291FCFBFCD00E75EF7 /* VPLuaShelvesCardView.m in Sources */,
 				D0114C231FCFBFCD00E75EF7 /* VPLuaLabel.m in Sources */,
