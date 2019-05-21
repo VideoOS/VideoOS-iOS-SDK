@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "VideoOS"
-  s.version      = "1.1.0"
+  s.version      = "1.2.0"
   s.summary      = "Official VideoPls SDK for iOS to access VideoPls Platform with features like video os, and live os"
 
   s.description  = <<-DESC
@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
     spec.public_header_files = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/**/*.{h}"
     spec.header_dir = "VideoPlsUtilsPlatformSDK"
     spec.dependency 'AFNetworking'
-    spec.dependency 'SDWebImage', '~>4.2.2'   #SDWebImage建议使用4.2.2，最新版本的SDWebImage会导致相同地址的gif在第二次加载时无法播放
+    spec.dependency 'SDWebImage'   #SDWebImage建议使用4.2.2，最新版本的SDWebImage会导致相同地址的gif在第二次加载时无法播放
     spec.dependency 'SVGAPlayer'
     spec.dependency 'MQTTClient'
     spec.xcconfig = {'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1'}

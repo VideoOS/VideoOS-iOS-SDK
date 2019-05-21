@@ -464,7 +464,7 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
 
 - (void)appSettingViewApplyButtonDidClicked:(id)sender {
     if (self.appSettingView.appKeyTextField.text.length > 0 && self.appSettingView.appSecretTextField.text.length == 16) {
-        [PrivateConfig shareConfig].environment = self.settingView.environmentControl.selectedSegmentIndex;
+        [PrivateConfig shareConfig].environment = self.appSettingView.environmentControl.selectedSegmentIndex;
         [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:[PrivateConfig shareConfig].environment];
         [VPIConfigSDK setAppKey:self.appSettingView.appKeyTextField.text appSecret:self.appSettingView.appSecretTextField.text];
         

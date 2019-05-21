@@ -149,6 +149,10 @@ VPInterfaceStatusNotifyDelegate ```- (void)vp_interfaceActionNotify```, 会回�
 6. `SDK`目前支持系统为 ios8 以上。
 7. 存在bundle包时请将bundle包放入资源文件中,使SDK能正常调用。
 8. SDWebImage不兼容问题,可以在Pods的工程中VideoOS Target中添加宏VPUPSDWebImage=1解决
+
+#### 常见问题
+
+[VideoOS iOS SDK对接常见问题](https://os-lab.videojj.com/topic/70/ios-sdk对接常见问题)
  
 ## 本地化部署配置（开源版本）
 
