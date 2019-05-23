@@ -340,7 +340,12 @@ static NSSDWebImagePrefetcher* prefetchImageManager() {
             }
             else if(image) {
                 
-                [sself setImage:image imageData:data view:sview config:blockConfig];
+                if (data != nil) {
+                    [sself setImage:image imageData:data view:sview config:blockConfig];
+                }else {
+                    NSData * imageData = [sself cachePathForKeyinURL:url];
+                    [sself setImage:image imageData:imageData view:sview config:blockConfig];
+                }
                 [sview setNeedsLayout];
             }
             else {
@@ -447,6 +452,37 @@ static NSSDWebImagePrefetcher* prefetchImageManager() {
     }
     
 }
+
+- (NSData * _Nullable)cachePathForKeyinURL:(nullable NSURL *)url {
+    
+    NSString * key = [webImageManager() cacheKeyForURL:url];
+    
+    NSData * iamgeData = nil;
+    if (key.length > 0) {
+        NSSDImageCache *imageCache = [[NSSDImageCache alloc]initWithNamespace:@"videopls"];
+        
+        SEL cachePath = @selector(cachePathForKey:);
+        SEL defaultCachePath = @selector(defaultCachePathForKey:);
+        
+        if ([[imageCache class] instanceMethodSignatureForSelector:cachePath] != nil) {
+            IMP imp = [imageCache methodForSelector:cachePath];
+            NSString *(*func)(id,SEL,NSString *) = (void *)imp;
+            NSString * filePath = func(imageCache,cachePath,key);
+            iamgeData = [NSData dataWithContentsOfFile:filePath];
+            //            NSLog(@"filePath:  %@",filePath);
+            
+        }else if ([[imageCache class] instanceMethodSignatureForSelector:defaultCachePath] != nil) {
+            IMP imp = [imageCache methodForSelector:defaultCachePath];
+            NSString *(*func)(id,SEL,NSString *) = (void *)imp;
+            NSString * filePath = func(imageCache,defaultCachePath,key);
+            iamgeData = [NSData dataWithContentsOfFile:filePath];
+            //            NSLog(@"filePath:  %@",filePath);
+        }
+        
+    }
+    return iamgeData;
+}
+
 
 #endif
 
