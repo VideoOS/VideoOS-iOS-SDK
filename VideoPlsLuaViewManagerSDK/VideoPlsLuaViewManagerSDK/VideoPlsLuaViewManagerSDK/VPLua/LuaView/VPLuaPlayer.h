@@ -11,6 +11,8 @@
 #import <VPLuaViewSDK/LVHeads.h>
 #import "VideoPlsUtilsPlatformSDK.h"
 
+extern NSString *const VPLuaPauseVideoPlayerNotification;
+
 @interface VPLuaPlayer : VPUPVideoClip<LVProtocal, LVClassProtocal>
 
 @property (nonatomic, weak) LuaViewCore* lv_luaviewCore;

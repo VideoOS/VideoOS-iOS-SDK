@@ -265,6 +265,14 @@
     [_osView closeActionWebViewForAd:[self.openUrlActionDict objectForKey:@"adID"]];
 }
 
+- (void)pauseVideoAd {
+    [_osView pauseVideoAd];
+}
+
+- (void)playVideoAd {
+    [_osView playVideoAd];
+}
+
 - (void)closeInfoView {
     if (_osView) {
         [_osView closeInfoView];

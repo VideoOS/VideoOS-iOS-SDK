@@ -39,6 +39,10 @@ extern NSString *const VPLuaOSLoadCompleteNotification;
 
 - (void)closeActionWebViewForAd:(NSString *)adId;
 
+- (void)pauseVideoAd;
+
+- (void)playVideoAd;
+
 - (void)closeInfoView;
 
 @end

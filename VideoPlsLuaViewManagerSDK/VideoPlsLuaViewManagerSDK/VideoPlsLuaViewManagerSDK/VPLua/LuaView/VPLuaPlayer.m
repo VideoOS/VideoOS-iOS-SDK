@@ -13,6 +13,8 @@
 #import <VPLuaViewSDK/LVHeads.h>
 #import <AVFoundation/AVFoundation.h>
 
+NSString * const VPLuaPauseVideoPlayerNotification = @"VPLuaPauseVideoPlayerNotification";
+
 @interface VPLuaPlayer () <VPUPVideoClipProtocol>
 
 @end
@@ -30,6 +32,7 @@
         [[AVAudioSession sharedInstance] setActive:YES error:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(volumeChanged:) name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
         [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pauseVideoPlayer:) name:VPLuaPauseVideoPlayerNotification object:nil];
     }
     return self;
 }
@@ -47,6 +50,22 @@
     }
     [self lv_callLuaCallback:@"onChangeVolume" key2:nil argN:1];
     [self updateCurrentPlayerVolume:volume];
+}
+
+- (void)pauseVideoPlayer:(NSNotification *)notification {
+    
+    [self pause];
+    
+    if (self.videoArray.count > 0) {
+        VPUPVideo *video = [self.videoArray objectAtIndex:0];
+        lua_State* l = self.lv_luaviewCore.l;
+        if( l ){
+            lua_pushstring(l, [video.url.path UTF8String]);
+            [self lv_callLuaCallback:@"onPause" key2:nil argN:1];
+            return;
+        }
+    }
+    [self lv_callLuaCallback:@"onPause" key2:nil argN:0];
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
@@ -253,19 +272,39 @@ static int voice (lua_State *L) {
 }
 
 - (void)videoClipVideoPreparePlaying:(NSUInteger)index videoUrl:(NSURL *)url {
-    [self lv_callLuaCallback:@"onPrepare" key2:nil argN:0];
+    
+    lua_State* l = self.lv_luaviewCore.l;
+    if( l ){
+        lua_pushstring(l, [url.path UTF8String]);
+    }
+    [self lv_callLuaCallback:@"onPrepare" key2:nil argN:1];
 }
 
 - (void)videoClipVideoStartPlaying:(NSUInteger)index videoUrl:(NSURL *)url {
-    [self lv_callLuaCallback:@"onStart" key2:nil argN:0];
+    lua_State* l = self.lv_luaviewCore.l;
+    if( l ){
+        lua_pushstring(l, [url.path UTF8String]);
+    }
+    [self lv_callLuaCallback:@"onStart" key2:nil argN:1];
 }
 
 - (void)videoClipVideoFinished:(NSUInteger)index videoUrl:(NSURL *)url {
-    [self lv_callLuaCallback:@"onFinished" key2:nil argN:0];
+    lua_State* l = self.lv_luaviewCore.l;
+    if( l ){
+        lua_pushstring(l, [url.path UTF8String]);
+    }
+    [self lv_callLuaCallback:@"onFinished" key2:nil argN:1];
 }
 
 - (void)videoClipAllFinished {
-    [self lv_callLuaCallback:@"onFinished" key2:nil argN:0];
+    if (self.videoArray.count > 0) {
+        VPUPVideo *video = [self.videoArray objectAtIndex:0];
+        lua_State* l = self.lv_luaviewCore.l;
+        if( l ){
+            lua_pushstring(l, [video.url.path UTF8String]);
+        }
+    }
+    [self lv_callLuaCallback:@"onFinished" key2:nil argN:1];
 }
 
 - (void)videoClipDidClick:(NSUInteger)index videoUrl:(NSURL *)url {

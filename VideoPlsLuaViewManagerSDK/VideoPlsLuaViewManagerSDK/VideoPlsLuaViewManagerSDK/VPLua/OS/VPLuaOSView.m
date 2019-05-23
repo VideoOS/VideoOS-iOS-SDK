@@ -12,6 +12,7 @@
 #import "VPLuaServiceManager.h"
 #import "VPUPRSAUtil.h"
 #import "VPLuaSDK.h"
+#import "VPLuaPlayer.h"
 #import <objc/message.h>
 
 NSString *const VPOSLuaEndNotification = @"VPOSLuaEndNotification";
@@ -130,6 +131,14 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
 
 - (void)closeActionWebViewForAd:(NSString *)adId {
     [self.luaController closeActionWebViewForAd:adId];
+}
+
+- (void)pauseVideoAd {
+    [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaPauseVideoPlayerNotification object:nil];
+}
+
+- (void)playVideoAd {
+    [self.luaController playVideoAd];
 }
 
 - (void)closeInfoView {

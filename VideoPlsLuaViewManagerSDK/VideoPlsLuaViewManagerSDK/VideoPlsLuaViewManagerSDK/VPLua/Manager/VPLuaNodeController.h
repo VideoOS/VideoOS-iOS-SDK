@@ -75,6 +75,8 @@
 
 - (void)closeActionWebViewForAd:(NSString *)adId;
 
+- (void)playVideoAd;
+
 - (void)closeInfoView;
 
 @end

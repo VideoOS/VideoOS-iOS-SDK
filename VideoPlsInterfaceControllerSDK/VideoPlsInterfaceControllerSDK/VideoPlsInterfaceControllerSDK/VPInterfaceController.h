@@ -122,6 +122,16 @@
 - (void)platformCloseActionWebView;
 
 /**
+ *  暂停中插视频
+ */
+- (void)pauseVideoAd;
+
+/**
+ *  播放暂停的中插视频
+ */
+- (void)playVideoAd;
+
+/**
  *  controller的生命周期
  */
 - (void)viewWillAppear:(BOOL)animated;

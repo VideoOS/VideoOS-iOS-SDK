@@ -33,6 +33,7 @@
 //cont
 //static NSMutableArray<VPLuaNodeController *> *avaliableControllers;
 const NSInteger VPLuaBaseNodeInfoViewPriority = 2;
+const NSInteger VPLuaBaseNodeWedgePriority = 10;
 
 @interface VPLuaNodeController()
 
@@ -463,6 +464,20 @@ const NSInteger VPLuaBaseNodeInfoViewPriority = 2;
         if ([tempNode.nodeId isEqualToString:adId]) {
             [tempNode callMethod:@"show" data:nil];
             return;
+        }
+    }
+}
+
+- (void)playVideoAd {
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
+    for (VPLuaBaseNode *tempNode in _nodes) {
+        if (tempNode.priority == VPLuaBaseNodeWedgePriority) {
+            [array addObject:tempNode];
+        }
+    }
+    if (array.count > 0) {
+        for (VPLuaBaseNode *tempNode in array) {
+            [tempNode callMethod:@"show" data:nil];
         }
     }
 }
