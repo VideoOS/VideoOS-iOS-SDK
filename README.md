@@ -7,18 +7,18 @@
 ## 项目介绍
 **VideoOS使用了Lua脚本语言来完成动态化方案，Lua语言的优点：具有可扩展性强、简单、高效、占用体积小、启动速度快等诸多优势**
 
-** VideoOS iOS SDK 的分类：```VPInterfaceControllerDemo``` ```VideoPlsInterfaceControllerSDK ``` ```VideoPlsLuaViewManagerSDK ``` ```VideoPlsUtilsPlatformSDK ``` **
+**VideoOS iOS SDK 的分类：```VPInterfaceControllerDemo``` ```VideoPlsInterfaceControllerSDK ``` ```VideoPlsLuaViewManagerSDK ``` ```VideoPlsUtilsPlatformSDK ```**
 
-#### VPInterfaceControllerDemo
+### VPInterfaceControllerDemo
 项目演示
 
-#### VideoPlsInterfaceControllerSDK
+### VideoPlsInterfaceControllerSDK
 SDK对接API 
 
-#### VideoPlsLuaViewManagerSDK
+### VideoPlsLuaViewManagerSDK
 Lua与OC之间的桥接文件，在LuaView文件夹里面是常用的UI控件桥接
 
-#### VideoPlsUtilsPlatformSDK
+### VideoPlsUtilsPlatformSDK
 底层功能模块，提供了常用的网络、图片、动画、网页等功能 
 
 ## 贡献者指南
