@@ -1,4 +1,4 @@
-# VideoOS Android SDK
+# VideoOS iOS SDK
 本项目是[VideoOS open](http://videojj.com/videoos-open/)的iOS SDK
 
 ## 对接文档
