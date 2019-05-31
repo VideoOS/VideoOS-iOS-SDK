@@ -21,9 +21,6 @@ Lua与OC之间的桥接文件，在LuaView文件夹里面是常用的UI控件桥
 ### VideoPlsUtilsPlatformSDK
 底层功能模块，提供了常用的网络、图片、动画、网页等功能 
 
-## 贡献者指南
-待补充，请直接将内容填写到[CONTRIBUTING](CONTRIBUTING)，参考：[https://help.github.com/en/articles/setting-guidelines-for-repository-contributors](https://help.github.com/en/articles/setting-guidelines-for-repository-contributors)
-
 ## 维护者
 * [shshjing](https://github.com/shshjing) - 老景 <jingshengshan@videopls.com>
 * [MExuanHe](https://github.com/MExuanHe) - 赫赫 <zhangxuanhe@videopls.com>
