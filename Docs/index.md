@@ -13,7 +13,7 @@
 ##### Podfile
 ```
 platform :ios, '8.0'
-pod 'VideoOS-iOS-SDK', '~> 1.0'
+pod 'VideoOS'
 ```
 如果你使用的是swift开发，请确保添加 `use_frameworks!` 
 ```
@@ -55,14 +55,14 @@ Photos.framework
 5. 可能依赖的第三方库(具体视平台不同而不一致)
 
 ```
-'AFNetworking', '~>2.0'
-'SDWebImage', '4.2.2'
+'AFNetworking' 
+'SDWebImage', '4.2.2' #如果用最新版本SDWebImage，请确认gif是否可以播放
 ```
 	  
 ## 互动层对接	
 
 ### SDK初始化
-在 `AppDelegate.m` 文件中导入 `<VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>` ，并在 `application:didFinishLaunchingWithOptions:` 方法中初始化SDK。
+在 `AppDelegate.m` 文件中导入 `<VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>` ，并在 `application:didFinishLaunchingWithOptions:` 方法中初始化SDK，SaaS版本需要设置AppKey和AppSecret，开源版本不需要。
 
 示例代码：
 
@@ -71,6 +71,7 @@ Photos.framework
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{ 
     //other code
+    [VPIConfigSDK setAppKey:@"550ec7d2-6cb0-4f46-b2df-2a1505ec82d8" appSecret:@"d0bf7873f7fa42a6"];//SaaS版本需要设置AppKey和AppSecret，开源版本不需要
     [VPIConfigSDK initSDK];
     //other code
 }
@@ -147,11 +148,17 @@ VPInterfaceStatusNotifyDelegate ```- (void)vp_interfaceActionNotify```, 会回�
 5. 最佳位置为加载控制栏的下方,并且于手势层的上方,请不要将 cytronView 放 入包含手势操作的 View 中。
 6. `SDK`目前支持系统为 ios8 以上。
 7. 存在bundle包时请将bundle包放入资源文件中,使SDK能正常调用。
+8. SDWebImage不兼容问题,可以在Pods的工程中VideoOS Target中添加宏VPUPSDWebImage=1解决
+
+#### 常见问题
+
+[VideoOS iOS SDK对接常见问题](https://os-lab.videojj.com/topic/70/ios-sdk对接常见问题)
  
-## 本地化部署配置
+## 本地化部署配置（开源版本）
 
 ### host配置
 修改`VPLuaSDK.m`中的`host`地址
 
+注：现在`VPLuaSDK.m`中的`host`为SaaS版本的地址
 ### 加密key设置
 修改`VPLuaCommonInfo.m`中的加密key
