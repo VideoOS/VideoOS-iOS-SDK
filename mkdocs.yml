@@ -1,4 +1,12 @@
 site_name: VideoOS iOS SDK
 repo_url: https://github.com/VideoOS/VideoOS-iOS-SDK
+markdown_extensions:
+  - admonition
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - rust
 nav:
   - 'SDK集成': 'index.md'
