@@ -7,6 +7,7 @@
 //
 
 #import "VPUPIPAddressUtil.h"
+#import "VPUPNetworkReachabilityManager.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -34,10 +35,78 @@
 #pragma mark IPv4是32位地址长度
 #pragma mark IPv6是128位地址长度
 
+@interface VPUPIPAddressUtil()
+
+@property (nonatomic, copy) NSString *ipAddress;
+@property (nonatomic, assign) VPUPNetworkReachabilityStatus currentReachabilityStatus;
+
++ (instancetype)sharedIPAddressUtil;
+
+@end
+
 @implementation VPUPIPAddressUtil
 
+
++ (instancetype)sharedIPAddressUtil {
+    static VPUPIPAddressUtil *_sharedIPAddressUtil = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedIPAddressUtil = [[self alloc] init];
+        _sharedIPAddressUtil.currentReachabilityStatus = [VPUPNetworkReachabilityManager sharedManager].currentReachabilityStatus;
+        _sharedIPAddressUtil.ipAddress = [VPUPIPAddressUtil deviceWANIPAddress];
+    });
+    return _sharedIPAddressUtil;
+}
+
+//通过搜狐接口获取外网IP
++ (NSString *)getWANIPAddress {
+    NSError *error;
+    NSURL *ipURL = [NSURL URLWithString:@"http://pv.sohu.com/cityjson?ie=utf-8"];
+    
+    NSMutableString *ip = [NSMutableString stringWithContentsOfURL:ipURL encoding:NSUTF8StringEncoding error:&error];
+    //判断返回字符串是否为所需数据
+    if ([ip hasPrefix:@"var returnCitySN = "]) {
+        //对字符串进行处理，然后进行json解析
+        //删除字符串多余字符串
+        NSRange range = NSMakeRange(0, 19);
+        [ip deleteCharactersInRange:range];
+        NSString * nowIp =[ip substringToIndex:ip.length-1];
+        //将字符串转换成二进制进行Json解析
+        NSData * data = [nowIp dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"%@",dict);
+        return dict[@"cip"] ? dict[@"cip"] : @"";
+    }
+    return @"";
+}
+
+//通过淘宝接口获取外网IP
++ (NSString *)deviceWANIPAddress {
+    
+    NSURL *ipURL = [NSURL URLWithString:@"http://ip.taobao.com/service/getIpInfo.php?ip=myip"];
+    NSData *data = [NSData dataWithContentsOfURL:ipURL];
+    if (!data) {
+        return @"";
+    }
+    NSDictionary *ipDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil]; 
+    NSString *ipStr = nil;
+    if (ipDic && [ipDic[@"code"] integerValue] == 0) { //获取成功
+        ipStr = ipDic[@"data"][@"ip"];
+    }
+    return (ipStr ? ipStr : @"");
+}
+
 + (NSString *)currentIpAddress {
-    return [self  getIPAddress:YES];
+    
+    if ([VPUPIPAddressUtil sharedIPAddressUtil].currentReachabilityStatus != [VPUPNetworkReachabilityManager sharedManager].currentReachabilityStatus) {
+        [VPUPIPAddressUtil sharedIPAddressUtil].currentReachabilityStatus = [VPUPNetworkReachabilityManager sharedManager].currentReachabilityStatus;
+        [VPUPIPAddressUtil sharedIPAddressUtil].ipAddress = [VPUPIPAddressUtil deviceWANIPAddress];
+    }
+    
+    if ([VPUPIPAddressUtil sharedIPAddressUtil].ipAddress.length < 1) {
+        [VPUPIPAddressUtil sharedIPAddressUtil].ipAddress = [VPUPIPAddressUtil deviceWANIPAddress];
+    }
+    return [VPUPIPAddressUtil sharedIPAddressUtil].ipAddress;
 }
 
 + (NSString *)getIPAddress:(BOOL)preferIPv4 {
