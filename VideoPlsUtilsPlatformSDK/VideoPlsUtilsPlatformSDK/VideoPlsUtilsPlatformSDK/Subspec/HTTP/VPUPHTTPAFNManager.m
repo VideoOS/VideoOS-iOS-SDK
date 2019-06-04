@@ -334,6 +334,13 @@ static VPUPHTTPAFNManager *sharedAPIManager = nil;
                       obj:(id)obj
                     error:(NSError *)error
                      task:(NSURLSessionTask *)task {
+    
+    if (error && api.retryCount > 0) {
+        [api setRetryCount:api.retryCount - 1];
+        [self sendAPIRequest:api];
+        return;
+    }
+    
     obj = [api apiResponseObjReformer:obj andError:error];
     if ([api apiCompletionHandler]) {
         dispatch_queue_t callBackQueue = [api callbackQueue] ? : dispatch_get_main_queue();

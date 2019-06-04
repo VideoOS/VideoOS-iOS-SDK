@@ -79,6 +79,13 @@ typedef NSURL* _Nonnull (^VPUPApiDownloadDestination)(NSURL * _Nonnull targetPat
 @property (nonatomic, assign, readonly) NSUInteger apiId;
 
 /**
+ *  用户api请求失败后重试的次数
+ */
+@property (nonatomic, assign, readonly) NSUInteger retryCount;
+
+- (void)setRetryCount:(NSUInteger)retryCount;
+
+/**
  *  用户api请求中的参数列表
  *   如果JSON-RPC协议，则Parameters 放入JSON-RPC协议中
  *   如果非JSON-RPC协议，则requestParameters 会作为url的一部分发送给服务器

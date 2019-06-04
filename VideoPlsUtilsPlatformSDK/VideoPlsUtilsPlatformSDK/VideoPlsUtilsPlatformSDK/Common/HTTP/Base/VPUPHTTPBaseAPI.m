@@ -15,6 +15,7 @@
 @interface VPUPHTTPBaseAPI()
 
 @property (nonatomic, assign) NSUInteger apiId;
+@property (nonatomic, assign) NSUInteger retryCount;
 
 @end
 
@@ -24,8 +25,13 @@
     self = [super init];
     if (self) {
         _apiId = [VPUPAutoNumberIDUtil getUniqueID];
+        _retryCount = 0;
     }
     return self;
+}
+
+- (void)setRetryCount:(NSUInteger)retryCount {
+    _retryCount = retryCount;
 }
 
 - (nullable NSURL *)requestURL {
