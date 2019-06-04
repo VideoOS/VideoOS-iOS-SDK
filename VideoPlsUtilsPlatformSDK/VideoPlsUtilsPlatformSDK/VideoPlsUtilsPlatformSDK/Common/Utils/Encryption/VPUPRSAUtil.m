@@ -22,12 +22,22 @@
  */
 
 static NSString *base64_encode_data(NSData *data){
+    
+    if (!data) {
+        return nil;
+    }
+    
     data = [data base64EncodedDataWithOptions:0];
     NSString *ret = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     return ret;
 }
 
 static NSData *base64_decode(NSString *str){
+    
+    if (!str) {
+        return nil;
+    }
+    
     NSData *data = [[NSData alloc] initWithBase64EncodedString:str options:NSDataBase64DecodingIgnoreUnknownCharacters];
     return data;
 }

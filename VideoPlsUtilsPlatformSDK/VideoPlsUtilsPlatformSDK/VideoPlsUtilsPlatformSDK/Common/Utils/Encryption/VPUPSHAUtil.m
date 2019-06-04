@@ -13,36 +13,68 @@
 @implementation VPUPSHAUtil
 
 + (NSString *)sha1HashString:(NSString *)string {
-    unsigned char *hashStr = (unsigned char *)malloc(sizeof(unsigned char) * (CC_SHA1_DIGEST_LENGTH * 2 + 1));
-    vpup_sha1_encryption((char *)[string UTF8String], hashStr);
     
-    NSString *hashString = [NSString stringWithUTF8String:(char *)hashStr];
+    if (!string) {
+        return nil;
+    }
     
-    free(hashStr);
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
     
-    return hashString;
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    
+    CC_SHA1(data.bytes, (unsigned int)data.length, digest);
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    
+    return output;
 }
 
 + (NSString *)sha256HashString:(NSString *)string {
-    unsigned char *hashStr = (unsigned char *)malloc(sizeof(unsigned char) * (CC_SHA256_DIGEST_LENGTH * 2 + 1));
-    vpup_sha256_encryption((char *)[string UTF8String], hashStr);
-    NSString *hashString = [NSString stringWithUTF8String:(char *)hashStr];
     
-    free(hashStr);
+    if (!string) {
+        return nil;
+    }
     
-    return hashString;
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    
+    uint8_t digest[CC_SHA256_DIGEST_LENGTH];
+    
+    CC_SHA256(data.bytes, (unsigned int)data.length, digest);
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA256_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_SHA256_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    
+    return output;
 }
 
 + (NSString *)hmac_sha1HashString:(NSString *)string key:(NSString *)hmacKey {
-    unsigned char *hashStr = (unsigned char *)malloc(sizeof(unsigned char) * (CC_SHA1_DIGEST_LENGTH * 2 + 1));
     
-    vpup_hmac_sha1_hex_encryption((char *)[hmacKey UTF8String], (char *)[string UTF8String], hashStr);
+    if (!string || !hmacKey) {
+        return nil;
+    }
     
-    NSString *hashString = [NSString stringWithUTF8String:(char *)hashStr];
+    const char *cData = [string cStringUsingEncoding:NSUTF8StringEncoding];
     
-    free(hashStr);
+    const char *cKey  = [hmacKey cStringUsingEncoding:NSUTF8StringEncoding];
     
-    return hashString;
+    uint8_t cHMAC[CC_SHA1_DIGEST_LENGTH];
+    
+    CCHmac(kCCHmacAlgSHA1, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+    
+    NSMutableString * output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", cHMAC[i]];
+    }
+    
+    return output;
 }
 
 @end

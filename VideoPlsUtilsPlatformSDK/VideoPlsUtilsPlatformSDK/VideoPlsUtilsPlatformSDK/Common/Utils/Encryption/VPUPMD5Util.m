@@ -15,15 +15,22 @@
 @implementation VPUPMD5Util
 
 + (NSString *)md5HashString:(NSString *)string {
-    unsigned char *hashStr = (unsigned char *)malloc(sizeof(unsigned char) * (CC_MD5_DIGEST_LENGTH * 2 + 1));
     
-    vpup_md5_encryption((char *)[string UTF8String], hashStr);
+    if (!string) {
+        return nil;
+    }
     
-    NSString *hashString = [NSString stringWithUTF8String:(char *)hashStr];
+    //要进行UTF8的转码
+    const char* input = [string UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(input, (CC_LONG)strlen(input), result);
     
-    free(hashStr);
+    NSMutableString *digest = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for (NSInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [digest appendFormat:@"%02x", result[i]];
+    }
     
-    return hashString;
+    return digest;
 }
 
 + (NSString *)md5_16bitHashString:(NSString *)string {
