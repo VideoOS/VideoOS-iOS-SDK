@@ -81,7 +81,7 @@ Photos.framework
 1. 根据需要接入的`SDK`创建`VPInterfaceControllerConfig`，将`SDK`需要的信息配置在`config`中。
 	
 	* identifier 为点播视频url或直播房间号
-	* types 为视频类型（点播or直播），默认为点播，默认是点播（注：`VPInterfaceControllerTypeVideoOS` 表示点播，`VPInterfaceControllerTypeLiveOS` 表示直播）
+	* types 为视频类型（点播or直播），默认为点播（注：`VPInterfaceControllerTypeVideoOS` 表示点播，`VPInterfaceControllerTypeLiveOS` 表示直播）
 
 2. 利用生成的`config`初始化`InterfaceController`， `interfaceController.view`就是生成的互动层，将这个`view`添加到播放器层之上就可以了。根据接入的`SDK`的需求可能有一些特殊的接口，放在相应的文件中，如需要调用，将对应文件`import`就可以调用了,详细作用请看注释。
 
