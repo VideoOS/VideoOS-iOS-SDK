@@ -24,11 +24,7 @@
 #import <VideoOS/VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
 #import "VPVideoAppSettingView.h"
 
-@interface VPSinglePlayerViewController() <VPInterfaceStatusNotifyDelegate, UITableViewDataSource,
-#ifdef VP_MALL
-VPIPubWebViewCloseDelegate,
-#endif
-VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
+@interface VPSinglePlayerViewController() <VPInterfaceStatusNotifyDelegate, VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     NSString *_urlString;
     NSString *_platformUserID;
     BOOL _isLive;
@@ -45,22 +41,6 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     
     VPInterfaceController *_interfaceController;
     
-    NSTimer *_refreshInterfaceTimer;
-    
-    UITableView *_tableView;
-    
-    NSMutableArray *_sources;
-    
-    UIView *_webViewContent;
-#ifdef VP_MALL
-    VPIPubWebView *_goodsListWebView;
-#endif
-    UIButton *_goodListEntranceButton;
-    UIButton *_shelfButton;
-    UIButton *_orderButton;
-    
-    UIButton *_enjoyConfigButton;
-    
     VPIUserInfo *_userInfo;
     
     VPIVideoPlayerOrientation _currentPlayerOrientationType;
@@ -69,7 +49,7 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
 
 @property (nonatomic, weak) UIButton *settingButton;
 @property (nonatomic, weak) UIButton *videoButton;
-@property (nonatomic, weak) UIButton *mallButton;
+@property (nonatomic, weak) UIButton *simulateButton;
 @property (nonatomic, weak) UIButton *closeInfoViewButton;
 @property (nonatomic, weak) UIButton *appInfoViewButton;
 @property (nonatomic, weak) VPVideoSettingView *settingView;
@@ -165,40 +145,11 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     [self initMediaControlView];
     [self initGestureView];
     
-    //goodsList 入口
-//    if(_type == VPInterfaceControllerTypeMall) {
-//        [self initGoodsListEntrance];
-//    }
-    
-    if ((_type & VPInterfaceControllerTypeMall) == VPInterfaceControllerTypeMall) {
-        [self initGoodsListEntrance];
-    }
-    
-    
-//    if ((_type == VPInterfaceControllerTypeLiveOS && [PrivateConfig shareConfig].anchor) || _type == VPInterfaceControllerTypeEnjoy) {
-//        [self initEnjoyConfigButton];
-//    }
-    
-    if ((_type & VPInterfaceControllerTypeEnjoy) == VPInterfaceControllerTypeEnjoy && [PrivateConfig shareConfig].anchor) {
-        [self initEnjoyConfigButton];
-    }
-    
     [self initInterfaceController];
     
     [self.view addSubview:_player.view];
     //手势层置于互动层下方
     [self.view addSubview:_gestureView];
-    
-    //商城入口应该加载mediaControlView上,这儿偷懒了
-    if ((_type & VPInterfaceControllerTypeMall) == VPInterfaceControllerTypeMall) {
-        [self.view addSubview:_goodListEntranceButton];
-        [self.view addSubview:_shelfButton];
-        [self.view addSubview:_orderButton];
-    }
-    
-    if ((_type & VPInterfaceControllerTypeEnjoy) == VPInterfaceControllerTypeEnjoy && [PrivateConfig shareConfig].anchor) {
-        [self.view addSubview:_enjoyConfigButton];
-    }
     
     [self.view addSubview:_interfaceController.view];
     //控制栏没有全屏幕手势放在最上方
@@ -292,14 +243,14 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     [settingButton addTarget:self action:@selector(settingButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImage *whiteImage = [UIImage imageNamed:@"button_white"];
-    UIButton *mallButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [mallButton setImage:whiteImage forState:UIControlStateNormal];
-    [self.view addSubview:mallButton];
-    [mallButton addTarget:self action:@selector(mallButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [mallButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [mallButton setTitle:@"模拟" forState:UIControlStateNormal];
-    mallButton.titleEdgeInsets = UIEdgeInsetsMake(0, -whiteImage.size.width, 0, 0);
-    self.mallButton = mallButton;
+    UIButton *simulateButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [simulateButton setImage:whiteImage forState:UIControlStateNormal];
+    [self.view addSubview:simulateButton];
+    [simulateButton addTarget:self action:@selector(simulateButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [simulateButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [simulateButton setTitle:@"模拟" forState:UIControlStateNormal];
+    simulateButton.titleEdgeInsets = UIEdgeInsetsMake(0, -whiteImage.size.width, 0, 0);
+    self.simulateButton = simulateButton;
     
     UIButton *videoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [videoButton setImage:whiteImage forState:UIControlStateNormal];
@@ -340,7 +291,7 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
         make.bottom.equalTo(settingButton.mas_top).with.offset(10);
     }];
     
-    [mallButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [simulateButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(whiteImage.size.width);
         make.height.mas_equalTo(whiteImage.size.height);
         make.centerX.equalTo(settingButton.mas_centerX);
@@ -351,7 +302,7 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
         make.width.mas_equalTo(whiteImage.size.width);
         make.height.mas_equalTo(whiteImage.size.height);
         make.centerX.equalTo(settingButton.mas_centerX);
-        make.bottom.equalTo(mallButton.mas_top).with.offset(-10);
+        make.bottom.equalTo(simulateButton.mas_top).with.offset(-10);
     }];
     
     [appInfoViewButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -362,27 +313,27 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     }];
     
     videoButton.hidden = YES;
-    mallButton.hidden = YES;
+    simulateButton.hidden = YES;
     closeInfoViewButton.hidden = YES;
     appInfoViewButton.hidden = YES;
 }
 
 - (void)settingButtonDidClicked:(id)sender {
-    if (self.mallButton.hidden == YES) {
-        self.mallButton.hidden = NO;
+    if (self.simulateButton.hidden == YES) {
+        self.simulateButton.hidden = NO;
         self.videoButton.hidden = NO;
         self.closeInfoViewButton.hidden = NO;
         self.appInfoViewButton.hidden = NO;
     }
     else {
-        self.mallButton.hidden = YES;
+        self.simulateButton.hidden = YES;
         self.videoButton.hidden = YES;
         self.closeInfoViewButton.hidden = YES;
         self.appInfoViewButton.hidden = YES;
     }
 }
 
-- (void)mallButtonDidClicked:(id)sender {
+- (void)simulateButtonDidClicked:(id)sender {
     NSString *path =  [[NSBundle mainBundle] pathForResource:@"adInfo" ofType:@"json"];
     NSDictionary *adInfo = [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:path] options:NSJSONReadingMutableContainers error:nil];
     
@@ -519,15 +470,6 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
 //    NSLog(@"%@",userInfo.uid);
 }
 
-- (void)vp_notifyScreenChange:(NSString *)url {
-#ifdef VP_MALL
-//    NSLog(@"%@", url);
-    [self createWebView];
-    [_webViewContent setHidden:NO];
-    [_goodsListWebView loadUrl:url];
-#endif
-}
-
 - (void)vp_requireLogin:(void (^)(VPIUserInfo *userInfo))completeBlock {
     if (completeBlock) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -541,34 +483,6 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     }
 }
 
-
-- (void)buttonTappedOpenWebView:(UIButton *)sender {
-    NSString *url = nil;
-    
-#ifdef VP_MALL
-    NSString *platformID = [PrivateConfig shareConfig].platformID;
-    NSString *platformName = nil;
-    if ([platformID isEqualToString:@"56dd27a8b311dff60073e645"]) {
-        platformName = @"zhanqi";
-    }
-    else if ([platformID isEqualToString:@"5a2786e14b284c3a00aa3336"]) {
-        platformName = @"quanmin";
-    }
-    else {
-        platformName = @"zhanqi";
-    }
-    
-    if([[sender titleLabel].text isEqualToString:@"货架"]) {
-        url = [VPIStoreAPIConfig getStoreAPIURL:VPIStoreAPITypeShelf platformName:platformName];
-        url = [NSString stringWithFormat:@"%@?video=%@",url, _platformUserID];
-    } else {
-        url = [VPIStoreAPIConfig getStoreAPIURL:VPIStoreAPITypeOrder platformName:platformName];
-    }
-#endif
-    [self vp_notifyScreenChange:url];
-}
-
-
 - (void)initGestureView {
     _gestureView = [[UIView alloc] initWithFrame:self.view.bounds];
     _gestureView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -578,48 +492,6 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     tapGestureRecognizer.numberOfTouchesRequired = 1;
     
     [_gestureView addGestureRecognizer:tapGestureRecognizer];
-}
-
-- (void)initGoodsListEntrance {
-    _goodListEntranceButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 50, self.view.bounds.size.height / 2 - 20, 40, 40)];
-    _goodListEntranceButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
-    [_goodListEntranceButton setImage:[UIImage imageNamed:@"shelves_entrance"] forState:UIControlStateNormal];
-    
-    [_goodListEntranceButton addTarget:self action:@selector(goodListEntranceDidClick:) forControlEvents:UIControlEventTouchUpInside];
-    
-    _shelfButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMinX(_goodListEntranceButton.frame) - 40, CGRectGetMinY(_goodListEntranceButton.frame) - 50, 80, 40)];
-    [_shelfButton setBackgroundColor:[UIColor blackColor]];
-    [_shelfButton setTitle:@"货架" forState:UIControlStateNormal];
-    [_shelfButton addTarget:self action:@selector(buttonTappedOpenWebView:) forControlEvents:UIControlEventTouchUpInside];
-    
-    _orderButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMinX(_goodListEntranceButton.frame) - 40,CGRectGetMinY(_goodListEntranceButton.frame) + 50, 80, 40)];
-    [_orderButton setBackgroundColor:[UIColor blackColor]];
-    [_orderButton setTitle:@"订单" forState:UIControlStateNormal];
-    [_orderButton addTarget:self action:@selector(buttonTappedOpenWebView:) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)initEnjoyConfigButton {
-    _enjoyConfigButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 50, self.view.bounds.size.height / 2 - 20, 40, 40)];
-    _enjoyConfigButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
-    
-    [_enjoyConfigButton setBackgroundColor:[UIColor blackColor]];
-    [_enjoyConfigButton setTitle:@"配置" forState:UIControlStateNormal];
-    
-    [_enjoyConfigButton addTarget:self action:@selector(enjoyConfigButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)goodListEntranceDidClick:(id)sender {
-#ifdef VP_MALL
-    if (_type == VPInterfaceControllerTypeMall) {
-        [_interfaceController openGoodsList];
-    }
-#endif
-}
-
-- (void)enjoyConfigButtonDidClick:(id)sender {
-//    [_interfaceController launchData];
-//    [_interfaceController openEnjoyConfigPage:[PrivateConfig shareConfig].verticalFullScreen];
-    [_interfaceController navigationWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"LuaView://defaultLuaView?template=enjoy_main.lua&id=enjoy_main"]] data:@{@"fullScreen" : @([PrivateConfig shareConfig].verticalFullScreen).stringValue}];
 }
 
 - (void)initInterfaceController {
@@ -655,12 +527,6 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     [_interfaceController start];
 }
 
-- (void)refreshInterfaceContainer {
-//    NSTimeInterval playbackTime = _player.currentPlaybackTime;
-    //需要更新的时间为毫秒数
-//    [_interfaceController updateCurrentPlaybackTime:playbackTime * 1000];
-}
-
 - (void)dismissPlayerViewController {
     [self stop];
     [self dismissViewControllerAnimated:YES completion:^{
@@ -669,20 +535,10 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
 }
 
 - (void)stop {
-    if(_refreshInterfaceTimer) {
-        [_refreshInterfaceTimer invalidate];
-        _refreshInterfaceTimer = nil;
-    }
     [_player shutdown];
     [_mediaControlView stop];
     [_interfaceController stop];
     _interfaceController.delegate = nil;
-    
-    if(_tableView) {
-        [_sources removeAllObjects];
-        _tableView.dataSource = nil;
-        [_tableView removeFromSuperview];
-    }
     
     [self deregisterPlayerNotification];
     
@@ -749,6 +605,15 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     }
 }
 
+- (BOOL)shouldAutorotate {
+    //    if ([PrivateConfig shareConfig].verticalFullScreen) {
+    //        return NO;
+    //    }
+    //    else {
+    return YES;
+    //    }
+}
+
 - (void)deviceOrientationChange:(NSNotification *)notification {
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     if (orientation == UIDeviceOrientationPortraitUpsideDown) {
@@ -797,25 +662,12 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
 
 
 #pragma mark -- VPInterfaceStatusChangeNotifyDelegate
-- (void)vp_webLinkOpenWithURL:(NSString *)url {
-    //可以使用url去打开webview
-}
-
-- (void)vp_interfaceVideoAdBack {
-    NSLog(@"点击返回按钮");
-}
 
 - (void)vp_interfaceLoadComplete:(NSDictionary *)completeDictionary {
 //    NSLog(@"%@",completeDictionary);
     
     //在互动层加载完成后最好也更新一次interface界面大小
     [self updateFrame];
-    //添加刷新timer,只有点播需要
-    if(!_isLive) {
-        if(!_refreshInterfaceTimer) {
-            _refreshInterfaceTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(refreshInterfaceContainer) userInfo:nil repeats:YES];
-        }
-    }
 }
 
 -(void)updateFrame {
@@ -839,10 +691,6 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     }
 }
 
-- (void)vp_interfaceEnjoyEnd {
-    
-}
-
 - (void)vp_interfaceScreenChangedNotify:(NSDictionary *)dict {
     int val = UIInterfaceOrientationPortrait;
     if ([[dict objectForKey:@"orientation"] integerValue] == 1) {
@@ -860,18 +708,6 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
         [invocation setArgument:&val atIndex:2];
         [invocation invoke];
     }
-}
-
-- (void)vp_interfaceEnjoyChangeToPortrait:(BOOL)toPortrait {
-//    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-//        SEL selector = NSSelectorFromString(@"setOrientation:");
-//        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
-//        [invocation setSelector:selector];
-//        [invocation setTarget:[UIDevice currentDevice]];
-//        int val = UIInterfaceOrientationPortrait;
-//        [invocation setArgument:&val atIndex:2];
-//        [invocation invoke];
-//    }
 }
 
 - (void)vp_interfaceActionNotify:(NSDictionary *)actionDictionary {
@@ -908,188 +744,6 @@ VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     }
     
     NSLog(@"%@", actionDictionary);
-    if(!_tableView && [PrivateConfig shareConfig].notificationShow) {
-        
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(50, 60, 200, 220) style:UITableViewStylePlain];
-        [self.view insertSubview:_tableView atIndex:2];
-        _tableView.dataSource = self;
-        _tableView.backgroundColor = [UIColor clearColor];
-//        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    }
-    
-    if(!_sources) {
-        _sources = [NSMutableArray array];
-    }
-    
-    [_sources addObject:actionDictionary];
-    [_tableView reloadData];
-    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_sources count] - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_sources count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if(!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-//        cell.userInteractionEnabled = NO;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
-        cell.detailTextLabel.numberOfLines = 0;
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:7];
-        cell.textLabel.textColor = [UIColor blackColor];
-        cell.detailTextLabel.textColor = [UIColor darkGrayColor];
-    }
-    
-    NSDictionary *source = [_sources objectAtIndex:indexPath.row];
-    
-//    VPIActionType actionType = [[source objectForKey:@"action"] integerValue];
-//    VPIActionItemType adType = [[source objectForKey:@"adType"] integerValue];
-//
-//    NSString *action = @"";
-//    switch (actionType) {
-//        case VPIActionTypeShow:
-//            action = @"显示";
-//            break;
-//        case VPIActionTypeClick:
-//            action = @"点击";
-//            break;
-//        case VPIActionTypeClose:
-//            action = @"关闭";
-//            break;
-//        default:
-//            break;
-//    }
-    
-    /*
-     
-     VPIActionItemTypeTag,               // 热点
-     VPIActionItemTypeAdInfo,            // 海报
-     VPIActionItemTypeBasicWiki,         // 百科
-     VPIActionItemTypeBasicMix,          // 轮播广告
-     VPIActionItemTypeCardGame,          // 卡牌
-     VPIActionItemTypeVote,              // 投票
-     VPIActionItemTypeImage,             // 云图
-     VPIActionItemTypeGift,              // 红包
-     VPIActionItemTypeEasyShop,          // 轻松购,商品
-     VPIActionItemTypeLottery,           // 趣味抽奖
-     VPIActionItemTypeBubble,            // 灵动气泡
-     VPIActionItemTypeVideoClip,         // 中插广告
-     VPIActionItemTypeNews,              // 新闻
-     VPIActionItemTypeText,              // 图文链
-     VPIActionItemTypeFavor,             // 点赞
-     VPIActionItemTypeGoodList,          // 电商清单
-     
-     */
-    
-//    NSString *ad = @"";
-//
-//    switch (adType) {
-//        case VPIActionItemTypeTag:
-//            ad = @"热点";
-//            break;
-//        case VPIActionItemTypeAdInfo:
-//            ad = @"海报";
-//            break;
-//        case VPIActionItemTypeBasicWiki:
-//            ad = @"百科";
-//            break;
-//        case VPIActionItemTypeBasicMix:
-//            ad = @"轮播";
-//            break;
-//        case VPIActionItemTypeCardGame:
-//            ad = @"卡牌";
-//            break;
-//        case VPIActionItemTypeVote:
-//            ad = @"投票";
-//            break;
-//        case VPIActionItemTypeImage:
-//            ad = @"云图";
-//            break;
-//        case VPIActionItemTypeGift:
-//            ad = @"红包";
-//            break;
-//        case VPIActionItemTypeEasyShop:
-//            ad = @"购物";
-//            break;
-//        case VPIActionItemTypeLottery:
-//            ad = @"抽奖";
-//            break;
-//        case VPIActionItemTypeBubble:
-//            ad = @"气泡";
-//            break;
-//        case VPIActionItemTypeVideoClip:
-//            ad = @"中插";
-//            break;
-//        case VPIActionItemTypeNews:
-//            ad = @"新闻";
-//            break;
-//        case VPIActionItemTypeText:
-//            ad = @"图文";
-//            break;
-//        case VPIActionItemTypeFavor:
-//            ad = @"点赞";
-//            break;
-//        case VPIActionItemTypeGoodList:
-//            ad = @"列表";
-//            break;
-//
-//        default:
-//            break;
-//    }
-//
-//    NSString *adID = [source objectForKey:@"adID"];
-//    NSString *resourceID = [source objectForKey:@"resourceID"];
-//
-//    cell.textLabel.text = [NSString stringWithFormat:@"type:%@, action:%@", ad, action];
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"adID:%@, rID:%@", adID, resourceID];
-    return cell;
-}
-
-
--(void)createWebView {
-#ifdef VP_MALL
-    if(!_webViewContent) {
-        _webViewContent = [[UIView alloc] initWithFrame:self.view.bounds];
-        _webViewContent.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        UIView *closeView = [[UIView alloc] initWithFrame:_webViewContent.bounds];
-        closeView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [closeView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(webViewNeedClose)]];
-        [_webViewContent addSubview:closeView];
-        [_webViewContent setHidden:YES];
-        [self.view addSubview:_webViewContent];
-    }
-    
-    if(!_goodsListWebView) {
-        VPIPubWebView *webView = [[VPIPubWebView alloc] initWithFrame:CGRectMake(0, 80, [UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height - 80)];
-        webView.userDelegate = self;
-        webView.delegate = self;
-        webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [_webViewContent addSubview:webView];
-        _goodsListWebView = webView;
-    }
-#endif
-}
-
-- (void)webViewNeedClose {
-#ifdef VP_MALL
-    [_goodsListWebView loadUrl:@""];
-    [_goodsListWebView closeAndRemoveFromSuperView];
-    [_webViewContent setHidden:YES];
-    _goodsListWebView = nil;
-#endif
-}
-
-- (BOOL)shouldAutorotate {
-//    if ([PrivateConfig shareConfig].verticalFullScreen) {
-//        return NO;
-//    }
-//    else {
-        return YES;
-//    }
 }
 
 /// Tells the delegate that the video player has began or resumed playing a video.
