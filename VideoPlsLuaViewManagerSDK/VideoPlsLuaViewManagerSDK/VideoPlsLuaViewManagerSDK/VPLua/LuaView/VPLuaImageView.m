@@ -60,8 +60,11 @@ static NSString *const VPDefaultImageBundle = @"VideoPlsDefaultImages";
     if( L ) {
         lua_checkstack(L, 4);
         lua_pushboolean(L, obj?0:1);
+        UIImage *image = self.image;
+        lua_pushnumber(L, image.size.width);
+        lua_pushnumber(L, image.size.height);
         [LVUtil pushRegistryValue:L key:self.functionTag];
-        lv_runFunctionWithArgs(L, 1, 0);
+        lv_runFunctionWithArgs(L, 3, 0);
     }
     [LVUtil unregistry:L key:self.functionTag];
 }
@@ -300,6 +303,7 @@ static int placeHolderImage(lua_State* L) {
         {"stretch", stretch},
         {"capInsets", capInsets},
         {"imageBlur", imageBlur},
+        {"imageSize", imageSize},
         {NULL, NULL}
     };
     
@@ -387,6 +391,24 @@ static int imageBlur (lua_State *L) {
             imageView.effectView = effectView;
             lua_pushvalue(L,1);
             return 1;
+        }
+    }
+    return 0;
+}
+
+static int imageSize (lua_State *L) {
+    LVUserDataInfo * user = (LVUserDataInfo *)lua_touserdata(L, 1);
+    if( user ){
+        VPLuaImageView* imageView = (__bridge VPLuaImageView *)(user->object);
+        if ( [imageView isKindOfClass:[VPLuaImageView class]] ) {
+            CGFloat width = 0.0,height = 0.0;
+            if (imageView.image) {
+                width = imageView.image.size.width;
+                height = imageView.image.size.height;
+            }
+            lua_pushnumber(L, width);
+            lua_pushnumber(L, height);
+            return 2;
         }
     }
     return 0;
