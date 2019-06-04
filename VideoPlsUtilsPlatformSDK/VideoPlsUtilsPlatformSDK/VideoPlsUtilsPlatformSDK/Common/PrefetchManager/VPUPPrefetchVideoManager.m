@@ -10,6 +10,7 @@
 #import "VPUPFileHandle.h"
 #import "VPUPMD5Util.h"
 #import "VPUPPathUtil.h"
+#import "VPUPUrlUtil.h"
 
 @implementation VPUPPrefetchVideoManager
 
@@ -25,15 +26,21 @@
     if (urls && urls.count == 0) {
         return;
     }
+    
     NSMutableArray *fileNames = [NSMutableArray arrayWithCapacity:0];
+    NSMutableArray *encodeUrls = [NSMutableArray arrayWithCapacity:0];
     for (NSString *urlString in urls) {
-        NSURL *url = [NSURL URLWithString:urlString];
-        NSString *fileName = [NSString stringWithFormat:@"%@.%@",[VPUPMD5Util md5HashString:url.absoluteString],[url pathExtension]];
-        [fileNames addObject:fileName];
+        NSString *urlEncodeString = [VPUPUrlUtil urlencode:urlString];
+        NSURL *url = [NSURL URLWithString:urlEncodeString];
+        if (url) {
+            NSString *fileName = [NSString stringWithFormat:@"%@.%@",[VPUPMD5Util md5HashString:url.absoluteString],[url pathExtension]];
+            [fileNames addObject:fileName];
+        }
+        [encodeUrls addObject:urlEncodeString];
     }
     
     NSString *destinationPath = [VPUPPathUtil pathByPlaceholder:@"videoAds"];
-    [self prefetchURLs:urls fileNames:fileNames destinationPath:destinationPath];
+    [self prefetchURLs:encodeUrls fileNames:fileNames destinationPath:destinationPath];
 }
 
 @end

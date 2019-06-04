@@ -17,6 +17,7 @@
 #import "VPLuaNetworkManager.h"
 #import "VPUPMD5Util.h"
 #import "VPUPRandomUtil.h"
+#import "VPUPUrlUtil.h"
 
 @interface VPLuaHttpRequest()
 
@@ -154,6 +155,8 @@ static int httpRequest(lua_State *L, VPUPRequestMethodType methodType) {
                 if (!url) {
                     return 0;
                 }
+                
+                url = [VPUPUrlUtil urlencode:url];
                 
                 baseUrl = [[NSURL URLWithString:@"/" relativeToURL:[NSURL URLWithString:url]].absoluteString copy];
                 requestMethod = [url stringByReplacingOccurrencesOfString:baseUrl withString:@""];
@@ -300,6 +303,8 @@ static int upload(lua_State *L) {
                 if(lua_isstring(L, 3)) {
                     filepath = lv_paramString(L, 3);
                 }
+                
+                requestUrl = [VPUPUrlUtil urlencode:requestUrl];
                 
                 //重组function的key,保证不重复
                 __block NSString *bRequestMethod = [[VPUPMD5Util md5_16bitHashString:[NSString stringWithFormat:@"%@%@", requestUrl, filepath]] stringByAppendingString:[VPUPRandomUtil randomStringByLength:3]];

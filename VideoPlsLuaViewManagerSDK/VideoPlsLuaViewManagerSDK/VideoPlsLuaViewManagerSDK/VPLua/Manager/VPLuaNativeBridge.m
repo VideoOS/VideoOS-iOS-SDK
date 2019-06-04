@@ -56,6 +56,7 @@
 
 #import "VPLuaMacroDefine.h"
 #import "VPLuaSDK.h"
+#import "VPUPUrlUtil.h"
 
 #define IS_IOS11 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0)
 
@@ -294,6 +295,7 @@ static NSMutableDictionary* httpAPICache() {
         {"preloadVideo", preloadVideo},
         {"copyStringToPasteBoard", copyStringToPasteBoard},
         {"videoOShost", videoOShost},
+        {"isCacheVideo", isCacheVideo},
         {NULL, NULL}
     };
     lv_createClassMetaTable(L,META_TABLE_NativeObject);
@@ -652,6 +654,8 @@ static int httpRequest(lua_State *L, VPUPRequestMethodType methodType) {
             return 0;
         }
         
+        url = [VPUPUrlUtil urlencode:url];
+        
         baseUrl = [[NSURL URLWithString:@"/" relativeToURL:[NSURL URLWithString:url]].absoluteString copy];
         requestMethod = [url stringByReplacingOccurrencesOfString:baseUrl withString:@""];
         
@@ -758,6 +762,8 @@ static int upload(lua_State *L) {
         if(lua_isstring(L, 3)) {
             filepath = lv_paramString(L, 3);
         }
+        
+        requestUrl = [VPUPUrlUtil urlencode:requestUrl];
         
         //重组function的key,保证不重复
         __block NSString *bRequestMethod = [[VPUPMD5Util md5_16bitHashString:[NSString stringWithFormat:@"%@%@", requestUrl, filepath]] stringByAppendingString:[VPUPRandomUtil randomStringByLength:3]];
@@ -1344,6 +1350,29 @@ static int copyStringToPasteBoard(lua_State *L) {
 
 static int videoOShost(lua_State *L) {
     lua_pushstring(L, [VPLuaServerHost UTF8String]);
+    return 1;
+}
+
+static int isCacheVideo(lua_State *L) {
+    BOOL fileExists = NO;
+    if( lua_gettop(L) >= 2) {
+        if (lua_type(L, 2) == LUA_TSTRING) {
+            NSString *urlString = lv_paramString(L, 2);
+            
+            NSURL *url = [NSURL URLWithString:[VPUPUrlUtil urlencode:urlString]];
+            
+            if (url) {
+                NSString *fileName = [NSString stringWithFormat:@"%@.%@",[VPUPMD5Util md5HashString:url.absoluteString],[url pathExtension]];
+                
+                NSString *destinationPath = [VPUPPathUtil pathByPlaceholder:@"videoAds"];
+                
+                NSString *videoPath = [NSString stringWithFormat:@"%@/%@", destinationPath, fileName];
+                
+                fileExists = [[NSFileManager defaultManager] fileExistsAtPath:videoPath];
+            }
+        }
+    }
+    lua_pushboolean(L, fileExists);
     return 1;
 }
 
