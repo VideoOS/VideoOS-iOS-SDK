@@ -13,6 +13,24 @@
 extern NSString *const VPOSLuaEndNotification;
 extern NSString *const VPLuaOSLoadCompleteNotification;
 
+
+/**
+ *  事件处理通知类型枚举
+ */
+typedef NS_ENUM(NSUInteger, VPLuaAdEventType) {
+    VPLuaAdEventTypeNone = 0,
+    VPLuaAdEventTypeAction,
+};
+
+/**
+ *  事件处理通知类型枚举
+ */
+typedef NS_ENUM(NSUInteger, VPLuaAdActionType) {
+    VPLuaAdActionTypeNone = 0,     //
+    VPLuaAdActionTypePlay,         // 播放Ad
+    VPLuaAdActionTypePause,        // 暂停Ad
+};
+
 @interface VPLuaOSView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame;
@@ -34,6 +52,8 @@ extern NSString *const VPLuaOSLoadCompleteNotification;
 - (void)startLoading;
 
 - (void)loadLua:(NSString *)luaUrl data:(id)data;
+
+- (void)callLuaMethood:(NSString *)method data:(id)data;
 
 - (void)stop;
 

@@ -266,11 +266,23 @@
 }
 
 - (void)pauseVideoAd {
-    [_osView pauseVideoAd];
+    if (_osView) {
+        [_osView pauseVideoAd];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              @(VPLuaAdActionTypePause), @"ActionType",
+                              @(VPLuaAdEventTypeAction), @"EventType",nil];
+        [_osView callLuaMethood:@"event" data:dict];
+    }
 }
 
 - (void)playVideoAd {
-    [_osView playVideoAd];
+    if (_osView) {
+        [_osView playVideoAd];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              @(VPLuaAdActionTypePlay),@"ActionType",
+                              @(VPLuaAdEventTypeAction), @"EventType",nil];
+        [_osView callLuaMethood:@"event" data:dict];
+    }
 }
 
 - (void)closeInfoView {

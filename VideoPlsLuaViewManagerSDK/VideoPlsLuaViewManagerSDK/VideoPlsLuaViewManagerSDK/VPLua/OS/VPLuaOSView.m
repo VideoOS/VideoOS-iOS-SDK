@@ -215,6 +215,11 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
     }
 }
 
+- (void)callLuaMethood:(NSString *)method data:(id)data {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.luaController callLuaMethood:method data:data];
+    });
+}
 
 - (void)registerLuaActionNotification {
     [[VPUPNotificationCenter defaultCenter] addObserver:self selector:@selector(luaEnd:) name:VPUPLuaEndNotification object:_luaController];

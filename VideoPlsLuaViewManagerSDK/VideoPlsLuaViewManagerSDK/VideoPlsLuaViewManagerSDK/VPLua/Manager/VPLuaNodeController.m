@@ -320,6 +320,12 @@ const NSInteger VPLuaBaseNodeWedgePriority = 10;
     [_nodes addObject:node];
 }
 
+- (void)callLuaMethood:(NSString *)method data:(id)data {
+    for (VPLuaBaseNode *tempNode in _nodes) {
+        [tempNode callMethod:method data:data];
+    }
+}
+
 - (void)turnOffNode:(NSNotification *)sender {
     NSDictionary *userInfo = sender.userInfo;
     if (![userInfo objectForKey:@"path"]) {
