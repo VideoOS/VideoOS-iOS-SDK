@@ -123,7 +123,7 @@
     NSData *filedata = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:self.tempVideoPath] options:NSDataReadingMappedIfSafe error:nil];
     
     // This is the total data we have from startOffset to whatever has been downloaded so far
-    NSUInteger unreadBytes = self.task.cacheLength - ((NSInteger)startOffset - self.task.offset);
+    NSUInteger unreadBytes = filedata.length - ((NSInteger)startOffset - self.task.offset);
     
     // Respond with whatever is available if we can't satisfy the request fully yet
     NSUInteger numberOfBytesToRespondWith = MIN((NSUInteger)dataRequest.requestedLength, unreadBytes);
