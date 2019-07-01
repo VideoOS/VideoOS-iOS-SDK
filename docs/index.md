@@ -152,8 +152,81 @@ VPInterfaceStatusNotifyDelegate ```- (void)vp_interfaceActionNotify```, 会回�
 
 #### 常见问题
 
-[VideoOS iOS SDK对接常见问题](https://os-lab.videojj.com/topic/70/ios-sdk对接常见问题)
+### 1、点位投放以后再页面中看不到投放的点位
+请检查`- (NSTimeInterval)videoPlayerCurrentTime`是否对接正确，注意当前播放时间, 单位为秒, 包括小数
+
+### 2、点位位置不正确
+请检查`- (VPIVideoPlayerSize *)videoPlayerSize`是否对接正确，如果该方法对接正确，请检查页面横竖屏切换时，是否更新了VPInterfaceController方向`- (void)notifyVideoScreenChanged:(VPIVideoPlayerOrientation)type`
+
+### 3、点击页面以后，没有打开链接
+VideoOS所有的链接打开都由对接平台打开，通过`- (void)vp_interfaceActionNotify:(NSDictionary *)actionDictionary`方法传递给对接平台，`VPIActionTypeOpenUrl`表示需要对接平台打开链接
+
+### 4、各种应用显示、点击、关闭是否有事件通知
+有，大部分的事件由`- (void)vp_interfaceActionNotify:(NSDictionary *)actionDictionary`方法传递给对接平台
+
+```objective-c
+/**
+ *  事件发送通知类型枚举
+ */
+typedef NS_ENUM(NSUInteger, VPIEventType) {
+    VPIEventTypePrepareShow = 1,       //
+    VPIEventTypeShow,                  // 显示
+    VPIEventTypeClick,                 // 点击
+    VPIEventTypeClose,                 // 关闭
+    VPIEventTypeBack,                  // 中插返回
+};
+
+/**
+ *  事件处理通知类型枚举
+ */
+typedef NS_ENUM(NSUInteger, VPIActionType) {
+    VPIActionTypeNone = 0,          //
+    VPIActionTypeOpenUrl,           // 打开外链
+    VPIActionTypePauseVideo,        // 暂停视频
+    VPIActionTypePlayVideo,         // 播放视频
+    VPIActionTypeGetItem,           // 获得物品
+};
+
+/**
+ *  事件监控通知
+ *  @param actionDictionary 参数字典
+ *  对应
+ *  Key:    adID
+ *  Value:  string
+ *
+ *  Key:    adName
+ *  Value:  string
+ *
+ *  Key:    eventType
+ *  Value:  VPIEventType
+ *
+ *  Key:    actionType
+ *  Value:  VPIActionType
+ *
+ *  Key:    actionString
+ *  Value:  string
+ *  注：VPIActionTypeOpenUrl对应Url，VPIActionTypeGetItem对应ItemId
+ */
+-  (void)vp_interfaceActionNotify:(NSDictionary *)actionDictionary;
+```
  
+#### 5、中插广告视频的返回按钮怎么处理
+中插广告视频的返回按钮，通过`VPIEventTypeBack`通知对接平台，请按照视频的控制器的返回按钮相同的方法处理
+
+#### 6、中插视频打开外链以后，关闭外链，怎么继续中插播放
+中插广告开始播放，会返回`VPIActionTypePauseVideo`事件，需要暂停视频；
+中插广告结束或被关闭，会返回`VPIActionTypePlayVideo`事件，需要重新播放视频；
+打开中插外链，会返回`VPIActionTypeOpenUrl`事件，此时中插广告是暂停的，打开的外外链关闭以后，需要调用`platformCloseActionWebView`，继续播放中插广告。
+
+#### 7、云图/卡牌/投票 竖屏到全屏，图片显示有问题
+
+`-(void)notifyVideoScreenChanged:(VPIVideoPlayerOrientation)type` 方法在切换屏幕前调用
+#### 8、在刘海屏 UI显示有问题
+  （1）要确保` _interfaceController = [[VPInterfaceController alloc] initWithFrame:self.view.bounds config:config videoPlayerSize:videoPlayerSize]; `中的 self.view 为全屏 
+  
+  （2）`VPIVideoPlayerSize` 要正确
+  
+  （3）适配刘海屏顶部的44像素
 ## 本地化部署配置（开源版本）
 
 ### host配置
