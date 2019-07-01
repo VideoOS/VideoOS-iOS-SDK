@@ -150,7 +150,7 @@ VPInterfaceStatusNotifyDelegate ```- (void)vp_interfaceActionNotify```, 会回�
 7. 存在bundle包时请将bundle包放入资源文件中,使SDK能正常调用。
 8. SDWebImage不兼容问题,可以在Pods的工程中VideoOS Target中添加宏VPUPSDWebImage=1解决
 
-#### 常见问题
+## 常见问题
 
 ### 1、点位投放以后再页面中看不到投放的点位
 请检查`- (NSTimeInterval)videoPlayerCurrentTime`是否对接正确，注意当前播放时间, 单位为秒, 包括小数
