@@ -30,7 +30,7 @@ local function createParent(isPortrait)
         luaView = ThroughView()
     end
     luaView:backgroundColor(0xFFFFFF)
-    local screenWidth, screenHeight = System.screenSize()
+    local screenWidth, screenHeight = Native:getVideoSize(2)
     if (isPortrait) then
         luaView:frame(0, 0, math.min(screenWidth, screenHeight), math.max(screenWidth, screenHeight))
     else
@@ -41,7 +41,7 @@ end
 
 local function createTopView(isPortrait)
     local topParentView = View()
-    local screenWidth, screenHeight = System.screenSize()
+    local screenWidth, screenHeight = Native:getVideoSize(2)
     if (isPortrait) then
         topParentView:frame(0, 0, math.min(screenWidth, screenHeight), 44 * scale)
     else
@@ -65,7 +65,7 @@ end
 
 local function createWebView(isPortrait)
     local webview = WebView()
-    local screenWidth, screenHeight = System.screenSize()
+    local screenWidth, screenHeight = Native:getVideoSize(2)
     if (isPortrait) then
         webview:frame(0, 44 * scale, math.min(screenWidth, screenHeight), math.max(screenWidth, screenHeight))
     else

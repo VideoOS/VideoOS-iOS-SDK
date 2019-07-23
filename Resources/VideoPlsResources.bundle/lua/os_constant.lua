@@ -27,3 +27,11 @@ osTypeLiveOS = 2
 --页面层次
 osHotspotViewPriority = 1
 osInfoViewPriority = 2
+
+--设备类型 1 iOS 2 Android
+deviceType = 2
+if System.ios() then
+	deviceType = 1
+end
+
+buId = "videoos"

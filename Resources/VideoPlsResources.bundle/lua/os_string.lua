@@ -11,6 +11,7 @@ OS_HTTP_GET_MOBILE_QUERY = OS_HTTP_HOST .. "/api/mobileQuery"
 OS_HTTP_POST_MOBILE_QUERY = OS_HTTP_HOST .. "/api/mobileModify"
 OS_HTTP_GET_COMMON_QUERY = OS_HTTP_HOST .. "/api/commonQuery"
 OS_HTTP_GET_SIMULATION_TAG = OS_HTTP_HOST .. "/simulation/queryInfo"
+OS_HTTP_POST_CHECK_HOTSPOT = OS_HTTP_HOST .. "/api/notice"
 
 --数据统计网络相关
 OS_HTTP_GET_STARTS = OS_HTTP_HOST .. "/statistic"

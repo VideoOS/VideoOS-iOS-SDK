@@ -6,7 +6,7 @@ function object:new(o)
     return o
 end
 function getScale()
-    local screenW, screenH = System.screenSize()
+    local screenW, screenH = Native:getVideoSize(2)
     return math.min(screenW, screenH) / 375
 end
 is_iPhoneX = false

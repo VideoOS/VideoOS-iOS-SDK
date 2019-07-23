@@ -23,13 +23,13 @@ require "os_util"
 require "os_constant"
 local repeatAdTable = {} --广告轮询集合
 local showAdTable = {} --正在展示的table
+local checkAdTable = {} --广告是否可以展示
 local lastProgress = 0
 local bubbleIdList = {}
 local targetObjId = nil
 local roomId = Native:nativeVideoID()
-local deviceType = 2
-local buId = "videoos"
-local adShowInterval = 2000
+local adShowInterval = 1000
+local adCheckInterval = 5000
 local preloadCount = 1
 mainNode = object:new()
 
@@ -104,6 +104,55 @@ local function closeAdView(adId, data)
     end
 end
 
+local function checkHotspotShow(data)
+
+    if (data == nil) then
+        return nil
+    end
+
+    local paramData = {
+        videoId = Native:nativeVideoID(),
+        id = data.id,
+        launchPlanId = data.launchPlanId,
+        createId = data.createId,
+        timestamp = data.videoStartTime,
+        commonParam = Native:commonParam()
+    }
+
+    local paramDataString = Native:tableToJson(paramData)
+    -- local OS_HTTP_POST_CHECK_HOTSPOT = OS_HTTP_HOST .. "/api/notice"
+
+    -- print("[LuaView] "..paramDataString)
+    -- print("[LuaView] "..OS_HTTP_POST_CHECK_HOTSPOT)
+    -- print("[LuaView] "..Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
+
+    mainNode.request:post(OS_HTTP_POST_CHECK_HOTSPOT, {
+        bu_id = buId,
+        device_type = deviceType,
+        data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
+    }, function(response, errorInfo)
+        -- print("luaview getVoteCountInfo")
+        if (response == nil) then
+            return
+        end
+        -- print("luaview getVoteCountInfo 11"..Native:tableToJson(response))
+        responseData = Native:aesDecrypt(response.encryptData, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
+        -- print("luaview " .. Native:tableToJson(data))
+        -- print("luaview " .. responseData)
+        response = toTable(responseData)
+        if (response.resCode ~= "00") then
+            return
+        end
+        
+        if (response.status == "00") then
+            if checkAdTable[data.id] ~= nil then
+                checkAdTable[data.id] = true
+            end
+        end
+        
+    end)
+end
+
 --轮询添加广告逻辑广告逻辑(注:)
 local function dispatchAd(dataTables, position)
     local currentPositionAdInfos = {}
@@ -117,7 +166,11 @@ local function dispatchAd(dataTables, position)
                 showAdTable[value.id] = value
                 currentPositionAdInfos[value.id] = value
                 table.insert(bubbleIdList, value.id)
-            elseif value.videoStartTime ~= nil and (tonumber(value.videoStartTime) <= position and (tonumber(value.videoStartTime) + adShowInterval) >= position and showAdTable[value.id] == nil) then
+            elseif value.videoStartTime ~= nil and ((tonumber(value.videoStartTime) - adCheckInterval) <= position and tonumber(value.videoStartTime) >= position and checkAdTable[value.id] == nil) then
+                checkAdTable[value.id] = false
+                checkHotspotShow(value)
+            elseif value.videoStartTime ~= nil and (tonumber(value.videoStartTime) <= position and (tonumber(value.videoStartTime) + adShowInterval) >= position and showAdTable[value.id] == nil) and checkAdTable[value.id] == true then
+                checkAdTable[value.id] = nil
                 showAdTable[value.id] = value
                 currentPositionAdInfos[value.id] = value
             elseif ((position >= tonumber(value.videoEndTime) or position <= tonumber(value.videoStartTime)) and showAdTable[value.id] ~= nil) then
@@ -163,6 +216,7 @@ local function registerMedia()
         onMediaProgress = function(progress)
             --视频被拖动时，删除所有已经显示的热点
             if lastProgress ~= nil and math.abs(lastProgress - progress) > 1500 then
+                checkAdTable = {}
                 for key, value in pairs(showAdTable) do
                     closeAdView(key, value)
                 end
@@ -422,9 +476,6 @@ function show(args)
     mainNode.media = registerMedia()
     mainNode.request = HttpRequest()
 
-    if System.ios() then
-        deviceType = 1
-    end
     --加载网络请求通用参数
     local paramData = {
         videoId = Native:nativeVideoID(),
