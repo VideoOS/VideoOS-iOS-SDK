@@ -11,6 +11,7 @@
 @interface VPTextField () <UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, weak) id<UITextFieldDelegate> vpDelegate;
+@property (nonatomic) UIView *holdView;
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
@@ -25,12 +26,12 @@
     return self.vpDelegate;
 }
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 - (instancetype)init {
     return [self initWithFrame:CGRectZero];
@@ -43,6 +44,12 @@
         _showCellCount = 3;
     }
     return self;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    super.delegate = self;
+    _showCellCount = 3;
 }
 
 #pragma mark UITextFieldDelegate
@@ -82,8 +89,7 @@
         [self.vpDelegate textFieldDidEndEditing:textField reason:reason];
     }
     if (self.tableView) {
-        [self.tableView removeFromSuperview];
-        self.tableView = nil;
+        [self hideTableView];
     }
 }
 
@@ -110,12 +116,25 @@
 
 - (void)createTableView {
     if (!self.tableView && self.superview) {
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y + self.frame.size.height, self.frame.size.width, self.frame.size.height * self.showCellCount) style:UITableViewStylePlain];
+        self.holdView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        self.holdView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideTableView)];
+        [tap setNumberOfTapsRequired:1];
+        [tap setNumberOfTouchesRequired:1];
+        [self.holdView addGestureRecognizer:tap];
+        
+        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+        CGPoint point = [self convertPoint:CGPointZero toView:keyWindow];
+        
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(point.x, point.y + self.frame.size.height, self.frame.size.width, self.frame.size.height * self.showCellCount) style:UITableViewStylePlain];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.layer.borderColor = [UIColor grayColor].CGColor;
         self.tableView.layer.borderWidth = 1;
-        [self.superview addSubview:self.tableView];
+        self.tableView.userInteractionEnabled = YES;
+        
+        [keyWindow addSubview:self.holdView];
+        [keyWindow addSubview:self.tableView];
     }
 }
 
@@ -148,14 +167,25 @@
     NSAttributedString *string = [[NSAttributedString alloc]initWithString:text attributes:@{NSFontAttributeName:self.font, NSParagraphStyleAttributeName:style}];
     
     CGSize size =  [string boundingRectWithSize:CGSizeMake(self.frame.size.width - 30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
-
+    
     return size.height + 20;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.text = [self.dataArray objectAtIndex:indexPath.row];
+    [self hideTableView];
+    
+    if (self.selectedDelegate && [self.selectedDelegate respondsToSelector:@selector(dataArraySelectedIndex:target:)]) {
+        [self.selectedDelegate dataArraySelectedIndex:indexPath.row target:self];
+    }
+}
+
+#pragma tap gesture
+- (void)hideTableView {
     [self.tableView removeFromSuperview];
     self.tableView = nil;
+    [self.holdView removeFromSuperview];
+    self.holdView = nil;
     [self resignFirstResponder];
 }
 

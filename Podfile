@@ -17,5 +17,7 @@ pod 'VideoOS', :path => '.'
 pod 'Bugly'
 pod 'UMengAnalytics-NO-IDFA'
 pod 'Masonry'
+pod 'MBProgressHUD'
+
 end
   

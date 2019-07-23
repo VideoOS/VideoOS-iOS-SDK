@@ -9,7 +9,9 @@
 #import "VPVideoAppSettingView.h"
 #import <Masonry/Masonry.h>
 #import "PrivateConfig.h"
-#import "VPTextField.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import "VPConfigListData.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface VPVideoAppSettingView ()<UIGestureRecognizerDelegate>
 
@@ -64,7 +66,7 @@
     [platformIdTitle setText:@"AppKey"];
     [panel addSubview:platformIdTitle];
     
-    UITextField *appKeyTextField = [[UITextField alloc] initWithFrame:CGRectMake(90, 20, 240, 40)];
+    VPTextField *appKeyTextField = [[VPTextField alloc] initWithFrame:CGRectMake(90, 20, 240, 40)];
     appKeyTextField.borderStyle = UITextBorderStyleRoundedRect;
     [panel addSubview:appKeyTextField];
     self.appKeyTextField = appKeyTextField;
@@ -74,7 +76,7 @@
     [urlTitle setText:@"AppSecret"];
     [panel addSubview:urlTitle];
     
-    UITextField *appSecretTextField = [[UITextField alloc] initWithFrame:CGRectMake(90, 140, 240, 40)];
+    VPTextField *appSecretTextField = [[VPTextField alloc] initWithFrame:CGRectMake(90, 140, 240, 40)];
     appSecretTextField.borderStyle = UITextBorderStyleRoundedRect;
     [panel addSubview:appSecretTextField];
     self.appSecretTextField = appSecretTextField;
@@ -169,6 +171,33 @@
 //    else {
 //        self.appSecretTextField.text = [[self.configData objectForKey:@"room_id"] objectAtIndex:0];
 //    }
+    
+    NSInteger index = [VPConfigListData shared].selectedIndex;
+    if (index >= 0) {
+        self.appKeyTextField.text = self.appKeyTextField.dataArray[index];
+        self.appSecretTextField.text = self.appSecretTextField.dataArray[index];
+    }
+    
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    if (pasteboard.string) {
+        NSArray *appInfo = [pasteboard.string componentsSeparatedByString:@" "];
+        if (appInfo && appInfo.count == 2) {
+            NSString *string1 = [appInfo objectAtIndex:0];
+            NSString *string2 = [appInfo objectAtIndex:1];
+            
+            if ((string1.length == 36 && string2.length == 12)) {
+                self.appKeyTextField.text = string1;
+                self.appSecretTextField.text = string2;
+                [self showCopyToast];
+            }
+            else if (string1.length == 12 && string2.length == 36) {
+                self.appKeyTextField.text = string2;
+                self.appSecretTextField.text = string1;
+                [self showCopyToast];
+            }
+        }
+    }
+    [self getMockAppData];
 }
 
 - (IBAction)cancelButtonDidClicked:(UIButton *)sender {
@@ -196,6 +225,87 @@
     [self.appKeyTextField resignFirstResponder];
     [self.appSecretTextField resignFirstResponder];
     return [super resignFirstResponder];
+}
+
+- (void)showCopyToast {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.label.text = @"已填入剪贴板中的密钥";
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideHUDForView:self animated:YES];
+    });
+}
+
+- (void)getMockAppData {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:@"http://mock.videojj.com/mock/5c8224a5380a47002f43f740/asmpapi/videoos_test_demo_appinfo" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([responseObject objectForKey:@"data"] && [[responseObject objectForKey:@"data"] isKindOfClass:[NSDictionary class]]) {
+            NSArray *apps = [[responseObject objectForKey:@"data"] objectForKey:@"apps"];
+            if (apps && [apps isKindOfClass:[NSArray class]]) {
+                for (NSDictionary *app in apps) {
+                    VPConfigData *config = [[VPConfigData alloc] init];
+                    config.appKey = [app objectForKey:@"appKey"];
+                    config.appSecret = [app objectForKey:@"appSecret"];
+                    [[VPConfigListData shared] addConfigData:config];
+                }
+                self.appKeyTextField.dataArray = [VPConfigListData shared].appKeyArray;
+                self.appSecretTextField.dataArray = [VPConfigListData shared].appSecretArray;
+                if (self.appKeyTextField.text.length < 1 &&  self.appSecretTextField.text.length < 1) {
+                    NSInteger index = [VPConfigListData shared].selectedIndex = 0;
+                    if (index >= 0) {
+                        self.appKeyTextField.text = self.appKeyTextField.dataArray[index];
+                        self.appSecretTextField.text = self.appSecretTextField.dataArray[index];
+                    }
+                }
+            }
+            [MBProgressHUD hideHUDForView:self animated:YES];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [MBProgressHUD hideHUDForView:self animated:YES];
+    }];
+}
+
+
+- (void)alertMessage:(NSString *)message {
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+//    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:nil];
+//    [alert addAction:action];
+//    
+//    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (IBAction)updateButtonTapped:(id)sender {
+    if (self.appKeyTextField.text == nil || [self.appKeyTextField.text isEqualToString:@""]) {
+        [self alertMessage:@"AppKey不能为空"];
+        return;
+    }
+    if (self.appSecretTextField.text == nil || [self.appSecretTextField.text isEqualToString:@""]) {
+        [self alertMessage:@"AppSecret不能为空"];
+        return;
+    }
+    
+    VPConfigData *config = [[VPConfigData alloc] init];
+    config.appKey = self.appKeyTextField.text;
+    config.appSecret = self.appSecretTextField.text;
+    
+    [[VPConfigListData shared] addConfigData:config];
+    
+    self.appKeyTextField.dataArray = [VPConfigListData shared].appKeyArray;
+    self.appSecretTextField.dataArray = [VPConfigListData shared].appSecretArray;
+//    [VPIConfigSDK setAppKey:config.appKey appSecret:config.appSecret];
+    
+}
+
+- (void)dataArraySelectedIndex:(NSInteger)index target:(id)target {
+    [VPConfigListData shared].selectedIndex = index;
+    if (target == self.appKeyTextField) {
+        self.appSecretTextField.text = self.appSecretTextField.dataArray[index];
+    } else {
+        self.appKeyTextField.text = self.appKeyTextField.dataArray[index];
+    }
 }
 
 @end

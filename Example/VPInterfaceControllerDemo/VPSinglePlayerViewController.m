@@ -23,6 +23,7 @@
 #import "VPLoginViewController.h"
 #import <VideoOS/VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
 #import "VPVideoAppSettingView.h"
+#import "VPConfigListData.h"
 
 @interface VPSinglePlayerViewController() <VPInterfaceStatusNotifyDelegate, VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
     NSString *_urlString;
@@ -380,6 +381,7 @@
         [PrivateConfig shareConfig].identifier = self.settingView.urlTextField.text;
         [PrivateConfig shareConfig].environment = self.settingView.environmentControl.selectedSegmentIndex;
         [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:[PrivateConfig shareConfig].environment];
+//        [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
         [self reloadVideoInfo];
     }
     [self.settingView.platformIdTextField resignFirstResponder];
@@ -424,6 +426,11 @@
         [self.appSettingView removeFromSuperview];
         self.appSettingView = nil;
         [self dismissPlayerViewController];
+        
+        VPConfigData *config = [[VPConfigData alloc] init];
+        config.appKey = self.appSettingView.appKeyTextField.text;
+        config.appSecret = self.appSettingView.appSecretTextField.text;
+        [[VPConfigListData shared] addConfigData:config];
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入正确格式的AppKey和AppSecret" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
@@ -495,6 +502,7 @@
 }
 
 - (void)initInterfaceController {
+//    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
     NSDate *datenow = [NSDate date];
     [VPIConfigSDK setIdentity:[NSString stringWithFormat:@"%f",[datenow timeIntervalSince1970]]];
     //videoIdentifier可传协商过唯一ID拼接,并非必须为url
@@ -553,6 +561,17 @@
         [_mediaControlView showControlView];
     }
 }
+
+- (void)openWebViewWithUrl:(NSString *)url {
+    VPWebViewController *webViewController = [[VPWebViewController alloc] init];
+    __weak typeof(self) weakSelf = self;
+    [webViewController loadUrl:url close:^{
+        __strong typeof(self) strongSelf = weakSelf;
+        [strongSelf->_interfaceController platformCloseActionWebView];
+    }];
+    [self presentViewController:webViewController animated:YES completion:nil];
+}
+    
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -716,18 +735,47 @@
     switch (actionType) {
         case VPIActionTypeOpenUrl:
             if ([actionDictionary objectForKey:@"actionString"]) {
-                VPWebViewController *webViewController = [[VPWebViewController alloc] init];
-                __weak typeof(self) weakSelf = self;
-                [webViewController loadUrl:[actionDictionary objectForKey:@"actionString"] close:^{
-                    __strong typeof(self) strongSelf = weakSelf;
-                    [strongSelf->_interfaceController platformCloseActionWebView];
-                }];
-                [self presentViewController:webViewController animated:YES completion:nil];
+                
+                NSString *linkUrl = [actionDictionary objectForKey:@"actionString"];
+                if ([linkUrl rangeOfString:@"http"].location == 0) {
+                    //纯url直接web打开处理
+                    [self openWebViewWithUrl:linkUrl];
+                } else {
+                    //非纯url,暂定使用 | 分割
+                    NSArray *stringArray = [linkUrl componentsSeparatedByString:@"|"];
+                    if ([stringArray count] == 2) {
+                        //第一个为功能
+                        NSString *function = [stringArray firstObject];
+                        //第二个为url
+                        NSString *url = [stringArray lastObject];
+                        
+                        if ([url rangeOfString:@"http"].location != 0) {
+                            //有什么错误
+                            // 暂时无法处理的url
+                            [self openWebViewWithUrl:linkUrl];
+                            break;
+                        }
+                        
+                        if ([function isEqualToString:@"cv"]) {
+                            // cv 切换视频
+                            [PrivateConfig shareConfig].identifier = url;
+                            [self reloadVideoInfo];
+                            
+                        } else {
+                            // 暂时无法处理的url
+                            [self openWebViewWithUrl:linkUrl];
+                        }
+                    } else {
+                        // 暂时无法处理的url
+                        [self openWebViewWithUrl:linkUrl];
+                    }
+                }
             }
             break;
         case VPIActionTypePauseVideo:
             [_player pause];
-            _mediaControlView.hidden = YES;
+//            _mediaControlView.hidden = YES;
+            [_mediaControlView hideControlView];
             break;
         case VPIActionTypePlayVideo:
             [_player play];

@@ -26,6 +26,10 @@
 		C42CDB951F33289F00DD42D0 /* PrivateConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C42CDB941F33289F00DD42D0 /* PrivateConfig.m */; };
 		C4BB02A51F8F426100CC195C /* VPMediaMoreButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BB02A41F8F426100CC195C /* VPMediaMoreButtonView.m */; };
 		C4BB02A71F8F427600CC195C /* VPMediaMoreButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4BB02A61F8F427600CC195C /* VPMediaMoreButtonView.xib */; };
+		D00D67AD22D42FD60003972F /* VPConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = D00D67A622D42FD60003972F /* VPConfigData.m */; };
+		D00D67AE22D42FD60003972F /* VPConfigListData.m in Sources */ = {isa = PBXBuildFile; fileRef = D00D67A922D42FD60003972F /* VPConfigListData.m */; };
+		D00D67AF22D42FD60003972F /* VPModel+DictionaryToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D00D67AA22D42FD60003972F /* VPModel+DictionaryToModel.m */; };
+		D00D67B022D42FD60003972F /* VPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D00D67AC22D42FD60003972F /* VPModel.m */; };
 		D0102BBF214F7A85003C11A0 /* adInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = D0102BBE214F7A85003C11A0 /* adInfo.json */; };
 		D022A0DC20C688C900F46029 /* VPLiveSelectStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0D820C688C900F46029 /* VPLiveSelectStatusViewController.m */; };
 		D022A0DD20C688C900F46029 /* VPLiveTypeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0DB20C688C900F46029 /* VPLiveTypeSelectViewController.m */; };
@@ -70,6 +74,14 @@
 		C4BB02A31F8F426100CC195C /* VPMediaMoreButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPMediaMoreButtonView.h; sourceTree = "<group>"; };
 		C4BB02A41F8F426100CC195C /* VPMediaMoreButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPMediaMoreButtonView.m; sourceTree = "<group>"; };
 		C4BB02A61F8F427600CC195C /* VPMediaMoreButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VPMediaMoreButtonView.xib; sourceTree = "<group>"; };
+		D00D67A522D42FD60003972F /* VPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPModel.h; sourceTree = "<group>"; };
+		D00D67A622D42FD60003972F /* VPConfigData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPConfigData.m; sourceTree = "<group>"; };
+		D00D67A722D42FD60003972F /* VPModel+DictionaryToModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VPModel+DictionaryToModel.h"; sourceTree = "<group>"; };
+		D00D67A822D42FD60003972F /* VPConfigListData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPConfigListData.h; sourceTree = "<group>"; };
+		D00D67A922D42FD60003972F /* VPConfigListData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPConfigListData.m; sourceTree = "<group>"; };
+		D00D67AA22D42FD60003972F /* VPModel+DictionaryToModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VPModel+DictionaryToModel.m"; sourceTree = "<group>"; };
+		D00D67AB22D42FD60003972F /* VPConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPConfigData.h; sourceTree = "<group>"; };
+		D00D67AC22D42FD60003972F /* VPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPModel.m; sourceTree = "<group>"; };
 		D0102BBE214F7A85003C11A0 /* adInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = adInfo.json; sourceTree = "<group>"; };
 		D022A0D820C688C900F46029 /* VPLiveSelectStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLiveSelectStatusViewController.m; sourceTree = "<group>"; };
 		D022A0D920C688C900F46029 /* VPLiveSelectStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLiveSelectStatusViewController.h; sourceTree = "<group>"; };
@@ -147,6 +159,7 @@
 		069D54371F04DC6D001E5324 /* VPInterfaceControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D00D67A422D42FD60003972F /* Model */,
 				D0C76AC42283C93C00C4791F /* VPVideoAppSettingView.h */,
 				D0C76AC32283C93C00C4791F /* VPVideoAppSettingView.m */,
 				D0DA384421A7E2F20014A855 /* VPLoginViewController.h */,
@@ -200,6 +213,21 @@
 				F5D5F0ACF62048D7E569DF7F /* Pods-VPInterfaceControllerDemo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D00D67A422D42FD60003972F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D00D67A522D42FD60003972F /* VPModel.h */,
+				D00D67A622D42FD60003972F /* VPConfigData.m */,
+				D00D67A722D42FD60003972F /* VPModel+DictionaryToModel.h */,
+				D00D67A822D42FD60003972F /* VPConfigListData.h */,
+				D00D67A922D42FD60003972F /* VPConfigListData.m */,
+				D00D67AA22D42FD60003972F /* VPModel+DictionaryToModel.m */,
+				D00D67AB22D42FD60003972F /* VPConfigData.h */,
+				D00D67AC22D42FD60003972F /* VPModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D078CD76214A04BD008946CC /* Resources */ = {
@@ -366,9 +394,11 @@
 				068965351F14EDA60054736C /* VPAVPlayerController.m in Sources */,
 				069D54401F04DC6D001E5324 /* ViewController.m in Sources */,
 				D078CD7B214A054D008946CC /* VPWebViewController.m in Sources */,
+				D00D67B022D42FD60003972F /* VPModel.m in Sources */,
 				C4BB02A51F8F426100CC195C /* VPMediaMoreButtonView.m in Sources */,
 				D0DA384621A7E2F20014A855 /* VPLoginViewController.m in Sources */,
 				D022A0DC20C688C900F46029 /* VPLiveSelectStatusViewController.m in Sources */,
+				D00D67AE22D42FD60003972F /* VPConfigListData.m in Sources */,
 				069D543D1F04DC6D001E5324 /* AppDelegate.m in Sources */,
 				D022A0E020C6932B00F46029 /* VPVideoSettingView.m in Sources */,
 				0689653C1F15F2BB0054736C /* VPMediaControlView.m in Sources */,
@@ -378,6 +408,8 @@
 				C42CDB951F33289F00DD42D0 /* PrivateConfig.m in Sources */,
 				069D543A1F04DC6D001E5324 /* main.m in Sources */,
 				068965411F1607180054736C /* VPSinglePlayerViewController.m in Sources */,
+				D00D67AF22D42FD60003972F /* VPModel+DictionaryToModel.m in Sources */,
+				D00D67AD22D42FD60003972F /* VPConfigData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
