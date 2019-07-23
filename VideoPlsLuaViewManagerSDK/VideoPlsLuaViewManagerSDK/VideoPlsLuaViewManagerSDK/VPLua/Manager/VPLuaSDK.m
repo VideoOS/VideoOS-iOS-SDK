@@ -93,6 +93,9 @@ NSString *const VPLuaScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas
         NSArray* array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleLuaPath error:nil];
         NSError *error = nil;
         for (NSString *file in array) {
+            [[NSFileManager defaultManager] removeItemAtPath:[[VPUPPathUtil luaOSPath] stringByAppendingPathComponent:file] error:nil];
+        }
+        for (NSString *file in array) {
             [[NSFileManager defaultManager] copyItemAtPath:[bundleLuaPath stringByAppendingPathComponent:file] toPath:[[VPUPPathUtil luaOSPath] stringByAppendingPathComponent:file] error:&error];
             if (error) {
                 break;
