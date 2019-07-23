@@ -72,7 +72,7 @@
         pathLayer.path = path.CGPath;
         pathLayer.fillColor = nil; // 默认为blackColor
         [self.pathLayer removeFromSuperlayer];
-        [self.layer addSublayer:pathLayer];
+        [self.layer insertSublayer:pathLayer atIndex:0];
         self.pathLayer = pathLayer;
     }
 }
@@ -135,7 +135,7 @@ static int gradient(lua_State *L) {
                 CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
                 gradientView.gradientLayer = gradientLayer;
                 gradientView.gradientLayer.frame = gradientView.bounds;
-                [gradientView.layer addSublayer:gradientView.gradientLayer];
+                [gradientView.layer insertSublayer:gradientView.gradientLayer atIndex:0];
             }
             
             UIColor* color1 = nil;
@@ -209,7 +209,7 @@ static int corner(lua_State *L) {
                 pathLayer.path = path.CGPath;
                 pathLayer.fillColor = nil; // 默认为blackColor
                 [gradientView.pathLayer removeFromSuperlayer];
-                [gradientView.layer addSublayer:pathLayer];
+                [gradientView.layer insertSublayer:pathLayer atIndex:0];
                 gradientView.pathLayer = pathLayer;
             }
         }
@@ -241,7 +241,7 @@ static int stroke(lua_State *L) {
             if (gradientView.pathLayer) {
                 [gradientView.pathLayer removeFromSuperlayer];
             }
-            [gradientView.layer addSublayer:pathLayer];
+            [gradientView.layer insertSublayer:pathLayer atIndex:0];
             gradientView.pathLayer = pathLayer;
         }
     }
