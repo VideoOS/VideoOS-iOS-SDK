@@ -296,6 +296,8 @@ static NSMutableDictionary* httpAPICache() {
         {"copyStringToPasteBoard", copyStringToPasteBoard},
         {"videoOShost", videoOShost},
         {"isCacheVideo", isCacheVideo},
+        {"currentVideoTime", currentVideoTime},
+        {"videoDuration", videoDuration},
         {NULL, NULL}
     };
     lv_createClassMetaTable(L,META_TABLE_NativeObject);
@@ -654,8 +656,6 @@ static int httpRequest(lua_State *L, VPUPRequestMethodType methodType) {
             return 0;
         }
         
-        url = [VPUPUrlUtil urlencode:url];
-        
         baseUrl = [[NSURL URLWithString:@"/" relativeToURL:[NSURL URLWithString:url]].absoluteString copy];
         requestMethod = [url stringByReplacingOccurrencesOfString:baseUrl withString:@""];
         
@@ -762,8 +762,6 @@ static int upload(lua_State *L) {
         if(lua_isstring(L, 3)) {
             filepath = lv_paramString(L, 3);
         }
-        
-        requestUrl = [VPUPUrlUtil urlencode:requestUrl];
         
         //重组function的key,保证不重复
         __block NSString *bRequestMethod = [[VPUPMD5Util md5_16bitHashString:[NSString stringWithFormat:@"%@%@", requestUrl, filepath]] stringByAppendingString:[VPUPRandomUtil randomStringByLength:3]];
@@ -1359,7 +1357,8 @@ static int isCacheVideo(lua_State *L) {
         if (lua_type(L, 2) == LUA_TSTRING) {
             NSString *urlString = lv_paramString(L, 2);
             
-            NSURL *url = [NSURL URLWithString:[VPUPUrlUtil urlencode:urlString]];
+//            NSURL *url = [NSURL URLWithString:[VPUPUrlUtil urlencode:urlString]];
+            NSURL *url = [NSURL URLWithString:urlString];
             
             if (url) {
                 NSString *fileName = [NSString stringWithFormat:@"%@.%@",[VPUPMD5Util md5HashString:url.absoluteString],[url pathExtension]];
@@ -1373,6 +1372,18 @@ static int isCacheVideo(lua_State *L) {
         }
     }
     lua_pushboolean(L, fileExists);
+    return 1;
+}
+
+static int currentVideoTime(lua_State *L) {
+    NSTimeInterval progress = [VPUPInterfaceDataServiceManager videoPlayerCurrentTime];
+    lua_pushnumber(L, progress);
+    return 1;
+}
+
+static int videoDuration(lua_State *L) {
+    NSTimeInterval progress = [VPUPInterfaceDataServiceManager videoPlayerCurrentItemAssetDuration];
+    lua_pushnumber(L, progress);
     return 1;
 }
 

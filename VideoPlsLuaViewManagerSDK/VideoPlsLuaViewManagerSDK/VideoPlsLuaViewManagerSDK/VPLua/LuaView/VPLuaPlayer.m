@@ -115,7 +115,8 @@ static int source (lua_State *L) {
             NSString *url = lv_paramString(L, 2);// 2
             if( [player isKindOfClass:[VPLuaPlayer class]] ){
                 VPUPVideo *video = [[VPUPVideo alloc] init];
-                video.url = [NSURL URLWithString:[VPUPUrlUtil urlencode:url]];
+//                video.url = [NSURL URLWithString:[VPUPUrlUtil urlencode:url]];
+                video.url = [NSURL URLWithString:url];
                 player.videoArray = @[video];
                 return 0;
             }
@@ -141,7 +142,8 @@ static int videoPlay (lua_State *L) {
                 NSString *url = lv_paramString(L, 2);// 2
                 if( [player isKindOfClass:[VPLuaPlayer class]] ){
                     VPUPVideo *video = [[VPUPVideo alloc] init];
-                    video.url = [NSURL URLWithString:[VPUPUrlUtil urlencode:url]];
+//                    video.url = [NSURL URLWithString:[VPUPUrlUtil urlencode:url]];
+                    video.url = [NSURL URLWithString:url];
                     player.videoArray = @[video];
                 }
             }

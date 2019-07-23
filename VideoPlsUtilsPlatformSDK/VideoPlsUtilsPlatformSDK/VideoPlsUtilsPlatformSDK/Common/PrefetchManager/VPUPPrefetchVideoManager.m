@@ -30,13 +30,13 @@
     NSMutableArray *fileNames = [NSMutableArray arrayWithCapacity:0];
     NSMutableArray *encodeUrls = [NSMutableArray arrayWithCapacity:0];
     for (NSString *urlString in urls) {
-        NSString *urlEncodeString = [VPUPUrlUtil urlencode:urlString];
-        NSURL *url = [NSURL URLWithString:urlEncodeString];
+//        NSString *urlEncodeString = [VPUPUrlUtil urlencode:urlString];
+        NSURL *url = [NSURL URLWithString:urlString];
         if (url) {
             NSString *fileName = [NSString stringWithFormat:@"%@.%@",[VPUPMD5Util md5HashString:url.absoluteString],[url pathExtension]];
             [fileNames addObject:fileName];
         }
-        [encodeUrls addObject:urlEncodeString];
+        [encodeUrls addObject:urlString];
     }
     
     NSString *destinationPath = [VPUPPathUtil pathByPlaceholder:@"videoAds"];
