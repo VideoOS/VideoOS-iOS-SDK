@@ -404,6 +404,9 @@ didCompleteWithError:(NSError *)error {
     self.isSaveStepCancel = isSaveData;
     __weak __typeof(self) weakSelf = self;
     [self.downloadTask cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
+        if (!weakSelf) {
+            return;
+        }
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         NSURL *localUrl = [strongSelf incompleteDownloadTempPathForDownloadPath:strongSelf.downloadUrl];
         [resumeData writeToURL:localUrl atomically:YES];

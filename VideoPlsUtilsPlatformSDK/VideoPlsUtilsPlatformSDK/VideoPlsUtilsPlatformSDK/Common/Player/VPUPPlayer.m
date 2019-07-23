@@ -75,9 +75,13 @@
     @try {
         __weak typeof(self) weakSelf = self;
         [_player seekToTime:self.currentTime toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero completionHandler:^(BOOL finished) {
+            if (!weakSelf) {
+                return;
+            }
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
             if (finished) {
-                [weakSelf.player play];
-                self.status = VPUPPlayerStatusPlaying;
+                [strongSelf.player play];
+                strongSelf.status = VPUPPlayerStatusPlaying;
             }
         }];
     } @catch (NSException *exception) {
@@ -179,21 +183,27 @@
     [_player.currentItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
     _timeObserver = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 3) queue:NULL usingBlock:^(CMTime time) {
         
-        CMTime current = weakSelf.player.currentItem.currentTime;
-        CMTime duration = weakSelf.player.currentItem.duration;
+        if (!weakSelf) {
+            return;
+        }
+        
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        CMTime current = strongSelf.player.currentItem.currentTime;
+        CMTime duration = strongSelf.player.currentItem.duration;
        
-        if ([weakSelf.playerDelegate respondsToSelector:@selector(player:playedTime:totalTime:)]) {
-            [weakSelf.playerDelegate player:weakSelf playedTime:((double)current.value/current.timescale) totalTime:((double)duration.value/duration.timescale)];
+        if ([strongSelf.playerDelegate respondsToSelector:@selector(player:playedTime:totalTime:)]) {
+            [strongSelf.playerDelegate player:strongSelf playedTime:((double)current.value/current.timescale) totalTime:((double)duration.value/duration.timescale)];
         }
         
         double margin = ((double)duration.value/duration.timescale) - ((double)current.value/current.timescale);
         
-        if (weakSelf.video.ex > 0 && weakSelf.video.ex < ((double)current.value/current.timescale)) {
-            [weakSelf playbackFinished];
+        if (strongSelf.video.ex > 0 && strongSelf.video.ex < ((double)current.value/current.timescale)) {
+            [strongSelf playbackFinished];
         }
         
         if (margin <= 0.5 && margin > 0) {
-            [weakSelf playbackFinished];
+            [strongSelf playbackFinished];
         }
 
         

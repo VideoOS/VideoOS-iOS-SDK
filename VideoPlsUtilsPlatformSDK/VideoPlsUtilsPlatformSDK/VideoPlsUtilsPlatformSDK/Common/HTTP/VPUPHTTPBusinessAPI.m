@@ -27,7 +27,7 @@
         NSString *udid = [[VPUPGeneralInfo IDFA] copy];
         if(VPUP_IsStringTrimExist(udid)) {
             [headerField setObject:udid
-                            forKey:@"udid"];
+                            forKey:@"IDFA"];
         }
         
         NSString *userIdentity = [[VPUPGeneralInfo userIdentity] copy];

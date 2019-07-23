@@ -570,13 +570,17 @@
     __weak typeof(self) weakSelf = self;
     [[VPUPRoutes routesForScheme:VPUPRoutesSDKLuaView] addRoute:@"/defaultLuaView" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
         
+        if (weakSelf) {
+            return NO;
+        }
+        __strong typeof(self) strongSelf = weakSelf;
         //判定osView是否存在，若不存在，先创建
-        if (!weakSelf.osView) {
-            [weakSelf initOSViewWithFrame:weakSelf.view.bounds];
+        if (!strongSelf.osView) {
+            [strongSelf initOSViewWithFrame:strongSelf.view.bounds];
             //TODO MQTT,如果_liveView不存在情况怎么处理
             
-            if(!weakSelf.canSet) {
-                [weakSelf.osView startLoading];
+            if(!strongSelf.canSet) {
+                [strongSelf.osView startLoading];
             }
         }
         
@@ -590,7 +594,7 @@
         if (!luaFile) {
             luaFile = [data objectForKey:@"template"];
         }
-        [weakSelf.osView loadLua:luaFile data:parameters];
+        [strongSelf.osView loadLua:luaFile data:parameters];
         return YES;
     }];
 }

@@ -124,6 +124,9 @@ static dispatch_queue_t mqtt_manager_queue() {
 - (void)addTopic:(NSString *)topic qos:(VPUPMQTTQoSLevel)qos observer:(id<VPUPMQTTObserverProtocol>)observer {
     __weak typeof(self) weakSelf = self;
     dispatch_async(mqtt_manager_queue(), ^{
+        if (!weakSelf) {
+            return;
+        }
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (!strongSelf || !observer) {
             return;
@@ -170,6 +173,9 @@ static dispatch_queue_t mqtt_manager_queue() {
 - (void)attachWithObserver:(id<VPUPMQTTObserverProtocol>)observer {
     __weak typeof(self) weakSelf = self;
     dispatch_async(mqtt_manager_queue(), ^{
+        if (!weakSelf) {
+            return;
+        }
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if(!strongSelf.canConnect) {
             return;
@@ -192,10 +198,10 @@ static dispatch_queue_t mqtt_manager_queue() {
 - (void)detachWithObserver:(id<VPUPMQTTObserverProtocol>)observer {
     __weak typeof(self) weakSelf = self;
     dispatch_async(mqtt_manager_queue(), ^{
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        if (!strongSelf) {
+        if (!weakSelf) {
             return;
         }
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         
         [strongSelf.topicObservers.allKeys enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSMutableArray *observers = [strongSelf.topicObservers objectForKey:obj];
@@ -287,6 +293,9 @@ static dispatch_queue_t mqtt_manager_queue() {
     __weak typeof(self) weakSelf = self;
     dispatch_barrier_async(self.mqttQueue, ^{
         
+        if (!weakSelf) {
+            return;
+        }
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         VPUPMQTTConfig *useConfig = config;
@@ -353,6 +362,9 @@ static dispatch_queue_t mqtt_manager_queue() {
     __weak typeof(self) weakSelf = self;
     [self.session subscribeToTopic:topic atLevel:MQTTQosLevelAtMostOnce subscribeHandler:^(NSError *error, NSArray<NSNumber *> *gQoss) {
         dispatch_async(mqtt_manager_queue(), ^{
+            if (!weakSelf) {
+                return;
+            }
             __strong typeof(weakSelf) strongSelf = weakSelf;
             NSArray *observers = [strongSelf.topicObservers objectForKey:topic];
             if([observers count] == 0) {
@@ -425,6 +437,9 @@ static dispatch_queue_t mqtt_manager_queue() {
     
     __weak typeof(self) weakSelf = self;
     dispatch_async(mqtt_manager_queue(), ^{
+        if (!weakSelf) {
+            return;
+        }
         __strong typeof(weakSelf) strongSelf = weakSelf;
         NSArray *observers = [strongSelf.topicObservers objectForKey:topic];
         

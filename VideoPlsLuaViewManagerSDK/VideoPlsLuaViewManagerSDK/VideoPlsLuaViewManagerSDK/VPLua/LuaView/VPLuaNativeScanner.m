@@ -36,6 +36,9 @@
     __weak typeof(self) weakSelf = self;
     
     imagePicker.imagePickerControllerDidCancelHandle = ^(void) {
+        if (!weakSelf) {
+            return;
+        }
         lua_State* l = self.luaNode.lvCore.l;
         if( l ){
             lua_checkstack32(l);
@@ -45,6 +48,9 @@
     };
     
     imagePicker.didFinishPickingPhotosWithFilePathHandle = ^(NSString *filePath) {
+        if (!weakSelf) {
+            return;
+        }
         lua_State* l = self.luaNode.lvCore.l;
         if( l ){
             lua_checkstack32(l);

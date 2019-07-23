@@ -26,6 +26,7 @@ static NSMutableDictionary *_commonParam;
         [_commonParam setObject:[VPUPGeneralInfo platformSDKVersion] forKey:@"SDK_VERSION"];
         [_commonParam setObject:[VPUPGeneralInfo appDeviceSystemVersion] forKey:@"OS_VERSION"];
         [_commonParam setObject:[VPUPGeneralInfo userIdentity] forKey:@"UD_ID"];
+        [_commonParam setObject:[VPUPGeneralInfo IDFA] forKey:@"IDFA"];
         [_commonParam setObject:[VPUPGeneralInfo appDeviceLanguage] forKey:@"LANGUAGE"];
         [_commonParam setObject:[VPUPGeneralInfo iPhoneDeviceType] forKey:@"PHONE_MODEL"];
         [_commonParam setObject:[VPUPDeviceUtil phoneCarrier] forKey:@"PHONE_PROVIDER"];

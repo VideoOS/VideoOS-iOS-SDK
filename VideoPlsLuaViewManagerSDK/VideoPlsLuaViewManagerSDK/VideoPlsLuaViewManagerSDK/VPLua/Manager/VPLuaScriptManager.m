@@ -8,7 +8,7 @@
 
 #import "VPLuaScriptManager.h"
 #import "VPUPResumeDownloader.h"
-#import "VPUPHTTPGeneralAPI.h"
+#import "VPUPHTTPBusinessAPI.h"
 #import "VPUPHTTPAPIManager.h"
 #import "VPUPJsonUtil.h"
 #import <VPLuaViewSDK/LVZipArchive.h>
@@ -63,29 +63,30 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
 
 - (void)getLuaVersionInfoWithVersionUrl:(NSString *)url {
     __weak typeof(self) weakSelf = self;
-    VPUPHTTPGeneralAPI *api = [[VPUPHTTPGeneralAPI alloc] init];
-    if ([VPLuaSDK sharedSDK].appKey && [VPLuaSDK sharedSDK].appKey.length > 0) {
-        NSMutableDictionary *headers = [NSMutableDictionary dictionaryWithCapacity:0];
-        [headers addEntriesFromDictionary:api.apiRequestHTTPHeaderField];
-        [headers setObject:[VPLuaSDK sharedSDK].appKey forKey:@"appKey"];
-        api.apiRequestHTTPHeaderField = headers;
-    }
+    VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
     api.baseUrl = url;
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
     NSString *commonParamString = VPUP_DictionaryToJson(@{@"commonParam":[VPLuaCommonInfo commonParam]});
     api.requestParameters = @{@"data":[VPUPAESUtil aesEncryptString:commonParamString key:[VPLuaSDK sharedSDK].appSecret initVector:[VPLuaSDK sharedSDK].appSecret]};
     api.apiCompletionHandler = ^(id  _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
         
-        if (error || !responseObject || ![responseObject objectForKey:@"encryptData"]) {
-            [weakSelf error:error type:VPLuaScriptManagerErrorTypeGetVersion];
+        if (!weakSelf) {
             return;
         }
+        
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        if (error || !responseObject || ![responseObject objectForKey:@"encryptData"]) {
+            [strongSelf error:error type:VPLuaScriptManagerErrorTypeGetVersion];
+            return;
+        }
+        
         NSString *dataString = [VPUPAESUtil aesDecryptString:[responseObject objectForKey:@"encryptData"] key:[VPLuaSDK sharedSDK].appSecret initVector:[VPLuaSDK sharedSDK].appSecret];
-        weakSelf.versionData = dataString;
+        strongSelf.versionData = dataString;
         NSDictionary *data = VPUP_JsonToDictionary(dataString);
         
         NSString *version = [data objectForKey:@"version"];
-        NSString *versionFileString = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:weakSelf.versionFilePath] encoding:NSUTF8StringEncoding error:nil];
+        NSString *versionFileString = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:strongSelf.versionFilePath] encoding:NSUTF8StringEncoding error:nil];
         NSDictionary *versionFile = VPUP_JsonToDictionary(versionFileString);
         NSString *localVersion = [versionFile objectForKey:@"version"];
         
@@ -93,17 +94,17 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
             
             NSString *url = [data objectForKey:@"downloadUrl"];
             if (!url || [url isEqual:[NSNull null]]) {
-                [weakSelf error:error type:VPLuaScriptManagerErrorTypeDownloadFile];
+                [strongSelf error:error type:VPLuaScriptManagerErrorTypeDownloadFile];
                 return;
             }
             
             //下载并删除之前下载的所有文件
             //[weakSelf removeAllFileAtLuaPath];
-            [weakSelf downloadWithFileUrl:data];
+            [strongSelf downloadWithFileUrl:data];
             return;
         }
         // 无需下载，本地已经是最新版本
-        [weakSelf downloadSuccess:YES];
+        [strongSelf downloadSuccess:YES];
     };
     [_apiManager sendAPIRequest:api];
 }
@@ -195,7 +196,7 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
                            }
                            else {
                                count = 0;
-                               [self checkDownLoadFiles:filesList];
+                               [weakSelf checkDownLoadFiles:filesList];
                            }
                        }];
     count ++;
