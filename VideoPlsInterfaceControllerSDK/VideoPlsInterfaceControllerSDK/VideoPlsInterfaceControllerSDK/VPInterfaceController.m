@@ -570,7 +570,7 @@
     __weak typeof(self) weakSelf = self;
     [[VPUPRoutes routesForScheme:VPUPRoutesSDKLuaView] addRoute:@"/defaultLuaView" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
         
-        if (weakSelf) {
+        if (!weakSelf) {
             return NO;
         }
         __strong typeof(self) strongSelf = weakSelf;
