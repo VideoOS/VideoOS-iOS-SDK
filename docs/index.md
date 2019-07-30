@@ -1,4 +1,5 @@
 # VideoOS iOS SDK
+VideoOS iOS SDK 开源地址：[https://github.com/VideoOS/VideoOS-iOS-SDK](https://github.com/VideoOS/VideoOS-iOS-SDK)
 
 ## SDK集成
 有两种方式将VideoOS添加到你的工程：
