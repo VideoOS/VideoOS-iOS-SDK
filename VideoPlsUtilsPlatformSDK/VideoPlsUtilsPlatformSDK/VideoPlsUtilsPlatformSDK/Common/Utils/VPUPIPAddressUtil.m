@@ -53,7 +53,7 @@
     dispatch_once(&onceToken, ^{
         _sharedIPAddressUtil = [[self alloc] init];
         _sharedIPAddressUtil.currentReachabilityStatus = [VPUPNetworkReachabilityManager sharedManager].currentReachabilityStatus;
-        _sharedIPAddressUtil.ipAddress = [VPUPIPAddressUtil deviceWANIPAddress];
+//        _sharedIPAddressUtil.ipAddress = [VPUPIPAddressUtil deviceWANIPAddress];
     });
     return _sharedIPAddressUtil;
 }
@@ -98,15 +98,16 @@
 
 + (NSString *)currentIpAddress {
     
-    if ([VPUPIPAddressUtil sharedIPAddressUtil].currentReachabilityStatus != [VPUPNetworkReachabilityManager sharedManager].currentReachabilityStatus) {
-        [VPUPIPAddressUtil sharedIPAddressUtil].currentReachabilityStatus = [VPUPNetworkReachabilityManager sharedManager].currentReachabilityStatus;
-        [VPUPIPAddressUtil sharedIPAddressUtil].ipAddress = [VPUPIPAddressUtil deviceWANIPAddress];
-    }
+    return [self getIPAddress:YES];
     
-    if ([VPUPIPAddressUtil sharedIPAddressUtil].ipAddress.length < 1) {
-        [VPUPIPAddressUtil sharedIPAddressUtil].ipAddress = [VPUPIPAddressUtil deviceWANIPAddress];
-    }
-    return [VPUPIPAddressUtil sharedIPAddressUtil].ipAddress;
+//    if ([VPUPIPAddressUtil sharedIPAddressUtil].currentReachabilityStatus != [VPUPNetworkReachabilityManager sharedManager].currentReachabilityStatus) {
+//        [VPUPIPAddressUtil sharedIPAddressUtil].currentReachabilityStatus = [VPUPNetworkReachabilityManager sharedManager].currentReachabilityStatus;
+//        [VPUPIPAddressUtil sharedIPAddressUtil].ipAddress = [VPUPIPAddressUtil deviceWANIPAddress];
+//    }
+//
+//    if ([VPUPIPAddressUtil sharedIPAddressUtil].ipAddress.length < 1) {
+//        [VPUPIPAddressUtil sharedIPAddressUtil].ipAddress = [VPUPIPAddressUtil deviceWANIPAddress];
+//    }
 }
 
 + (NSString *)getIPAddress:(BOOL)preferIPv4 {
