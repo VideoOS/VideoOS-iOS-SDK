@@ -16,6 +16,7 @@
 #import "VPUPRSAUtil.h"
 #import "VPUPBase64Util.h"
 #import "VPLuaSDK.h"
+
 #import "VPUPAESUtil.h"
 #import "VPUPPathUtil.h"
 #import "VPUPMD5Util.h"
@@ -32,6 +33,7 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
 @property (nonatomic, copy) NSString *tempVersionFilePath;
 @property (nonatomic, weak) id<VPUPHTTPAPIManager>apiManager;
 @property (nonatomic, strong) VPUPPrefetchManager *prefetchManager;
+@property (nonatomic, strong) dispatch_queue_t luaScriptQueue;
 
 @end
 
@@ -48,6 +50,7 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
         _versionFilePath = [path stringByAppendingPathComponent:@"version.json"];
         _nativeVersion = nativeVersion;
         _apiManager = apiManager;
+        _luaScriptQueue = dispatch_queue_create("com.videopls.lua.scriptManager", DISPATCH_QUEUE_SERIAL);
         [self getLuaVersionInfoWithVersionUrl:url];
     }
     
@@ -119,7 +122,7 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
             [weakSelf error:error type:VPLuaScriptManagerErrorTypeDownloadFile];
             return;
         }
-//        [weakSelf unzipWithFilePath:filePath.relativePath data:data];
+        //        [weakSelf unzipWithFilePath:filePath.relativePath data:data];
         NSString *fileMD5 = [VPUPMD5Util md5File:[filePath path] size:0];
         if ([fileMD5 isEqualToString:[data objectForKey:@"fileMd5"]]) {
             [weakSelf checkFilesChange];
@@ -133,37 +136,40 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
 }
 
 - (void)checkFilesChange {
-    NSString *localFilesPath = [self.luaPath stringByAppendingPathComponent:@"manifest.json"];
-    NSString *localFilesString = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:localFilesPath] encoding:NSUTF8StringEncoding error:nil];
-//    NSDictionary *localFiles = VPUP_JsonToDictionary(localFilesString);
-//    NSArray *localFilesList = [localFiles objectForKey:@"data"];
-    NSArray *localFilesList = (NSArray *)VPUP_JsonToDictionary(localFilesString);
-    
-    NSString *downloadFilesPath = [self.tempVersionFilePath stringByAppendingPathComponent:@"manifest.json"];
-    NSString *downloadFilesString = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:downloadFilesPath] encoding:NSUTF8StringEncoding error:nil];
-    NSArray *downloadFilesList = (NSArray *)VPUP_JsonToDictionary(downloadFilesString);
-//    NSDictionary *downloadFiles = VPUP_JsonToDictionary(downloadFilesString);
-//    NSArray *downloadFilesList = [downloadFiles objectForKey:@"data"];
-    
-    NSMutableArray *needDownloadFilesList = [NSMutableArray arrayWithCapacity:0];
-    for (NSDictionary *downloadFile in downloadFilesList) {
-        BOOL needDownload = YES;
-        for (NSDictionary *localFile in localFilesList) {
-            if ([[downloadFile objectForKey:@"name"] isEqualToString:[localFile objectForKey:@"name"]] && [[downloadFile objectForKey:@"md5"] isEqualToString:[localFile objectForKey:@"md5"]]) {
-                needDownload = NO;
-                break;
+    dispatch_async(_luaScriptQueue, ^{
+        
+        NSString *localFilesPath = [self.luaPath stringByAppendingPathComponent:@"manifest.json"];
+        NSString *localFilesString = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:localFilesPath] encoding:NSUTF8StringEncoding error:nil];
+        //    NSDictionary *localFiles = VPUP_JsonToDictionary(localFilesString);
+        //    NSArray *localFilesList = [localFiles objectForKey:@"data"];
+        NSArray *localFilesList = (NSArray *)VPUP_JsonToDictionary(localFilesString);
+        
+        NSString *downloadFilesPath = [self.tempVersionFilePath stringByAppendingPathComponent:@"manifest.json"];
+        NSString *downloadFilesString = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:downloadFilesPath] encoding:NSUTF8StringEncoding error:nil];
+        NSArray *downloadFilesList = (NSArray *)VPUP_JsonToDictionary(downloadFilesString);
+        //    NSDictionary *downloadFiles = VPUP_JsonToDictionary(downloadFilesString);
+        //    NSArray *downloadFilesList = [downloadFiles objectForKey:@"data"];
+        
+        NSMutableArray *needDownloadFilesList = [NSMutableArray arrayWithCapacity:0];
+        for (NSDictionary *downloadFile in downloadFilesList) {
+            BOOL needDownload = YES;
+            for (NSDictionary *localFile in localFilesList) {
+                if ([[downloadFile objectForKey:@"name"] isEqualToString:[localFile objectForKey:@"name"]] && [[downloadFile objectForKey:@"md5"] isEqualToString:[localFile objectForKey:@"md5"]]) {
+                    needDownload = NO;
+                    break;
+                }
+            }
+            if (needDownload) {
+                [needDownloadFilesList addObject:downloadFile];
             }
         }
-        if (needDownload) {
-            [needDownloadFilesList addObject:downloadFile];
+        if (needDownloadFilesList.count > 0) {
+            [self downloadFilesList:needDownloadFilesList];
         }
-    }
-    if (needDownloadFilesList.count > 0) {
-        [self downloadFilesList:needDownloadFilesList];
-    }
-    else {
-        [self downloadSuccess:YES];
-    }
+        else {
+            [self downloadSuccess:YES];
+        }
+    });
 }
 
 - (void)downloadFilesList:(NSArray *)filesList {
@@ -203,38 +209,40 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
 }
 
 - (void)checkDownLoadFiles:(NSArray *)filesList {
-    if (!filesList || filesList.count == 0) {
-        [self downloadSuccess:YES];
-        return;
-    }
-    
-    NSError *error = nil;
-    for (NSDictionary *file in filesList) {
-        NSString *filePath = [self.tempVersionFilePath stringByAppendingPathComponent:[file objectForKey:@"name"]];
-        NSString *fileMD5 = [VPUPMD5Util md5File:filePath size:0];
-        if (![fileMD5 isEqualToString:[file objectForKey:@"md5"]]) {
-            error = [NSError errorWithDomain:VPLuaScriptManagerErrorDomain code:-3003 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"filePath:%@, file:%@, download file md5 error", filePath, file]}];
-            [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
-        }
-    }
-    
-    if (error) {
-        [self error:error type:VPLuaScriptManagerErrorTypFileMD5];
-    }
-    else {
-        [self copyFileFromPath:self.tempVersionFilePath toPath:self.luaPath];
-        // 将版本写入文件，若失败删除
-        NSError *writeError = nil;
-        [self.versionData writeToFile:self.versionFilePath atomically:YES encoding:NSUTF8StringEncoding error:&writeError];
-        if (writeError) {
-            [self removeAllFileAtLuaPath];
-            [self error:writeError type:VPLuaScriptManagerErrorTypeWriteVersionFile];
+    dispatch_async(_luaScriptQueue, ^{
+        if (!filesList || filesList.count == 0) {
+            [self downloadSuccess:YES];
             return;
         }
-        // 最终完成
-        [self downloadSuccess:YES];
-        [[NSFileManager defaultManager] removeItemAtPath:self.tempVersionFilePath error:nil];
-    }
+        
+        NSError *error = nil;
+        for (NSDictionary *file in filesList) {
+            NSString *filePath = [self.tempVersionFilePath stringByAppendingPathComponent:[file objectForKey:@"name"]];
+            NSString *fileMD5 = [VPUPMD5Util md5File:filePath size:0];
+            if (![fileMD5 isEqualToString:[file objectForKey:@"md5"]]) {
+                error = [NSError errorWithDomain:VPLuaScriptManagerErrorDomain code:-3003 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"filePath:%@, file:%@, download file md5 error", filePath, file]}];
+                [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+            }
+        }
+        
+        if (error) {
+            [self error:error type:VPLuaScriptManagerErrorTypFileMD5];
+        }
+        else {
+            [self copyFileFromPath:self.tempVersionFilePath toPath:self.luaPath];
+            // 将版本写入文件，若失败删除
+            NSError *writeError = nil;
+            [self.versionData writeToFile:self.versionFilePath atomically:YES encoding:NSUTF8StringEncoding error:&writeError];
+            if (writeError) {
+                [self removeAllFileAtLuaPath];
+                [self error:writeError type:VPLuaScriptManagerErrorTypeWriteVersionFile];
+                return;
+            }
+            // 最终完成
+            [self downloadSuccess:YES];
+            [[NSFileManager defaultManager] removeItemAtPath:self.tempVersionFilePath error:nil];
+        }
+    });
 }
 
 - (void)unzipWithFilePath:(NSString *)path data:(NSDictionary *)data {
@@ -245,7 +253,7 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
         NSFileManager *fileManager = [[NSFileManager alloc] init];
         NSArray* array = [fileManager contentsOfDirectoryAtPath:luaZipFilesPath error:nil];
         for(int i = 0; i<[array count]; i++) {
-        
+            
             NSString *fullPath = [luaZipFilesPath stringByAppendingPathComponent:[array objectAtIndex:i]];
             if ([[fullPath lastPathComponent] containsString:@"zip"]) {
                 LVZipArchive *archive = [LVZipArchive archiveWithData:[NSData dataWithContentsOfFile:fullPath]];
