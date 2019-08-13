@@ -185,6 +185,7 @@
     if([_player isPlaying]) {
         [_player pause];
         [_playButton setImage:[UIImage imageNamed:@"button_video_play"] forState:UIControlStateNormal];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"VPIPlayButtonAction" object:nil userInfo:@{@"type":@(0)}];
     }
     else {
         if(_isComplete) {
@@ -192,6 +193,7 @@
         }
         [_player play];
         [_playButton setImage:[UIImage imageNamed:@"button_video_pause"] forState:UIControlStateNormal];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"VPIPlayButtonAction" object:nil userInfo:@{@"type":@(1)}];
     }
 }
 
@@ -297,7 +299,7 @@
         }
     }
     
-    [self playButtonTapped:nil];
+//    [self playButtonTapped:nil];
 }
 
 - (void)playerPlaybackDidFinish:(NSNotification *)notification {

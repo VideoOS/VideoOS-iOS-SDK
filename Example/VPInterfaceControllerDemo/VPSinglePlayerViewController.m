@@ -13,6 +13,7 @@
 #import <VideoOS/VideoPlsInterfaceControllerSDK/VPInterfaceController.h>
 #import <VideoOS/VideoPlsInterfaceControllerSDK/VPIUserInfo.h>
 #import <VideoOS/VideoPlsInterfaceControllerSDK/VPIUserLoginInterface.h>
+#import <VideoOS/VideoPlsUtilsPlatformSDK/VPUPTopViewController.h>
 #import "sys/utsname.h"
 
 #import <VideoOS/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
@@ -25,7 +26,7 @@
 #import "VPVideoAppSettingView.h"
 #import "VPConfigListData.h"
 
-@interface VPSinglePlayerViewController() <VPInterfaceStatusNotifyDelegate, VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate> {
+@interface VPSinglePlayerViewController() <VPInterfaceStatusNotifyDelegate, VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate,VPIServiceDelegate> {
     NSString *_urlString;
     NSString *_platformUserID;
     BOOL _isLive;
@@ -105,6 +106,8 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resignActive:) name:UIApplicationWillResignActiveNotification object:nil];
         //监听回到程序
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(becomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+        //监听控制器播放暂停
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playButtonAction:) name:@"VPIPlayButtonAction" object:nil];
         
         
         //在需要使用互动层页面开始时调用startVideoPls
@@ -161,7 +164,9 @@
     }
     
     [self registerDeviceOrientationNotification];
-
+    
+    [_player pause];
+    [self loadPreAdvertising];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -531,6 +536,7 @@
     _interfaceController.delegate = self;
     _interfaceController.userDelegate = self;
     _interfaceController.videoPlayerDelegate = self;
+    _interfaceController.serviceDelegate = self;
 
     [_interfaceController start];
 }
@@ -569,7 +575,7 @@
         __strong typeof(self) strongSelf = weakSelf;
         [strongSelf->_interfaceController platformCloseActionWebView];
     }];
-    [self presentViewController:webViewController animated:YES completion:nil];
+    [[VPUPTopViewController topViewController] presentViewController:webViewController animated:YES completion:nil];
 }
     
 
@@ -611,6 +617,8 @@
     //    MPMovieFinishReasonPlaybackEnded,
     //    MPMovieFinishReasonPlaybackError,
     //    MPMovieFinishReasonUserExited
+    [self loadPostAdvertising];
+    
     int reason = [[[notification userInfo] valueForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
     
     NSLog(@"finish reason:%d",reason);
@@ -770,6 +778,21 @@
                         [self openWebViewWithUrl:linkUrl];
                     }
                 }
+                if ([actionDictionary objectForKey:@"deepLink"] && [[actionDictionary objectForKey:@"deepLink"] length] > 0) {
+                    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:[actionDictionary objectForKey:@"deepLink"]]]) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[actionDictionary objectForKey:@"deepLink"]]];
+                    }
+                    else {
+                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"错误" message:@"DeepLink打开失败" preferredStyle:UIAlertControllerStyleAlert];
+                        __weak typeof(self) weakSelf = self;
+                        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                            __strong typeof(self) strongSelf = weakSelf;
+                            [strongSelf->_interfaceController platformCloseActionWebView];
+                        }];
+                        [alert addAction:action];
+                        [[VPUPTopViewController topViewController] presentViewController:alert animated:YES completion:nil];
+                    }
+                }
             }
             break;
         case VPIActionTypePauseVideo:
@@ -828,6 +851,53 @@
         videoPlayerSize.portraitSmallScreenOriginY = 44.0;
     }
     return videoPlayerSize;
+}
+
+- (void)playButtonAction:(NSNotification *)sender {
+    if (sender.userInfo) {
+        if ([sender.userInfo[@"type"] integerValue] == 0) {
+            VPIServiceConfig *config = [[VPIServiceConfig alloc] init];
+            config.identifier = _interfaceController.config.identifier;
+            config.type = VPIServiceTypePauseAd;
+            config.duration = VPIVideoAdTimeType60Seconds;
+            [_interfaceController startService:VPIServiceTypePauseAd config:config];
+        }
+        else {
+            [_interfaceController stopService:VPIServiceTypePauseAd];
+        }
+    }
+}
+
+- (void)loadPreAdvertising {
+    VPIServiceConfig *config = [[VPIServiceConfig alloc] init];
+    config.identifier = _interfaceController.config.identifier;
+    config.type = VPIServiceTypePreAdvertising;
+    config.duration = VPIVideoAdTimeType60Seconds;
+    [_interfaceController startService:VPIServiceTypePreAdvertising config:config];
+}
+
+- (void)loadPostAdvertising {
+    VPIServiceConfig *config = [[VPIServiceConfig alloc] init];
+    config.identifier = _interfaceController.config.identifier;
+    config.type = VPIServiceTypePostAdvertising;
+    config.duration = VPIVideoAdTimeType60Seconds;
+    [_interfaceController startService:VPIServiceTypePostAdvertising config:config];
+}
+
+- (void)vp_didCompleteForService:(VPIServiceType )type {
+    if (type == VPIServiceTypePostAdvertising || type == VPIServiceTypePreAdvertising) {
+        if (!_player.isPlaying) {
+            [_mediaControlView playButtonTapped:nil];
+        }
+    }
+}
+
+- (void)vp_didFailToCompleteForService:(VPIServiceType )type error:(NSError *)error {
+    if (type == VPIServiceTypePostAdvertising || type == VPIServiceTypePreAdvertising) {
+        if (!_player.isPlaying) {
+            [_mediaControlView playButtonTapped:nil];
+        }
+    }
 }
 
 /*

@@ -30,6 +30,12 @@
 		<string>weixin</string>
 		<string>alipay</string>
 		<string>alipays</string>
+		<string>dianping</string>
+		<string>taobao</string>
+		<string>zhihu</string>
+		<string>sinaweibo</string>
+		<string>jd</string>
+		<string>openApp.jdMobile</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

@@ -620,7 +620,7 @@ static const float kMaxHighWaterMarkMilli = 5 * 1000;
                 [[NSNotificationCenter defaultCenter] postNotificationName:VPAVPlayerIsPreparedToPlayNotification
                  object:self];
             
-                [self play];
+//                [self play];
                 
                 break;
             }
