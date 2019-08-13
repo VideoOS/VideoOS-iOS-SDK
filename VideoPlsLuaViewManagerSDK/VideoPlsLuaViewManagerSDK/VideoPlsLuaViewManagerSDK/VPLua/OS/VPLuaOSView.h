@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, VPLuaAdEventType) {
  */
 typedef NS_ENUM(NSUInteger, VPLuaAdActionType) {
     VPLuaAdActionTypeNone = 0,     //
-    VPLuaAdActionTypePlay,         // 播放Ad
+    VPLuaAdActionTypeResume,         // 播放Ad
     VPLuaAdActionTypePause,        // 暂停Ad
 };
 
@@ -54,6 +54,10 @@ typedef NS_ENUM(NSUInteger, VPLuaAdActionType) {
 - (void)loadLua:(NSString *)luaUrl data:(id)data;
 
 - (void)callLuaMethood:(NSString *)method data:(id)data;
+
+- (void)callLuaMethood:(NSString *)method nodeId:(NSString *)nodeId data:(id)data;
+
+- (void)removeViewWithNodeId:(NSString *)nodeId;
 
 - (void)stop;
 

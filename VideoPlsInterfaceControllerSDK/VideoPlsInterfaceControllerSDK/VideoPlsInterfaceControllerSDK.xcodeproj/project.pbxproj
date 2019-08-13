@@ -32,6 +32,10 @@
 		C402AE0B2007543100DF6603 /* VPInterfaceClickThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = C402AE082007543100DF6603 /* VPInterfaceClickThroughView.h */; };
 		C402AE0C2007543100DF6603 /* VPInterfaceClickThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = C402AE092007543100DF6603 /* VPInterfaceClickThroughView.m */; };
 		C402AE0D2007543100DF6603 /* VPInterfaceClickThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = C402AE092007543100DF6603 /* VPInterfaceClickThroughView.m */; };
+		D0171D5E22DDC0AF00368C83 /* VPIError.h in Headers */ = {isa = PBXBuildFile; fileRef = D0171D5C22DDC0AF00368C83 /* VPIError.h */; };
+		D0171D5F22DDC0AF00368C83 /* VPIError.h in Headers */ = {isa = PBXBuildFile; fileRef = D0171D5C22DDC0AF00368C83 /* VPIError.h */; };
+		D0171D6022DDC0AF00368C83 /* VPIError.m in Sources */ = {isa = PBXBuildFile; fileRef = D0171D5D22DDC0AF00368C83 /* VPIError.m */; };
+		D0171D6122DDC0AF00368C83 /* VPIError.m in Sources */ = {isa = PBXBuildFile; fileRef = D0171D5D22DDC0AF00368C83 /* VPIError.m */; };
 		D05DCC2D2008BB7A00E294F2 /* VPIPubWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = D05DCC282008BB7900E294F2 /* VPIPubWebView.h */; };
 		D05DCC2E2008BB7A00E294F2 /* VPIPubWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = D05DCC282008BB7900E294F2 /* VPIPubWebView.h */; };
 		D05DCC2F2008BB7A00E294F2 /* VPIUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D05DCC292008BB7900E294F2 /* VPIUserInfo.m */; };
@@ -50,6 +54,12 @@
 		D0928D12208F26BE008AB5EC /* VPIServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928D0F208F26BE008AB5EC /* VPIServiceManager.h */; };
 		D0928D13208F26BE008AB5EC /* VPIServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928D10208F26BE008AB5EC /* VPIServiceManager.m */; };
 		D0928D14208F26BE008AB5EC /* VPIServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928D10208F26BE008AB5EC /* VPIServiceManager.m */; };
+		D09C749522DC4ECC00C253C8 /* VPIServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D09C749422DC4ECB00C253C8 /* VPIServiceDelegate.h */; };
+		D09C749622DC4ECC00C253C8 /* VPIServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D09C749422DC4ECB00C253C8 /* VPIServiceDelegate.h */; };
+		D0ADC4AB22EDE8740037A549 /* VPIServiceConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D0ADC4A922EDE8740037A549 /* VPIServiceConfig.h */; };
+		D0ADC4AC22EDE8740037A549 /* VPIServiceConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D0ADC4A922EDE8740037A549 /* VPIServiceConfig.h */; };
+		D0ADC4AD22EDE8740037A549 /* VPIServiceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC4AA22EDE8740037A549 /* VPIServiceConfig.m */; };
+		D0ADC4AE22EDE8740037A549 /* VPIServiceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC4AA22EDE8740037A549 /* VPIServiceConfig.m */; };
 		D0C5D9331FD8D97D0084EA56 /* VPInterfaceControllerConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D0C5D9311FD8D97D0084EA56 /* VPInterfaceControllerConfig.h */; };
 		D0C5D9341FD8D97D0084EA56 /* VPInterfaceControllerConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D0C5D9311FD8D97D0084EA56 /* VPInterfaceControllerConfig.h */; };
 		D0C5D9351FD8D97D0084EA56 /* VPInterfaceControllerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C5D9321FD8D97D0084EA56 /* VPInterfaceControllerConfig.m */; };
@@ -73,6 +83,8 @@
 		06CDE2FF1EFF8A8D008BA1EC /* VPInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPInterfaceController.m; sourceTree = "<group>"; };
 		C402AE082007543100DF6603 /* VPInterfaceClickThroughView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPInterfaceClickThroughView.h; sourceTree = "<group>"; };
 		C402AE092007543100DF6603 /* VPInterfaceClickThroughView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPInterfaceClickThroughView.m; sourceTree = "<group>"; };
+		D0171D5C22DDC0AF00368C83 /* VPIError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPIError.h; sourceTree = "<group>"; };
+		D0171D5D22DDC0AF00368C83 /* VPIError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPIError.m; sourceTree = "<group>"; };
 		D05DCC282008BB7900E294F2 /* VPIPubWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPIPubWebView.h; sourceTree = "<group>"; };
 		D05DCC292008BB7900E294F2 /* VPIUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPIUserInfo.m; sourceTree = "<group>"; };
 		D05DCC2A2008BB7900E294F2 /* VPIUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPIUserInfo.h; sourceTree = "<group>"; };
@@ -82,6 +94,9 @@
 		D05DCC382008BF3500E294F2 /* VPIConfigSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPIConfigSDK.m; sourceTree = "<group>"; };
 		D0928D0F208F26BE008AB5EC /* VPIServiceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPIServiceManager.h; sourceTree = "<group>"; };
 		D0928D10208F26BE008AB5EC /* VPIServiceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPIServiceManager.m; sourceTree = "<group>"; };
+		D09C749422DC4ECB00C253C8 /* VPIServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPIServiceDelegate.h; sourceTree = "<group>"; };
+		D0ADC4A922EDE8740037A549 /* VPIServiceConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPIServiceConfig.h; sourceTree = "<group>"; };
+		D0ADC4AA22EDE8740037A549 /* VPIServiceConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPIServiceConfig.m; sourceTree = "<group>"; };
 		D0C5D9311FD8D97D0084EA56 /* VPInterfaceControllerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPInterfaceControllerConfig.h; sourceTree = "<group>"; };
 		D0C5D9321FD8D97D0084EA56 /* VPInterfaceControllerConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPInterfaceControllerConfig.m; sourceTree = "<group>"; };
 		D0DF8CF92058C2110086E61E /* VPIVideoPlayerSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPIVideoPlayerSize.h; sourceTree = "<group>"; };
@@ -138,6 +153,7 @@
 		069FAE461EFF890B0032FF53 /* VideoPlsInterfaceControllerSDK */ = {
 			isa = PBXGroup;
 			children = (
+				D09C749422DC4ECB00C253C8 /* VPIServiceDelegate.h */,
 				D0EE6436203EBCA7005D53C5 /* VPIVideoPlayerDelegate.h */,
 				D05DCC372008BF3400E294F2 /* VPIConfigSDK.h */,
 				D05DCC382008BF3500E294F2 /* VPIConfigSDK.m */,
@@ -158,6 +174,10 @@
 				D0DF8CFA2058C2110086E61E /* VPIVideoPlayerSize.m */,
 				D0928D0F208F26BE008AB5EC /* VPIServiceManager.h */,
 				D0928D10208F26BE008AB5EC /* VPIServiceManager.m */,
+				D0171D5C22DDC0AF00368C83 /* VPIError.h */,
+				D0171D5D22DDC0AF00368C83 /* VPIError.m */,
+				D0ADC4A922EDE8740037A549 /* VPIServiceConfig.h */,
+				D0ADC4AA22EDE8740037A549 /* VPIServiceConfig.m */,
 			);
 			path = VideoPlsInterfaceControllerSDK;
 			sourceTree = "<group>";
@@ -170,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D05DCC322008BB7A00E294F2 /* VPIUserInfo.h in Headers */,
+				D09C749622DC4ECC00C253C8 /* VPIServiceDelegate.h in Headers */,
 				D05DCC342008BB7A00E294F2 /* VPIUserLoginInterface.h in Headers */,
 				D0EE6438203EBCA7005D53C5 /* VPIVideoPlayerDelegate.h in Headers */,
 				D0928D12208F26BE008AB5EC /* VPIServiceManager.h in Headers */,
@@ -178,6 +199,8 @@
 				D05DCC3A2008BF3500E294F2 /* VPIConfigSDK.h in Headers */,
 				C402AE0B2007543100DF6603 /* VPInterfaceClickThroughView.h in Headers */,
 				06995B2C1F73800200D6007B /* VPInterfaceStatusNotifyDelegate.h in Headers */,
+				D0ADC4AC22EDE8740037A549 /* VPIServiceConfig.h in Headers */,
+				D0171D5F22DDC0AF00368C83 /* VPIError.h in Headers */,
 				D0C5D9341FD8D97D0084EA56 /* VPInterfaceControllerConfig.h in Headers */,
 				06995B2D1F73800200D6007B /* VPInterfaceController.h in Headers */,
 			);
@@ -188,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0EE6437203EBCA7005D53C5 /* VPIVideoPlayerDelegate.h in Headers */,
+				D09C749522DC4ECC00C253C8 /* VPIServiceDelegate.h in Headers */,
 				D05DCC2D2008BB7A00E294F2 /* VPIPubWebView.h in Headers */,
 				D05DCC312008BB7A00E294F2 /* VPIUserInfo.h in Headers */,
 				06CDE3001EFF8A8D008BA1EC /* VPInterfaceController.h in Headers */,
@@ -196,6 +220,8 @@
 				06B4D9EA1F0A23B700497726 /* VPInterfaceStatusNotifyDelegate.h in Headers */,
 				D0C5D9331FD8D97D0084EA56 /* VPInterfaceControllerConfig.h in Headers */,
 				D0DF8CFB2058C2110086E61E /* VPIVideoPlayerSize.h in Headers */,
+				D0ADC4AB22EDE8740037A549 /* VPIServiceConfig.h in Headers */,
+				D0171D5E22DDC0AF00368C83 /* VPIError.h in Headers */,
 				D05DCC392008BF3500E294F2 /* VPIConfigSDK.h in Headers */,
 				C402AE0A2007543100DF6603 /* VPInterfaceClickThroughView.h in Headers */,
 			);
@@ -271,6 +297,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 069FAE3A1EFF890B0032FF53;
@@ -324,12 +351,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C402AE0D2007543100DF6603 /* VPInterfaceClickThroughView.m in Sources */,
+				D0ADC4AE22EDE8740037A549 /* VPIServiceConfig.m in Sources */,
 				D05DCC302008BB7A00E294F2 /* VPIUserInfo.m in Sources */,
 				D0C5D9361FD8D97D0084EA56 /* VPInterfaceControllerConfig.m in Sources */,
 				06995B2F1F73800E00D6007B /* VPInterfaceController.m in Sources */,
 				D0DF8CFE2058C2110086E61E /* VPIVideoPlayerSize.m in Sources */,
 				D05DCC3C2008BF3500E294F2 /* VPIConfigSDK.m in Sources */,
 				D0928D14208F26BE008AB5EC /* VPIServiceManager.m in Sources */,
+				D0171D6122DDC0AF00368C83 /* VPIError.m in Sources */,
 				D05DCC362008BB7A00E294F2 /* VPIPubWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,12 +368,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D05DCC2F2008BB7A00E294F2 /* VPIUserInfo.m in Sources */,
+				D0ADC4AD22EDE8740037A549 /* VPIServiceConfig.m in Sources */,
 				D0DF8CFD2058C2110086E61E /* VPIVideoPlayerSize.m in Sources */,
 				06CDE3011EFF8A8D008BA1EC /* VPInterfaceController.m in Sources */,
 				D05DCC352008BB7A00E294F2 /* VPIPubWebView.m in Sources */,
 				D0C5D9351FD8D97D0084EA56 /* VPInterfaceControllerConfig.m in Sources */,
 				D0928D13208F26BE008AB5EC /* VPIServiceManager.m in Sources */,
 				C402AE0C2007543100DF6603 /* VPInterfaceClickThroughView.m in Sources */,
+				D0171D6022DDC0AF00368C83 /* VPIError.m in Sources */,
 				D05DCC3B2008BF3500E294F2 /* VPIConfigSDK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

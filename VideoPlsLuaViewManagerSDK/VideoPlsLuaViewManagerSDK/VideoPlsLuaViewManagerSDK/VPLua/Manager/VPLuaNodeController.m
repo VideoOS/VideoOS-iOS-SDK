@@ -326,6 +326,31 @@ const NSInteger VPLuaBaseNodeWedgePriority = 10;
     }
 }
 
+- (void)callLuaMethood:(NSString *)method nodeId:(NSString *)nodeId data:(id)data {
+    if (nodeId == nil) {
+        [self callLuaMethood:method data:data];
+    }
+    else {
+        for (VPLuaBaseNode *tempNode in _nodes) {
+            if ([tempNode.nodeId isEqualToString:nodeId]) {
+                [tempNode callMethod:method data:data];
+            }
+        }
+    }
+}
+
+- (void)removeNodeWithNodeId:(NSString *)nodeId {
+    VPLuaBaseNode *removeNode = nil;
+    for (VPLuaBaseNode *tempNode in _nodes) {
+        if ([tempNode.nodeId isEqualToString:nodeId]) {
+            removeNode = tempNode;
+        }
+    }
+    if (removeNode) {
+        [removeNode destroyView];
+    }
+}
+
 - (void)turnOffNode:(NSNotification *)sender {
     NSDictionary *userInfo = sender.userInfo;
     if (![userInfo objectForKey:@"path"]) {

@@ -38,6 +38,20 @@
     return [self pathByPlaceholder:@"com.hackemist.SDWebImageCache.videopls"];
 }
 
++ (NSString *)videoModePath {
+    return [self pathByPlaceholder:@"videoMode"];
+}
+
++ (NSString *)subPathOfVideoMode:(NSString *)placeholder {
+    NSString *path = [self videoModePath];
+    path = [path stringByAppendingPathComponent:placeholder];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return path;
+}
+
 + (NSString *)luaPath {
     return [self pathByPlaceholder:@"lua"];
 }

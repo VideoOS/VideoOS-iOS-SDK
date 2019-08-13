@@ -12,7 +12,7 @@
 #import "VPUPMQTTHeader.h"
 #import "VideoPlsUtilsPlatformSDK.h"
 #import "VPUPMessageTransferStation.h"
-#import "VPLuaServiceManager.h"
+#import "VPLuaCapacityManager.h"
 
 NSString *const VPLuaMQTTClientMessageNotification = @"VPLuaMQTTClientMessageNotification";
 
@@ -161,11 +161,11 @@ static int startMqtt(lua_State *L) {
                 }
                 
                 if (lua_type(L, 2) == LUA_TTABLE) {
-                    [[VPLuaServiceManager sharedManager].messageTransferStation attachWithObserver:luaMQTT];
+                    [[VPLuaCapacityManager sharedManager].messageTransferStation attachWithObserver:luaMQTT];
                     NSDictionary *topics = lv_luaValueToNativeObject(L, 2);
                     if([topics isKindOfClass:[NSDictionary class]]) {
                         [topics enumerateKeysAndObjectsUsingBlock:^(NSString *topic, NSNumber *qos, BOOL * _Nonnull stop) {
-                            [[VPLuaServiceManager sharedManager].messageTransferStation addTopic:topic observer:luaMQTT];
+                            [[VPLuaCapacityManager sharedManager].messageTransferStation addTopic:topic observer:luaMQTT];
                         }];
                     }
                 }
@@ -180,7 +180,7 @@ static int stopMqtt(lua_State *L) {
     if( user ) {
         VPLuaMQTT* luaMQTT = (__bridge VPLuaMQTT *)(user->object);
         if(luaMQTT) {
-            [[VPLuaServiceManager sharedManager].messageTransferStation detachWithObserver:luaMQTT];
+            [[VPLuaCapacityManager sharedManager].messageTransferStation detachWithObserver:luaMQTT];
         }
     }
     return 0;

@@ -69,6 +69,10 @@
 
 - (void)callLuaMethood:(NSString *)method data:(id)data;
 
+- (void)callLuaMethood:(NSString *)method nodeId:(NSString *)nodeId data:(id)data;
+
+- (void)removeNodeWithNodeId:(NSString *)nodeId;
+
 - (VPLuaBaseNode*)createNode;
 
 - (void)removeNode:(VPLuaBaseNode *)node;

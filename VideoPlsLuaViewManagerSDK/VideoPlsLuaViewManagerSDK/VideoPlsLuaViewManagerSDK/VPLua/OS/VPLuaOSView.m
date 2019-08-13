@@ -9,7 +9,7 @@
 #import "VPLuaOSView.h"
 #import "VideoPlsUtilsPlatformSDK.h"
 #import "VideoPlsLuaViewSDK.h"
-#import "VPLuaServiceManager.h"
+#import "VPLuaCapacityManager.h"
 #import "VPUPRSAUtil.h"
 #import "VPLuaSDK.h"
 #import "VPLuaPlayer.h"
@@ -52,7 +52,7 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
  {
     self = [super initWithFrame:frame];
     if (self) {
-        [VPLuaServiceManager startService];
+        [VPLuaCapacityManager startService];
         self.useUpdateVersion = YES;
         self.luaPath = [VPUPPathUtil luaOSPath];
         
@@ -171,9 +171,11 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
             versionUrl = [NSString stringWithFormat:versionUrl, @""];
         }
         
-        VPLuaScriptManager *manager = [[VPLuaScriptManager alloc] initWithLuaStorePath:self.luaPath apiManager:self.networkManager.httpManager versionUrl:versionUrl nativeVersion:@"1.0"];
-        self.luaScriptManager = manager;
-        manager.delegate = self;
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            VPLuaScriptManager *manager = [[VPLuaScriptManager alloc] initWithLuaStorePath:self.luaPath apiManager:self.networkManager.httpManager versionUrl:versionUrl nativeVersion:@"1.0"];
+            self.luaScriptManager = manager;
+            manager.delegate = self;
+        });
     }
 }
 
@@ -210,7 +212,9 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
         [self.luaController updateFrame:self.bounds isPortrait:self.isPortrait isFullScreen:self.isFullScreen];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.luaController loadLua:luaUrl data:data];
-            [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaOSLoadCompleteNotification object:nil];
+            if ([luaUrl isEqualToString:@"main.lua"]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaOSLoadCompleteNotification object:nil];
+            }
         });
     }
 }
@@ -219,6 +223,19 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.luaController callLuaMethood:method data:data];
     });
+}
+
+- (void)callLuaMethood:(NSString *)method nodeId:(NSString *)nodeId data:(id)data {
+    if (nodeId == nil) {
+        [self callLuaMethood:method data:data];
+    }
+    else {
+        [self.luaController callLuaMethood:method nodeId:nodeId data:data];
+    }
+}
+
+- (void)removeViewWithNodeId:(NSString *)nodeId {
+    [self.luaController removeNodeWithNodeId:nodeId];
 }
 
 - (void)registerLuaActionNotification {
@@ -272,7 +289,7 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
 
 - (void)dealloc {
     [self.luaController releaseLuaView];
-    [VPLuaServiceManager stopService];
+    [VPLuaCapacityManager stopService];
     [VPLuaNetworkManager releaseManaer];
 }
 

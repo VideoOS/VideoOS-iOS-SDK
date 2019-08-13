@@ -30,6 +30,8 @@
 #import "VPInterfaceControllerConfig.h"
 #import "VPIVideoPlayerDelegate.h"
 #import "VPIVideoPlayerSize.h"
+#import "VPIServiceDelegate.h"
+#import "VPIServiceConfig.h"
 
 @interface VPInterfaceController : NSObject <VPIVideoPlayerActionDelegate>
 
@@ -69,6 +71,11 @@
  */
 
 @property (nonatomic, readonly, strong) VPInterfaceControllerConfig *config;
+
+/**
+ *  获取服务相关的状态信息
+ */
+@property (nonatomic, weak) id<VPIServiceDelegate> serviceDelegate;
 
 #pragma mark instance method
 #pragma mark init method
@@ -130,6 +137,27 @@
  *  播放暂停的中插视频
  */
 - (void)playVideoAd;
+
+
+/**
+ *  开始特定的服务
+ */
+- (void)startService:(VPIServiceType )type config:(VPIServiceConfig *)config;
+
+/**
+ *  重新开始特定的服务，用于前后帖视频广告
+ */
+- (void)resumeService:(VPIServiceType )type;
+
+/**
+ *  暂停特定的服务，用于前后帖视频广告
+ */
+- (void)pauseService:(VPIServiceType )type;
+
+/**
+ *  停止并销毁特定的服务
+ */
+- (void)stopService:(VPIServiceType)type;
 
 /**
  *  controller的生命周期

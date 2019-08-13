@@ -32,17 +32,23 @@
 #import "VPLuaPage.h"
 #import "VPLuaNativeBridge.h"
 #import "VPLuaSDK.h"
+#import "VPLuaScriptManager.h"
 
 #import "VideoPlsUtilsPlatformSDK.h"
 #import "VPUPInterfaceDataServiceManager.h"
 #import "VPUPRoutes.h"
 #import "VPUPRoutesConstants.h"
+#import "VPUPPathUtil.h"
 
 #import "VPInterfaceStatusNotifyDelegate.h"
 #import "VPIUserLoginInterface.h"
 #import "VPIUserInfo.h"
+#import "VPLuaServiceAd.h"
+#import "VPIError.h"
+#import "VPLuaServiceManager.h"
+#import "VPUPJsonUtil.h"
 
-@interface VPInterfaceController()<VPUPInterfaceDataServiceManagerDelegate>
+@interface VPInterfaceController()<VPUPInterfaceDataServiceManagerDelegate, VPLuaServiceManagerDelegate>
 
 @end
 
@@ -56,7 +62,9 @@
 
 @property (nonatomic, strong) VPIVideoPlayerSize *videoPlayerSize;
 
-@property (nonatomic, strong) NSDictionary *openUrlActionDict;;
+@property (nonatomic, strong) NSDictionary *openUrlActionDict;
+
+@property (nonatomic, strong) VPLuaServiceManager *serviceManager;
 
 @end
 
@@ -87,6 +95,13 @@
     else {
         [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateOnline];
     }
+}
+
+- (VPLuaServiceManager *)serviceManager {
+    if (!_serviceManager) {
+        _serviceManager = [[VPLuaServiceManager alloc] init];
+    }
+    return _serviceManager;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -279,7 +294,7 @@
     if (_osView) {
         [_osView playVideoAd];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @(VPLuaAdActionTypePlay),@"ActionType",
+                              @(VPLuaAdActionTypeResume),@"ActionType",
                               @(VPLuaAdEventTypeAction), @"EventType",nil];
         [_osView callLuaMethood:@"event" data:dict];
     }
@@ -489,6 +504,22 @@
             }
             
             [self.delegate vp_interfaceActionNotify:actionDict];
+            
+            if ([[actionDict objectForKey:@"eventType"] integerValue] == VPIEventTypeClose && self.serviceManager.serviceDict.count > 0) {
+                NSNumber *closeServiceKey = nil;
+                for (NSNumber *key in self.serviceManager.serviceDict.allKeys) {
+                    VPLuaService *service = [self.serviceManager.serviceDict objectForKey:key];
+                    if (service && [service.serviceId isEqualToString:[actionDict objectForKey:@"adID"]]) {
+                        if (self.serviceDelegate && [self.serviceDelegate respondsToSelector:@selector(vp_didCompleteForService:)]) {
+                            [self.serviceDelegate vp_didCompleteForService:(VPIServiceType)service.type];
+                        }
+                        closeServiceKey = key;
+                    }
+                }
+                if (closeServiceKey) {
+                    [self.serviceManager stopService:(VPLuaServiceType)[closeServiceKey integerValue]];
+                }
+            }
         }
     }
 }
@@ -594,6 +625,7 @@
         if (!luaFile) {
             luaFile = [data objectForKey:@"template"];
         }
+        
         [strongSelf.osView loadLua:luaFile data:parameters];
         return YES;
     }];
@@ -633,6 +665,109 @@
         
     }];
 }
+
+- (NSString *)luaForService:(VPIServiceType )type {
+    NSString *luaName = nil;
+    switch (type) {
+        case VPIServiceTypeVideoMode:
+        luaName = @"os_service_video_mode.lua";
+        break;
+        case VPIServiceTypePreAdvertising:
+        luaName = @"os_service_video_ad.lua";
+        break;
+        case VPIServiceTypePauseAd:
+        luaName = @"os_service_picture_ad.lua";
+        break;
+        
+        default:
+        break;
+    }
+    return luaName;
+}
+    
+- (void)startService:(VPIServiceType )type config:(VPIServiceConfig *)config {
+    VPLuaServiceConfig *serviceConfig = [[VPLuaServiceConfig alloc] init];
+    if (config.identifier) {
+        serviceConfig.identifier = config.identifier;
+    }
+    else {
+        serviceConfig.identifier = self.config.identifier;
+    }
+    serviceConfig.type = (VPLuaServiceType)config.type;
+    serviceConfig.duration = (VPIVideoAdTimeType)config.duration;
+    
+    self.serviceManager.osView = self.osView;
+    self.serviceManager.delegate = self;
+
+    [self.serviceManager startService:(VPLuaServiceType)type config:serviceConfig];
+    
+//    if (type == VPIServiceTypePreAdvertising || type == VPIServiceTypePostAdvertising || type == VPIServiceTypePauseAd) {
+//        VPLuaServiceAd *adService = [[VPLuaServiceAd alloc] init];
+//        VPLuaServiceConfig *serviceConfig = [[VPLuaServiceConfig alloc] init];
+//        serviceConfig.type = (VPLuaServiceType)config.type;
+//        serviceConfig.duration = (VPIVideoAdTimeType)config.duration;
+//        [self.serviceDict setObject:adService forKey:@(VPIServiceTypePreAdvertising)];
+//        __weak typeof(self) weakSelf = self;
+//        [adService startServiceWithConfig:serviceConfig complete:^(NSError *error) {
+//            if (!weakSelf) {
+//                return;
+//            }
+//
+//            if (error) {
+//                if (self.serviceDelegate && [self.serviceDelegate respondsToSelector:@selector(vp_didFailToCompleteForService:error:)]) {
+//                    [self.serviceDelegate vp_didFailToCompleteForService:(VPIServiceType)type error:error];
+//                }
+//                weakSelf.serviceDict[@(type)] = nil;
+//            }
+//        }];
+//    }
+}
+ 
+- (void)resumeService:(VPIServiceType )type {
+    [self.serviceManager resumeService:(VPLuaServiceType)type];
+//    VPLuaService *service = [self.serviceDict objectForKey:@(type)];
+//    if (service && _osView) {
+//        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+//                              @(VPLuaAdActionTypePause), @"ActionType",
+//                              @(VPLuaAdEventTypeAction), @"EventType",nil];
+//        [_osView callLuaMethood:@"event" nodeId:service.serviceId data:dict];
+//    }
+}
+    
+- (void)pauseService:(VPIServiceType )type {
+    [self.serviceManager pauseService:(VPLuaServiceType)type];
+//    VPLuaService *service = [self.serviceDict objectForKey:@(type)];
+//    if (service && _osView) {
+//        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+//                              @(VPLuaAdActionTypeResume), @"ActionType",
+//                              @(VPLuaAdEventTypeAction), @"EventType",nil];
+//        [_osView callLuaMethood:@"event" nodeId:service.serviceId data:dict];
+//    }
+}
+    
+- (void)stopService:(VPIServiceType)type {
+    [self.serviceManager stopService:(VPLuaServiceType)type];
+//    VPLuaService *service = [self.serviceDict objectForKey:@(type)];
+//    if (service && _osView) {
+//        [_osView removeViewWithNodeId:service.serviceId];
+//    }
+}
+
+#pragma mark - VPLuaServiceManagerDelegate
+
+- (void)vp_didCompleteForService:(VPLuaServiceType )type {
+    if (self.serviceDelegate && [self.serviceDelegate respondsToSelector:@selector(vp_didCompleteForService:)]) {
+        [self.serviceDelegate vp_didCompleteForService:(VPIServiceType)type];
+    }
+}
+
+
+- (void)vp_didFailToCompleteForService:(VPLuaServiceType )type error:(NSError *)error {
+    if (self.serviceDelegate && [self.serviceDelegate respondsToSelector:@selector(vp_didFailToCompleteForService:error:)]) {
+        [self.serviceDelegate vp_didFailToCompleteForService:(VPIServiceType)type error:error];
+    }
+}
+
 
 #pragma mark - Unused API
 

@@ -20,6 +20,10 @@
 
 + (NSString *)imagePath;
 
++ (NSString *)videoModePath;
+
++ (NSString *)subPathOfVideoMode:(NSString *)placeholder;
+
 + (NSString *)luaPath;
 
 + (NSString *)luaOSPath;

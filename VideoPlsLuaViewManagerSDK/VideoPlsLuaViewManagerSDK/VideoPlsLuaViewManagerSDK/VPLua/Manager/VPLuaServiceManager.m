@@ -2,43 +2,99 @@
 //  VPLuaServiceManager.m
 //  VideoPlsLuaViewManagerSDK
 //
-//  Created by peter on 2018/4/27.
-//  Copyright © 2018 videopls. All rights reserved.
+//  Created by peter on 2019/7/29.
+//  Copyright © 2019 videopls. All rights reserved.
 //
 
 #import "VPLuaServiceManager.h"
+#import "VPLuaServiceAd.h"
+#import "VPLuaConstant.h"
+#import "VPLuaServiceVideoMode.h"
 
-static VPLuaServiceManager *_serviceManager = nil;
-static dispatch_once_t onceToken;
+@interface VPLuaServiceManager()
 
-@interface VPLuaServiceManager ()
-
-@property (nonatomic, strong) VPUPMessageTransferStation *messageTransferStation;
+@property (nonatomic, strong) NSMutableDictionary *serviceDict;
 
 @end
 
 @implementation VPLuaServiceManager
 
-+ (instancetype)sharedManager {
-    return _serviceManager;
-}
-
-+ (void)startService {
-    dispatch_once(&onceToken, ^{
-        _serviceManager = [[self alloc] init];
-    });
-}
-
-+ (void)stopService {
-    onceToken = 0;
-    _serviceManager = nil;
-}
-
-- (VPUPMessageTransferStation *)messageTransferStation {
-    if (!_messageTransferStation) {
-        _messageTransferStation = [[VPUPMessageTransferStation alloc] init];
+- (NSMutableDictionary *)serviceDict {
+    if (!_serviceDict) {
+        _serviceDict = [NSMutableDictionary dictionaryWithCapacity:0];
     }
-    return _messageTransferStation;
+    return _serviceDict;
+}
+
+- (void)startService:(VPLuaServiceType )type config:(VPLuaServiceConfig *)config {
+    if (config.identifier && (type == VPLuaServiceTypePreAdvertising || type == VPLuaServiceTypePostAdvertising || type == VPLuaServiceTypePauseAd)) {
+        VPLuaServiceAd *adService = [[VPLuaServiceAd alloc] initWithConfig:config];
+        [self.serviceDict setObject:adService forKey:@(type)];
+        __weak typeof(self) weakSelf = self;
+        [adService startServiceWithConfig:config complete:^(NSError *error) {
+            if (!weakSelf) {
+                return;
+            }
+            
+            if (error) {
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(vp_didFailToCompleteForService:error:)]) {
+                    [weakSelf.delegate vp_didFailToCompleteForService:(VPLuaServiceType)type error:error];
+                }
+                weakSelf.serviceDict[@(type)] = nil;
+            }
+        }];
+    }
+//    else if(config.identifier && type == VPLuaServiceTypeVideoMode) {
+//        VPLuaServiceVideoMode *videoModeService = [[VPLuaServiceVideoMode alloc] initWithConfig:config];
+//        [self.serviceDict setObject:videoModeService forKey:@(type)];
+//        __weak typeof(self) weakSelf = self;
+//        [videoModeService startServiceWithConfig:config complete:^(NSError *error) {
+//            if (!weakSelf) {
+//                return;
+//            }
+//            
+//            if (error) {
+//                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(vp_didFailToCompleteForService:error:)]) {
+//                    [weakSelf.delegate vp_didFailToCompleteForService:(VPLuaServiceType)type error:error];
+//                }
+//                weakSelf.serviceDict[@(type)] = nil;
+//            }
+//        }];
+//    }
+    else {
+        NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-4001 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Unsupported parameters"]}];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(vp_didFailToCompleteForService:error:)]) {
+            [self.delegate vp_didFailToCompleteForService:(VPLuaServiceType)type error:error];
+        }
+    }
+}
+
+- (void)resumeService:(VPLuaServiceType )type {
+    VPLuaService *service = [self.serviceDict objectForKey:@(type)];
+    if (service && self.osView) {
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              @(VPLuaAdActionTypePause), @"ActionType",
+                              @(VPLuaAdEventTypeAction), @"EventType",nil];
+        [self.osView callLuaMethood:@"event" nodeId:service.serviceId data:dict];
+    }
+}
+
+- (void)pauseService:(VPLuaServiceType )type {
+    VPLuaService *service = [self.serviceDict objectForKey:@(type)];
+    if (service && self.osView) {
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              @(VPLuaAdActionTypeResume), @"ActionType",
+                              @(VPLuaAdEventTypeAction), @"EventType",nil];
+        [self.osView callLuaMethood:@"event" nodeId:service.serviceId data:dict];
+    }
+}
+
+- (void)stopService:(VPLuaServiceType)type {
+    VPLuaService *service = [self.serviceDict objectForKey:@(type)];
+    if (service && self.osView) {
+        [self.osView removeViewWithNodeId:service.serviceId];
+    }
+    self.serviceDict[@(type)] = nil;
 }
 
 @end
