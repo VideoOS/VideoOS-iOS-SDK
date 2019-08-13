@@ -22,6 +22,47 @@
     return self;
 }
 
+- (void)setVerticalAlignment:(VPLuaLabelVerticalAlignment)verticalAlignment {
+    _verticalAlignment = verticalAlignment;
+    [self setNeedsDisplay];
+}
+
+- (void)drawTextInRect:(CGRect)rect {
+    switch (self.verticalAlignment) {
+        case VPLuaLabelVerticalAlignmentTop:
+        case VPLuaLabelVerticalAlignmentBottom: {
+            CGRect actualRect = [self textRectForBounds:rect limitedToNumberOfLines:self.numberOfLines];
+            [super drawTextInRect:actualRect];
+            break;
+        }
+        case VPLuaLabelVerticalAlignmentCenter:
+        default: {
+            [super drawTextInRect:rect];
+            break;
+        }
+    }
+}
+
+- (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines {
+    CGRect textRect = [super textRectForBounds:bounds limitedToNumberOfLines:numberOfLines];
+    switch (self.verticalAlignment) {
+        case VPLuaLabelVerticalAlignmentTop: {
+            textRect.origin.y = bounds.origin.y;
+            break;
+        }
+        case VPLuaLabelVerticalAlignmentBottom: {
+            textRect.origin.y = bounds.origin.y + bounds.size.height - textRect.size.height;
+            break;
+        }
+        case VPLuaLabelVerticalAlignmentCenter:
+        default: {
+            textRect.origin.y = bounds.origin.y + (bounds.size.height - textRect.size.height) / 2.0;
+            break;
+        }
+    }
+    return textRect;
+}
+
 - (void)setFont:(UIFont *)font {
     CGFloat textSize = [font pointSize];
     
@@ -62,6 +103,24 @@
     [super setAttributedText:newAttributedString];
 }
 
+- (NSAttributedString *)getLuaLabelAttributeString {
+    if (self.attributedText != nil) {
+        return self.attributedText;
+    } else {
+        if (self.text != nil && ![self.text isEqualToString:@""]) {
+            NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:self.text];
+            
+            NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+            paragraphStyle.alignment = self.textAlignment;
+            
+            [attributeString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, self.text.length)];
+            
+            return attributeString;
+        }
+    }
+    return nil;
+}
+
 #pragma -mark UILabel
 /*
  * lua脚本中 local label = Label() 对应的构造方法
@@ -98,9 +157,22 @@ static int lvNewVPLuaLabel(lua_State *L) {
     
     // lua Labe构造方法创建的对象对应的方法列表
     const struct luaL_Reg memberFunctions [] = {
-        {"textShadow",    textShadow},
-        {"textBold",    textBold},
+        {"textShadow",      textShadow},
+        {"textBold",        textBold},
+        {"textVAlign",      textVAlignment},
+        {"strikeLines",     strikeLines},
+        {"underLines",      underLines},
         {NULL, NULL}
+    };
+    {
+        lua_settop(L, 0);
+        NSDictionary* v = nil;
+        v = @{
+              @"TOP":@(VPLuaLabelVerticalAlignmentTop),
+              @"BOTTOM":@(VPLuaLabelVerticalAlignmentBottom),
+              @"CENTER":@(VPLuaLabelVerticalAlignmentCenter),// 上下左右都居中
+              };
+        [LVUtil defineGlobal:@"TextVAlign" value:v L:L];
     };
     
     // 创建Label类的方法列表
@@ -136,11 +208,94 @@ static int textBold (lua_State *L) {
     if( user ) {
         VPLuaLabel* label = (__bridge VPLuaLabel *)(user->object);// 当前userdata对应的native对象
         if ([label isKindOfClass:[VPLuaLabel class]]) {// 检查类型是否匹配(其实可以不用检查一般一定是对的)
-            UIFont *font = [UIFont boldSystemFontOfSize:label.font.pointSize];
+            //也会调用setFont:导致继续乘以一次VPUPFontScale
+            UIFont *font = [UIFont boldSystemFontOfSize:label.font.pointSize / VPUPFontScale];
             label.font = font;
         }
     }
     return 0;
 }
+
+/*
+ * 脚本label实例对象label.textVAlign()方法对应的Native实现
+ */
+static int textVAlignment (lua_State *L) {
+    LVUserDataInfo * user = (LVUserDataInfo *)lua_touserdata(L, 1);// 获取第一个参数(self,lua的userdata, 对象自身)
+    if( user ){
+        VPLuaLabel* label = (__bridge VPLuaLabel *)(user->object);// 当前userdata对应的native对象
+        if( lua_gettop(L)>=2 ) {
+            // 两个参数: 第一个对象自身, 第二个对齐方式
+            NSInteger vAlign = lua_tonumber(L, 2);// 获取第二个参数对齐方式
+            if( [label isKindOfClass:[VPLuaLabel class]] ){
+                label.verticalAlignment = vAlign;
+                return 0;
+            }
+        } else {
+            // 脚本层无入参(除了self), 则 返回 对齐方式的值
+            int vAlign = label.verticalAlignment;
+            lua_pushnumber(L, vAlign );
+            return 1;
+        }
+    }
+    return 0;
+}
+
+static int strikeLines (lua_State *L) {
+    LVUserDataInfo * user = (LVUserDataInfo *)lua_touserdata(L, 1);// 获取第一个参数(self,lua的userdata, 对象自身)
+    if( user ){
+        VPLuaLabel* label = (__bridge VPLuaLabel *)(user->object);// 当前userdata对应的native对象
+        UIColor *linesColor = [label textColor];
+        if( lua_gettop(L)>=2 ) {
+            // 两个参数: 第一个对象自身, 第二个颜色
+            UIColor* color = lv_getColorFromStack(L, 2);
+            linesColor = color;
+        }
+        NSAttributedString *attributeString = [label getLuaLabelAttributeString];
+        if (attributeString != nil) {
+            NSMutableAttributedString *mutableAttrString = [attributeString mutableCopy];
+            
+            NSMutableDictionary *attribute = [NSMutableDictionary dictionary];
+            
+            [attribute setObject:@(1) forKey:NSStrikethroughStyleAttributeName];
+            [attribute setObject:@(0) forKey:NSBaselineOffsetAttributeName];
+            [attribute setObject:linesColor forKey:NSStrikethroughColorAttributeName];
+            [attribute setObject:label.font forKey:NSFontAttributeName];
+            
+            [mutableAttrString addAttributes:attribute range:NSMakeRange(0, mutableAttrString.length)];
+            label.attributedText = mutableAttrString;
+        }
+        
+    }
+    return 0;
+}
+
+static int underLines (lua_State *L) {
+    LVUserDataInfo * user = (LVUserDataInfo *)lua_touserdata(L, 1);// 获取第一个参数(self,lua的userdata, 对象自身)
+    if( user ){
+        VPLuaLabel* label = (__bridge VPLuaLabel *)(user->object);// 当前userdata对应的native对象
+        UIColor *linesColor = [label textColor];
+        if( lua_gettop(L)>=2 ) {
+            // 两个参数: 第一个对象自身, 第二个颜色
+           UIColor* color = lv_getColorFromStack(L, 2);
+            linesColor = color;
+        }
+        NSAttributedString *attributeString = [label getLuaLabelAttributeString];
+        if (attributeString != nil) {
+            NSMutableAttributedString *mutableAttrString = [attributeString mutableCopy];
+            
+            NSMutableDictionary *attribute = [NSMutableDictionary dictionary];
+            
+            [attribute setObject:@(1) forKey:NSUnderlineStyleAttributeName];
+            [attribute setObject:@(0) forKey:NSBaselineOffsetAttributeName];
+            [attribute setObject:linesColor forKey:NSUnderlineColorAttributeName];
+            
+            [mutableAttrString addAttributes:attribute range:NSMakeRange(0, mutableAttrString.length)];
+            label.attributedText = mutableAttrString;
+        }
+        
+    }
+    return 0;
+}
+
 
 @end

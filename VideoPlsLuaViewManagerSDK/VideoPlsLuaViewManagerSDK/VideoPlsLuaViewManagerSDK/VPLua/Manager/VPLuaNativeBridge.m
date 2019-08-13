@@ -275,6 +275,7 @@ static NSMutableDictionary* httpAPICache() {
         {"setDebug", setDebug},
         {"screenChanged", screenChanged},
         {"widgetEvent", widgetEvent},
+        {"widgetNotify", widgetNotify},
         {"requireLogin", requireLogin},
         {"notifyUserLogined", notifyUserLogined},
         {"hideKeyboard", hideKeyboard},
@@ -513,7 +514,7 @@ static int getStringDrawLength(lua_State *L) {
             NSString *string = lv_paramString(L, 2);
             CGFloat fontSize = lua_tonumber(L, 3);
             NSMutableDictionary *attrDict = [NSMutableDictionary dictionary];
-            attrDict[NSFontAttributeName] = [UIFont systemFontOfSize:fontSize];
+            attrDict[NSFontAttributeName] = [UIFont systemFontOfSize:fontSize * VPUPFontScale];
             CGSize cgSize = [string sizeWithAttributes:attrDict];
             lua_pushnumber(L, cgSize.width);
             return 1;
@@ -1147,6 +1148,17 @@ static int widgetEvent(lua_State *L) {
     }
     return 0;
 }
+
+static int widgetNotify(lua_State *L) {
+    
+    if (lua_type(L, 2) == LUA_TTABLE) {
+        NSDictionary *dic = lv_luaTableToDictionary(L,2);
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaActionNotification object:nil userInfo:dic];
+    }
+    return 0;
+}
+
 
 static int titleBarHeight(lua_State *L) {
     lua_pushnumber(L, [VPUPDeviceUtil statusBarHeight]);

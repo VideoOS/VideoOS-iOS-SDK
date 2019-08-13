@@ -51,3 +51,43 @@ function checkMqttHotspotToSetClose(data, callback)
         performWithDelay(callback, data.duration)
     end
 end
+
+function widgetEvent(eventType, adID, adName, actionType, linkUrl, deepLink, selfLink)
+
+    local actionString = ""
+    if (linkUrl ~= nil and string.len(linkUrl) > 0) then
+        actionString = linkUrl
+    elseif (deepLink ~= nil and string.len(deepLink) > 0) then
+        actionString = deepLink
+    elseif (selfLink ~= nil and string.len(selfLink) > 0) then
+        actionString = selfLink
+    end
+
+    if Native.widgetNotify then
+
+        local notifyTable = {}
+        
+        notifyTable["eventType"] = eventType
+        notifyTable["adID"] = adID
+        notifyTable["adName"] = adName
+        notifyTable["actionType"] = actionType
+        notifyTable["actionString"] = actionString
+
+        if (linkUrl ~= nil) then
+            notifyTable["linkUrl"] = linkUrl
+        end
+
+        if (deepLink ~= nil) then
+            notifyTable["deepLink"] = deepLink
+        end
+        
+        if (selfLink ~= nil) then
+            notifyTable["selfLink"] = selfLink
+        end
+        
+        Native:widgetNotify(notifyTable)
+     else
+        Native:widgetEvent(eventType, adID, adName, actionType, actionString)
+    end
+end
+

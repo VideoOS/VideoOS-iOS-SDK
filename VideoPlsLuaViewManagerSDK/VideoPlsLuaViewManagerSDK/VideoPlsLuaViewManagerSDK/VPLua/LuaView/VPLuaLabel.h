@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <VPLuaViewSDK/LVLabel.h>
 
+typedef NS_ENUM(int, VPLuaLabelVerticalAlignment) {
+    VPLuaLabelVerticalAlignmentCenter   = 0,
+    VPLuaLabelVerticalAlignmentTop      = 1,
+    VPLuaLabelVerticalAlignmentBottom   = 2,
+};
+
 @interface VPLuaLabel : LVLabel
+
+@property (nonatomic, assign) VPLuaLabelVerticalAlignment verticalAlignment;
 
 @end
