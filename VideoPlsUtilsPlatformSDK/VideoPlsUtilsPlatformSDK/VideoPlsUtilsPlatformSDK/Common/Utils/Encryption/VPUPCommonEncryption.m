@@ -64,6 +64,11 @@
 
 + (NSString *)tokenEncryptionWithJson:(NSDictionary *)jsonDictionary {
     NSError *error = nil;
+    
+    if (![NSJSONSerialization isValidJSONObject:jsonDictionary]) {
+        return nil;
+    }
+    
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:0 error:&error];
     NSString *json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     json = [json stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];

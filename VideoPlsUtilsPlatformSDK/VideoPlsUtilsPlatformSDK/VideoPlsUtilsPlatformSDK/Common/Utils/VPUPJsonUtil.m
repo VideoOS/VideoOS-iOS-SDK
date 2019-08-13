@@ -13,6 +13,11 @@ NSString* VPUP_DictionaryToJson(NSDictionary *dictionary) {
         return nil;
     }
     NSError *error = nil;
+    
+    if (![NSJSONSerialization isValidJSONObject:dictionary]) {
+        return nil;
+    }
+    
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
     if(error) {
         return nil;

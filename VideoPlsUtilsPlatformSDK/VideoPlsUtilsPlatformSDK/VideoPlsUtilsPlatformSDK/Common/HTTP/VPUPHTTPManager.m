@@ -121,6 +121,11 @@ static inline NSString * VPUPContentTypeForPathExtension(NSString *extension) {
 -(NSString*) jsonEncodedKeyValueString {
     
     NSError *error = nil;
+    
+    if (![NSJSONSerialization isValidJSONObject:self]) {
+        return nil;
+    }
+    
     NSData *data = [NSJSONSerialization dataWithJSONObject:self
                                                    options:0 // non-pretty printing
                                                      error:&error];
