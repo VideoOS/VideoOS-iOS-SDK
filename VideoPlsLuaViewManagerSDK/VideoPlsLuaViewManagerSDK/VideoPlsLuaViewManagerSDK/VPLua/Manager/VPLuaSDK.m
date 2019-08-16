@@ -76,39 +76,42 @@ NSString *const VPLuaScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas
 }
 
 + (void)checkLuaFiles {
-    NSString *cacheLuaVersionPath = [[VPUPPathUtil luaOSPath] stringByAppendingString:@"/lua_version.json"];
-    NSDictionary *cacheLuaVersionDict = nil;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:cacheLuaVersionPath]) {
-        cacheLuaVersionDict = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:cacheLuaVersionPath] options:NSJSONReadingMutableContainers error:nil];
-    }
     
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
     
-    NSBundle *videoplsBundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"VideoPlsResources" withExtension:@"bundle"]];
-    NSString *bundleLuaPath = [[videoplsBundle bundlePath] stringByAppendingPathComponent:@"lua"];
-    NSString *luaVersionPath = [bundleLuaPath stringByAppendingString:@"/lua_version.json"];
-    NSDictionary *luaVersionDict = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:luaVersionPath] options:NSJSONReadingMutableContainers error:nil];
-    
-    if (![[luaVersionDict objectForKey:@"version"] isEqualToString:[cacheLuaVersionDict objectForKey:@"version"]]) {
+        NSString *cacheLuaVersionPath = [[VPUPPathUtil luaOSPath] stringByAppendingString:@"/lua_version.json"];
+        NSDictionary *cacheLuaVersionDict = nil;
+        if ([[NSFileManager defaultManager] fileExistsAtPath:cacheLuaVersionPath]) {
+            cacheLuaVersionDict = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:cacheLuaVersionPath] options:NSJSONReadingMutableContainers error:nil];
+        }
         
-        NSArray* array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleLuaPath error:nil];
-        NSError *error = nil;
-        for (NSString *file in array) {
-            [[NSFileManager defaultManager] removeItemAtPath:[[VPUPPathUtil luaOSPath] stringByAppendingPathComponent:file] error:nil];
-        }
-        for (NSString *file in array) {
-            [[NSFileManager defaultManager] copyItemAtPath:[bundleLuaPath stringByAppendingPathComponent:file] toPath:[[VPUPPathUtil luaOSPath] stringByAppendingPathComponent:file] error:&error];
+        
+        NSBundle *videoplsBundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"VideoPlsResources" withExtension:@"bundle"]];
+        NSString *bundleLuaPath = [[videoplsBundle bundlePath] stringByAppendingPathComponent:@"lua"];
+        NSString *luaVersionPath = [bundleLuaPath stringByAppendingString:@"/lua_version.json"];
+        NSDictionary *luaVersionDict = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:luaVersionPath] options:NSJSONReadingMutableContainers error:nil];
+        
+        if (![[luaVersionDict objectForKey:@"version"] isEqualToString:[cacheLuaVersionDict objectForKey:@"version"]]) {
+            
+            NSArray* array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleLuaPath error:nil];
+            NSError *error = nil;
+            for (NSString *file in array) {
+                [[NSFileManager defaultManager] removeItemAtPath:[[VPUPPathUtil luaOSPath] stringByAppendingPathComponent:file] error:nil];
+                
+                [[NSFileManager defaultManager] copyItemAtPath:[bundleLuaPath stringByAppendingPathComponent:file] toPath:[[VPUPPathUtil luaOSPath] stringByAppendingPathComponent:file] error:&error];
+                if (error) {
+                    break;
+                }
+            }
             if (error) {
-                break;
+                NSArray *paths = [[NSFileManager defaultManager] subpathsAtPath:[VPUPPathUtil luaOSPath]];
+                for (NSString *path in paths) {
+                    NSString *filePath = [[VPUPPathUtil luaOSPath] stringByAppendingPathComponent:path];
+                    [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+                }
             }
         }
-        if (error) {
-            NSArray *paths = [[NSFileManager defaultManager] subpathsAtPath:[VPUPPathUtil luaOSPath]];
-            for (NSString *path in paths) {
-                NSString *filePath = [[VPUPPathUtil luaOSPath] stringByAppendingPathComponent:path];
-                [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
-            }
-        }
-    }
+    });
 }
 
 - (VPLuaScriptManager* )luaScriptManager {
