@@ -96,8 +96,8 @@
         }
         else {
             strongSelf.serviceId = [[data objectForKey:@"launchInfo"] objectForKey:@"id"];
-//            [strongSelf downloadFileFromData:[data objectForKey:@"launchInfo"]];
-            [strongSelf runLuaWithData:[data objectForKey:@"launchInfo"]];
+            [strongSelf downloadFileFromData:[data objectForKey:@"launchInfo"]];
+//            [strongSelf runLuaWithData:[data objectForKey:@"launchInfo"]];
         }
     };
     [[VPLuaNetworkManager Manager].httpManager sendAPIRequest:api];
