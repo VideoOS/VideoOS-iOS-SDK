@@ -140,6 +140,85 @@ VPInterfaceStatusNotifyDelegate ```- (void)vp_interfaceActionNotify```, 会回�
 * actionType 为对接方需要做的操作，包括打开外链，暂停视频，播放视频
 * url 为外链地址
 
+#### 前后帖、暂停广告
+创建一个`VPIServiceConfig`，设置前后帖、暂停广告的相关参数，通过`- (void)startService:(VPIServiceType )type config:(VPIServiceConfig *)config`方法启动相关服务，在serviceDelegate中可以收到执行结果的回调
+
+```objective-c
+    //设置serviceDelegate
+    interfaceController.serviceDelegate = self;
+    
+    ...
+    
+    //前贴广告
+    VPIServiceConfig *config = [[VPIServiceConfig alloc] init];
+    config.identifier = _interfaceController.config.identifier;
+    config.type = VPIServiceTypePreAdvertising;
+    config.duration = VPIVideoAdTimeType60Seconds;
+    [_interfaceController startService:VPIServiceTypePreAdvertising config:config];
+    
+    ...
+    
+    //暂停广告
+    [_interfaceController pauseService:VPIServiceTypePostAdvertising]
+    
+    //恢复暂停的广告
+    [_interfaceController resumeService:VPIServiceTypePostAdvertising]
+    ...
+    
+    //回调
+    //广告执行成功以后回调
+    - (void)vp_didCompleteForService:(VPIServiceType )type {
+    	if (type == VPIServiceTypePostAdvertising || type == VPIServiceTypePreAdvertising) {
+        	if (!_player.isPlaying) {
+          	  [_mediaControlView playButtonTapped:nil];
+        	}
+    	}
+	}
+
+	...
+	
+	//广告执行失败以后回调
+	- (void)vp_didFailToCompleteForService:(VPIServiceType )type error:(NSError *)error {
+    	if (type == VPIServiceTypePostAdvertising || type == VPIServiceTypePreAdvertising) {
+        	if (!_player.isPlaying) {
+            	[_mediaControlView playButtonTapped:nil];
+        	}
+    	}
+	}
+```
+
+#### 视联网模式
+
+创建一个`VPIServiceConfig`，设置视联网模式的相关参数，包括视频的identifier，通过`- (void)startService:(VPIServiceType )type config:(VPIServiceConfig *)config`方法启动视联网模式，在serviceDelegate中可以收到执行结果的回调
+
+```objective-c
+    //设置serviceDelegate
+    interfaceController.serviceDelegate = self;
+    
+    ...
+    
+    //视联网模式
+    VPIServiceConfig *config = [[VPIServiceConfig alloc] init];
+    config.type = VPIServiceTypeVideoMode;
+    config.identifier = _interfaceController.config.identifier;
+    [_interfaceController startService:VPIServiceTypeVideoMode config:config];
+    
+    ...
+    
+    //回调
+    //执行成功以后回调
+    - (void)vp_didCompleteForService:(VPIServiceType )type {
+    	
+	}
+
+	...
+	
+	//执行失败以后回调
+	- (void)vp_didFailToCompleteForService:(VPIServiceType )type error:(NSError *)error {
+    	
+	}
+```
+
 #### 注意事项
 
 1. VPInterfaceControllerConfig identifier参数为视频的标识(原url),可以用url作为参数 或 使用拼接 ID的方式来识别。
