@@ -9,9 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "VPAVPlayerController.h"
 
+@protocol VPMediaControlViewDelegate<NSObject>
+
+@optional
+
+-(void)switchVideoNetModeStateOff:(BOOL)off;
+@end
+
 @interface VPMediaControlView : UIView
 
 + (instancetype)mediaControlViewWithNib;
+
+@property (nonatomic, weak) id<VPMediaControlViewDelegate> delegate;
 
 @property (nonatomic, assign) BOOL isFullScreen;
 
@@ -23,6 +32,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnConstraint;
+
+@property (weak, nonatomic) IBOutlet UIButton *videoSwitchButton;
 
 - (IBAction)backButtonTapped:(id)sender;
 - (IBAction)playButtonTapped:(id)sender;

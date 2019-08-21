@@ -28,8 +28,21 @@
     version = [version stringByAppendingString:@"_"];
     version = [version stringByAppendingString: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *) kCFBundleVersionKey]];
     [MobClick setAppVersion:version];
-    [VPIConfigSDK setAppKey:@"ca39f6b6-4626-4036-8518-59387636da60" appSecret:@"8e9db127a2644fba"];
-//    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
+
+    
+    //    [VPIConfigSDK setAppKey:@"550ec7d2-6cb0-4f46-b2df-2a1505ec82d8" appSecret:@"d0bf7873f7fa42a6"];
+    //    [VPIConfigSDK setAppKey:@"c21d0393-5946-4104-b291-6334147cc45d" appSecret:@"36b1e5f6d94441f0"];
+    //    [VPIConfigSDK setAppKey:@"bd2b301d-36d4-45ee-8762-db03672c23e0" appSecret:@"2a258aa1c44e41d5"];
+    //    [VPIConfigSDK setAppKey:@"ca39f6b6-4626-4036-8518-59387636da60" appSecret:@"8e9db127a2644fba"];
+    //    [VPIConfigSDK setAppKey:@"93db5ef3-7fbc-485a-97b0-fc9f4e7209f5" appSecret:@"74f251d40a49468a"];
+    //    [VPIConfigSDK setAppKey:@"d1af1f73-7b60-4141-8261-2d9ad20b2a23" appSecret:@"97154eab13424013"];
+    //    [VPIConfigSDK setAppKey:@"7a741182-c30e-4edf-9eaa-ae8974093214" appSecret:@"8940b66d7052437b"];
+    [VPIConfigSDK setAppKey:@"73d5a8f8-3682-4080-ad7c-996c4e19fc1e" appSecret:@"c276b70aba84491a"];
+    
+    //    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateDevelop];
+    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
+    //    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateOnline];
+
     [VPIConfigSDK initSDK];
     return YES;
 }

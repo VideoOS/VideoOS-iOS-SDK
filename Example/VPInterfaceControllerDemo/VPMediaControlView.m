@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) VPMediaMoreButtonView *moreButtonView;
 
+
+
 @end
 
 @implementation VPMediaControlView {
@@ -230,6 +232,13 @@
     
     [self initMoreButtonView];
     
+}
+- (IBAction)switchButtonDidClicked:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    
+    if ([self.delegate respondsToSelector:@selector(switchVideoNetModeStateOff:)]) {
+        [self.delegate switchVideoNetModeStateOff:!sender.selected];
+    }
 }
 
 

@@ -21,11 +21,16 @@
 		069D543D1F04DC6D001E5324 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 069D543C1F04DC6D001E5324 /* AppDelegate.m */; };
 		069D54401F04DC6D001E5324 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 069D543F1F04DC6D001E5324 /* ViewController.m */; };
 		069D54451F04DC6E001E5324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069D54441F04DC6E001E5324 /* Assets.xcassets */; };
+		06D474B022F937FD00C9DADD /* VPVideoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474AF22F937FD00C9DADD /* VPVideoData.m */; };
+		06D474B322F9384900C9DADD /* VPVideoListData.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474B222F9384900C9DADD /* VPVideoListData.m */; };
 		8844DF7302866437A1DEC1F9 /* libPods-VPInterfaceControllerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6009F1EF01AC68198F90DB /* libPods-VPInterfaceControllerDemo.a */; };
 		C4038CFE1FB44A2100BD3B07 /* zelear.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C4038CFD1FB449AD00BD3B07 /* zelear.mp4 */; };
 		C42CDB951F33289F00DD42D0 /* PrivateConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C42CDB941F33289F00DD42D0 /* PrivateConfig.m */; };
 		C4BB02A51F8F426100CC195C /* VPMediaMoreButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BB02A41F8F426100CC195C /* VPMediaMoreButtonView.m */; };
 		C4BB02A71F8F427600CC195C /* VPMediaMoreButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4BB02A61F8F427600CC195C /* VPMediaMoreButtonView.xib */; };
+		C9654A2122F7FA3E000AFB2E /* saomiao_no.svga in Resources */ = {isa = PBXBuildFile; fileRef = C9654A1F22F7F846000AFB2E /* saomiao_no.svga */; };
+		C9654A2222F7FA42000AFB2E /* saomiao_off.svga in Resources */ = {isa = PBXBuildFile; fileRef = C9654A2022F7F847000AFB2E /* saomiao_off.svga */; };
+		C9823ECE22F41BE2007E9F3D /* text.json in Resources */ = {isa = PBXBuildFile; fileRef = C9823ECD22F41BE2007E9F3D /* text.json */; };
 		D00D67AD22D42FD60003972F /* VPConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = D00D67A622D42FD60003972F /* VPConfigData.m */; };
 		D00D67AE22D42FD60003972F /* VPConfigListData.m in Sources */ = {isa = PBXBuildFile; fileRef = D00D67A922D42FD60003972F /* VPConfigListData.m */; };
 		D00D67AF22D42FD60003972F /* VPModel+DictionaryToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D00D67AA22D42FD60003972F /* VPModel+DictionaryToModel.m */; };
@@ -63,6 +68,10 @@
 		069D54441F04DC6E001E5324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		069D54471F04DC6E001E5324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		069D54491F04DC6E001E5324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06D474AE22F937FD00C9DADD /* VPVideoData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPVideoData.h; sourceTree = "<group>"; };
+		06D474AF22F937FD00C9DADD /* VPVideoData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPVideoData.m; sourceTree = "<group>"; };
+		06D474B122F9384900C9DADD /* VPVideoListData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPVideoListData.h; sourceTree = "<group>"; };
+		06D474B222F9384900C9DADD /* VPVideoListData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPVideoListData.m; sourceTree = "<group>"; };
 		0E37C6CC1D0302B3F30C1F7B /* Pods-VPInterfaceViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPInterfaceViewDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-VPInterfaceViewDemo/Pods-VPInterfaceViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		1EE8D300E34605C338F6FB32 /* libPods-VPInterfaceViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VPInterfaceViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26381285A7C358E7AC3987EC /* Pods-VPInterfaceControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPInterfaceControllerDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +83,9 @@
 		C4BB02A31F8F426100CC195C /* VPMediaMoreButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPMediaMoreButtonView.h; sourceTree = "<group>"; };
 		C4BB02A41F8F426100CC195C /* VPMediaMoreButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPMediaMoreButtonView.m; sourceTree = "<group>"; };
 		C4BB02A61F8F427600CC195C /* VPMediaMoreButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VPMediaMoreButtonView.xib; sourceTree = "<group>"; };
+		C9654A1F22F7F846000AFB2E /* saomiao_no.svga */ = {isa = PBXFileReference; lastKnownFileType = file; path = saomiao_no.svga; sourceTree = "<group>"; };
+		C9654A2022F7F847000AFB2E /* saomiao_off.svga */ = {isa = PBXFileReference; lastKnownFileType = file; path = saomiao_off.svga; sourceTree = "<group>"; };
+		C9823ECD22F41BE2007E9F3D /* text.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = text.json; sourceTree = "<group>"; };
 		D00D67A522D42FD60003972F /* VPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPModel.h; sourceTree = "<group>"; };
 		D00D67A622D42FD60003972F /* VPConfigData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPConfigData.m; sourceTree = "<group>"; };
 		D00D67A722D42FD60003972F /* VPModel+DictionaryToModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VPModel+DictionaryToModel.h"; sourceTree = "<group>"; };
@@ -178,6 +190,8 @@
 				C42CDB931F33289F00DD42D0 /* PrivateConfig.h */,
 				C42CDB941F33289F00DD42D0 /* PrivateConfig.m */,
 				C4038CFD1FB449AD00BD3B07 /* zelear.mp4 */,
+				C9654A1F22F7F846000AFB2E /* saomiao_no.svga */,
+				C9654A2022F7F847000AFB2E /* saomiao_off.svga */,
 				068965391F15F1310054736C /* VPAVPlayer */,
 				069D54411F04DC6D001E5324 /* Main.storyboard */,
 				069D54441F04DC6E001E5324 /* Assets.xcassets */,
@@ -219,13 +233,17 @@
 			isa = PBXGroup;
 			children = (
 				D00D67A522D42FD60003972F /* VPModel.h */,
-				D00D67A622D42FD60003972F /* VPConfigData.m */,
+				D00D67AC22D42FD60003972F /* VPModel.m */,
 				D00D67A722D42FD60003972F /* VPModel+DictionaryToModel.h */,
-				D00D67A822D42FD60003972F /* VPConfigListData.h */,
-				D00D67A922D42FD60003972F /* VPConfigListData.m */,
 				D00D67AA22D42FD60003972F /* VPModel+DictionaryToModel.m */,
 				D00D67AB22D42FD60003972F /* VPConfigData.h */,
-				D00D67AC22D42FD60003972F /* VPModel.m */,
+				D00D67A622D42FD60003972F /* VPConfigData.m */,
+				D00D67A822D42FD60003972F /* VPConfigListData.h */,
+				D00D67A922D42FD60003972F /* VPConfigListData.m */,
+				06D474AE22F937FD00C9DADD /* VPVideoData.h */,
+				06D474AF22F937FD00C9DADD /* VPVideoData.m */,
+				06D474B122F9384900C9DADD /* VPVideoListData.h */,
+				06D474B222F9384900C9DADD /* VPVideoListData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,6 +251,7 @@
 		D078CD76214A04BD008946CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9823ECD22F41BE2007E9F3D /* text.json */,
 				D0102BBE214F7A85003C11A0 /* adInfo.json */,
 				D078CD77214A04BD008946CC /* config.json */,
 			);
@@ -277,7 +296,7 @@
 		069D542D1F04DC6D001E5324 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = videopls;
 				TargetAttributes = {
 					069D54341F04DC6D001E5324 = {
@@ -316,10 +335,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9654A2222F7FA42000AFB2E /* saomiao_off.svga in Resources */,
+				C9654A2122F7FA3E000AFB2E /* saomiao_no.svga in Resources */,
 				D0102BBF214F7A85003C11A0 /* adInfo.json in Resources */,
 				067652711F346B44001904F4 /* LaunchScreen.storyboard in Resources */,
 				067652701F346B3F001904F4 /* Main.storyboard in Resources */,
 				D078CD78214A04BD008946CC /* config.json in Resources */,
+				C9823ECE22F41BE2007E9F3D /* text.json in Resources */,
 				0689653E1F15F56E0054736C /* VPMediaControlView.xib in Resources */,
 				067187A41F56B741008544FC /* goods.lua in Resources */,
 				065D7B701F5572530075B450 /* hotarea.lua in Resources */,
@@ -358,7 +380,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh",
+				"${SRCROOT}/../Pods/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh",
 				"${PODS_ROOT}/../Resources/VideoPlsResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -367,7 +389,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C42CDB981F333B0900DD42D0 /* Run Script */ = {
@@ -382,7 +404,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\necho \"${PROJECT_DIR}\"\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print :CFBundleVersion\" \"${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"\nfi";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\necho \"${PROJECT_DIR}\"\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print :CFBundleVersion\" \"${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -394,6 +416,8 @@
 				068965351F14EDA60054736C /* VPAVPlayerController.m in Sources */,
 				069D54401F04DC6D001E5324 /* ViewController.m in Sources */,
 				D078CD7B214A054D008946CC /* VPWebViewController.m in Sources */,
+				06D474B322F9384900C9DADD /* VPVideoListData.m in Sources */,
+				06D474B022F937FD00C9DADD /* VPVideoData.m in Sources */,
 				D00D67B022D42FD60003972F /* VPModel.m in Sources */,
 				C4BB02A51F8F426100CC195C /* VPMediaMoreButtonView.m in Sources */,
 				D0DA384621A7E2F20014A855 /* VPLoginViewController.m in Sources */,
@@ -439,21 +463,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -476,7 +509,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -488,21 +521,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -519,7 +561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -541,7 +583,7 @@
 					"$(PROJECT_DIR)/VPInterfaceControllerDemo",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/VPInterfaceControllerDemo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.videopls.VideoPlsUnionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -562,7 +604,7 @@
 					"$(PROJECT_DIR)/VPInterfaceControllerDemo",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/VPInterfaceControllerDemo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.videopls.VideoPlsUnionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -13,7 +13,7 @@
 #import "VPConfigListData.h"
 #import <AFNetworking/AFNetworking.h>
 
-@interface VPVideoAppSettingView ()<UIGestureRecognizerDelegate>
+@interface VPVideoAppSettingView ()<UIGestureRecognizerDelegate, VPTextFieldSelectedDelegate>
 
 @property (nonatomic, strong) NSDictionary *configData;
 
@@ -68,6 +68,7 @@
     
     VPTextField *appKeyTextField = [[VPTextField alloc] initWithFrame:CGRectMake(90, 20, 240, 40)];
     appKeyTextField.borderStyle = UITextBorderStyleRoundedRect;
+    appKeyTextField.selectedDelegate = self;
     [panel addSubview:appKeyTextField];
     self.appKeyTextField = appKeyTextField;
 //    appKeyTextField.dataArray = nil;
@@ -78,6 +79,7 @@
     
     VPTextField *appSecretTextField = [[VPTextField alloc] initWithFrame:CGRectMake(90, 140, 240, 40)];
     appSecretTextField.borderStyle = UITextBorderStyleRoundedRect;
+    appSecretTextField.selectedDelegate = self;
     [panel addSubview:appSecretTextField];
     self.appSecretTextField = appSecretTextField;
 //    appSecretTextField.dataArray = [self.configData objectForKey:@"room_id"];

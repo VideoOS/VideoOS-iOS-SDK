@@ -54,15 +54,15 @@
     if (![PrivateConfig shareConfig].identifier) {
         [PrivateConfig shareConfig].identifier = @"http://7xr5j6.com1.z0.glb.clouddn.com/hunantv0129.mp4?v=20180518";        
         
-        if (self.mockConfigData) {
-            [PrivateConfig shareConfig].identifier = [[self.mockConfigData objectForKey:@"room_id"] objectAtIndex:0];
-        }
+//        if (self.mockConfigData) {
+//            [PrivateConfig shareConfig].identifier = [[self.mockConfigData objectForKey:@"room_id"] objectAtIndex:0];
+//        }
     }
     [PrivateConfig shareConfig].live = NO;
     [PrivateConfig shareConfig].cytron = YES;
 
-    VPSinglePlayerViewController *playerVC = [[VPSinglePlayerViewController alloc] initWithUrlString:[PrivateConfig shareConfig].identifier platformUserID:[PrivateConfig shareConfig].platformID isLive:NO];
-    playerVC.mockConfigData = self.mockConfigData;
+    VPSinglePlayerViewController *playerVC = [[VPSinglePlayerViewController alloc] initWithUrlString:[PrivateConfig shareConfig].videoUrl platformUserID:[PrivateConfig shareConfig].platformID isLive:NO];
+//    playerVC.mockConfigData = self.mockConfigData;
     [self presentViewController:playerVC animated:YES completion:nil];
 }
 

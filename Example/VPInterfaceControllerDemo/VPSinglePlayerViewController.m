@@ -25,8 +25,9 @@
 #import <VideoOS/VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
 #import "VPVideoAppSettingView.h"
 #import "VPConfigListData.h"
-
-@interface VPSinglePlayerViewController() <VPInterfaceStatusNotifyDelegate, VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate,VPIServiceDelegate> {
+#import <SVGAPlayer/SVGAPlayer.h>
+#import <SVGAPlayer/SVGAParser.h>
+@interface VPSinglePlayerViewController() <VPInterfaceStatusNotifyDelegate, VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate,VPIServiceDelegate,VPMediaControlViewDelegate,SVGAPlayerDelegate> {
     NSString *_urlString;
     NSString *_platformUserID;
     BOOL _isLive;
@@ -56,6 +57,7 @@
 @property (nonatomic, weak) UIButton *appInfoViewButton;
 @property (nonatomic, weak) VPVideoSettingView *settingView;
 @property (nonatomic, weak) VPVideoAppSettingView *appSettingView;
+@property (nonatomic, strong) SVGAPlayer *svgPlayer;
 
 @end
 
@@ -80,7 +82,12 @@
 {
     self = [super init];
     if (self) {
-        _urlString = urlString;
+        
+        if (urlString != nil) {
+            _urlString = urlString;
+        } else {
+            _urlString = [@"https://ai.videojj.com/5a90cfb1a1195f9d07f891c4/搜狐视频-继承者计划第7集.mp4" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        }
         _platformUserID = platformUserID;
         if (type == -1) {
             //传入null, 根据privateConfig进行配置
@@ -167,6 +174,16 @@
     
     [_player pause];
     [self loadPreAdvertising];
+    
+    if ([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait) {
+        _mediaControlView.videoSwitchButton.hidden = YES;
+        _mediaControlView.btnConstraint.constant = 0;
+        _mediaControlView.videoSwitchButton.selected = NO;
+    }else {
+        _mediaControlView.videoSwitchButton.hidden = NO;
+        _mediaControlView.btnConstraint.constant = 60;
+        [self switchVideoNetModeStateOff:NO];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -232,7 +249,8 @@
     _mediaControlView = [VPMediaControlView mediaControlViewWithNib];
     [_mediaControlView setFrame:_player.view.frame];
     [_mediaControlView setAVPlayerController:_player];
-    
+    _mediaControlView.delegate = self;
+    _mediaControlView.videoSwitchButton.selected = YES;
     __weak typeof(self) weakSelf = self;
     [_mediaControlView setBackButtonTappedToDo:^{
         [weakSelf dismissPlayerViewController];
@@ -340,12 +358,21 @@
 }
 
 - (void)simulateButtonDidClicked:(id)sender {
+
+    
+//    VPIServiceConfig *config = [[VPIServiceConfig alloc] init];
+//    config.identifier = _interfaceController.config.identifier;
+//    config.type = VPIServiceTypeVideoMode;
+//    config.duration = VPIVideoAdTimeType60Seconds;
+//    [_interfaceController startService:VPIServiceTypeVideoMode config:config];
+//    return;
+    
     NSString *path =  [[NSBundle mainBundle] pathForResource:@"adInfo" ofType:@"json"];
     NSDictionary *adInfo = [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:path] options:NSJSONReadingMutableContainers error:nil];
     
-    [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://defaultLuaView?template=os_red_envelope_hotspot.lua&id=5aa5fa5133edbf375fe43fff4"] data:[[adInfo objectForKey:@"launchInfoList"] objectAtIndex:1]];
+    [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://defaultLuaView?template=os_easy_shop_hotspot.lua&id=5aa5fa5133edbf375fe43fff4"] data:[[adInfo objectForKey:@"launchInfoList"] objectAtIndex:0]];
     
-//    [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://defaultLuaView?template=os_bubble.lua&id=5aa5fa5133edbf375fe43fff4"] data:[[adInfo objectForKey:@"launchInfoList"] objectAtIndex:3]];
+//    [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://defaultLuaView?template=os_bubble.lua&id=5aa5fa5133edbf375fe43fff4"] data:[[adInfo objectForKey:@"launchInfoList"] objectAtIndex:0]];
     
 //    [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://defaultLuaView?template=os_wedge.lua&id=5aa5fa5133edbf375fe43fff4"] data:[[adInfo objectForKey:@"launchInfoList"] objectAtIndex:0]];
     return;
@@ -356,6 +383,55 @@
     else {
         [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://defaultLuaView?template=os_wedge.lua&id=fdcc4b0a-03a7-4697-b64f-9c93b7d55409"] data:[[adInfo objectForKey:@"launchInfoList"] objectAtIndex:index]];
     }
+}
+
+- (void)switchVideoNetModeStateOff:(BOOL)off {
+    if (off == YES) {
+        [self addSVGAPlayerName:@"saomiao_off"];
+        [self stopVideoNetMode];
+    }else {
+        [self addSVGAPlayerName:@"saomiao_no"];
+        [self startVideoNetMode];
+    }
+}
+
+- (void)startVideoNetMode {
+    VPIServiceConfig *config = [[VPIServiceConfig alloc] init];
+    config.type = VPIServiceTypeVideoMode;
+    config.identifier = _interfaceController.config.identifier;
+    [_interfaceController startService:VPIServiceTypeVideoMode config:config];
+}
+
+- (void)stopVideoNetMode {
+    [_interfaceController stopService:VPIServiceTypeVideoMode];
+}
+
+- (void)addSVGAPlayerName:(NSString *)name {
+    SVGAParser *parser = [[SVGAParser alloc]init];
+    self.svgPlayer = [[SVGAPlayer alloc]initWithFrame:self.view.bounds];
+    self.svgPlayer.delegate = self;
+    self.svgPlayer.loops = 1;
+    [self.view addSubview:self.svgPlayer];
+    [self.svgPlayer mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.equalTo(self.view);
+    }];
+    
+    [parser parseWithNamed:name inBundle:[NSBundle mainBundle] completionBlock:^(SVGAVideoEntity * _Nonnull videoItem) {
+        if (videoItem != nil) {
+            self.svgPlayer.videoItem = videoItem;
+            [self.svgPlayer startAnimation];
+        }
+    } failureBlock:^(NSError * _Nonnull error) {
+        NSLog(@"SVGAPlayer：：：%@",error);
+    }];
+}
+
+
+- (void)svgaPlayerDidFinishedAnimation:(SVGAPlayer *)player {
+    
+    [player clear];
+    self.svgPlayer = nil;
+    [player removeFromSuperview];
 }
 
 - (void)videoButtonDidClicked:(id)sender {
@@ -383,7 +459,8 @@
         else {
             [PrivateConfig shareConfig].creativeName = nil;
         }
-        [PrivateConfig shareConfig].identifier = self.settingView.urlTextField.text;
+        [PrivateConfig shareConfig].videoUrl = self.settingView.urlTextField.text;
+        [PrivateConfig shareConfig].identifier = self.settingView.videoIdTextField.text;
         [PrivateConfig shareConfig].environment = self.settingView.environmentControl.selectedSegmentIndex;
         [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:[PrivateConfig shareConfig].environment];
 //        [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
@@ -396,14 +473,22 @@
 }
 
 - (void)reloadVideoInfo {
+    [self stopVideoNetMode];
     [_interfaceController stop];
-    [_player changeContentURLString:[PrivateConfig shareConfig].identifier];
+    if ([PrivateConfig shareConfig].videoUrl != nil) {
+        [_player changeContentURLString:[PrivateConfig shareConfig].videoUrl];
+    } else {
+        [_player changeContentURLString:[PrivateConfig shareConfig].identifier];
+    }
     if ([PrivateConfig shareConfig].creativeName) {
         _interfaceController.config.extendDict = @{@"creativeName":[PrivateConfig shareConfig].creativeName};
     }
     _interfaceController.config.identifier = [PrivateConfig shareConfig].identifier;
     _mediaControlView.hidden = NO;
     [_interfaceController start];
+    if (_mediaControlView.videoSwitchButton.selected) {
+        [self startVideoNetMode];
+    }
     [self deviceOrientationChange:nil];
 }
 
@@ -574,6 +659,7 @@
     [webViewController loadUrl:url close:^{
         __strong typeof(self) strongSelf = weakSelf;
         [strongSelf->_interfaceController platformCloseActionWebView];
+        [strongSelf->_interfaceController playVideoAd];
     }];
     [[VPUPTopViewController topViewController] presentViewController:webViewController animated:YES completion:nil];
 }
@@ -646,6 +732,16 @@
     if (orientation == UIDeviceOrientationPortraitUpsideDown) {
         return;
     }
+    
+    if (orientation == UIDeviceOrientationPortrait) {
+        
+        _mediaControlView.videoSwitchButton.hidden = YES;
+        _mediaControlView.btnConstraint.constant = 0;
+    }else {
+        _mediaControlView.videoSwitchButton.hidden = NO;
+        _mediaControlView.btnConstraint.constant = 60;
+    }
+    
     CGRect rect = self.view.frame;
     CGRect cRect = self.view.frame;
     if (UIDeviceOrientationIsPortrait(orientation)) {
@@ -724,14 +820,14 @@
         val = UIInterfaceOrientationPortrait;
     }
     else {
-        val = UIInterfaceOrientationMaskLandscape;
+        val = UIInterfaceOrientationLandscapeRight;
     }
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
         SEL selector = NSSelectorFromString(@"setOrientation:");
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
         [invocation setSelector:selector];
         [invocation setTarget:[UIDevice currentDevice]];
-        
+        // 从2开始是因为0 1 两个参数已经被selector和target占用
         [invocation setArgument:&val atIndex:2];
         [invocation invoke];
     }
@@ -766,6 +862,7 @@
                         
                         if ([function isEqualToString:@"cv"]) {
                             // cv 切换视频
+                            [PrivateConfig shareConfig].videoUrl = url;
                             [PrivateConfig shareConfig].identifier = url;
                             [self reloadVideoInfo];
                             

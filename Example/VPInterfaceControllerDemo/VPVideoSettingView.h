@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VPTextField.h"
 
 @interface VPVideoSettingView : UIView
 
 @property (nonatomic, weak) UIView *panel;
-@property (nonatomic, weak) UITextField *urlTextField;
+@property (nonatomic, weak) VPTextField *urlTextField;
+@property (nonatomic, weak) VPTextField *videoIdTextField;
 @property (nonatomic, weak) UITextField *platformIdTextField;
 @property (nonatomic, weak) UIButton *applyButton;
 @property (nonatomic, weak) UISegmentedControl *environmentControl;

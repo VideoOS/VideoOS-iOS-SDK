@@ -16,6 +16,7 @@
 //@property (nonatomic,   copy) NSString *appkey;
 @property (nonatomic,   copy) NSString *platformID;     //平台ID
 @property (nonatomic,   copy) NSString *identifier;     //视频或者房间ID
+@property (nonatomic,   copy) NSString *videoUrl;       //视频url,如果没有c则使用identifier
 @property (nonatomic,   copy) NSString *userID;
 @property (nonatomic,   copy) NSString *cate;
 

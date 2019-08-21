@@ -93,7 +93,8 @@ static const float kMaxHighWaterMarkMilli = 5 * 1000;
             _playUrl = [NSURL fileURLWithPath:path];
             return;
         }
-        
+//        urlString = @"http://qa-video.oss-cn-beijing.aliyuncs.com/mp4/zongyi.mp4";
+//        urlString = @"https://m.videojj.com/resource/test/SuccessorPlan07.mp4";
         _playUrl = [NSURL URLWithString:urlString];
     }
 }

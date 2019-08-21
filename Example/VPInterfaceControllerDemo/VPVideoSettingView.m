@@ -10,8 +10,11 @@
 #import <Masonry/Masonry.h>
 #import "PrivateConfig.h"
 #import "VPTextField.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <AFNetworking/AFNetworking.h>
+#import "VPVideoListData.h"
 
-@interface VPVideoSettingView ()<UIGestureRecognizerDelegate>
+@interface VPVideoSettingView ()<UIGestureRecognizerDelegate, VPTextFieldSelectedDelegate>
 
 @property (nonatomic, strong) NSDictionary *configData;
 
@@ -70,16 +73,29 @@
     self.platformIdTextField = platformIdTextField;
     platformIdTextField.dataArray = nil;
     
+    UILabel *videoIdTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 70, 100, 30)];
+    [videoIdTitle setText:@"videoId"];
+    [panel addSubview:videoIdTitle];
+    
+    VPTextField *videoIdTextField = [[VPTextField alloc] initWithFrame:CGRectMake(90, 140, 240, 40)];
+    videoIdTextField.borderStyle = UITextBorderStyleRoundedRect;
+    [panel addSubview:videoIdTextField];
+    videoIdTextField.selectedDelegate = self;
+    self.videoIdTextField = videoIdTextField;
+    videoIdTextField.dataArray = [VPVideoListData shared].videoIdArray;
+    
     UILabel *urlTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 70, 100, 30)];
-    [urlTitle setText:@"videoId"];
+    [urlTitle setText:@"videoUrl"];
     [panel addSubview:urlTitle];
     
     VPTextField *urlTextField = [[VPTextField alloc] initWithFrame:CGRectMake(90, 140, 240, 40)];
     urlTextField.borderStyle = UITextBorderStyleRoundedRect;
     [panel addSubview:urlTextField];
+    urlTextField.selectedDelegate = self;
     self.urlTextField = urlTextField;
-    urlTextField.dataArray = [self.configData objectForKey:@"room_id"];
+    urlTextField.dataArray = [VPVideoListData shared].videoUrlArray;
     
+
     NSArray *environmentArray = @[@"正式环境", @"预发布环境", @"测试环境", @"开发环境"];
     UISegmentedControl *environmentControl = [[UISegmentedControl alloc] initWithItems:environmentArray];
     [panel addSubview:environmentControl];
@@ -139,11 +155,25 @@
         make.centerY.equalTo(urlTitle.mas_centerY);
     }];
     
+    [videoIdTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(panel.mas_left).with.offset(widthSpace);
+        make.top.equalTo(urlTitle.mas_bottom).with.offset(30);
+        make.width.mas_equalTo(90);
+        make.height.mas_equalTo(30);
+    }];
+    
+    [videoIdTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(panel.mas_right).with.offset(-widthSpace);
+        make.left.equalTo(videoIdTitle.mas_right).with.offset(10);
+        make.height.mas_equalTo(40);
+        make.centerY.equalTo(videoIdTitle.mas_centerY);
+    }];
+    
     //
     [environmentControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(panel.mas_left).with.offset(widthSpace);
         make.right.equalTo(panel.mas_right).with.offset(-widthSpace);
-        make.top.equalTo(urlTitle.mas_bottom).with.offset(30);
+        make.top.equalTo(videoIdTitle.mas_bottom).with.offset(30);
         make.height.mas_equalTo(40);
     }];
     
@@ -164,11 +194,19 @@
     
     if ([PrivateConfig shareConfig].creativeName) {
         self.platformIdTextField.text = [PrivateConfig shareConfig].creativeName;
-        self.urlTextField.text = [PrivateConfig shareConfig].identifier;
+//        self.urlTextField.text = [PrivateConfig shareConfig].identifier;
     }
     else {
-        self.urlTextField.text = [[self.configData objectForKey:@"room_id"] objectAtIndex:0];
+//        self.urlTextField.text = [[self.configData objectForKey:@"room_id"] objectAtIndex:0];
     }
+    
+    if ([VPVideoListData shared].selectedIndex >= 0) {
+        NSInteger selectedIndex = [VPVideoListData shared].selectedIndex;
+        urlTextField.text = [VPVideoListData shared].videoUrlArray[selectedIndex];
+        videoIdTextField.text = [VPVideoListData shared].videoIdArray[selectedIndex];
+    }
+    
+    [self getMockAppData];
 }
 
 - (IBAction)cancelButtonDidClicked:(UIButton *)sender {
@@ -196,6 +234,46 @@
     [self.platformIdTextField resignFirstResponder];
     [self.urlTextField resignFirstResponder];
     return [super resignFirstResponder];
+}
+
+- (void)getMockAppData {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:@"http://mock.videojj.com/mock/5c8224a5380a47002f43f740/asmpapi/videoos_test_videoinfo" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([responseObject objectForKey:@"data"] && [[responseObject objectForKey:@"data"] isKindOfClass:[NSDictionary class]]) {
+            NSArray *videos = [[responseObject objectForKey:@"data"] objectForKey:@"videos"];
+            if (videos && [videos isKindOfClass:[NSArray class]]) {
+                for (NSDictionary *video in videos) {
+                    VPVideoData *config = [[VPVideoData alloc] init];
+                    config.videoUrl = [video objectForKey:@"videoUrl"];
+                    config.videoId = [video objectForKey:@"videoId"];
+                    [[VPVideoListData shared] addVideoData:config];
+                }
+                self.videoIdTextField.dataArray = [VPVideoListData shared].videoIdArray;
+                self.urlTextField.dataArray = [VPVideoListData shared].videoUrlArray;
+                if (self.videoIdTextField.text.length < 1 &&  self.urlTextField.text.length < 1) {
+                    NSInteger index = [VPVideoListData shared].selectedIndex = 0;
+                    if (index >= 0) {
+                        self.videoIdTextField.text = self.videoIdTextField.dataArray[index];
+                        self.urlTextField.text = self.urlTextField.dataArray[index];
+                    }
+                }
+            }
+            [MBProgressHUD hideHUDForView:self animated:YES];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [MBProgressHUD hideHUDForView:self animated:YES];
+    }];
+}
+
+- (void)dataArraySelectedIndex:(NSInteger)index target:(id)target {
+    [VPVideoListData shared].selectedIndex = index;
+    if (target == self.videoIdTextField) {
+        self.urlTextField.text = self.urlTextField.dataArray[index];
+    } else {
+        self.videoIdTextField.text = self.videoIdTextField.dataArray[index];
+    }
 }
 
 @end

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,7 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="667" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00/00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvG-pN-udB" userLabel="timeLabel">
-                            <rect key="frame" x="572" y="33" width="90" height="14.5"/>
+                            <rect key="frame" x="517" y="32.5" width="90" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="15" id="48i-nF-Nor"/>
                                 <constraint firstAttribute="width" constant="90" id="NbP-9A-QGL"/>
@@ -30,7 +29,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <slider opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="BTH-mh-Bwy" userLabel="playbackSlider">
-                            <rect key="frame" x="53" y="25" width="516" height="31"/>
+                            <rect key="frame" x="53" y="25" width="461" height="31"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="xr0-u4-R62"/>
                             </constraints>
@@ -52,13 +51,25 @@
                                 <action selector="backButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="WWi-ya-SQ5"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boD-JP-uAm">
+                            <rect key="frame" x="618" y="18" width="44" height="44"/>
+                            <state key="normal" image="shibie_off"/>
+                            <state key="selected" image="shibie_no">
+                                <color key="titleColor" red="0.3921568627" green="0.73333333329999995" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="switchButtonDidClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="YQN-lS-JQi"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="boD-JP-uAm" firstAttribute="centerY" secondItem="sSc-0a-Ksv" secondAttribute="centerY" constant="10" id="1lO-Is-fDb"/>
                         <constraint firstItem="BTH-mh-Bwy" firstAttribute="centerY" secondItem="gvt-Zn-yzx" secondAttribute="centerY" id="3dh-iv-AXZ"/>
+                        <constraint firstAttribute="trailing" secondItem="boD-JP-uAm" secondAttribute="trailing" constant="5" id="8IM-AA-oLv"/>
                         <constraint firstAttribute="height" constant="60" id="AGI-We-a3m"/>
                         <constraint firstItem="gvt-Zn-yzx" firstAttribute="leading" secondItem="sSc-0a-Ksv" secondAttribute="leading" constant="10" id="Bdr-Io-h1p"/>
-                        <constraint firstAttribute="trailing" secondItem="bvG-pN-udB" secondAttribute="trailing" constant="5" id="HOK-ce-Ukf"/>
+                        <constraint firstAttribute="trailing" secondItem="bvG-pN-udB" secondAttribute="trailing" constant="60" id="HOK-ce-Ukf"/>
                         <constraint firstItem="bvG-pN-udB" firstAttribute="centerY" secondItem="gvt-Zn-yzx" secondAttribute="centerY" id="MNq-dG-tfU"/>
                         <constraint firstItem="bvG-pN-udB" firstAttribute="leading" secondItem="BTH-mh-Bwy" secondAttribute="trailing" constant="5" id="rUa-HO-d6I"/>
                         <constraint firstItem="BTH-mh-Bwy" firstAttribute="leading" secondItem="gvt-Zn-yzx" secondAttribute="trailing" constant="5" id="wxG-Wa-nQY"/>
@@ -69,7 +80,7 @@
                     <rect key="frame" x="0.0" y="325" width="667" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHA-SV-XKb" userLabel="playButton">
-                            <rect key="frame" x="313" y="5" width="40" height="40"/>
+                            <rect key="frame" x="313.5" y="5" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="FHA-SV-XKb" secondAttribute="height" id="utE-VS-pCy"/>
                             </constraints>
@@ -108,10 +119,12 @@
             <connections>
                 <outlet property="backButton" destination="gvt-Zn-yzx" id="tMk-bl-rwE"/>
                 <outlet property="bottomControlView" destination="yVH-Ls-kRv" id="lda-Kt-9ff"/>
+                <outlet property="btnConstraint" destination="HOK-ce-Ukf" id="KOM-bm-KI8"/>
                 <outlet property="playButton" destination="FHA-SV-XKb" id="9eX-sy-VVg"/>
                 <outlet property="playbackSlider" destination="BTH-mh-Bwy" id="RTr-Af-Mnj"/>
                 <outlet property="timeLabel" destination="bvG-pN-udB" id="ORO-xT-IRt"/>
                 <outlet property="topControlView" destination="sSc-0a-Ksv" id="k2z-SH-Fsn"/>
+                <outlet property="videoSwitchButton" destination="boD-JP-uAm" id="sHk-bW-xSB"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
@@ -119,5 +132,7 @@
     <resources>
         <image name="button_video_back" width="40" height="40"/>
         <image name="button_video_play" width="66" height="66"/>
+        <image name="shibie_no" width="44" height="44"/>
+        <image name="shibie_off" width="44" height="44"/>
     </resources>
 </document>

@@ -3,7 +3,80 @@
     "resMsg": "处理成功",
     "attachInfo": null,
     "resCode": "00",
-    "launchInfoList": [ {
+    "launchInfoList": [
+        {
+            "creativeId": 102,
+            "data": {
+                "creativeName": "张军令的A/B剧",
+                "hotEdit": {
+                    "bDescribe": "赤壁",
+                    "aDescribe": "三国",
+                    "aLinkData": {
+                        "linkUrl": "http://www.baidu.com",
+                        "deepLink": "http://www.baidu.com",
+                        "selfLink": "http://www.baidu.com"
+                    },
+                    "bLinkData": {
+                        "linkUrl": "http://www.baidu.com",
+                        "deepLink": "http://www.baidu.com",
+                        "selfLink": "http://www.baidu.com"
+                    },
+                    "alinkVideoId": "http://www.baidu.com"
+                },
+                "miniAppId": "13911",
+                "interactionTypeId": "2837"
+            },
+            "deviceType": 3,
+            "duration": 2000,
+            "hotspotOrder": 0,
+            "hotspotTrackLink": [{
+                "clickTrackLink": "http://www.baidu.com",
+                "exposureTrackLink": "http://www.baidu.com"
+            }],
+            "id": "6fb8a091-8eaf-4dd0-ae9c-f970d706a3cf",
+            "launchPlanId": "108",
+            "sumHotspot": 1,
+            "template": "os_abcar_hotspot.lua",
+            "videoEndTime": 22000,
+            "videoStartTime": 20000
+        },
+        {
+            "creativeId": 102,
+            "data": {
+                "creativeName": "张军令的A/B剧",
+                "hotEdit": {
+                    "bDescribe": "赤壁",
+                    "aDescribe": "三国",
+                    "aLinkData": {
+                        "linkUrl": "http://www.baidu.com",
+                        "deepLink": "http://www.baidu.com",
+                        "selfLink": "http://www.baidu.com"
+                    },
+                    "bLinkData": {
+                        "linkUrl": "http://www.baidu.com",
+                        "deepLink": "http://www.baidu.com",
+                        "selfLink": "http://www.baidu.com"
+                    },
+                    "alinkVideoId": "http://www.baidu.com"
+                },
+                "miniAppId": "13911",
+                "interactionTypeId": "2837"
+            },
+            "deviceType": 3,
+            "duration": 2000,
+            "hotspotOrder": 0,
+            "hotspotTrackLink": [{
+                "clickTrackLink": "http://www.baidu.com",
+                "exposureTrackLink": "http://www.baidu.com"
+            }],
+            "id": "6fb8a091-8eaf-4dd0-ae9c-f970d706a3cf",
+            "launchPlanId": "108",
+            "sumHotspot": 1,
+            "template": "os_abcar_hotspot.lua",
+            "videoEndTime": 22000,
+            "videoStartTime": 20000
+        },
+        {
                        "id": "fdcc4b0a-03a7-4697-b64f-9c93b7d55409",
                        "template": "os_wedge.lua",
                        "videoStartTime": 5000,
