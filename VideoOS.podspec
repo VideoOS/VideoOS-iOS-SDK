@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "VideoOS"
-  s.version      = "1.3.2"
+  s.version      = "2.0.0"
   s.summary      = "Official VideoPls SDK for iOS to access VideoPls Platform with features like video os, and live os"
 
   s.description  = <<-DESC
