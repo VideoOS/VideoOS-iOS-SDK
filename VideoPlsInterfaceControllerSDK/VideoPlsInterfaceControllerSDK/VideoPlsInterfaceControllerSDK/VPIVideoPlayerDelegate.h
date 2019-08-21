@@ -101,4 +101,10 @@
  */
 - (VPIVideoPlayerSize *)videoPlayerSize;
 
+/**
+ * 获取当前视频的位置
+ * @return videoFrame 视频内容相对于播放器的位置
+ */
+- (CGRect)videoFrame;
+
 @end
