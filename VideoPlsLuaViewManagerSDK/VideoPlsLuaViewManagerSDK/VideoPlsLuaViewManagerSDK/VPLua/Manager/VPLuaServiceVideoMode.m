@@ -125,7 +125,7 @@
         
         dispatch_group_t batch_api_group = dispatch_group_create();
         
-        NSArray *filesList = nil; // [data objectForKey:@"luaList"];
+        NSArray *filesList = [data objectForKey:@"luaList"]; // [data objectForKey:@"luaList"];
         dispatch_group_enter(batch_api_group);
         [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error) {
             if (error) {

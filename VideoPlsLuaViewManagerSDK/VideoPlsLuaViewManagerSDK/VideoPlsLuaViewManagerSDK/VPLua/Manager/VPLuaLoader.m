@@ -44,8 +44,6 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
 
 @interface VPLuaLoader()
 
-@property (nonatomic, copy) NSString *tempFilePath;
-@property (nonatomic, copy) NSString *resumePath;
 @property (nonatomic, strong) VPUPPrefetchManager *prefetchManager;
 @property (nonatomic, strong) dispatch_queue_t luaLoaderQueue;
 
@@ -87,9 +85,7 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
 
 - (void)checkAndDownloadFilesList:(NSArray *)filesList resumePath:(NSString *)resumePath complete:(VPLuaLoaderCompletionBlock)complete {
     if ([[NSFileManager defaultManager] fileExistsAtPath:resumePath]) {
-        self.resumePath = resumePath;
-        self.tempFilePath = [resumePath stringByAppendingPathComponent:[NSString stringWithFormat:@"temp%@", [VPUPRandomUtil randomMKTempStringByLength:8]]];
-        [self checkFilesListWithLocal:filesList resumePath:(NSString *)resumePath complete:complete];
+        [self checkFilesListWithLocal:filesList resumePath:resumePath complete:complete];
     }
     else {
         NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-3001 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"resumePath do not exists"]}];
@@ -105,12 +101,16 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
         for (NSDictionary *dict in fileList) {
             NSString *url = [dict objectForKey:@"url"];
             NSString *fileName = [url lastPathComponent];
-            NSString *localPath = [self.resumePath stringByAppendingString:[NSString stringWithFormat:@"/%@", fileName]];
+            NSString *localPath = [resumePath stringByAppendingString:[NSString stringWithFormat:@"/%@", fileName]];
+
             if ([[NSFileManager defaultManager] fileExistsAtPath:localPath]) {
+#ifdef DEBUG
+#else
                 NSString *fileMD5 = [VPUPMD5Util md5File:localPath size:0];
                 if (![[dict objectForKey:@"md5"] isEqualToString:fileMD5]) {
                     [downloadFileList addObject:dict];
                 }
+#endif
             }
             else {
                 [downloadFileList addObject:dict];
@@ -136,6 +136,7 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
     
 //    static NSInteger count = 0;
     __weak typeof(self) weakSelf = self;
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
     
     [self.prefetchManager prefetchURLs:loaderObject.filesUrl
                              fileNames:loaderObject.filesName
@@ -150,6 +151,7 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
                                [weakSelf checkDownloadObject:loaderObject complete:complete];
                            }
                        }];
+//        });
 }
 
 - (void)checkDownloadObject:(VPLuaLoaderObject *)loaderObject complete:(VPLuaLoaderCompletionBlock)complete {
@@ -160,7 +162,7 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
         NSMutableArray *downloadFiles = [NSMutableArray arrayWithCapacity:0];
         for (NSInteger i = 0; i < loaderObject.filesList.count; i++) {
             NSString *fileName = [loaderObject.filesName objectAtIndex:i];
-            NSString *localPath = [loaderObject.tempFilePath stringByAppendingString:fileName];
+            NSString *localPath = [loaderObject.tempFilePath stringByAppendingPathComponent:fileName];
             [downloadFiles addObject:localPath];
             NSDictionary *dict = [loaderObject.filesList objectAtIndex:i];
             

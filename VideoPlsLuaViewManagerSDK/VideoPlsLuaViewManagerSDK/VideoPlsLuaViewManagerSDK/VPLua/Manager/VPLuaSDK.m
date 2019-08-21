@@ -46,8 +46,10 @@ NSString *const VPLuaScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas
     if (![VPUPGeneralInfo IDFA]) {
         [VPLuaSDK setIDFA:[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]];
     }
-    [VPLuaSDK checkLuaFiles];
-    [[VPLuaSDK sharedSDK] luaScriptManager];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [VPLuaSDK checkLuaFiles];
+        [[VPLuaSDK sharedSDK] luaScriptManager];
+    });
 }
 
 + (void)setIDFA:(NSString *)IDFA {
