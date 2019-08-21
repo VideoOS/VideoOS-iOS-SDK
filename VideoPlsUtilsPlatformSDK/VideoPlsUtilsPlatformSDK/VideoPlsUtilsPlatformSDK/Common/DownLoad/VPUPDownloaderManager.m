@@ -130,7 +130,7 @@ typedef void (^VPUPDownloaderCompletionHandler)(NSURL *filePath, NSError *error)
         {
             downloader.isForceDownload = YES;
         }
-        
+
         downloader.delegate = self;
         request.state = VPUPDownloadRequestStateLoading;
         [self.downloaderArray addObject:downloader];
@@ -170,52 +170,52 @@ typedef void (^VPUPDownloaderCompletionHandler)(NSURL *filePath, NSError *error)
                                      userInfo:userInfo];
     
     switch (request.state) {
-        case VPUPDownloadRequestStateWait:
-            [self.lock lock];
-            if ([self.requestArray containsObject:request])
-            {
-                [self.requestArray removeObject:request];
-                request.state = VPUPDownloadRequestStateError;
-                
-                [self callRequestCompletion:request fileURL:nil error:error];
-            }
-            [self.lock unlock];
-            break;
-        case VPUPDownloadRequestStateLoading:
-            [self.lock lock];
-            if ([self.downloadingRequestArray containsObject:request])
-            {
-                BOOL isNeedCancelDownloader = YES;
-                for (VPUPDownloadRequest *tempRequest in self.downloadingRequestArray)
+            case VPUPDownloadRequestStateWait:
+                [self.lock lock];
+                if ([self.requestArray containsObject:request])
                 {
-                    if (tempRequest != request && [tempRequest.downloadUrl isEqualToString:request.downloadUrl])
-                    {
-                        isNeedCancelDownloader = NO;
-                        break;
-                    }
+                    [self.requestArray removeObject:request];
+                    request.state = VPUPDownloadRequestStateError;
+    
+                    [self callRequestCompletion:request fileURL:nil error:error];
                 }
-                [self.downloadingRequestArray removeObject:request];
-                if (isNeedCancelDownloader)
+                [self.lock unlock];
+                break;
+            case VPUPDownloadRequestStateLoading:
+                [self.lock lock];
+                if ([self.downloadingRequestArray containsObject:request])
                 {
-                    VPUPResumeDownloader *downloader = nil;
-                    for (VPUPResumeDownloader *tempDownloader in self.downloaderArray)
+                    BOOL isNeedCancelDownloader = YES;
+                    for (VPUPDownloadRequest *tempRequest in self.downloadingRequestArray)
                     {
-                        if ([tempDownloader.downloadUrl isEqualToString:request.downloadUrl])
+                        if (tempRequest != request && [tempRequest.downloadUrl isEqualToString:request.downloadUrl])
                         {
-                            downloader = tempDownloader;
+                            isNeedCancelDownloader = NO;
                             break;
                         }
                     }
-                    [downloader cancel];
-                    [downloader invalidate];
-                    [self.downloaderArray removeObject:downloader];
+                    [self.downloadingRequestArray removeObject:request];
+                    if (isNeedCancelDownloader)
+                    {
+                        VPUPResumeDownloader *downloader = nil;
+                        for (VPUPResumeDownloader *tempDownloader in self.downloaderArray)
+                        {
+                            if ([tempDownloader.downloadUrl isEqualToString:request.downloadUrl])
+                            {
+                                downloader = tempDownloader;
+                                break;
+                            }
+                        }
+                        [downloader cancel];
+                        [downloader invalidate];
+                        [self.downloaderArray removeObject:downloader];
+                    }
+                    request.state = VPUPDownloadRequestStateError;
+                    
+                    [self callRequestCompletion:request fileURL:nil error:error];
                 }
-                request.state = VPUPDownloadRequestStateError;
-                
-                [self callRequestCompletion:request fileURL:nil error:error];
-            }
-            [self.lock unlock];
-            break;
+                [self.lock unlock];
+                break;
             
         default:
             break;

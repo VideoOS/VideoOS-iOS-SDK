@@ -9,7 +9,9 @@ function table_leng(t)
     end
     return leng;
 end
-function toTable(data) --string json 转table
+
+--string json 转table
+function toTable(data)
     local dataTable
     if (type(data) == 'string') then
         if (System.android()) then
@@ -22,6 +24,7 @@ function toTable(data) --string json 转table
     end
     return dataTable
 end
+
 --四舍五入--
 function rounded(decimal)
     decimal = math.floor(decimal)
@@ -52,6 +55,8 @@ function checkMqttHotspotToSetClose(data, callback)
     end
 end
 
+
+--widgetEvent版本兼容
 function widgetEvent(eventType, adID, adName, actionType, linkUrl, deepLink, selfLink)
 
     local actionString = ""

@@ -122,7 +122,7 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
             [weakSelf error:error type:VPLuaScriptManagerErrorTypeDownloadFile];
             return;
         }
-        //        [weakSelf unzipWithFilePath:filePath.relativePath data:data];
+//        [weakSelf unzipWithFilePath:filePath.relativePath data:data];
         NSString *fileMD5 = [VPUPMD5Util md5File:[filePath path] size:0];
         if ([fileMD5 isEqualToString:[data objectForKey:@"fileMd5"]]) {
             [weakSelf checkFilesChange];
@@ -253,7 +253,7 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
         NSFileManager *fileManager = [[NSFileManager alloc] init];
         NSArray* array = [fileManager contentsOfDirectoryAtPath:luaZipFilesPath error:nil];
         for(int i = 0; i<[array count]; i++) {
-            
+        
             NSString *fullPath = [luaZipFilesPath stringByAppendingPathComponent:[array objectAtIndex:i]];
             if ([[fullPath lastPathComponent] containsString:@"zip"]) {
                 LVZipArchive *archive = [LVZipArchive archiveWithData:[NSData dataWithContentsOfFile:fullPath]];
