@@ -81,6 +81,10 @@
 		062EE9BA1EE4FE4C00E1404C /* VPUPReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 062EE9B81EE4FE4C00E1404C /* VPUPReachability.m */; };
 		062EE9BB1EE4FE4C00E1404C /* VPUPReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 062EE9B81EE4FE4C00E1404C /* VPUPReachability.m */; };
 		062EE9BC1EE4FE4C00E1404C /* VPUPReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 062EE9B81EE4FE4C00E1404C /* VPUPReachability.m */; };
+		063A124722F3F1240027B6A2 /* UIImageView+VPUPFillColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 063A124622F3F1240027B6A2 /* UIImageView+VPUPFillColor.h */; };
+		063A124922F3F2090027B6A2 /* UIImageView+VPUPFillColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 063A124822F3F2090027B6A2 /* UIImageView+VPUPFillColor.m */; };
+		063A125022F418BE0027B6A2 /* UIButton+VPUPFillColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 063A124E22F418BE0027B6A2 /* UIButton+VPUPFillColor.h */; };
+		063A125122F418BE0027B6A2 /* UIButton+VPUPFillColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 063A124F22F418BE0027B6A2 /* UIButton+VPUPFillColor.m */; };
 		063FDB931F0E17E800333B46 /* VPUPFLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 063FDB8C1F0E17E800333B46 /* VPUPFLAnimatedImage.h */; };
 		063FDB941F0E17E800333B46 /* VPUPFLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 063FDB8C1F0E17E800333B46 /* VPUPFLAnimatedImage.h */; };
 		063FDB951F0E17E800333B46 /* VPUPFLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 063FDB8D1F0E17E800333B46 /* VPUPFLAnimatedImage.m */; };
@@ -1052,6 +1056,10 @@
 		062DB6731F1E0DBE003788C1 /* VPUPDBHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPDBHeader.h; sourceTree = "<group>"; };
 		062EE9B81EE4FE4C00E1404C /* VPUPReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPReachability.m; sourceTree = "<group>"; };
 		062EE9B91EE4FE4C00E1404C /* VPUPReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPReachability.h; sourceTree = "<group>"; };
+		063A124622F3F1240027B6A2 /* UIImageView+VPUPFillColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+VPUPFillColor.h"; sourceTree = "<group>"; };
+		063A124822F3F2090027B6A2 /* UIImageView+VPUPFillColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+VPUPFillColor.m"; sourceTree = "<group>"; };
+		063A124E22F418BE0027B6A2 /* UIButton+VPUPFillColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+VPUPFillColor.h"; sourceTree = "<group>"; };
+		063A124F22F418BE0027B6A2 /* UIButton+VPUPFillColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+VPUPFillColor.m"; sourceTree = "<group>"; };
 		063FDB8C1F0E17E800333B46 /* VPUPFLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPFLAnimatedImage.h; sourceTree = "<group>"; };
 		063FDB8D1F0E17E800333B46 /* VPUPFLAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPFLAnimatedImage.m; sourceTree = "<group>"; };
 		063FDB901F0E17E800333B46 /* VPUPFLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPFLAnimatedImageView.h; sourceTree = "<group>"; };
@@ -1911,6 +1919,10 @@
 			children = (
 				D02832141FDA310300A705C2 /* VPUPClickThroughView.h */,
 				D02832151FDA310300A705C2 /* VPUPClickThroughView.m */,
+				063A124622F3F1240027B6A2 /* UIImageView+VPUPFillColor.h */,
+				063A124822F3F2090027B6A2 /* UIImageView+VPUPFillColor.m */,
+				063A124E22F418BE0027B6A2 /* UIButton+VPUPFillColor.h */,
+				063A124F22F418BE0027B6A2 /* UIButton+VPUPFillColor.m */,
 			);
 			path = NormalView;
 			sourceTree = "<group>";
@@ -2094,6 +2106,7 @@
 				C4B2DB011FA6D32300626A50 /* VPUPVideoClip.h in Headers */,
 				D0EE6462204D3AB0005D53C5 /* VPUPWKWebViewDelegate.h in Headers */,
 				065503261EFA2680006FBADB /* VPUPLogUtil.h in Headers */,
+				063A124722F3F1240027B6A2 /* UIImageView+VPUPFillColor.h in Headers */,
 				D0E9436C1FF0E1B60038BD8B /* VPUPPhotoPickerController.h in Headers */,
 				D0928CC22088A0C2008AB5EC /* VPUPSDWebImageCoder.h in Headers */,
 				D03F61992019E9AA00DB0615 /* VPUPRouteRequest.h in Headers */,
@@ -2192,6 +2205,7 @@
 				D004F74520995DC900022E90 /* VPUPExtendWKWebView.h in Headers */,
 				061082661F3C3F25001E4656 /* VPUPImageFrameList.h in Headers */,
 				D03F61892019DDF100DB0615 /* VPUPRoutes.h in Headers */,
+				063A125022F418BE0027B6A2 /* UIButton+VPUPFillColor.h in Headers */,
 				D004F7222099567700022E90 /* vpup_socks_mosq.h in Headers */,
 				D0928CEC2088A0C2008AB5EC /* VPUPSDWebImageFrame.h in Headers */,
 				06C2EF991FA9DB5A00248280 /* VPUPViewScaleUtil.h in Headers */,
@@ -2702,6 +2716,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 060BEBC31EBC260200106EEB;
@@ -2897,6 +2912,7 @@
 				D0E943271FF0E1B50038BD8B /* VPUPEditingView.m in Sources */,
 				D004F7132099567700022E90 /* vpup_messages_mosq.c in Sources */,
 				D004F6D42099567700022E90 /* vpup_read_handle.c in Sources */,
+				063A124922F3F2090027B6A2 /* UIImageView+VPUPFillColor.m in Sources */,
 				066126A61ED13184000DBBD1 /* VPUPRandomUtil.m in Sources */,
 				06AEC4C51EEA817B00C384F6 /* VPUPLifeCycle.m in Sources */,
 				D004F73A2099567700022E90 /* VPUPMQTTMessage.m in Sources */,
@@ -2917,6 +2933,7 @@
 				D004F6D72099567700022E90 /* vpup_util_mosq.c in Sources */,
 				D0E943631FF0E1B60038BD8B /* VPUPImagePickerController.m in Sources */,
 				C44F4B201FC4225400E5D6B1 /* VPUPVideo.m in Sources */,
+				063A125122F418BE0027B6A2 /* UIButton+VPUPFillColor.m in Sources */,
 				065D7B441F556CD70075B450 /* VPUPActionManager.m in Sources */,
 				D0E943571FF0E1B50038BD8B /* VPUPAssetCell.m in Sources */,
 				06FCE2B91EE6A5BA00783D24 /* VPUPLoadImageButtonConfig.m in Sources */,

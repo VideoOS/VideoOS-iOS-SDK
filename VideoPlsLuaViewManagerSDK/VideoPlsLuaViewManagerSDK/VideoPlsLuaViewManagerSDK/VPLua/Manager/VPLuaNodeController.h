@@ -14,6 +14,19 @@
 @class VPLuaVideoInfo;
 @class VPLuaVideoPlayerSize;
 
+@protocol VPLuaNodeControllerLoadDelegate <NSObject>
+
+- (void)loadLuaError:(NSString *)error;
+
+@end
+
+@protocol VPLuaNodeControllerAppletDelegate <NSObject>
+
+- (void)showRetryPage:(NSString *)retryMessage retryData:(id)data nodeId:(NSString *)nodeId;
+- (void)showErrorPage:(NSString *)errorMessage;
+
+@end
+
 @interface VPLuaNodeController : NSObject
 
 
@@ -22,6 +35,10 @@
 //+ (VPLuaNodeController *)getControllerWithLuaViewCore:(id)luaViewCore native:(id)nativeBridge;
 
 @property (nonatomic) VPLuaVideoInfo *videoInfo;
+
+@property (nonatomic, weak) id<VPLuaNodeControllerLoadDelegate> luaDelegate;
+
+@property (nonatomic, weak) id<VPLuaNodeControllerAppletDelegate> appletDelegate;
 
 @property (nonatomic, assign, readonly, getter=isPortrait) BOOL portrait;
 @property (nonatomic, assign, readonly, getter=isFullScreen) BOOL fullScreen;
@@ -67,11 +84,13 @@
  */
 - (void)loadLua:(NSString *)luaUrl data:(id)data;
 
-- (void)callLuaMethood:(NSString *)method data:(id)data;
+- (void)callLuaMethod:(NSString *)method data:(id)data;
 
-- (void)callLuaMethood:(NSString *)method nodeId:(NSString *)nodeId data:(id)data;
+- (void)callLuaMethod:(NSString *)method nodeId:(NSString *)nodeId data:(id)data;
 
 - (void)removeNodeWithNodeId:(NSString *)nodeId;
+
+- (void)removeLastNode;
 
 - (VPLuaBaseNode*)createNode;
 

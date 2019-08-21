@@ -27,6 +27,7 @@
 #import "VPInterfaceClickThroughView.h"
 
 #import "VPLuaOSView.h"
+#import "VPLuaAppletsView.h"
 #import "VPLuaMedia.h"
 #import "VPLuaVideoInfo.h"
 #import "VPLuaPage.h"
@@ -55,6 +56,8 @@
 @interface VPInterfaceController()
 
 @property (nonatomic) VPLuaOSView *osView;
+
+@property (nonatomic) VPLuaAppletsView *appletsView;
 
 @property (nonatomic, readwrite, strong) VPInterfaceControllerConfig *config;
 
@@ -135,6 +138,7 @@
     _config = config;
     _view = [[VPInterfaceClickThroughView alloc] initWithFrame:frame];
     [self initOSViewWithFrame:frame];
+    [self initAppletsViewWithFrame:frame];
 }
 
 - (void)initOSViewWithFrame:(CGRect)frame {
@@ -162,6 +166,28 @@
         return [weakSelf getUserInfoDictionary];
     }];
     [_view addSubview:_osView];
+}
+
+- (void)initAppletsViewWithFrame:(CGRect)frame {
+    
+    __weak typeof(self) weakSelf = self;
+    NSString *platformId = nil;
+    NSString *videoId = nil;
+    
+    platformId = _config.platformID;
+    videoId = _config.identifier;
+
+    _appletsView = [[VPLuaAppletsView alloc] initWithFrame:frame platformId:platformId videoId:videoId extendInfo:_config.extendDict];
+    VPLuaVideoPlayerSize *vpSize = [[VPLuaVideoPlayerSize alloc] init];
+    vpSize.portraitSmallScreenHeight = self.videoPlayerSize.portraitSmallScreenHeight;
+    vpSize.portraitFullScreenWidth = self.videoPlayerSize.portraitFullScreenWidth;
+    vpSize.portraitFullScreenHeight = self.videoPlayerSize.portraitFullScreenHeight;
+    vpSize.portraitSmallScreenOriginY = self.videoPlayerSize.portraitSmallScreenOriginY;
+    _osView.videoPlayerSize = vpSize;
+    [_appletsView setGetUserInfoBlock:^NSDictionary *(void) {
+        return [weakSelf getUserInfoDictionary];
+    }];
+    [_view addSubview:_appletsView];
 }
 
 - (BOOL)validateSetAttribute {
@@ -197,6 +223,12 @@
     if (_osView) {
         [_osView startLoading];
     }
+    if (!_appletsView) {
+        [self initAppletsViewWithFrame:self.view.bounds];
+    }
+    if (_appletsView) {
+        [_appletsView startLoading];
+    }
 
     [self registerStatusNotification];
 }
@@ -214,6 +246,9 @@
 
     if (_osView) {
         [_osView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
+    }
+    if (_appletsView) {
+        [_appletsView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
     }
 
     CGFloat width = 0;
@@ -273,6 +308,12 @@
         _osView = nil;
     }
     
+    if (_appletsView) {
+        [_appletsView stop];
+        [_appletsView removeFromSuperview];
+        _appletsView = nil;
+    }
+    
     _canSet = YES;
 }
 
@@ -286,7 +327,7 @@
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               @(VPLuaAdActionTypePause), @"ActionType",
                               @(VPLuaAdEventTypeAction), @"EventType",nil];
-        [_osView callLuaMethood:@"event" data:dict];
+        [_osView callLuaMethod:@"event" data:dict];
     }
 }
 
@@ -296,7 +337,7 @@
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               @(VPLuaAdActionTypeResume),@"ActionType",
                               @(VPLuaAdEventTypeAction), @"EventType",nil];
-        [_osView callLuaMethood:@"event" data:dict];
+        [_osView callLuaMethod:@"event" data:dict];
     }
 }
 
@@ -494,6 +535,8 @@
 }
 
 - (void)interfaceActionNewNotify:(NSNotification *)sender {
+    
+    NSLog(@"%@",sender);
     if (self.delegate) {
         if([self.delegate respondsToSelector:@selector(vp_interfaceActionNotify:)]) {
             NSDictionary *userInfo = sender.userInfo;
@@ -629,6 +672,49 @@
         [strongSelf.osView loadLua:luaFile data:parameters];
         return YES;
     }];
+    
+    //跳转小程序   LuaView://applets?appletId=xxxx&type=x(type: 1横屏,2竖屏)
+    //容器内部跳转 LuaView://applets?appletId=xxxx&template=xxxx.lua&id=xxxx&priority=x
+    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLuaView] addRoute:@"/applets" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+        
+        if (!weakSelf) {
+            return NO;
+        }
+        __strong typeof(self) strongSelf = weakSelf;
+        //判定osView是否存在，若不存在，先创建
+        if (!strongSelf.appletsView) {
+            [strongSelf initAppletsViewWithFrame:strongSelf.view.bounds];
+            
+            if(!strongSelf.canSet) {
+                [strongSelf.appletsView startLoading];
+            }
+        }
+        
+        NSDictionary *queryParams = [parameters objectForKey:VPUPRouteQueryParamsKey];
+        NSString *appletID = [queryParams objectForKey:@"appletId"];
+        if (!appletID) {
+            return NO;
+        }
+        id type = [queryParams objectForKey:@"type"];
+        id template = [queryParams objectForKey:@"template"];
+        
+        if (!type && !template) {
+            //都不存在
+            return NO;
+        }
+        
+        if (!type && template) {
+            //没有type有入口
+            if (![strongSelf.appletsView checkContainerExistWithAppletID:appletID]) {
+                //没有对应的容器
+                return NO;
+            }
+        }
+        
+        [strongSelf.appletsView loadAppletWithID:appletID data:parameters];
+    
+        return YES;
+    }];
 }
 
 - (void)unregisterRoutes {
@@ -698,7 +784,7 @@
     
     self.serviceManager.osView = self.osView;
     self.serviceManager.delegate = self;
-
+    
     [self.serviceManager startService:(VPLuaServiceType)type config:serviceConfig];
     
 //    if (type == VPIServiceTypePreAdvertising || type == VPIServiceTypePostAdvertising || type == VPIServiceTypePauseAd) {
@@ -730,7 +816,7 @@
 //        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
 //                              @(VPLuaAdActionTypePause), @"ActionType",
 //                              @(VPLuaAdEventTypeAction), @"EventType",nil];
-//        [_osView callLuaMethood:@"event" nodeId:service.serviceId data:dict];
+//        [_osView callLuaMethod:@"event" nodeId:service.serviceId data:dict];
 //    }
 }
     
@@ -741,7 +827,7 @@
 //        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
 //                              @(VPLuaAdActionTypeResume), @"ActionType",
 //                              @(VPLuaAdEventTypeAction), @"EventType",nil];
-//        [_osView callLuaMethood:@"event" nodeId:service.serviceId data:dict];
+//        [_osView callLuaMethod:@"event" nodeId:service.serviceId data:dict];
 //    }
 }
     

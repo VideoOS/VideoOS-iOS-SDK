@@ -10,6 +10,7 @@
 #import "VPLuaServiceAd.h"
 #import "VPLuaConstant.h"
 #import "VPLuaServiceVideoMode.h"
+#import "VPLuaTrackManager.h"
 
 @interface VPLuaServiceManager()
 
@@ -44,23 +45,24 @@
             }
         }];
     }
-//    else if(config.identifier && type == VPLuaServiceTypeVideoMode) {
-//        VPLuaServiceVideoMode *videoModeService = [[VPLuaServiceVideoMode alloc] initWithConfig:config];
-//        [self.serviceDict setObject:videoModeService forKey:@(type)];
-//        __weak typeof(self) weakSelf = self;
-//        [videoModeService startServiceWithConfig:config complete:^(NSError *error) {
-//            if (!weakSelf) {
-//                return;
-//            }
-//            
-//            if (error) {
-//                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(vp_didFailToCompleteForService:error:)]) {
-//                    [weakSelf.delegate vp_didFailToCompleteForService:(VPLuaServiceType)type error:error];
-//                }
-//                weakSelf.serviceDict[@(type)] = nil;
-//            }
-//        }];
-//    }
+    else if(config.identifier && type == VPLuaServiceTypeVideoMode) {
+        VPLuaServiceVideoMode *videoModeService = [[VPLuaServiceVideoMode alloc] initWithConfig:config];
+        [self.serviceDict setObject:videoModeService forKey:@(type)];
+        __weak typeof(self) weakSelf = self;
+        [videoModeService startServiceWithConfig:config complete:^(NSError *error) {
+            if (!weakSelf) {
+                return;
+            }
+            
+            if (error) {
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(vp_didFailToCompleteForService:error:)]) {
+                    [weakSelf.delegate vp_didFailToCompleteForService:(VPLuaServiceType)type error:error];
+                }
+                weakSelf.serviceDict[@(type)] = nil;
+            }
+        }];
+        [VPLuaTrackManager trackVideoModeSwitch:YES];
+    }
     else {
         NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-4001 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Unsupported parameters"]}];
         if (self.delegate && [self.delegate respondsToSelector:@selector(vp_didFailToCompleteForService:error:)]) {
@@ -75,7 +77,7 @@
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               @(VPLuaAdActionTypePause), @"ActionType",
                               @(VPLuaAdEventTypeAction), @"EventType",nil];
-        [self.osView callLuaMethood:@"event" nodeId:service.serviceId data:dict];
+        [self.osView callLuaMethod:@"event" nodeId:service.serviceId data:dict];
     }
 }
 
@@ -85,7 +87,7 @@
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               @(VPLuaAdActionTypeResume), @"ActionType",
                               @(VPLuaAdEventTypeAction), @"EventType",nil];
-        [self.osView callLuaMethood:@"event" nodeId:service.serviceId data:dict];
+        [self.osView callLuaMethod:@"event" nodeId:service.serviceId data:dict];
     }
 }
 
@@ -95,6 +97,9 @@
         [self.osView removeViewWithNodeId:service.serviceId];
     }
     self.serviceDict[@(type)] = nil;
+    if (type == VPLuaServiceTypeVideoMode) {
+        [VPLuaTrackManager trackVideoModeSwitch:NO];
+    }
 }
 
 @end

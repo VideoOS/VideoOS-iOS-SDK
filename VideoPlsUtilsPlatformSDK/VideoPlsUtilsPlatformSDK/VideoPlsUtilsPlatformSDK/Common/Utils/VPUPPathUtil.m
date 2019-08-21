@@ -60,6 +60,20 @@
     return [VPUPPathUtil subPathOfLua:@"os"];
 }
 
++ (NSString *)luaAppletsPath {
+    return [VPUPPathUtil subPathOfLua:@"applets"];
+}
+
++ (NSString *)subPathOfLuaApplets:(NSString *)placeholder {
+    NSString *path = [self luaAppletsPath];
+    path = [path stringByAppendingPathComponent:placeholder];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return path;
+}
+
 + (NSString *)subPathOfLua:(NSString *)placeholder {
     NSString *path = [self luaPath];
     path = [path stringByAppendingPathComponent:placeholder];

@@ -53,9 +53,9 @@ typedef NS_ENUM(NSUInteger, VPLuaAdActionType) {
 
 - (void)loadLua:(NSString *)luaUrl data:(id)data;
 
-- (void)callLuaMethood:(NSString *)method data:(id)data;
+- (void)callLuaMethod:(NSString *)method data:(id)data;
 
-- (void)callLuaMethood:(NSString *)method nodeId:(NSString *)nodeId data:(id)data;
+- (void)callLuaMethod:(NSString *)method nodeId:(NSString *)nodeId data:(id)data;
 
 - (void)removeViewWithNodeId:(NSString *)nodeId;
 

@@ -25,7 +25,7 @@
 #import "VPUPLoadImageManager.h"
 #import "VPUPMD5Util.h"
 #import "VPLuaVideoPlayerSize.h"
-
+#import "VPUPRandomUtil.h"
 
 #import <VPLuaViewSDK/LuaViewCore.h>
 #import "VideoPlsUtilsPlatformSDK.h"
@@ -271,6 +271,11 @@ const NSInteger VPLuaBaseNodeWedgePriority = 10;
     NSString *nodeId = [queryParams objectForKey:@"id"];
     if (!nodeId) {
         nodeId = [luaData objectForKey:@"id"];
+
+        if (!nodeId) {
+            NSString *random = [VPUPRandomUtil randomStringByLength:4];
+            nodeId = [NSString stringWithFormat:@"root_%@", random];
+        }
     }
     
     NSMutableDictionary *toLuaData = [NSMutableDictionary dictionaryWithCapacity:0];
@@ -307,6 +312,9 @@ const NSInteger VPLuaBaseNodeWedgePriority = 10;
     if(runFile) {
         VPUPLogW(@"[load lua error], error:%@", runFile);
         [VPUPActionManager pushAction:VPUP_SchemeAddPath(@"error", @"Lua") data:node.luaFile sender:self];
+        if (self.luaDelegate && [self.luaDelegate respondsToSelector:@selector(loadLuaError:)]) {
+            [self.luaDelegate loadLuaError:runFile];
+        }
         return;
     }
     //页面按优先级添加
@@ -320,15 +328,15 @@ const NSInteger VPLuaBaseNodeWedgePriority = 10;
     [_nodes addObject:node];
 }
 
-- (void)callLuaMethood:(NSString *)method data:(id)data {
+- (void)callLuaMethod:(NSString *)method data:(id)data {
     for (VPLuaBaseNode *tempNode in _nodes) {
         [tempNode callMethod:method data:data];
     }
 }
 
-- (void)callLuaMethood:(NSString *)method nodeId:(NSString *)nodeId data:(id)data {
+- (void)callLuaMethod:(NSString *)method nodeId:(NSString *)nodeId data:(id)data {
     if (nodeId == nil) {
-        [self callLuaMethood:method data:data];
+        [self callLuaMethod:method data:data];
     }
     else {
         for (VPLuaBaseNode *tempNode in _nodes) {
@@ -349,6 +357,16 @@ const NSInteger VPLuaBaseNodeWedgePriority = 10;
     if (removeNode) {
         [removeNode destroyView];
     }
+}
+
+- (void)removeLastNode {
+    VPLuaBaseNode *removeNode = [_nodes lastObject];
+    if (removeNode == [_nodes firstObject]) {
+        //已经是最后一个了,不移除
+        return;
+    }
+    [removeNode destroyView];
+    
 }
 
 - (void)turnOffNode:(NSNotification *)sender {

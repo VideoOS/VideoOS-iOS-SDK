@@ -219,18 +219,18 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
     }
 }
 
-- (void)callLuaMethood:(NSString *)method data:(id)data {
+- (void)callLuaMethod:(NSString *)method data:(id)data {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.luaController callLuaMethood:method data:data];
+        [self.luaController callLuaMethod:method data:data];
     });
 }
 
-- (void)callLuaMethood:(NSString *)method nodeId:(NSString *)nodeId data:(id)data {
+- (void)callLuaMethod:(NSString *)method nodeId:(NSString *)nodeId data:(id)data {
     if (nodeId == nil) {
-        [self callLuaMethood:method data:data];
+        [self callLuaMethod:method data:data];
     }
     else {
-        [self.luaController callLuaMethood:method nodeId:nodeId data:data];
+        [self.luaController callLuaMethod:method nodeId:nodeId data:data];
     }
 }
 
