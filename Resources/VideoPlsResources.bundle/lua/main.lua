@@ -104,6 +104,40 @@ local function closeAdView(adId, data)
     end
 end
 
+local function trackNotice(data, requestType, status, isShow)
+    if (data == nil or requestType == nil or status == nil or isShow == nil) then
+        return nil
+    end
+
+    -- local OS_HTTP_POST_CHECK_HOTSPOT_TRACK = OS_HTTP_HOST .. "/statisticConfirmLaunch"
+
+    local paramData = {
+        videoId = Native:nativeVideoID(),
+        id = data.id,
+        launchPlanId = data.launchPlanId,
+        createId = data.createId,
+        timestamp = data.videoStartTime,
+        type = requestType,
+        status = status,
+        isShow = isShow,
+        commonParam = Native:commonParam()
+    }
+
+    local paramDataString = Native:tableToJson(paramData)
+
+    -- print("[LuaView] "..paramDataString)
+    -- print("[LuaView] "..OS_HTTP_POST_CHECK_HOTSPOT_TRACK)
+
+    mainNode.request:post(OS_HTTP_POST_CHECK_HOTSPOT_TRACK, {
+        bu_id = buId,
+        device_type = deviceType,
+        data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
+    }, function(response, errorInfo)
+        -- print("luaview getVoteCountInfo")
+
+    end)
+end
+
 local function checkHotspotShow(data)
 
     if (data == nil) then
@@ -132,24 +166,30 @@ local function checkHotspotShow(data)
         data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
     }, function(response, errorInfo)
         -- print("luaview getVoteCountInfo")
-        if (response == nil) then
-            return
-        end
-        -- print("luaview getVoteCountInfo 11"..Native:tableToJson(response))
-        responseData = Native:aesDecrypt(response.encryptData, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
-        -- print("luaview " .. Native:tableToJson(data))
-        -- print("luaview " .. responseData)
-        response = toTable(responseData)
-        if (response.resCode ~= "00") then
-            return
-        end
-        
-        if (response.status == "00") then
-            if checkAdTable[data.id] ~= nil then
-                checkAdTable[data.id] = true
+
+        local requestType = 0
+        local playStatus = 0
+        local isShow = 0
+        if (response ~= nil) then
+            requestType = 1
+            -- print("luaview getVoteCountInfo 11"..Native:tableToJson(response))
+            responseData = Native:aesDecrypt(response.encryptData, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
+            -- print("luaview " .. Native:tableToJson(data))
+            -- print("luaview " .. responseData)
+            response = toTable(responseData)
+            if (response.resCode == "00") then
+                if (response.status == "00") then
+                    playStatus = 1
+                    if checkAdTable[data.id] ~= nil then
+                        checkAdTable[data.id] = true
+                    end
+                    if data.videoStartTime + adShowInterval > lastProgress then
+                        isShow = 1
+                    end
+                end
             end
         end
-        
+        trackNotice(data, requestType, playStatus, isShow)
     end)
 end
 
@@ -312,7 +352,7 @@ local function getTaglist()
             return
         end
         responseData = Native:aesDecrypt(response.encryptData, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
-        --print("luaview "..responseData)
+        print("luaview "..responseData)
 
         response = toTable(responseData)
         if (response.resCode ~= "00") then
@@ -322,7 +362,19 @@ local function getTaglist()
         if (dataTable == nil) then
             return
         end
-        --osTypeVideoOS = 1, osTypeLiveOS = 2, 直播开启Mqtt，点播不开启
+        
+        --下载投放的lua文件
+        local luaList = {}
+        for i,v in ipairs(dataTable) do
+            if (v.luaList ~= nil ) then
+                for i,v in ipairs(v.luaList) do
+                    table.insert(luaList, v)
+                end
+            end
+        end
+        Native:preloadLuaList(luaList)
+
+        --osTypeVideoOS = 1, osTypeLiveOS = 2, 点播按时间点加载，直播直接加载
         if Native:osType() < osTypeLiveOS then
             print("osTypeVideoOS")
             for key, value in pairs(dataTable) do
@@ -440,7 +492,8 @@ local function getResourcelist()
         local videoList = {}
         local imageList = {}
         for i, v in ipairs(dataTable) do
-            local position = string.find(v, ".mp4", 1)
+            local lowerUrl = string.lower(v)
+            local position = string.find(lowerUrl, ".mp4", 1)
             if position ~= nil and position > 0 then
                 table.insert(videoList, v)
             else
@@ -498,6 +551,11 @@ function show(args)
         if (response.resCode ~= "00") then
             return
         end
+
+        if (response.confirmTime ~= nil) then
+            adCheckInterval = response.confirmTime * 1000.0
+        end
+
         mainNode.mqtt = registerMqtt(response)
         getTag()
         getResourcelist()
