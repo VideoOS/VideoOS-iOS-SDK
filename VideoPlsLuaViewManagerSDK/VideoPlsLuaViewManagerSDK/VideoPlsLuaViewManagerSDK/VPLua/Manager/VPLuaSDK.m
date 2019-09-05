@@ -15,10 +15,8 @@
 #import "VPLuaCommonInfo.h"
 #import <AdSupport/AdSupport.h>
 
-//NSString *const VPLuaScriptServerUrl = @"http://dev-videopublicapi.videojj.com/videoos-api/api/fileVersion";
 NSString *const VPLuaServerHost = @"https://os-saas.videojj.com/os-api-saas";
-NSString *const VPLuaScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas/api/detailedFileVersion";
-//NSString *const VPLuaScriptServerUrl = @"http://videopublicapi.videojj.com/videoos-api/api/fileVersion";
+NSString *const VPLuaScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas/api/preloadLuaFileInfo";
 
 @interface VPLuaSDK ()<VPLuaScriptManagerDelegate>
 
@@ -46,10 +44,12 @@ NSString *const VPLuaScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas
     if (![VPUPGeneralInfo IDFA]) {
         [VPLuaSDK setIDFA:[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]];
     }
+    
+    [VPLuaSDK checkLuaFiles];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [VPLuaSDK checkLuaFiles];
         [[VPLuaSDK sharedSDK] luaScriptManager];
     });
+    
 }
 
 + (void)setIDFA:(NSString *)IDFA {

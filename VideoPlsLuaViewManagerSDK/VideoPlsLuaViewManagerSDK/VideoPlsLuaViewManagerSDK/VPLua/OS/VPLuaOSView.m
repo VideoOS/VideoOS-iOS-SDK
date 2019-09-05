@@ -73,7 +73,10 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
         
         ((BOOL(*)(id,SEL, id,id))objc_msgSend)(sdkClass, checkLuaFiles, nil, nil);
 
-        [self prefetchLua];
+//        [self prefetchLua];
+        if(!self.networkManager) {
+            [self initNetworkManager];
+        }
     }
     
     return self;
@@ -159,20 +162,8 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
     }
 
     if (self.useUpdateVersion) {
-        //http://videojj-mobile.oss-cn-beijing.aliyuncs.com/huyu/developer/version.json
-        //https://videojj-mobile.oss-cn-beijing.aliyuncs.com/os/lua/version.json";
-        //http://videojj-mobile.oss-cn-beijing.aliyuncs.com/os/developer/version.json
-        //NSString *versionUrl = @"http://videojj-mobile.oss-cn-beijing.aliyuncs.com/os/developer/version.json";
-        //NSString *versionUrl = @"http://dev-videopublicapi.videojj.com/videoos/api/fileVersion";
-        NSString *versionUrl = VPLuaScriptServerUrl;
-        if ([[VPUPDebugSwitch sharedDebugSwitch] debugState] > 1) {
-            versionUrl = [NSString stringWithFormat:versionUrl, @"test"];
-        } else {
-            versionUrl = [NSString stringWithFormat:versionUrl, @""];
-        }
-        
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            VPLuaScriptManager *manager = [[VPLuaScriptManager alloc] initWithLuaStorePath:self.luaPath apiManager:self.networkManager.httpManager versionUrl:versionUrl nativeVersion:@"1.0"];
+            VPLuaScriptManager *manager = [[VPLuaScriptManager alloc] initWithLuaStorePath:self.luaPath apiManager:self.networkManager.httpManager versionUrl:VPLuaScriptServerUrl nativeVersion:@"1.0"];
             self.luaScriptManager = manager;
             manager.delegate = self;
         });
@@ -208,7 +199,7 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
 }
 
 - (void)loadLua:(NSString *)luaUrl data:(id)data {
-    if (self.isStartLoading && self.downloadFinished) {
+    if (self.isStartLoading) {
         [self.luaController updateFrame:self.bounds isPortrait:self.isPortrait isFullScreen:self.isFullScreen];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.luaController loadLua:luaUrl data:data];
