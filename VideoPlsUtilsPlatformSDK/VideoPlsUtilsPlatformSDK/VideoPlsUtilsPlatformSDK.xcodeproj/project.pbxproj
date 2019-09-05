@@ -362,6 +362,8 @@
 		06C2EF991FA9DB5A00248280 /* VPUPViewScaleUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C2EF971FA9DB5A00248280 /* VPUPViewScaleUtil.h */; };
 		06C2EF9A1FA9DB5A00248280 /* VPUPViewScaleUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C2EF971FA9DB5A00248280 /* VPUPViewScaleUtil.h */; };
 		06C2EF9B1FA9DB5A00248280 /* VPUPViewScaleUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C2EF971FA9DB5A00248280 /* VPUPViewScaleUtil.h */; };
+		06C7E92E230A8A9C000FEC1C /* VPUPTrafficStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C7E92C230A8A9C000FEC1C /* VPUPTrafficStatistics.h */; };
+		06C7E92F230A8A9C000FEC1C /* VPUPTrafficStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C7E92D230A8A9C000FEC1C /* VPUPTrafficStatistics.m */; };
 		06D57C251F18697E00C1C1BA /* VPUPOrderedDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D57C231F18697E00C1C1BA /* VPUPOrderedDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06D57C261F18697E00C1C1BA /* VPUPOrderedDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D57C231F18697E00C1C1BA /* VPUPOrderedDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06D57C271F18697E00C1C1BA /* VPUPOrderedDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D57C231F18697E00C1C1BA /* VPUPOrderedDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1147,6 +1149,8 @@
 		06AEC4C01EEA817B00C384F6 /* VPUPLifeCycle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPLifeCycle.h; sourceTree = "<group>"; };
 		06AEC4C11EEA817B00C384F6 /* VPUPLifeCycle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPLifeCycle.m; sourceTree = "<group>"; };
 		06C2EF971FA9DB5A00248280 /* VPUPViewScaleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPViewScaleUtil.h; sourceTree = "<group>"; };
+		06C7E92C230A8A9C000FEC1C /* VPUPTrafficStatistics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPUPTrafficStatistics.h; sourceTree = "<group>"; };
+		06C7E92D230A8A9C000FEC1C /* VPUPTrafficStatistics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPTrafficStatistics.m; sourceTree = "<group>"; };
 		06D57C231F18697E00C1C1BA /* VPUPOrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPOrderedDictionary.h; sourceTree = "<group>"; };
 		06D57C241F18697E00C1C1BA /* VPUPOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPOrderedDictionary.m; sourceTree = "<group>"; };
 		06E2D7EB1ECAE38300E5D9CF /* VPUPServerUTCDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPServerUTCDate.h; sourceTree = "<group>"; };
@@ -1604,6 +1608,8 @@
 				D0BD1AB62130129F00A087F2 /* VPUPIPAddressUtil.m */,
 				D01E219D223E8EF90018A1AE /* VPUPUrlUtil.h */,
 				D01E219E223E8EF90018A1AE /* VPUPUrlUtil.m */,
+				06C7E92C230A8A9C000FEC1C /* VPUPTrafficStatistics.h */,
+				06C7E92D230A8A9C000FEC1C /* VPUPTrafficStatistics.m */,
 			);
 			name = Utils;
 			path = VideoPlsUtilsPlatformSDK/Common/Utils;
@@ -2141,6 +2147,7 @@
 				0610826E1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.h in Headers */,
 				062DB6781F1E30BD003788C1 /* VPUPFLAnimatedImageView.h in Headers */,
 				D00ED8F72031928200B6C8C1 /* VPUPUIWebViewJSBridge.h in Headers */,
+				06C7E92E230A8A9C000FEC1C /* VPUPTrafficStatistics.h in Headers */,
 				D0928CBC2088A0C2008AB5EC /* VPUPSDWebImageDownloaderOperation.h in Headers */,
 				D00ED8EF20317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.h in Headers */,
 				D004F789209AE4F400022E90 /* VPUPHTTPManager.h in Headers */,
@@ -2829,6 +2836,7 @@
 				06A411481EC1CC8B00112082 /* VPUPSecurityPolicy.m in Sources */,
 				D004F6FE2099567700022E90 /* vpup_memory_mosq.c in Sources */,
 				D00ED8BA2024186C00B6C8C1 /* VPUPServiceManager.m in Sources */,
+				06C7E92F230A8A9C000FEC1C /* VPUPTrafficStatistics.m in Sources */,
 				D022A0A720BE6CA600F46029 /* VPUPFileHandle.m in Sources */,
 				D03F61942019E87800DB0615 /* VPUPRouteDefinition.m in Sources */,
 				D0928CB32088A0C2008AB5EC /* VPUPSDWebImageCompat.m in Sources */,

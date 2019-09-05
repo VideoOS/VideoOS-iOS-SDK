@@ -21,6 +21,10 @@
 #import <VPLuaViewSDK/LVBaseView.h>
 #import <VPLuaViewSDK/LVNinePatchImage.h>
 
+#import "VPUPPathUtil.h"
+#import "VPUPTrafficStatistics.h"
+#import "VPUPMD5Util.h"
+
 
 static NSString *const VPDefaultImageBundle = @"VideoPlsDefaultImages";
 
@@ -81,7 +85,27 @@ static NSString *const VPDefaultImageBundle = @"VideoPlsDefaultImages";
     }
     
 //    config.placeholder = [VPMGoodsListLoadingImage loadingImage];
+    
+    __block BOOL needStatistics = YES;
+    NSString *destinationPath = [VPUPPathUtil imagePath];
+    NSString *fileName = [NSString stringWithFormat:@"%@.%@",[VPUPMD5Util md5HashString:url.absoluteString],[url pathExtension]];
+    NSString *filePath = [destinationPath stringByAppendingPathComponent:fileName];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        needStatistics = NO;
+    }
+    
     config.completedBlock = ^(UIImage *image, NSError *error, VPUPImageCacheType cacheType, NSURL *imageURL) {
+        if (!error && needStatistics) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+                    VPUPTrafficStatisticsList *list = [[VPUPTrafficStatisticsList alloc] init];
+                    [list addFileTrafficByName:fileName fileUrl:[url absoluteString] filePath:filePath];
+                    [VPUPTrafficStatistics sendTrafficeStatistics:list type:VPUPTrafficTypeRealTime];
+                }
+            });
+        }
+        
         if (finished) {
             finished(error);
         }

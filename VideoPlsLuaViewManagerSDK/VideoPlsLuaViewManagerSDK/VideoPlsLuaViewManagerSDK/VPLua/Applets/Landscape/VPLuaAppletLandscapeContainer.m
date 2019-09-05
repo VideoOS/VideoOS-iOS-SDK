@@ -253,8 +253,12 @@ NSString *const kContainerCloseImage = @"iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAYAAAB
 - (void)loadLuaFiles {
     __weak typeof(self) weakSelf = self;
     
-    [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:_applet.luaList resumePath:self.appletPath complete:^(NSError * error) {
+    [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:_applet.luaList resumePath:self.appletPath complete:^(NSError * error, VPUPTrafficStatisticsList *trafficList) {
        //已回到主线程
+        if (trafficList) {
+            [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
+        }
+        
         if (error) {
             weakSelf.retryLuaFiles = YES;
             [weakSelf showRetryView];

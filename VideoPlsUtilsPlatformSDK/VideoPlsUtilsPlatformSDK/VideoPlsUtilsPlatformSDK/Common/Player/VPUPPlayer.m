@@ -141,6 +141,7 @@
 
     self.resouerLoader = [[VPUPAVAssetResourceLoader alloc] init];
     self.resouerLoader.delegate = self;
+    self.resouerLoader.url = url;
     //必须要替换URL scheme，不然不会执行到resouerLoader
     NSURL *playUrl = [url vpup_customSchemeURL];
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:playUrl options:nil];

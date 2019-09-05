@@ -201,6 +201,7 @@ static int httpRequest(lua_State *L, VPUPRequestMethodType methodType) {
                 api.apiRequestMethodType = methodType;
                 [api setRequestParameters:data];
                 __weak VPLuaHttpRequest *weakRequest = request;
+//                NSLog(@"apirequest=====%@%@", api.baseUrl, api.requestMethod);
                 NSString *apiId = [NSString stringWithFormat:@"%ld",api.apiId];
                 api.apiCompletionHandler = ^(id  _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
                     

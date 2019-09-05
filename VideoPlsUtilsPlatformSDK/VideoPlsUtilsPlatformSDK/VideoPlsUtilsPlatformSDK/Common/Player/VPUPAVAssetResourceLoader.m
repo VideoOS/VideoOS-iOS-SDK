@@ -12,13 +12,13 @@
 #import "VPUPVideoRequestTask.h"
 #import "NSURL+VPUPPlayer.h"
 #import "VPUPFileHandle.h"
+#import "VPUPTrafficStatistics.h"
 
 @interface VPUPAVAssetResourceLoader ()<VPUPVideoRequestTaskDelegate>
 
 @property (nonatomic, strong) NSMutableArray *pendingRequests;
 @property (nonatomic, copy) NSString *videoPath;
 @property (nonatomic, copy) NSString *tempVideoPath;
-@property (nonatomic, strong) NSURL *url;
 
 @end
 
@@ -176,7 +176,6 @@
         return;
     }
     
-    
     if (self.task) {
         if (loadingRequest.dataRequest.requestedOffset >= self.task.offset &&
             loadingRequest.dataRequest.requestedOffset <= self.task.offset + self.task.cacheLength) {
@@ -191,6 +190,11 @@
             }
         }
     }else {
+        //新建 发送流量统计
+        VPUPTrafficStatisticsList *list = [[VPUPTrafficStatisticsList alloc] init];
+        [list addTrafficNoSizeByName:[[_videoPath componentsSeparatedByString:@"/"] lastObject] fileUrl:[self.url absoluteString]];
+        [VPUPTrafficStatistics sendTrafficeStatistics:list type:VPUPTrafficTypeRealTime];
+        
         [self newTaskWithLoadingRequest:loadingRequest cache:YES];
     }
     
@@ -224,7 +228,7 @@
         [self.task cancel];
     }
     self.task = [[VPUPVideoRequestTask alloc]init];
-    self.task.url = loadingRequest.request.URL;
+    self.task.url = self.url;
     self.task.offset = loadingRequest.dataRequest.requestedOffset;
     self.task.cacheFile = cache;
     if (fileLength > 0) {

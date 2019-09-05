@@ -13,4 +13,6 @@
 
 - (void)prefetchURLs:(NSArray<NSString *> *)urls;
 
+- (void)prefetchURLs:(NSArray<NSString *> *)urls complete:(VPUPPrefetchTrafficCompletionBlock)complete;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VPUPTrafficStatistics.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,12 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSMutableArray *filesName;
 @property (nonatomic) NSString *destinationPath;
 @property (nonatomic) NSString *tempFilePath;
+@property (nonatomic) VPUPTrafficStatisticsList *statisticsList;
 
 + (instancetype)objectWithFilesList:(NSArray *)filesList destinationPath:(NSString *)destinationPath;
 
 @end
 
-typedef void(^VPLuaLoaderCompletionBlock)(NSError *error);
+typedef void(^VPLuaLoaderCompletionBlock)(NSError *error, VPUPTrafficStatisticsList *trafficList);
 
 @interface VPLuaLoader : NSObject
 

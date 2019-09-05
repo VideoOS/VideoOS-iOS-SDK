@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "VPUPHTTPAPIManager.h"
+#import "VPUPTrafficStatistics.h"
 
 typedef void(^VPUPPrefetcherCompletionBlock)(NSUInteger numberOfFinishedUrls, NSUInteger numberOfSkippedUrls);
+
+typedef void(^VPUPPrefetchTrafficCompletionBlock)(VPUPTrafficStatisticsList *trafficList);
 
 @interface VPUPPrefetchManager : NSObject {
     NSArray *_prefetchURLs;

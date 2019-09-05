@@ -127,7 +127,12 @@
         
         NSArray *filesList = [data objectForKey:@"luaList"]; // [data objectForKey:@"luaList"];
         dispatch_group_enter(batch_api_group);
-        [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error) {
+        [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+            
+            if (trafficList) {
+                [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
+            }
+            
             if (error) {
                 [weakSelf callbackComplete:weakSelf.complete withError:error];
                 weakSelf.luaFileError = error;
@@ -137,7 +142,11 @@
         
         NSArray *jsonList = [data objectForKey:@"jsonList"];
         dispatch_group_enter(batch_api_group);
-        [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:jsonList resumePath:self.resumeDataPath complete:^(NSError * _Nonnull error) {
+        [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:jsonList resumePath:self.resumeDataPath complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+            
+            if (trafficList) {
+                [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
+            }
             
             if (error) {
                 [weakSelf callbackComplete:weakSelf.complete withError:error];

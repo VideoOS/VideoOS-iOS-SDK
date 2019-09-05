@@ -21,6 +21,7 @@
 
 @interface VPUPAVAssetResourceLoader : NSObject <AVAssetResourceLoaderDelegate>
 
+@property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) VPUPVideoRequestTask *task;
 @property (nonatomic, weak) id<VPUPAVAssetResourceLoaderDelegate> delegate;
 @property (atomic, assign) BOOL seekRequired; //Seek标识

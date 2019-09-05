@@ -17,6 +17,14 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
 
 @implementation VPLuaLoaderObject
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.statisticsList = [[VPUPTrafficStatisticsList alloc] init];
+    }
+    return self;
+}
+
 + (instancetype)objectWithFilesList:(NSArray *)filesList destinationPath:(NSString *)destinationPath {
     VPLuaLoaderObject *loadObject = [[VPLuaLoaderObject alloc] init];
     loadObject.filesList = filesList;
@@ -48,6 +56,8 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
 @property (nonatomic, strong) dispatch_queue_t luaLoaderQueue;
 
 - (void)callbackComplete:(VPLuaLoaderCompletionBlock)complete withError:(NSError *)error;
+
+- (void)callbackComplete:(VPLuaLoaderCompletionBlock)complete withError:(NSError *)error withStatistics:(VPUPTrafficStatisticsList *)trafficList;
 
 @end
 
@@ -117,7 +127,8 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
             }
         }
         if (downloadFileList.count > 0) {
-            [weakSelf downloadLuaFilesList:downloadFileList destinationPath:resumePath complete:complete];
+            VPLuaLoaderObject *loaderObject = [VPLuaLoaderObject objectWithFilesList:downloadFileList destinationPath:resumePath];
+            [weakSelf downloadLuaFilesWithLoaderObject:loaderObject complete:complete];
         }
         else {
             [weakSelf callbackComplete:complete withError:nil];
@@ -125,43 +136,54 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
     });
 }
 
-- (void)downloadLuaFilesList:(NSArray *)filesList destinationPath:(NSString *)destinationPath complete:(VPLuaLoaderCompletionBlock)complete {
+- (void)downloadLuaFilesWithLoaderObject:(VPLuaLoaderObject *)loaderObject complete:(VPLuaLoaderCompletionBlock)complete {
+    [self downloadLuaFilesWithLoaderObject:loaderObject complete:complete repeatCount:0];
+}
+
+- (void)downloadLuaFilesWithLoaderObject:(VPLuaLoaderObject *)loaderObject complete:(VPLuaLoaderCompletionBlock)complete repeatCount:(NSInteger)repeatCount {
     
-    if (!filesList || filesList.count == 0) {
+    if (!loaderObject || !loaderObject.filesList || loaderObject.filesList.count == 0) {
         [self callbackComplete:complete withError:nil];
         return;
     }
     
-    __block VPLuaLoaderObject *loaderObject = [VPLuaLoaderObject objectWithFilesList:filesList destinationPath:destinationPath];
+    __block VPLuaLoaderObject *blockObject = loaderObject;
     
-//    static NSInteger count = 0;
     __weak typeof(self) weakSelf = self;
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
     
     [self.prefetchManager prefetchURLs:loaderObject.filesUrl
                              fileNames:loaderObject.filesName
                        destinationPath:loaderObject.tempFilePath
                        completionBlock:^(NSUInteger numberOfFinishedUrls, NSUInteger numberOfSkippedUrls) {
                            if (numberOfSkippedUrls > 0) {
+                               if (repeatCount == 0) {
+                                   [self downloadLuaFilesWithLoaderObject:blockObject complete:complete repeatCount:1];
+                               } else {
                                    NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-3002 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Download file error, success count %ld, faild count %ld", numberOfFinishedUrls, numberOfSkippedUrls]}];
-                                   [weakSelf callbackComplete:complete withError:error];
+//                                   [weakSelf callbackComplete:complete withError:error];
+                                   [weakSelf checkDownloadObject:blockObject complete:complete skippedCount:numberOfSkippedUrls];
+                               }
                            }
                            else {
 //                               [weakSelf checkDownloadFilesList:filesList complete:complete];
-                               [weakSelf checkDownloadObject:loaderObject complete:complete];
+                               [weakSelf checkDownloadObject:blockObject complete:complete];
                            }
                        }];
-//        });
 }
 
 - (void)checkDownloadObject:(VPLuaLoaderObject *)loaderObject complete:(VPLuaLoaderCompletionBlock)complete {
+    [self checkDownloadObject:loaderObject complete:complete skippedCount:0];
+}
+
+- (void)checkDownloadObject:(VPLuaLoaderObject *)loaderObject complete:(VPLuaLoaderCompletionBlock)complete skippedCount:(NSInteger)skippedCount {
     __weak typeof(self) weakSelf = self;
     
     dispatch_async(self.luaLoaderQueue, ^{
-        NSInteger failedCount = 0;
+        NSInteger failedCount = skippedCount;
         NSMutableArray *downloadFiles = [NSMutableArray arrayWithCapacity:0];
         for (NSInteger i = 0; i < loaderObject.filesList.count; i++) {
             NSString *fileName = [loaderObject.filesName objectAtIndex:i];
+            NSString *fileUrl = [loaderObject.filesUrl objectAtIndex:i];
             NSString *localPath = [loaderObject.tempFilePath stringByAppendingPathComponent:fileName];
             [downloadFiles addObject:localPath];
             NSDictionary *dict = [loaderObject.filesList objectAtIndex:i];
@@ -170,6 +192,8 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
                 NSString *fileMD5 = [VPUPMD5Util md5File:localPath size:0];
                 if (![[dict objectForKey:@"md5"] isEqualToString:fileMD5]) {
                     failedCount += 1;
+                } else {
+                    [loaderObject.statisticsList addFileTrafficByName:fileName fileUrl:fileUrl filePath:localPath];
                 }
             }
         }
@@ -194,16 +218,17 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
             }
             if (moveErrors.count > 0) {
                 NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-3003 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Download file copy to target path error"]}];
-                [self callbackComplete:complete withError:error];
+                [self callbackComplete:complete withError:error withStatistics:loaderObject.statisticsList];
             }
             else {
-                [self callbackComplete:complete withError:nil];
+                [self callbackComplete:complete withError:nil withStatistics:loaderObject.statisticsList];
             }
         }
         else {
             NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-3004 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Download file data error"]}];
-            [weakSelf callbackComplete:complete withError:error];
+            [weakSelf callbackComplete:complete withError:error withStatistics:loaderObject.statisticsList];
         }
+        
         [[NSFileManager defaultManager] removeItemAtPath:loaderObject.tempFilePath error:nil];
     });
 }
@@ -268,7 +293,15 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
 - (void)callbackComplete:(VPLuaLoaderCompletionBlock)complete withError:(NSError *)error {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (complete) {
-            complete(error);
+            complete(error, nil);
+        }
+    });
+}
+
+- (void)callbackComplete:(VPLuaLoaderCompletionBlock)complete withError:(NSError *)error withStatistics:(VPUPTrafficStatisticsList *)trafficList {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (complete) {
+            complete(error, trafficList);
         }
     });
 }

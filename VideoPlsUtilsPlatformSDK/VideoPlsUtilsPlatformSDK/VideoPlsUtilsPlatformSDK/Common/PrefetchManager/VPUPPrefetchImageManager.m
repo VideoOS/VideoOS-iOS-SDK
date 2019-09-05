@@ -10,6 +10,8 @@
 #import "VPUPLoadImageManager.h"
 #import "VPUPLoadImageFactory.h"
 #import "VPUPLoadImageWebPURL.h"
+#import "VPUPPathUtil.h"
+#import "VPUPMD5Util.h"
 
 @interface VPUPPrefetchImageManager()
 
@@ -23,6 +25,16 @@
     self = [super init];
     if(self) {
         _imageManager = [VPUPLoadImageFactory createWebImageManagerWithType:VPUPWebImageManagerTypeSD];
+    }
+    return self;
+}
+
+- (instancetype)initWithImageManager:(id<VPUPLoadImageManager>)imageManager {
+    self = [super init];
+    if (self) {
+        if (imageManager) {
+            _imageManager = imageManager;
+        }
     }
     return self;
 }
@@ -42,6 +54,66 @@
     
     [_imageManager prefetchURLs:urls completionBlock:completionBlock];
 
+}
+
+- (void)prefetchURLs:(NSArray<NSString *> *)urls complete:(VPUPPrefetchTrafficCompletionBlock)complete {
+    
+    if (urls && urls.count == 0) {
+        [self callCompleteBlock:complete trafficList:nil];
+        return;
+    }
+    
+    NSString *destinationPath = [VPUPPathUtil imagePath];
+    
+    NSMutableArray *fileNames = [NSMutableArray arrayWithCapacity:0];
+    NSMutableArray *encodeUrls = [NSMutableArray arrayWithCapacity:0];
+    for (NSString *urlString in urls) {
+        //        NSString *urlEncodeString = [VPUPUrlUtil urlencode:urlString];
+        NSURL *url = [NSURL URLWithString:urlString];
+        if (url) {
+            NSString *fileName = [NSString stringWithFormat:@"%@.%@",[VPUPMD5Util md5HashString:url.absoluteString],[url pathExtension]];
+            NSString *filePath = [destinationPath stringByAppendingPathComponent:fileName];
+            
+            if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+                continue;
+            }
+            
+            [fileNames addObject:fileName];
+            [encodeUrls addObject:urlString];
+        }
+    }
+    
+    [_imageManager prefetchURLs:encodeUrls completionBlock:^(NSUInteger numberOfFinishedUrls, NSUInteger numberOfSkippedUrls) {
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            VPUPTrafficStatisticsList *list = [[VPUPTrafficStatisticsList alloc] init];
+            for (NSInteger i = 0; i < fileNames.count; i++) {
+                NSString *fileName = [fileNames objectAtIndex:i];
+                NSString *url = [encodeUrls objectAtIndex:i];
+                NSString *filePath = [destinationPath stringByAppendingPathComponent:fileName];
+                
+                if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+                    [list addFileTrafficByName:fileName fileUrl:url filePath:filePath];
+                }
+            }
+            
+            [self callCompleteBlock:complete trafficList:list];
+        });
+        
+    }];
+}
+
+- (void)callCompleteBlock:(VPUPPrefetchTrafficCompletionBlock)completeBlock trafficList:(VPUPTrafficStatisticsList *)trafficList {
+    
+    if (!completeBlock) {
+        return;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        completeBlock(trafficList);
+    });
+    
 }
 
 - (void)cancelPrefetch {

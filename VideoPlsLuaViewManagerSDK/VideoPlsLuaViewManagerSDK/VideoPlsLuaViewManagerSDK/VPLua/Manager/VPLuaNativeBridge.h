@@ -14,8 +14,6 @@
 #import "VPLuaBaseNode.h"
 #import "VPLuaNetworkManager.h"
 
-@class VPLuaBaseNode;
-
 extern NSString *const VPLuaScreenChangeNotification;
 extern NSString *const VPLuaNotifyUserLoginedNotification;
 extern NSString *const VPLuaRequireLoginNotification;

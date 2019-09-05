@@ -34,6 +34,7 @@
 #import "VPUPDeviceUtil.h"
 #import "VPLuaCommonInfo.h"
 #import "VPUPSHAUtil.h"
+#import "VPLuaLoader.h"
 
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
@@ -57,6 +58,8 @@
 #import "VPLuaMacroDefine.h"
 #import "VPLuaSDK.h"
 #import "VPUPUrlUtil.h"
+#import "VPUPTrafficStatistics.h"
+#import "VPUPPrefetchImageManager.h"
 
 #define IS_IOS11 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0)
 
@@ -294,11 +297,13 @@ static NSMutableDictionary* httpAPICache() {
         {"px2Dpi",px2Dpi},
         {"preloadImage", preloadImage},
         {"preloadVideo", preloadVideo},
+        {"preloadLuaList", preloadLuaList},
         {"copyStringToPasteBoard", copyStringToPasteBoard},
         {"videoOShost", videoOShost},
         {"isCacheVideo", isCacheVideo},
         {"currentVideoTime", currentVideoTime},
         {"videoDuration", videoDuration},
+//        {"appletSize", getAppletSize},
         {NULL, NULL}
     };
     lv_createClassMetaTable(L,META_TABLE_NativeObject);
@@ -702,6 +707,7 @@ static int httpRequest(lua_State *L, VPUPRequestMethodType methodType) {
         api.apiRequestMethodType = methodType;
         [api setRequestParameters:data];
 //        __weak typeof(cell) weakCell = cell;
+//        NSLog(@"apirequestnative=====%@%@===%@", api.baseUrl, api.requestMethod, VPUP_DictionaryToJson(data));
         NSString *apiId = [NSString stringWithFormat:@"%ld",api.apiId];
         api.apiCompletionHandler = ^(id  _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
             //没有回调，网络请求不处理回调
@@ -1159,7 +1165,6 @@ static int widgetNotify(lua_State *L) {
     return 0;
 }
 
-
 static int titleBarHeight(lua_State *L) {
     lua_pushnumber(L, [VPUPDeviceUtil statusBarHeight]);
     return 1;
@@ -1328,7 +1333,15 @@ static int preloadImage(lua_State *L) {
         if( lua_type(L, 2) == LUA_TTABLE ) {
             NSArray *array = lv_luaValueToNativeObject(L, 2);
             if ([array isKindOfClass:[NSArray class]] && array.count > 0) {
-                [[VPLuaNetworkManager Manager].imageManager prefetchURLs:array];
+                
+                VPUPPrefetchImageManager *prefetchImageManager = [[VPUPPrefetchImageManager alloc] initWithImageManager:[VPLuaNetworkManager Manager].imageManager];
+                
+                [prefetchImageManager prefetchURLs:array complete:^(VPUPTrafficStatisticsList *trafficList) {
+                    
+                    if (trafficList) {
+                        [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeOpenVideo];
+                    }
+                }];
             }
         }
     }
@@ -1340,7 +1353,56 @@ static int preloadVideo(lua_State *L) {
         if( lua_type(L, 2) == LUA_TTABLE ) {
             NSArray *array = lv_luaValueToNativeObject(L, 2);
             if ([array isKindOfClass:[NSArray class]] && array.count > 0) {
-                [[VPLuaNetworkManager Manager].videoManager prefetchURLs:array];
+                [[VPLuaNetworkManager Manager].videoManager prefetchURLs:array complete:^(VPUPTrafficStatisticsList *trafficList) {
+                    
+                    if (trafficList) {
+                        [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeOpenVideo];
+                    }
+                    
+                }];
+            }
+        }
+    }
+    return 0;
+}
+
+static int preloadLuaList(lua_State *L) {
+    if (lua_gettop(L) >= 2) {
+        if( lua_type(L, 2) == LUA_TTABLE ) {
+            NSArray *array = lv_luaValueToNativeObject(L, 2);
+            if ([array isKindOfClass:[NSArray class]] && array.count > 0) {
+                
+                //根据md5,先去一波重
+                NSMutableArray *newArray = [NSMutableArray arrayWithCapacity:0];
+                for (NSDictionary *dict in array) {
+                    
+                    if (![dict objectForKey:@"md5"] || [[dict objectForKey:@"md5"] isEqualToString:@""]) {
+                        continue;
+                    }
+                    
+                    BOOL needAdd = YES;
+                    for (NSDictionary *noRepDict in newArray) {
+                        NSString *md5 = [dict objectForKey:@"md5"];
+                        NSString *noRepMd5 = [noRepDict objectForKey:@"md5"];
+                        if ([md5 isEqualToString:noRepMd5]) {
+                            needAdd = NO;
+                            break;
+                        }
+                    }
+                    
+                    if (needAdd) {
+                        [newArray addObject:dict];
+                    }
+                }
+                
+                [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:newArray complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+                    
+                    if (trafficList) {
+                        [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeOpenVideo];
+                    }
+                    
+                    NSLog(@"preloadLuaList error %@", error);
+                }];
             }
         }
     }
@@ -1398,5 +1460,12 @@ static int videoDuration(lua_State *L) {
     lua_pushnumber(L, progress);
     return 1;
 }
+
+//static int getAppletSize(lua_State *L) {
+//    VPLuaBaseNode *luaNade = [VPLuaNativeBridge luaNodeFromLuaState:L];
+//    lua_pushnumber(L, luaNade.luaController.rootView.bounds.size.width);
+//    lua_pushnumber(L, luaNade.luaController.rootView.bounds.size.height);
+//    return 2;
+//}
 
 @end

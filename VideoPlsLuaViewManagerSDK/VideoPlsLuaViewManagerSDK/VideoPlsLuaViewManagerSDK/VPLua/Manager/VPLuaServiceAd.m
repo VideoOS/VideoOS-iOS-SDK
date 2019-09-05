@@ -106,7 +106,11 @@
 - (void)downloadFileFromData:(NSDictionary *)data {
     NSArray *filesList = [data objectForKey:@"templates"];
     __weak typeof(self) weakSelf = self;
-    [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error) {
+    [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+        
+        if (trafficList) {
+            [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
+        }
         if (error) {
             [weakSelf callbackComplete:weakSelf.complete withError:error];
         }
