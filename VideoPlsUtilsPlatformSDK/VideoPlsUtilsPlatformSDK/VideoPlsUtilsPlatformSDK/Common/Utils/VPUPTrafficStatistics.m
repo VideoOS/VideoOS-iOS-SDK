@@ -14,7 +14,6 @@
 #import "VPUPCommonInfo.h"
 #import "VPUPEncryption.h"
 #import "VPUPJsonUtil.h"
-#import "VPLuaNetworkManager.h"
 
 @implementation VPUPTrafficStatisticsObject
 
