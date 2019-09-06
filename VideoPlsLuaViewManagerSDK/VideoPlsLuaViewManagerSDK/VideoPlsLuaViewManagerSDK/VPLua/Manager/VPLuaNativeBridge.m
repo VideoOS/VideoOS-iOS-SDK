@@ -32,7 +32,7 @@
 #import "VPLuaMQTT.h"
 #import "VPLuaMedia.h"
 #import "VPUPDeviceUtil.h"
-#import "VPLuaCommonInfo.h"
+#import "VPUPCommonInfo.h"
 #import "VPUPSHAUtil.h"
 #import "VPLuaLoader.h"
 
@@ -1298,9 +1298,9 @@ static int rsaDecryptStringWithPublicKey(lua_State *L) {
 }
 
 static int commonParam(lua_State *L) {
-//    NSString *commonParamString = VPUP_DictionaryToJson([VPLuaCommonInfo commonParam]);
+//    NSString *commonParamString = VPUP_DictionaryToJson([VPUPCommonInfo commonParam]);
 //    lua_pushstring(L, [commonParamString UTF8String]);
-    lv_pushNativeObject(L, [VPLuaCommonInfo commonParam]);
+    lv_pushNativeObject(L, [VPUPCommonInfo commonParam]);
     return 1;
 }
 

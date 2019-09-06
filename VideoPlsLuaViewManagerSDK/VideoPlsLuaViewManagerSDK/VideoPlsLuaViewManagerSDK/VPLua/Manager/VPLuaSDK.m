@@ -12,11 +12,13 @@
 #import "VPLuaNetworkManager.h"
 #import "VPUPSDKInfo.h"
 #import "VPUPGeneralInfo.h"
-#import "VPLuaCommonInfo.h"
+#import "VPUPCommonInfo.h"
 #import <AdSupport/AdSupport.h>
 
 NSString *const VPLuaServerHost = @"https://os-saas.videojj.com/os-api-saas";
 NSString *const VPLuaScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas/api/preloadLuaFileInfo";
+
+NSString *const VPLuaRequestPublicKey = @"inekcndsaqwertyi";
 
 @interface VPLuaSDK ()<VPLuaScriptManagerDelegate>
 
@@ -73,6 +75,7 @@ NSString *const VPLuaScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas
     [VPLuaSDK sharedSDK].appSecret = appSecret;
     VPUPSDKInfo *sdkinfo = [[VPUPSDKInfo alloc] init];
     sdkinfo.mainVPSDKAppKey = appKey;
+    sdkinfo.mainVPSDKAppSecret = appSecret;
 //    VPUPSDKInfo *sdkinfo = [VPUPSDKInfo initSDKInfoWithSDKType:VPUPMainSDKTypeVideoOS SDKVersion:[VPLuaSDK  sharedSDK].luaVersion appKey:appKey];
     [VPUPGeneralInfo setSDKInfo:sdkinfo];
 }

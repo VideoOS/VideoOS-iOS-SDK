@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger, VPUPMainSDKType) {
 @property (nonatomic, copy, readonly) NSString *mainVPSDKVersion;
 @property (nonatomic, copy, readonly) NSString *mainVPSDKServiceVersion;
 @property (nonatomic, copy, readonly) NSString *mainVPSDKAppKey;                    //独立项目appKey
+@property (nonatomic, copy, readonly) NSString *mainVPSDKAppSecret;
 @property (nonatomic, copy, readonly) NSString *mainVPSDKPlatformID;                //平台ID(例如:芒果、新蓝等平台方面的唯一标示,可能需要从后台获取)
 @property (nonatomic, assign, readonly, getter=enableWebP) BOOL webP;
 
@@ -38,6 +39,7 @@ typedef NS_ENUM(NSUInteger, VPUPMainSDKType) {
 - (void)setMainSDKNameByType:(VPUPMainSDKType)sdkType;
 - (void)setMainVPSDKVersion:(NSString *)sdkVersion;
 - (void)setMainVPSDKAppKey:(NSString *)appKey;
+- (void)setMainVPSDKAppSecret:(NSString *)appSecret;
 - (void)setEnableWebP:(BOOL)webP;
 
 //需后台拿到数据后才能添加,其他通过初始化生成

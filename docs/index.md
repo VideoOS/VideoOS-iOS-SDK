@@ -315,3 +315,4 @@ typedef NS_ENUM(NSUInteger, VPIActionType) {
 注：现在`VPLuaSDK.m`中的`host`为SaaS版本的地址
 ### 加密key设置
 修改`VPLuaCommonInfo.m`中的加密key
+修改`VPLuaCommonInfo`为Platform中的`VPUPCommonInfo`

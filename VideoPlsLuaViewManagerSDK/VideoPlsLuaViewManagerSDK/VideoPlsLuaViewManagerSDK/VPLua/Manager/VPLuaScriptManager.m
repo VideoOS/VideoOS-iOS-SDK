@@ -12,7 +12,7 @@
 #import "VPUPHTTPAPIManager.h"
 #import "VPUPJsonUtil.h"
 #import <VPLuaViewSDK/LVZipArchive.h>
-#import "VPLuaCommonInfo.h"
+#import "VPUPCommonInfo.h"
 #import "VPUPRSAUtil.h"
 #import "VPUPBase64Util.h"
 #import "VPLuaSDK.h"
@@ -70,7 +70,7 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
     VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
     api.baseUrl = url;
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
-    NSString *commonParamString = VPUP_DictionaryToJson(@{@"commonParam":[VPLuaCommonInfo commonParam]});
+    NSString *commonParamString = VPUP_DictionaryToJson(@{@"commonParam":[VPUPCommonInfo commonParam]});
     api.requestParameters = @{@"data":[VPUPAESUtil aesEncryptString:commonParamString key:[VPLuaSDK sharedSDK].appSecret initVector:[VPLuaSDK sharedSDK].appSecret]};
     api.apiCompletionHandler = ^(id  _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
         

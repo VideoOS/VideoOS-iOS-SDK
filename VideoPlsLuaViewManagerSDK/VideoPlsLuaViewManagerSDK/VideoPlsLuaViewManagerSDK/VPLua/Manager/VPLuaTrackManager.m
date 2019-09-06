@@ -12,7 +12,7 @@
 #import "VPUPHTTPManagerFactory.h"
 #import "VPLuaNetworkManager.h"
 #import "VPLuaSDK.h"
-#import "VPLuaCommonInfo.h"
+#import "VPUPCommonInfo.h"
 
 @implementation VPLuaTrackManager
 
@@ -23,7 +23,7 @@
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
     
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:0];
-    [param setObject:[VPLuaCommonInfo commonParam] forKey:@"commonParam"];
+    [param setObject:[VPUPCommonInfo commonParam] forKey:@"commonParam"];
     [param setObject:[VPLuaSDK sharedSDK].appKey forKey:@"appKey"];
     [param setObject: isOpen ? @"1" : @"0" forKey:@"onOrOff"];
     

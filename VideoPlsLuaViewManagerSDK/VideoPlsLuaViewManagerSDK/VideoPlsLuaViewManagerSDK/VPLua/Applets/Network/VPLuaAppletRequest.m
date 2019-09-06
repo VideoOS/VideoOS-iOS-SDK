@@ -11,7 +11,7 @@
 #import "VPUPHTTPBusinessAPI.h"
 #import "VPUPHTTPAPIManager.h"
 #import "VPLuaSDK.h"
-#import "VPLuaCommonInfo.h"
+#import "VPUPCommonInfo.h"
 #import "VPUPEncryption.h"
 #import "VPUPJsonUtil.h"
 
@@ -50,7 +50,7 @@ static VPLuaAppletRequest *request = nil;
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObject:appletID forKey:@"miniAppId"];
-    [param setObject:[VPLuaCommonInfo commonParam] forKey:@"commonParam"];
+    [param setObject:[VPUPCommonInfo commonParam] forKey:@"commonParam"];
     
     NSString *commonParamString = VPUP_DictionaryToJson(param);
     api.requestParameters = @{@"data":[VPUPAESUtil aesEncryptString:commonParamString key:[VPLuaSDK sharedSDK].appSecret initVector:[VPLuaSDK sharedSDK].appSecret]};

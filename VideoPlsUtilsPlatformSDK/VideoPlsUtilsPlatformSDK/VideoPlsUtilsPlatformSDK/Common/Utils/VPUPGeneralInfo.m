@@ -124,6 +124,13 @@ static NSString *_userIdentity = nil;
     return nil;
 }
 
++ (NSString *)mainVPSDKAppSecret {
+    if(_currentSDKInfo) {
+        return _currentSDKInfo.mainVPSDKAppSecret;
+    }
+    return nil;
+}
+
 + (NSString *)mainVPSDKPlatformID {
     if(_currentSDKInfo) {
         return _currentSDKInfo.mainVPSDKPlatformID;

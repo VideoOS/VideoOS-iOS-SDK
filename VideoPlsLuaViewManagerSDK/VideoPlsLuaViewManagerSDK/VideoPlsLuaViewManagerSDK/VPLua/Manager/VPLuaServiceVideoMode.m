@@ -7,7 +7,7 @@
 //
 
 #import "VPLuaServiceVideoMode.h"
-#import "VPLuaCommonInfo.h"
+#import "VPUPCommonInfo.h"
 #import "VPUPHTTPBusinessAPI.h"
 #import "VPUPHTTPAPIManager.h"
 #import "VPUPHTTPManagerFactory.h"
@@ -55,7 +55,7 @@
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
     
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:0];
-    [param setObject:[VPLuaCommonInfo commonParam] forKey:@"commonParam"];
+    [param setObject:[VPUPCommonInfo commonParam] forKey:@"commonParam"];
     [param setObject:self.config.identifier forKey:@"videoId"];
     
     NSString *paramString = VPUP_DictionaryToJson(param);

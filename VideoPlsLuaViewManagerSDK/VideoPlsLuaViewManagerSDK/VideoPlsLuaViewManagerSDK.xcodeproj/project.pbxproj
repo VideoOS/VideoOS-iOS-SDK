@@ -146,9 +146,6 @@
 		D0ADC4A622ED83270037A549 /* VPLuaService.h in Headers */ = {isa = PBXBuildFile; fileRef = D0ADC4A422ED83270037A549 /* VPLuaService.h */; };
 		D0ADC4A722ED83270037A549 /* VPLuaService.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC4A522ED83270037A549 /* VPLuaService.m */; };
 		D0ADC4A822ED83270037A549 /* VPLuaService.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC4A522ED83270037A549 /* VPLuaService.m */; };
-		D0BD1AB221300BA400A087F2 /* VPLuaCommonInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BD1AB021300BA400A087F2 /* VPLuaCommonInfo.h */; };
-		D0BD1AB321300BA400A087F2 /* VPLuaCommonInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1AB121300BA400A087F2 /* VPLuaCommonInfo.m */; };
-		D0BD1AB421300BA400A087F2 /* VPLuaCommonInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1AB121300BA400A087F2 /* VPLuaCommonInfo.m */; };
 		D0BD1ABF2138DE2100A087F2 /* VPLuaSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BD1ABD2138DE2100A087F2 /* VPLuaSDK.h */; };
 		D0BD1AC02138DE2100A087F2 /* VPLuaSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1ABE2138DE2100A087F2 /* VPLuaSDK.m */; };
 		D0BD1AC12138DE2100A087F2 /* VPLuaSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1ABE2138DE2100A087F2 /* VPLuaSDK.m */; };
@@ -280,8 +277,6 @@
 		D0ADC4A122ED82B70037A549 /* VPLuaServiceAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaServiceAd.m; sourceTree = "<group>"; };
 		D0ADC4A422ED83270037A549 /* VPLuaService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaService.h; sourceTree = "<group>"; };
 		D0ADC4A522ED83270037A549 /* VPLuaService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaService.m; sourceTree = "<group>"; };
-		D0BD1AB021300BA400A087F2 /* VPLuaCommonInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaCommonInfo.h; sourceTree = "<group>"; };
-		D0BD1AB121300BA400A087F2 /* VPLuaCommonInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaCommonInfo.m; sourceTree = "<group>"; };
 		D0BD1ABD2138DE2100A087F2 /* VPLuaSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaSDK.h; sourceTree = "<group>"; };
 		D0BD1ABE2138DE2100A087F2 /* VPLuaSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaSDK.m; sourceTree = "<group>"; };
 		D0C3A1DE206B3E8700C21CA7 /* VPLuaSVGAView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaSVGAView.m; sourceTree = "<group>"; };
@@ -482,8 +477,6 @@
 				D0114C0F1FCFBFCC00E75EF7 /* VPLuaVideoInfo.h */,
 				D0114C101FCFBFCC00E75EF7 /* VPLuaVideoInfo.m */,
 				D0FA556220A13D0000105348 /* VPLuaMacroDefine.h */,
-				D0BD1AB021300BA400A087F2 /* VPLuaCommonInfo.h */,
-				D0BD1AB121300BA400A087F2 /* VPLuaCommonInfo.m */,
 				D0BD1ABD2138DE2100A087F2 /* VPLuaSDK.h */,
 				D0BD1ABE2138DE2100A087F2 /* VPLuaSDK.m */,
 				D05D93E922811A1E003FBF3C /* VPLuaHttpRequest.h */,
@@ -589,7 +582,6 @@
 				0688E24D1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.h in Headers */,
 				063ABC052004C6AC001A8B94 /* VPLuaGradientView.h in Headers */,
 				06D474AC22F8088900C9DADD /* VPLuaAppletContainerNetworkView.h in Headers */,
-				D0BD1AB221300BA400A087F2 /* VPLuaCommonInfo.h in Headers */,
 				D0114C161FCFBFCD00E75EF7 /* VPLuaBaseView.h in Headers */,
 				D0114C3E1FCFBFCD00E75EF7 /* VPLuaTrackApi.h in Headers */,
 				D0928C3F207CC135008AB5EC /* VPLuaPage.h in Headers */,
@@ -712,7 +704,6 @@
 				D0114C291FCFBFCD00E75EF7 /* VPLuaShelvesCardView.m in Sources */,
 				D0114C231FCFBFCD00E75EF7 /* VPLuaLabel.m in Sources */,
 				06D474AD22F8088900C9DADD /* VPLuaAppletContainerNetworkView.m in Sources */,
-				D0BD1AB321300BA400A087F2 /* VPLuaCommonInfo.m in Sources */,
 				D0114C301FCFBFCD00E75EF7 /* VPLuaWebView.m in Sources */,
 				D0C3A1E0206B3E8800C21CA7 /* VPLuaSVGAView.m in Sources */,
 				D05369992051067100A4F8C6 /* VPLuaMQTT.m in Sources */,
@@ -773,7 +764,6 @@
 				D0114C241FCFBFCD00E75EF7 /* VPLuaLabel.m in Sources */,
 				D0C3A1E1206B3E8800C21CA7 /* VPLuaSVGAView.m in Sources */,
 				D053699A2051067100A4F8C6 /* VPLuaMQTT.m in Sources */,
-				D0BD1AB421300BA400A087F2 /* VPLuaCommonInfo.m in Sources */,
 				D0114C311FCFBFCD00E75EF7 /* VPLuaWebView.m in Sources */,
 				D02A1DD822EEA58E00EF5CC2 /* VPLuaServiceVideoMode.m in Sources */,
 				D00ED8E9202DAB6800B6C8C1 /* VPLuaMedia.m in Sources */,

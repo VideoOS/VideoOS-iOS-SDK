@@ -81,6 +81,12 @@ static VPUPSDKInfo *sharedInfo = nil;
     }
 }
 
+- (void)setMainVPSDKAppSecret:(NSString *)appSecret {
+    if(appSecret) {
+        _mainVPSDKAppSecret = appSecret;
+    }
+}
+
 - (void)setMainVPSDKPlatformID:(NSString *)platformID {
     if(platformID) {
         _mainVPSDKPlatformID = platformID;

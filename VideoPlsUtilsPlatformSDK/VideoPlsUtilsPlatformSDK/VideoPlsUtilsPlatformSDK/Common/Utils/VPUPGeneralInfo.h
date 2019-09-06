@@ -69,6 +69,7 @@ FOUNDATION_EXPORT NSString * const VPUPGeneralInfoSDKChangedNotification;
 + (NSString *)mainVPSDKVersion;
 + (NSString *)mainVPSDKServiceVersion;
 + (NSString *)mainVPSDKAppKey;
++ (NSString *)mainVPSDKAppSecret;
 + (NSString *)mainVPSDKPlatformID;                      //客户(例如:芒果,斗鱼)对应的ID,VideoOS使用ProjectID
 
 

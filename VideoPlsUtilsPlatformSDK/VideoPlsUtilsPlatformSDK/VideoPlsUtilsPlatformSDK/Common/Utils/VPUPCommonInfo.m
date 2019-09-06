@@ -1,22 +1,20 @@
 //
-//  VPLuaCommonInfo.m
-//  VideoPlsLuaViewManagerSDK
+//  VPUPCommonInfo.m
+//  VideoPlsUtilsPlatformSDK
 //
-//  Created by peter on 2018/8/24.
-//  Copyright © 2018 videopls. All rights reserved.
+//  Created by Zard1096-videojj on 2019/9/6.
+//  Copyright © 2019 videopls. All rights reserved.
 //
 
-#import "VPLuaCommonInfo.h"
+#import "VPUPCommonInfo.h"
 #import "VPUPIPAddressUtil.h"
 #import "VPUPDeviceUtil.h"
 #import "VPUPNetworkReachabilityManager.h"
 #import "VPUPGeneralInfo.h"
 
-NSString *const VPLuaRequestPublicKey = @"inekcndsaqwertyi";//@"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCBlxdQe+B3bCL3+km31ABB23sXUB0A3owEBodWlPeikgfEw/JfbZXuiKFoIqAbjmzpDvAE4PYAU4wBjE01wRNLg4KLJyorGLkx6I6gHE67mZqLryepxZdwd8MwzQCsoN3+PAQYUJz54Flc6e14l/LVDyggw/HN/OD9iXC027IVDQIDAQAB";
-
 static NSMutableDictionary *_commonParam;
 
-@implementation VPLuaCommonInfo
+@implementation VPUPCommonInfo
 
 + (NSMutableDictionary *)commonParam {
     static dispatch_once_t onceToken;
@@ -36,6 +34,7 @@ static NSMutableDictionary *_commonParam;
     [_commonParam setObject:timeSp forKey:@"SYSTEM_TIME"];
     [_commonParam setObject:[[VPUPNetworkReachabilityManager sharedManager] currentReachabilityStatusString] forKey:@"NETWORK"];
     [_commonParam setObject:[VPUPIPAddressUtil currentIpAddress] forKey:@"IP"];
+    [_commonParam setObject:[VPUPGeneralInfo mainVPSDKAppKey] forKey:@"APP_KEY"];
     return [_commonParam copy];
 }
 
