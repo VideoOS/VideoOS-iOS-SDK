@@ -27,6 +27,9 @@
                        apiManager:(id<VPUPHTTPAPIManager>)apiManager
                          complete:(void (^)(VPLuaAppletObject *luaObject, NSError *error))completeBlock;
 
+- (void)trackWithAppletID:(NSString *)appletID
+               apiManager:(id<VPUPHTTPAPIManager>)apiManager;
+
 - (void)cancelRequestWithID:(NSString *)requestID;
 
 

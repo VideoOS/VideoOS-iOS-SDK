@@ -92,18 +92,19 @@ static NSMutableDictionary* httpAPICache() {
 + (NSInteger)getVideoHeight:(lua_State *)l {
     VPLuaBaseNode *luaNode = [VPLuaNativeBridge luaNodeFromLuaState:l];
     float height = 0;
+    VPUPVideoPlayerSize *videoPlayerSize = [VPUPInterfaceDataServiceManager videoPlayerSize];
     if (luaNode.luaController.isPortrait) {
         if (luaNode.luaController.isFullScreen) {
-            height = [VPUPInterfaceDataServiceManager videoPlayerSize].portraitFullScreenHeight;
+            height = videoPlayerSize.portraitFullScreenHeight;
         }
         else
         {
-            height = [VPUPInterfaceDataServiceManager videoPlayerSize].portraitSmallScreenHeight;
+            height = videoPlayerSize.portraitSmallScreenHeight;
         }
     }
     else
     {
-        height = [VPUPInterfaceDataServiceManager videoPlayerSize].portraitFullScreenWidth;
+        height = videoPlayerSize.portraitFullScreenWidth;
     }
     return height;
 }
@@ -111,12 +112,13 @@ static NSMutableDictionary* httpAPICache() {
 + (NSInteger)getVideoWidth:(lua_State *)l {
     VPLuaBaseNode *luaNode = [VPLuaNativeBridge luaNodeFromLuaState:l];
     float width = 0;
+    VPUPVideoPlayerSize *videoPlayerSize = [VPUPInterfaceDataServiceManager videoPlayerSize];
     if (luaNode.luaController.isPortrait) {
-        width = [VPUPInterfaceDataServiceManager videoPlayerSize].portraitFullScreenWidth;
+        width = videoPlayerSize.portraitFullScreenWidth;
     }
     else
     {
-        width = [VPUPInterfaceDataServiceManager videoPlayerSize].portraitFullScreenHeight;
+        width = videoPlayerSize.portraitFullScreenHeight;
     }
     return width;
 }
@@ -212,6 +214,7 @@ static NSMutableDictionary* httpAPICache() {
     const struct luaL_Reg staticFunctions [] = {
         {"stringDrawLength",   getStringDrawLength},
         {"getVideoSize",   getVideoSize},
+        {"getVideoFrame",   getVideoFrame},
         {"isPortraitScreen", isPortraitScreen},
         {"isFullScreen", isFullScreen},
         {"sendAction", sendAction},
@@ -532,20 +535,21 @@ static int getVideoSize(lua_State *L) {
     if (lua_gettop(L) >= 2) {
         int type = (int)lua_tonumber(L, 2);
         float w,h,originY;
+        VPUPVideoPlayerSize *videoPlayerSize = [VPUPInterfaceDataServiceManager videoPlayerSize];
         switch (type) {
             case 0:
-                w = [VPUPInterfaceDataServiceManager videoPlayerSize].portraitFullScreenWidth;
-                h = [VPUPInterfaceDataServiceManager videoPlayerSize].portraitSmallScreenHeight;
-                originY = [VPUPInterfaceDataServiceManager videoPlayerSize].portraitSmallScreenOriginY;
+                w = videoPlayerSize.portraitFullScreenWidth;
+                h = videoPlayerSize.portraitSmallScreenHeight;
+                originY = videoPlayerSize.portraitSmallScreenOriginY;
                 break;
             case 1:
-                w = [VPUPInterfaceDataServiceManager videoPlayerSize].portraitFullScreenWidth;
-                h = [VPUPInterfaceDataServiceManager videoPlayerSize].portraitFullScreenHeight;
+                w = videoPlayerSize.portraitFullScreenWidth;
+                h = videoPlayerSize.portraitFullScreenHeight;
                 originY = 0;
                 break;
             case 2:
-                w = [VPUPInterfaceDataServiceManager videoPlayerSize].portraitFullScreenHeight;
-                h = [VPUPInterfaceDataServiceManager videoPlayerSize].portraitFullScreenWidth;
+                w = videoPlayerSize.portraitFullScreenHeight;
+                h = videoPlayerSize.portraitFullScreenWidth;
                 originY = 0;
                 break;
                 
@@ -566,6 +570,15 @@ static int getVideoSize(lua_State *L) {
         lua_pushnumber(L, 0);
     }
     return 3;
+}
+
+static int getVideoFrame(lua_State *L) {
+    CGRect videoFrame = [VPUPInterfaceDataServiceManager videoFrame];
+    lua_pushnumber(L, videoFrame.origin.x);
+    lua_pushnumber(L, videoFrame.origin.y);
+    lua_pushnumber(L, videoFrame.size.width);
+    lua_pushnumber(L, videoFrame.size.height);
+    return 4;
 }
 
 static int getVideoPosition(lua_State *L) {

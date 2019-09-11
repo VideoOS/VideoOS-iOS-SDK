@@ -178,7 +178,10 @@
     if ([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait) {
         _mediaControlView.videoSwitchButton.hidden = YES;
         _mediaControlView.btnConstraint.constant = 0;
-        _mediaControlView.videoSwitchButton.selected = NO;
+        VPIServiceConfig *config = [[VPIServiceConfig alloc] init];
+        config.type = VPIServiceTypeVideoMode;
+        config.identifier = _interfaceController.config.identifier;
+        [_interfaceController startService:VPIServiceTypeVideoMode config:config];
     }else {
         _mediaControlView.videoSwitchButton.hidden = NO;
         _mediaControlView.btnConstraint.constant = 60;
@@ -370,7 +373,7 @@
     NSString *path =  [[NSBundle mainBundle] pathForResource:@"adInfo" ofType:@"json"];
     NSDictionary *adInfo = [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:path] options:NSJSONReadingMutableContainers error:nil];
     
-    [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://defaultLuaView?template=os_easy_shop_hotspot.lua&id=5aa5fa5133edbf375fe43fff4"] data:[[adInfo objectForKey:@"launchInfoList"] objectAtIndex:0]];
+    [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://defaultLuaView?template=os_video_figureStarList_hotspot.lua&id=5aa5fa5133edbf375fe43fff4"] data:[[adInfo objectForKey:@"launchInfoList"] objectAtIndex:0]];
     
 //    [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://defaultLuaView?template=os_bubble.lua&id=5aa5fa5133edbf375fe43fff4"] data:[[adInfo objectForKey:@"launchInfoList"] objectAtIndex:0]];
     
@@ -411,6 +414,7 @@
     self.svgPlayer = [[SVGAPlayer alloc]initWithFrame:self.view.bounds];
     self.svgPlayer.delegate = self;
     self.svgPlayer.loops = 1;
+    self.svgPlayer.userInteractionEnabled = NO;
     [self.view addSubview:self.svgPlayer];
     [self.svgPlayer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.equalTo(self.view);
@@ -593,8 +597,6 @@
 
 - (void)initInterfaceController {
 //    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
-    NSDate *datenow = [NSDate date];
-    [VPIConfigSDK setIdentity:[NSString stringWithFormat:@"%f",[datenow timeIntervalSince1970]]];
     //videoIdentifier可传协商过唯一ID拼接,并非必须为url
     VPInterfaceControllerConfig *config = [[VPInterfaceControllerConfig alloc] init];
     config.platformID = [PrivateConfig shareConfig].platformID;
@@ -880,7 +882,7 @@
                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[actionDictionary objectForKey:@"deepLink"]]];
                     }
                     else {
-                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"错误" message:@"DeepLink打开失败" preferredStyle:UIAlertControllerStyleAlert];
+                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"错误" message:@"App打开失败" preferredStyle:UIAlertControllerStyleAlert];
                         __weak typeof(self) weakSelf = self;
                         UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                             __strong typeof(self) strongSelf = weakSelf;
@@ -935,6 +937,11 @@
 
 - (NSTimeInterval)videoPlayerCurrentTime {
     return _player.currentPlaybackTime;
+}
+
+
+-(CGRect)videoFrame {
+    return _player.getVideoFrame;
 }
 
 - (VPIVideoPlayerSize *)videoPlayerSize {

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const VPLuaErrorDomain;
+extern NSString *const VPLuaLuaDataNotification;
 
 NS_ASSUME_NONNULL_BEGIN
 

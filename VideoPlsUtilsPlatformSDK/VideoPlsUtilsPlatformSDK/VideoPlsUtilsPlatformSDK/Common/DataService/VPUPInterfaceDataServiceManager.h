@@ -19,6 +19,8 @@
 
 - (VPUPVideoPlayerSize *)videoPlayerSize;
 
+- (CGRect)videoFrame;
+
 @end
 
 
@@ -45,6 +47,7 @@
 + (NSTimeInterval)videoPlayerCurrentItemAssetDuration;
 + (NSTimeInterval)videoPlayerCurrentTime;
 + (VPUPVideoPlayerSize *)videoPlayerSize;
++ (CGRect)videoFrame;
 
 + (void)deallocManager;
 

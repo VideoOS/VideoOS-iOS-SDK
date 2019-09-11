@@ -16,6 +16,11 @@ typedef NS_ENUM(NSUInteger, VPLuaAppletContainerType) {
     VPLuaAppletContainerTypePortrait      = 2
 };
 
+typedef NS_ENUM(NSUInteger, VPAppletContainerAppType) {
+    VPAppletContainerAppTypeLua             = 1,
+    VPAppletContainerAppTypeHybird          = 2
+};
+
 @protocol VPLuaAppletContainer <NSObject>
 
 @property (nonatomic, readonly) NSString *appletID;
@@ -35,6 +40,10 @@ typedef NS_ENUM(NSUInteger, VPLuaAppletContainerType) {
 - (void)setGetUserInfoBlock:(NSDictionary *(^)(void))getUserInfoBlock;
 
 - (void)loadLua:(NSString *)luaUrl data:(id)data;
+
+- (void)refreshContainerWithData:(id)data;
+
+- (id)getInitData;
 
 - (void)closeContainer;
 

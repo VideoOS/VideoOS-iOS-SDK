@@ -200,7 +200,8 @@
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
     if(self.delegate) {
         if([self.delegate respondsToSelector:@selector(loadCompleteTitle:error:)]) {
-            [self.delegate loadCompleteTitle:nil error:error];
+            NSString *title = webView.title;
+            [self.delegate loadCompleteTitle:title error:error];
         }
     }
 }
@@ -208,9 +209,14 @@
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
     if(self.delegate) {
         if([self.delegate respondsToSelector:@selector(loadCompleteTitle:error:)]) {
-            [self.delegate loadCompleteTitle:nil error:error];
+            NSString *title = webView.title;
+            [self.delegate loadCompleteTitle:title error:error];
         }
     }
+}
+
+- (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
+    
 }
 
 - (void)nativeCallWebviewWithJS:(NSString *)jsFuncName paramaters:(NSArray *)params callback:(VPUPWebViewCallback)callback {

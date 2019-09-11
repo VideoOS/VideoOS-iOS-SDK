@@ -352,7 +352,7 @@ local function getTaglist()
             return
         end
         responseData = Native:aesDecrypt(response.encryptData, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
-        print("luaview "..responseData)
+        --print("luaview "..responseData)
 
         response = toTable(responseData)
         if (response.resCode ~= "00") then

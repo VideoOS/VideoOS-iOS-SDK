@@ -14,7 +14,11 @@
 #import "VPLuaSDK.h"
 #import "VPLuaPlayer.h"
 #import "VPLuaAppletContainer.h"
+#import "VPAppletLandscapeContainer.h"
 #import "VPLuaAppletLandscapeContainer.h"
+#import "VPHybirdAppletLandscapeContainer.h"
+#import "VPLuaOSView.h"
+#import "VPLuaAppletRequest.h"
 
 @interface VPLuaAppletsView () <VPLuaAppletContainerDelegate>
 
@@ -165,7 +169,7 @@
     self.networkManager = [VPLuaNetworkManager Manager];
 }
 
-//跳转小程序   LuaView://applets?appletId=xxxx&type=x(type: 1横屏,2竖屏)
+//跳转小程序   LuaView://applets?appletId=xxxx&type=x(type: 1横屏,2竖屏)&appType=x(appType: 1 lua,2 h5)
 //容器内部跳转 LuaView://applets?appletId=xxxx&template=xxxx.lua&id=xxxx&priority=x
 - (void)loadAppletWithID:(NSString *)appletID data:(id)data {
     if (self.isStartLoading) {
@@ -218,16 +222,33 @@
                     [self pushLuaWithAppletID:appletID queryParams:queryParams data:data];
                 } else {
                     //存在? 也没有跳转入口
-                    
+                    //刷新lua
+                    [self refereshContainerWithAppletID:appletID data:data];
                     return;
                 }
             }
-            VPLuaAppletLandscapeContainer *container = [[VPLuaAppletLandscapeContainer alloc] initWithAppletID:appletID networkManager:self.networkManager videoInfo:self.videoInfo luaPath:self.luaPath data:data];
+            
+            VPAppletContainerAppType appType = VPAppletContainerAppTypeLua;
+            if ([queryParams objectForKey:@"appType"] != nil) {
+                NSInteger typeInt = [[queryParams objectForKey:@"appType"] integerValue];
+                if (typeInt > 0 && typeInt < 3) {
+                    appType = typeInt;
+                }
+            }
+            VPAppletLandscapeContainer *container;
+            if (appType == VPAppletContainerAppTypeLua) {
+                container = [[VPLuaAppletLandscapeContainer alloc] initWithAppletID:appletID networkManager:self.networkManager videoInfo:self.videoInfo luaPath:self.luaPath data:data];
+            } else {
+                container = [[VPHybirdAppletLandscapeContainer alloc] initWithAppletID:appletID networkManager:self.networkManager videoInfo:self.videoInfo luaPath:self.luaPath data:data];
+            }
             container.containerDelegate = self;
             
             [self.containers setObject:container forKey:appletID];
             
             [container showInSuperview:self];
+            
+            //track appletId
+            [[VPLuaAppletRequest request] trackWithAppletID:appletID apiManager:self.networkManager.httpManager];
             
             break;
         }
@@ -258,6 +279,23 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [container loadLua:luaUrl data:data];
     });
+}
+
+- (void)refereshContainerWithAppletID:(NSString *)appletID
+                                 data:(id)data {
+    if (![self checkContainerExistWithAppletID:appletID]) {
+        //理论不会发生,外面已经check过
+        return;
+    }
+    
+    id<VPLuaAppletContainer> container = [self.containers objectForKey:appletID];
+    if ([container isKindOfClass:[UIView class]]) {
+        [self bringSubviewToFront:(UIView *)container];
+    }
+    [container refreshContainerWithData:data];
+    
+    //track appletId
+    [[VPLuaAppletRequest request] trackWithAppletID:appletID apiManager:self.networkManager.httpManager];
 }
 
 - (BOOL)checkContainerExistWithAppletID:(NSString *)appletID {

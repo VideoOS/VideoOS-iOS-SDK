@@ -49,6 +49,7 @@ extern NSString *const VPAVPlayerPlayerbackDidSeekCompleteNotification;
 
 @property (nonatomic, readonly) CGSize videoTrueSize;
 @property (nonatomic, readonly) CGRect videoNowRect;
+@property (nonatomic, assign, readonly) CGRect getVideoFrame;
 
 @property (nonatomic, weak) id<VPVideoPlayerDelegate> videoPlayerDelagate;
 

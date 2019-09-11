@@ -28,6 +28,7 @@
 #import "VPLuaScrollView.h"
 #import "VPLuaHttpRequest.h"
 #import "VPLuaAppletBridge.h"
+#import "VPLuaNotification.h"
 
 @implementation VPLuaBaseView
 
@@ -56,6 +57,7 @@
         [VPLuaScrollView lvClassDefine:self.luaviewCore.l globalName:@"ScrollView"];
         [VPLuaHttpRequest lvClassDefine:self.luaviewCore.l globalName:@"HttpRequest"];
         [VPLuaAppletBridge lvClassDefine:self.luaviewCore.l globalName:@"Applet"];
+        [VPLuaNotification lvClassDefine:self.luaviewCore.l globalName:@"Notification"];
     }
     return self;
 }

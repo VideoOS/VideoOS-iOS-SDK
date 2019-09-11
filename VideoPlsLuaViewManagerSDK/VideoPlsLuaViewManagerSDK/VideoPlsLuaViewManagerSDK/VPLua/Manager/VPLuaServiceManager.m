@@ -75,8 +75,8 @@
     VPLuaService *service = [self.serviceDict objectForKey:@(type)];
     if (service && self.osView) {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @(VPLuaAdActionTypePause), @"ActionType",
-                              @(VPLuaAdEventTypeAction), @"EventType",nil];
+                              @(VPLuaOSActionTypePause), @"osActionType",
+                              @(VPLuaEventTypeOSAction), @"eventType",nil];
         [self.osView callLuaMethod:@"event" nodeId:service.serviceId data:dict];
     }
 }
@@ -85,8 +85,8 @@
     VPLuaService *service = [self.serviceDict objectForKey:@(type)];
     if (service && self.osView) {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @(VPLuaAdActionTypeResume), @"ActionType",
-                              @(VPLuaAdEventTypeAction), @"EventType",nil];
+                              @(VPLuaOSActionTypeResume), @"osActionType",
+                              @(VPLuaEventTypeOSAction), @"eventType",nil];
         [self.osView callLuaMethod:@"event" nodeId:service.serviceId data:dict];
     }
 }
@@ -95,6 +95,9 @@
     VPLuaService *service = [self.serviceDict objectForKey:@(type)];
     if (service && self.osView) {
         [self.osView removeViewWithNodeId:service.serviceId];
+    }
+    if (service && self.desktopView) {
+        [self.desktopView removeViewWithNodeId:service.serviceId];
     }
     self.serviceDict[@(type)] = nil;
     if (type == VPLuaServiceTypeVideoMode) {

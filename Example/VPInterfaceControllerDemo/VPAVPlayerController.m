@@ -139,6 +139,12 @@ static const float kMaxHighWaterMarkMilli = 5 * 1000;
     [self shutdown];
 }
 
+//getVideoFrame
+
+- (CGRect)getVideoFrame {
+    return self.view.bounds;
+}
+
 - (void)prepareToPlay {
     if(!_player) {
         return;

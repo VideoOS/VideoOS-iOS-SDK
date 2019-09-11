@@ -1,14 +1,17 @@
 //
-//  VPLuaAppletLandscapeContainer.h
+//  VPHybirdAppletLandscapeContainer.h
 //  VideoPlsLuaViewManagerSDK
 //
-//  Created by Zard1096-videojj on 2019/7/30.
+//  Created by Zard1096-videojj on 2019/8/28.
 //  Copyright © 2019 videopls. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "VPAppletLandscapeContainer.h"
 
-@interface VPLuaAppletLandscapeContainer : VPAppletLandscapeContainer
+
+@interface VPHybirdAppletLandscapeContainer : VPAppletLandscapeContainer
+
 
 @end
+

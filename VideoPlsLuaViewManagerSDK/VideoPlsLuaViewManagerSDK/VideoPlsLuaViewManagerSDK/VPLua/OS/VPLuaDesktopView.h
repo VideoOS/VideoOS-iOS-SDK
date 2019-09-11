@@ -1,44 +1,19 @@
 //
-//  VPLuaOSView.h
+//  VPLuaDesktopView.h
 //  VideoPlsLuaViewManagerSDK
 //
-//  Created by peter on 05/03/2018.
-//  Copyright © 2018 videopls. All rights reserved.
+//  Created by peter on 2019/8/28.
+//  Copyright © 2019 videopls. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "VPLuaVideoPlayerSize.h"
 #import "VPLuaVideoInfo.h"
 
-extern NSString *const VPOSLuaEndNotification;
-extern NSString *const VPLuaOSLoadCompleteNotification;
+NS_ASSUME_NONNULL_BEGIN
 
-
-/**
- *  事件处理通知类型枚举
- */
-typedef NS_ENUM(NSUInteger, VPLuaEventType) {
-    VPLuaEventTypeTypeNone = 0,
-    VPLuaEventTypeOSAction,
-    VPLuaEventTypeAppletAction
-};
-
-/**
- *  AD事件处理通知类型枚举
- */
-typedef NS_ENUM(NSUInteger, VPLuaOSActionType) {
-    VPLuaOSActionTypeNone = 0,     //
-    VPLuaOSActionTypeResume,         // 播放Ad
-    VPLuaOSActionTypePause,        // 暂停Ad
-};
-
-typedef NS_ENUM(NSUInteger, VPLuaAppletActionType) {
-    VPLuaAppletActionTypeNone = 0,     //
-    VPLuaAppletActionTypeRetry,         // 网络重试
-    VPLuaAppletActionTypeRefresh        // 刷新页面
-};
-
-@interface VPLuaOSView : UIView
+@interface VPLuaDesktopView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame;
 
@@ -77,3 +52,5 @@ typedef NS_ENUM(NSUInteger, VPLuaAppletActionType) {
 - (void)closeInfoView;
 
 @end
+
+NS_ASSUME_NONNULL_END

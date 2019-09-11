@@ -66,6 +66,13 @@ static dispatch_once_t m_dataServiceManagerOnceToken;
     return [m_dataServiceManager.delegate videoPlayerSize];;
 }
 
++ (CGRect)videoFrame; {
+    if (!m_dataServiceManager || !m_dataServiceManager.delegate) {
+        return CGRectZero;
+    }
+    return [m_dataServiceManager.delegate videoFrame];;
+}
+
 + (void)deallocManager {
     m_dataServiceManagerOnceToken = 0;
     m_dataServiceManager = nil;

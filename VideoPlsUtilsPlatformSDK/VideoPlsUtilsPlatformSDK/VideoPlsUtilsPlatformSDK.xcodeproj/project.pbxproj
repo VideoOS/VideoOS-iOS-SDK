@@ -98,8 +98,6 @@
 		0641EBB31ED41E6F00C950A4 /* VPUPNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0641EBAF1ED41E6F00C950A4 /* VPUPNotificationCenter.m */; };
 		0641EBB41ED41E6F00C950A4 /* VPUPNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0641EBAF1ED41E6F00C950A4 /* VPUPNotificationCenter.m */; };
 		0641EBB51ED41E6F00C950A4 /* VPUPNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0641EBAF1ED41E6F00C950A4 /* VPUPNotificationCenter.m */; };
-		064B14602321FEDC00C2F392 /* VPUPCommonInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 064B145E2321FEDC00C2F392 /* VPUPCommonInfo.h */; };
-		064B14612321FEDC00C2F392 /* VPUPCommonInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 064B145F2321FEDC00C2F392 /* VPUPCommonInfo.m */; };
 		064D563E1EC449D300C9DEC4 /* VPUPLogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 064D563A1EC449D300C9DEC4 /* VPUPLogUtil.m */; };
 		064D563F1EC449D300C9DEC4 /* VPUPLogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 064D563A1EC449D300C9DEC4 /* VPUPLogUtil.m */; };
 		064D56401EC449D300C9DEC4 /* VPUPLogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 064D563A1EC449D300C9DEC4 /* VPUPLogUtil.m */; };
@@ -642,6 +640,8 @@
 		D00ED8FA2031928300B6C8C1 /* VPUPUIWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8F62031928200B6C8C1 /* VPUPUIWebViewJSBridge.m */; };
 		D00ED8FB2031928300B6C8C1 /* VPUPUIWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8F62031928200B6C8C1 /* VPUPUIWebViewJSBridge.m */; };
 		D00ED8FC2031928300B6C8C1 /* VPUPUIWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8F62031928200B6C8C1 /* VPUPUIWebViewJSBridge.m */; };
+		D010FE6A2328D47C00E4177B /* VPUPCommonInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = D010FE682328D47C00E4177B /* VPUPCommonInfo.h */; };
+		D010FE6B2328D47C00E4177B /* VPUPCommonInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D010FE692328D47C00E4177B /* VPUPCommonInfo.m */; };
 		D0150B52206C8B9D008CD3FD /* VPUPHTTPAFNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0150B50206C8B9C008CD3FD /* VPUPHTTPAFNManager.m */; };
 		D0150B53206C8B9D008CD3FD /* VPUPHTTPAFNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0150B50206C8B9C008CD3FD /* VPUPHTTPAFNManager.m */; };
 		D0150B54206C8B9D008CD3FD /* VPUPHTTPAFNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0150B50206C8B9C008CD3FD /* VPUPHTTPAFNManager.m */; };
@@ -1070,8 +1070,6 @@
 		063FDB911F0E17E800333B46 /* VPUPFLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPFLAnimatedImageView.m; sourceTree = "<group>"; };
 		0641EBAE1ED41E6F00C950A4 /* VPUPNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPNotificationCenter.h; sourceTree = "<group>"; };
 		0641EBAF1ED41E6F00C950A4 /* VPUPNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPNotificationCenter.m; sourceTree = "<group>"; };
-		064B145E2321FEDC00C2F392 /* VPUPCommonInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPUPCommonInfo.h; sourceTree = "<group>"; };
-		064B145F2321FEDC00C2F392 /* VPUPCommonInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPCommonInfo.m; sourceTree = "<group>"; };
 		064D56391EC449D300C9DEC4 /* VPUPLogUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPLogUtil.h; sourceTree = "<group>"; };
 		064D563A1EC449D300C9DEC4 /* VPUPLogUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPLogUtil.m; sourceTree = "<group>"; };
 		064D56431EC47C3A00C9DEC4 /* VPUPSDKInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPSDKInfo.h; sourceTree = "<group>"; };
@@ -1257,6 +1255,8 @@
 		D00ED8EE20317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPWKWebViewJSBridge.m; sourceTree = "<group>"; };
 		D00ED8F52031928200B6C8C1 /* VPUPUIWebViewJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPUPUIWebViewJSBridge.h; sourceTree = "<group>"; };
 		D00ED8F62031928200B6C8C1 /* VPUPUIWebViewJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPUIWebViewJSBridge.m; sourceTree = "<group>"; };
+		D010FE682328D47C00E4177B /* VPUPCommonInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPCommonInfo.h; sourceTree = "<group>"; };
+		D010FE692328D47C00E4177B /* VPUPCommonInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPCommonInfo.m; sourceTree = "<group>"; };
 		D0150B50206C8B9C008CD3FD /* VPUPHTTPAFNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPHTTPAFNManager.m; sourceTree = "<group>"; };
 		D0150B51206C8B9C008CD3FD /* VPUPHTTPAFNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPHTTPAFNManager.h; sourceTree = "<group>"; };
 		D0150B59206CC312008CD3FD /* VPUPLoadImageSDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPLoadImageSDManager.h; sourceTree = "<group>"; };
@@ -1573,6 +1573,8 @@
 		06A4117F1EC2EE7900112082 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D010FE682328D47C00E4177B /* VPUPCommonInfo.h */,
+				D010FE692328D47C00E4177B /* VPUPCommonInfo.m */,
 				06764FFE1ED8096600CB110C /* VPUPUtils.h */,
 				06AEC4C01EEA817B00C384F6 /* VPUPLifeCycle.h */,
 				06AEC4C11EEA817B00C384F6 /* VPUPLifeCycle.m */,
@@ -1612,8 +1614,6 @@
 				D0BD1AB62130129F00A087F2 /* VPUPIPAddressUtil.m */,
 				D01E219D223E8EF90018A1AE /* VPUPUrlUtil.h */,
 				D01E219E223E8EF90018A1AE /* VPUPUrlUtil.m */,
-				064B145E2321FEDC00C2F392 /* VPUPCommonInfo.h */,
-				064B145F2321FEDC00C2F392 /* VPUPCommonInfo.m */,
 				06C7E92C230A8A9C000FEC1C /* VPUPTrafficStatistics.h */,
 				06C7E92D230A8A9C000FEC1C /* VPUPTrafficStatistics.m */,
 			);
@@ -2209,7 +2209,7 @@
 				06D57C251F18697E00C1C1BA /* VPUPOrderedDictionary.h in Headers */,
 				D0928C9B2088A0C2008AB5EC /* VPUPSDImageCacheConfig.h in Headers */,
 				065503B11EFA404E006FBADB /* VPUPHexColors.h in Headers */,
-				064B14602321FEDC00C2F392 /* VPUPCommonInfo.h in Headers */,
+				D010FE6A2328D47C00E4177B /* VPUPCommonInfo.h in Headers */,
 				D0E943541FF0E1B50038BD8B /* VPUPAssetCell.h in Headers */,
 				062DB6791F1E30C2003788C1 /* VPUPFLAnimatedImage.h in Headers */,
 				D0928D012088A0C2008AB5EC /* NSImage+VPUPWebCache.h in Headers */,
@@ -2939,7 +2939,7 @@
 				D022A0B020BE6CA600F46029 /* VPUPVideoRequestTask.m in Sources */,
 				D05369C320576B6200A4F8C6 /* VPUPHTTPHost.m in Sources */,
 				D01E21A1223E8EF90018A1AE /* VPUPUrlUtil.m in Sources */,
-				064B14612321FEDC00C2F392 /* VPUPCommonInfo.m in Sources */,
+				D010FE6B2328D47C00E4177B /* VPUPCommonInfo.m in Sources */,
 				06789B171EE979530052A705 /* VPUPPrefetchVideoManager.m in Sources */,
 				D004F7042099567700022E90 /* vpup_read_handle_client.c in Sources */,
 				D0BD1AAD212FE60600A087F2 /* VPUPRSAUtil.m in Sources */,

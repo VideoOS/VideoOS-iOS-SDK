@@ -9,6 +9,7 @@
 #import "VPLuaConstant.h"
 
 NSString *const VPLuaErrorDomain = @"VPLuaErrorDomain";
+NSString *const VPLuaLuaDataNotification = @"VPLuaLuaDataNotification";
 
 @implementation VPLuaConstant
 

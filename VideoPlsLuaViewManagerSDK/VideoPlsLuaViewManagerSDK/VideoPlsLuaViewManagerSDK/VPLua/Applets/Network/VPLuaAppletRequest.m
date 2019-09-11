@@ -108,6 +108,27 @@ static VPLuaAppletRequest *request = nil;
     return requestID;
 }
 
+- (void)trackWithAppletID:(NSString *)appletID
+               apiManager:(id<VPUPHTTPAPIManager>)apiManager {
+    
+    __weak typeof(self) weakSelf = self;
+    VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
+    
+    api.baseUrl = [NSString stringWithFormat:@"%@/%@", VPLuaServerHost, @"vision/addRecentMiniApp"];
+    //mock
+    api.apiRequestMethodType = VPUPRequestMethodTypePOST;
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObject:appletID forKey:@"miniAppId"];
+    [param setObject:[VPUPCommonInfo commonParam] forKey:@"commonParam"];
+    
+    NSString *commonParamString = VPUP_DictionaryToJson(param);
+    api.requestParameters = @{@"data":[VPUPAESUtil aesEncryptString:commonParamString key:[VPLuaSDK sharedSDK].appSecret initVector:[VPLuaSDK sharedSDK].appSecret]};
+    api.apiCompletionHandler = ^(id  _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
+        
+    };
+    [apiManager sendAPIRequest:api];
+}
+
 - (void)cancelRequestWithID:(NSString *)requestID {
     [self removeRequestID:requestID];
 }

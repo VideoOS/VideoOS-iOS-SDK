@@ -63,6 +63,7 @@ static int lvNewScrollView (lua_State *L) {
     const struct luaL_Reg memberFunctions [] = {
         {"addView", addSubview},
         {"fullScroll", fullScroll},
+        {"scrollEnabled", scrollEnabled},
         {NULL, NULL}
     };
     
@@ -114,6 +115,24 @@ static int fullScroll (lua_State *L) {
         if( [scrollView isKindOfClass:[VPLuaScrollView class]] ){
             [scrollView setContentOffset:CGPointMake(0, MAX(0, [scrollView subviewsMaxY] - scrollView.frame.size.height)) animated:YES];
             return 0;
+        }
+    }
+    return 0;
+}
+
+static int scrollEnabled (lua_State *L) {
+    LVUserDataInfo *user = (LVUserDataInfo *)lua_touserdata(L, 1);// 获取第一个参数(self,lua的userdata, 对象自身)
+    if (user) {
+        VPLuaScrollView *scrollView = (__bridge VPLuaScrollView *)(user->object);// 获取self对应的native对象
+        if( [scrollView isKindOfClass:[VPLuaScrollView class]] ){
+            if ( lua_gettop(L)>=2 ) {
+                BOOL enable = lua_toboolean(L, 2);
+                scrollView.scrollEnabled = enable;
+                return 0;
+            } else {
+                lua_pushboolean(L, scrollView.scrollEnabled);
+                return 1;
+            }
         }
     }
     return 0;

@@ -69,7 +69,7 @@
         
         if (error || !responseObject || ![responseObject objectForKey:@"encryptData"]) {
             if (!error) {
-                error = [NSError errorWithDomain:VPLuaErrorDomain code:-4201 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"queryAllAds error"]}];
+                error = [NSError errorWithDomain:VPLuaErrorDomain code:-4201 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"getLabelConf error"]}];
             }
             [strongSelf callbackComplete:strongSelf.complete withError:error];
             return;
@@ -251,6 +251,11 @@
     [dict setObject:self.serviceId forKey:@"id"];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://defaultLuaView?template=%@&id=%@",VPUPRoutesSDKLuaView, [dict objectForKey:@"template"], [dict objectForKey:@"id"]]];
     [VPUPRoutes routeURL:url withParameters:data completion:^(id  _Nonnull result) {
+        
+    }];
+    
+    NSURL *desktopUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@://desktopLuaView?template=%@&id=%@",VPUPRoutesSDKLuaView, [dict objectForKey:@"desktopTemplate"], [dict objectForKey:@"id"]]];
+    [VPUPRoutes routeURL:desktopUrl withParameters:data completion:^(id  _Nonnull result) {
         
     }];
 }

@@ -28,6 +28,7 @@
 
 #import "VPLuaOSView.h"
 #import "VPLuaAppletsView.h"
+#import "VPLuaDesktopView.h"
 #import "VPLuaMedia.h"
 #import "VPLuaVideoInfo.h"
 #import "VPLuaPage.h"
@@ -58,6 +59,8 @@
 @property (nonatomic) VPLuaOSView *osView;
 
 @property (nonatomic) VPLuaAppletsView *appletsView;
+
+@property (nonatomic) VPLuaDesktopView *desktopView;
 
 @property (nonatomic, readwrite, strong) VPInterfaceControllerConfig *config;
 
@@ -139,6 +142,7 @@
     _view = [[VPInterfaceClickThroughView alloc] initWithFrame:frame];
     [self initOSViewWithFrame:frame];
     [self initAppletsViewWithFrame:frame];
+    [self initDesktopViewWithFrame:frame];
 }
 
 - (void)initOSViewWithFrame:(CGRect)frame {
@@ -183,11 +187,39 @@
     vpSize.portraitFullScreenWidth = self.videoPlayerSize.portraitFullScreenWidth;
     vpSize.portraitFullScreenHeight = self.videoPlayerSize.portraitFullScreenHeight;
     vpSize.portraitSmallScreenOriginY = self.videoPlayerSize.portraitSmallScreenOriginY;
-    _osView.videoPlayerSize = vpSize;
+    _appletsView.videoPlayerSize = vpSize;
     [_appletsView setGetUserInfoBlock:^NSDictionary *(void) {
         return [weakSelf getUserInfoDictionary];
     }];
     [_view addSubview:_appletsView];
+}
+
+- (void)initDesktopViewWithFrame:(CGRect)frame {
+    
+    __weak typeof(self) weakSelf = self;
+    NSString *platformId = nil;
+    NSString *videoId = nil;
+    
+    platformId = _config.platformID;
+    videoId = _config.identifier;
+    if (_config.types & VPInterfaceControllerTypeVideoOS) {
+        [VPLuaSDK setOSType:VPLuaOSTypeVideoOS];
+    }
+    else {
+        [VPLuaSDK setOSType:VPLuaOSTypeLiveOS];
+    }
+    _desktopView = [[VPLuaDesktopView alloc] initWithFrame:frame platformId:platformId videoId:videoId extendInfo:_config.extendDict];
+    VPLuaVideoPlayerSize *vpSize = [[VPLuaVideoPlayerSize alloc] init];
+    vpSize.portraitSmallScreenHeight = self.videoPlayerSize.portraitSmallScreenHeight;
+    vpSize.portraitFullScreenWidth = self.videoPlayerSize.portraitFullScreenWidth;
+    vpSize.portraitFullScreenHeight = self.videoPlayerSize.portraitFullScreenHeight;
+    vpSize.portraitSmallScreenOriginY = self.videoPlayerSize.portraitSmallScreenOriginY;
+    _desktopView.videoPlayerSize = vpSize;
+    [_desktopView setGetUserInfoBlock:^NSDictionary *(void) {
+        return [weakSelf getUserInfoDictionary];
+    }];
+    [_view addSubview:_desktopView];
+    [_view bringSubviewToFront:_desktopView];
 }
 
 - (BOOL)validateSetAttribute {
@@ -229,7 +261,12 @@
     if (_appletsView) {
         [_appletsView startLoading];
     }
-
+    if (!_desktopView) {
+        [self initDesktopViewWithFrame:self.view.bounds];
+    }
+    if (_desktopView) {
+        [_desktopView startLoading];
+    }
     [self registerStatusNotification];
 }
 
@@ -249,6 +286,9 @@
     }
     if (_appletsView) {
         [_appletsView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
+    }
+    if (_desktopView) {
+        [_desktopView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
     }
 
     CGFloat width = 0;
@@ -314,6 +354,12 @@
         _appletsView = nil;
     }
     
+    if (_desktopView) {
+        [_desktopView stop];
+        [_desktopView removeFromSuperview];
+        _desktopView = nil;
+    }
+    
     _canSet = YES;
 }
 
@@ -325,8 +371,8 @@
     if (_osView) {
         [_osView pauseVideoAd];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @(VPLuaAdActionTypePause), @"ActionType",
-                              @(VPLuaAdEventTypeAction), @"EventType",nil];
+                              @(VPLuaOSActionTypePause), @"osActionType",
+                              @(VPLuaEventTypeOSAction), @"eventType",nil];
         [_osView callLuaMethod:@"event" data:dict];
     }
 }
@@ -335,8 +381,8 @@
     if (_osView) {
         [_osView playVideoAd];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @(VPLuaAdActionTypeResume),@"ActionType",
-                              @(VPLuaAdEventTypeAction), @"EventType",nil];
+                              @(VPLuaOSActionTypeResume),@"osActionType",
+                              @(VPLuaEventTypeOSAction), @"eventType",nil];
         [_osView callLuaMethod:@"event" data:dict];
     }
 }
@@ -632,6 +678,10 @@
     return vpupSize;
 }
 
+- (CGRect)videoFrame {
+    return [self.videoPlayerDelegate videoFrame];
+}
+
 - (void)registerRoutes {
     [self registerLuaViewRoutes];
 }
@@ -673,7 +723,7 @@
         return YES;
     }];
     
-    //跳转小程序   LuaView://applets?appletId=xxxx&type=x(type: 1横屏,2竖屏)
+    //跳转小程序   LuaView://applets?appletId=xxxx&type=x(type: 1横屏,2竖屏)&appType=x(appType: 1 lua,2 h5)
     //容器内部跳转 LuaView://applets?appletId=xxxx&template=xxxx.lua&id=xxxx&priority=x
     [[VPUPRoutes routesForScheme:VPUPRoutesSDKLuaView] addRoute:@"/applets" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
         
@@ -713,6 +763,37 @@
         
         [strongSelf.appletsView loadAppletWithID:appletID data:parameters];
     
+        return YES;
+    }];
+    
+    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLuaView] addRoute:@"/desktopLuaView" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+        
+        if (!weakSelf) {
+            return NO;
+        }
+        __strong typeof(self) strongSelf = weakSelf;
+        //判定osView是否存在，若不存在，先创建
+        if (!strongSelf.desktopView) {
+            [strongSelf initDesktopViewWithFrame:strongSelf.view.bounds];
+            //TODO MQTT,如果_liveView不存在情况怎么处理
+            
+            if(!strongSelf.canSet) {
+                [strongSelf.desktopView startLoading];
+            }
+        }
+        
+        id data = [[parameters objectForKey:VPUPRouteUserInfoKey] objectForKey:@"ActionManagerData"];
+        if (!data) {
+            data = [parameters objectForKey:VPUPRouteUserInfoKey];
+        }
+        
+        NSDictionary *queryParams = [parameters objectForKey:VPUPRouteQueryParamsKey];
+        NSString *luaFile = [queryParams objectForKey:@"template"];
+        if (!luaFile) {
+            luaFile = [data objectForKey:@"template"];
+        }
+        
+        [strongSelf.desktopView loadLua:luaFile data:parameters];
         return YES;
     }];
 }
@@ -783,6 +864,7 @@
     serviceConfig.duration = (VPIVideoAdTimeType)config.duration;
     
     self.serviceManager.osView = self.osView;
+    self.serviceManager.desktopView = self.desktopView;
     self.serviceManager.delegate = self;
     
     [self.serviceManager startService:(VPLuaServiceType)type config:serviceConfig];

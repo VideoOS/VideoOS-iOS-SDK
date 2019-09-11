@@ -27,8 +27,8 @@
 
 - (void)initView {
     _backgroundView = [[UIView alloc] initWithFrame:self.bounds];
-    _backgroundView.backgroundColor = [VPUPHXColor vpup_colorWithHexARGBString:@"48505a"];
-    _backgroundView.alpha = 0.9;
+    _backgroundView.backgroundColor = [VPUPHXColor vpup_colorWithHexARGBString:@"3C4049"];
+    _backgroundView.alpha = 1;
     [self addSubview:_backgroundView];
 }
 
