@@ -480,7 +480,6 @@ static int getVideoId(lua_State *L) {
 }
 
 static int isDebug(lua_State *L) {
-//    lua_pushboolean(L, [[VPUPDebugSwitch sharedDebugSwitch] debugState] > 1);
     lua_pushnumber(L, [[VPUPDebugSwitch sharedDebugSwitch] debugState]);
     return 1;
 }

@@ -16,11 +16,13 @@
 
 typedef NS_ENUM(NSInteger, VPLuaSVGAViewCallback) {
     kVPLuaSVGAViewCallbackOnFinished = 1,
-    kVPLuaSVGAViewCallbackOnStep
+    kVPLuaSVGAViewCallbackOnStep,
+    kVPLuaSVGAViewCallbackOnClick
 };
 
-static char *callbackSVGAViewKeys[] = { "", "onFinished", "onStep"};
+static char *callbackSVGAViewKeys[] = { "", "onFinished", "onStep", "onClick"};
 
+#define META_TABLE_SVGAView "UI.SVGAView"
 
 @interface VPLuaSVGAView () <VPUPSVGAPlayerDelegate>
 
@@ -74,7 +76,7 @@ static int lvNewSVGAView(lua_State *L) {
             userData->object = CFBridgingRetain(svgaView);// 脚本对象引用native对象
             svgaView.lv_userData = userData;//native对象引用脚本对象
             
-            luaL_getmetatable(L, META_TABLE_UIView); // 获取svgaView对应的类方法列表
+            luaL_getmetatable(L, META_TABLE_SVGAView); // 获取svgaView对应的类方法列表
             lua_setmetatable(L, -2); // 设置刚才创建的lua对象的方法列表是类svgaView的方法列表
         }
         LuaViewCore* view = LV_LUASTATE_VIEW(L);// 获取当前LuaView对应的LuaViewCore
@@ -179,45 +181,49 @@ static int svga (lua_State *L) {
     return 0;
 }
 
-static int svgaCallback(lua_State *L) {
-    LVUserDataInfo *data = (LVUserDataInfo *)lua_touserdata(L, 1);
-    if (LVIsType(data, View) && lua_type(L, 2) == LUA_TTABLE) {
-        lua_pushvalue(L, 2);
-        lua_pushnil(L);
-        
-        while (lua_next(L, -2)) {
-            if (lua_type(L, -2) != LUA_TSTRING) {
-                continue;
-            }
-            const char* key = lua_tostring(L, -2);
-            int idx = 0;
-            for (int i = 0; i < sizeof(callbackSVGAViewKeys) / sizeof(callbackSVGAViewKeys[0]); ++i) {
-                if (strcmp(key, callbackSVGAViewKeys[i]) == 0) {
-                    idx = i;
-                    break;
-                }
-            }
-            
-            if (idx != 0) {
-                lua_pushvalue(L, 1);
-                if (lua_type(L, -2) == LUA_TFUNCTION) {
-                    lua_pushvalue(L, -2);
-                } else {
-                    lua_pushnil(L);
-                }
-                lv_udataRef(L, idx);
-                lua_pop(L, 2);
-            } else {
-                lua_pop(L, 1);
-            }
-        }
-        lua_pop(L, 1);
-    }
-    
-    lv_pushUserdata(L, data);
-    
-    return 1;
+static int svgaCallback (lua_State *L) {
+    return lv_setCallbackByKey(L, nil, NO);
 }
+
+//static int svgaCallback(lua_State *L) {
+//    LVUserDataInfo *data = (LVUserDataInfo *)lua_touserdata(L, 1);
+//    if (LVIsType(data, View) && lua_type(L, 2) == LUA_TTABLE) {
+//        lua_pushvalue(L, 2);
+//        lua_pushnil(L);
+//
+//        while (lua_next(L, -2)) {
+//            if (lua_type(L, -2) != LUA_TSTRING) {
+//                continue;
+//            }
+//            const char* key = lua_tostring(L, -2);
+//            int idx = 0;
+//            for (int i = 0; i < sizeof(callbackSVGAViewKeys) / sizeof(callbackSVGAViewKeys[0]); ++i) {
+//                if (strcmp(key, callbackSVGAViewKeys[i]) == 0) {
+//                    idx = i;
+//                    break;
+//                }
+//            }
+//
+//            if (idx != 0) {
+//                lua_pushvalue(L, 1);
+//                if (lua_type(L, -2) == LUA_TFUNCTION) {
+//                    lua_pushvalue(L, -2);
+//                } else {
+//                    lua_pushnil(L);
+//                }
+//                lv_udataRef(L, idx);
+//                lua_pop(L, 2);
+//            } else {
+//                lua_pop(L, 1);
+//            }
+//        }
+//        lua_pop(L, 1);
+//    }
+//
+//    lv_pushUserdata(L, data);
+//
+//    return 1;
+//}
 
 static int startAnimation (lua_State *L) {
     LVUserDataInfo * user = (LVUserDataInfo *)lua_touserdata(L, 1);// 获取第一个参数(self,lua的userdata, 对象自身)
@@ -329,12 +335,20 @@ static int setCallback(lua_State *L, int idx) {
     return 1;
 }
 
+//static int onFinished (lua_State *L) {
+//    return setCallback(L, kVPLuaSVGAViewCallbackOnFinished);
+//}
+//
+//static int onStep (lua_State *L) {
+//    return setCallback(L, kVPLuaSVGAViewCallbackOnStep);
+//}
+
 static int onFinished (lua_State *L) {
-    return setCallback(L, kVPLuaSVGAViewCallbackOnFinished);
+    return lv_setCallbackByKey(L, callbackSVGAViewKeys[kVPLuaSVGAViewCallbackOnFinished], NO);
 }
 
 static int onStep (lua_State *L) {
-    return setCallback(L, kVPLuaSVGAViewCallbackOnStep);
+    return lv_setCallbackByKey(L, callbackSVGAViewKeys[kVPLuaSVGAViewCallbackOnStep], NO);
 }
 
 /*
@@ -346,7 +360,6 @@ static int onStep (lua_State *L) {
     
     // lua SVGAView构造方法创建的对象对应的方法列表
     const struct luaL_Reg memberFunctions [] = {
-        
         {"loops",    loops},
         {"readyToPlay",    readyToPlay},
         {"fps",    fps},
@@ -365,22 +378,31 @@ static int onStep (lua_State *L) {
     };
     
     // 创建SVGAView类的方法列表
-    lv_createClassMetaTable(L, META_TABLE_UIView);
+    lv_createClassMetaTable(L, META_TABLE_SVGAView);
     
     luaL_openlib(L, NULL, [LVBaseView baseMemberFunctions], 0); // 继承基类View的所有方法列表
     luaL_openlib(L, NULL, memberFunctions, 0); // 当前类SVGAView特有的方法列表
+    
+    const char* keys[] = { "addView", NULL};//列出需要移除的多余API
+    lv_luaTableRemoveKeys(L, keys );// 移除冗余API 兼容安卓
+    
     return 1;
 }
 
 - (void)svgaPlayerDidFinishedAnimation:(id<VPUPSVGAPlayerProtocol>)player {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self callback:kVPLuaSVGAViewCallbackOnFinished];
+        [self lv_callLuaCallback:@"OnFinish" key2:nil argN:1];
     });
 }
 
 - (void)svgaPlayerDidAnimatedToFrame:(NSInteger)frame {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self callback:kVPLuaSVGAViewCallbackOnStep progress:frame];
+        lua_State* l = self.lv_luaviewCore.l;
+        if( l ){
+            lua_checkstack32(l);
+            lua_pushnumber(l, frame);
+            [self lv_callLuaCallback:@"onStep" key2:nil argN:1];
+        }
     });
 }
 

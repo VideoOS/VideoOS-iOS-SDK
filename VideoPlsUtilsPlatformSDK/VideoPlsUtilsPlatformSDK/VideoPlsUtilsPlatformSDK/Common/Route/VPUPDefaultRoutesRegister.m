@@ -53,6 +53,7 @@
         UIViewController *viewController = [[class alloc] init];
         
         [self paramToObject:viewController param:parameters];
+        viewController.modalPresentationStyle = UIModalPresentationFullScreen;
         [[VPUPTopViewController topViewController] presentViewController:viewController animated:YES completion:nil];
         return YES;
     }];

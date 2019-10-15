@@ -19,9 +19,8 @@
 #define ISIPHONE8 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0))
 #endif
 
-@interface VPUPWebView()<UIWebViewDelegate,VPUPJSExport>
+@interface VPUPWebView()<VPUPJSExport>
 
-@property (nonatomic) UIWebView *webView;
 @property (nonatomic) NSURLCache *sharedCache;
 
 @end
@@ -30,11 +29,7 @@
 
 + (VPUPWebView *)initWebViewWithFrame:(CGRect)frame {
     VPUPWebView *webView;
-    if(ISIPHONE8) {
-        webView = [[VPUPWKWebView alloc] initWithFrame:frame];
-    }else {
-        webView = [[VPUPWebView alloc] initWithFrame:frame];
-    }
+    webView = [[VPUPWKWebView alloc] initWithFrame:frame];
     return webView;
 }
 
@@ -47,11 +42,7 @@
 }
 
 - (void)setUpWebViewWithFrame:(CGRect)frame {
-    _webView = [[UIWebView alloc] initWithFrame:frame];
-    _webView.delegate = self;
-    [_webView setAllowsInlineMediaPlayback:YES];
-    [_webView setScalesPageToFit:YES];
-//    [self addSubview:webview];
+    
 }
 
 - (void)setUpCache {
@@ -61,25 +52,23 @@
     int cacheSizeDisk = 32*1024*1024; // 32MB
     _cache = [[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"VPUPURLCache"];
     [NSURLCache setSharedURLCache:_cache];
-    
 }
 
 
 - (void)startLoadingWithUrl:(NSString *)url {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:0];
-    [_webView loadRequest:request];
+    
 }
 
 - (void)startLoadingWithHtmlString:(NSString *)htmlString {
-    [_webView loadHTMLString:htmlString baseURL:nil];
+    
 }
 
 - (BOOL)canGoBack {
-    return [_webView canGoBack];
+    return NO;
 }
 
 - (void)goBack {
-    [_webView goBack];
+    
 }
 
 - (void)setFrame:(CGRect)frame {
@@ -92,10 +81,7 @@
 }
 
 - (void)stop {
-    [_webView loadHTMLString:@"" baseURL:nil];
-    [_webView reload];
-    [_webView stopLoading];
-    _webView.delegate = nil;
+    
     [_webView removeFromSuperview];
     
     _webView = nil;
@@ -112,34 +98,6 @@
     
     _cache = nil;
     _sharedCache = nil;
-}
-
-
-#pragma WebView Delegate
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    if(self.delegate) {
-        if([self.delegate respondsToSelector:@selector(loadCompleteTitle:error:)]) {
-            NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-            [self.delegate loadCompleteTitle:title error:nil];
-        }
-    }
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    if(self.delegate) {
-        if([self.delegate respondsToSelector:@selector(loadCompleteTitle:error:)]) {
-            [self.delegate loadCompleteTitle:nil error:error];
-        }
-    }
-}
-
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    if(self.delegate) {
-        if([self.delegate respondsToSelector:@selector(didStartLoad)]) {
-            [self.delegate didStartLoad];
-        }
-    }
 }
 
 #pragma mark - JSExport Methods -- Javascript call Native

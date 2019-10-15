@@ -37,6 +37,9 @@
 - (void)didMoveToWindow {
     [super didMoveToWindow];
     if (@available(iOS 11.2, *)) {
+        if (@available(iOS 13.0, *)) {
+            return;
+        }
         NSString *keyPath = @"textContentView.provider";
         @try {
             if (self.window) {

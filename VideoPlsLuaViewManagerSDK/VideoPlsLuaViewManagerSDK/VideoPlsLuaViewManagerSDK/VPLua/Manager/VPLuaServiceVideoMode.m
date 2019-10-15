@@ -179,7 +179,7 @@
                         }
                     }
                 }
-                if (dataArray.count == jsonList.count) {
+                if (dataArray.count > 0) {
                     weakSelf.videoModeData = @{@"data" : dataArray};
                 }
                 else {

@@ -59,7 +59,7 @@
             [LVUtil unregistry :l key:weakSelf];
         }
     };
-    
+    imagePicker.modalPresentationStyle = UIModalPresentationFullScreen;
     [[VPUPTopViewController topViewController] presentViewController:imagePicker animated:YES completion:nil];
     
 }

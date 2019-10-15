@@ -208,7 +208,7 @@
     if (!dict) {
         return;
     }
-    if (!VPUP_IsStrictExist([dict objectForKey:@"title"])) {
+    if (VPUP_IsStrictExist([dict objectForKey:@"title"])) {
         [self.naviBar updateNaviTitle:[dict objectForKey:@"title"]];
     }
 }
