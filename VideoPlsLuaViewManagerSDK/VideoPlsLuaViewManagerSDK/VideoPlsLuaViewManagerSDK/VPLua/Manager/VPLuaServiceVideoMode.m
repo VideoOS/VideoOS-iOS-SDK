@@ -141,58 +141,67 @@
         }];
         
         NSArray *jsonList = [data objectForKey:@"jsonList"];
-        dispatch_group_enter(batch_api_group);
-        [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:jsonList resumePath:self.resumeDataPath complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
-            
-            if (trafficList) {
-                [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
-            }
-            
-            if (error) {
-                [weakSelf callbackComplete:weakSelf.complete withError:error];
-            }
-            else {
-                NSMutableArray *dataArray = [NSMutableArray arrayWithCapacity:0];
-                for (NSDictionary *fileDict in jsonList) {
-                    NSString *url = [fileDict objectForKey:@"url"];
-                    NSString *filename = [url lastPathComponent];
-                    NSString *path = [NSString stringWithFormat:@"%@/%@", self.resumeDataPath, filename];
-                    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-                        LVZipArchive *archive = [LVZipArchive archiveWithData:[NSData dataWithContentsOfFile:path]];
-                        
-                        if (![archive unzipToDirectory:self.resumeDataPath]) {
-                            NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-4203 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"unzip file error"]}];
-                            [weakSelf callbackComplete:weakSelf.complete withError:error];
-                            return;
-                        }
-                    }
+        if (jsonList && jsonList.count > 0) {
+            dispatch_group_enter(batch_api_group);
+            [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:jsonList resumePath:self.resumeDataPath complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+                
+                if (trafficList) {
+                    [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
                 }
-                NSArray* array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.resumeDataPath error:nil];
-                for (NSString *filename in array) {
-                    if (![[filename lastPathComponent] containsString:@".zip"]) {
-                        NSData *fileData = [[NSData alloc] initWithContentsOfFile:[self.resumeDataPath stringByAppendingPathComponent:filename]];
-                        if (fileData) {
-                            NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:fileData options:NSJSONReadingMutableContainers error:nil];
-                            if (dataDict && dataDict.count > 0) {
-                                [dataArray addObject:dataDict];
+                
+                if (error) {
+                    [weakSelf callbackComplete:weakSelf.complete withError:error];
+                    weakSelf.jsonFileError = error;
+                }
+                else {
+                    NSMutableArray *dataArray = [NSMutableArray arrayWithCapacity:0];
+                    for (NSDictionary *fileDict in jsonList) {
+                        NSString *url = [fileDict objectForKey:@"url"];
+                        NSString *filename = [url lastPathComponent];
+                        NSString *path = [NSString stringWithFormat:@"%@/%@", self.resumeDataPath, filename];
+                        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                            LVZipArchive *archive = [LVZipArchive archiveWithData:[NSData dataWithContentsOfFile:path]];
+                            
+                            if (![archive unzipToDirectory:self.resumeDataPath]) {
+                                NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-4203 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"unzip file error"]}];
+                                [weakSelf callbackComplete:weakSelf.complete withError:error];
+                                self.jsonFileError = error;
+                                dispatch_group_leave(batch_api_group);
+                                return;
                             }
                         }
                     }
+                    NSArray* array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.resumeDataPath error:nil];
+                    for (NSString *filename in array) {
+                        if (![[filename lastPathComponent] containsString:@".zip"]) {
+                            NSData *fileData = [[NSData alloc] initWithContentsOfFile:[self.resumeDataPath stringByAppendingPathComponent:filename]];
+                            if (fileData) {
+                                NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:fileData options:NSJSONReadingMutableContainers error:nil];
+                                if (dataDict && dataDict.count > 0) {
+                                    [dataArray addObject:dataDict];
+                                }
+                            }
+                        }
+                    }
+                    if (dataArray.count > 0) {
+                        weakSelf.videoModeData = @{@"data" : dataArray};
+                    }
+                    else {
+                        weakSelf.videoModeData = nil;
+                        error = [NSError errorWithDomain:VPLuaErrorDomain code:-4204 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"local get data error"]}];
+                        [weakSelf callbackComplete:weakSelf.complete withError:error];
+                        weakSelf.jsonFileError = error;
+                    }
                 }
-                if (dataArray.count > 0) {
-                    weakSelf.videoModeData = @{@"data" : dataArray};
-                }
-                else {
-                    weakSelf.videoModeData = nil;
-                    error = [NSError errorWithDomain:VPLuaErrorDomain code:-4204 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"local get data error"]}];
-                    [weakSelf callbackComplete:weakSelf.complete withError:error];
-                }
-            }
-            dispatch_group_leave(batch_api_group);
-        }];
+                dispatch_group_leave(batch_api_group);
+            }];
+        }
+        else {
+            self.jsonFileError = nil;
+        }
         
         dispatch_group_notify(batch_api_group, dispatch_get_main_queue(), ^{
-            if (!weakSelf.luaFileError && !weakSelf.jsonFileError && weakSelf.videoModeData) {
+            if (!weakSelf.luaFileError && !weakSelf.jsonFileError) {
                 
                 [weakSelf runLuaWithData:weakSelf.videoModeData];
             }
@@ -249,10 +258,12 @@
     [dict addEntriesFromDictionary:self.configData];
     [dict addEntriesFromDictionary:data];
     [dict setObject:self.serviceId forKey:@"id"];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://defaultLuaView?template=%@&id=%@",VPUPRoutesSDKLuaView, [dict objectForKey:@"template"], [dict objectForKey:@"id"]]];
-    [VPUPRoutes routeURL:url withParameters:data completion:^(id  _Nonnull result) {
-        
-    }];
+    if ([data objectForKey:@"data"]) {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://defaultLuaView?template=%@&id=%@",VPUPRoutesSDKLuaView, [dict objectForKey:@"template"], [dict objectForKey:@"id"]]];
+        [VPUPRoutes routeURL:url withParameters:data completion:^(id  _Nonnull result) {
+            
+        }];
+    }
     
     NSURL *desktopUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@://desktopLuaView?template=%@&id=%@",VPUPRoutesSDKLuaView, [dict objectForKey:@"desktopTemplate"], [dict objectForKey:@"id"]]];
     [VPUPRoutes routeURL:desktopUrl withParameters:data completion:^(id  _Nonnull result) {

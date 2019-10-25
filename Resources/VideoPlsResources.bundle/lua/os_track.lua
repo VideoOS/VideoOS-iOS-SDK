@@ -46,7 +46,13 @@ function osTrack(launchPlanId, eventType, type)
         }
     end
 
-    Native:post(OS_HTTP_GET_STARTS, params)
+    local paramDataString = Native:tableToJson(params)
+    
+    Native:post(OS_HTTP_GET_STARTS, {
+        bu_id = buId,
+        device_type = deviceType,
+        data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
+    })
 end
 
 function osThirdPartyTrack(url)
