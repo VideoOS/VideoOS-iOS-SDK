@@ -1,6 +1,15 @@
 # VideoOS iOS SDK
 VideoOS iOS SDK 开源地址：[https://github.com/VideoOS/VideoOS-iOS-SDK](https://github.com/VideoOS/VideoOS-iOS-SDK)
 
+## SDK基本能力及对接要求
+
+| 功能 |  对接要求  |
+| ----- | --------- | 
+| 前期准备 | 必须对接 | 
+| 基础接口  |  必须对接  |
+| 前后帖广告  |  可选对接  | 
+具体对接方法请参考下面详细集成流程。
+
 ## SDK集成
 有两种方式将VideoOS添加到你的工程：
 
@@ -77,7 +86,7 @@ Photos.framework
     //other code
 }
 ```
-### 对接`VPInterfaceController`
+### 对接前期准备`VPInterfaceController`
 	
 1. 根据需要接入的`SDK`创建`VPInterfaceControllerConfig`，将`SDK`需要的信息配置在`config`中。
 	
@@ -121,9 +130,10 @@ Photos.framework
 互动层加载完成、视频加载完成，建议调用更新方法，旋转横竖屏之后必须调用更新方法
   
 4. 全部完成之后调用`start`，开启互动层。
-5. 获取互动层状态信息需要遵守`VPInterfaceStatusNotifyDelegate`协议，详见注释
-6. 如需深度对接账号系统需要遵守`VPUPUserLoginInterface`协议，详见注释
-7. 如退出播放页面或直播间，调用`stop`方法
+5. 通过VPIVideoPlayerDelegate协议获取视频信息
+6. 获取互动层状态信息需要遵守`VPInterfaceStatusNotifyDelegate`协议，详见注释
+7. 如需深度对接账号系统需要遵守`VPUPUserLoginInterface`协议，详见注释
+8. 如退出播放页面或直播间，调用`stop`方法
 
 #### 用户对接相关
 1. VPIUserLoginInterface 和 VPIUserInfo, VPIUserInfo用来组装用户实例, VPIUserLoginInterface 用来获取关于用户数据的回调; 
@@ -187,7 +197,7 @@ VPInterfaceStatusNotifyDelegate ```- (void)vp_interfaceActionNotify```, 会回�
 	}
 ```
 
-#### 视联网模式
+#### 基础接口（视联网模式）
 
 创建一个`VPIServiceConfig`，设置视联网模式的相关参数，包括视频的identifier，通过`- (void)startService:(VPIServiceType )type config:(VPIServiceConfig *)config`方法启动视联网模式，在serviceDelegate中可以收到执行结果的回调
 
@@ -316,3 +326,9 @@ typedef NS_ENUM(NSUInteger, VPIActionType) {
 ### 加密key设置
 修改`VPLuaCommonInfo.m`中的加密key
 修改`VPLuaCommonInfo`为Platform中的`VPUPCommonInfo`
+
+## 技术支持
+* [shshjing](https://github.com/shshjing) - 老景 <jingshengshan@videopls.com>
+* [MExuanHe](https://github.com/MExuanHe) - 赫赫 <zhangxuanhe@videopls.com>
+* [Zard1096](https://github.com/Zard1096) - 羊羊 <zard1096@videopls.com>
+* [hzzhujf](https://github.com/hzzhujf) - 飞猪 <flyingpig@videopls.com>
