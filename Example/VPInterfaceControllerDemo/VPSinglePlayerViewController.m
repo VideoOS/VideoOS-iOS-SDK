@@ -579,6 +579,7 @@
                 VPIUserInfo *userInfo = [self userLogin];
                 completeBlock(userInfo);
             };
+            loginViewController.modalPresentationStyle = UIModalPresentationFullScreen;
             [self presentViewController:loginViewController animated:YES completion:nil];            
         });
     }
@@ -619,6 +620,7 @@
     if ([VPSinglePlayerViewController isIPHONEX]) {
         videoPlayerSize.portraitSmallScreenOriginY = 44.0;
     }
+    [VPIConfigSDK setIdentity:[NSString stringWithFormat:@"%d", rand()]];
     _interfaceController = [[VPInterfaceController alloc] initWithFrame:self.view.bounds config:config videoPlayerSize:videoPlayerSize];
     _interfaceController.delegate = self;
     _interfaceController.userDelegate = self;
@@ -663,6 +665,7 @@
         [strongSelf->_interfaceController platformCloseActionWebView];
         [strongSelf->_interfaceController playVideoAd];
     }];
+    webViewController.modalPresentationStyle = UIModalPresentationFullScreen;
     [[VPUPTopViewController topViewController] presentViewController:webViewController animated:YES completion:nil];
 }
     

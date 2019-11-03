@@ -461,6 +461,7 @@
 - (IBAction)audienceButtonDidClicked:(UIButton *)sender {
     [PrivateConfig shareConfig].anchor = NO;
     VPSinglePlayerViewController *playerVC = [[VPSinglePlayerViewController alloc] initWithUrlString:@"http://qa-video.oss-cn-beijing.aliyuncs.com/mp4/mby02.mp4" platformUserID:[PrivateConfig shareConfig].identifier isLive:YES];
+    playerVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:playerVC animated:YES completion:nil];
 }
 
