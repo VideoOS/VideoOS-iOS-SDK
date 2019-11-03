@@ -14,6 +14,7 @@
 #import "VPLuaSDK.h"
 #import "VPLuaPlayer.h"
 #import <objc/message.h>
+#import "VPUPInterfaceDataServiceManager.h"
 
 NSString *const VPOSLuaEndNotification = @"VPOSLuaEndNotification";
 NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotification";
@@ -94,24 +95,70 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
 }
 
 - (void)updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type {
-    self.frame = [UIScreen mainScreen].bounds;
-    switch (type) {
-        case VPLuaVideoPlayerOrientationPortraitSmallScreen:
-            self.isFullScreen = NO;
-            self.isPortrait = YES;
-            break;
-        case VPLuaVideoPlayerOrientationPortraitFullScreen:
-            self.isFullScreen = YES;
-            self.isPortrait = YES;
-            break;
-        case VPLuaVideoPlayerOrientationLandscapeFullScreen:
-            self.isFullScreen = YES;
-            self.isPortrait = NO;
-            break;
-            
-        default:
-            break;
+    
+    VPUPVideoPlayerSize *videoPlayerSize = [VPUPInterfaceDataServiceManager videoPlayerSize];
+    
+    CGFloat viewWidth = self.bounds.size.width;
+    CGFloat viewHeight = self.bounds.size.height;
+    
+    if (videoPlayerSize && videoPlayerSize.portraitFullScreenHeight > 0) {
+        switch (type) {
+            case VPLuaVideoPlayerOrientationPortraitSmallScreen:
+                viewWidth = videoPlayerSize.portraitFullScreenWidth;
+                viewHeight = videoPlayerSize.portraitFullScreenHeight;
+                self.isFullScreen = NO;
+                self.isPortrait = YES;
+                break;
+            case VPLuaVideoPlayerOrientationPortraitFullScreen:
+                viewWidth = videoPlayerSize.portraitFullScreenWidth;
+                viewHeight = videoPlayerSize.portraitFullScreenHeight;
+                self.isFullScreen = YES;
+                self.isPortrait = YES;
+                break;
+            case VPLuaVideoPlayerOrientationLandscapeFullScreen:
+                viewWidth = videoPlayerSize.portraitFullScreenHeight;
+                viewHeight = videoPlayerSize.portraitFullScreenWidth;
+                self.isFullScreen = YES;
+                self.isPortrait = NO;
+                break;
+                
+            default:
+                break;
+        }
     }
+    else {
+        CGFloat portraitFullScreenWidth = MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+        CGFloat portraitFullScreenHeight = MAX([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+        switch (type) {
+            case VPLuaVideoPlayerOrientationPortraitSmallScreen:
+                viewWidth = portraitFullScreenWidth;
+                viewHeight = portraitFullScreenWidth * 9.0 / 16.0;
+                self.isFullScreen = NO;
+                self.isPortrait = YES;
+                break;
+            case VPLuaVideoPlayerOrientationPortraitFullScreen:
+                viewWidth = portraitFullScreenWidth;
+                viewHeight = portraitFullScreenHeight;
+                self.isFullScreen = YES;
+                self.isPortrait = YES;
+                break;
+            case VPLuaVideoPlayerOrientationLandscapeFullScreen:
+                viewWidth = portraitFullScreenHeight;
+                viewHeight = portraitFullScreenWidth;
+                self.isFullScreen = YES;
+                self.isPortrait = NO;
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    CGRect rect = self.frame;
+    rect.size.width = viewWidth;
+    rect.size.height = viewHeight;
+    self.frame = rect;
+    
     self.luaController.currentOrientation = type;
     [self.luaController updateFrame:self.bounds isPortrait:self.isPortrait isFullScreen:self.isFullScreen];
 }
