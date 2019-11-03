@@ -63,6 +63,7 @@
 
     VPSinglePlayerViewController *playerVC = [[VPSinglePlayerViewController alloc] initWithUrlString:[PrivateConfig shareConfig].videoUrl platformUserID:[PrivateConfig shareConfig].platformID isLive:NO];
 //    playerVC.mockConfigData = self.mockConfigData;
+    playerVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:playerVC animated:YES completion:nil];
 }
 
