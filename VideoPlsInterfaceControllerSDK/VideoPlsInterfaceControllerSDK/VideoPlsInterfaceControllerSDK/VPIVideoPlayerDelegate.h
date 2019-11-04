@@ -87,6 +87,7 @@
  */
 - (NSTimeInterval)videoPlayerCurrentItemAssetDuration;
 
+@required
 
 /**
  * 获取播放器当前的时间
