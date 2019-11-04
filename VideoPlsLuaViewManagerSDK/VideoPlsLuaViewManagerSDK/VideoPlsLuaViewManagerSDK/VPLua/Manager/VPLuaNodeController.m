@@ -302,6 +302,7 @@ const NSInteger VPLuaBaseNodeWedgePriority = 10;
     node.getUserInfoBlock = _getUserInfoBlock;
     node.luaController = self;
     node.luaFile = filePath;
+    node.rootView.frame = _rootView.bounds;
     
     if ([toLuaData objectForKey:@"priority"]) {
         node.priority = [[toLuaData objectForKey:@"priority"] integerValue];
@@ -324,6 +325,7 @@ const NSInteger VPLuaBaseNodeWedgePriority = 10;
             insertIndex -= 1;
         }
     }
+    
     [_rootView insertSubview:node.rootView atIndex:insertIndex];
     [_nodes addObject:node];
 }

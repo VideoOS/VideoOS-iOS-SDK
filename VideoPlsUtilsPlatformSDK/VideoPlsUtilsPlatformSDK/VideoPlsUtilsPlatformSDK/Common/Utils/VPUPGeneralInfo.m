@@ -14,7 +14,7 @@
 #import "VPUPNotificationCenter.h"
 #import <sys/utsname.h>
 
-NSString * const VideoPlsUtilsPlatformSDKVersion = @"2.6.3";
+NSString * const VideoPlsUtilsPlatformSDKVersion = @"2.6.4";
 NSString * const VPUPGeneralInfoSDKChangedNotification = @"VPUPGeneralInfoSDKChangedNotification";
 
 static NSString *IDFA = nil;
