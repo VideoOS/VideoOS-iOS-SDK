@@ -91,7 +91,11 @@ Photos.framework
 1. 根据需要接入的`SDK`创建`VPInterfaceControllerConfig`，将`SDK`需要的信息配置在`config`中。
 	
 	* identifier 为点播视频url或直播房间号
+	* episode 为剧集名称，例如 陈情令
+	* title 为视频标题，例如 陈情令 第02集
 	* types 为视频类型（点播or直播），默认为点播（注：`VPInterfaceControllerTypeVideoOS` 表示点播，`VPInterfaceControllerTypeLiveOS` 表示直播）
+	
+	注：identifier，episode，title为必填字段
 
 2. 利用生成的`config`初始化`InterfaceController`， `interfaceController.view`就是生成的互动层，将这个`view`添加到播放器层之上就可以了。根据接入的`SDK`的需求可能有一些特殊的接口，放在相应的文件中，如需要调用，将对应文件`import`就可以调用了,详细作用请看注释。
 
@@ -139,7 +143,6 @@ Photos.framework
 1. VPIUserLoginInterface 和 VPIUserInfo, VPIUserInfo用来组装用户实例, VPIUserLoginInterface 用来获取关于用户数据的回调; 
 	* ```- (VPIUserInfo *)vp_getUserInfo``` 通过平台方得到你们的userInfo
  	* ```- (void)vp_userLogined:(VPIUserInfo *) userInfo``` 通过sdk的webView登陆后会给你们对应的用户信息
- 	* ```- (void)vp_notifyScreenChange:(NSString *)url``` 当需要切成竖屏时会发出这个通知,传入的url需要打开 ```VPIPubWebView``` 并调用`loadUrl`
 
 #### 获取互动层状态信息
 VPInterfaceStatusNotifyDelegate ```- (void)vp_interfaceActionNotify```, 会回传互动层状态和需要的操作
@@ -149,6 +152,15 @@ VPInterfaceStatusNotifyDelegate ```- (void)vp_interfaceActionNotify```, 会回�
 * eventType 为广告触发的事件，包括展示、点击、关闭等
 * actionType 为对接方需要做的操作，包括打开外链，暂停视频，播放视频
 * url 为外链地址
+
+注：该接口必须实现
+
+#### 切换屏幕方向
+VPInterfaceStatusNotifyDelegate ```- (void)vp_interfaceScreenChangedNotify```, 通知平台切换设备方向
+
+* orientation 1为竖屏，2为横屏
+
+注：该接口必须实现
 
 #### 前后帖、暂停广告
 创建一个`VPIServiceConfig`，设置前后帖、暂停广告的相关参数，通过`- (void)startService:(VPIServiceType )type config:(VPIServiceConfig *)config`方法启动相关服务，在serviceDelegate中可以收到执行结果的回调
