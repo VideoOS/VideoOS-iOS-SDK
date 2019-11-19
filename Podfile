@@ -18,6 +18,28 @@ pod 'Bugly'
 pod 'UMengAnalytics-NO-IDFA'
 pod 'Masonry'
 pod 'MBProgressHUD'
+pod 'SVGAPlayer'
+end
 
+target 'VideoOSDevApp' do
+
+pod 'VideoOS', :path => '.'
+
+pod 'Bugly'
+pod 'UMengAnalytics-NO-IDFA'
+pod 'Masonry'
+pod 'MBProgressHUD'
+pod 'SVGAPlayer'
+end
+
+# 加入这些配置
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if target.name == "Masonry"
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '8.0'
+      end
+    end
+  end
 end
   

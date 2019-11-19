@@ -1,0 +1,34 @@
+//
+//  PrefixHeader.pch
+//  VideoOSDevApp
+//
+//  Created by videopls on 2019/10/11.
+//  Copyright © 2019 videopls. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+
+#import "DevAppTool.h"
+#import <Masonry.h>
+
+#define KDAAPPKEY @"DevAppAppKey"
+#define KDAAPPSECRET @"DevAppAppSecret"
+
+
+#define KITERACTIONID @"InteractionID"
+#define KITERACTIONJSON @"InteractionJson"
+#define KSERVICEID @"ServiceID"
+
+#define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
+
+#define SCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define KENVIRONMENT VPUPDebugStateTest
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */

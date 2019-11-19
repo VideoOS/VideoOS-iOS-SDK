@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, VPLuaOSType) {
 @property (nonatomic, readonly, copy) NSString *appKey;
 @property (nonatomic, readonly, copy) NSString *appSecret;
 @property (nonatomic, weak) VPLuaVideoInfo *videoInfo;
+@property (nonatomic, readonly, assign) BOOL appDev;
 
 + (instancetype)sharedSDK;
 
@@ -40,5 +41,7 @@ typedef NS_ENUM(NSUInteger, VPLuaOSType) {
 + (void)setOSType:(VPLuaOSType)type;
 
 + (void)setAppKey:(NSString *)appKey appSecret:(NSString *)appSecret;
+
++ (void)setAppDevEnable:(BOOL)enable;
 
 @end

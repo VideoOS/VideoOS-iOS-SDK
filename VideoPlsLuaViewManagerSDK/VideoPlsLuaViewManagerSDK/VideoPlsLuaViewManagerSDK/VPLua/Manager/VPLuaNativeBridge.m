@@ -1382,41 +1382,75 @@ static int preloadLuaList(lua_State *L) {
     if (lua_gettop(L) >= 2) {
         if( lua_type(L, 2) == LUA_TTABLE ) {
             NSArray *array = lv_luaValueToNativeObject(L, 2);
-            if ([array isKindOfClass:[NSArray class]] && array.count > 0) {
+            
+            BOOL needToCallback = NO;
+            __block NSString *bRequestMethod = [VPUPRandomUtil randomStringByLength:8];
+            
+            if (lua_gettop(L) >= 3 && lua_type(L, 3) == LUA_TFUNCTION) {
+                [LVUtil registryValue:L key:bRequestMethod stack:3];
+                needToCallback = YES;
+            }
+            
+            if (![array isKindOfClass:[NSArray class]] || array.count == 0) {
+                //no download data, callback(if it has)
+                if (needToCallback) {
+                    lua_checkstack32(L);
+                    lua_pushboolean(L, 0);
+                    [LVUtil call:L lightUserData:bRequestMethod key1:"callback" key2:NULL nargs:1];
+                    [LVUtil unregistry:L key:bRequestMethod];
+                }
                 
-                //根据md5,先去一波重
-                NSMutableArray *newArray = [NSMutableArray arrayWithCapacity:0];
-                for (NSDictionary *dict in array) {
-                    
-                    if (![dict objectForKey:@"md5"] || [[dict objectForKey:@"md5"] isEqualToString:@""]) {
-                        continue;
-                    }
-                    
-                    BOOL needAdd = YES;
-                    for (NSDictionary *noRepDict in newArray) {
-                        NSString *md5 = [dict objectForKey:@"md5"];
-                        NSString *noRepMd5 = [noRepDict objectForKey:@"md5"];
-                        if ([md5 isEqualToString:noRepMd5]) {
-                            needAdd = NO;
-                            break;
-                        }
-                    }
-                    
-                    if (needAdd) {
-                        [newArray addObject:dict];
+                return 0;
+            }
+            
+            //根据md5,先去一波重
+            NSMutableArray *newArray = [NSMutableArray arrayWithCapacity:0];
+            for (NSDictionary *dict in array) {
+                
+                if (![dict objectForKey:@"md5"] || [[dict objectForKey:@"md5"] isEqualToString:@""]) {
+                    continue;
+                }
+                
+                BOOL needAdd = YES;
+                for (NSDictionary *noRepDict in newArray) {
+                    NSString *md5 = [dict objectForKey:@"md5"];
+                    NSString *noRepMd5 = [noRepDict objectForKey:@"md5"];
+                    if ([md5 isEqualToString:noRepMd5]) {
+                        needAdd = NO;
+                        break;
                     }
                 }
                 
-                [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:newArray complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
-                    
-                    if (trafficList) {
-                        [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeOpenVideo];
-                    }
-                    
-                    NSLog(@"preloadLuaList error %@", error);
-                }];
+                if (needAdd) {
+                    [newArray addObject:dict];
+                }
             }
+            
+            [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:newArray complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+                
+                if (trafficList) {
+                    [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeOpenVideo];
+                }
+                
+                if (needToCallback) {
+                    lua_State* l = L;
+                    if( l ){
+                        lua_checkstack32(l);
+                        if (!error) {
+                            lua_pushboolean(L, 1);
+                        } else {
+                            lua_pushboolean(L, 0);
+                        }
+                        [LVUtil call:l lightUserData:bRequestMethod key1:"callback" key2:NULL nargs:1];
+                        [LVUtil unregistry :l key:bRequestMethod];
+                    }
+                }
+                
+                
+                NSLog(@"preloadLuaList error %@", error);
+            }];
         }
+        
     }
     return 0;
 }

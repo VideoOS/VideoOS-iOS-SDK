@@ -22,6 +22,7 @@
 
 @property (nonatomic) NSString *appletID;
 @property (nonatomic, assign) VPLuaAppletContainerType type;
+@property (nonatomic, assign) VPAppletContainerAppType appType;
 @property (nonatomic, copy) NSDictionary *(^getUserInfoBlock)(void);
 @property (nonatomic) NSDictionary *rootData;
 

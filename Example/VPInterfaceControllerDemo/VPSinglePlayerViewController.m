@@ -373,7 +373,10 @@
     NSString *path =  [[NSBundle mainBundle] pathForResource:@"adInfo" ofType:@"json"];
     NSDictionary *adInfo = [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:path] options:NSJSONReadingMutableContainers error:nil];
     
-    [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://defaultLuaView?template=os_video_figureStarList_hotspot.lua&id=5aa5fa5133edbf375fe43fff4"] data:[[adInfo objectForKey:@"launchInfoList"] objectAtIndex:0]];
+    
+    [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://applets?appletId=276637949880172544&type=1&appType=1"] data:nil];
+    
+//    [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://defaultLuaView?template=os_video_figureStarList_hotspot.lua&id=5aa5fa5133edbf375fe43fff4"] data:[[adInfo objectForKey:@"launchInfoList"] objectAtIndex:0]];
     
 //    [_interfaceController navigationWithURL:[NSURL URLWithString:@"LuaView://defaultLuaView?template=os_bubble.lua&id=5aa5fa5133edbf375fe43fff4"] data:[[adInfo objectForKey:@"launchInfoList"] objectAtIndex:0]];
     
@@ -620,7 +623,6 @@
     if ([VPSinglePlayerViewController isIPHONEX]) {
         videoPlayerSize.portraitSmallScreenOriginY = 44.0;
     }
-    [VPIConfigSDK setIdentity:[NSString stringWithFormat:@"%d", rand()]];
     _interfaceController = [[VPInterfaceController alloc] initWithFrame:self.view.bounds config:config videoPlayerSize:videoPlayerSize];
     _interfaceController.delegate = self;
     _interfaceController.userDelegate = self;

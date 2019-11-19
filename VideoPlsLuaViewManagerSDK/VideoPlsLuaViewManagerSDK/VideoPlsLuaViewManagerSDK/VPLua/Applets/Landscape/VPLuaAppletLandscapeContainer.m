@@ -16,6 +16,7 @@
 #import "VPUPViewScaleUtil.h"
 #import "VPUPPathUtil.h"
 #import "VPLuaOSView.h"
+#import "VPLuaSDK.h"
 
 @interface VPLuaAppletLandscapeContainer() <VPLuaNodeControllerLoadDelegate, VPLuaNodeControllerAppletDelegate>
 
@@ -58,23 +59,29 @@
 
 - (void)loadLuaFiles {
     __weak typeof(self) weakSelf = self;
-    
-    [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:self.applet.luaList resumePath:self.appletPath complete:^(NSError * error, VPUPTrafficStatisticsList *trafficList) {
-       //已回到主线程
-        if (trafficList) {
-            [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
-        }
-        
-        if (error) {
-            weakSelf.retryLuaFiles = YES;
-            [weakSelf showRetryView];
-            [weakSelf.retryView changeNetworkMessage:@"小程序加载失败，请重试"];
-            return;
-        }
-        
-        [weakSelf updateNavi];
-        [weakSelf loadRootLua];
-    }];
+    if (![VPLuaSDK sharedSDK].appDev) {
+        //normal use
+        [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:self.applet.luaList resumePath:self.appletPath complete:^(NSError * error, VPUPTrafficStatisticsList *trafficList) {
+            //已回到主线程
+            if (trafficList) {
+                [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
+            }
+            
+            if (error) {
+                weakSelf.retryLuaFiles = YES;
+                [weakSelf showRetryView];
+                [weakSelf.retryView changeNetworkMessage:@"小程序加载失败，请重试"];
+                return;
+            }
+            
+            [weakSelf updateNavi];
+            [weakSelf loadRootLua];
+        }];
+    } else {
+        //mini app develop mode
+        [self updateNavi];
+        [self loadRootLua];
+    }
 }
 
 - (void)loadRootLua {

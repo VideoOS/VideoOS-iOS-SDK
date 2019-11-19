@@ -11,8 +11,7 @@
 @interface VPTextField () <UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, weak) id<UITextFieldDelegate> vpDelegate;
-@property (nonatomic) UIView *holdView;
-@property (nonatomic, strong) UITableView *tableView;
+
 
 @end
 
@@ -132,7 +131,10 @@
         self.tableView.layer.borderColor = [UIColor grayColor].CGColor;
         self.tableView.layer.borderWidth = 1;
         self.tableView.userInteractionEnabled = YES;
-        
+        if (self.isDevApp) {
+            self.tableView.backgroundColor = [UIColor colorWithRed:43/255.0 green:45/255.0 blue:56/255.0 alpha:1/1.0];
+            self.tableView.layer.cornerRadius = 6;
+        }
         [keyWindow addSubview:self.holdView];
         [keyWindow addSubview:self.tableView];
     }
@@ -151,6 +153,10 @@
         cell.detailTextLabel.numberOfLines = 0;
         cell.detailTextLabel.font = self.font;
         cell.detailTextLabel.textColor = self.textColor;
+        if (self.isDevApp) {
+            cell.backgroundColor = [UIColor clearColor];
+        }
+        
     }
     cell.detailTextLabel.text = [self.dataArray objectAtIndex:indexPath.row];
     return cell;

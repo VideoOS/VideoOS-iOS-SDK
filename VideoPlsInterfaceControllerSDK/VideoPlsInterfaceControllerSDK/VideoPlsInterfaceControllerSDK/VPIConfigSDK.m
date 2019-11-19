@@ -46,4 +46,8 @@
     [VPLuaSDK setAppKey:appKey appSecret:appSecret];
 }
 
++ (void)setAppDevEnable:(BOOL)enable {
+    [VPLuaSDK setAppDevEnable:enable];
+}
+
 @end

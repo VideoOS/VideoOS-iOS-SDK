@@ -19,6 +19,11 @@
 @property (nonatomic, assign) NSInteger showCellCount;
 @property (nonatomic, strong) NSArray<NSString *> *dataArray;
 
+@property (nonatomic) UIView *holdView;
+@property (nonatomic, strong) UITableView *tableView;
+
 @property (nonatomic, weak) id<VPTextFieldSelectedDelegate> selectedDelegate;
+
+@property (nonatomic, assign) BOOL isDevApp;
 
 @end

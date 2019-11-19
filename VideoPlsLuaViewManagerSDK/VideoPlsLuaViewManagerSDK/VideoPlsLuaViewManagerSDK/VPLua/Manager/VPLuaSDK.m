@@ -27,6 +27,7 @@ NSString *const VPLuaRequestPublicKey = @"inekcndsaqwertyi";
 @property (nonatomic, assign) VPLuaOSType type;
 @property (nonatomic, copy) NSString *appKey;
 @property (nonatomic, copy) NSString *appSecret;
+@property (nonatomic, assign) BOOL appDev;
 
 @end
 
@@ -38,6 +39,7 @@ NSString *const VPLuaRequestPublicKey = @"inekcndsaqwertyi";
     dispatch_once(&onceToken, ^{
         _sharedSDK = [[self alloc] init];
         _sharedSDK.appSecret = VPLuaRequestPublicKey;
+        _sharedSDK.appDev = NO;
     });
     return _sharedSDK;
 }
@@ -78,6 +80,10 @@ NSString *const VPLuaRequestPublicKey = @"inekcndsaqwertyi";
     sdkinfo.mainVPSDKAppSecret = appSecret;
 //    VPUPSDKInfo *sdkinfo = [VPUPSDKInfo initSDKInfoWithSDKType:VPUPMainSDKTypeVideoOS SDKVersion:[VPLuaSDK  sharedSDK].luaVersion appKey:appKey];
     [VPUPGeneralInfo setSDKInfo:sdkinfo];
+}
+
++ (void)setAppDevEnable:(BOOL)enable {
+    [VPLuaSDK sharedSDK].appDev = enable;
 }
 
 + (void)checkLuaFiles {

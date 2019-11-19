@@ -19,6 +19,8 @@
 #import "UIButton+VPUPFillColor.h"
 #import "VPUPViewScaleUtil.h"
 #import "VPUPPathUtil.h"
+#import "VPLuaSDK.h"
+#import "VPUPValidator.h"
 
 
 @interface VPAppletLandscapeContainer()<VPLuaAppletContainerNetworkDelegate, VPAppletNavigationBarDelegate>
@@ -82,34 +84,78 @@
 }
 
 - (void)requestApplet {
-    __weak typeof(self) weakSelf = self;
-    if (_appletID == nil || [_appletID isEqualToString:@""]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // 直接显示错误
-            [weakSelf showErrorView];
-            [weakSelf.errorView changeErrorMessage:@"小程序服务不可用，换个标签再试"];
-        });
-        return;
-    }
-    [[VPLuaAppletRequest request] requestWithAppletID:_appletID apiManager:_networkManager.httpManager complete:^(VPLuaAppletObject *luaObject, NSError *error) {
-        //有object进入prefetch,error显示重试页面
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (error) {
-                if (error.code == 1002) {
-                    [weakSelf showErrorView];
-                    [weakSelf.errorView changeErrorMessage:@"小程序服务不可用，换个标签再试"];
+    if (![VPLuaSDK sharedSDK].appDev) {
+        //normal use
+        __weak typeof(self) weakSelf = self;
+        if (_appletID == nil || [_appletID isEqualToString:@""]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // 直接显示错误
+                [weakSelf showErrorView];
+                [weakSelf.errorView changeErrorMessage:@"小程序服务不可用，换个标签再试"];
+            });
+            return;
+        }
+        [[VPLuaAppletRequest request] requestWithAppletID:_appletID apiManager:_networkManager.httpManager complete:^(VPLuaAppletObject *luaObject, NSError *error) {
+            //有object进入prefetch,error显示重试页面
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    if (error.code == 1002) {
+                        [weakSelf showErrorView];
+                        [weakSelf.errorView changeErrorMessage:@"小程序服务不可用，换个标签再试"];
+                        return;
+                    }
+                    //retry or error,看错误详情
+                    [weakSelf showRetryView];
+                    [weakSelf.retryView changeNetworkMessage:@"小程序加载失败，请重试"];
                     return;
                 }
-                //retry or error,看错误详情
-                [weakSelf showRetryView];
-                [weakSelf.retryView changeNetworkMessage:@"小程序加载失败，请重试"];
-                return;
-            }
-            
-            weakSelf.applet = luaObject;
-            [weakSelf loadContainView];
+                
+                weakSelf.applet = luaObject;
+                [weakSelf loadContainView];
+            });
+        }];
+        
+    } else {
+        //mini app develop mode
+        NSString *filePath = [VPUPPathUtil appDevConfigPath];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+            NSLog(@"配置文件不存在,请检查文件路径或校验json格式");
+            [self showErrorView];
+            [self.errorView changeErrorMessage:@"配置文件不存在"];
+            return;
+        }
+        NSDictionary *appletDict = [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:filePath] options:NSJSONReadingMutableContainers error:nil];
+        
+        if (!appletDict) {
+            NSLog(@"配置文件错误,请校验json格式");
+            [self showErrorView];
+            [self.errorView changeErrorMessage:@"配置文件格式错误"];
+            return;
+        }
+        
+        VPLuaAppletObject *object = [VPLuaAppletObject initWithResponseDictionary:appletDict];
+        
+        if (self.appType == VPAppletContainerAppTypeLua && !VPUP_IsStrictExist(object.templateLua)) {
+            NSLog(@"配置文件错误,lua小程序没有lua入口文件");
+            [self showErrorView];
+            [self.errorView changeErrorMessage:@"配置文件缺失lua入口"];
+            return;
+        }
+        
+        if (self.appType == VPAppletContainerAppTypeHybird && !VPUP_IsStrictExist(object.h5Url)) {
+            NSLog(@"配置文件错误,H5小程序没有H5入口");
+            [self showErrorView];
+            [self.errorView changeErrorMessage:@"配置文件缺失H5入口"];
+            return;
+        }
+        
+        object.appletID = _appletID;
+        self.applet = object;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self loadContainView];
         });
-    }];
+    }
     
 }
 

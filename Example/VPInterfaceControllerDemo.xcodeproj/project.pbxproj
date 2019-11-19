@@ -8,6 +8,43 @@
 
 /* Begin PBXBuildFile section */
 		06361FA72060E631007D7C13 /* VideoPlsDefaultImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06361FA62060E631007D7C13 /* VideoPlsDefaultImages.bundle */; };
+		064570CA235ED37300BDEE49 /* VPAVPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068965341F14EDA60054736C /* VPAVPlayerController.m */; };
+		064570CB235ED37300BDEE49 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 069D543F1F04DC6D001E5324 /* ViewController.m */; };
+		064570CC235ED37300BDEE49 /* VPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D078CD7A214A054D008946CC /* VPWebViewController.m */; };
+		064570CD235ED37300BDEE49 /* VPVideoListData.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474B222F9384900C9DADD /* VPVideoListData.m */; };
+		064570CE235ED37300BDEE49 /* VPVideoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474AF22F937FD00C9DADD /* VPVideoData.m */; };
+		064570CF235ED37300BDEE49 /* VPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D00D67AC22D42FD60003972F /* VPModel.m */; };
+		064570D0235ED37300BDEE49 /* VPMediaMoreButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BB02A41F8F426100CC195C /* VPMediaMoreButtonView.m */; };
+		064570D1235ED37300BDEE49 /* VPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DA384521A7E2F20014A855 /* VPLoginViewController.m */; };
+		064570D2235ED37300BDEE49 /* VPLiveSelectStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0D820C688C900F46029 /* VPLiveSelectStatusViewController.m */; };
+		064570D3235ED37300BDEE49 /* VPConfigListData.m in Sources */ = {isa = PBXBuildFile; fileRef = D00D67A922D42FD60003972F /* VPConfigListData.m */; };
+		064570D4235ED37300BDEE49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 069D543C1F04DC6D001E5324 /* AppDelegate.m */; };
+		064570D5235ED37300BDEE49 /* VPVideoSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0DF20C6932B00F46029 /* VPVideoSettingView.m */; };
+		064570D6235ED37300BDEE49 /* VPMediaControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0689653B1F15F2BB0054736C /* VPMediaControlView.m */; };
+		064570D7235ED37300BDEE49 /* VPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0E420C7EDCD00F46029 /* VPTextField.m */; };
+		064570D8235ED37300BDEE49 /* VPVideoAppSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C76AC32283C93C00C4791F /* VPVideoAppSettingView.m */; };
+		064570D9235ED37300BDEE49 /* VPLiveTypeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0DB20C688C900F46029 /* VPLiveTypeSelectViewController.m */; };
+		064570DA235ED37300BDEE49 /* PrivateConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C42CDB941F33289F00DD42D0 /* PrivateConfig.m */; };
+		064570DB235ED37300BDEE49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 069D54391F04DC6D001E5324 /* main.m */; };
+		064570DC235ED37300BDEE49 /* VPSinglePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068965401F1607180054736C /* VPSinglePlayerViewController.m */; };
+		064570DD235ED37300BDEE49 /* VPModel+DictionaryToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D00D67AA22D42FD60003972F /* VPModel+DictionaryToModel.m */; };
+		064570DE235ED37300BDEE49 /* VPConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = D00D67A622D42FD60003972F /* VPConfigData.m */; };
+		064570E2235ED37300BDEE49 /* saomiao_off.svga in Resources */ = {isa = PBXBuildFile; fileRef = C9654A2022F7F847000AFB2E /* saomiao_off.svga */; };
+		064570E3235ED37300BDEE49 /* saomiao_no.svga in Resources */ = {isa = PBXBuildFile; fileRef = C9654A1F22F7F846000AFB2E /* saomiao_no.svga */; };
+		064570E4235ED37300BDEE49 /* adInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = D0102BBE214F7A85003C11A0 /* adInfo.json */; };
+		064570E5235ED37300BDEE49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 069D54461F04DC6E001E5324 /* LaunchScreen.storyboard */; };
+		064570E6235ED37300BDEE49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 069D54411F04DC6D001E5324 /* Main.storyboard */; };
+		064570E7235ED37300BDEE49 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = D078CD77214A04BD008946CC /* config.json */; };
+		064570E8235ED37300BDEE49 /* text.json in Resources */ = {isa = PBXBuildFile; fileRef = C9823ECD22F41BE2007E9F3D /* text.json */; };
+		064570E9235ED37300BDEE49 /* VPMediaControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0689653D1F15F56E0054736C /* VPMediaControlView.xib */; };
+		064570EA235ED37300BDEE49 /* goods.lua in Resources */ = {isa = PBXBuildFile; fileRef = 067187A31F56B741008544FC /* goods.lua */; };
+		064570EB235ED37300BDEE49 /* hotarea.lua in Resources */ = {isa = PBXBuildFile; fileRef = 065D7B6F1F5572530075B450 /* hotarea.lua */; };
+		064570EC235ED37300BDEE49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069D54441F04DC6E001E5324 /* Assets.xcassets */; };
+		064570ED235ED37300BDEE49 /* goods_entrance.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0688D4CC1F5BF22B00ECDEED /* goods_entrance.lua */; };
+		064570EE235ED37300BDEE49 /* zelear.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C4038CFD1FB449AD00BD3B07 /* zelear.mp4 */; };
+		064570EF235ED37300BDEE49 /* VPMediaMoreButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4BB02A61F8F427600CC195C /* VPMediaMoreButtonView.xib */; };
+		064570F0235ED37300BDEE49 /* VideoPlsDefaultImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06361FA62060E631007D7C13 /* VideoPlsDefaultImages.bundle */; };
+		064570F9235EE0B700BDEE49 /* VideoOSDevApp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 064570F8235EE0B600BDEE49 /* VideoOSDevApp.plist */; };
 		065D7B701F5572530075B450 /* hotarea.lua in Resources */ = {isa = PBXBuildFile; fileRef = 065D7B6F1F5572530075B450 /* hotarea.lua */; };
 		067187A41F56B741008544FC /* goods.lua in Resources */ = {isa = PBXBuildFile; fileRef = 067187A31F56B741008544FC /* goods.lua */; };
 		067652701F346B3F001904F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 069D54411F04DC6D001E5324 /* Main.storyboard */; };
@@ -24,6 +61,21 @@
 		06D474B022F937FD00C9DADD /* VPVideoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474AF22F937FD00C9DADD /* VPVideoData.m */; };
 		06D474B322F9384900C9DADD /* VPVideoListData.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474B222F9384900C9DADD /* VPVideoListData.m */; };
 		8844DF7302866437A1DEC1F9 /* libPods-VPInterfaceControllerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6009F1EF01AC68198F90DB /* libPods-VPInterfaceControllerDemo.a */; };
+		B6610E7D236006D400EC0479 /* DevLuaLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B6610E7B236006CE00EC0479 /* DevLuaLoader.m */; };
+		B6E4BF4F235EEFE300406434 /* DevAppResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B6E4BF33235EEFE300406434 /* DevAppResource.bundle */; };
+		B6E4BF50235EEFE300406434 /* UIViewController+RTRootNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4BF36235EEFE300406434 /* UIViewController+RTRootNavigationController.m */; };
+		B6E4BF51235EEFE300406434 /* RTRootNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4BF39235EEFE300406434 /* RTRootNavigationController.m */; };
+		B6E4BF52235EEFE300406434 /* DevAppTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4BF3A235EEFE300406434 /* DevAppTool.m */; };
+		B6E4BF53235EEFE300406434 /* DevAppAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6E4BF3B235EEFE300406434 /* DevAppAssets.xcassets */; };
+		B6E4BF54235EEFE300406434 /* DebuggingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4BF3D235EEFE300406434 /* DebuggingViewController.m */; };
+		B6E4BF55235EEFE300406434 /* DevAppPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4BF42235EEFE300406434 /* DevAppPlayerViewController.m */; };
+		B6E4BF56235EEFE300406434 /* DevMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4BF43235EEFE300406434 /* DevMainViewController.m */; };
+		B6E4BF57235EEFE300406434 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4BF44235EEFE300406434 /* SettingViewController.m */; };
+		B6E4BF58235EEFE300406434 /* DevApp_main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E4BF46235EEFE300406434 /* DevApp_main.storyboard */; };
+		B6E4BF59235EEFE300406434 /* DevAppMediaControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E4BF48235EEFE300406434 /* DevAppMediaControlView.xib */; };
+		B6E4BF5A235EEFE300406434 /* DevAppMediaControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4BF49235EEFE300406434 /* DevAppMediaControlView.m */; };
+		B6E4BF5B235EEFE300406434 /* DevAppSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4BF4A235EEFE300406434 /* DevAppSettingView.m */; };
+		B6E4BF5C235EEFE300406434 /* UIButton+DevAppButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E4BF4B235EEFE300406434 /* UIButton+DevAppButton.m */; };
 		C4038CFE1FB44A2100BD3B07 /* zelear.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C4038CFD1FB449AD00BD3B07 /* zelear.mp4 */; };
 		C42CDB951F33289F00DD42D0 /* PrivateConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C42CDB941F33289F00DD42D0 /* PrivateConfig.m */; };
 		C4BB02A51F8F426100CC195C /* VPMediaMoreButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BB02A41F8F426100CC195C /* VPMediaMoreButtonView.m */; };
@@ -44,10 +96,13 @@
 		D078CD7B214A054D008946CC /* VPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D078CD7A214A054D008946CC /* VPWebViewController.m */; };
 		D0C76AC52283C93D00C4791F /* VPVideoAppSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C76AC32283C93C00C4791F /* VPVideoAppSettingView.m */; };
 		D0DA384621A7E2F20014A855 /* VPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DA384521A7E2F20014A855 /* VPLoginViewController.m */; };
+		DA91BB0E2D73A7279AA19637 /* libPods-VideoOSDevApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 531D9B85F47A19F4DD5C50BF /* libPods-VideoOSDevApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		06361FA62060E631007D7C13 /* VideoPlsDefaultImages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VideoPlsDefaultImages.bundle; sourceTree = "<group>"; };
+		064570F6235ED37300BDEE49 /* VideoOSDevApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoOSDevApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		064570F8235EE0B600BDEE49 /* VideoOSDevApp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VideoOSDevApp.plist; sourceTree = "<group>"; };
 		065D7B6F1F5572530075B450 /* hotarea.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hotarea.lua; sourceTree = "<group>"; };
 		067187A31F56B741008544FC /* goods.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = goods.lua; sourceTree = "<group>"; };
 		0688D4CC1F5BF22B00ECDEED /* goods_entrance.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = goods_entrance.lua; sourceTree = "<group>"; };
@@ -75,8 +130,37 @@
 		0E37C6CC1D0302B3F30C1F7B /* Pods-VPInterfaceViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPInterfaceViewDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-VPInterfaceViewDemo/Pods-VPInterfaceViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		1EE8D300E34605C338F6FB32 /* libPods-VPInterfaceViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VPInterfaceViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26381285A7C358E7AC3987EC /* Pods-VPInterfaceControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPInterfaceControllerDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		342AE1AC443CB683EB8DC15D /* Pods-VideoOSDevApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoOSDevApp.release.xcconfig"; path = "../Pods/Target Support Files/Pods-VideoOSDevApp/Pods-VideoOSDevApp.release.xcconfig"; sourceTree = "<group>"; };
+		531D9B85F47A19F4DD5C50BF /* libPods-VideoOSDevApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VideoOSDevApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6009F1EF01AC68198F90DB /* libPods-VPInterfaceControllerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VPInterfaceControllerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B30CD242A29CD4A10D7E120A /* Pods-VPInterfaceViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPInterfaceViewDemo.release.xcconfig"; path = "../Pods/Target Support Files/Pods-VPInterfaceViewDemo/Pods-VPInterfaceViewDemo.release.xcconfig"; sourceTree = "<group>"; };
+		B6610E7A236006CE00EC0479 /* DevLuaLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DevLuaLoader.h; sourceTree = "<group>"; };
+		B6610E7B236006CE00EC0479 /* DevLuaLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevLuaLoader.m; sourceTree = "<group>"; };
+		B6E4BF33235EEFE300406434 /* DevAppResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DevAppResource.bundle; sourceTree = "<group>"; };
+		B6E4BF34235EEFE300406434 /* DevAppTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevAppTool.h; sourceTree = "<group>"; };
+		B6E4BF36235EEFE300406434 /* UIViewController+RTRootNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RTRootNavigationController.m"; sourceTree = "<group>"; };
+		B6E4BF37235EEFE300406434 /* RTRootNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTRootNavigationController.h; sourceTree = "<group>"; };
+		B6E4BF38235EEFE300406434 /* UIViewController+RTRootNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RTRootNavigationController.h"; sourceTree = "<group>"; };
+		B6E4BF39235EEFE300406434 /* RTRootNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTRootNavigationController.m; sourceTree = "<group>"; };
+		B6E4BF3A235EEFE300406434 /* DevAppTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevAppTool.m; sourceTree = "<group>"; };
+		B6E4BF3B235EEFE300406434 /* DevAppAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DevAppAssets.xcassets; sourceTree = "<group>"; };
+		B6E4BF3D235EEFE300406434 /* DebuggingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebuggingViewController.m; sourceTree = "<group>"; };
+		B6E4BF3E235EEFE300406434 /* DevAppPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevAppPlayerViewController.h; sourceTree = "<group>"; };
+		B6E4BF3F235EEFE300406434 /* DevMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevMainViewController.h; sourceTree = "<group>"; };
+		B6E4BF40235EEFE300406434 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		B6E4BF41235EEFE300406434 /* DebuggingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebuggingViewController.h; sourceTree = "<group>"; };
+		B6E4BF42235EEFE300406434 /* DevAppPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevAppPlayerViewController.m; sourceTree = "<group>"; };
+		B6E4BF43235EEFE300406434 /* DevMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevMainViewController.m; sourceTree = "<group>"; };
+		B6E4BF44235EEFE300406434 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		B6E4BF45235EEFE300406434 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B6E4BF46235EEFE300406434 /* DevApp_main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DevApp_main.storyboard; sourceTree = "<group>"; };
+		B6E4BF48235EEFE300406434 /* DevAppMediaControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DevAppMediaControlView.xib; sourceTree = "<group>"; };
+		B6E4BF49235EEFE300406434 /* DevAppMediaControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevAppMediaControlView.m; sourceTree = "<group>"; };
+		B6E4BF4A235EEFE300406434 /* DevAppSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevAppSettingView.m; sourceTree = "<group>"; };
+		B6E4BF4B235EEFE300406434 /* UIButton+DevAppButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+DevAppButton.m"; sourceTree = "<group>"; };
+		B6E4BF4C235EEFE300406434 /* DevAppMediaControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevAppMediaControlView.h; sourceTree = "<group>"; };
+		B6E4BF4D235EEFE300406434 /* DevAppSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevAppSettingView.h; sourceTree = "<group>"; };
+		B6E4BF4E235EEFE300406434 /* UIButton+DevAppButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+DevAppButton.h"; sourceTree = "<group>"; };
 		C4038CFD1FB449AD00BD3B07 /* zelear.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = zelear.mp4; sourceTree = "<group>"; };
 		C42CDB931F33289F00DD42D0 /* PrivateConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateConfig.h; sourceTree = "<group>"; };
 		C42CDB941F33289F00DD42D0 /* PrivateConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateConfig.m; sourceTree = "<group>"; };
@@ -110,10 +194,19 @@
 		D0C76AC42283C93C00C4791F /* VPVideoAppSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPVideoAppSettingView.h; sourceTree = "<group>"; };
 		D0DA384421A7E2F20014A855 /* VPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLoginViewController.h; sourceTree = "<group>"; };
 		D0DA384521A7E2F20014A855 /* VPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLoginViewController.m; sourceTree = "<group>"; };
+		DABB5CE0450AA0B67AE25720 /* Pods-VideoOSDevApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoOSDevApp.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-VideoOSDevApp/Pods-VideoOSDevApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F5D5F0ACF62048D7E569DF7F /* Pods-VPInterfaceControllerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPInterfaceControllerDemo.release.xcconfig"; path = "../Pods/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		064570DF235ED37300BDEE49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA91BB0E2D73A7279AA19637 /* libPods-VideoOSDevApp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		069D54321F04DC6D001E5324 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -164,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				069D54351F04DC6D001E5324 /* VPInterfaceControllerDemo.app */,
+				064570F6235ED37300BDEE49 /* VideoOSDevApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,6 +291,8 @@
 				069D54441F04DC6E001E5324 /* Assets.xcassets */,
 				069D54461F04DC6E001E5324 /* LaunchScreen.storyboard */,
 				069D54491F04DC6E001E5324 /* Info.plist */,
+				B6E4BF32235EEFE300406434 /* VideoOSDevApp */,
+				064570F8235EE0B600BDEE49 /* VideoOSDevApp.plist */,
 				069D54381F04DC6D001E5324 /* Supporting Files */,
 				D022A0DE20C6932B00F46029 /* VPVideoSettingView.h */,
 				D022A0DF20C6932B00F46029 /* VPVideoSettingView.m */,
@@ -225,8 +321,68 @@
 				B30CD242A29CD4A10D7E120A /* Pods-VPInterfaceViewDemo.release.xcconfig */,
 				26381285A7C358E7AC3987EC /* Pods-VPInterfaceControllerDemo.debug.xcconfig */,
 				F5D5F0ACF62048D7E569DF7F /* Pods-VPInterfaceControllerDemo.release.xcconfig */,
+				DABB5CE0450AA0B67AE25720 /* Pods-VideoOSDevApp.debug.xcconfig */,
+				342AE1AC443CB683EB8DC15D /* Pods-VideoOSDevApp.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B6E4BF32235EEFE300406434 /* VideoOSDevApp */ = {
+			isa = PBXGroup;
+			children = (
+				B6E4BF33235EEFE300406434 /* DevAppResource.bundle */,
+				B6E4BF34235EEFE300406434 /* DevAppTool.h */,
+				B6E4BF3A235EEFE300406434 /* DevAppTool.m */,
+				B6E4BF35235EEFE300406434 /* DevAPPNavigation */,
+				B6E4BF3B235EEFE300406434 /* DevAppAssets.xcassets */,
+				B6E4BF3C235EEFE300406434 /* DevAppControllers */,
+				B6E4BF45235EEFE300406434 /* PrefixHeader.pch */,
+				B6E4BF46235EEFE300406434 /* DevApp_main.storyboard */,
+				B6E4BF47235EEFE300406434 /* DevAppViews */,
+				B6610E7A236006CE00EC0479 /* DevLuaLoader.h */,
+				B6610E7B236006CE00EC0479 /* DevLuaLoader.m */,
+			);
+			path = VideoOSDevApp;
+			sourceTree = "<group>";
+		};
+		B6E4BF35235EEFE300406434 /* DevAPPNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				B6E4BF36235EEFE300406434 /* UIViewController+RTRootNavigationController.m */,
+				B6E4BF37235EEFE300406434 /* RTRootNavigationController.h */,
+				B6E4BF38235EEFE300406434 /* UIViewController+RTRootNavigationController.h */,
+				B6E4BF39235EEFE300406434 /* RTRootNavigationController.m */,
+			);
+			path = DevAPPNavigation;
+			sourceTree = "<group>";
+		};
+		B6E4BF3C235EEFE300406434 /* DevAppControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B6E4BF3E235EEFE300406434 /* DevAppPlayerViewController.h */,
+				B6E4BF40235EEFE300406434 /* SettingViewController.h */,
+				B6E4BF44235EEFE300406434 /* SettingViewController.m */,
+				B6E4BF42235EEFE300406434 /* DevAppPlayerViewController.m */,
+				B6E4BF3F235EEFE300406434 /* DevMainViewController.h */,
+				B6E4BF43235EEFE300406434 /* DevMainViewController.m */,
+				B6E4BF41235EEFE300406434 /* DebuggingViewController.h */,
+				B6E4BF3D235EEFE300406434 /* DebuggingViewController.m */,
+			);
+			path = DevAppControllers;
+			sourceTree = "<group>";
+		};
+		B6E4BF47235EEFE300406434 /* DevAppViews */ = {
+			isa = PBXGroup;
+			children = (
+				B6E4BF48235EEFE300406434 /* DevAppMediaControlView.xib */,
+				B6E4BF49235EEFE300406434 /* DevAppMediaControlView.m */,
+				B6E4BF4A235EEFE300406434 /* DevAppSettingView.m */,
+				B6E4BF4B235EEFE300406434 /* UIButton+DevAppButton.m */,
+				B6E4BF4C235EEFE300406434 /* DevAppMediaControlView.h */,
+				B6E4BF4D235EEFE300406434 /* DevAppSettingView.h */,
+				B6E4BF4E235EEFE300406434 /* UIButton+DevAppButton.h */,
+			);
+			path = DevAppViews;
 			sourceTree = "<group>";
 		};
 		D00D67A422D42FD60003972F /* Model */ = {
@@ -263,6 +419,7 @@
 			children = (
 				1EE8D300E34605C338F6FB32 /* libPods-VPInterfaceViewDemo.a */,
 				7C6009F1EF01AC68198F90DB /* libPods-VPInterfaceControllerDemo.a */,
+				531D9B85F47A19F4DD5C50BF /* libPods-VideoOSDevApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -270,6 +427,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		064570C7235ED37300BDEE49 /* VideoOSDevApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 064570F3235ED37300BDEE49 /* Build configuration list for PBXNativeTarget "VideoOSDevApp" */;
+			buildPhases = (
+				064570C8235ED37300BDEE49 /* [CP] Check Pods Manifest.lock */,
+				064570C9235ED37300BDEE49 /* Sources */,
+				064570DF235ED37300BDEE49 /* Frameworks */,
+				064570E1235ED37300BDEE49 /* Resources */,
+				064570F1235ED37300BDEE49 /* Run Script */,
+				064570F2235ED37300BDEE49 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VideoOSDevApp;
+			productName = VPInterfaceViewDemo;
+			productReference = 064570F6235ED37300BDEE49 /* VideoOSDevApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 		069D54341F04DC6D001E5324 /* VPInterfaceControllerDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 069D544C1F04DC6E001E5324 /* Build configuration list for PBXNativeTarget "VPInterfaceControllerDemo" */;
@@ -299,6 +476,9 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = videopls;
 				TargetAttributes = {
+					064570C7235ED37300BDEE49 = {
+						DevelopmentTeam = Y59HB6VK6F;
+					};
 					069D54341F04DC6D001E5324 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = Y59HB6VK6F;
@@ -326,11 +506,38 @@
 			projectRoot = "";
 			targets = (
 				069D54341F04DC6D001E5324 /* VPInterfaceControllerDemo */,
+				064570C7235ED37300BDEE49 /* VideoOSDevApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		064570E1235ED37300BDEE49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				064570E2235ED37300BDEE49 /* saomiao_off.svga in Resources */,
+				064570E3235ED37300BDEE49 /* saomiao_no.svga in Resources */,
+				064570E4235ED37300BDEE49 /* adInfo.json in Resources */,
+				064570E5235ED37300BDEE49 /* LaunchScreen.storyboard in Resources */,
+				064570E6235ED37300BDEE49 /* Main.storyboard in Resources */,
+				B6E4BF4F235EEFE300406434 /* DevAppResource.bundle in Resources */,
+				064570E7235ED37300BDEE49 /* config.json in Resources */,
+				064570E8235ED37300BDEE49 /* text.json in Resources */,
+				B6E4BF53235EEFE300406434 /* DevAppAssets.xcassets in Resources */,
+				064570E9235ED37300BDEE49 /* VPMediaControlView.xib in Resources */,
+				B6E4BF59235EEFE300406434 /* DevAppMediaControlView.xib in Resources */,
+				064570EA235ED37300BDEE49 /* goods.lua in Resources */,
+				064570EB235ED37300BDEE49 /* hotarea.lua in Resources */,
+				064570EC235ED37300BDEE49 /* Assets.xcassets in Resources */,
+				B6E4BF58235EEFE300406434 /* DevApp_main.storyboard in Resources */,
+				064570ED235ED37300BDEE49 /* goods_entrance.lua in Resources */,
+				064570EE235ED37300BDEE49 /* zelear.mp4 in Resources */,
+				064570EF235ED37300BDEE49 /* VPMediaMoreButtonView.xib in Resources */,
+				064570F0235ED37300BDEE49 /* VideoPlsDefaultImages.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		069D54331F04DC6D001E5324 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -341,6 +548,7 @@
 				067652711F346B44001904F4 /* LaunchScreen.storyboard in Resources */,
 				067652701F346B3F001904F4 /* Main.storyboard in Resources */,
 				D078CD78214A04BD008946CC /* config.json in Resources */,
+				064570F9235EE0B700BDEE49 /* VideoOSDevApp.plist in Resources */,
 				C9823ECE22F41BE2007E9F3D /* text.json in Resources */,
 				0689653E1F15F56E0054736C /* VPMediaControlView.xib in Resources */,
 				067187A41F56B741008544FC /* goods.lua in Resources */,
@@ -356,6 +564,56 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		064570C8235ED37300BDEE49 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VideoOSDevApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		064570F1235ED37300BDEE49 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\necho \"${PROJECT_DIR}\"\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print :CFBundleVersion\" \"${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"\nfi\n";
+		};
+		064570F2235ED37300BDEE49 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VideoOSDevApp/Pods-VideoOSDevApp-resources.sh",
+				"${PODS_ROOT}/../Resources/VideoPlsResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/VideoPlsResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VideoOSDevApp/Pods-VideoOSDevApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AFC37199EB54A71FFDACE469 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -380,7 +638,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh",
 				"${PODS_ROOT}/../Resources/VideoPlsResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -389,7 +647,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C42CDB981F333B0900DD42D0 /* Run Script */ = {
@@ -409,6 +667,45 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		064570C9235ED37300BDEE49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				064570CA235ED37300BDEE49 /* VPAVPlayerController.m in Sources */,
+				B6610E7D236006D400EC0479 /* DevLuaLoader.m in Sources */,
+				064570CB235ED37300BDEE49 /* ViewController.m in Sources */,
+				B6E4BF51235EEFE300406434 /* RTRootNavigationController.m in Sources */,
+				B6E4BF57235EEFE300406434 /* SettingViewController.m in Sources */,
+				064570CC235ED37300BDEE49 /* VPWebViewController.m in Sources */,
+				064570CD235ED37300BDEE49 /* VPVideoListData.m in Sources */,
+				B6E4BF52235EEFE300406434 /* DevAppTool.m in Sources */,
+				064570CE235ED37300BDEE49 /* VPVideoData.m in Sources */,
+				064570CF235ED37300BDEE49 /* VPModel.m in Sources */,
+				B6E4BF5C235EEFE300406434 /* UIButton+DevAppButton.m in Sources */,
+				B6E4BF5B235EEFE300406434 /* DevAppSettingView.m in Sources */,
+				B6E4BF5A235EEFE300406434 /* DevAppMediaControlView.m in Sources */,
+				064570D0235ED37300BDEE49 /* VPMediaMoreButtonView.m in Sources */,
+				064570D1235ED37300BDEE49 /* VPLoginViewController.m in Sources */,
+				064570D2235ED37300BDEE49 /* VPLiveSelectStatusViewController.m in Sources */,
+				B6E4BF54235EEFE300406434 /* DebuggingViewController.m in Sources */,
+				064570D3235ED37300BDEE49 /* VPConfigListData.m in Sources */,
+				064570D4235ED37300BDEE49 /* AppDelegate.m in Sources */,
+				064570D5235ED37300BDEE49 /* VPVideoSettingView.m in Sources */,
+				B6E4BF50235EEFE300406434 /* UIViewController+RTRootNavigationController.m in Sources */,
+				064570D6235ED37300BDEE49 /* VPMediaControlView.m in Sources */,
+				B6E4BF55235EEFE300406434 /* DevAppPlayerViewController.m in Sources */,
+				064570D7235ED37300BDEE49 /* VPTextField.m in Sources */,
+				064570D8235ED37300BDEE49 /* VPVideoAppSettingView.m in Sources */,
+				064570D9235ED37300BDEE49 /* VPLiveTypeSelectViewController.m in Sources */,
+				064570DA235ED37300BDEE49 /* PrivateConfig.m in Sources */,
+				064570DB235ED37300BDEE49 /* main.m in Sources */,
+				064570DC235ED37300BDEE49 /* VPSinglePlayerViewController.m in Sources */,
+				064570DD235ED37300BDEE49 /* VPModel+DictionaryToModel.m in Sources */,
+				B6E4BF56235EEFE300406434 /* DevMainViewController.m in Sources */,
+				064570DE235ED37300BDEE49 /* VPConfigData.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		069D54311F04DC6D001E5324 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -459,6 +756,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		064570F4235ED37300BDEE49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DABB5CE0450AA0B67AE25720 /* Pods-VideoOSDevApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Y59HB6VK6F;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Framework\"",
+					"$(PROJECT_DIR)/Framework",
+					"$(PROJECT_DIR)/VPInterfaceControllerDemo",
+				);
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/VPInterfaceControllerDemo/VideoOSDevApp/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"$(inherited)",
+					"GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1",
+					"VIDEOOS_DEVAPP=1",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/VPInterfaceControllerDemo/VideoOSDevApp.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.videopls.VideoOSDevApp;
+				PRODUCT_NAME = VideoOSDevApp;
+			};
+			name = Debug;
+		};
+		064570F5235ED37300BDEE49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 342AE1AC443CB683EB8DC15D /* Pods-VideoOSDevApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Y59HB6VK6F;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Framework\"",
+					"$(PROJECT_DIR)/Framework",
+					"$(PROJECT_DIR)/VPInterfaceControllerDemo",
+				);
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/VPInterfaceControllerDemo/VideoOSDevApp/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"$(inherited)",
+					"GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1",
+					"VIDEOOS_DEVAPP=1",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/VPInterfaceControllerDemo/VideoOSDevApp.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.videopls.VideoOSDevApp;
+				PRODUCT_NAME = VideoOSDevApp;
+			};
+			name = Release;
+		};
 		069D544A1F04DC6E001E5324 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -614,6 +971,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		064570F3235ED37300BDEE49 /* Build configuration list for PBXNativeTarget "VideoOSDevApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				064570F4235ED37300BDEE49 /* Debug */,
+				064570F5235ED37300BDEE49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		069D54301F04DC6D001E5324 /* Build configuration list for PBXProject "VPInterfaceControllerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

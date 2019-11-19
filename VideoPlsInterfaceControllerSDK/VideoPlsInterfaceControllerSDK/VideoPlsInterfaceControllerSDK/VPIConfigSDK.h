@@ -47,4 +47,11 @@
 
 + (void)setAppKey:(NSString *)appKey appSecret:(NSString *)appSecret;
 
+/**
+ * 设置小程序开发者模式
+ * @param enable BOOL 是否开启
+ * 小程序开发者模式为了方便未上架小程序的调试会把本地资源文件dev-config.json和其对应的lua文件复制到对应路径下
+ */
++ (void)setAppDevEnable:(BOOL)enable;
+
 @end

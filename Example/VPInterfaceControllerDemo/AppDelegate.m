@@ -37,15 +37,28 @@
     //    [VPIConfigSDK setAppKey:@"93db5ef3-7fbc-485a-97b0-fc9f4e7209f5" appSecret:@"74f251d40a49468a"];
     //    [VPIConfigSDK setAppKey:@"d1af1f73-7b60-4141-8261-2d9ad20b2a23" appSecret:@"97154eab13424013"];
     //    [VPIConfigSDK setAppKey:@"7a741182-c30e-4edf-9eaa-ae8974093214" appSecret:@"8940b66d7052437b"];
-    [VPIConfigSDK setAppKey:@"73d5a8f8-3682-4080-ad7c-996c4e19fc1e" appSecret:@"c276b70aba84491a"];
+//    [VPIConfigSDK setAppKey:@"73d5a8f8-3682-4080-ad7c-996c4e19fc1e" appSecret:@"c276b70aba84491a"];
+    
+    [VPIConfigSDK setAppKey:@"66c9bafa-abd0-4aa9-8066-3deaf9dc7f71" appSecret:@"bcfee675bca844bd"];
     
     //    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateDevelop];
     [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
     //    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateOnline];
-
+    
+#ifdef VIDEOOS_DEVAPP
+        NSLog(@"this current tag is VIDEOOS_DEVAPP");
+        application.statusBarStyle = UIStatusBarStyleLightContent;
+        [VPIConfigSDK setAppDevEnable:true];
+#else
+        NSLog(@"this current tag is VPInterfaceControllerDemo");
+#endif
+    
+    
+    
     [VPIConfigSDK initSDK];
     return YES;
 }
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

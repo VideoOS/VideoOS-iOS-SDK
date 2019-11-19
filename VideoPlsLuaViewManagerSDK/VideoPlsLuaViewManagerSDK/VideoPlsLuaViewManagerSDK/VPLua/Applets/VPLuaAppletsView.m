@@ -283,8 +283,10 @@
             VPAppletLandscapeContainer *container;
             if (appType == VPAppletContainerAppTypeLua) {
                 container = [[VPLuaAppletLandscapeContainer alloc] initWithAppletID:appletID networkManager:self.networkManager videoInfo:self.videoInfo luaPath:self.luaPath data:data];
+                container.appType = VPAppletContainerAppTypeLua;
             } else {
                 container = [[VPHybirdAppletLandscapeContainer alloc] initWithAppletID:appletID networkManager:self.networkManager videoInfo:self.videoInfo luaPath:self.luaPath data:data];
+                container.appType = VPAppletContainerAppTypeHybird;
             }
             container.containerDelegate = self;
             

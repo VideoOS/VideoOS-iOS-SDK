@@ -74,6 +74,16 @@
     return path;
 }
 
++ (NSString *)appDevPath {
+    return [self pathByPlaceholder:@"dev"];
+}
+
++ (NSString *)appDevConfigPath {
+    NSString *devPath = [self appDevPath];
+    NSString *filePath = [devPath stringByAppendingPathComponent:@"config.json"];
+    return filePath;
+}
+
 + (NSString *)subPathOfLua:(NSString *)placeholder {
     NSString *path = [self luaPath];
     path = [path stringByAppendingPathComponent:placeholder];

@@ -32,6 +32,10 @@
 
 + (NSString *)subPathOfLuaApplets:(NSString *)placeholder;
 
++ (NSString *)appDevPath;
+
++ (NSString *)appDevConfigPath;
+
 + (NSString *)subPathOfLua:(NSString *)placeholder;
 
 + (NSString *)goodsPath;
