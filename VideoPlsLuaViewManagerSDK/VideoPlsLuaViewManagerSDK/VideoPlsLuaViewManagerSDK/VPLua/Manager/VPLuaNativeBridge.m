@@ -306,7 +306,7 @@ static NSMutableDictionary* httpAPICache() {
         {"isCacheVideo", isCacheVideo},
         {"currentVideoTime", currentVideoTime},
         {"videoDuration", videoDuration},
-//        {"appletSize", getAppletSize},
+//        {"holderSize", getHolderSize},
         {NULL, NULL}
     };
     lv_createClassMetaTable(L,META_TABLE_NativeObject);
@@ -1473,7 +1473,7 @@ static int videoDuration(lua_State *L) {
     return 1;
 }
 
-//static int getAppletSize(lua_State *L) {
+//static int getHolderSize(lua_State *L) {
 //    VPLuaBaseNode *luaNade = [VPLuaNativeBridge luaNodeFromLuaState:L];
 //    lua_pushnumber(L, luaNade.luaController.rootView.bounds.size.width);
 //    lua_pushnumber(L, luaNade.luaController.rootView.bounds.size.height);

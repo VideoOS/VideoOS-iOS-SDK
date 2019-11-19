@@ -27,7 +27,7 @@
 #import "VPLuaPlayer.h"
 #import "VPLuaScrollView.h"
 #import "VPLuaHttpRequest.h"
-#import "VPLuaAppletBridge.h"
+#import "VPLuaHolderBridge.h"
 #import "VPLuaNotification.h"
 
 @implementation VPLuaBaseView
@@ -56,7 +56,7 @@
         [VPLuaGradientView lvClassDefine:self.luaviewCore.l globalName:@"GradientView"];
         [VPLuaScrollView lvClassDefine:self.luaviewCore.l globalName:@"ScrollView"];
         [VPLuaHttpRequest lvClassDefine:self.luaviewCore.l globalName:@"HttpRequest"];
-        [VPLuaAppletBridge lvClassDefine:self.luaviewCore.l globalName:@"Applet"];
+        [VPLuaHolderBridge lvClassDefine:self.luaviewCore.l globalName:@"Holder"];
         [VPLuaNotification lvClassDefine:self.luaviewCore.l globalName:@"Notification"];
     }
     return self;

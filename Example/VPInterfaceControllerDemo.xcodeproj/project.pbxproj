@@ -380,7 +380,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh",
 				"${PODS_ROOT}/../Resources/VideoPlsResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -389,7 +389,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VPInterfaceControllerDemo/Pods-VPInterfaceControllerDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C42CDB981F333B0900DD42D0 /* Run Script */ = {

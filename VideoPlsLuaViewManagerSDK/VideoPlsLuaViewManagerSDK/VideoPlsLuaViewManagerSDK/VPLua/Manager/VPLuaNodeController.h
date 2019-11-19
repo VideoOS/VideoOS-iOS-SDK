@@ -20,7 +20,7 @@
 
 @end
 
-@protocol VPLuaNodeControllerAppletDelegate <NSObject>
+@protocol VPLuaNodeControllerHolderDelegate <NSObject>
 
 - (void)showRetryPage:(NSString *)retryMessage retryData:(id)data nodeId:(NSString *)nodeId;
 - (void)showErrorPage:(NSString *)errorMessage;
@@ -38,7 +38,7 @@
 
 @property (nonatomic, weak) id<VPLuaNodeControllerLoadDelegate> luaDelegate;
 
-@property (nonatomic, weak) id<VPLuaNodeControllerAppletDelegate> appletDelegate;
+@property (nonatomic, weak) id<VPLuaNodeControllerHolderDelegate> holderDelegate;
 
 @property (nonatomic, assign, readonly, getter=isPortrait) BOOL portrait;
 @property (nonatomic, assign, readonly, getter=isFullScreen) BOOL fullScreen;

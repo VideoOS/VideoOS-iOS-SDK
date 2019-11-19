@@ -28,9 +28,9 @@
 
 + (NSString *)luaOSPath;
 
-+ (NSString *)luaAppletsPath;
++ (NSString *)luaHolderPath;
 
-+ (NSString *)subPathOfLuaApplets:(NSString *)placeholder;
++ (NSString *)subPathOfLuaHolder:(NSString *)placeholder;
 
 + (NSString *)subPathOfLua:(NSString *)placeholder;
 

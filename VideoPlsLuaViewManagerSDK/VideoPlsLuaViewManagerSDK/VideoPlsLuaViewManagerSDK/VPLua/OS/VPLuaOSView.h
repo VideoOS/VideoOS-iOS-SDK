@@ -20,7 +20,7 @@ extern NSString *const VPLuaOSLoadCompleteNotification;
 typedef NS_ENUM(NSUInteger, VPLuaEventType) {
     VPLuaEventTypeTypeNone = 0,
     VPLuaEventTypeOSAction,
-    VPLuaEventTypeAppletAction
+    VPLuaEventTypeHolderAction
 };
 
 /**
@@ -32,10 +32,10 @@ typedef NS_ENUM(NSUInteger, VPLuaOSActionType) {
     VPLuaOSActionTypePause,        // 暂停Ad
 };
 
-typedef NS_ENUM(NSUInteger, VPLuaAppletActionType) {
-    VPLuaAppletActionTypeNone = 0,     //
-    VPLuaAppletActionTypeRetry,         // 网络重试
-    VPLuaAppletActionTypeRefresh        // 刷新页面
+typedef NS_ENUM(NSUInteger, VPLuaHolderActionType) {
+    VPLuaHolderActionTypeNone = 0,     //
+    VPLuaHolderActionTypeRetry,         // 网络重试
+    VPLuaHolderActionTypeRefresh        // 刷新页面
 };
 
 @interface VPLuaOSView : UIView
