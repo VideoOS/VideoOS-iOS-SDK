@@ -1,21 +1,21 @@
 //
-//  VPLuaLoader.m
+//  VPLuaDownloader.m
 //  VideoPlsLuaViewManagerSDK
 //
 //  Created by peter on 2019/7/22.
 //  Copyright © 2019 videopls. All rights reserved.
 //
 
-#import "VPLuaLoader.h"
+#import "VPLuaDownloader.h"
 #import "VPLuaConstant.h"
 #import "VPUPPathUtil.h"
 #import "VPUPMD5Util.h"
 #import "VPUPPrefetchManager.h"
 #import "VPUPRandomUtil.h"
 
-NSInteger const VPLuaLoaderDownloadRetryCount = 2;
+NSInteger const VPLuaDownloaderDownloadRetryCount = 2;
 
-@implementation VPLuaLoaderObject
+@implementation VPLuaDownloaderObject
 
 - (instancetype)init {
     self = [super init];
@@ -26,7 +26,7 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
 }
 
 + (instancetype)objectWithFilesList:(NSArray *)filesList destinationPath:(NSString *)destinationPath {
-    VPLuaLoaderObject *loadObject = [[VPLuaLoaderObject alloc] init];
+    VPLuaDownloaderObject *loadObject = [[VPLuaDownloaderObject alloc] init];
     loadObject.filesList = filesList;
     
     NSMutableArray *filesUrl = [NSMutableArray arrayWithCapacity:0];
@@ -50,22 +50,22 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
 @end
 
 
-@interface VPLuaLoader()
+@interface VPLuaDownloader()
 
 @property (nonatomic, strong) VPUPPrefetchManager *prefetchManager;
 @property (nonatomic, strong) dispatch_queue_t luaLoaderQueue;
 
-- (void)callbackComplete:(VPLuaLoaderCompletionBlock)complete withError:(NSError *)error;
+- (void)callbackComplete:(VPLuaDownloaderCompletionBlock)complete withError:(NSError *)error;
 
-- (void)callbackComplete:(VPLuaLoaderCompletionBlock)complete withError:(NSError *)error withStatistics:(VPUPTrafficStatisticsList *)trafficList;
+- (void)callbackComplete:(VPLuaDownloaderCompletionBlock)complete withError:(NSError *)error withStatistics:(VPUPTrafficStatisticsList *)trafficList;
 
 @end
 
 
-@implementation VPLuaLoader
+@implementation VPLuaDownloader
 
-+ (instancetype)sharedLoader {
-    static VPLuaLoader *_sharedLoader = nil;
++ (instancetype)sharedDownloader {
+    static VPLuaDownloader *_sharedLoader = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedLoader = [[self alloc] init];
@@ -89,11 +89,11 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
     return _prefetchManager;
 }
 
-- (void)checkAndDownloadFilesList:(NSArray *)filesList complete:(VPLuaLoaderCompletionBlock)complete {
+- (void)checkAndDownloadFilesList:(NSArray *)filesList complete:(VPLuaDownloaderCompletionBlock)complete {
     [self checkAndDownloadFilesList:filesList resumePath:[VPUPPathUtil luaOSPath] complete:complete];
 }
 
-- (void)checkAndDownloadFilesList:(NSArray *)filesList resumePath:(NSString *)resumePath complete:(VPLuaLoaderCompletionBlock)complete {
+- (void)checkAndDownloadFilesList:(NSArray *)filesList resumePath:(NSString *)resumePath complete:(VPLuaDownloaderCompletionBlock)complete {
     if ([[NSFileManager defaultManager] fileExistsAtPath:resumePath]) {
         [self checkFilesListWithLocal:filesList resumePath:resumePath complete:complete];
     }
@@ -103,7 +103,7 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
     }
 }
 
-- (void)checkFilesListWithLocal:(NSArray *)fileList resumePath:(NSString *)resumePath complete:(VPLuaLoaderCompletionBlock)complete {
+- (void)checkFilesListWithLocal:(NSArray *)fileList resumePath:(NSString *)resumePath complete:(VPLuaDownloaderCompletionBlock)complete {
     
     __weak typeof(self) weakSelf = self;
     dispatch_async(self.luaLoaderQueue, ^{
@@ -127,7 +127,7 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
             }
         }
         if (downloadFileList.count > 0) {
-            VPLuaLoaderObject *loaderObject = [VPLuaLoaderObject objectWithFilesList:downloadFileList destinationPath:resumePath];
+            VPLuaDownloaderObject *loaderObject = [VPLuaDownloaderObject objectWithFilesList:downloadFileList destinationPath:resumePath];
             [weakSelf downloadLuaFilesWithLoaderObject:loaderObject complete:complete];
         }
         else {
@@ -136,18 +136,18 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
     });
 }
 
-- (void)downloadLuaFilesWithLoaderObject:(VPLuaLoaderObject *)loaderObject complete:(VPLuaLoaderCompletionBlock)complete {
+- (void)downloadLuaFilesWithLoaderObject:(VPLuaDownloaderObject *)loaderObject complete:(VPLuaDownloaderCompletionBlock)complete {
     [self downloadLuaFilesWithLoaderObject:loaderObject complete:complete repeatCount:0];
 }
 
-- (void)downloadLuaFilesWithLoaderObject:(VPLuaLoaderObject *)loaderObject complete:(VPLuaLoaderCompletionBlock)complete repeatCount:(NSInteger)repeatCount {
+- (void)downloadLuaFilesWithLoaderObject:(VPLuaDownloaderObject *)loaderObject complete:(VPLuaDownloaderCompletionBlock)complete repeatCount:(NSInteger)repeatCount {
     
     if (!loaderObject || !loaderObject.filesList || loaderObject.filesList.count == 0) {
         [self callbackComplete:complete withError:nil];
         return;
     }
     
-    __block VPLuaLoaderObject *blockObject = loaderObject;
+    __block VPLuaDownloaderObject *blockObject = loaderObject;
     
     __weak typeof(self) weakSelf = self;
     
@@ -171,11 +171,11 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
                        }];
 }
 
-- (void)checkDownloadObject:(VPLuaLoaderObject *)loaderObject complete:(VPLuaLoaderCompletionBlock)complete {
+- (void)checkDownloadObject:(VPLuaDownloaderObject *)loaderObject complete:(VPLuaDownloaderCompletionBlock)complete {
     [self checkDownloadObject:loaderObject complete:complete skippedCount:0];
 }
 
-- (void)checkDownloadObject:(VPLuaLoaderObject *)loaderObject complete:(VPLuaLoaderCompletionBlock)complete skippedCount:(NSInteger)skippedCount {
+- (void)checkDownloadObject:(VPLuaDownloaderObject *)loaderObject complete:(VPLuaDownloaderCompletionBlock)complete skippedCount:(NSInteger)skippedCount {
     __weak typeof(self) weakSelf = self;
     
     dispatch_async(self.luaLoaderQueue, ^{
@@ -234,7 +234,7 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
 }
 
 /*
-- (void)checkDownloadFilesList:(NSArray *)filesList complete:(VPLuaLoaderCompletionBlock)complete {
+- (void)checkDownloadFilesList:(NSArray *)filesList complete:(VPLuaDownloaderCompletionBlock)complete {
     
     __weak typeof(self) weakSelf = self;
     
@@ -290,7 +290,7 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
 }
  */
 
-- (void)callbackComplete:(VPLuaLoaderCompletionBlock)complete withError:(NSError *)error {
+- (void)callbackComplete:(VPLuaDownloaderCompletionBlock)complete withError:(NSError *)error {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (complete) {
             complete(error, nil);
@@ -298,7 +298,7 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
     });
 }
 
-- (void)callbackComplete:(VPLuaLoaderCompletionBlock)complete withError:(NSError *)error withStatistics:(VPUPTrafficStatisticsList *)trafficList {
+- (void)callbackComplete:(VPLuaDownloaderCompletionBlock)complete withError:(NSError *)error withStatistics:(VPUPTrafficStatisticsList *)trafficList {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (complete) {
             complete(error, trafficList);

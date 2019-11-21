@@ -34,7 +34,7 @@
 #import "VPUPDeviceUtil.h"
 #import "VPUPCommonInfo.h"
 #import "VPUPSHAUtil.h"
-#import "VPLuaLoader.h"
+#import "VPLuaDownloader.h"
 
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
@@ -1407,7 +1407,7 @@ static int preloadLuaList(lua_State *L) {
                     }
                 }
                 
-                [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:newArray complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+                [[VPLuaDownloader sharedDownloader] checkAndDownloadFilesList:newArray complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
                     
                     if (trafficList) {
                         [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeOpenVideo];

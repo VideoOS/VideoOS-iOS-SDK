@@ -21,7 +21,7 @@
 #import "VPUPPathUtil.h"
 #import "VPUPMD5Util.h"
 #import "VPUPPrefetchManager.h"
-#import "VPLuaLoader.h"
+#import "VPLuaDownloader.h"
 
 NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
 
@@ -109,7 +109,7 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
         return;
     }
     __weak typeof(self) weakSelf = self;
-    [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+    [[VPLuaDownloader sharedDownloader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
         
         if (trafficList) {
             [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeInitApp];

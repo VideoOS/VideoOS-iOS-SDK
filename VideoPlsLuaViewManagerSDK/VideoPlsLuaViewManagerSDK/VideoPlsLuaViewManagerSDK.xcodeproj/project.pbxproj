@@ -89,53 +89,6 @@
 		D02A1DE022EEBDB300EF5CC2 /* VPLuaServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D02A1DDE22EEBDB300EF5CC2 /* VPLuaServiceManager.h */; };
 		D02A1DE122EEBDB300EF5CC2 /* VPLuaServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DDF22EEBDB300EF5CC2 /* VPLuaServiceManager.m */; };
 		D02A1DE222EEBDB300EF5CC2 /* VPLuaServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DDF22EEBDB300EF5CC2 /* VPLuaServiceManager.m */; };
-		D033D44423823CC000D5D57F /* VPLuaHolderRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D42223823CC000D5D57F /* VPLuaHolderRequest.m */; };
-		D033D44523823CC000D5D57F /* VPLuaHolderRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D42223823CC000D5D57F /* VPLuaHolderRequest.m */; };
-		D033D44623823CC000D5D57F /* VPLuaHolderRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D42323823CC000D5D57F /* VPLuaHolderRequest.h */; };
-		D033D44723823CC000D5D57F /* VPLuaHolderPortraitNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D42523823CC000D5D57F /* VPLuaHolderPortraitNavigationController.m */; };
-		D033D44823823CC000D5D57F /* VPLuaHolderPortraitNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D42523823CC000D5D57F /* VPLuaHolderPortraitNavigationController.m */; };
-		D033D44923823CC000D5D57F /* VPLuaHolderPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D42623823CC000D5D57F /* VPLuaHolderPortraitViewController.m */; };
-		D033D44A23823CC000D5D57F /* VPLuaHolderPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D42623823CC000D5D57F /* VPLuaHolderPortraitViewController.m */; };
-		D033D44B23823CC000D5D57F /* VPLuaHolderPortraitNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D42723823CC000D5D57F /* VPLuaHolderPortraitNavigationController.h */; };
-		D033D44C23823CC000D5D57F /* VPLuaHolderPortraitViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D42823823CC000D5D57F /* VPLuaHolderPortraitViewController.h */; };
-		D033D44D23823CC000D5D57F /* VPLuaHolderView.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D42923823CC000D5D57F /* VPLuaHolderView.h */; };
-		D033D44E23823CC000D5D57F /* VPLuaHolderContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D42A23823CC000D5D57F /* VPLuaHolderContainer.h */; };
-		D033D44F23823CC000D5D57F /* VPLuaHolderContainerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D42B23823CC000D5D57F /* VPLuaHolderContainerDelegate.h */; };
-		D033D45023823CC000D5D57F /* VPLuaHolderContainerLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D42D23823CC000D5D57F /* VPLuaHolderContainerLoadingView.m */; };
-		D033D45123823CC000D5D57F /* VPLuaHolderContainerLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D42D23823CC000D5D57F /* VPLuaHolderContainerLoadingView.m */; };
-		D033D45223823CC000D5D57F /* VPLuaHolderContainerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D42E23823CC000D5D57F /* VPLuaHolderContainerStatusView.m */; };
-		D033D45323823CC000D5D57F /* VPLuaHolderContainerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D42E23823CC000D5D57F /* VPLuaHolderContainerStatusView.m */; };
-		D033D45423823CC000D5D57F /* VPLuaHolderContainerNetworkView.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D42F23823CC000D5D57F /* VPLuaHolderContainerNetworkView.h */; };
-		D033D45523823CC000D5D57F /* VPLuaHolderContainerErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43023823CC000D5D57F /* VPLuaHolderContainerErrorView.m */; };
-		D033D45623823CC000D5D57F /* VPLuaHolderContainerErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43023823CC000D5D57F /* VPLuaHolderContainerErrorView.m */; };
-		D033D45723823CC000D5D57F /* VPLuaHolderContainerLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D43123823CC000D5D57F /* VPLuaHolderContainerLoadingView.h */; };
-		D033D45823823CC000D5D57F /* VPLuaHolderContainerStatusView.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D43223823CC000D5D57F /* VPLuaHolderContainerStatusView.h */; };
-		D033D45923823CC000D5D57F /* VPLuaHolderContainerNetworkView.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43323823CC000D5D57F /* VPLuaHolderContainerNetworkView.m */; };
-		D033D45A23823CC000D5D57F /* VPLuaHolderContainerNetworkView.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43323823CC000D5D57F /* VPLuaHolderContainerNetworkView.m */; };
-		D033D45B23823CC000D5D57F /* VPLuaHolderContainerErrorView.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D43423823CC000D5D57F /* VPLuaHolderContainerErrorView.h */; };
-		D033D45C23823CC000D5D57F /* VPHolderContainerNaviSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43623823CC000D5D57F /* VPHolderContainerNaviSetting.m */; };
-		D033D45D23823CC000D5D57F /* VPHolderContainerNaviSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43623823CC000D5D57F /* VPHolderContainerNaviSetting.m */; };
-		D033D45E23823CC000D5D57F /* VPLuaHolderObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43723823CC000D5D57F /* VPLuaHolderObject.m */; };
-		D033D45F23823CC000D5D57F /* VPLuaHolderObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43723823CC000D5D57F /* VPLuaHolderObject.m */; };
-		D033D46023823CC000D5D57F /* VPLuaHolderObject.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D43823823CC000D5D57F /* VPLuaHolderObject.h */; };
-		D033D46123823CC000D5D57F /* VPHolderContainerNaviSetting.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D43923823CC000D5D57F /* VPHolderContainerNaviSetting.h */; };
-		D033D46223823CC000D5D57F /* VPHybirdHolderLandscapeContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D43B23823CC000D5D57F /* VPHybirdHolderLandscapeContainer.h */; };
-		D033D46323823CC000D5D57F /* VPHolderLandscapeNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43C23823CC000D5D57F /* VPHolderLandscapeNavigationBar.m */; };
-		D033D46423823CC000D5D57F /* VPHolderLandscapeNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43C23823CC000D5D57F /* VPHolderLandscapeNavigationBar.m */; };
-		D033D46523823CC000D5D57F /* VPHolderLandscapeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43D23823CC000D5D57F /* VPHolderLandscapeContainer.m */; };
-		D033D46623823CC000D5D57F /* VPHolderLandscapeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43D23823CC000D5D57F /* VPHolderLandscapeContainer.m */; };
-		D033D46723823CC000D5D57F /* VPLuaHolderLandscapeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43E23823CC000D5D57F /* VPLuaHolderLandscapeContainer.m */; };
-		D033D46823823CC000D5D57F /* VPLuaHolderLandscapeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D43E23823CC000D5D57F /* VPLuaHolderLandscapeContainer.m */; };
-		D033D46923823CC000D5D57F /* VPHolderLandscapeNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D43F23823CC000D5D57F /* VPHolderLandscapeNavigationBar.h */; };
-		D033D46A23823CC000D5D57F /* VPHybirdHolderLandscapeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D44023823CC000D5D57F /* VPHybirdHolderLandscapeContainer.m */; };
-		D033D46B23823CC000D5D57F /* VPHybirdHolderLandscapeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D44023823CC000D5D57F /* VPHybirdHolderLandscapeContainer.m */; };
-		D033D46C23823CC000D5D57F /* VPHolderLandscapeContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D44123823CC000D5D57F /* VPHolderLandscapeContainer.h */; };
-		D033D46D23823CC000D5D57F /* VPLuaHolderLandscapeContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D44223823CC000D5D57F /* VPLuaHolderLandscapeContainer.h */; };
-		D033D46E23823CC000D5D57F /* VPLuaHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D44323823CC000D5D57F /* VPLuaHolderView.m */; };
-		D033D46F23823CC000D5D57F /* VPLuaHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D44323823CC000D5D57F /* VPLuaHolderView.m */; };
-		D033D47223823D3300D5D57F /* VPLuaHolderBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = D033D47023823D3200D5D57F /* VPLuaHolderBridge.h */; };
-		D033D47323823D3300D5D57F /* VPLuaHolderBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D47123823D3200D5D57F /* VPLuaHolderBridge.m */; };
-		D033D47423823D3300D5D57F /* VPLuaHolderBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D033D47123823D3200D5D57F /* VPLuaHolderBridge.m */; };
 		D05369982051067100A4F8C6 /* VPLuaMQTT.h in Headers */ = {isa = PBXBuildFile; fileRef = D05369962051067100A4F8C6 /* VPLuaMQTT.h */; };
 		D05369992051067100A4F8C6 /* VPLuaMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = D05369972051067100A4F8C6 /* VPLuaMQTT.m */; };
 		D053699A2051067100A4F8C6 /* VPLuaMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = D05369972051067100A4F8C6 /* VPLuaMQTT.m */; };
@@ -158,9 +111,6 @@
 		D09F759120A98E7E001E89D3 /* VPLuaScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D09F758F20A98E7E001E89D3 /* VPLuaScrollView.h */; };
 		D09F759220A98E7E001E89D3 /* VPLuaScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F759020A98E7E001E89D3 /* VPLuaScrollView.m */; };
 		D09F759320A98E7E001E89D3 /* VPLuaScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F759020A98E7E001E89D3 /* VPLuaScrollView.m */; };
-		D0AAB13C22E5592600883F2A /* VPLuaLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0AAB13A22E5592600883F2A /* VPLuaLoader.h */; };
-		D0AAB13D22E5592600883F2A /* VPLuaLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AAB13B22E5592600883F2A /* VPLuaLoader.m */; };
-		D0AAB13E22E5592600883F2A /* VPLuaLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AAB13B22E5592600883F2A /* VPLuaLoader.m */; };
 		D0ADC49222EA8BD40037A549 /* VPLuaConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = D0ADC49022EA8BD40037A549 /* VPLuaConstant.h */; };
 		D0ADC49322EA8BD40037A549 /* VPLuaConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC49122EA8BD40037A549 /* VPLuaConstant.m */; };
 		D0ADC49422EA8BD40037A549 /* VPLuaConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC49122EA8BD40037A549 /* VPLuaConstant.m */; };
@@ -258,38 +208,6 @@
 		D02A1DDA22EEBD2200EF5CC2 /* VPLuaCapacityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaCapacityManager.m; sourceTree = "<group>"; };
 		D02A1DDE22EEBDB300EF5CC2 /* VPLuaServiceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaServiceManager.h; sourceTree = "<group>"; };
 		D02A1DDF22EEBDB300EF5CC2 /* VPLuaServiceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaServiceManager.m; sourceTree = "<group>"; };
-		D033D42223823CC000D5D57F /* VPLuaHolderRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaHolderRequest.m; sourceTree = "<group>"; };
-		D033D42323823CC000D5D57F /* VPLuaHolderRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderRequest.h; sourceTree = "<group>"; };
-		D033D42523823CC000D5D57F /* VPLuaHolderPortraitNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaHolderPortraitNavigationController.m; sourceTree = "<group>"; };
-		D033D42623823CC000D5D57F /* VPLuaHolderPortraitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaHolderPortraitViewController.m; sourceTree = "<group>"; };
-		D033D42723823CC000D5D57F /* VPLuaHolderPortraitNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderPortraitNavigationController.h; sourceTree = "<group>"; };
-		D033D42823823CC000D5D57F /* VPLuaHolderPortraitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderPortraitViewController.h; sourceTree = "<group>"; };
-		D033D42923823CC000D5D57F /* VPLuaHolderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderView.h; sourceTree = "<group>"; };
-		D033D42A23823CC000D5D57F /* VPLuaHolderContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderContainer.h; sourceTree = "<group>"; };
-		D033D42B23823CC000D5D57F /* VPLuaHolderContainerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderContainerDelegate.h; sourceTree = "<group>"; };
-		D033D42D23823CC000D5D57F /* VPLuaHolderContainerLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaHolderContainerLoadingView.m; sourceTree = "<group>"; };
-		D033D42E23823CC000D5D57F /* VPLuaHolderContainerStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaHolderContainerStatusView.m; sourceTree = "<group>"; };
-		D033D42F23823CC000D5D57F /* VPLuaHolderContainerNetworkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderContainerNetworkView.h; sourceTree = "<group>"; };
-		D033D43023823CC000D5D57F /* VPLuaHolderContainerErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaHolderContainerErrorView.m; sourceTree = "<group>"; };
-		D033D43123823CC000D5D57F /* VPLuaHolderContainerLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderContainerLoadingView.h; sourceTree = "<group>"; };
-		D033D43223823CC000D5D57F /* VPLuaHolderContainerStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderContainerStatusView.h; sourceTree = "<group>"; };
-		D033D43323823CC000D5D57F /* VPLuaHolderContainerNetworkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaHolderContainerNetworkView.m; sourceTree = "<group>"; };
-		D033D43423823CC000D5D57F /* VPLuaHolderContainerErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderContainerErrorView.h; sourceTree = "<group>"; };
-		D033D43623823CC000D5D57F /* VPHolderContainerNaviSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPHolderContainerNaviSetting.m; sourceTree = "<group>"; };
-		D033D43723823CC000D5D57F /* VPLuaHolderObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaHolderObject.m; sourceTree = "<group>"; };
-		D033D43823823CC000D5D57F /* VPLuaHolderObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderObject.h; sourceTree = "<group>"; };
-		D033D43923823CC000D5D57F /* VPHolderContainerNaviSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPHolderContainerNaviSetting.h; sourceTree = "<group>"; };
-		D033D43B23823CC000D5D57F /* VPHybirdHolderLandscapeContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPHybirdHolderLandscapeContainer.h; sourceTree = "<group>"; };
-		D033D43C23823CC000D5D57F /* VPHolderLandscapeNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPHolderLandscapeNavigationBar.m; sourceTree = "<group>"; };
-		D033D43D23823CC000D5D57F /* VPHolderLandscapeContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPHolderLandscapeContainer.m; sourceTree = "<group>"; };
-		D033D43E23823CC000D5D57F /* VPLuaHolderLandscapeContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaHolderLandscapeContainer.m; sourceTree = "<group>"; };
-		D033D43F23823CC000D5D57F /* VPHolderLandscapeNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPHolderLandscapeNavigationBar.h; sourceTree = "<group>"; };
-		D033D44023823CC000D5D57F /* VPHybirdHolderLandscapeContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPHybirdHolderLandscapeContainer.m; sourceTree = "<group>"; };
-		D033D44123823CC000D5D57F /* VPHolderLandscapeContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPHolderLandscapeContainer.h; sourceTree = "<group>"; };
-		D033D44223823CC000D5D57F /* VPLuaHolderLandscapeContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderLandscapeContainer.h; sourceTree = "<group>"; };
-		D033D44323823CC000D5D57F /* VPLuaHolderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaHolderView.m; sourceTree = "<group>"; };
-		D033D47023823D3200D5D57F /* VPLuaHolderBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaHolderBridge.h; sourceTree = "<group>"; };
-		D033D47123823D3200D5D57F /* VPLuaHolderBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaHolderBridge.m; sourceTree = "<group>"; };
 		D05369962051067100A4F8C6 /* VPLuaMQTT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaMQTT.h; sourceTree = "<group>"; };
 		D05369972051067100A4F8C6 /* VPLuaMQTT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaMQTT.m; sourceTree = "<group>"; };
 		D05D93E922811A1E003FBF3C /* VPLuaHttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaHttpRequest.h; sourceTree = "<group>"; };
@@ -306,8 +224,6 @@
 		D09ADDC6205BA01A007DB3E7 /* VPLuaVideoPlayerSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaVideoPlayerSize.m; sourceTree = "<group>"; };
 		D09F758F20A98E7E001E89D3 /* VPLuaScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaScrollView.h; sourceTree = "<group>"; };
 		D09F759020A98E7E001E89D3 /* VPLuaScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaScrollView.m; sourceTree = "<group>"; };
-		D0AAB13A22E5592600883F2A /* VPLuaLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaLoader.h; sourceTree = "<group>"; };
-		D0AAB13B22E5592600883F2A /* VPLuaLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaLoader.m; sourceTree = "<group>"; };
 		D0ADC49022EA8BD40037A549 /* VPLuaConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaConstant.h; sourceTree = "<group>"; };
 		D0ADC49122EA8BD40037A549 /* VPLuaConstant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaConstant.m; sourceTree = "<group>"; };
 		D0ADC4A022ED82B70037A549 /* VPLuaServiceAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaServiceAd.h; sourceTree = "<group>"; };
@@ -366,7 +282,6 @@
 		D0114BEF1FCFBFCC00E75EF7 /* VPLua */ = {
 			isa = PBXGroup;
 			children = (
-				D033D42023823CC000D5D57F /* Holder */,
 				D0EE6465204D41C1005D53C5 /* OS */,
 				D0114BF01FCFBFCC00E75EF7 /* LuaView */,
 				D0114C041FCFBFCC00E75EF7 /* Manager */,
@@ -424,8 +339,6 @@
 		D0114C041FCFBFCC00E75EF7 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				D033D47023823D3200D5D57F /* VPLuaHolderBridge.h */,
-				D033D47123823D3200D5D57F /* VPLuaHolderBridge.m */,
 				D0E8C2872317C23E0020D6A5 /* VPLuaNotification.h */,
 				D0E8C2882317C23F0020D6A5 /* VPLuaNotification.m */,
 				D02A1DD922EEBD2200EF5CC2 /* VPLuaCapacityManager.h */,
@@ -455,8 +368,6 @@
 				D0BD1ABE2138DE2100A087F2 /* VPLuaSDK.m */,
 				D05D93E922811A1E003FBF3C /* VPLuaHttpRequest.h */,
 				D05D93EA22811A1E003FBF3C /* VPLuaHttpRequest.m */,
-				D0AAB13A22E5592600883F2A /* VPLuaLoader.h */,
-				D0AAB13B22E5592600883F2A /* VPLuaLoader.m */,
 				D0ADC49022EA8BD40037A549 /* VPLuaConstant.h */,
 				D0ADC49122EA8BD40037A549 /* VPLuaConstant.m */,
 				D0ADC4A422ED83270037A549 /* VPLuaService.h */,
@@ -498,83 +409,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D033D42023823CC000D5D57F /* Holder */ = {
-			isa = PBXGroup;
-			children = (
-				D033D42123823CC000D5D57F /* Network */,
-				D033D42423823CC000D5D57F /* Portrait */,
-				D033D42923823CC000D5D57F /* VPLuaHolderView.h */,
-				D033D42A23823CC000D5D57F /* VPLuaHolderContainer.h */,
-				D033D42B23823CC000D5D57F /* VPLuaHolderContainerDelegate.h */,
-				D033D42C23823CC000D5D57F /* ContainerStatusView */,
-				D033D43523823CC000D5D57F /* Model */,
-				D033D43A23823CC000D5D57F /* Landscape */,
-				D033D44323823CC000D5D57F /* VPLuaHolderView.m */,
-			);
-			path = Holder;
-			sourceTree = "<group>";
-		};
-		D033D42123823CC000D5D57F /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				D033D42223823CC000D5D57F /* VPLuaHolderRequest.m */,
-				D033D42323823CC000D5D57F /* VPLuaHolderRequest.h */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		D033D42423823CC000D5D57F /* Portrait */ = {
-			isa = PBXGroup;
-			children = (
-				D033D42523823CC000D5D57F /* VPLuaHolderPortraitNavigationController.m */,
-				D033D42623823CC000D5D57F /* VPLuaHolderPortraitViewController.m */,
-				D033D42723823CC000D5D57F /* VPLuaHolderPortraitNavigationController.h */,
-				D033D42823823CC000D5D57F /* VPLuaHolderPortraitViewController.h */,
-			);
-			path = Portrait;
-			sourceTree = "<group>";
-		};
-		D033D42C23823CC000D5D57F /* ContainerStatusView */ = {
-			isa = PBXGroup;
-			children = (
-				D033D42D23823CC000D5D57F /* VPLuaHolderContainerLoadingView.m */,
-				D033D42E23823CC000D5D57F /* VPLuaHolderContainerStatusView.m */,
-				D033D42F23823CC000D5D57F /* VPLuaHolderContainerNetworkView.h */,
-				D033D43023823CC000D5D57F /* VPLuaHolderContainerErrorView.m */,
-				D033D43123823CC000D5D57F /* VPLuaHolderContainerLoadingView.h */,
-				D033D43223823CC000D5D57F /* VPLuaHolderContainerStatusView.h */,
-				D033D43323823CC000D5D57F /* VPLuaHolderContainerNetworkView.m */,
-				D033D43423823CC000D5D57F /* VPLuaHolderContainerErrorView.h */,
-			);
-			path = ContainerStatusView;
-			sourceTree = "<group>";
-		};
-		D033D43523823CC000D5D57F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D033D43623823CC000D5D57F /* VPHolderContainerNaviSetting.m */,
-				D033D43723823CC000D5D57F /* VPLuaHolderObject.m */,
-				D033D43823823CC000D5D57F /* VPLuaHolderObject.h */,
-				D033D43923823CC000D5D57F /* VPHolderContainerNaviSetting.h */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		D033D43A23823CC000D5D57F /* Landscape */ = {
-			isa = PBXGroup;
-			children = (
-				D033D43B23823CC000D5D57F /* VPHybirdHolderLandscapeContainer.h */,
-				D033D43C23823CC000D5D57F /* VPHolderLandscapeNavigationBar.m */,
-				D033D43D23823CC000D5D57F /* VPHolderLandscapeContainer.m */,
-				D033D43E23823CC000D5D57F /* VPLuaHolderLandscapeContainer.m */,
-				D033D43F23823CC000D5D57F /* VPHolderLandscapeNavigationBar.h */,
-				D033D44023823CC000D5D57F /* VPHybirdHolderLandscapeContainer.m */,
-				D033D44123823CC000D5D57F /* VPHolderLandscapeContainer.h */,
-				D033D44223823CC000D5D57F /* VPLuaHolderLandscapeContainer.h */,
-			);
-			path = Landscape;
-			sourceTree = "<group>";
-		};
 		D0EE6465204D41C1005D53C5 /* OS */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,31 +434,22 @@
 				D0114C1F1FCFBFCD00E75EF7 /* VPLuaImageView.h in Headers */,
 				D0114C411FCFBFCD00E75EF7 /* VPLuaVideoInfo.h in Headers */,
 				0692ECFD1FF5EFA9008A3214 /* VPLuaNativeScanner.h in Headers */,
-				D033D45423823CC000D5D57F /* VPLuaHolderContainerNetworkView.h in Headers */,
 				D0ADC4A622ED83270037A549 /* VPLuaService.h in Headers */,
 				D0114C441FCFBFCD00E75EF7 /* VPLuaClickThroughView.h in Headers */,
 				D0114C381FCFBFCD00E75EF7 /* VPLuaNetworkManager.h in Headers */,
-				D033D45B23823CC000D5D57F /* VPLuaHolderContainerErrorView.h in Headers */,
 				D02A1DDB22EEBD2200EF5CC2 /* VPLuaCapacityManager.h in Headers */,
 				D0E8C2892317C23F0020D6A5 /* VPLuaNotification.h in Headers */,
 				0640FAE51FE8EDF90089825F /* VPLuaNormalRefreshHeader.h in Headers */,
-				D033D45823823CC000D5D57F /* VPLuaHolderContainerStatusView.h in Headers */,
-				D033D46023823CC000D5D57F /* VPLuaHolderObject.h in Headers */,
 				D08CBCD320A411B300BE5C9D /* VPLuaPlayer.h in Headers */,
 				D05DCC60200DDAC200E294F2 /* VPLuaTextField.h in Headers */,
 				D0114C151FCFBFCD00E75EF7 /* VideoPlsLuaViewSDK.h in Headers */,
-				D0AAB13C22E5592600883F2A /* VPLuaLoader.h in Headers */,
 				D0114C281FCFBFCD00E75EF7 /* VPLuaShelvesCardView.h in Headers */,
-				D033D46C23823CC000D5D57F /* VPHolderLandscapeContainer.h in Headers */,
 				D02A1DD622EEA58E00EF5CC2 /* VPLuaServiceVideoMode.h in Headers */,
 				D09ADDC7205BA01A007DB3E7 /* VPLuaVideoPlayerSize.h in Headers */,
 				D0114C251FCFBFCD00E75EF7 /* VPLuaLoadingView.h in Headers */,
-				D033D47223823D3300D5D57F /* VPLuaHolderBridge.h in Headers */,
 				D0ADC49222EA8BD40037A549 /* VPLuaConstant.h in Headers */,
-				D033D46D23823CC000D5D57F /* VPLuaHolderLandscapeContainer.h in Headers */,
 				069D37CC20207CB700CB177D /* VPLuaWindow.h in Headers */,
 				D0114C351FCFBFCD00E75EF7 /* VPLuaNativeBridge.h in Headers */,
-				D033D44D23823CC000D5D57F /* VPLuaHolderView.h in Headers */,
 				D0ADC4A222ED82B70037A549 /* VPLuaServiceAd.h in Headers */,
 				D00ED8E2202C41AC00B6C8C1 /* VPLuaScriptManager.h in Headers */,
 				D0114C191FCFBFCD00E75EF7 /* VPLuaButton.h in Headers */,
@@ -642,21 +467,12 @@
 				D05D93EB22811A1E003FBF3C /* VPLuaHttpRequest.h in Headers */,
 				D0114C2B1FCFBFCD00E75EF7 /* VPLuaThroughView.h in Headers */,
 				D0BD1ABF2138DE2100A087F2 /* VPLuaSDK.h in Headers */,
-				D033D44E23823CC000D5D57F /* VPLuaHolderContainer.h in Headers */,
-				D033D44B23823CC000D5D57F /* VPLuaHolderPortraitNavigationController.h in Headers */,
 				D0114C3B1FCFBFCD00E75EF7 /* VPLuaNodeController.h in Headers */,
-				D033D44623823CC000D5D57F /* VPLuaHolderRequest.h in Headers */,
-				D033D45723823CC000D5D57F /* VPLuaHolderContainerLoadingView.h in Headers */,
 				D0FA556320A13D0000105348 /* VPLuaMacroDefine.h in Headers */,
-				D033D46123823CC000D5D57F /* VPHolderContainerNaviSetting.h in Headers */,
 				D00ED8E7202DAB6700B6C8C1 /* VPLuaMedia.h in Headers */,
-				D033D44C23823CC000D5D57F /* VPLuaHolderPortraitViewController.h in Headers */,
 				D0114C2E1FCFBFCD00E75EF7 /* VPLuaViewHeader.h in Headers */,
 				D0C3A1E2206B3E8800C21CA7 /* VPLuaSVGAView.h in Headers */,
-				D033D46223823CC000D5D57F /* VPHybirdHolderLandscapeContainer.h in Headers */,
-				D033D46923823CC000D5D57F /* VPHolderLandscapeNavigationBar.h in Headers */,
 				D02A1DE022EEBDB300EF5CC2 /* VPLuaServiceManager.h in Headers */,
-				D033D44F23823CC000D5D57F /* VPLuaHolderContainerDelegate.h in Headers */,
 				D0E8C2862317C2010020D6A5 /* VPLuaDesktopView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -755,43 +571,29 @@
 				D0114C1A1FCFBFCD00E75EF7 /* VPLuaButton.m in Sources */,
 				D0114C2C1FCFBFCD00E75EF7 /* VPLuaThroughView.m in Sources */,
 				D05DCC61200DDAC200E294F2 /* VPLuaTextField.m in Sources */,
-				D033D45523823CC000D5D57F /* VPLuaHolderContainerErrorView.m in Sources */,
 				D0ADC4A722ED83270037A549 /* VPLuaService.m in Sources */,
 				D0E8C28A2317C23F0020D6A5 /* VPLuaNotification.m in Sources */,
 				D05D93EC22811A1E003FBF3C /* VPLuaHttpRequest.m in Sources */,
-				D033D47323823D3300D5D57F /* VPLuaHolderBridge.m in Sources */,
-				D033D46A23823CC000D5D57F /* VPHybirdHolderLandscapeContainer.m in Sources */,
 				D08CBCD420A411B300BE5C9D /* VPLuaPlayer.m in Sources */,
 				D0114C291FCFBFCD00E75EF7 /* VPLuaShelvesCardView.m in Sources */,
-				D033D44923823CC000D5D57F /* VPLuaHolderPortraitViewController.m in Sources */,
 				D0114C231FCFBFCD00E75EF7 /* VPLuaLabel.m in Sources */,
 				D0114C301FCFBFCD00E75EF7 /* VPLuaWebView.m in Sources */,
-				D033D44423823CC000D5D57F /* VPLuaHolderRequest.m in Sources */,
 				D0C3A1E0206B3E8800C21CA7 /* VPLuaSVGAView.m in Sources */,
 				D05369992051067100A4F8C6 /* VPLuaMQTT.m in Sources */,
 				0692ECFE1FF5EFA9008A3214 /* VPLuaNativeScanner.m in Sources */,
 				D00ED8E8202DAB6700B6C8C1 /* VPLuaMedia.m in Sources */,
 				D0114C331FCFBFCD00E75EF7 /* VPLuaBaseNode.m in Sources */,
 				0640FAE61FE8EDF90089825F /* VPLuaNormalRefreshHeader.m in Sources */,
-				D033D45223823CC000D5D57F /* VPLuaHolderContainerStatusView.m in Sources */,
 				D00ED8E3202C41AC00B6C8C1 /* VPLuaScriptManager.m in Sources */,
 				D0114C421FCFBFCD00E75EF7 /* VPLuaVideoInfo.m in Sources */,
 				D0EE6469204D421E005D53C5 /* VPLuaOSView.m in Sources */,
 				D0114C201FCFBFCD00E75EF7 /* VPLuaImageView.m in Sources */,
 				D004F65A2093103000022E90 /* VPLuaServiceManager.m in Sources */,
-				D033D46523823CC000D5D57F /* VPHolderLandscapeContainer.m in Sources */,
-				D033D46E23823CC000D5D57F /* VPLuaHolderView.m in Sources */,
-				D033D45C23823CC000D5D57F /* VPHolderContainerNaviSetting.m in Sources */,
 				D0BD1AC02138DE2100A087F2 /* VPLuaSDK.m in Sources */,
-				D033D45923823CC000D5D57F /* VPLuaHolderContainerNetworkView.m in Sources */,
 				D05FA9182303C2FB00C24653 /* VPLuaTrackManager.m in Sources */,
-				D033D45E23823CC000D5D57F /* VPLuaHolderObject.m in Sources */,
 				D0ADC49322EA8BD40037A549 /* VPLuaConstant.m in Sources */,
-				D033D46323823CC000D5D57F /* VPHolderLandscapeNavigationBar.m in Sources */,
 				D02A1DD722EEA58E00EF5CC2 /* VPLuaServiceVideoMode.m in Sources */,
 				D0114C361FCFBFCD00E75EF7 /* VPLuaNativeBridge.m in Sources */,
-				D033D45023823CC000D5D57F /* VPLuaHolderContainerLoadingView.m in Sources */,
-				D033D46723823CC000D5D57F /* VPLuaHolderLandscapeContainer.m in Sources */,
 				069D37CD20207CB700CB177D /* VPLuaWindow.m in Sources */,
 				D0114C1D1FCFBFCD00E75EF7 /* VPLuaCollectionView.m in Sources */,
 				D02A1DDC22EEBD2200EF5CC2 /* VPLuaCapacityManager.m in Sources */,
@@ -806,11 +608,9 @@
 				D0114C3C1FCFBFCD00E75EF7 /* VPLuaNodeController.m in Sources */,
 				D02A1DE122EEBDB300EF5CC2 /* VPLuaServiceManager.m in Sources */,
 				D0ADC4A322ED82B70037A549 /* VPLuaServiceAd.m in Sources */,
-				D033D44723823CC000D5D57F /* VPLuaHolderPortraitNavigationController.m in Sources */,
 				D0114C171FCFBFCD00E75EF7 /* VPLuaBaseView.m in Sources */,
 				D09F759220A98E7E001E89D3 /* VPLuaScrollView.m in Sources */,
 				D0114C3F1FCFBFCD00E75EF7 /* VPLuaTrackApi.m in Sources */,
-				D0AAB13D22E5592600883F2A /* VPLuaLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,24 +618,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D033D44A23823CC000D5D57F /* VPLuaHolderPortraitViewController.m in Sources */,
 				D0114C1B1FCFBFCD00E75EF7 /* VPLuaButton.m in Sources */,
 				0688E24F1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.m in Sources */,
 				D0114C2D1FCFBFCD00E75EF7 /* VPLuaThroughView.m in Sources */,
 				D08CBCD520A411B300BE5C9D /* VPLuaPlayer.m in Sources */,
 				063ABC072004C6AC001A8B94 /* VPLuaGradientView.m in Sources */,
-				D033D45123823CC000D5D57F /* VPLuaHolderContainerLoadingView.m in Sources */,
 				D0ADC49422EA8BD40037A549 /* VPLuaConstant.m in Sources */,
-				D033D45323823CC000D5D57F /* VPLuaHolderContainerStatusView.m in Sources */,
 				D0ADC4A822ED83270037A549 /* VPLuaService.m in Sources */,
-				D033D46623823CC000D5D57F /* VPHolderLandscapeContainer.m in Sources */,
 				D0114C2A1FCFBFCD00E75EF7 /* VPLuaShelvesCardView.m in Sources */,
 				D0114C241FCFBFCD00E75EF7 /* VPLuaLabel.m in Sources */,
-				D033D45D23823CC000D5D57F /* VPHolderContainerNaviSetting.m in Sources */,
-				D033D46823823CC000D5D57F /* VPLuaHolderLandscapeContainer.m in Sources */,
 				D0C3A1E1206B3E8800C21CA7 /* VPLuaSVGAView.m in Sources */,
 				D053699A2051067100A4F8C6 /* VPLuaMQTT.m in Sources */,
-				D033D44523823CC000D5D57F /* VPLuaHolderRequest.m in Sources */,
 				D0114C311FCFBFCD00E75EF7 /* VPLuaWebView.m in Sources */,
 				D02A1DD822EEA58E00EF5CC2 /* VPLuaServiceVideoMode.m in Sources */,
 				D00ED8E9202DAB6800B6C8C1 /* VPLuaMedia.m in Sources */,
@@ -848,31 +641,22 @@
 				D0114C211FCFBFCD00E75EF7 /* VPLuaImageView.m in Sources */,
 				D0114C371FCFBFCD00E75EF7 /* VPLuaNativeBridge.m in Sources */,
 				069D37CE20207CB700CB177D /* VPLuaWindow.m in Sources */,
-				D033D46B23823CC000D5D57F /* VPHybirdHolderLandscapeContainer.m in Sources */,
-				D033D45F23823CC000D5D57F /* VPLuaHolderObject.m in Sources */,
 				D0114C1E1FCFBFCD00E75EF7 /* VPLuaCollectionView.m in Sources */,
 				D0114C3A1FCFBFCD00E75EF7 /* VPLuaNetworkManager.m in Sources */,
 				D09ADDC9205BA01A007DB3E7 /* VPLuaVideoPlayerSize.m in Sources */,
 				D05FA9192303C2FB00C24653 /* VPLuaTrackManager.m in Sources */,
 				D0928C41207CC135008AB5EC /* VPLuaPage.m in Sources */,
-				D033D47423823D3300D5D57F /* VPLuaHolderBridge.m in Sources */,
-				D033D44823823CC000D5D57F /* VPLuaHolderPortraitNavigationController.m in Sources */,
 				0640FAE71FE8EDF90089825F /* VPLuaNormalRefreshHeader.m in Sources */,
-				D033D46423823CC000D5D57F /* VPHolderLandscapeNavigationBar.m in Sources */,
 				D0114C271FCFBFCD00E75EF7 /* VPLuaLoadingView.m in Sources */,
 				D0114C461FCFBFCD00E75EF7 /* VPLuaClickThroughView.m in Sources */,
 				D02A1DE222EEBDB300EF5CC2 /* VPLuaServiceManager.m in Sources */,
 				D0E8C28B2317C23F0020D6A5 /* VPLuaNotification.m in Sources */,
 				D0114C3D1FCFBFCD00E75EF7 /* VPLuaNodeController.m in Sources */,
-				D033D45A23823CC000D5D57F /* VPLuaHolderContainerNetworkView.m in Sources */,
-				D0AAB13E22E5592600883F2A /* VPLuaLoader.m in Sources */,
 				D02A1DDD22EEBD2200EF5CC2 /* VPLuaCapacityManager.m in Sources */,
 				D0BD1AC12138DE2100A087F2 /* VPLuaSDK.m in Sources */,
 				D0114C181FCFBFCD00E75EF7 /* VPLuaBaseView.m in Sources */,
 				D09F759320A98E7E001E89D3 /* VPLuaScrollView.m in Sources */,
-				D033D45623823CC000D5D57F /* VPLuaHolderContainerErrorView.m in Sources */,
 				D0114C401FCFBFCD00E75EF7 /* VPLuaTrackApi.m in Sources */,
-				D033D46F23823CC000D5D57F /* VPLuaHolderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

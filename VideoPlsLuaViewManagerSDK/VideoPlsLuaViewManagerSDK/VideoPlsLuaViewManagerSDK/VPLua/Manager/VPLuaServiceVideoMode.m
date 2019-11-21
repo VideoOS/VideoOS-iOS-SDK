@@ -18,7 +18,7 @@
 #import "VPUPJsonUtil.h"
 #import "VPUPAESUtil.h"
 #import "VPLuaSDK.h"
-#import "VPLuaLoader.h"
+#import "VPLuaDownloader.h"
 #import "VPUPRoutes.h"
 #import "VPUPRoutesConstants.h"
 #import "VPLuaConstant.h"
@@ -127,7 +127,7 @@
         
         NSArray *filesList = [data objectForKey:@"luaList"]; // [data objectForKey:@"luaList"];
         dispatch_group_enter(batch_api_group);
-        [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+        [[VPLuaDownloader sharedDownloader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
             
             if (trafficList) {
                 [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
@@ -143,7 +143,7 @@
         NSArray *jsonList = [data objectForKey:@"jsonList"];
         if (jsonList && jsonList.count > 0) {
             dispatch_group_enter(batch_api_group);
-            [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:jsonList resumePath:self.resumeDataPath complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+            [[VPLuaDownloader sharedDownloader] checkAndDownloadFilesList:jsonList resumePath:self.resumeDataPath complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
                 
                 if (trafficList) {
                     [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];

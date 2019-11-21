@@ -32,12 +32,6 @@ typedef NS_ENUM(NSUInteger, VPLuaOSActionType) {
     VPLuaOSActionTypePause,        // 暂停Ad
 };
 
-typedef NS_ENUM(NSUInteger, VPLuaHolderActionType) {
-    VPLuaHolderActionTypeNone = 0,     //
-    VPLuaHolderActionTypeRetry,         // 网络重试
-    VPLuaHolderActionTypeRefresh        // 刷新页面
-};
-
 @interface VPLuaOSView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame;

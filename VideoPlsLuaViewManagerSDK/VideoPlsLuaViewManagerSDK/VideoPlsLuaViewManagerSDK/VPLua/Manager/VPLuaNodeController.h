@@ -20,13 +20,6 @@
 
 @end
 
-@protocol VPLuaNodeControllerHolderDelegate <NSObject>
-
-- (void)showRetryPage:(NSString *)retryMessage retryData:(id)data nodeId:(NSString *)nodeId;
-- (void)showErrorPage:(NSString *)errorMessage;
-
-@end
-
 @interface VPLuaNodeController : NSObject
 
 
@@ -37,8 +30,6 @@
 @property (nonatomic) VPLuaVideoInfo *videoInfo;
 
 @property (nonatomic, weak) id<VPLuaNodeControllerLoadDelegate> luaDelegate;
-
-@property (nonatomic, weak) id<VPLuaNodeControllerHolderDelegate> holderDelegate;
 
 @property (nonatomic, assign, readonly, getter=isPortrait) BOOL portrait;
 @property (nonatomic, assign, readonly, getter=isFullScreen) BOOL fullScreen;

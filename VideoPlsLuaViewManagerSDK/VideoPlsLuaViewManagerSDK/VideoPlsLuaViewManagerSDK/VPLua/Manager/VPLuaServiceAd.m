@@ -18,7 +18,7 @@
 #import "VPUPJsonUtil.h"
 #import "VPUPAESUtil.h"
 #import "VPLuaSDK.h"
-#import "VPLuaLoader.h"
+#import "VPLuaDownloader.h"
 #import "VPUPRoutes.h"
 #import "VPUPRoutesConstants.h"
 #import "VPLuaConstant.h"
@@ -106,7 +106,7 @@
 - (void)downloadFileFromData:(NSDictionary *)data {
     NSArray *filesList = [data objectForKey:@"templates"];
     __weak typeof(self) weakSelf = self;
-    [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+    [[VPLuaDownloader sharedDownloader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
         
         if (trafficList) {
             [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
