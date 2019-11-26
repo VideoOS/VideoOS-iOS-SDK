@@ -192,9 +192,9 @@
 
 - (void)notifyVideoScreenChanged:(VPIVideoPlayerOrientation)type {
     
-    if (_orientationType == type) {
-        return;
-    }
+//    if (_orientationType == type) {
+//        return;
+//    }
     _orientationType = type;
 
     if (_osView) {
