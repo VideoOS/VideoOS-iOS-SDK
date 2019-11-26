@@ -203,7 +203,6 @@
         dispatch_group_notify(batch_api_group, dispatch_get_main_queue(), ^{
             if (!weakSelf.luaFileError && !weakSelf.jsonFileError) {
                 
-                [weakSelf runLuaWithData:weakSelf.videoModeData];
             }
             else {
                 weakSelf.luaFileError = nil;
@@ -251,24 +250,6 @@
         }
 
     });
-}
-
-- (void)runLuaWithData:(NSDictionary *)data {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
-    [dict addEntriesFromDictionary:self.configData];
-    [dict addEntriesFromDictionary:data];
-    [dict setObject:self.serviceId forKey:@"id"];
-    if ([data objectForKey:@"data"]) {
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://defaultLuaView?template=%@&id=%@",VPUPRoutesSDKLuaView, [dict objectForKey:@"template"], [dict objectForKey:@"id"]]];
-        [VPUPRoutes routeURL:url withParameters:data completion:^(id  _Nonnull result) {
-            
-        }];
-    }
-    
-    NSURL *desktopUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@://desktopLuaView?template=%@&id=%@",VPUPRoutesSDKLuaView, [dict objectForKey:@"desktopTemplate"], [dict objectForKey:@"id"]]];
-    [VPUPRoutes routeURL:desktopUrl withParameters:data completion:^(id  _Nonnull result) {
-        
-    }];
 }
 
 - (void)callbackComplete:(VPLuaServiceCompletionBlock)complete withError:(NSError *)error {

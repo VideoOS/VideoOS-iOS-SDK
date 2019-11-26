@@ -96,8 +96,8 @@
     if (service && self.osView) {
         [self.osView removeViewWithNodeId:service.serviceId];
     }
-    if (service && self.desktopView) {
-        [self.desktopView removeViewWithNodeId:service.serviceId];
+    if (service && self.bubbleView) {
+        [self.bubbleView removeViewWithNodeId:service.serviceId];
     }
     self.serviceDict[@(type)] = nil;
     if (type == VPLuaServiceTypeVideoMode) {

@@ -27,7 +27,7 @@
 #import "VPInterfaceClickThroughView.h"
 
 #import "VPLuaOSView.h"
-#import "VPLuaDesktopView.h"
+#import "VPLuaBubbleView.h"
 #import "VPLuaMedia.h"
 #import "VPLuaVideoInfo.h"
 #import "VPLuaPage.h"
@@ -57,7 +57,7 @@
 
 @property (nonatomic) VPLuaOSView *osView;
 
-@property (nonatomic) VPLuaDesktopView *desktopView;
+@property (nonatomic) VPLuaBubbleView *bubbleView;
 
 @property (nonatomic, readwrite, strong) VPInterfaceControllerConfig *config;
 
@@ -138,7 +138,7 @@
     _config = config;
     _view = [[VPInterfaceClickThroughView alloc] initWithFrame:frame];
     [self initOSViewWithFrame:frame];
-    [self initDesktopViewWithFrame:frame];
+    [self initBubbleViewWithFrame:frame];
 }
 
 - (void)initOSViewWithFrame:(CGRect)frame {
@@ -168,7 +168,7 @@
     [_view addSubview:_osView];
 }
 
-- (void)initDesktopViewWithFrame:(CGRect)frame {
+- (void)initBubbleViewWithFrame:(CGRect)frame {
     
     __weak typeof(self) weakSelf = self;
     NSString *platformId = nil;
@@ -182,18 +182,18 @@
     else {
         [VPLuaSDK setOSType:VPLuaOSTypeLiveOS];
     }
-    _desktopView = [[VPLuaDesktopView alloc] initWithFrame:frame platformId:platformId videoId:videoId extendInfo:_config.extendDict];
+    _bubbleView = [[VPLuaBubbleView alloc] initWithFrame:frame platformId:platformId videoId:videoId extendInfo:_config.extendDict];
     VPLuaVideoPlayerSize *vpSize = [[VPLuaVideoPlayerSize alloc] init];
     vpSize.portraitSmallScreenHeight = self.videoPlayerSize.portraitSmallScreenHeight;
     vpSize.portraitFullScreenWidth = self.videoPlayerSize.portraitFullScreenWidth;
     vpSize.portraitFullScreenHeight = self.videoPlayerSize.portraitFullScreenHeight;
     vpSize.portraitSmallScreenOriginY = self.videoPlayerSize.portraitSmallScreenOriginY;
-    _desktopView.videoPlayerSize = vpSize;
-    [_desktopView setGetUserInfoBlock:^NSDictionary *(void) {
+    _bubbleView.videoPlayerSize = vpSize;
+    [_bubbleView setGetUserInfoBlock:^NSDictionary *(void) {
         return [weakSelf getUserInfoDictionary];
     }];
-    [_view addSubview:_desktopView];
-    [_view bringSubviewToFront:_desktopView];
+    [_view addSubview:_bubbleView];
+    [_view bringSubviewToFront:_bubbleView];
 }
 
 - (BOOL)validateSetAttribute {
@@ -229,11 +229,11 @@
     if (_osView) {
         [_osView startLoading];
     }
-    if (!_desktopView) {
-        [self initDesktopViewWithFrame:self.view.bounds];
+    if (!_bubbleView) {
+        [self initBubbleViewWithFrame:self.view.bounds];
     }
-    if (_desktopView) {
-        [_desktopView startLoading];
+    if (_bubbleView) {
+        [_bubbleView startLoading];
     }
     [self registerStatusNotification];
 }
@@ -253,8 +253,8 @@
         [_osView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
     }
     
-    if (_desktopView) {
-        [_desktopView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
+    if (_bubbleView) {
+        [_bubbleView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
     }
 
     CGFloat width = 0;
@@ -314,10 +314,10 @@
         _osView = nil;
     }
     
-    if (_desktopView) {
-        [_desktopView stop];
-        [_desktopView removeFromSuperview];
-        _desktopView = nil;
+    if (_bubbleView) {
+        [_bubbleView stop];
+        [_bubbleView removeFromSuperview];
+        _bubbleView = nil;
     }
     
     _canSet = YES;
@@ -683,19 +683,19 @@
         return YES;
     }];
     
-    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLuaView] addRoute:@"/desktopLuaView" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLuaView] addRoute:@"/bubbleLuaView" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
         
         if (!weakSelf) {
             return NO;
         }
         __strong typeof(self) strongSelf = weakSelf;
         //判定osView是否存在，若不存在，先创建
-        if (!strongSelf.desktopView) {
-            [strongSelf initDesktopViewWithFrame:strongSelf.view.bounds];
+        if (!strongSelf.bubbleView) {
+            [strongSelf initBubbleViewWithFrame:strongSelf.view.bounds];
             //TODO MQTT,如果_liveView不存在情况怎么处理
             
             if(!strongSelf.canSet) {
-                [strongSelf.desktopView startLoading];
+                [strongSelf.bubbleView startLoading];
             }
         }
         
@@ -710,7 +710,7 @@
             luaFile = [data objectForKey:@"template"];
         }
         
-        [strongSelf.desktopView loadLua:luaFile data:parameters];
+        [strongSelf.bubbleView loadLua:luaFile data:parameters];
         return YES;
     }];
 }
@@ -781,7 +781,7 @@
     serviceConfig.duration = (VPIVideoAdTimeType)config.duration;
     
     self.serviceManager.osView = self.osView;
-    self.serviceManager.desktopView = self.desktopView;
+    self.serviceManager.bubbleView = self.bubbleView;
     self.serviceManager.delegate = self;
     
     [self.serviceManager startService:(VPLuaServiceType)type config:serviceConfig];

@@ -115,15 +115,8 @@
             [weakSelf callbackComplete:weakSelf.complete withError:error];
         }
         else {
-            [weakSelf runLuaWithData:data];
+            
         }
-    }];
-}
-
-- (void)runLuaWithData:(NSDictionary *)data {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://defaultLuaView?template=%@&id=%@",VPUPRoutesSDKLuaView, [data objectForKey:@"template"], [data objectForKey:@"id"]]];
-    [VPUPRoutes routeURL:url withParameters:data completion:^(id  _Nonnull result) {
-        
     }];
 }
 

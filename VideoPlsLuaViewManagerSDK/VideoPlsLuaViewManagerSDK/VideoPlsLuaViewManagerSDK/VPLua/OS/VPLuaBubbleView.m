@@ -1,12 +1,12 @@
 //
-//  VPLuaDesktopView.m
+//  VPLuaBubbleView.m
 //  VideoPlsLuaViewManagerSDK
 //
 //  Created by peter on 2019/8/28.
 //  Copyright © 2019 videopls. All rights reserved.
 //
 
-#import "VPLuaDesktopView.h"
+#import "VPLuaBubbleView.h"
 #import "VideoPlsUtilsPlatformSDK.h"
 #import "VideoPlsLuaViewSDK.h"
 #import "VPLuaCapacityManager.h"
@@ -16,7 +16,7 @@
 #import <objc/message.h>
 #import "VPLuaConstant.h"
 
-@interface VPLuaDesktopView () <VPLuaScriptManagerDelegate>
+@interface VPLuaBubbleView () <VPLuaScriptManagerDelegate>
 
 @property (nonatomic, weak) VPLuaNetworkManager *networkManager;
 @property (nonatomic, strong) VPLuaScriptManager *luaScriptManager;
@@ -36,7 +36,7 @@
 
 @end
 
-@implementation VPLuaDesktopView
+@implementation VPLuaBubbleView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     return [self initWithFrame:frame platformId:nil videoId:nil];

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "VPLuaService.h"
 #import "VPLuaOSView.h"
-#import "VPLuaDesktopView.h"
+#import "VPLuaBubbleView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface VPLuaServiceManager : NSObject
 
 @property (nonatomic, weak) VPLuaOSView *osView;
-@property (nonatomic, weak) VPLuaOSView *desktopView;
+@property (nonatomic, weak) VPLuaOSView *bubbleView;
 @property (nonatomic, weak) id<VPLuaServiceManagerDelegate> delegate;
 @property (nonatomic, readonly) NSMutableDictionary *serviceDict;
 

@@ -1,5 +1,5 @@
 //
-//  VPLuaDesktopView.h
+//  VPLuaBubbleView.h
 //  VideoPlsLuaViewManagerSDK
 //
 //  Created by peter on 2019/8/28.
@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VPLuaDesktopView : UIView
+@interface VPLuaBubbleView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame;
 
