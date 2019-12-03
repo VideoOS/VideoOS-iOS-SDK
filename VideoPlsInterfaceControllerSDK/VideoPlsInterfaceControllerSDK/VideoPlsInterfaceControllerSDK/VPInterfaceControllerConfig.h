@@ -36,10 +36,18 @@ typedef NS_ENUM(NSInteger, VPInterfaceControllerType) {
 
 @interface VPInterfaceControllerConfig : NSObject
 
+//注意identifier，episode，title不能为空
 @property (nonatomic, copy) NSString *identifier;           //视频或房间ID
+
+@property (nonatomic, copy) NSString *episode;              //剧集名称
+
+@property (nonatomic, copy) NSString *title;                //视频标题
+
 @property (nonatomic, copy) NSString *platformID;           //平台ID
 //默认为VPInterfaceControllerTypeDefault, 不需要传入
 @property (nonatomic, assign) VPInterfaceControllerType types;
+
+@property (nonatomic, copy) NSString *category;             //分区
 
 /** 现有参数不能满足需求时，使用拓展字段
  *  点播有title字段(初次播放时生成的标题文字), value为NSString

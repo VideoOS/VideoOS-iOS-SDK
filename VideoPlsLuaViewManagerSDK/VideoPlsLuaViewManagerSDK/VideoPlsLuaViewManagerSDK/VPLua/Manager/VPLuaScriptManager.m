@@ -89,10 +89,10 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
         strongSelf.versionData = dataString;
         NSDictionary *data = VPUP_JsonToDictionary(dataString);
         
-        if ([[data objectForKey:@"resCode"] isEqualToString:@"00"] && [data objectForKey:@"luaList"] > 0) {
-            NSArray *luaList = [data objectForKey:@"luaList"];
-            if (luaList.count > 0) {
-                [strongSelf downloadFilesList:luaList];
+        if ([[data objectForKey:@"resCode"] isEqualToString:@"00"] && [data objectForKey:@"miniAppInfoList"] > 0) {
+            NSArray *miniAppInfoList = [data objectForKey:@"miniAppInfoList"];
+            if (miniAppInfoList.count > 0) {
+                [strongSelf downloadMiniAppInfoList:miniAppInfoList];
                 return;
             }
         }
@@ -101,6 +101,32 @@ NSString *const VPLuaScriptManagerErrorDomain = @"VPLuaScriptManager.Error";
         [strongSelf downloadSuccess:YES];
     };
     [_apiManager sendAPIRequest:api];
+}
+
+- (void)downloadMiniAppInfoList:(NSArray *)miniAppInfoList {
+    if (!miniAppInfoList || miniAppInfoList.count == 0) {
+        [self downloadSuccess:YES];
+        return;
+    }
+    __weak typeof(self) weakSelf = self;
+    
+    for (NSDictionary *miniAppInfo in miniAppInfoList) {
+        VPMiniAppInfo *appInfoObject = [VPMiniAppInfo initWithResponseDictionary:miniAppInfo];
+        
+        [[VPLuaLoader sharedLoader] checkAndDownloadFilesListWithAppInfo:appInfoObject complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+            
+            if (trafficList) {
+                [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeInitApp];
+            }
+            
+            if (error) {
+                [weakSelf error:error type:VPLuaScriptManagerErrorTypeDownloadFile];
+            }
+            else {
+                [weakSelf downloadSuccess:YES];
+            }
+        }];
+    }
 }
 
 - (void)downloadFilesList:(NSArray *)filesList {

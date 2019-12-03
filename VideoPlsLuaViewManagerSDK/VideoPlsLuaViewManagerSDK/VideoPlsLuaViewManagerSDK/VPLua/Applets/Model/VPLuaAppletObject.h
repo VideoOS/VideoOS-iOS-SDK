@@ -8,17 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "VPAppletContainerNaviSetting.h"
-
-
-
+#import "VPMiniAppInfo.h"
 
 
 @interface VPLuaAppletObject : NSObject
 
-//luaList:  [{url:xxx, md5:xxx}, {url:xxx, md5:xxx} , ...]
-@property (nonatomic, strong) NSString *appletID;
-@property (nonatomic, strong) NSArray<NSDictionary<NSString *, NSString *> *> *luaList;
-@property (nonatomic, strong) NSString *templateLua;
+@property (nonatomic, strong) VPMiniAppInfo *miniAppInfo;
 @property (nonatomic, strong) NSString *h5Url;
 @property (nonatomic, strong) NSDictionary *attachInfo;
 @property (nonatomic, strong) VPAppletContainerNaviSetting *naviSetting;

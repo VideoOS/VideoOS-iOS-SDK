@@ -42,6 +42,7 @@ FOUNDATION_EXPORT NSString * const VPUPGeneralInfoSDKChangedNotification;
 /**
  *  bundle相关信息
  */
++ (NSString *)appName;
 + (NSString *)appBundleID;
 + (NSString *)appBundleName;
 + (NSString *)appBundleVersion;

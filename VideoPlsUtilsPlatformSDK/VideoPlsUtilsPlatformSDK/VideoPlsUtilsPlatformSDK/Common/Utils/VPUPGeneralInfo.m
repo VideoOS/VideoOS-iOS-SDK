@@ -14,7 +14,7 @@
 #import "VPUPNotificationCenter.h"
 #import <sys/utsname.h>
 
-NSString * const VideoPlsUtilsPlatformSDKVersion = @"2.6.4";
+NSString * const VideoPlsUtilsPlatformSDKVersion = @"2.1.0";
 NSString * const VPUPGeneralInfoSDKChangedNotification = @"VPUPGeneralInfoSDKChangedNotification";
 
 static NSString *IDFA = nil;
@@ -47,6 +47,9 @@ static NSString *_userIdentity = nil;
     return (_currentSDKInfo == sdkInfo);
 }
 
++ (NSString *)appName {
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+}
 
 + (NSString *)appBundleID {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];

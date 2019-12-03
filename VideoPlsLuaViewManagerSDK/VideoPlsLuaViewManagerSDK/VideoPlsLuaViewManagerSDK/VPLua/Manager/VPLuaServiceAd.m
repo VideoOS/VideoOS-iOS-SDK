@@ -22,6 +22,7 @@
 #import "VPUPRoutes.h"
 #import "VPUPRoutesConstants.h"
 #import "VPLuaConstant.h"
+#import "VPMiniAppInfo.h"
 
 @interface VPLuaServiceAd()
 
@@ -104,9 +105,12 @@
 }
 
 - (void)downloadFileFromData:(NSDictionary *)data {
-    NSArray *filesList = [data objectForKey:@"templates"];
+    
     __weak typeof(self) weakSelf = self;
-    [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+    NSDictionary *miniAppInfo = [data objectForKey:@"miniAppInfo"]; // [data objectForKey:@"luaList"];
+    VPMiniAppInfo *appInfo = [VPMiniAppInfo initWithResponseDictionary:miniAppInfo];
+     
+    [[VPLuaLoader sharedLoader] checkAndDownloadFilesListWithAppInfo:appInfo complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
         
         if (trafficList) {
             [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
@@ -121,7 +125,12 @@
 }
 
 - (void)runLuaWithData:(NSDictionary *)data {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://defaultLuaView?template=%@&id=%@",VPUPRoutesSDKLuaView, [data objectForKey:@"template"], [data objectForKey:@"id"]]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://topLuaView?template=%@&id=%@&priority=%ld&miniAppId=%@",
+                                       VPUPRoutesSDKLuaView,
+                                       [[data objectForKey:@"miniAppInfo"] objectForKey:@"template"],
+                                       [data objectForKey:@"id"],
+                                       VPLuaBaseNodeWedgePriority,
+                                       [[data objectForKey:@"miniAppInfo"] objectForKey:@"miniAppId"]]];
     [VPUPRoutes routeURL:url withParameters:data completion:^(id  _Nonnull result) {
         
     }];

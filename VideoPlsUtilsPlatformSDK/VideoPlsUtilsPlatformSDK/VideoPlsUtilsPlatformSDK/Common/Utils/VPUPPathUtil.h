@@ -28,6 +28,8 @@
 
 + (NSString *)luaOSPath;
 
++ (NSString *)subPathOfLuaOSPath:(NSString *)placeholder;
+
 + (NSString *)luaAppletsPath;
 
 + (NSString *)subPathOfLuaApplets:(NSString *)placeholder;
@@ -39,6 +41,8 @@
 + (NSString *)subPathOfLua:(NSString *)placeholder;
 
 + (NSString *)goodsPath;
+
++ (NSString *)localStoragePath;
 
 + (NSString *)pathByPlaceholder:(NSString *)placeholder;
 

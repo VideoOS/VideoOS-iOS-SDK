@@ -45,14 +45,8 @@ function osTrack(launchPlanId, eventType, type)
             launchPlanId = tostring(launchPlanId)
         }
     end
-
-    local paramDataString = Native:tableToJson(params)
-    
-    Native:post(OS_HTTP_GET_STARTS, {
-        bu_id = buId,
-        device_type = deviceType,
-        data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
-    })
+    --接口参数文档http://wiki.videojj.com/pages/viewpage.action?pageId=2215044
+    Native:commonTrack(2, params)
 end
 
 function osThirdPartyTrack(url)

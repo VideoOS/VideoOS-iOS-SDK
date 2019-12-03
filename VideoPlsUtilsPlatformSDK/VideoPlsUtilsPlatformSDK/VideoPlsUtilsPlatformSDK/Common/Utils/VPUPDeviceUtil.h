@@ -15,4 +15,6 @@
 
 + (NSString *)phoneCarrier;
 
++ (int)phoneCarrierType;
+
 @end

@@ -29,6 +29,7 @@
 
 @implementation VPAppletLandscapeContainer
 @synthesize containerDelegate;
+@synthesize currentOrientation;
 
 - (instancetype)initWithAppletID:(NSString *)appletID
                   networkManager:(VPLuaNetworkManager *)networkManager
@@ -59,12 +60,21 @@
         if (_appletID != nil && ![_appletID isEqualToString:@""]) {
             _appletPath = [VPUPPathUtil subPathOfLuaApplets:_appletID];
         }
-        _rootData = data;
+        _rootData = [NSMutableDictionary dictionaryWithDictionary:data];
         _type = VPLuaAppletContainerTypeLandscape;
         [self requestApplet];
         [self initView];
     }
     return self;
+}
+
+- (void)setCurrentOrientation:(VPAppletContainerOrientation)orientation {
+    currentOrientation = orientation;
+    if (currentOrientation == VPAppletContainerOrientationPortriat) {
+        [self hide];
+    } else {
+        [self show];
+    }
 }
 
 - (void)showInSuperview:(UIView *)superview {
@@ -111,6 +121,7 @@
                 }
                 
                 weakSelf.applet = luaObject;
+                [weakSelf.rootData setValue:[luaObject.miniAppInfo dictionaryValue] forKey:@"miniAppInfo"];
                 [weakSelf loadContainView];
             });
         }];
@@ -135,7 +146,7 @@
         
         VPLuaAppletObject *object = [VPLuaAppletObject initWithResponseDictionary:appletDict];
         
-        if (self.appType == VPAppletContainerAppTypeLua && !VPUP_IsStrictExist(object.templateLua)) {
+        if (self.appType == VPAppletContainerAppTypeLua && !VPUP_IsStrictExist(object.miniAppInfo.templateLua)) {
             NSLog(@"配置文件错误,lua小程序没有lua入口文件");
             [self showErrorView];
             [self.errorView changeErrorMessage:@"配置文件缺失lua入口"];
@@ -149,7 +160,7 @@
             return;
         }
         
-        object.appletID = _appletID;
+        object.miniAppInfo.appletID = _appletID;
         self.applet = object;
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -203,10 +214,21 @@
         return;
     }
     [_naviBar updateNavi:self.applet.naviSetting];
+    
+    //不显示导航栏,更新cotainFrame
+    if (!self.applet.naviSetting.naviShow) {
+        _containFrame.size.height = _mainView.bounds.size.height;
+        _containFrame.origin.y = 0;
+    }
+    [self updateContainView];
 }
 
 - (void)initContainView {
     
+}
+
+- (void)updateContainView {
+
 }
 
 - (void)updateContainUserInfo {

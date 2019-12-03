@@ -9,6 +9,7 @@
 #import "VPUPBasicWebView.h"
 #import "VPUPWebView.h"
 #import "VPUPWKWebView.h"
+#import "VPUPExtendWKWebView.h"
 
 #define rectStatusBar       [UIApplication sharedApplication].statusBarFrame.size.height
 #define kDeviceHeight       [UIScreen mainScreen].bounds.size.height
@@ -80,6 +81,17 @@
     }
 }
 
+- (void)addJSBridge:(VPUPWKWebViewJSBridge *)jsBridge {
+    if (!jsBridge) {
+        return;
+    }
+    if ([jsBridge.messageName isEqualToString:@"Native"]) {
+        return;
+    }
+    jsBridge.webView = _webView.webView;
+    [((VPUPExtendWKWebView *)_webView.webView) addScriptMessageHandler:jsBridge name:jsBridge.messageName];
+}
+
 - (void)loadUrl:(NSString *)url {
     if(url) {
         if([_linkUrl isEqualToString:url]) {
@@ -103,6 +115,23 @@
     [super setFrame:frame];
 //    [self updateWebViewFrame:frame];
     [_progressView setFrame:CGRectMake(0, 0, frame.size.width, 1)];
+}
+
+- (BOOL)canGoBack {
+    return [_webView canGoBack];
+}
+
+- (void)goBack {
+    [_webView goBack];
+}
+
+- (void)stop {
+    [_webView stop];
+    [_webView removeCache];
+    if(_loadTimer) {
+        [_loadTimer invalidate];
+        _loadTimer = nil;
+    }
 }
 
 - (void)stopAndRemoveBasicWebview {

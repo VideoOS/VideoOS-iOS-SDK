@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VPLuaVideoInfo.h"
 
 extern NSString *const VPLuaServerHost;
 extern NSString *const VPLuaScriptServerUrl;
-
-@class VPLuaVideoInfo;
 
 typedef NS_ENUM(NSUInteger, VPLuaOSType) {
     VPLuaOSTypeDefault          = 0,

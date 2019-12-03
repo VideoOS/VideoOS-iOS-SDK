@@ -25,6 +25,8 @@
 
 @property (nonatomic, weak) VPLuaNetworkManager *networkManager;
 @property (nonatomic, weak) VPLuaVideoInfo *videoInfo;
+@property (nonatomic, strong) NSString *developerUserId;
+@property (nonatomic, strong) NSString *appletId;
 
 @property (nonatomic, weak) NSDictionary *(^getUserInfoBlock)(void);
 

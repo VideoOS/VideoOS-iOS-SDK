@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VPUPWKWebViewJSBridge.h"
 
 typedef void(^VPUPWebViewCallback)(id result);
 @protocol VPUPBasicWebViewDelegate <NSObject>
@@ -34,10 +35,16 @@ typedef void(^VPUPWebViewCallback)(id result);
 - (instancetype)initWithFrame:(CGRect)frame url:(NSString *)url;
 - (instancetype)initWithFrame:(CGRect)frame url:(NSString *)url jsCallOCDictionary:(NSDictionary<NSString *,VPUPWebViewCallback> *)JSCallOCDictionary;
 
+- (void)addJSBridge:(VPUPWKWebViewJSBridge *)jsBridge;
+
 - (void)loadUrl:(NSString *)url;
 
 - (void)setProgressColor:(UIColor *)color;
 
+- (BOOL)canGoBack;
+- (void)goBack;
+
+- (void)stop;
 - (void)stopAndRemoveBasicWebview;
 
 - (void)nativeCallWebviewWithJS:(NSString *)jsFuncName paramaters:(NSArray *)params callback:(VPUPWebViewCallback)callback;

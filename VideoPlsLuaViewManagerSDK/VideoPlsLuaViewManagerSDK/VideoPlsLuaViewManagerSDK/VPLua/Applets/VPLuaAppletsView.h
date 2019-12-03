@@ -18,6 +18,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame platformId:(NSString *)platformId videoId:(NSString *)videoId extendInfo:(NSDictionary *)extendInfo;
 
+- (instancetype)initWithFrame:(CGRect)frame videoInfo:(VPLuaVideoInfo *)videoInfo;
+
 @property (nonatomic, copy) NSDictionary *(^getUserInfoBlock)(void);
 @property (nonatomic, strong) VPLuaVideoPlayerSize *videoPlayerSize;
 @property (nonatomic, strong) VPLuaVideoInfo *videoInfo;

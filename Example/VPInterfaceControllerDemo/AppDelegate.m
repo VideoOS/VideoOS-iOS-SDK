@@ -39,11 +39,11 @@
     //    [VPIConfigSDK setAppKey:@"7a741182-c30e-4edf-9eaa-ae8974093214" appSecret:@"8940b66d7052437b"];
 //    [VPIConfigSDK setAppKey:@"73d5a8f8-3682-4080-ad7c-996c4e19fc1e" appSecret:@"c276b70aba84491a"];
     
-    [VPIConfigSDK setAppKey:@"66c9bafa-abd0-4aa9-8066-3deaf9dc7f71" appSecret:@"bcfee675bca844bd"];
+    [VPIConfigSDK setAppKey:@"ca39f6b6-4626-4036-8518-59387636da60" appSecret:@"8e9db127a2644fba"];
     
     //    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateDevelop];
-    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
-    //    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateOnline];
+//    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
+    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateOnline];
     
 #ifdef VIDEOOS_DEVAPP
         NSLog(@"this current tag is VIDEOOS_DEVAPP");

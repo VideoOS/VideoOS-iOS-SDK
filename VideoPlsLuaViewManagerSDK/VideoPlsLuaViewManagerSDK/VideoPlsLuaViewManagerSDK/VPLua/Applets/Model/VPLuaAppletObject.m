@@ -9,19 +9,12 @@
 #import "VPLuaAppletObject.h"
 #import "VPUPHexColors.h"
 
-@interface VPLuaAppletObject()
-
-@end
-
 @implementation VPLuaAppletObject
 
 + (instancetype)initWithResponseDictionary:(NSDictionary *)dict {
     VPLuaAppletObject *applet = [[VPLuaAppletObject alloc] init];
-    if ([dict objectForKey:@"luaList"]) {
-        applet.luaList = [dict objectForKey:@"luaList"];
-    }
-    if ([dict objectForKey:@"template"]) {
-        applet.templateLua = [dict objectForKey:@"template"];
+    if ([dict objectForKey:@"miniAppInfo"]) {
+        applet.miniAppInfo = [VPMiniAppInfo initWithResponseDictionary:[dict objectForKey:@"miniAppInfo"]];
     }
     if ([dict objectForKey:@"attachInfo"]) {
         applet.attachInfo = [dict objectForKey:@"attachInfo"];

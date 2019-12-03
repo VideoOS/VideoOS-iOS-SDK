@@ -6,11 +6,11 @@
 //  Copyright © 2017年 videopls. All rights reserved.
 //
 
-#import "VPUPBasicWebView.h"
+#import "VPLuaAppletWebView.h"
 
 #import <VPLuaViewSDK/LVHeads.h>
 
-@interface VPLuaWebView : VPUPBasicWebView
+@interface VPLuaWebView : VPLuaAppletWebView<LVProtocal, LVClassProtocal>
 
 @property(nonatomic,weak) LuaViewCore* lv_luaviewCore;// 对应的lua运行内核
 @property(nonatomic,assign) LVUserDataInfo* lv_userData;// native对象对应的脚本对象

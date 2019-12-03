@@ -30,6 +30,10 @@
 - (void)trackWithAppletID:(NSString *)appletID
                apiManager:(id<VPUPHTTPAPIManager>)apiManager;
 
+- (NSString *)requestToolWithID:(NSString *)toolID
+                     apiManager:(id<VPUPHTTPAPIManager>)apiManager
+                       complete:(void (^)(VPMiniAppInfo *appInfo, NSError *error))completeBlock;
+
 - (void)cancelRequestWithID:(NSString *)requestID;
 
 

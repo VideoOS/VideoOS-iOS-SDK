@@ -11,6 +11,9 @@
 extern NSString *const VPLuaErrorDomain;
 extern NSString *const VPLuaLuaDataNotification;
 
+extern const NSInteger VPLuaBaseNodeInfoViewPriority;
+extern const NSInteger VPLuaBaseNodeWedgePriority;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface VPLuaConstant : NSObject

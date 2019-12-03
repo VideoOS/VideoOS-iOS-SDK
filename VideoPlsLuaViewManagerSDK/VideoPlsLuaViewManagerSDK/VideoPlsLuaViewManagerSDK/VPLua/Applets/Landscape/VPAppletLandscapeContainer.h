@@ -24,7 +24,7 @@
 @property (nonatomic, assign) VPLuaAppletContainerType type;
 @property (nonatomic, assign) VPAppletContainerAppType appType;
 @property (nonatomic, copy) NSDictionary *(^getUserInfoBlock)(void);
-@property (nonatomic) NSDictionary *rootData;
+@property (nonatomic) NSMutableDictionary *rootData;
 
 @property (nonatomic, weak) VPLuaNetworkManager *networkManager;
 @property (nonatomic) VPLuaVideoInfo *videoInfo;

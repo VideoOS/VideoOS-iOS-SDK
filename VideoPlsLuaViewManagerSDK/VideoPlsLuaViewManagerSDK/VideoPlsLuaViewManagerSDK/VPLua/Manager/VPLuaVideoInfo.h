@@ -17,5 +17,9 @@
 @property (nonatomic, copy) NSString *channelID;
 @property (nonatomic, copy) NSString *category;
 @property (nonatomic, copy) NSString *extendJSONString;
+@property (nonatomic, copy) NSString *episode;
+@property (nonatomic, copy) NSString *title;
+
+- (NSDictionary *)dictionaryValue;
 
 @end

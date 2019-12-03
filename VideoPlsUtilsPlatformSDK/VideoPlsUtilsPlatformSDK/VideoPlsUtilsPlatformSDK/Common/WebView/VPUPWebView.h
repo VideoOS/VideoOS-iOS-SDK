@@ -17,7 +17,7 @@ typedef void (^VPUPWebViewCallback)(id result);
 - (void)didStartLoad;
 
 - (void)getUserInfo;
-- (void)getShoppingCart;
+//- (void)getShoppingCart;
 
 @end
 

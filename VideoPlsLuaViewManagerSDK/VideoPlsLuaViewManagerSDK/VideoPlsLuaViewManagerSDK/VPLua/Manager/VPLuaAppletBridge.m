@@ -26,6 +26,9 @@
         {"appletSize", getAppletSize},
         {"showRetryPage", showRetryPage},
         {"showErrorPage", showErrorPage},
+        {"canGoBack", canGoBack},
+        {"goBack", goBack},
+        {"closeView", closeView},
         {NULL, NULL}
     };
     lv_createClassMetaTable(L,META_TABLE_NativeObject);
@@ -70,6 +73,35 @@ static int showErrorPage(lua_State *L) {
     
     if (luaNade.luaController.appletDelegate && [luaNade.luaController.appletDelegate respondsToSelector:@selector(showErrorPage:)]) {
         [luaNade.luaController.appletDelegate showErrorPage:errorMessage];
+    }
+    return 0;
+}
+
+static int canGoBack(lua_State *L) {
+    VPLuaBaseNode *luaNade = [VPLuaAppletBridge luaNodeFromLuaState:L];
+    
+    if (luaNade.luaController.appletDelegate && [luaNade.luaController.appletDelegate respondsToSelector:@selector(canGoBack)]) {
+        BOOL canGoBack = [luaNade.luaController.appletDelegate canGoBack];
+        lua_pushboolean(L, canGoBack);
+        return 1;
+    }
+    return 0;
+}
+
+static int goBack(lua_State *L) {
+    VPLuaBaseNode *luaNade = [VPLuaAppletBridge luaNodeFromLuaState:L];
+    
+    if (luaNade.luaController.appletDelegate && [luaNade.luaController.appletDelegate respondsToSelector:@selector(goBack)]) {
+        [luaNade.luaController.appletDelegate goBack];
+    }
+    return 0;
+}
+
+static int closeView(lua_State *L) {
+    VPLuaBaseNode *luaNade = [VPLuaAppletBridge luaNodeFromLuaState:L];
+    
+    if (luaNade.luaController.appletDelegate && [luaNade.luaController.appletDelegate respondsToSelector:@selector(closeView)]) {
+        [luaNade.luaController.appletDelegate closeView];
     }
     return 0;
 }

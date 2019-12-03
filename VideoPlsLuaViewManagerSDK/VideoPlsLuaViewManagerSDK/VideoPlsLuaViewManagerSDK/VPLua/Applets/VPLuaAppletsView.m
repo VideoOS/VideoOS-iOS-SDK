@@ -49,24 +49,27 @@
 
 - (instancetype)initWithFrame:(CGRect)frame platformId:(NSString *)platformId videoId:(NSString *)videoId extendInfo:(NSDictionary *)extendInfo
 {
+    VPLuaVideoInfo *videoInfo = [[VPLuaVideoInfo alloc] init];
+    videoInfo.platformID = platformId;
+    videoInfo.nativeID = videoId;
+    if ([extendInfo objectForKey:@"category"]) {
+        videoInfo.category = [extendInfo objectForKey:@"category"];
+    }
+    if (extendInfo) {
+        videoInfo.extendJSONString = VPUP_DictionaryToJson(extendInfo);
+    }
+    return [self initWithFrame:frame videoInfo:videoInfo];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame videoInfo:(VPLuaVideoInfo *)videoInfo {
+    
     self = [super initWithFrame:frame];
     if (self) {
         [self initNetworkManager];
-//        [VPLuaServiceManager startService];
         self.luaPath = [VPUPPathUtil luaAppletsPath];
-        
-        self.videoInfo = [[VPLuaVideoInfo alloc] init];
-        self.videoInfo.platformID = platformId;
-        self.videoInfo.nativeID = videoId;
-        if ([extendInfo objectForKey:@"category"]) {
-            self.videoInfo.category = [extendInfo objectForKey:@"category"];
-        }
-        if (extendInfo) {
-            self.videoInfo.extendJSONString = VPUP_DictionaryToJson(extendInfo);
-        }
+        self.videoInfo = videoInfo;
         [VPLuaSDK sharedSDK].videoInfo = self.videoInfo;
     }
-    
     return self;
 }
 
@@ -148,19 +151,23 @@
     rect.size.height = viewHeight;
     self.frame = rect;
     
-    if (self.isPortrait) {
-        [self.containers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id<VPLuaAppletContainer>  _Nonnull obj, BOOL * _Nonnull stop) {
-            if (obj.type == VPLuaAppletContainerTypeLandscape) {
-                [obj hide];
-            }
-        }];
-    } else {
-        [self.containers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id<VPLuaAppletContainer>  _Nonnull obj, BOOL * _Nonnull stop) {
-            if (obj.type == VPLuaAppletContainerTypeLandscape) {
-                [obj show];
-            }
-        }];
-    }
+    [self.containers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id<VPLuaAppletContainer>  _Nonnull obj, BOOL * _Nonnull stop) {
+        obj.currentOrientation = self.isPortrait ? VPAppletContainerOrientationPortriat : VPAppletContainerOrientationLandScape;
+    }];
+    
+//    if (self.isPortrait) {
+//        [self.containers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id<VPLuaAppletContainer>  _Nonnull obj, BOOL * _Nonnull stop) {
+//            if (obj.type == VPLuaAppletContainerTypeLandscape) {
+//                [obj hide];
+//            }
+//        }];
+//    } else {
+//        [self.containers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id<VPLuaAppletContainer>  _Nonnull obj, BOOL * _Nonnull stop) {
+//            if (obj.type == VPLuaAppletContainerTypeLandscape) {
+//                [obj show];
+//            }
+//        }];
+//    }
 //    self.luaController.currentOrientation = type;
 //    [self.luaController updateFrame:self.bounds isPortrait:self.isPortrait isFullScreen:self.isFullScreen];
     
@@ -254,7 +261,7 @@
             if (self.isPortrait) {
                 //通知改横屏
                 NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
-                //1是横屏切竖屏,2是横屏切竖屏
+                //1是横屏切竖屏,2是竖屏切横屏
                 [dict setObject:@(2) forKey:@"orientation"];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{

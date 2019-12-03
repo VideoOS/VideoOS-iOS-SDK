@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UIColor *naviTitleColor;
 @property (nonatomic, strong) UIColor *naviButtonColor;
 @property (nonatomic, assign) CGFloat naviAlpha;
+@property (nonatomic, assign) BOOL naviShow;
 
 + (instancetype)initWithDictionary:(NSDictionary *)dict;
 

@@ -103,6 +103,12 @@ NSString *const kContainerCloseImage = @"iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAYAAAB
     _naviLabel.textColor = setting.naviTitleColor;
     [_naviBackButton vpup_fillImageWithColor:setting.naviButtonColor];
     [_naviCloseButton vpup_fillImageWithColor:setting.naviButtonColor];
+    
+    if (setting.naviShow) {
+        self.hidden = NO;
+    } else {
+        self.hidden = YES;
+    }
 }
 
 - (void)updateNaviTitle:(NSString *)title {

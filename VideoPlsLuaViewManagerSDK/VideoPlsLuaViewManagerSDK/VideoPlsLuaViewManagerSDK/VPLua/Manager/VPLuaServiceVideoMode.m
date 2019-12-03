@@ -24,6 +24,7 @@
 #import "VPLuaConstant.h"
 #import "VPUPPathUtil.h"
 #import <VPLuaViewSDK/LVZipArchive.h>
+#import "VPUPVibrationUtil.h"
 
 @interface VPLuaServiceVideoMode()
 
@@ -31,7 +32,7 @@
 @property (nonatomic, strong) VPLuaServiceConfig *config;
 @property (nonatomic, strong) NSError *luaFileError;
 @property (nonatomic, strong) NSError *jsonFileError;
-@property (nonatomic, strong) NSDictionary *videoModeData;
+@property (nonatomic, strong) NSMutableDictionary *videoModeData;
 @property (nonatomic, strong) NSDictionary *configData;
 @property (nonatomic, strong) dispatch_queue_t videoModeQueue;
 @property (nonatomic, copy) NSString *resumeDataPath;
@@ -46,11 +47,12 @@
     self.resumeDataPath = [VPUPPathUtil subPathOfVideoMode:[VPUPMD5Util md5HashString:self.videoId]];
     self.videoModeQueue = dispatch_queue_create("VPLua_Service_Video_Mode", DISPATCH_QUEUE_SERIAL);
     [self requestServiceData];
+    [VPUPVibrationUtil vibrateWithCompletion:nil];
 }
 - (void)requestServiceData {
     __weak typeof(self) weakSelf = self;
     VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
-    api.baseUrl = [NSString stringWithFormat:@"%@/%@", VPLuaServerHost, @"vision/getLabelConf"];
+    api.baseUrl = [NSString stringWithFormat:@"%@/%@", VPLuaServerHost, @"vision/v2/getLabelConf"];
 //    api.baseUrl =  @"http://mock.videojj.com/mock/5b029ad88e21c409b29a2114/api/getLabelConf#!method=POST&queryParameters=%5B%5D&body=&headers=%5B%5D";
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
     
@@ -125,9 +127,28 @@
         
         dispatch_group_t batch_api_group = dispatch_group_create();
         
-        NSArray *filesList = [data objectForKey:@"luaList"]; // [data objectForKey:@"luaList"];
+        NSDictionary *desktopMiniAppInfo = [data objectForKey:@"desktopMiniAppInfo"]; // [data objectForKey:@"luaList"];
+        VPMiniAppInfo *desktopAppInfo = [VPMiniAppInfo initWithResponseDictionary:desktopMiniAppInfo];
+        
         dispatch_group_enter(batch_api_group);
-        [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:filesList complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+        [[VPLuaLoader sharedLoader] checkAndDownloadFilesListWithAppInfo:desktopAppInfo complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
+            
+            if (trafficList) {
+                [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
+            }
+            
+            if (error) {
+                [weakSelf callbackComplete:weakSelf.complete withError:error];
+                weakSelf.luaFileError = error;
+            }
+            dispatch_group_leave(batch_api_group);
+        }];
+        
+        NSDictionary *videoModeMiniAppInfo = [data objectForKey:@"videoModeMiniAppInfo"]; // [data objectForKey:@"luaList"];
+        VPMiniAppInfo *videoModeAppInfo = [VPMiniAppInfo initWithResponseDictionary:videoModeMiniAppInfo];
+        
+        dispatch_group_enter(batch_api_group);
+        [[VPLuaLoader sharedLoader] checkAndDownloadFilesListWithAppInfo:videoModeAppInfo complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
             
             if (trafficList) {
                 [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
@@ -184,7 +205,8 @@
                         }
                     }
                     if (dataArray.count > 0) {
-                        weakSelf.videoModeData = @{@"data" : dataArray};
+                        weakSelf.videoModeData = [NSMutableDictionary dictionary];
+                        [weakSelf.videoModeData setObject:dataArray forKey:@"data"];
                     }
                     else {
                         weakSelf.videoModeData = nil;
@@ -242,7 +264,8 @@
             }
         }
         if (dataArray.count == jsonList.count) {
-            weakSelf.videoModeData = @{@"data" : dataArray};
+            weakSelf.videoModeData = [NSMutableDictionary dictionary];
+            [weakSelf.videoModeData setObject:dataArray forKey:@"data"];
         }
         else {
             weakSelf.videoModeData = nil;
@@ -253,19 +276,35 @@
     });
 }
 
-- (void)runLuaWithData:(NSDictionary *)data {
+
+- (void)runLuaWithData:(NSMutableDictionary *)data {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     [dict addEntriesFromDictionary:self.configData];
     [dict addEntriesFromDictionary:data];
     [dict setObject:self.serviceId forKey:@"id"];
+    [dict setObject:@(self.config.videoModeType) forKey:@"videoModeType"];
+    [data setObject:@(self.config.videoModeType) forKey:@"videoModeType"];
     if ([data objectForKey:@"data"]) {
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://defaultLuaView?template=%@&id=%@",VPUPRoutesSDKLuaView, [dict objectForKey:@"template"], [dict objectForKey:@"id"]]];
+        [data setObject:[self.configData objectForKey:@"videoModeMiniAppInfo"] forKey:@"miniAppInfo"];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://defaultLuaView?template=%@&id=%@&miniAppId=%@",
+                                           VPUPRoutesSDKLuaView,
+                                           [[dict objectForKey:@"videoModeMiniAppInfo"] objectForKey:@"template"],
+                                           [dict objectForKey:@"id"],
+                                           [[dict objectForKey:@"videoModeMiniAppInfo"] objectForKey:@"miniAppId"]]];
         [VPUPRoutes routeURL:url withParameters:data completion:^(id  _Nonnull result) {
             
         }];
     }
     
-    NSURL *desktopUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@://desktopLuaView?template=%@&id=%@",VPUPRoutesSDKLuaView, [dict objectForKey:@"desktopTemplate"], [dict objectForKey:@"id"]]];
+    if (!data) {
+        data = [NSMutableDictionary dictionary];
+    }
+    [data setObject:[self.configData objectForKey:@"desktopMiniAppInfo"] forKey:@"miniAppInfo"];
+    NSURL *desktopUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@://desktopLuaView?template=%@&id=%@&miniAppId=%@",
+                                              VPUPRoutesSDKLuaView,
+                                              [[dict objectForKey:@"desktopMiniAppInfo"] objectForKey:@"template"],
+                                              [dict objectForKey:@"id"],
+                                              [[dict objectForKey:@"desktopMiniAppInfo"] objectForKey:@"miniAppId"]]];
     [VPUPRoutes routeURL:desktopUrl withParameters:data completion:^(id  _Nonnull result) {
         
     }];

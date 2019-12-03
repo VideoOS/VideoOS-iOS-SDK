@@ -219,6 +219,7 @@
     
     CGFloat nowValue = _playbackSlider.value;
     [_player setCurrentPlaybackTime:nowValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"VPIPlayButtonAction" object:nil userInfo:@{@"type":@(1)}];
 }
 
 - (IBAction)playbackSliderTouchUpOutside:(id)sender {

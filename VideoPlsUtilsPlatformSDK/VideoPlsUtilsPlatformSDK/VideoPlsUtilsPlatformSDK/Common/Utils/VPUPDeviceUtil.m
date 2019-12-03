@@ -55,4 +55,21 @@
     return mobile;
 }
 
++ (int)phoneCarrierType {
+    //运营商信息 0:其他，1:移动，2:联通，3:电信，4:其它
+    int type = 0;
+    
+    NSString *carrier = [VPUPDeviceUtil phoneCarrier];
+    if ([carrier containsString:@"移动"]) {
+        type = 1;
+    }
+    else if ([carrier containsString:@"联通"]) {
+        type = 2;
+    }
+    else if ([carrier containsString:@"电信"]) {
+        type = 3;
+    }
+    return type;
+}
+
 @end

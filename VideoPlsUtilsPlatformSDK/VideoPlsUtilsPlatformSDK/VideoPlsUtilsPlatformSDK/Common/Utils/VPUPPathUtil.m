@@ -60,6 +60,16 @@
     return [VPUPPathUtil subPathOfLua:@"os"];
 }
 
++ (NSString *)subPathOfLuaOSPath:(NSString *)placeholder {
+    NSString *path = [self luaOSPath];
+    path = [path stringByAppendingPathComponent:placeholder];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return path;
+}
+
 + (NSString *)luaAppletsPath {
     return [VPUPPathUtil subPathOfLua:@"applets"];
 }
@@ -96,6 +106,10 @@
 
 + (NSString *)goodsPath {
     return [self pathByPlaceholder:@"goods"];
+}
+
++ (NSString *)localStoragePath {
+    return [self pathByPlaceholder:@"storage"];
 }
 
 

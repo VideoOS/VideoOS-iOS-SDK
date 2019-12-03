@@ -18,6 +18,7 @@
         self.naviTitleColor = [VPUPHXColor vpup_colorWithHexARGBString:@"ffffff"];
         self.naviButtonColor = [VPUPHXColor vpup_colorWithHexARGBString:@"ffffff"];
         self.naviAlpha = 1;
+        self.naviShow = YES;
     }
     return self;
 }
@@ -57,6 +58,12 @@
         }
         setting.naviAlpha = alpha;
     }
+    
+    if ([dict objectForKey:@"navShow"]) {
+        BOOL naviShow = [[dict objectForKey:@"navShow"] boolValue];
+        setting.naviShow = naviShow;
+    }
+    
     return setting;
 }
 

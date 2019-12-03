@@ -21,11 +21,18 @@ typedef NS_ENUM(NSUInteger, VPAppletContainerAppType) {
     VPAppletContainerAppTypeHybird          = 2
 };
 
+typedef NS_ENUM(NSUInteger, VPAppletContainerOrientation) {
+    VPAppletContainerOrientationLandScape   = 1,
+    VPAppletContainerOrientationPortriat    = 2
+};
+
 @protocol VPLuaAppletContainer <NSObject>
 
 @property (nonatomic, readonly) NSString *appletID;
 
 @property (nonatomic, assign, readonly) VPLuaAppletContainerType type;
+
+@property (nonatomic, assign) VPAppletContainerOrientation currentOrientation;
 
 @property (nonatomic, weak) id<VPLuaAppletContainerDelegate> containerDelegate;
 

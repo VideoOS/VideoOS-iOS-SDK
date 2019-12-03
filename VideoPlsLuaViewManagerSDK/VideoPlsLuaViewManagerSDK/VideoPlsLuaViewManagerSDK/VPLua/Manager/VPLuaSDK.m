@@ -16,7 +16,7 @@
 #import <AdSupport/AdSupport.h>
 
 NSString *const VPLuaServerHost = @"https://os-saas.videojj.com/os-api-saas";
-NSString *const VPLuaScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas/api/preloadLuaFileInfo";
+NSString *const VPLuaScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas/api/v2/preloadLuaFileInfo";
 
 NSString *const VPLuaRequestPublicKey = @"inekcndsaqwertyi";
 

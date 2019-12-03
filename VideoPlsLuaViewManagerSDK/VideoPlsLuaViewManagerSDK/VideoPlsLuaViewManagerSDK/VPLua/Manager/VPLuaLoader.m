@@ -89,6 +89,12 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
     return _prefetchManager;
 }
 
+- (void)checkAndDownloadFilesListWithAppInfo:(VPMiniAppInfo *)appInfo complete:(VPLuaLoaderCompletionBlock)complete {
+    if (appInfo && appInfo.appletID) {
+        [self checkAndDownloadFilesList:appInfo.luaList resumePath:[VPUPPathUtil subPathOfLuaOSPath:appInfo.appletID] complete:complete];
+    }
+}
+
 - (void)checkAndDownloadFilesList:(NSArray *)filesList complete:(VPLuaLoaderCompletionBlock)complete {
     [self checkAndDownloadFilesList:filesList resumePath:[VPUPPathUtil luaOSPath] complete:complete];
 }
@@ -204,6 +210,12 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
                 NSError *removeError = nil;
                 NSString *targetPath = [loaderObject.destinationPath stringByAppendingString:[NSString stringWithFormat:@"/%@", fileName]];
                 NSString *sourcePath = [loaderObject.tempFilePath stringByAppendingString:[NSString stringWithFormat:@"/%@", fileName]];
+                
+                if (![[NSFileManager defaultManager] fileExistsAtPath:sourcePath]) {
+                    //下载文件不存在，则删除
+                    continue;
+                }
+                
                 if ([[NSFileManager defaultManager] fileExistsAtPath:targetPath]) {
                     [[NSFileManager defaultManager] removeItemAtPath:targetPath error:&removeError];
                 }

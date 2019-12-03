@@ -19,6 +19,7 @@
     if (self) {
         _videoId = config.identifier;
         _type = config.type;
+        _videoModeType = config.videoModeType;
     }
     return self;
 }

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "VPUPTrafficStatistics.h"
+#import "VPMiniAppInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -30,6 +31,8 @@ typedef void(^VPLuaLoaderCompletionBlock)(NSError *error, VPUPTrafficStatisticsL
 @interface VPLuaLoader : NSObject
 
 + (instancetype)sharedLoader;
+
+- (void)checkAndDownloadFilesListWithAppInfo:(VPMiniAppInfo *)appInfo complete:(VPLuaLoaderCompletionBlock)complete;
 
 //默认下载到luaOSPath
 - (void)checkAndDownloadFilesList:(NSArray *)filesList complete:(VPLuaLoaderCompletionBlock)complete;

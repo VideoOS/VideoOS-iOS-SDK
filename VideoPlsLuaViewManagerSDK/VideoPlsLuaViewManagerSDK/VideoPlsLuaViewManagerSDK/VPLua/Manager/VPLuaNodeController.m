@@ -29,11 +29,10 @@
 
 #import <VPLuaViewSDK/LuaViewCore.h>
 #import "VideoPlsUtilsPlatformSDK.h"
+#import "VPLuaConstant.h"
 
 //cont
 //static NSMutableArray<VPLuaNodeController *> *avaliableControllers;
-const NSInteger VPLuaBaseNodeInfoViewPriority = 2;
-const NSInteger VPLuaBaseNodeWedgePriority = 10;
 
 @interface VPLuaNodeController()
 
@@ -278,6 +277,17 @@ const NSInteger VPLuaBaseNodeWedgePriority = 10;
         }
     }
     
+    NSDictionary *miniAppInfo = [luaData objectForKey:@"miniAppInfo"];
+    NSString *developerUserId = @"10001001000";
+    NSString *appletId = @"";
+    if (miniAppInfo && [miniAppInfo objectForKey:@"developerUserId"] != nil) {
+        developerUserId = [miniAppInfo objectForKey:@"developerUserId"];
+    }
+    if (miniAppInfo && [miniAppInfo objectForKey:@"miniAppId"] != nil) {
+        appletId = [miniAppInfo objectForKey:@"miniAppId"];
+    }
+    
+    
     NSMutableDictionary *toLuaData = [NSMutableDictionary dictionaryWithCapacity:0];
     [toLuaData addEntriesFromDictionary:queryParams];
     if (luaData && luaData.count > 0) {
@@ -295,7 +305,8 @@ const NSInteger VPLuaBaseNodeWedgePriority = 10;
     
     VPLuaBaseNode *node = [self createNode];
     node.nodeId = nodeId;
-    [node.lvCore.bundle changeCurrentPath:self.destinationPath];
+    [node.lvCore.bundle changeCurrentPath:[filePath stringByDeletingLastPathComponent]];
+    [node.lvCore.bundle addScriptPath:@".."];
     node.videoPlayerSize = self.videoPlayerSize;
     node.videoInfo = _videoInfo;
     node.networkManager = _networkManager;
@@ -303,10 +314,12 @@ const NSInteger VPLuaBaseNodeWedgePriority = 10;
     node.luaController = self;
     node.luaFile = filePath;
     node.rootView.frame = _rootView.bounds;
+    node.developerUserId = developerUserId;
+    node.appletId = appletId;
     
     if ([toLuaData objectForKey:@"priority"]) {
         node.priority = [[toLuaData objectForKey:@"priority"] integerValue];
-    }
+    } 
 
     NSString *runFile = [node runLuaFile:filePath data:toLuaData];
 
@@ -325,7 +338,6 @@ const NSInteger VPLuaBaseNodeWedgePriority = 10;
             insertIndex -= 1;
         }
     }
-    
     [_rootView insertSubview:node.rootView atIndex:insertIndex];
     [_nodes addObject:node];
 }

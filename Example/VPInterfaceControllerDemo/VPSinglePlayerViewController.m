@@ -27,6 +27,8 @@
 #import "VPConfigListData.h"
 #import <SVGAPlayer/SVGAPlayer.h>
 #import <SVGAPlayer/SVGAParser.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+
 @interface VPSinglePlayerViewController() <VPInterfaceStatusNotifyDelegate, VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate,VPIServiceDelegate,VPMediaControlViewDelegate,SVGAPlayerDelegate> {
     NSString *_urlString;
     NSString *_platformUserID;
@@ -517,7 +519,7 @@
         [PrivateConfig shareConfig].environment = self.appSettingView.environmentControl.selectedSegmentIndex;
         [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:[PrivateConfig shareConfig].environment];
         [VPIConfigSDK setAppKey:self.appSettingView.appKeyTextField.text appSecret:self.appSettingView.appSecretTextField.text];
-        
+        [VPIConfigSDK initSDK];
         [self.appSettingView.appKeyTextField resignFirstResponder];
         [self.appSettingView.appSecretTextField resignFirstResponder];
         [self.appSettingView removeFromSuperview];
@@ -605,6 +607,8 @@
     VPInterfaceControllerConfig *config = [[VPInterfaceControllerConfig alloc] init];
     config.platformID = [PrivateConfig shareConfig].platformID;
     config.identifier = [PrivateConfig shareConfig].identifier;
+    config.episode = @"测试视频";
+    config.title = @"测试";
     config.types = _type;
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     if ([PrivateConfig shareConfig].cate) {
@@ -879,7 +883,10 @@
                         }
                     } else {
                         // 暂时无法处理的url
-                        [self openWebViewWithUrl:linkUrl];
+                        if (![actionDictionary objectForKey:@"deepLink"] && [[actionDictionary objectForKey:@"deepLink"] length] <= 0) {
+                            [self openWebViewWithUrl:linkUrl];
+                        }
+
                     }
                 }
                 if ([actionDictionary objectForKey:@"deepLink"] && [[actionDictionary objectForKey:@"deepLink"] length] > 0) {
@@ -887,14 +894,14 @@
                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[actionDictionary objectForKey:@"deepLink"]]];
                     }
                     else {
-                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"错误" message:@"App打开失败" preferredStyle:UIAlertControllerStyleAlert];
-                        __weak typeof(self) weakSelf = self;
-                        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                            __strong typeof(self) strongSelf = weakSelf;
-                            [strongSelf->_interfaceController platformCloseActionWebView];
-                        }];
-                        [alert addAction:action];
-                        [[VPUPTopViewController topViewController] presentViewController:alert animated:YES completion:nil];
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                        hud.mode = MBProgressHUDModeText;
+                        hud.label.text = @"对应APP未安装";
+                        hud.label.font = [UIFont systemFontOfSize:14];
+                        hud.label.numberOfLines = 0;
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                        });
                     }
                 }
             }

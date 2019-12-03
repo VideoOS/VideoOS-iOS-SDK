@@ -25,6 +25,10 @@
 - (void)showRetryPage:(NSString *)retryMessage retryData:(id)data nodeId:(NSString *)nodeId;
 - (void)showErrorPage:(NSString *)errorMessage;
 
+- (BOOL)canGoBack;
+- (void)goBack;
+- (void)closeView;
+
 @end
 
 @interface VPLuaNodeController : NSObject
@@ -43,7 +47,6 @@
 @property (nonatomic, assign, readonly, getter=isPortrait) BOOL portrait;
 @property (nonatomic, assign, readonly, getter=isFullScreen) BOOL fullScreen;
 @property (nonatomic, assign) VPLuaVideoPlayerOrientation currentOrientation;
-
 
 //- (instancetype)initWithViewFrame:(CGRect)frame videoRect:(CGRect)videoRect;
 

@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) VPIServiceType type;
 @property (nonatomic, assign) VPIVideoAdTimeType duration;
 
+@property (nonatomic, assign) VPIVideoModeType videoModeType;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -12,11 +12,21 @@
 #import "VPUPRandomUtil.h"
 #import "VPUPMD5Util.h"
 #import "VPUPHexColors.h"
+#import "VPLuaBaseNode.h"
+#import "VPUPValidator.h"
 
 #import <VPLuaViewSDK/LVBaseView.h>
 #import <VPLuaViewSDK/LuaViewCore.h>
 
-@interface VPLuaWebView() <VPUPBasicWebViewDelegate>
+typedef NS_ENUM(NSInteger, VPLuaWebViewCallback) {
+    kVPLuaWebViewOnClose        = 1
+};
+
+static char *callbackWebViewKeys[] = { "", "onClose"};
+
+@interface VPLuaWebView() <VPUPBasicWebViewDelegate, VPLuaAppletWebViewDelegate>
+
+@property (nonatomic) NSDictionary *rootData;
 
 @end
 
@@ -27,11 +37,69 @@
     if( self ){
         self.lv_luaviewCore = LV_LUASTATE_VIEW(l);
         self.delegate = self;
+        self.jsAppletDelegate = self;
         //默认横屏
         self.landscape = YES;
+        VPLuaBaseNode *luaNode = (id)self.lv_luaviewCore.viewController;
+        self.developUserId = luaNode.developerUserId;
+        self.appletId = luaNode.appletId;
     }
     return self;
 }
+
+- (void)callFromJSMethod:(NSString *)method args:(NSDictionary *)args {
+    NSString *methodString = [NSString stringWithFormat:@"%@%@", method, @"WithParameters:"];
+    
+    SEL selector = NSSelectorFromString(methodString);
+    if ([self respondsToSelector:selector]) {
+        [self performSelector:selector withObject:args];
+    }
+}
+
+- (NSString *)getJSCallback:(NSDictionary *)params {
+    if (!VPUP_IsStrictExist([params objectForKey:@"callback"])) {
+        return nil;
+    }
+    
+    return [params objectForKey:@"callback"];
+}
+
+- (void)getInitDataWithParameters:(NSDictionary *)params {
+    NSString *jsCallback = [self getJSCallback:params];
+    if (!jsCallback) {
+        return;
+    }
+    
+    NSMutableDictionary *sendParams = [NSMutableDictionary dictionary];
+    
+    NSDictionary *data = self.rootData;
+    NSArray *paramArray = nil;
+    if (data) {
+        [sendParams setObject:data forKey:@"data"];
+        
+        NSString *sendParamString = VPUP_DictionaryToJson(sendParams);
+        
+        if (sendParamString) {
+            paramArray = [NSArray arrayWithObject:sendParamString];
+        }
+    }
+    
+    [self jsCallMethod:jsCallback params:paramArray];
+}
+
+- (void)closeViewWithParameters:(NSDictionary *)params {
+    lua_State *l = self.lv_luaviewCore.l;
+    
+    lv_pushUserdata(l, self.lv_userData);
+    lv_pushUDataRef(l, USERDATA_KEY_DELEGATE);
+    
+    [self lv_callLuaCallback:@"onClose"];
+    
+//    if([LVUtil call:l key1:STR_CALLBACK key2:"onClose" key3:NULL key4:NULL nargs:0 nrets:0 retType:LUA_TNONE] == 0) {
+//
+//    }
+}
+
 
 - (void)initJSCallMethod {
     lua_State* l = self.lv_luaviewCore.l;
@@ -147,7 +215,8 @@
 
 
 - (void)destroyView {
-    [self stopAndRemoveBasicWebview];
+//    [self stopAndRemoveBasicWebview];
+    [self stop];
 }
 
 
@@ -158,10 +227,10 @@
     lv_pushUserdata(l, self.lv_userData);
     lv_pushUDataRef(l, USERDATA_KEY_DELEGATE);
     
-    
-    if([LVUtil call:l key1:STR_CALLBACK key2:"start" key3:NULL key4:NULL nargs:0 nrets:0 retType:LUA_TNONE] == 0) {
-        
-    }
+    [self lv_callLuaCallback:@"start"];
+//    if([LVUtil call:l key1:STR_CALLBACK key2:"start" key3:NULL key4:NULL nargs:0 nrets:0 retType:LUA_TNONE] == 0) {
+//
+//    }
 }
 
 - (void)loadCompleteWithTitle:(NSString *)title error:(NSError *)error {
@@ -179,9 +248,11 @@
     lv_pushUserdata(l, self.lv_userData);
     lv_pushUDataRef(l, USERDATA_KEY_DELEGATE);
     
-    if([LVUtil call:l key1:STR_CALLBACK key2:"loadComplete" key3:NULL key4:NULL nargs:2 nrets:0 retType:LUA_TNONE] == 0) {
-        
-    }
+    
+    [self lv_callLuaCallback:@"start" key2:nil argN:2];
+//    if([LVUtil call:l key1:STR_CALLBACK key2:"loadComplete" key3:NULL key4:NULL nargs:2 nrets:0 retType:LUA_TNONE] == 0) {
+//        
+//    }
 }
 
 
@@ -194,6 +265,7 @@
         {"progressColor", progressColor},
         {"isLandscape", isLandscape},
         {"destroyView", destroyView},
+        {"setInitData", setInitData },
         {NULL, NULL}
     };
     
@@ -229,6 +301,7 @@ static int lvNewWebView (lua_State *L){
                     [webView initJSCallMethod];
                 });
             }
+            
         }
     }
     return 1; /* new userdatum is already on the stack */
@@ -341,6 +414,22 @@ static int destroyView(lua_State *L) {
         VPLuaWebView* webView = (__bridge VPLuaWebView *)(user->object);
         if (webView) {
             [webView destroyView];
+        }
+    }
+    return 0;
+}
+
+static int setInitData(lua_State *L) {
+    LVUserDataInfo * user = (LVUserDataInfo *)lua_touserdata(L, 1);
+    if( user ){
+        VPLuaWebView* webView = (__bridge VPLuaWebView *)(user->object);
+        if (webView) {
+            if(lua_gettop(L) >= 2) {
+                if (lua_istable(L, 2)) {
+                    NSDictionary *dict = lv_luaValueToNativeObject(L, 2);
+                    webView.rootData = dict;
+                }
+            }
         }
     }
     return 0;

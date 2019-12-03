@@ -103,6 +103,8 @@ Photos.framework
     //配置信息
     VPInterfaceControllerConfig *config = [[VPInterfaceControllerConfig alloc] init];
     config.identifier = videoUrl; //or roomId
+    config.episode = @"episode"; //剧集名称
+    config.title = @"title"; //视频标题
     config.types = VPInterfaceControllerTypeVideoOS; //or VPInterfaceControllerTypeLiveOS
     //扩展信息
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];

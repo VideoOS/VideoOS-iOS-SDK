@@ -11,6 +11,9 @@
 NSString *const VPLuaErrorDomain = @"VPLuaErrorDomain";
 NSString *const VPLuaLuaDataNotification = @"VPLuaLuaDataNotification";
 
+const NSInteger VPLuaBaseNodeInfoViewPriority = 2;
+const NSInteger VPLuaBaseNodeWedgePriority = 10;
+
 @implementation VPLuaConstant
 
 @end

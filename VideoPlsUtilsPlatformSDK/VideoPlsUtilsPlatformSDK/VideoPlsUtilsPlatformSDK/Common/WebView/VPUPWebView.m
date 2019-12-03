@@ -106,11 +106,11 @@
 }
 
 - (void)nativeCallJS {
-    NSMutableArray *arrayToCall = [NSMutableArray array];
-    [arrayToCall addObject:@1];
-    [arrayToCall addObject:@2];
-    // native call js with argus
-    [self.context[@"getNTShoppingCart"] callWithArguments:arrayToCall];
+//    NSMutableArray *arrayToCall = [NSMutableArray array];
+//    [arrayToCall addObject:@1];
+//    [arrayToCall addObject:@2];
+//    // native call js with argus
+//    [self.context[@"getNTShoppingCart"] callWithArguments:arrayToCall];
 }
 
 - (void)nativeCallWebviewWithJS:(NSString *)jsFuncName paramaters:(NSArray *)params callback:(VPUPWebViewCallback)callback {

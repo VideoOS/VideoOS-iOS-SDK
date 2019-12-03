@@ -80,6 +80,7 @@
  */
 - (float)videoPlayerCurrentVolume;
 
+@required
 
 /**
  * 获取播放器当前播放的视频的总时长
@@ -87,7 +88,6 @@
  */
 - (NSTimeInterval)videoPlayerCurrentItemAssetDuration;
 
-@required
 
 /**
  * 获取播放器当前的时间

@@ -18,6 +18,11 @@ typedef NS_ENUM(NSInteger, VPLuaServiceType) {
     VPLuaServiceTypePauseAd               = 4,       //暂停广告
 };
 
+typedef NS_ENUM(NSInteger, VPLuaVideoModeType) {
+    VPLuaVideoModeTypeLabel                   = 0,        //视联网标签模式
+    VPLuaVideoModeTypeBubble                  = 1,        //视联网气泡模式
+};
+
 typedef void(^VPLuaServiceCompletionBlock)(NSError *error);
 
 @interface VPLuaServiceConfig : NSObject
@@ -25,6 +30,7 @@ typedef void(^VPLuaServiceCompletionBlock)(NSError *error);
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, assign) VPLuaServiceType type;
 @property (nonatomic, assign) NSInteger duration;
+@property (nonatomic, assign) VPLuaVideoModeType videoModeType;
 
 @end
 
@@ -33,6 +39,7 @@ typedef void(^VPLuaServiceCompletionBlock)(NSError *error);
 @property (nonatomic, copy) NSString *serviceId;
 @property (nonatomic, copy) NSString *videoId;
 @property (nonatomic, assign) VPLuaServiceType type;
+@property (nonatomic, assign) VPLuaVideoModeType videoModeType;
 
 - (instancetype)initWithConfig:(VPLuaServiceConfig *)config;
 

@@ -47,6 +47,10 @@
 
 }
 
+- (void)updateContainView {
+    [self.luaController updateFrame:self.containFrame isPortrait:NO isFullScreen:YES];
+}
+
 - (void)updateContainUserInfo {
     if (self.getUserInfoBlock) {
         [self.luaController setGetUserInfoBlock:self.getUserInfoBlock];
@@ -61,7 +65,7 @@
     __weak typeof(self) weakSelf = self;
     if (![VPLuaSDK sharedSDK].appDev) {
         //normal use
-        [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:self.applet.luaList resumePath:self.appletPath complete:^(NSError * error, VPUPTrafficStatisticsList *trafficList) {
+        [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:self.applet.miniAppInfo.luaList resumePath:self.appletPath complete:^(NSError * error, VPUPTrafficStatisticsList *trafficList) {
             //已回到主线程
             if (trafficList) {
                 [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeRealTime];
@@ -87,7 +91,7 @@
 - (void)loadRootLua {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self closeLoadingView];
-        [self.luaController loadLua:self.applet.templateLua data:self.rootData];
+        [self.luaController loadLua:self.applet.miniAppInfo.templateLua data:self.rootData];
     });
 }
 
@@ -205,6 +209,7 @@
     }
 }
 
+// applet bridge delegate
 - (void)showRetryPage:(NSString *)retryMessage retryData:(id)data nodeId:(NSString *)nodeId {
     [self showRetryView];
     if (retryMessage != nil && ![retryMessage isEqualToString:@""]) {
@@ -226,6 +231,25 @@
         [self.errorView useDefaultMessage];
     }
 
+}
+
+- (BOOL)canGoBack {
+    if ([_nodeStack count] == 0) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (void)goBack {
+    [self naviBackButtonTapped];
+}
+
+- (void)closeView {
+    SEL selector = NSSelectorFromString(@"naviCloseButtonTapped");
+    if ([self respondsToSelector:selector]) {
+        [self performSelector:selector withObject:nil];
+    }
 }
 
 @end

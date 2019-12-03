@@ -511,7 +511,7 @@
         [PrivateConfig shareConfig].environment = self.appSettingView.environmentControl.selectedSegmentIndex;
         [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:[PrivateConfig shareConfig].environment];
         [VPIConfigSDK setAppKey:self.appSettingView.appKeyTextField.text appSecret:self.appSettingView.appSecretTextField.text];
-        
+        [VPIConfigSDK initSDK];
         [self.appSettingView.appKeyTextField resignFirstResponder];
         [self.appSettingView.appSecretTextField resignFirstResponder];
         [self.appSettingView removeFromSuperview];

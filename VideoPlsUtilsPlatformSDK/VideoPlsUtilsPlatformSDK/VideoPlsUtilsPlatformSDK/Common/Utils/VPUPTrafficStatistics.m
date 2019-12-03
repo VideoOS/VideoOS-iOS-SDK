@@ -7,13 +7,7 @@
 //
 
 #import "VPUPTrafficStatistics.h"
-#import "VPUPHTTPBusinessAPI.h"
-#import "VPUPHTTPAPIManager.h"
-#import "VPUPHTTPManagerFactory.h"
-#import "VPUPGeneralInfo.h"
-#import "VPUPCommonInfo.h"
-#import "VPUPEncryption.h"
-#import "VPUPJsonUtil.h"
+#import "VPUPCommonTrack.h"
 
 @implementation VPUPTrafficStatisticsObject
 
@@ -82,8 +76,7 @@
 }
 
 @end
-
-static id<VPUPHTTPAPIManager> httpManager;
+ 
 
 @implementation VPUPTrafficStatistics
 
@@ -93,11 +86,6 @@ static id<VPUPHTTPAPIManager> httpManager;
         return;
     }
     
-    VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
-    
-    api.baseUrl = [NSString stringWithFormat:@"%@/%@", @"https://os-saas.videojj.com/os-api-saas", @"statisticFlow"];
-    //mock
-    api.apiRequestMethodType = VPUPRequestMethodTypePOST;
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     NSArray *fileInfo = [list dictionaryValue];
     if (!fileInfo) {
@@ -105,22 +93,8 @@ static id<VPUPHTTPAPIManager> httpManager;
     }
     [param setObject:fileInfo forKey:@"fileInfo"];
     [param setObject:@(type) forKey:@"downLoadStage"];
-    [param setObject:[VPUPCommonInfo commonParam] forKey:@"commonParam"];
     
-//    api.requestParameters = param;
-    NSString *commonParamString = VPUP_DictionaryToJson(param);
-    NSString *secret = [VPUPGeneralInfo mainVPSDKAppSecret];
-    api.requestParameters = @{@"data":[VPUPAESUtil aesEncryptString:commonParamString key:secret initVector:secret]};
-    api.apiCompletionHandler = ^(id _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
-        
-    };
-    
-    if (!httpManager) {
-        httpManager = [VPUPHTTPManagerFactory createHTTPAPIManagerWithType:VPUPHTTPManagerTypeAFN];
-    }
-    
-    
-    [httpManager sendAPIRequest:api];
+    [[VPUPCommonTrack shared] sendTrackWithType:VPUPCommonTrackTypeTraffic dataDict:param];
 }
 
 @end

@@ -31,6 +31,7 @@
 #import "VPLuaDesktopView.h"
 #import "VPLuaMedia.h"
 #import "VPLuaVideoInfo.h"
+#import "VPLuaTopView.h"
 #import "VPLuaPage.h"
 #import "VPLuaNativeBridge.h"
 #import "VPLuaSDK.h"
@@ -56,11 +57,13 @@
 
 @interface VPInterfaceController()
 
-@property (nonatomic) VPLuaOSView *osView;
+@property (nonatomic, strong) VPLuaOSView *osView;
 
-@property (nonatomic) VPLuaAppletsView *appletsView;
+@property (nonatomic, strong) VPLuaAppletsView *appletsView;
 
-@property (nonatomic) VPLuaDesktopView *desktopView;
+@property (nonatomic, strong) VPLuaDesktopView *desktopView;
+
+@property (nonatomic, strong) VPLuaTopView *topView;
 
 @property (nonatomic, readwrite, strong) VPInterfaceControllerConfig *config;
 
@@ -71,6 +74,8 @@
 @property (nonatomic, strong) NSDictionary *openUrlActionDict;
 
 @property (nonatomic, strong) VPLuaServiceManager *serviceManager;
+
+@property (nonatomic, strong) VPLuaVideoInfo *videoInfo;
 
 @end
 
@@ -120,6 +125,7 @@
                    config:(VPInterfaceControllerConfig *)config
           videoPlayerSize:(VPIVideoPlayerSize *)size {
     NSAssert(config, @"config不能为空");
+    NSAssert(config.identifier && config.episode && config.title, @"config identifier,episode,title 不能为空");
     if (!config) {
         return nil;
     }
@@ -139,33 +145,32 @@
 - (void)initViewWithFrame:(CGRect)frame
                            config:(VPInterfaceControllerConfig *)config {
     _config = config;
+    _videoInfo = [self interfaceControllerConfigToVideoInfo:config];
     _view = [[VPInterfaceClickThroughView alloc] initWithFrame:frame];
-    [self initOSViewWithFrame:frame];
-    [self initAppletsViewWithFrame:frame];
-    [self initDesktopViewWithFrame:frame];
-}
-
-- (void)initOSViewWithFrame:(CGRect)frame {
-
-    __weak typeof(self) weakSelf = self;
-    NSString *platformId = nil;
-    NSString *videoId = nil;
-
-    platformId = _config.platformID;
-    videoId = _config.identifier;
+    
     if (_config.types & VPInterfaceControllerTypeVideoOS) {
         [VPLuaSDK setOSType:VPLuaOSTypeVideoOS];
     }
     else {
         [VPLuaSDK setOSType:VPLuaOSTypeLiveOS];
     }
-    _osView = [[VPLuaOSView alloc] initWithFrame:frame platformId:platformId videoId:videoId extendInfo:_config.extendDict];
+    
+    [self initOSViewWithFrame:frame];
+    [self initAppletsViewWithFrame:frame];
+    [self initDesktopViewWithFrame:frame];
+    [self initTopViewWithFrame:frame];
+}
+
+- (void)initOSViewWithFrame:(CGRect)frame {
+    
+    _osView = [[VPLuaOSView alloc] initWithFrame:frame videoInfo:_videoInfo];
     VPLuaVideoPlayerSize *vpSize = [[VPLuaVideoPlayerSize alloc] init];
     vpSize.portraitSmallScreenHeight = self.videoPlayerSize.portraitSmallScreenHeight;
     vpSize.portraitFullScreenWidth = self.videoPlayerSize.portraitFullScreenWidth;
     vpSize.portraitFullScreenHeight = self.videoPlayerSize.portraitFullScreenHeight;
     vpSize.portraitSmallScreenOriginY = self.videoPlayerSize.portraitSmallScreenOriginY;
     _osView.videoPlayerSize = vpSize;
+    __weak typeof(self) weakSelf = self;
     [_osView setGetUserInfoBlock:^NSDictionary *(void) {
         return [weakSelf getUserInfoDictionary];
     }];
@@ -174,20 +179,14 @@
 
 - (void)initAppletsViewWithFrame:(CGRect)frame {
     
-    __weak typeof(self) weakSelf = self;
-    NSString *platformId = nil;
-    NSString *videoId = nil;
-    
-    platformId = _config.platformID;
-    videoId = _config.identifier;
-
-    _appletsView = [[VPLuaAppletsView alloc] initWithFrame:frame platformId:platformId videoId:videoId extendInfo:_config.extendDict];
+    _appletsView = [[VPLuaAppletsView alloc] initWithFrame:frame videoInfo:_videoInfo];
     VPLuaVideoPlayerSize *vpSize = [[VPLuaVideoPlayerSize alloc] init];
     vpSize.portraitSmallScreenHeight = self.videoPlayerSize.portraitSmallScreenHeight;
     vpSize.portraitFullScreenWidth = self.videoPlayerSize.portraitFullScreenWidth;
     vpSize.portraitFullScreenHeight = self.videoPlayerSize.portraitFullScreenHeight;
     vpSize.portraitSmallScreenOriginY = self.videoPlayerSize.portraitSmallScreenOriginY;
     _appletsView.videoPlayerSize = vpSize;
+    __weak typeof(self) weakSelf = self;
     [_appletsView setGetUserInfoBlock:^NSDictionary *(void) {
         return [weakSelf getUserInfoDictionary];
     }];
@@ -196,30 +195,50 @@
 
 - (void)initDesktopViewWithFrame:(CGRect)frame {
     
-    __weak typeof(self) weakSelf = self;
-    NSString *platformId = nil;
-    NSString *videoId = nil;
-    
-    platformId = _config.platformID;
-    videoId = _config.identifier;
-    if (_config.types & VPInterfaceControllerTypeVideoOS) {
-        [VPLuaSDK setOSType:VPLuaOSTypeVideoOS];
-    }
-    else {
-        [VPLuaSDK setOSType:VPLuaOSTypeLiveOS];
-    }
-    _desktopView = [[VPLuaDesktopView alloc] initWithFrame:frame platformId:platformId videoId:videoId extendInfo:_config.extendDict];
+    _desktopView = [[VPLuaDesktopView alloc] initWithFrame:frame videoInfo:_videoInfo];
     VPLuaVideoPlayerSize *vpSize = [[VPLuaVideoPlayerSize alloc] init];
     vpSize.portraitSmallScreenHeight = self.videoPlayerSize.portraitSmallScreenHeight;
     vpSize.portraitFullScreenWidth = self.videoPlayerSize.portraitFullScreenWidth;
     vpSize.portraitFullScreenHeight = self.videoPlayerSize.portraitFullScreenHeight;
     vpSize.portraitSmallScreenOriginY = self.videoPlayerSize.portraitSmallScreenOriginY;
     _desktopView.videoPlayerSize = vpSize;
+    __weak typeof(self) weakSelf = self;
     [_desktopView setGetUserInfoBlock:^NSDictionary *(void) {
         return [weakSelf getUserInfoDictionary];
     }];
     [_view addSubview:_desktopView];
     [_view bringSubviewToFront:_desktopView];
+}
+
+- (void)initTopViewWithFrame:(CGRect)frame {
+
+    _topView = [[VPLuaTopView alloc] initWithFrame:frame videoInfo:_videoInfo];
+    VPLuaVideoPlayerSize *vpSize = [[VPLuaVideoPlayerSize alloc] init];
+    vpSize.portraitSmallScreenHeight = self.videoPlayerSize.portraitSmallScreenHeight;
+    vpSize.portraitFullScreenWidth = self.videoPlayerSize.portraitFullScreenWidth;
+    vpSize.portraitFullScreenHeight = self.videoPlayerSize.portraitFullScreenHeight;
+    vpSize.portraitSmallScreenOriginY = self.videoPlayerSize.portraitSmallScreenOriginY;
+    _topView.videoPlayerSize = vpSize;
+    __weak typeof(self) weakSelf = self;
+    [_topView setGetUserInfoBlock:^NSDictionary *(void) {
+        return [weakSelf getUserInfoDictionary];
+    }];
+    [_view addSubview:_topView];
+    [_view bringSubviewToFront:_topView];
+}
+
+- (VPLuaVideoInfo *)interfaceControllerConfigToVideoInfo:(VPInterfaceControllerConfig *)config {
+    if (!config) {
+        return nil;
+    }
+    VPLuaVideoInfo *videoInfo = [[VPLuaVideoInfo alloc] init];
+    videoInfo.nativeID = config.identifier;
+    videoInfo.platformID = config.platformID;
+    videoInfo.episode = config.episode;
+    videoInfo.title = config.title;
+    videoInfo.category = config.category;
+    videoInfo.extendJSONString = VPUP_DictionaryToJson(config.extendDict);
+    return videoInfo;
 }
 
 - (BOOL)validateSetAttribute {
@@ -248,6 +267,10 @@
     
     _orientationType = -1;
     _canSet = NO;
+    
+    if (_config.identifier != _videoInfo.nativeID) {
+        _videoInfo = [self interfaceControllerConfigToVideoInfo:_config];
+    }
 
     if (!_osView) {
         [self initOSViewWithFrame:self.view.bounds];
@@ -267,6 +290,12 @@
     if (_desktopView) {
         [_desktopView startLoading];
     }
+    if (!_topView) {
+        [self initTopViewWithFrame:self.view.bounds];
+    }
+    if (_topView) {
+        [_topView startLoading];
+    }
     [self registerStatusNotification];
 }
 
@@ -276,9 +305,6 @@
 
 - (void)notifyVideoScreenChanged:(VPIVideoPlayerOrientation)type {
     
-    if (_orientationType == type) {
-        return;
-    }
     _orientationType = type;
 
     if (_osView) {
@@ -290,7 +316,9 @@
     if (_desktopView) {
         [_desktopView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
     }
-
+    if (_topView) {
+        [_topView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
+    }
     CGFloat width = 0;
     CGFloat height = 0;
     
@@ -360,11 +388,22 @@
         _desktopView = nil;
     }
     
+    if (_topView) {
+        [_topView stop];
+        [_topView removeFromSuperview];
+        _topView = nil;
+    }
+    
     _canSet = YES;
 }
 
 - (void)platformCloseActionWebView {
-    [_osView closeActionWebViewForAd:[self.openUrlActionDict objectForKey:@"adID"]];
+    if (_osView) {
+        [_osView closeActionWebViewForAd:[self.openUrlActionDict objectForKey:@"adID"]];
+    }
+    if (_topView) {
+        [_topView closeActionWebViewForAd:[self.openUrlActionDict objectForKey:@"adID"]];
+    }
 }
 
 - (void)pauseVideoAd {
@@ -374,6 +413,13 @@
                               @(VPLuaOSActionTypePause), @"osActionType",
                               @(VPLuaEventTypeOSAction), @"eventType",nil];
         [_osView callLuaMethod:@"event" data:dict];
+    }
+    if (_topView) {
+        [_topView pauseVideoAd];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              @(VPLuaOSActionTypePause), @"osActionType",
+                              @(VPLuaEventTypeOSAction), @"eventType",nil];
+        [_topView callLuaMethod:@"event" data:dict];
     }
 }
 
@@ -385,11 +431,21 @@
                               @(VPLuaEventTypeOSAction), @"eventType",nil];
         [_osView callLuaMethod:@"event" data:dict];
     }
+    if (_topView) {
+        [_topView playVideoAd];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              @(VPLuaOSActionTypeResume),@"osActionType",
+                              @(VPLuaEventTypeOSAction), @"eventType",nil];
+        [_topView callLuaMethod:@"event" data:dict];
+    }
 }
 
 - (void)closeInfoView {
     if (_osView) {
         [_osView closeInfoView];
+    }
+    if (_topView) {
+        [_topView closeInfoView];
     }
 }
 
@@ -431,7 +487,7 @@
 
 - (void)notifyScreenChange:(NSNotification *)sender {
     if (self.delegate) {
-        NSDictionary *dic =  sender.userInfo;
+        NSDictionary *dic = sender.userInfo;
         if (dic && [dic objectForKey:@"orientation"]) {
             [self.delegate vp_interfaceScreenChangedNotify:dic];
         }
@@ -661,25 +717,45 @@
 }
 
 - (NSTimeInterval)videoPlayerCurrentItemAssetDuration {
-    return [self.videoPlayerDelegate videoPlayerCurrentItemAssetDuration];
+    if (self.videoPlayerDelegate) {
+        return [self.videoPlayerDelegate videoPlayerCurrentItemAssetDuration];
+    }
+    return 0;
 }
 
 - (NSTimeInterval)videoPlayerCurrentTime {
-    return [self.videoPlayerDelegate videoPlayerCurrentTime];
+    if (self.videoPlayerDelegate) {
+        return [self.videoPlayerDelegate videoPlayerCurrentTime];
+    }
+    return 0;
 }
 
 - (VPUPVideoPlayerSize *)videoPlayerSize {
-    VPIVideoPlayerSize *vpiSize = [self.videoPlayerDelegate videoPlayerSize];
+    if (self.videoPlayerDelegate) {
+        VPIVideoPlayerSize *vpiSize = [self.videoPlayerDelegate videoPlayerSize];
+        VPUPVideoPlayerSize *vpupSize = [[VPUPVideoPlayerSize alloc] init];
+        vpupSize.portraitFullScreenWidth = vpiSize.portraitFullScreenWidth;
+        vpupSize.portraitFullScreenHeight = vpiSize.portraitFullScreenHeight;
+        vpupSize.portraitSmallScreenHeight = vpiSize.portraitSmallScreenHeight;
+        vpupSize.portraitSmallScreenOriginY = vpiSize.portraitSmallScreenOriginY;
+        return vpupSize;
+    }
+    
+    CGFloat portraitFullScreenWidth = MAX([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.height);
+    CGFloat portraitFullScreenHeight = MAX([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.height);
     VPUPVideoPlayerSize *vpupSize = [[VPUPVideoPlayerSize alloc] init];
-    vpupSize.portraitFullScreenWidth = vpiSize.portraitFullScreenWidth;
-    vpupSize.portraitFullScreenHeight = vpiSize.portraitFullScreenHeight;
-    vpupSize.portraitSmallScreenHeight = vpiSize.portraitSmallScreenHeight;
-    vpupSize.portraitSmallScreenOriginY = vpiSize.portraitSmallScreenOriginY;
+    vpupSize.portraitFullScreenWidth = portraitFullScreenWidth;
+    vpupSize.portraitFullScreenHeight = portraitFullScreenHeight;
+    vpupSize.portraitSmallScreenHeight = portraitFullScreenWidth * 9 / 16;
+    vpupSize.portraitSmallScreenOriginY = 0;
     return vpupSize;
 }
 
 - (CGRect)videoFrame {
-    return [self.videoPlayerDelegate videoFrame];
+    if (self.videoPlayerDelegate) {
+        return [self.videoPlayerDelegate videoFrame];
+    }
+    return self.view.frame;
 }
 
 - (void)registerRoutes {
@@ -719,7 +795,20 @@
             luaFile = [data objectForKey:@"template"];
         }
         
-        [strongSelf.osView loadLua:luaFile data:parameters];
+        NSString *miniAppId = [queryParams objectForKey:@"miniAppId"];
+        if (!miniAppId) {
+            miniAppId = [[data objectForKey:@"miniAppInfo"] objectForKey:@"miniAppId"];
+        }
+        
+        NSString *luaFilePath = nil;
+        if (miniAppId) {
+            luaFilePath = [miniAppId stringByAppendingPathComponent:luaFile];
+        }
+        else {
+            luaFilePath = luaFile;
+        }
+        
+        [strongSelf.osView loadLua:luaFilePath data:parameters];
         return YES;
     }];
     
@@ -793,7 +882,63 @@
             luaFile = [data objectForKey:@"template"];
         }
         
-        [strongSelf.desktopView loadLua:luaFile data:parameters];
+        NSString *miniAppId = [queryParams objectForKey:@"miniAppId"];
+        if (!miniAppId) {
+            miniAppId = [[data objectForKey:@"miniAppInfo"] objectForKey:@"miniAppId"];
+        }
+        
+        NSString *luaFilePath = nil;
+        if (miniAppId) {
+            luaFilePath = [miniAppId stringByAppendingPathComponent:luaFile];
+        }
+        else {
+            luaFilePath = luaFile;
+        }
+        [strongSelf.desktopView loadLua:luaFilePath data:parameters];
+        return YES;
+    }];
+    
+    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLuaView] addRoute:@"/topLuaView" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+        
+        if (!weakSelf) {
+            return NO;
+        }
+        __strong typeof(self) strongSelf = weakSelf;
+        //判定osView是否存在，若不存在，先创建
+        if (!strongSelf.topView) {
+            [strongSelf initTopViewWithFrame:strongSelf.view.bounds];
+            //TODO MQTT,如果_liveView不存在情况怎么处理
+            
+            if(!strongSelf.canSet) {
+                [strongSelf.topView startLoading];
+            }
+        }
+        
+        id data = [[parameters objectForKey:VPUPRouteUserInfoKey] objectForKey:@"ActionManagerData"];
+        if (!data) {
+            data = [parameters objectForKey:VPUPRouteUserInfoKey];
+        }
+        
+        NSDictionary *queryParams = [parameters objectForKey:VPUPRouteQueryParamsKey];
+        NSString *luaFile = [queryParams objectForKey:@"template"];
+        if (!luaFile) {
+            luaFile = [data objectForKey:@"template"];
+        }
+        
+        NSString *miniAppId = [queryParams objectForKey:@"miniAppId"];
+        if (!miniAppId) {
+            miniAppId = [[data objectForKey:@"miniAppInfo"] objectForKey:@"miniAppId"];
+        }
+        
+        NSString *luaFilePath = nil;
+        if (miniAppId) {
+            luaFilePath = [miniAppId stringByAppendingPathComponent:luaFile];
+        }
+        else {
+            luaFilePath = luaFile;
+        }
+        
+        [strongSelf.topView loadLua:luaFilePath data:parameters];
         return YES;
     }];
 }
@@ -862,9 +1007,11 @@
     }
     serviceConfig.type = (VPLuaServiceType)config.type;
     serviceConfig.duration = (VPIVideoAdTimeType)config.duration;
+    serviceConfig.videoModeType = (VPLuaVideoModeType)config.videoModeType;
     
     self.serviceManager.osView = self.osView;
     self.serviceManager.desktopView = self.desktopView;
+    self.serviceManager.topView = self.topView;
     self.serviceManager.delegate = self;
     
     [self.serviceManager startService:(VPLuaServiceType)type config:serviceConfig];

@@ -60,6 +60,7 @@
 #import "VPUPUrlUtil.h"
 #import "VPUPTrafficStatistics.h"
 #import "VPUPPrefetchImageManager.h"
+#import "VPUPCommonTrack.h"
 
 #define IS_IOS11 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0)
 
@@ -129,7 +130,7 @@ static NSMutableDictionary* httpAPICache() {
 }
 
 + (NSString *)cacheDataFilePath:(lua_State *)l {
-    NSString *path = [self luaNodeFromLuaState:l].lvCore.bundle.currentPath;
+    NSString *path = [VPUPPathUtil luaOSPath];
     if ([path rangeOfString:@".bundle"].location != NSNotFound) {
         // 使用bundle加载lua,需要另外新建plist地址
         path = [[VPUPPathUtil luaPath] stringByAppendingPathComponent:@"enjoy/cacheData.plist"];
@@ -278,6 +279,9 @@ static NSMutableDictionary* httpAPICache() {
         {"getVideoId", getVideoId},
         {"getVideoCategory", getVideoCategory},
         {"getConfigExtendJSONString", getConfigExtendJSONString},
+        {"getVideoEpisode", getVideoEpisode},
+        {"getVideoTitle", getVideoTitle},
+        {"getVideoInfo", getVideoInfo},
         {"setDebug", setDebug},
         {"screenChanged", screenChanged},
         {"widgetEvent", widgetEvent},
@@ -301,11 +305,13 @@ static NSMutableDictionary* httpAPICache() {
         {"preloadImage", preloadImage},
         {"preloadVideo", preloadVideo},
         {"preloadLuaList", preloadLuaList},
+        {"preloadMiniAppLua", preloadMiniAppLua},
         {"copyStringToPasteBoard", copyStringToPasteBoard},
         {"videoOShost", videoOShost},
         {"isCacheVideo", isCacheVideo},
         {"currentVideoTime", currentVideoTime},
         {"videoDuration", videoDuration},
+        {"commonTrack", commonTrack},
 //        {"appletSize", getAppletSize},
         {NULL, NULL}
     };
@@ -1086,6 +1092,68 @@ static int getConfigExtendJSONString(lua_State *L) {
     return 1;
 }
 
+static int getVideoEpisode(lua_State *L) {
+    NSString *episode = [VPLuaSDK sharedSDK].videoInfo.episode;
+    if(!episode) {
+        episode = @"";
+    }
+    lua_pushstring(L, episode.UTF8String);
+    return 1;
+}
+
+static int getVideoTitle(lua_State *L) {
+    NSString *title = [VPLuaSDK sharedSDK].videoInfo.title;
+    if(!title) {
+        title = @"";
+    }
+    lua_pushstring(L, title.UTF8String);
+    return 1;
+}
+
+static int getVideoInfo(lua_State *L) {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    
+    NSString *videoId = [VPLuaSDK sharedSDK].videoInfo.nativeID;
+    if(!videoId) {
+        videoId = @"";
+    }
+    [dict setValue:videoId forKey:@"videoId"];
+    
+    NSString *episode = [VPLuaSDK sharedSDK].videoInfo.episode;
+    if(!episode) {
+        episode = @"";
+    }
+    [dict setValue:episode forKey:@"episode"];
+    
+    NSString *title = [VPLuaSDK sharedSDK].videoInfo.title;
+    if(!title) {
+        title = @"";
+    }
+    [dict setValue:title forKey:@"title"];
+    
+    NSString *platformId = [VPLuaSDK sharedSDK].videoInfo.platformID;
+    if(!platformId) {
+        platformId = @"";
+    }
+    [dict setValue:platformId forKey:@"platformId"];
+    
+    NSString *category = [VPLuaSDK sharedSDK].videoInfo.category;
+    if(!category) {
+        category = @"";
+    }
+    [dict setValue:category forKey:@"category"];
+    
+    NSString *extendJSONString = [VPLuaSDK sharedSDK].videoInfo.extendJSONString;
+    if(!extendJSONString) {
+        extendJSONString = @"";
+    }
+    [dict setValue:extendJSONString forKey:@"extendJSONString"];
+    
+    lv_pushNativeObject(L, dict);
+    return 1;
+}
+
 static int setDebug(lua_State *L) {
     if (lua_gettop(L) >= 2) {
         NSInteger type = lua_tointeger(L, 2);
@@ -1378,6 +1446,60 @@ static int preloadVideo(lua_State *L) {
     return 0;
 }
 
+static int preloadMiniAppLua(lua_State *L) {
+    if (lua_gettop(L) >= 2) {
+        if( lua_type(L, 2) == LUA_TTABLE ) {
+            NSDictionary *appInfo = lv_luaValueToNativeObject(L, 2);
+            
+            BOOL needToCallback = NO;
+            __block NSString *bRequestMethod = [VPUPRandomUtil randomStringByLength:8];
+            
+            if (lua_gettop(L) >= 3 && lua_type(L, 3) == LUA_TFUNCTION) {
+                [LVUtil registryValue:L key:bRequestMethod stack:3];
+                needToCallback = YES;
+            }
+            
+            VPMiniAppInfo *appInfoObject = [VPMiniAppInfo initWithResponseDictionary:appInfo];
+            if (appInfoObject != nil) {
+                                
+                [[VPLuaLoader sharedLoader] checkAndDownloadFilesListWithAppInfo:appInfoObject complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList * _Nonnull trafficList) {
+                    
+                    if (trafficList) {
+                        [VPUPTrafficStatistics sendTrafficeStatistics:trafficList type:VPUPTrafficTypeOpenVideo];
+                    }
+                    
+                    if (needToCallback) {
+                        lua_State* l = L;
+                        if( l ){
+                            lua_checkstack32(l);
+                            if (!error) {
+                                lua_pushboolean(L, 1);
+                            } else {
+                                lua_pushboolean(L, 0);
+                            }
+                            [LVUtil call:l lightUserData:bRequestMethod key1:"callback" key2:NULL nargs:1];
+                            [LVUtil unregistry :l key:bRequestMethod];
+                        }
+                    }
+                    
+                    NSLog(@"preloadMiniAppLua error %@", error);
+                    
+                }];
+            }
+            else {
+                if (needToCallback) {
+                    lua_checkstack32(L);
+                    lua_pushboolean(L, 0);
+                    [LVUtil call:L lightUserData:bRequestMethod key1:"callback" key2:NULL nargs:1];
+                    [LVUtil unregistry:L key:bRequestMethod];
+                }
+                return 0;
+            }
+        }
+    }
+    return 0;
+}
+
 static int preloadLuaList(lua_State *L) {
     if (lua_gettop(L) >= 2) {
         if( lua_type(L, 2) == LUA_TTABLE ) {
@@ -1405,26 +1527,25 @@ static int preloadLuaList(lua_State *L) {
             
             //根据md5,先去一波重
             NSMutableArray *newArray = [NSMutableArray arrayWithCapacity:0];
+            NSMutableDictionary *needDic = [NSMutableDictionary dictionary];
             for (NSDictionary *dict in array) {
-                
+
                 if (![dict objectForKey:@"md5"] || [[dict objectForKey:@"md5"] isEqualToString:@""]) {
                     continue;
                 }
-                
-                BOOL needAdd = YES;
-                for (NSDictionary *noRepDict in newArray) {
-                    NSString *md5 = [dict objectForKey:@"md5"];
-                    NSString *noRepMd5 = [noRepDict objectForKey:@"md5"];
-                    if ([md5 isEqualToString:noRepMd5]) {
-                        needAdd = NO;
-                        break;
-                    }
+
+                NSString *name = [dict objectForKey:@"name"];
+                if (name != nil && name.length > 0) {
+                    [needDic setObject:dict forKey:name];
                 }
                 
-                if (needAdd) {
-                    [newArray addObject:dict];
-                }
             }
+
+            [needDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+             
+               [newArray addObject:obj];
+            }];
+
             
             [[VPLuaLoader sharedLoader] checkAndDownloadFilesList:newArray complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList *trafficList) {
                 
@@ -1505,6 +1626,17 @@ static int videoDuration(lua_State *L) {
     NSTimeInterval progress = [VPUPInterfaceDataServiceManager videoPlayerCurrentItemAssetDuration];
     lua_pushnumber(L, progress);
     return 1;
+}
+
+static int commonTrack(lua_State *L) {
+    if( lua_gettop(L) >= 3) {
+        if (lua_isnumber(L, 2) && lua_istable(L, 3)) {
+            NSInteger type = lua_tonumber(L, 2);
+            NSDictionary *data = lv_luaTableToDictionary(L, 3);
+            [[VPUPCommonTrack shared] sendTrackWithType:type dataDict:data];
+        }
+    }
+    return 0;
 }
 
 //static int getAppletSize(lua_State *L) {

@@ -61,14 +61,33 @@ local function hotspotPriority(data)
     return tonumber(dataTable.priority)
 end
 
+local function hotspotLevel(data)
+    if (data == nil) then
+        return nil
+    end
+    local dataTable = data.data
+    if (dataTable == nil) then
+        return nil
+    end
+    if (dataTable.level == nil) then
+        return nil
+    end
+    return tonumber(dataTable.level)
+end
+
 local function sendActionWedge(data) --跳转中插处理
     if (data == nil) then
         return
     end
     local repeatTimes = wedgeRepeatTimes(data)
     local priority = hotspotPriority(data)
+    local level = hotspotLevel(data)
     if (repeatTimes == -1) then
-        Native:sendAction(Native:base64Encode("LuaView://defaultLuaView?template=" .. data.template .. "&id=" .. data.id .. "&priority=" .. tostring(priority)), data)
+        if (level == osTopLevel) then
+            Native:sendAction(Native:base64Encode("LuaView://topLuaView?template=" .. data.miniAppInfo.template .. "&id=" .. data.id .. "&priority=" .. tostring(priority) .. "&miniAppId=" .. data.miniAppInfo.miniAppId), data)
+        else
+            Native:sendAction(Native:base64Encode("LuaView://defaultLuaView?template=" .. data.miniAppInfo.template .. "&id=" .. data.id .. "&priority=" .. tostring(priority) .. "&miniAppId=" .. data.miniAppInfo.miniAppId), data)
+        end
         print("=response==跳转=" .. tostring(data.template) .. "==id==" .. tostring(data.id) .. "==key=" .. tostring(key))
         return
     end
@@ -87,7 +106,13 @@ local function sendActionWedge(data) --跳转中插处理
     end
     playWedgeCount = playWedgeCount + 1
     dataTable.playWedgeCount = playWedgeCount
-    Native:sendAction(Native:base64Encode("LuaView://defaultLuaView?template=" .. data.template .. "&id=" .. data.id .. "&priority=" .. tostring(priority)), data)
+
+    if (level == osTopLevel) then
+        Native:sendAction(Native:base64Encode("LuaView://topLuaView?template=" .. data.miniAppInfo.template .. "&id=" .. data.id .. "&priority=" .. tostring(priority) .. "&miniAppId=" .. data.miniAppInfo.miniAppId), data)
+    else
+        Native:sendAction(Native:base64Encode("LuaView://defaultLuaView?template=" .. data.miniAppInfo.template .. "&id=" .. data.id .. "&priority=" .. tostring(priority) .. "&miniAppId=" .. data.miniAppInfo.miniAppId), data)
+    end
+    
     print("=response==跳转=" .. tostring(data.template) .. "==id==" .. tostring(data.id) .. "==key=" .. tostring(key))
 end
 
@@ -109,8 +134,6 @@ local function trackNotice(data, requestType, status, isShow)
         return nil
     end
 
-    -- local OS_HTTP_POST_CHECK_HOTSPOT_TRACK = OS_HTTP_HOST .. "/statisticConfirmLaunch"
-
     local paramData = {
         videoId = Native:nativeVideoID(),
         id = data.id,
@@ -119,23 +142,10 @@ local function trackNotice(data, requestType, status, isShow)
         timestamp = data.videoStartTime,
         type = requestType,
         status = status,
-        isShow = isShow,
-        commonParam = Native:commonParam()
+        isShow = isShow
     }
-
-    local paramDataString = Native:tableToJson(paramData)
-
-    -- print("[LuaView] "..paramDataString)
-    -- print("[LuaView] "..OS_HTTP_POST_CHECK_HOTSPOT_TRACK)
-
-    mainNode.request:post(OS_HTTP_POST_CHECK_HOTSPOT_TRACK, {
-        bu_id = buId,
-        device_type = deviceType,
-        data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
-    }, function(response, errorInfo)
-        -- print("luaview getVoteCountInfo")
-
-    end)
+    --接口参数文档http://wiki.videojj.com/pages/viewpage.action?pageId=2215044
+    Native:commonTrack(4, paramData)
 end
 
 local function checkHotspotShow(data)
@@ -275,6 +285,20 @@ local function registerMedia()
     return media
 end
 
+local function downloadAndRunLua(data)
+    if (data == nil) then
+        return
+    end
+    for k,v in pairs(data) do
+        Native:preloadMiniAppLua(v.miniAppInfo, function(status)
+            print("preloadMiniAppLua " .. tostring(status))
+            if (status == true) then 
+                sendNativeViewAction(data)
+            end
+        end)
+    end
+end
+
 local function registerMqtt(data)
     if data == nil then
         return
@@ -319,11 +343,11 @@ local function registerMqtt(data)
             return
         end
         for key, value in pairs(dataTable) do
-            if (value.id ~= nil and value.template ~= nil) then
+            if (value.id ~= nil and value.miniAppInfo ~= nil) then
                 local showAd = {}
                 value.from = "mqtt"
                 showAd[value.id] = value
-                sendNativeViewAction(showAd)
+                downloadAndRunLua(showAd)
                 --在此关闭中插有问题
             end
         end
@@ -337,6 +361,8 @@ local function getTaglist()
 
     local paramData = {
         videoId = Native:nativeVideoID(),
+        episode = Native:getVideoEpisode(),
+        title = Native:getVideoTitle(),
         commonParam = Native:commonParam()
     }
     local paramDataString = Native:tableToJson(paramData)
@@ -365,14 +391,16 @@ local function getTaglist()
         
         --下载投放的lua文件
         local luaList = {}
+        --按id去重
         for i,v in ipairs(dataTable) do
-            if (v.luaList ~= nil ) then
-                for i,v in ipairs(v.luaList) do
-                    table.insert(luaList, v)
-                end
+            if (v.miniAppInfo ~= nil ) then
+                luaList[v.miniAppInfo.miniAppId] = v.miniAppInfo
             end
         end
-        Native:preloadLuaList(luaList)
+
+        for k,v in pairs(luaList) do
+            Native:preloadMiniAppLua(v)
+        end
 
         --osTypeVideoOS = 1, osTypeLiveOS = 2, 点播按时间点加载，直播直接加载
         if Native:osType() < osTypeLiveOS then
@@ -385,10 +413,10 @@ local function getTaglist()
         else
             print("osTypeLiveOS")
             for key, value in pairs(dataTable) do
-                if (value.id ~= nil and value.template ~= nil) then
+                if (value.id ~= nil and value.miniAppInfo ~= nil) then
                     local showAd = {}
                     showAd[value.id] = value
-                    sendNativeViewAction(showAd)
+                    downloadAndRunLua(showAd)
                 end
             end
         end
@@ -430,10 +458,10 @@ local function getSimulationTag()
             return
         end
         for key, value in pairs(dataTable) do
-            if (value.id ~= nil and value.template ~= nil) then
+            if (value.id ~= nil and value.miniAppInfo ~= nil) then
                 local showAd = {}
                 showAd[value.id] = value
-                sendNativeViewAction(showAd)
+                downloadAndRunLua(showAd)
             end
         end
         --print("getSimulationTag success")

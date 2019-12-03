@@ -10,7 +10,7 @@
 #import "VPLuaServiceAd.h"
 #import "VPLuaConstant.h"
 #import "VPLuaServiceVideoMode.h"
-#import "VPLuaTrackManager.h"
+#import "VPUPCommonTrack.h"
 
 @interface VPLuaServiceManager()
 
@@ -61,7 +61,7 @@
                 weakSelf.serviceDict[@(type)] = nil;
             }
         }];
-        [VPLuaTrackManager trackVideoModeSwitch:YES];
+        [[VPUPCommonTrack shared] sendTrackWithType:VPUPCommonTrackTypeVideoNet dataDict:@{@"onOrOff":@"1"}];
     }
     else {
         NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-4001 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Unsupported parameters"]}];
@@ -99,9 +99,12 @@
     if (service && self.desktopView) {
         [self.desktopView removeViewWithNodeId:service.serviceId];
     }
+    if (service && self.topView) {
+        [self.topView removeViewWithNodeId:service.serviceId];
+    }
     self.serviceDict[@(type)] = nil;
     if (type == VPLuaServiceTypeVideoMode) {
-        [VPLuaTrackManager trackVideoModeSwitch:NO];
+        [[VPUPCommonTrack shared] sendTrackWithType:VPUPCommonTrackTypeVideoNet dataDict:@{@"onOrOff":@"0"}];
     }
 }
 

@@ -43,6 +43,11 @@ typedef NS_ENUM(NSInteger, VPIVideoAdTimeType) {
     VPIVideoAdTimeType120Seconds            = 120,          //120s
 };
 
+typedef NS_ENUM(NSInteger, VPIVideoModeType) {
+    VPIVideoModeTypeLabel                   = 0,        //视联网标签模式
+    VPIVideoModeTypeBubble                  = 1,        //视联网气泡模式
+};
+
 /**
  * VPIServiceDelegate 是相关服务事件, 给服务进行简单的事件通知
  */

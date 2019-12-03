@@ -67,6 +67,7 @@ typedef NS_ENUM(NSUInteger, VPIActionType) {
     VPIActionTypeGetItem,           // 获得物品
 };
 
+@required
 /**
  *  事件监控通知
  *  @param actionDictionary 参数字典
@@ -95,12 +96,6 @@ typedef NS_ENUM(NSUInteger, VPIActionType) {
  *  对应
  *  Key:    orientation
  *  Value:  NSNumber(1代表横屏切竖屏，2代表竖屏切横屏)
- *
- *  Key:    url
- *  Value:  string(切屏是WebView打开URL)
- *
- *  Key:    ssid
- *  Value:  string
  */
 - (void)vp_interfaceScreenChangedNotify:(NSDictionary *)dict;
 

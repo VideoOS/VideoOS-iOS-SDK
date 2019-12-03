@@ -34,4 +34,7 @@
 
 #import "VPUPDeviceUtil.h"
 
+#import "VPUPTrafficStatistics.h"
+#import "VPUPCommonTrack.h"
+
 #endif /* VPUPUtils_h */

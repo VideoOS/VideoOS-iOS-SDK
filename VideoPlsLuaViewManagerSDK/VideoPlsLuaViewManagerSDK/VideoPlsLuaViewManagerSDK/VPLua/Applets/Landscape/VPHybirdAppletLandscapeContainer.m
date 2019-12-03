@@ -15,11 +15,7 @@
 #import "VPUPHexColors.h"
 #import "VPUPViewScaleUtil.h"
 #import "VPUPPathUtil.h"
-#import "VPUPWebView.h"
-#import "VPUPWKWebView.h"
-#import "VPUPExtendWKWebView.h"
-#import "VPUPWKWebViewJSBridge.h"
-#import <WebKit/WebKit.h>
+#import "VPLuaAppletWebView.h"
 #import "VPUPJsonUtil.h"
 #import "VPUPCommonInfo.h"
 #import "VPUPActionManager.h"
@@ -28,10 +24,9 @@
 #import "VPLuaOSView.h"
 #import "VPLuaNativeBridge.h"
 
-@interface VPHybirdAppletLandscapeContainer()<VPUPWebViewDelegate, WKScriptMessageHandler>
+@interface VPHybirdAppletLandscapeContainer()<VPUPBasicWebViewDelegate, VPLuaAppletWebViewDelegate>
 
-@property (nonatomic) VPUPWKWebView *webView;
-@property (nonatomic) VPUPWKWebViewJSBridge *appletJSBridge;
+@property (nonatomic) VPLuaAppletWebView *webView;
 
 @property (nonatomic) NSMutableArray *nodeStack;
 
@@ -47,21 +42,26 @@
 
 - (void)initContainView {
     
-    self.webView = [[VPUPWKWebView alloc] init];
+    self.webView = [[VPLuaAppletWebView alloc] initWithFrame:self.containFrame];
     self.webView.delegate = self;
+    self.webView.jsAppletDelegate = self;
     self.webView.landscape = YES;
-    [self.webView setUpWebViewWithFrame:self.containFrame];
-    [self.webView setDisableNativePayment:YES];
-    self.webView.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    [self.webView setUpWebViewWithFrame:self.containFrame];
+//    [self.webView setDisableNativePayment:YES];
+//    self.webView.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    _appletJSBridge = [VPUPWKWebViewJSBridge bridgeForWebView:self.webView.webView scriptDelegate:self];
-    _appletJSBridge.messageName = @"Applet";
-    [((VPUPExtendWKWebView *)self.webView.webView) addScriptMessageHandler:_appletJSBridge name:_appletJSBridge.messageName];
-//    _webView.navigationDelegate = self;
+    [self.mainView addSubview:self.webView];
+}
 
-    
-    [self.mainView addSubview:self.webView.webView];
-    
+- (void)setCurrentOrientation:(VPAppletContainerOrientation)orientation {
+    [super setCurrentOrientation:orientation];
+    if (self.webView) {
+        self.webView.landscape = (orientation == VPAppletContainerOrientationPortriat ? NO : YES);
+    }
+}
+
+- (void)updateContainView {
+    [self.webView setFrame:self.containFrame];
 }
 
 - (void)updateContainUserInfo {
@@ -70,9 +70,11 @@
     }
 }
 
-- (void)loadContainView {
+- (void)loadContainView {    
     [self updateNavi];
-    [self.webView startLoadingWithUrl:self.applet.h5Url];
+    self.webView.developUserId = self.applet.miniAppInfo.developerUserId;
+    self.webView.appletId = self.applet.miniAppInfo.appletID;
+    [self.webView loadUrl:self.applet.h5Url];
     [self closeLoadingView];
 }
 
@@ -85,8 +87,8 @@
     [self closeRetryView];
     [self closeErrorView];
     self.rootData = data;
-    [self.webView startLoadingWithHtmlString:@""];
-    [self.webView startLoadingWithUrl:self.applet.h5Url];
+    [self.webView loadUrl:@""];
+    [self.webView loadUrl:self.applet.h5Url];
 }
 
 - (void)naviBackButtonTapped {
@@ -119,11 +121,12 @@
 
 - (void)destroyView {
 //    [self.luaController releaseLuaView];
-    [self.webView removeCache];
+    [self.webView stop];
     [super destroyView];
 }
 
 #pragma mark - handle webView method
+
 - (NSString *)getJSCallback:(NSDictionary *)params {
     if (!VPUP_IsStrictExist([params objectForKey:@"callback"])) {
         return nil;
@@ -133,36 +136,7 @@
 }
 
 - (void)jsCallback:(NSString *)callbackMethod params:(NSArray *)params {
-    if (!callbackMethod) {
-        return;
-    }
-    
-    [_appletJSBridge nativeCallWebviewWithJS:callbackMethod paramaters:params completionHandler:^(id data, NSError *error) {
-        
-    }];
-}
-
-- (void)commonDataWithParameters:(NSDictionary *)params {
-    NSString *jsCallback = [self getJSCallback:params];
-    if (!jsCallback) {
-        return;
-    }
-    
-    NSMutableDictionary *sendParams = [NSMutableDictionary dictionary];
-    [sendParams setObject:[VPUPCommonInfo commonParam] forKey:@"common"];
-    NSDictionary *sizeDict = @{@"width": @(ceil(self.containFrame.size.width)), @"height": @(ceil(self.containFrame.size.height))};
-    [sendParams setObject:sizeDict forKey:@"size"];
-    NSString *secretString = [VPLuaSDK sharedSDK].appSecret;
-    [sendParams setObject:secretString forKey:@"secret"];
-    
-    NSString *sendParamString = VPUP_DictionaryToJson(sendParams);
-    
-    NSArray *paramArray = nil;
-    if (sendParamString) {
-        paramArray = [NSArray arrayWithObject:sendParamString];
-    }
-    
-    [self jsCallback:jsCallback params:paramArray];
+    [_webView jsCallMethod:callbackMethod params:params];
 }
 
 - (void)getInitDataWithParameters:(NSDictionary *)params {
@@ -211,38 +185,6 @@
     if (VPUP_IsStrictExist([dict objectForKey:@"title"])) {
         [self.naviBar updateNaviTitle:[dict objectForKey:@"title"]];
     }
-}
-
-- (void)openAppletWithParameters:(NSDictionary *)params {
-    NSDictionary *dict = [params objectForKey:@"msg"];
-    if (!dict) {
-        return;
-    }
-    if (!VPUP_IsStrictExist([dict objectForKey:@"appletId"]) || ![[dict objectForKey:@"appletId"] isKindOfClass:[NSString class]]) {
-        return;
-    }
-    if (![dict objectForKey:@"screenType"]) {
-        return;
-    }
-    if (![dict objectForKey:@"appType"]) {
-        return;
-    }
-    
-    NSString *appletId = [dict objectForKey:@"appletId"];
-    NSInteger screenType = [[dict objectForKey:@"screenType"] integerValue];
-    if (screenType < 1 || screenType > 2) {
-        screenType = 1;
-    }
-    NSInteger appType = [[dict objectForKey:@"appType"] integerValue];
-    if (appType < 1 || appType > 2) {
-        appType = 1;
-    }
-    
-    id data = [dict objectForKey:@"data"];
-    
-    NSString *schemePath = [NSString stringWithFormat:@"applets?appletId=%@&type=%d&appType=%d", appletId, screenType, appType];
-    
-    [VPUPActionManager pushAction:VPUP_SchemeAddPath(schemePath, @"LuaView") data:data sender:self];
 }
 
 - (void)networkEncryptWithParameters:(NSDictionary *)params {
@@ -315,98 +257,28 @@
     [self jsCallback:jsCallback params:paramArray];
 }
 
-- (void)openUrlWithParameters:(NSDictionary *)params {
-    NSString *jsCallback = [self getJSCallback:params];
-    
-    NSDictionary *dict = [params objectForKey:@"msg"];
-    
-    NSMutableDictionary *sendJSParams = [NSMutableDictionary dictionary];
-    [sendJSParams setObject:@(0) forKey:@"canOpen"];
-    if (!dict) {
-        NSString *sendJSParamString = VPUP_DictionaryToJson(sendJSParams);
-        [self jsCallback:jsCallback params:@[sendJSParamString]];
-        return;
+
+
+- (void)closeViewWithParameters:(NSDictionary *)params {
+    SEL selector = NSSelectorFromString(@"naviCloseButtonTapped");
+    if ([self respondsToSelector:selector]) {
+        [self performSelector:selector withObject:nil];
     }
-    
-    NSMutableDictionary *sendParams = [NSMutableDictionary dictionary];
-    
-    NSString *actionString = nil;
-    NSString *linkUrl = nil;
-    NSString *deepLink = nil;
-    NSString *selfLink = nil;
-    if (VPUP_IsStrictExist([dict objectForKey:@"linkUrl"]) && [[dict objectForKey:@"linkUrl"] isKindOfClass:[NSString class]]) {
-        linkUrl = [dict objectForKey:@"linkUrl"];
-        [sendParams setObject:linkUrl forKey:@"linkUrl"];
-    }
-    if (VPUP_IsStrictExist([dict objectForKey:@"deepLink"]) && [[dict objectForKey:@"deepLink"] isKindOfClass:[NSString class]]) {
-        deepLink = [dict objectForKey:@"deepLink"];
-        [sendParams setObject:deepLink forKey:@"deepLink"];
-    }
-    if (VPUP_IsStrictExist([dict objectForKey:@"selfLink"]) && [[dict objectForKey:@"selfLink"] isKindOfClass:[NSString class]]) {
-        selfLink = [dict objectForKey:@"selfLink"];
-        [sendParams setObject:selfLink forKey:@"selfLink"];
-    }
-    
-    if (linkUrl != nil) {
-        actionString = linkUrl;
-    } else if (deepLink != nil) {
-        actionString = deepLink;
-    } else if (selfLink != nil) {
-        actionString = selfLink;
-    }
-    
-    if (!actionString) {
-        [self jsCallback:jsCallback params:@[sendJSParams]];
-        return;
-    }
-    
-    [sendParams setObject:actionString forKey:@"actionString"];
-    [sendParams setObject:@(3) forKey:@"eventType"];    //eventTypeClick
-    [sendParams setObject:@(1) forKey:@"actionType"];   //actionTypeOpenUrl
-    [sendParams setObject:[VPUPMD5Util md5HashString:actionString] forKey:@"adID"];
-    [sendParams setObject:self.applet.naviSetting.naviTitle ? self.applet.naviSetting.naviTitle : @"" forKey:@"adName"];
-    
-    if (deepLink) {
-        BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:deepLink]];
-        if (canOpen) {
-            [sendJSParams setObject:@(1) forKey:@"canOpen"];
-        } else {
-            [sendJSParams setObject:@(2) forKey:@"canOpen"];
-        }
-    }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaActionNotification object:nil userInfo:sendParams];
-    
-    NSString *sendJSParamString = VPUP_DictionaryToJson(sendJSParams);
-    [self jsCallback:jsCallback params:@[sendJSParamString]];
 }
 
 
 #pragma mark - delegate
-//webView call method
-- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    
-    NSDictionary *data = message.body;
-    if (!VPUP_IsStrictExist([data objectForKey:@"method"]) || ![[data objectForKey:@"method"] isKindOfClass:[NSString class]]) {
-        return;
-    }
-    
-    NSString *method = [data objectForKey:@"method"];
-    //args转object
-    NSDictionary *params = nil;
-    if ([data objectForKey:@"args"]) {
-        NSString *args = [data objectForKey:@"args"];
-        params = VPUP_JsonToDictionary(args);
-    }
-    
+//js
+- (void)callFromJSMethod:(NSString *)method args:(NSDictionary *)args {
     NSString *methodString = [NSString stringWithFormat:@"%@%@", method, @"WithParameters:"];
+    
     SEL selector = NSSelectorFromString(methodString);
     if ([self respondsToSelector:selector]) {
-        [self performSelector:selector withObject:params];
+        [self performSelector:selector withObject:args];
     }
-    
 }
 
+//loadComplete
 - (void)loadCompleteTitle:(NSString *)title error:(NSError *)error {
     if ([self.webView canGoBack]) {
         [self.naviBar showBackButton];

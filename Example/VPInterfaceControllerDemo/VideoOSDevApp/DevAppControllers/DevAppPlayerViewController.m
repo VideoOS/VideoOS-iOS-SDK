@@ -128,6 +128,9 @@
 //    config.platformID = @"platformID";
 //    config.identifier = @"platformID";
     config.types = VPInterfaceControllerTypeVideoOS;
+    config.episode = @"剧集名称";
+    config.title = @"视频标题";
+    config.identifier = @"122";
 
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     VPIVideoPlayerSize *videoPlayerSize = [[VPIVideoPlayerSize alloc] init];

@@ -117,7 +117,7 @@
     
     [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:KENVIRONMENT];
     [VPIConfigSDK setAppKey:[DevAppTool readUserDataWithKey:KDAAPPKEY] appSecret:[DevAppTool readUserDataWithKey:KDAAPPSECRET]];
-
+    [VPIConfigSDK initSDK];
     
     self.resourceDataAry = data;
     self.isLocal = isLocal;
