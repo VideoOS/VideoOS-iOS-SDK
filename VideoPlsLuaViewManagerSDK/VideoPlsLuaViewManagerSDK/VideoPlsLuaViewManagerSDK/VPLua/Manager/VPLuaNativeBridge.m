@@ -312,6 +312,7 @@ static NSMutableDictionary* httpAPICache() {
         {"currentVideoTime", currentVideoTime},
         {"videoDuration", videoDuration},
         {"commonTrack", commonTrack},
+        {"screenScale", screenScale},
 //        {"appletSize", getAppletSize},
         {NULL, NULL}
     };
@@ -1406,6 +1407,11 @@ static int px2Dpi(lua_State *L) {
         return 1;
     }
     return 0;
+}
+
+static int screenScale(lua_State *L) {
+    lua_pushnumber(L, [UIScreen mainScreen].scale);
+    return 1;
 }
 
 static int preloadImage(lua_State *L) {

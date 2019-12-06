@@ -121,7 +121,9 @@
                 }
                 
                 weakSelf.applet = luaObject;
-                [weakSelf.rootData setValue:[luaObject.miniAppInfo dictionaryValue] forKey:@"miniAppInfo"];
+                if (weakSelf.rootData != nil && [weakSelf.rootData isKindOfClass:[NSMutableDictionary class]]) {
+                    [weakSelf.rootData setValue:[luaObject.miniAppInfo dictionaryValue] forKey:@"miniAppInfo"];
+                }
                 [weakSelf loadContainView];
             });
         }];

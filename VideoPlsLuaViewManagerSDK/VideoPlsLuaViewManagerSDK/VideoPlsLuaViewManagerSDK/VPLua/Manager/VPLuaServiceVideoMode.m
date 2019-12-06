@@ -300,6 +300,14 @@
         data = [NSMutableDictionary dictionary];
     }
     [data setObject:[self.configData objectForKey:@"desktopMiniAppInfo"] forKey:@"miniAppInfo"];
+    if (self.config.eyeOriginPoint.x > 0 || self.config.eyeOriginPoint.y > 0) {
+        [data setValue:@(self.config.eyeOriginPoint.x) forKey:@"eyeOriginPointX"];
+        [data setValue:@(self.config.eyeOriginPoint.y) forKey:@"eyeOriginPointY"];
+    }
+    if (self.configData) {
+        [data setValue:self.configData forKey:@"labelConfData"];
+    }
+    
     NSURL *desktopUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@://desktopLuaView?template=%@&id=%@&miniAppId=%@",
                                               VPUPRoutesSDKLuaView,
                                               [[dict objectForKey:@"desktopMiniAppInfo"] objectForKey:@"template"],

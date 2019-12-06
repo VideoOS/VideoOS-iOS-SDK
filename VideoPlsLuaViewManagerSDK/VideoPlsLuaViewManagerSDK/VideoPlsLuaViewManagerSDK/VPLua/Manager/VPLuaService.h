@@ -31,6 +31,7 @@ typedef void(^VPLuaServiceCompletionBlock)(NSError *error);
 @property (nonatomic, assign) VPLuaServiceType type;
 @property (nonatomic, assign) NSInteger duration;
 @property (nonatomic, assign) VPLuaVideoModeType videoModeType;
+@property (nonatomic, assign) CGPoint eyeOriginPoint;
 
 @end
 
@@ -40,6 +41,7 @@ typedef void(^VPLuaServiceCompletionBlock)(NSError *error);
 @property (nonatomic, copy) NSString *videoId;
 @property (nonatomic, assign) VPLuaServiceType type;
 @property (nonatomic, assign) VPLuaVideoModeType videoModeType;
+@property (nonatomic, assign) CGPoint eyeOriginPoint;
 
 - (instancetype)initWithConfig:(VPLuaServiceConfig *)config;
 

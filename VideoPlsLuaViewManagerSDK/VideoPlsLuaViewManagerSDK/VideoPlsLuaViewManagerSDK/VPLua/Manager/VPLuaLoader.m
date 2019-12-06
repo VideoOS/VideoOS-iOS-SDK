@@ -93,6 +93,10 @@ NSInteger const VPLuaLoaderDownloadRetryCount = 2;
     if (appInfo && appInfo.appletID) {
         [self checkAndDownloadFilesList:appInfo.luaList resumePath:[VPUPPathUtil subPathOfLuaOSPath:appInfo.appletID] complete:complete];
     }
+    else {
+        NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-3000 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"init data error"]}];
+        [self callbackComplete:complete withError:error];
+    }
 }
 
 - (void)checkAndDownloadFilesList:(NSArray *)filesList complete:(VPLuaLoaderCompletionBlock)complete {

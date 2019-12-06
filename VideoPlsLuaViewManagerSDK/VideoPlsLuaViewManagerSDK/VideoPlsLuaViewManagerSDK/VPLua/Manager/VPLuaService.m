@@ -20,6 +20,7 @@
         _videoId = config.identifier;
         _type = config.type;
         _videoModeType = config.videoModeType;
+        _eyeOriginPoint = config.eyeOriginPoint;
     }
     return self;
 }

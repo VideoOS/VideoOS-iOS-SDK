@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) VPIVideoAdTimeType duration;
 
 @property (nonatomic, assign) VPIVideoModeType videoModeType;
+@property (nonatomic, assign) CGPoint eyeOriginPoint;
 
 @end
 

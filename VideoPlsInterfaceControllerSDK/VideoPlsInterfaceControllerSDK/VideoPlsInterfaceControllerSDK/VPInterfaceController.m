@@ -1008,6 +1008,7 @@
     serviceConfig.type = (VPLuaServiceType)config.type;
     serviceConfig.duration = (VPIVideoAdTimeType)config.duration;
     serviceConfig.videoModeType = (VPLuaVideoModeType)config.videoModeType;
+    serviceConfig.eyeOriginPoint = config.eyeOriginPoint;
     
     self.serviceManager.osView = self.osView;
     self.serviceManager.desktopView = self.desktopView;
