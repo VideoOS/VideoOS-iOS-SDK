@@ -24,7 +24,6 @@
 #import "VPLuaConstant.h"
 #import "VPUPPathUtil.h"
 #import <VPLuaViewSDK/LVZipArchive.h>
-#import "VPUPVibrationUtil.h"
 
 @interface VPLuaServiceVideoMode()
 
@@ -47,7 +46,6 @@
     self.resumeDataPath = [VPUPPathUtil subPathOfVideoMode:[VPUPMD5Util md5HashString:self.videoId]];
     self.videoModeQueue = dispatch_queue_create("VPLua_Service_Video_Mode", DISPATCH_QUEUE_SERIAL);
     [self requestServiceData];
-    [VPUPVibrationUtil vibrateWithCompletion:nil];
 }
 - (void)requestServiceData {
     __weak typeof(self) weakSelf = self;

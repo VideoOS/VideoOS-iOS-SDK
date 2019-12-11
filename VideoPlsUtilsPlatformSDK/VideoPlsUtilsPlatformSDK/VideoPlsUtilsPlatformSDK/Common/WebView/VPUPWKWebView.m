@@ -136,7 +136,7 @@
     
 }
 
-- (void)setIsLandscape:(BOOL)isLandscape {
+- (void)setLandscape:(BOOL)isLandscape {
     [super setLandscape:isLandscape];
     [_webView setIsLandscape:isLandscape];
 }
