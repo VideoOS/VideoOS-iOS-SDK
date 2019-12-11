@@ -1,0 +1,24 @@
+language: objective-c
+xcode_workspace: VideoPlsWorkspace.xcodeproj # path to your xcodeproj folder
+xcode_scheme: VPInterfaceControllerDemo
+xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
+podfile: ./Podfile
+bundle exec pod install
+
+os: osx
+
+branches:
+  only:
+    - master
+
+notifications: # set notification options
+  email:
+    on_success: change
+    on_failure: always
+    recipients:
+      - jingshengshan@163.com
+      - zard1096@videopls.com
+      - jingshengshan@videopls.com
+  # Enable webhooks later
+  # webhooks:
+  # on_failure: always
