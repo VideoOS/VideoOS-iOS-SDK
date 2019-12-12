@@ -16,18 +16,22 @@
 
 ### 紧贴视频内容运营
 结合视频内容，选择紧贴视频内容的运营方案，在播放视频时，自然的出现小程序
+
 ![云图](ScreenShot/cloud.gif)
 
 ### 提高观看的互动性
 丰富多样的小程序，涵盖9大行业，激发用户观看视频的互动性，带来更多流量的转化
-![气泡](https://m.videojj.com/resource/github/bubble.gif)
+
+![气泡](ScreenShot/bubble.gif)
 
 ### 可实现快速变现
 小程序提供电商、广告等多种变现形式，流量主使用后可快速体验到流量的变现价值
-![卡牌](https://m.videojj.com/resource/github/card.gif)
+
+![卡牌](ScreenShot/card.gif)
 
 ### AI助力加持
 Video++有成熟的视频AI算法加持，自动识别视频内容中的场景点位，减少人工运营成本
+
 ![视联网模式](ScreenShot/videomode.gif)
 
 ## 项目介绍
