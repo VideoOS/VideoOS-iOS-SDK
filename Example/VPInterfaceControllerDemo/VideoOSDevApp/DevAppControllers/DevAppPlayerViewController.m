@@ -71,7 +71,8 @@
     
     
     if (self.controllerType == Type_Interaction) {
-        [_interfaceController navigationWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"LuaView://defaultLuaView?template=%@&id=5aa5fa5133edbf375fe43fff4",self.interaction_templateLua]] data:self.interaction_Data];
+        NSString* urlString = [NSString stringWithFormat:@"LuaView://defaultLuaView?template=%@&id=22fbbc41-487e-4f91-af89-cfd2c26cb6b1&priority=1&miniAppId=%@",self.interaction_templateLua,self.service_miniAppID];
+        [_interfaceController navigationWithURL:[NSURL URLWithString:urlString] data:self.interaction_Data];
     }else{     
         [self switchVideoNetModeStateOff:true];
     }

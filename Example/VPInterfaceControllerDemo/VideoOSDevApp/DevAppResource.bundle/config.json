@@ -1,13 +1,15 @@
 {
-    "miniAppId":"284217819791360000",
     "display":{
         "navTitle":"开发模式测试"
     },
     "h5Url":"",
-    "luaList":[
-        {
-            "url":"os_video_helloworld_hotspot.lua"
-        },
-    ],
-    "template":"os_video_helloworld_hotspot.lua"
+    "miniAppInfo":{
+        "miniAppId":"284217819791360000",
+        "template":"os_video_helloworld_hotspot.lua",
+        "luaList":[
+            {
+                "url":"os_video_helloworld_hotspot.lua"
+            }
+        ]
+    }
 }

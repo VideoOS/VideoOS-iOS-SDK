@@ -600,7 +600,7 @@
             
             
             NSString *json_path = [bundle pathForResource:@"devApp_json" ofType:@"json"];
-            NSString* lua_path = [[DevAppTool getInteractionLuaPath] stringByAppendingPathComponent:[launchInfo objectForKey:@"template"]];
+            NSString* lua_path = [[DevAppTool getInteractionLPath] stringByAppendingPathComponent:[launchInfo objectForKey:@"template"]];
             
             self.leftTextFieldOne.text = lua_path;
             self.leftTextFieldTwo.text = json_path;
@@ -616,7 +616,7 @@
             NSString *path =  [[DevAppTool devAPPBundle] pathForResource:@"config" ofType:@"json"];
             NSDictionary *config = [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:path] options:NSJSONReadingMutableContainers error:nil];
             
-             self.leftTextFieldOne.text = [[DevAppTool devAPPBundle] pathForResource:[config objectForKey:@"template"] ofType:nil];
+             self.leftTextFieldOne.text = [[DevAppTool devAPPBundle] pathForResource:[[config objectForKey:@"miniAppInfo"] objectForKey:@"template"] ofType:nil];
             
             self.rigthTextFieldOne.text = [DevAppTool readUserDataWithKey:KSERVICEID];
         }

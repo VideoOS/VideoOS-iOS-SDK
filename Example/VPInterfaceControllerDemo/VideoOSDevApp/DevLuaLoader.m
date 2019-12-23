@@ -8,7 +8,7 @@
 
 #import "DevLuaLoader.h"
 
-#import <VideoOS/VideoPlsLuaViewManagerSDK/VPLuaConstant.h>
+#import <VideoOS/VideoPlsLuaViewManagerSDK/VPLConstant.h>
 #import <VideoOS/VideoPlsUtilsPlatformSDK/VPUPPathUtil.h>
 #import <VideoOS/VideoPlsUtilsPlatformSDK/VPUPMD5Util.h>
 #import <VideoOS/VideoPlsUtilsPlatformSDK/VPUPPrefetchManager.h>
@@ -91,7 +91,7 @@ NSInteger const DevLuaLoaderDownloadRetryCount = 2;
 }
 
 - (void)checkAndDownloadFilesList:(NSArray *)filesList complete:(DevLuaLoaderCompletionBlock)complete {
-    [self checkAndDownloadFilesList:filesList resumePath:[VPUPPathUtil luaOSPath] complete:complete];
+    [self checkAndDownloadFilesList:filesList resumePath:[VPUPPathUtil lOSPath] complete:complete];
 }
 
 - (void)checkAndDownloadFilesList:(NSArray *)filesList resumePath:(NSString *)resumePath complete:(DevLuaLoaderCompletionBlock)complete {
@@ -99,7 +99,7 @@ NSInteger const DevLuaLoaderDownloadRetryCount = 2;
         [self checkFilesListWithLocal:filesList resumePath:resumePath complete:complete];
     }
     else {
-        NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-3001 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"resumePath do not exists"]}];
+        NSError *error = [NSError errorWithDomain:VPLErrorDomain code:-3001 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"resumePath do not exists"]}];
         [self callbackComplete:complete withError:error];
     }
 }
@@ -160,7 +160,7 @@ NSInteger const DevLuaLoaderDownloadRetryCount = 2;
                                if (repeatCount == 0) {
                                    [self downloadLuaFilesWithLoaderObject:blockObject complete:complete repeatCount:1];
                                } else {
-                                   NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-3002 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Download file error, success count %ld, faild count %ld", numberOfFinishedUrls, numberOfSkippedUrls]}];
+                                   NSError *error = [NSError errorWithDomain:VPLErrorDomain code:-3002 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Download file error, success count %ld, faild count %ld", numberOfFinishedUrls, numberOfSkippedUrls]}];
 //                                   [weakSelf callbackComplete:complete withError:error];
                                    [weakSelf checkDownloadObject:blockObject complete:complete skippedCount:numberOfSkippedUrls];
                                }
@@ -218,7 +218,7 @@ NSInteger const DevLuaLoaderDownloadRetryCount = 2;
                 }
             }
             if (moveErrors.count > 0) {
-                NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-3003 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Download file copy to target path error"]}];
+                NSError *error = [NSError errorWithDomain:VPLErrorDomain code:-3003 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Download file copy to target path error"]}];
                 [self callbackComplete:complete withError:error withStatistics:loaderObject.statisticsList];
             }
             else {
@@ -226,7 +226,7 @@ NSInteger const DevLuaLoaderDownloadRetryCount = 2;
             }
         }
         else {
-            NSError *error = [NSError errorWithDomain:VPLuaErrorDomain code:-3004 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Download file data error"]}];
+            NSError *error = [NSError errorWithDomain:VPLErrorDomain code:-3004 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Download file data error"]}];
             [weakSelf callbackComplete:complete withError:error withStatistics:loaderObject.statisticsList];
         }
         

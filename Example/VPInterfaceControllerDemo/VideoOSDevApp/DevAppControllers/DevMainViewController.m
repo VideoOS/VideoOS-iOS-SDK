@@ -119,7 +119,7 @@
 //}
 //支持旋转
 - (BOOL)shouldAutorotate {
-    return NO;
+    return YES;
 }
 
 //支持的方向

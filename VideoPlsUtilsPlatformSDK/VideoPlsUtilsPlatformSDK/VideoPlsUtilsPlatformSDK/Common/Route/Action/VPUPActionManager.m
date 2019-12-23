@@ -14,8 +14,8 @@
 #import "VPUPBase64Util.h"
 #import "VPUPRoutes.h"
 
-NSString *const VPUPLuaLoadErrorNotification = @"VPUPLuaLoadErrorNotification";
-NSString *const VPUPLuaEndNotification = @"VPUPLuaEndNotification";
+NSString *const VPUPLLoadErrorNotification = @"VPUPLLoadErrorNotification";
+NSString *const VPUPLEndNotification = @"VPUPLEndNotification";
 
 NSString *const VPUPActionTurnNotification = @"VPUPActionTurnNotification";
 NSString *const VPUPActionTurnOffNotification = @"VPUPActionTurnOffNotification";
@@ -113,11 +113,11 @@ NSString *const VPUPDeviceNeedChangeToPortraitNotification = @"VPUPDeviceNeedCha
                 }
             }
             if([path isEqualToString:@"error"]) {
-                [[VPUPNotificationCenter defaultCenter] postNotificationName:VPUPLuaLoadErrorNotification object:sender userInfo:userInfo];
+                [[VPUPNotificationCenter defaultCenter] postNotificationName:VPUPLLoadErrorNotification object:sender userInfo:userInfo];
             }
             else if([path isEqualToString:@"end"]) {
                 //lua 关闭
-                [[VPUPNotificationCenter defaultCenter] postNotificationName:VPUPLuaEndNotification object:sender userInfo:userInfo];
+                [[VPUPNotificationCenter defaultCenter] postNotificationName:VPUPLEndNotification object:sender userInfo:userInfo];
             }
         }
         else if ([scheme isEqualToString:@"device"]) {

@@ -31,7 +31,7 @@ typedef void(^DevLuaLoaderCompletionBlock)(NSError *error, VPUPTrafficStatistics
 
 + (instancetype)sharedLoader;
 
-//默认下载到luaOSPath
+//默认下载到lOSPath
 - (void)checkAndDownloadFilesList:(NSArray *)filesList complete:(DevLuaLoaderCompletionBlock)complete;
 
 - (void)checkAndDownloadFilesList:(NSArray *)filesList resumePath:(NSString *)resumePath complete:(DevLuaLoaderCompletionBlock)complete;

@@ -19,7 +19,7 @@
         return nil;
     }
     
-    info.appletID = [dict objectForKey:@"miniAppId"];
+    info.mpID = [dict objectForKey:@"miniAppId"];
     
     if ([dict objectForKey:@"luaList"]) {
         info.luaList = [dict objectForKey:@"luaList"];
@@ -30,15 +30,15 @@
         info.developerUserId = @"10001001000";
     }
     if ([dict objectForKey:@"template"]) {
-        info.templateLua = [dict objectForKey:@"template"];
+        info.template = [dict objectForKey:@"template"];
     }
     return info;
 }
 
 - (NSDictionary *)dictionaryValue {
     NSDictionary *dict = [NSMutableDictionary dictionary];
-    if (self.appletID) {
-        [dict setValue:self.appletID forKey:@"miniAppId"];
+    if (self.mpID) {
+        [dict setValue:self.mpID forKey:@"miniAppId"];
     }
     if (self.luaList) {
         [dict setValue:self.luaList forKey:@"luaList"];
@@ -46,8 +46,8 @@
     if (self.developerUserId) {
         [dict setValue:self.developerUserId forKey:@"developerUserId"];
     }
-    if (self.templateLua) {
-        [dict setValue:self.templateLua forKey:@"template"];
+    if (self.template) {
+        [dict setValue:self.template forKey:@"template"];
     }
     return dict;
 }

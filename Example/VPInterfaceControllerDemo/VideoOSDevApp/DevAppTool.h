@@ -38,7 +38,7 @@ typedef NS_ENUM(NSUInteger, DebuggingControllerType) {
 
 
 /// 获取用户视频小工具lua根路径
-+ (NSString*)getInteractionLuaPath;
++ (NSString*)getInteractionLPath;
 
 @end
 

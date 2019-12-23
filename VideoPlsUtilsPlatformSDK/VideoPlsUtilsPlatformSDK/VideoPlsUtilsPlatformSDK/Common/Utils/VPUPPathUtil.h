@@ -24,15 +24,15 @@
 
 + (NSString *)subPathOfVideoMode:(NSString *)placeholder;
 
-+ (NSString *)luaPath;
++ (NSString *)lPath;
 
-+ (NSString *)luaOSPath;
++ (NSString *)lOSPath;
 
-+ (NSString *)subPathOfLuaOSPath:(NSString *)placeholder;
++ (NSString *)subPathOfLOSPath:(NSString *)placeholder;
 
-+ (NSString *)luaAppletsPath;
++ (NSString *)lmpPath;
 
-+ (NSString *)subPathOfLuaApplets:(NSString *)placeholder;
++ (NSString *)subPathOfLMP:(NSString *)placeholder;
 
 + (NSString *)appDevPath;
 

@@ -52,16 +52,16 @@
     return path;
 }
 
-+ (NSString *)luaPath {
++ (NSString *)lPath {
     return [self pathByPlaceholder:@"lua"];
 }
 
-+ (NSString *)luaOSPath {
++ (NSString *)lOSPath {
     return [VPUPPathUtil subPathOfLua:@"os"];
 }
 
-+ (NSString *)subPathOfLuaOSPath:(NSString *)placeholder {
-    NSString *path = [self luaOSPath];
++ (NSString *)subPathOfLOSPath:(NSString *)placeholder {
+    NSString *path = [self lOSPath];
     path = [path stringByAppendingPathComponent:placeholder];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
@@ -70,12 +70,12 @@
     return path;
 }
 
-+ (NSString *)luaAppletsPath {
++ (NSString *)lmpPath {
     return [VPUPPathUtil subPathOfLua:@"applets"];
 }
 
-+ (NSString *)subPathOfLuaApplets:(NSString *)placeholder {
-    NSString *path = [self luaAppletsPath];
++ (NSString *)subPathOfLMP:(NSString *)placeholder {
+    NSString *path = [self lmpPath];
     path = [path stringByAppendingPathComponent:placeholder];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
@@ -95,7 +95,7 @@
 }
 
 + (NSString *)subPathOfLua:(NSString *)placeholder {
-    NSString *path = [self luaPath];
+    NSString *path = [self lPath];
     path = [path stringByAppendingPathComponent:placeholder];
 
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {

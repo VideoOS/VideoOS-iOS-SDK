@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 //userInfo组装为 key:name  value:luaFileName
-extern NSString *const VPUPLuaLoadErrorNotification;
+extern NSString *const VPUPLLoadErrorNotification;
 
 //lua关闭 userInfo组装为 key:name value: luaName
-extern NSString *const VPUPLuaEndNotification;
+extern NSString *const VPUPLEndNotification;
 
 extern NSString *const VPUPActionTurnNotification;
 extern NSString *const VPUPActionTurnOffNotification;

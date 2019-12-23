@@ -10,7 +10,7 @@
 
 NSString *const VPUPRoutesSDKInit = @"Init";
 NSString *const VPUPRoutesSDKSendRequest = @"Request";
-NSString *const VPUPRoutesSDKLuaView = @"LuaView";
+NSString *const VPUPRoutesSDKLView = @"LuaView";
 NSString *const VPUPRoutesSDKNativeView = @"NativeView";
 NSString *const VPUPRoutesSDKNavigationPage = @"Page";
 

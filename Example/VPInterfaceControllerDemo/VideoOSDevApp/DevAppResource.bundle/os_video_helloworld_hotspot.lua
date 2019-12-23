@@ -34,6 +34,7 @@ local function createTitle()
     titleLabel:textSize(16)
     titleLabel:text("HelloWorld")
     titleLabel:frame(0, 0, 100, 30)
+    titleLabel:textAlign(TextAlign.CENTER)
     titleLabel:align(Align.V_CENTER)
     titleLabel:align(Align.H_CENTER)
     return titleLabel

@@ -7,185 +7,181 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0614EAD722F020D9002DD6F4 /* VPLuaAppletsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0614EAD522F020D8002DD6F4 /* VPLuaAppletsView.h */; };
-		0614EAD822F020D9002DD6F4 /* VPLuaAppletsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0614EAD622F020D8002DD6F4 /* VPLuaAppletsView.m */; };
-		063A124422F3CE230027B6A2 /* VPLuaAppletBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 063A124222F3CE230027B6A2 /* VPLuaAppletBridge.h */; };
-		063A124522F3CE230027B6A2 /* VPLuaAppletBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 063A124322F3CE230027B6A2 /* VPLuaAppletBridge.m */; };
-		063ABC052004C6AC001A8B94 /* VPLuaGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = 063ABC032004C6AC001A8B94 /* VPLuaGradientView.h */; };
-		063ABC062004C6AC001A8B94 /* VPLuaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 063ABC042004C6AC001A8B94 /* VPLuaGradientView.m */; };
-		063ABC072004C6AC001A8B94 /* VPLuaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 063ABC042004C6AC001A8B94 /* VPLuaGradientView.m */; };
-		0640FAE51FE8EDF90089825F /* VPLuaNormalRefreshHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0640FAE31FE8EDF90089825F /* VPLuaNormalRefreshHeader.h */; };
-		0640FAE61FE8EDF90089825F /* VPLuaNormalRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0640FAE41FE8EDF90089825F /* VPLuaNormalRefreshHeader.m */; };
-		0640FAE71FE8EDF90089825F /* VPLuaNormalRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0640FAE41FE8EDF90089825F /* VPLuaNormalRefreshHeader.m */; };
-		064C92F12314CB660050D862 /* VPAppletLandscapeNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 064C92EF2314CB660050D862 /* VPAppletLandscapeNavigationBar.h */; };
-		064C92F22314CB660050D862 /* VPAppletLandscapeNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C92F02314CB660050D862 /* VPAppletLandscapeNavigationBar.m */; };
-		064C92F5231545B40050D862 /* VPAppletContainerNaviSetting.h in Headers */ = {isa = PBXBuildFile; fileRef = 064C92F3231545B40050D862 /* VPAppletContainerNaviSetting.h */; };
-		064C92F6231545B40050D862 /* VPAppletContainerNaviSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C92F4231545B40050D862 /* VPAppletContainerNaviSetting.m */; };
-		064C92F9231636370050D862 /* VPHybirdAppletLandscapeContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 064C92F7231636370050D862 /* VPHybirdAppletLandscapeContainer.h */; };
-		064C92FA231636370050D862 /* VPHybirdAppletLandscapeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C92F8231636370050D862 /* VPHybirdAppletLandscapeContainer.m */; };
-		064C92FD23165BBF0050D862 /* VPAppletLandscapeContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 064C92FB23165BBF0050D862 /* VPAppletLandscapeContainer.h */; };
-		064C92FE23165BBF0050D862 /* VPAppletLandscapeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C92FC23165BBF0050D862 /* VPAppletLandscapeContainer.m */; };
-		06571F9423851B4100C6C4D6 /* VPLuaRedirectAppletManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 06571F9223851B4100C6C4D6 /* VPLuaRedirectAppletManager.h */; };
-		06571F9523851B4100C6C4D6 /* VPLuaRedirectAppletManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 06571F9323851B4100C6C4D6 /* VPLuaRedirectAppletManager.m */; };
+		0614EAD722F020D9002DD6F4 /* VPLMPView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0614EAD522F020D8002DD6F4 /* VPLMPView.h */; };
+		0614EAD822F020D9002DD6F4 /* VPLMPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0614EAD622F020D8002DD6F4 /* VPLMPView.m */; };
+		063A124422F3CE230027B6A2 /* VPLMPBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 063A124222F3CE230027B6A2 /* VPLMPBridge.h */; };
+		063A124522F3CE230027B6A2 /* VPLMPBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 063A124322F3CE230027B6A2 /* VPLMPBridge.m */; };
+		063ABC052004C6AC001A8B94 /* VPLGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = 063ABC032004C6AC001A8B94 /* VPLGradientView.h */; };
+		063ABC062004C6AC001A8B94 /* VPLGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 063ABC042004C6AC001A8B94 /* VPLGradientView.m */; };
+		063ABC072004C6AC001A8B94 /* VPLGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 063ABC042004C6AC001A8B94 /* VPLGradientView.m */; };
+		0640FAE51FE8EDF90089825F /* VPLNormalRefreshHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0640FAE31FE8EDF90089825F /* VPLNormalRefreshHeader.h */; };
+		0640FAE61FE8EDF90089825F /* VPLNormalRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0640FAE41FE8EDF90089825F /* VPLNormalRefreshHeader.m */; };
+		0640FAE71FE8EDF90089825F /* VPLNormalRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0640FAE41FE8EDF90089825F /* VPLNormalRefreshHeader.m */; };
+		064236252399F94000DF0EE2 /* VPMPContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 064236242399F94000DF0EE2 /* VPMPContainer.h */; };
+		064C92F12314CB660050D862 /* VPMPLandscapeNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 064C92EF2314CB660050D862 /* VPMPLandscapeNavigationBar.h */; };
+		064C92F22314CB660050D862 /* VPMPLandscapeNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C92F02314CB660050D862 /* VPMPLandscapeNavigationBar.m */; };
+		064C92F5231545B40050D862 /* VPMPContainerNaviSetting.h in Headers */ = {isa = PBXBuildFile; fileRef = 064C92F3231545B40050D862 /* VPMPContainerNaviSetting.h */; };
+		064C92F6231545B40050D862 /* VPMPContainerNaviSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C92F4231545B40050D862 /* VPMPContainerNaviSetting.m */; };
+		064C92F9231636370050D862 /* VPHMPLandscapeContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 064C92F7231636370050D862 /* VPHMPLandscapeContainer.h */; };
+		064C92FA231636370050D862 /* VPHMPLandscapeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C92F8231636370050D862 /* VPHMPLandscapeContainer.m */; };
+		064C92FD23165BBF0050D862 /* VPMPLandscapeContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 064C92FB23165BBF0050D862 /* VPMPLandscapeContainer.h */; };
+		064C92FE23165BBF0050D862 /* VPMPLandscapeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C92FC23165BBF0050D862 /* VPMPLandscapeContainer.m */; };
+		06571F9423851B4100C6C4D6 /* VPLMPRedirectManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 06571F9223851B4100C6C4D6 /* VPLMPRedirectManager.h */; };
+		06571F9523851B4100C6C4D6 /* VPLMPRedirectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 06571F9323851B4100C6C4D6 /* VPLMPRedirectManager.m */; };
 		06571F9C23867A7100C6C4D6 /* VPMiniAppInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 06571F9A23867A7100C6C4D6 /* VPMiniAppInfo.h */; };
 		06571F9D23867A7100C6C4D6 /* VPMiniAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 06571F9B23867A7100C6C4D6 /* VPMiniAppInfo.m */; };
-		067A769822F03C5E008FC043 /* VPLuaAppletLandscapeContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 067A769622F03C5E008FC043 /* VPLuaAppletLandscapeContainer.h */; };
-		067A769922F03C5E008FC043 /* VPLuaAppletLandscapeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 067A769722F03C5E008FC043 /* VPLuaAppletLandscapeContainer.m */; };
-		067A76A022F03F48008FC043 /* VPLuaAppletPortraitViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 067A769E22F03F48008FC043 /* VPLuaAppletPortraitViewController.h */; };
-		067A76A122F03F48008FC043 /* VPLuaAppletPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 067A769F22F03F48008FC043 /* VPLuaAppletPortraitViewController.m */; };
-		067A76A422F03FC7008FC043 /* VPLuaAppletPortraitNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 067A76A222F03FC7008FC043 /* VPLuaAppletPortraitNavigationController.h */; };
-		067A76A522F03FC7008FC043 /* VPLuaAppletPortraitNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 067A76A322F03FC7008FC043 /* VPLuaAppletPortraitNavigationController.m */; };
-		067A76A822F04969008FC043 /* VPLuaAppletObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 067A76A622F04969008FC043 /* VPLuaAppletObject.h */; };
-		067A76A922F04969008FC043 /* VPLuaAppletObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 067A76A722F04969008FC043 /* VPLuaAppletObject.m */; };
-		067A76AC22F131A2008FC043 /* VPLuaAppletRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 067A76AA22F131A2008FC043 /* VPLuaAppletRequest.h */; };
-		067A76AD22F131A2008FC043 /* VPLuaAppletRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 067A76AB22F131A2008FC043 /* VPLuaAppletRequest.m */; };
-		067A76B122F13DDA008FC043 /* VPLuaAppletContainerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 067A76B022F13DDA008FC043 /* VPLuaAppletContainerDelegate.h */; };
-		0688E24D1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0688E24B1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.h */; };
-		0688E24E1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0688E24C1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.m */; };
-		0688E24F1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0688E24C1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.m */; };
-		0692ECFD1FF5EFA9008A3214 /* VPLuaNativeScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 0692ECFB1FF5EFA9008A3214 /* VPLuaNativeScanner.h */; };
-		0692ECFE1FF5EFA9008A3214 /* VPLuaNativeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692ECFC1FF5EFA9008A3214 /* VPLuaNativeScanner.m */; };
-		0692ECFF1FF5EFA9008A3214 /* VPLuaNativeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692ECFC1FF5EFA9008A3214 /* VPLuaNativeScanner.m */; };
-		069495BE22F2B89100AA1ACE /* VPLuaAppletContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 069495BD22F2B89100AA1ACE /* VPLuaAppletContainer.h */; };
-		069D37CC20207CB700CB177D /* VPLuaWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 069D37CA20207CB700CB177D /* VPLuaWindow.h */; };
-		069D37CD20207CB700CB177D /* VPLuaWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 069D37CB20207CB700CB177D /* VPLuaWindow.m */; };
-		069D37CE20207CB700CB177D /* VPLuaWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 069D37CB20207CB700CB177D /* VPLuaWindow.m */; };
-		06B02A7823753D43004E546D /* UIView+VPLuaView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06B02A7623753D43004E546D /* UIView+VPLuaView.h */; };
-		06B02A7923753D43004E546D /* UIView+VPLuaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B02A7723753D43004E546D /* UIView+VPLuaView.m */; };
-		06B02A7C23753E1F004E546D /* NSObject+VPLuaView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06B02A7A23753E1F004E546D /* NSObject+VPLuaView.h */; };
-		06B02A7D23753E1F004E546D /* NSObject+VPLuaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B02A7B23753E1F004E546D /* NSObject+VPLuaView.m */; };
-		06B02A81237A4D17004E546D /* VPLuaAppletWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06B02A7F237A4D17004E546D /* VPLuaAppletWebView.h */; };
-		06B02A82237A4D17004E546D /* VPLuaAppletWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B02A80237A4D17004E546D /* VPLuaAppletWebView.m */; };
-		06D474A122F4215C00C9DADD /* VPLuaAppletContainerLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D4749F22F4215C00C9DADD /* VPLuaAppletContainerLoadingView.h */; };
-		06D474A222F4215C00C9DADD /* VPLuaAppletContainerLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474A022F4215C00C9DADD /* VPLuaAppletContainerLoadingView.m */; };
-		06D474A722F7D65900C9DADD /* VPLuaAppletContainerStatusView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D474A522F7D65900C9DADD /* VPLuaAppletContainerStatusView.h */; };
-		06D474A822F7D65900C9DADD /* VPLuaAppletContainerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474A622F7D65900C9DADD /* VPLuaAppletContainerStatusView.m */; };
-		06D474AC22F8088900C9DADD /* VPLuaAppletContainerNetworkView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D474AA22F8088900C9DADD /* VPLuaAppletContainerNetworkView.h */; };
-		06D474AD22F8088900C9DADD /* VPLuaAppletContainerNetworkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474AB22F8088900C9DADD /* VPLuaAppletContainerNetworkView.m */; };
-		06D474B622F96F4A00C9DADD /* VPLuaAppletContainerErrorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D474B422F96F4A00C9DADD /* VPLuaAppletContainerErrorView.h */; };
-		06D474B722F96F4A00C9DADD /* VPLuaAppletContainerErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474B522F96F4A00C9DADD /* VPLuaAppletContainerErrorView.m */; };
+		067A769822F03C5E008FC043 /* VPLMPLandscapeContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 067A769622F03C5E008FC043 /* VPLMPLandscapeContainer.h */; };
+		067A769922F03C5E008FC043 /* VPLMPLandscapeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 067A769722F03C5E008FC043 /* VPLMPLandscapeContainer.m */; };
+		067A76A822F04969008FC043 /* VPLMPObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 067A76A622F04969008FC043 /* VPLMPObject.h */; };
+		067A76A922F04969008FC043 /* VPLMPObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 067A76A722F04969008FC043 /* VPLMPObject.m */; };
+		067A76AC22F131A2008FC043 /* VPLMPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 067A76AA22F131A2008FC043 /* VPLMPRequest.h */; };
+		067A76AD22F131A2008FC043 /* VPLMPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 067A76AB22F131A2008FC043 /* VPLMPRequest.m */; };
+		067A76B122F13DDA008FC043 /* VPMPContainerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 067A76B022F13DDA008FC043 /* VPMPContainerDelegate.h */; };
+		0688E24D1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0688E24B1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.h */; };
+		0688E24E1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0688E24C1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.m */; };
+		0688E24F1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0688E24C1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.m */; };
+		0692ECFD1FF5EFA9008A3214 /* VPLNativeScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 0692ECFB1FF5EFA9008A3214 /* VPLNativeScanner.h */; };
+		0692ECFE1FF5EFA9008A3214 /* VPLNativeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692ECFC1FF5EFA9008A3214 /* VPLNativeScanner.m */; };
+		0692ECFF1FF5EFA9008A3214 /* VPLNativeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692ECFC1FF5EFA9008A3214 /* VPLNativeScanner.m */; };
+		069D37CC20207CB700CB177D /* VPLWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 069D37CA20207CB700CB177D /* VPLWindow.h */; };
+		069D37CD20207CB700CB177D /* VPLWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 069D37CB20207CB700CB177D /* VPLWindow.m */; };
+		069D37CE20207CB700CB177D /* VPLWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 069D37CB20207CB700CB177D /* VPLWindow.m */; };
+		06B02A7823753D43004E546D /* UIView+VPLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06B02A7623753D43004E546D /* UIView+VPLView.h */; };
+		06B02A7923753D43004E546D /* UIView+VPLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B02A7723753D43004E546D /* UIView+VPLView.m */; };
+		06B02A7C23753E1F004E546D /* NSObject+VPLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06B02A7A23753E1F004E546D /* NSObject+VPLView.h */; };
+		06B02A7D23753E1F004E546D /* NSObject+VPLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B02A7B23753E1F004E546D /* NSObject+VPLView.m */; };
+		06B02A81237A4D17004E546D /* VPLMPWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06B02A7F237A4D17004E546D /* VPLMPWebView.h */; };
+		06B02A82237A4D17004E546D /* VPLMPWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B02A80237A4D17004E546D /* VPLMPWebView.m */; };
+		06D474A122F4215C00C9DADD /* VPMPContainerLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D4749F22F4215C00C9DADD /* VPMPContainerLoadingView.h */; };
+		06D474A222F4215C00C9DADD /* VPMPContainerLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474A022F4215C00C9DADD /* VPMPContainerLoadingView.m */; };
+		06D474A722F7D65900C9DADD /* VPMPContainerStatusView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D474A522F7D65900C9DADD /* VPMPContainerStatusView.h */; };
+		06D474A822F7D65900C9DADD /* VPMPContainerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474A622F7D65900C9DADD /* VPMPContainerStatusView.m */; };
+		06D474AC22F8088900C9DADD /* VPMPContainerNetworkView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D474AA22F8088900C9DADD /* VPMPContainerNetworkView.h */; };
+		06D474AD22F8088900C9DADD /* VPMPContainerNetworkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474AB22F8088900C9DADD /* VPMPContainerNetworkView.m */; };
+		06D474B622F96F4A00C9DADD /* VPMPContainerErrorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D474B422F96F4A00C9DADD /* VPMPContainerErrorView.h */; };
+		06D474B722F96F4A00C9DADD /* VPMPContainerErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474B522F96F4A00C9DADD /* VPMPContainerErrorView.m */; };
 		D004F65A2093103000022E90 /* VPLuaServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F6582093103000022E90 /* VPLuaServiceManager.m */; };
-		D00ED8E2202C41AC00B6C8C1 /* VPLuaScriptManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8E0202C41AB00B6C8C1 /* VPLuaScriptManager.h */; };
-		D00ED8E3202C41AC00B6C8C1 /* VPLuaScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8E1202C41AC00B6C8C1 /* VPLuaScriptManager.m */; };
-		D00ED8E4202C41AC00B6C8C1 /* VPLuaScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8E1202C41AC00B6C8C1 /* VPLuaScriptManager.m */; };
-		D00ED8E7202DAB6700B6C8C1 /* VPLuaMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8E5202DAB6700B6C8C1 /* VPLuaMedia.h */; };
-		D00ED8E8202DAB6700B6C8C1 /* VPLuaMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8E6202DAB6700B6C8C1 /* VPLuaMedia.m */; };
-		D00ED8E9202DAB6800B6C8C1 /* VPLuaMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8E6202DAB6700B6C8C1 /* VPLuaMedia.m */; };
+		D00ED8E2202C41AC00B6C8C1 /* VPLScriptManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8E0202C41AB00B6C8C1 /* VPLScriptManager.h */; };
+		D00ED8E3202C41AC00B6C8C1 /* VPLScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8E1202C41AC00B6C8C1 /* VPLScriptManager.m */; };
+		D00ED8E4202C41AC00B6C8C1 /* VPLScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8E1202C41AC00B6C8C1 /* VPLScriptManager.m */; };
+		D00ED8E7202DAB6700B6C8C1 /* VPLMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8E5202DAB6700B6C8C1 /* VPLMedia.h */; };
+		D00ED8E8202DAB6700B6C8C1 /* VPLMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8E6202DAB6700B6C8C1 /* VPLMedia.m */; };
+		D00ED8E9202DAB6800B6C8C1 /* VPLMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8E6202DAB6700B6C8C1 /* VPLMedia.m */; };
 		D0114C141FCFBFCD00E75EF7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0114BED1FCFBFCC00E75EF7 /* Info.plist */; };
 		D0114C151FCFBFCD00E75EF7 /* VideoPlsLuaViewSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BEE1FCFBFCC00E75EF7 /* VideoPlsLuaViewSDK.h */; };
-		D0114C161FCFBFCD00E75EF7 /* VPLuaBaseView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BF11FCFBFCC00E75EF7 /* VPLuaBaseView.h */; };
-		D0114C171FCFBFCD00E75EF7 /* VPLuaBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF21FCFBFCC00E75EF7 /* VPLuaBaseView.m */; };
-		D0114C181FCFBFCD00E75EF7 /* VPLuaBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF21FCFBFCC00E75EF7 /* VPLuaBaseView.m */; };
-		D0114C191FCFBFCD00E75EF7 /* VPLuaButton.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BF31FCFBFCC00E75EF7 /* VPLuaButton.h */; };
-		D0114C1A1FCFBFCD00E75EF7 /* VPLuaButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF41FCFBFCC00E75EF7 /* VPLuaButton.m */; };
-		D0114C1B1FCFBFCD00E75EF7 /* VPLuaButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF41FCFBFCC00E75EF7 /* VPLuaButton.m */; };
-		D0114C1C1FCFBFCD00E75EF7 /* VPLuaCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BF51FCFBFCC00E75EF7 /* VPLuaCollectionView.h */; };
-		D0114C1D1FCFBFCD00E75EF7 /* VPLuaCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF61FCFBFCC00E75EF7 /* VPLuaCollectionView.m */; };
-		D0114C1E1FCFBFCD00E75EF7 /* VPLuaCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF61FCFBFCC00E75EF7 /* VPLuaCollectionView.m */; };
-		D0114C1F1FCFBFCD00E75EF7 /* VPLuaImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BF71FCFBFCC00E75EF7 /* VPLuaImageView.h */; };
-		D0114C201FCFBFCD00E75EF7 /* VPLuaImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF81FCFBFCC00E75EF7 /* VPLuaImageView.m */; };
-		D0114C211FCFBFCD00E75EF7 /* VPLuaImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF81FCFBFCC00E75EF7 /* VPLuaImageView.m */; };
-		D0114C221FCFBFCD00E75EF7 /* VPLuaLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BF91FCFBFCC00E75EF7 /* VPLuaLabel.h */; };
-		D0114C231FCFBFCD00E75EF7 /* VPLuaLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BFA1FCFBFCC00E75EF7 /* VPLuaLabel.m */; };
-		D0114C241FCFBFCD00E75EF7 /* VPLuaLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BFA1FCFBFCC00E75EF7 /* VPLuaLabel.m */; };
-		D0114C251FCFBFCD00E75EF7 /* VPLuaLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BFB1FCFBFCC00E75EF7 /* VPLuaLoadingView.h */; };
-		D0114C261FCFBFCD00E75EF7 /* VPLuaLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BFC1FCFBFCC00E75EF7 /* VPLuaLoadingView.m */; };
-		D0114C271FCFBFCD00E75EF7 /* VPLuaLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BFC1FCFBFCC00E75EF7 /* VPLuaLoadingView.m */; };
-		D0114C281FCFBFCD00E75EF7 /* VPLuaShelvesCardView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BFD1FCFBFCC00E75EF7 /* VPLuaShelvesCardView.h */; };
-		D0114C291FCFBFCD00E75EF7 /* VPLuaShelvesCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BFE1FCFBFCC00E75EF7 /* VPLuaShelvesCardView.m */; };
-		D0114C2A1FCFBFCD00E75EF7 /* VPLuaShelvesCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BFE1FCFBFCC00E75EF7 /* VPLuaShelvesCardView.m */; };
-		D0114C2B1FCFBFCD00E75EF7 /* VPLuaThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BFF1FCFBFCC00E75EF7 /* VPLuaThroughView.h */; };
-		D0114C2C1FCFBFCD00E75EF7 /* VPLuaThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C001FCFBFCC00E75EF7 /* VPLuaThroughView.m */; };
-		D0114C2D1FCFBFCD00E75EF7 /* VPLuaThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C001FCFBFCC00E75EF7 /* VPLuaThroughView.m */; };
-		D0114C2E1FCFBFCD00E75EF7 /* VPLuaViewHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C011FCFBFCC00E75EF7 /* VPLuaViewHeader.h */; };
-		D0114C2F1FCFBFCD00E75EF7 /* VPLuaWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C021FCFBFCC00E75EF7 /* VPLuaWebView.h */; };
-		D0114C301FCFBFCD00E75EF7 /* VPLuaWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C031FCFBFCC00E75EF7 /* VPLuaWebView.m */; };
-		D0114C311FCFBFCD00E75EF7 /* VPLuaWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C031FCFBFCC00E75EF7 /* VPLuaWebView.m */; };
-		D0114C321FCFBFCD00E75EF7 /* VPLuaBaseNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C051FCFBFCC00E75EF7 /* VPLuaBaseNode.h */; };
-		D0114C331FCFBFCD00E75EF7 /* VPLuaBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C061FCFBFCC00E75EF7 /* VPLuaBaseNode.m */; };
-		D0114C341FCFBFCD00E75EF7 /* VPLuaBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C061FCFBFCC00E75EF7 /* VPLuaBaseNode.m */; };
-		D0114C351FCFBFCD00E75EF7 /* VPLuaNativeBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C071FCFBFCC00E75EF7 /* VPLuaNativeBridge.h */; };
-		D0114C361FCFBFCD00E75EF7 /* VPLuaNativeBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C081FCFBFCC00E75EF7 /* VPLuaNativeBridge.m */; };
-		D0114C371FCFBFCD00E75EF7 /* VPLuaNativeBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C081FCFBFCC00E75EF7 /* VPLuaNativeBridge.m */; };
-		D0114C381FCFBFCD00E75EF7 /* VPLuaNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C091FCFBFCC00E75EF7 /* VPLuaNetworkManager.h */; };
-		D0114C391FCFBFCD00E75EF7 /* VPLuaNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C0A1FCFBFCC00E75EF7 /* VPLuaNetworkManager.m */; };
-		D0114C3A1FCFBFCD00E75EF7 /* VPLuaNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C0A1FCFBFCC00E75EF7 /* VPLuaNetworkManager.m */; };
-		D0114C3B1FCFBFCD00E75EF7 /* VPLuaNodeController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C0B1FCFBFCC00E75EF7 /* VPLuaNodeController.h */; };
-		D0114C3C1FCFBFCD00E75EF7 /* VPLuaNodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C0C1FCFBFCC00E75EF7 /* VPLuaNodeController.m */; };
-		D0114C3D1FCFBFCD00E75EF7 /* VPLuaNodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C0C1FCFBFCC00E75EF7 /* VPLuaNodeController.m */; };
-		D0114C3E1FCFBFCD00E75EF7 /* VPLuaTrackApi.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C0D1FCFBFCC00E75EF7 /* VPLuaTrackApi.h */; };
-		D0114C3F1FCFBFCD00E75EF7 /* VPLuaTrackApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C0E1FCFBFCC00E75EF7 /* VPLuaTrackApi.m */; };
-		D0114C401FCFBFCD00E75EF7 /* VPLuaTrackApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C0E1FCFBFCC00E75EF7 /* VPLuaTrackApi.m */; };
-		D0114C411FCFBFCD00E75EF7 /* VPLuaVideoInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C0F1FCFBFCC00E75EF7 /* VPLuaVideoInfo.h */; };
-		D0114C421FCFBFCD00E75EF7 /* VPLuaVideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C101FCFBFCC00E75EF7 /* VPLuaVideoInfo.m */; };
-		D0114C431FCFBFCD00E75EF7 /* VPLuaVideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C101FCFBFCC00E75EF7 /* VPLuaVideoInfo.m */; };
-		D0114C441FCFBFCD00E75EF7 /* VPLuaClickThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C121FCFBFCC00E75EF7 /* VPLuaClickThroughView.h */; };
-		D0114C451FCFBFCD00E75EF7 /* VPLuaClickThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C131FCFBFCC00E75EF7 /* VPLuaClickThroughView.m */; };
-		D0114C461FCFBFCD00E75EF7 /* VPLuaClickThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C131FCFBFCC00E75EF7 /* VPLuaClickThroughView.m */; };
-		D02A1DD622EEA58E00EF5CC2 /* VPLuaServiceVideoMode.h in Headers */ = {isa = PBXBuildFile; fileRef = D02A1DD422EEA58E00EF5CC2 /* VPLuaServiceVideoMode.h */; };
-		D02A1DD722EEA58E00EF5CC2 /* VPLuaServiceVideoMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DD522EEA58E00EF5CC2 /* VPLuaServiceVideoMode.m */; };
-		D02A1DD822EEA58E00EF5CC2 /* VPLuaServiceVideoMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DD522EEA58E00EF5CC2 /* VPLuaServiceVideoMode.m */; };
-		D02A1DDB22EEBD2200EF5CC2 /* VPLuaCapacityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D02A1DD922EEBD2200EF5CC2 /* VPLuaCapacityManager.h */; };
-		D02A1DDC22EEBD2200EF5CC2 /* VPLuaCapacityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DDA22EEBD2200EF5CC2 /* VPLuaCapacityManager.m */; };
-		D02A1DDD22EEBD2200EF5CC2 /* VPLuaCapacityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DDA22EEBD2200EF5CC2 /* VPLuaCapacityManager.m */; };
-		D02A1DE022EEBDB300EF5CC2 /* VPLuaServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D02A1DDE22EEBDB300EF5CC2 /* VPLuaServiceManager.h */; };
-		D02A1DE122EEBDB300EF5CC2 /* VPLuaServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DDF22EEBDB300EF5CC2 /* VPLuaServiceManager.m */; };
-		D02A1DE222EEBDB300EF5CC2 /* VPLuaServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DDF22EEBDB300EF5CC2 /* VPLuaServiceManager.m */; };
-		D05369982051067100A4F8C6 /* VPLuaMQTT.h in Headers */ = {isa = PBXBuildFile; fileRef = D05369962051067100A4F8C6 /* VPLuaMQTT.h */; };
-		D05369992051067100A4F8C6 /* VPLuaMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = D05369972051067100A4F8C6 /* VPLuaMQTT.m */; };
-		D053699A2051067100A4F8C6 /* VPLuaMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = D05369972051067100A4F8C6 /* VPLuaMQTT.m */; };
-		D05D93EB22811A1E003FBF3C /* VPLuaHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D05D93E922811A1E003FBF3C /* VPLuaHttpRequest.h */; };
-		D05D93EC22811A1E003FBF3C /* VPLuaHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D05D93EA22811A1E003FBF3C /* VPLuaHttpRequest.m */; };
-		D05DCC60200DDAC200E294F2 /* VPLuaTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = D05DCC5E200DDAC200E294F2 /* VPLuaTextField.h */; };
-		D05DCC61200DDAC200E294F2 /* VPLuaTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D05DCC5F200DDAC200E294F2 /* VPLuaTextField.m */; };
-		D05FA9172303C2FB00C24653 /* VPLuaTrackManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D05FA9152303C2FB00C24653 /* VPLuaTrackManager.h */; };
-		D05FA9182303C2FB00C24653 /* VPLuaTrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D05FA9162303C2FB00C24653 /* VPLuaTrackManager.m */; };
-		D05FA9192303C2FB00C24653 /* VPLuaTrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D05FA9162303C2FB00C24653 /* VPLuaTrackManager.m */; };
-		D08CBCD320A411B300BE5C9D /* VPLuaPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D08CBCD120A411B300BE5C9D /* VPLuaPlayer.h */; };
-		D08CBCD420A411B300BE5C9D /* VPLuaPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D08CBCD220A411B300BE5C9D /* VPLuaPlayer.m */; };
-		D08CBCD520A411B300BE5C9D /* VPLuaPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D08CBCD220A411B300BE5C9D /* VPLuaPlayer.m */; };
-		D0928C3F207CC135008AB5EC /* VPLuaPage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C3D207CC135008AB5EC /* VPLuaPage.h */; };
-		D0928C40207CC135008AB5EC /* VPLuaPage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C3E207CC135008AB5EC /* VPLuaPage.m */; };
-		D0928C41207CC135008AB5EC /* VPLuaPage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C3E207CC135008AB5EC /* VPLuaPage.m */; };
-		D09ADDC7205BA01A007DB3E7 /* VPLuaVideoPlayerSize.h in Headers */ = {isa = PBXBuildFile; fileRef = D09ADDC5205BA01A007DB3E7 /* VPLuaVideoPlayerSize.h */; };
-		D09ADDC8205BA01A007DB3E7 /* VPLuaVideoPlayerSize.m in Sources */ = {isa = PBXBuildFile; fileRef = D09ADDC6205BA01A007DB3E7 /* VPLuaVideoPlayerSize.m */; };
-		D09ADDC9205BA01A007DB3E7 /* VPLuaVideoPlayerSize.m in Sources */ = {isa = PBXBuildFile; fileRef = D09ADDC6205BA01A007DB3E7 /* VPLuaVideoPlayerSize.m */; };
-		D09F759120A98E7E001E89D3 /* VPLuaScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D09F758F20A98E7E001E89D3 /* VPLuaScrollView.h */; };
-		D09F759220A98E7E001E89D3 /* VPLuaScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F759020A98E7E001E89D3 /* VPLuaScrollView.m */; };
-		D09F759320A98E7E001E89D3 /* VPLuaScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F759020A98E7E001E89D3 /* VPLuaScrollView.m */; };
-		D0AAB13C22E5592600883F2A /* VPLuaLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0AAB13A22E5592600883F2A /* VPLuaLoader.h */; };
-		D0AAB13D22E5592600883F2A /* VPLuaLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AAB13B22E5592600883F2A /* VPLuaLoader.m */; };
-		D0AAB13E22E5592600883F2A /* VPLuaLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AAB13B22E5592600883F2A /* VPLuaLoader.m */; };
-		D0AC0173236927C800EF805A /* VPLuaInteractiveView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0AC0171236927C800EF805A /* VPLuaInteractiveView.h */; };
-		D0AC0174236927C800EF805A /* VPLuaInteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AC0172236927C800EF805A /* VPLuaInteractiveView.m */; };
-		D0AC0175236927C800EF805A /* VPLuaInteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AC0172236927C800EF805A /* VPLuaInteractiveView.m */; };
-		D0AC0178236930E400EF805A /* VPLuaTopView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0AC0176236930E400EF805A /* VPLuaTopView.h */; };
-		D0AC0179236930E400EF805A /* VPLuaTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AC0177236930E400EF805A /* VPLuaTopView.m */; };
-		D0AC017A236930E400EF805A /* VPLuaTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AC0177236930E400EF805A /* VPLuaTopView.m */; };
-		D0ADC49222EA8BD40037A549 /* VPLuaConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = D0ADC49022EA8BD40037A549 /* VPLuaConstant.h */; };
-		D0ADC49322EA8BD40037A549 /* VPLuaConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC49122EA8BD40037A549 /* VPLuaConstant.m */; };
-		D0ADC49422EA8BD40037A549 /* VPLuaConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC49122EA8BD40037A549 /* VPLuaConstant.m */; };
-		D0ADC4A222ED82B70037A549 /* VPLuaServiceAd.h in Headers */ = {isa = PBXBuildFile; fileRef = D0ADC4A022ED82B70037A549 /* VPLuaServiceAd.h */; };
-		D0ADC4A322ED82B70037A549 /* VPLuaServiceAd.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC4A122ED82B70037A549 /* VPLuaServiceAd.m */; };
-		D0ADC4A622ED83270037A549 /* VPLuaService.h in Headers */ = {isa = PBXBuildFile; fileRef = D0ADC4A422ED83270037A549 /* VPLuaService.h */; };
-		D0ADC4A722ED83270037A549 /* VPLuaService.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC4A522ED83270037A549 /* VPLuaService.m */; };
-		D0ADC4A822ED83270037A549 /* VPLuaService.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC4A522ED83270037A549 /* VPLuaService.m */; };
-		D0BD1ABF2138DE2100A087F2 /* VPLuaSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BD1ABD2138DE2100A087F2 /* VPLuaSDK.h */; };
-		D0BD1AC02138DE2100A087F2 /* VPLuaSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1ABE2138DE2100A087F2 /* VPLuaSDK.m */; };
-		D0BD1AC12138DE2100A087F2 /* VPLuaSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1ABE2138DE2100A087F2 /* VPLuaSDK.m */; };
-		D0C3A1E0206B3E8800C21CA7 /* VPLuaSVGAView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C3A1DE206B3E8700C21CA7 /* VPLuaSVGAView.m */; };
-		D0C3A1E1206B3E8800C21CA7 /* VPLuaSVGAView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C3A1DE206B3E8700C21CA7 /* VPLuaSVGAView.m */; };
-		D0C3A1E2206B3E8800C21CA7 /* VPLuaSVGAView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0C3A1DF206B3E8800C21CA7 /* VPLuaSVGAView.h */; };
-		D0E8C2842317C2010020D6A5 /* VPLuaDesktopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E8C2822317C2000020D6A5 /* VPLuaDesktopView.m */; };
-		D0E8C2852317C2010020D6A5 /* VPLuaDesktopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E8C2822317C2000020D6A5 /* VPLuaDesktopView.m */; };
-		D0E8C2862317C2010020D6A5 /* VPLuaDesktopView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E8C2832317C2010020D6A5 /* VPLuaDesktopView.h */; };
-		D0E8C2892317C23F0020D6A5 /* VPLuaNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E8C2872317C23E0020D6A5 /* VPLuaNotification.h */; };
-		D0E8C28A2317C23F0020D6A5 /* VPLuaNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E8C2882317C23F0020D6A5 /* VPLuaNotification.m */; };
-		D0E8C28B2317C23F0020D6A5 /* VPLuaNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E8C2882317C23F0020D6A5 /* VPLuaNotification.m */; };
-		D0EE6468204D421E005D53C5 /* VPLuaOSView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0EE6466204D421E005D53C5 /* VPLuaOSView.h */; };
-		D0EE6469204D421E005D53C5 /* VPLuaOSView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE6467204D421E005D53C5 /* VPLuaOSView.m */; };
-		D0EE646A204D421E005D53C5 /* VPLuaOSView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE6467204D421E005D53C5 /* VPLuaOSView.m */; };
-		D0FA556320A13D0000105348 /* VPLuaMacroDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FA556220A13D0000105348 /* VPLuaMacroDefine.h */; };
+		D0114C161FCFBFCD00E75EF7 /* VPLBaseView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BF11FCFBFCC00E75EF7 /* VPLBaseView.h */; };
+		D0114C171FCFBFCD00E75EF7 /* VPLBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF21FCFBFCC00E75EF7 /* VPLBaseView.m */; };
+		D0114C181FCFBFCD00E75EF7 /* VPLBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF21FCFBFCC00E75EF7 /* VPLBaseView.m */; };
+		D0114C191FCFBFCD00E75EF7 /* VPLButton.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BF31FCFBFCC00E75EF7 /* VPLButton.h */; };
+		D0114C1A1FCFBFCD00E75EF7 /* VPLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF41FCFBFCC00E75EF7 /* VPLButton.m */; };
+		D0114C1B1FCFBFCD00E75EF7 /* VPLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF41FCFBFCC00E75EF7 /* VPLButton.m */; };
+		D0114C1C1FCFBFCD00E75EF7 /* VPLCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BF51FCFBFCC00E75EF7 /* VPLCollectionView.h */; };
+		D0114C1D1FCFBFCD00E75EF7 /* VPLCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF61FCFBFCC00E75EF7 /* VPLCollectionView.m */; };
+		D0114C1E1FCFBFCD00E75EF7 /* VPLCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF61FCFBFCC00E75EF7 /* VPLCollectionView.m */; };
+		D0114C1F1FCFBFCD00E75EF7 /* VPLImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BF71FCFBFCC00E75EF7 /* VPLImageView.h */; };
+		D0114C201FCFBFCD00E75EF7 /* VPLImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF81FCFBFCC00E75EF7 /* VPLImageView.m */; };
+		D0114C211FCFBFCD00E75EF7 /* VPLImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BF81FCFBFCC00E75EF7 /* VPLImageView.m */; };
+		D0114C221FCFBFCD00E75EF7 /* VPLLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BF91FCFBFCC00E75EF7 /* VPLLabel.h */; };
+		D0114C231FCFBFCD00E75EF7 /* VPLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BFA1FCFBFCC00E75EF7 /* VPLLabel.m */; };
+		D0114C241FCFBFCD00E75EF7 /* VPLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BFA1FCFBFCC00E75EF7 /* VPLLabel.m */; };
+		D0114C251FCFBFCD00E75EF7 /* VPLLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BFB1FCFBFCC00E75EF7 /* VPLLoadingView.h */; };
+		D0114C261FCFBFCD00E75EF7 /* VPLLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BFC1FCFBFCC00E75EF7 /* VPLLoadingView.m */; };
+		D0114C271FCFBFCD00E75EF7 /* VPLLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BFC1FCFBFCC00E75EF7 /* VPLLoadingView.m */; };
+		D0114C281FCFBFCD00E75EF7 /* VPLShelvesCardView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BFD1FCFBFCC00E75EF7 /* VPLShelvesCardView.h */; };
+		D0114C291FCFBFCD00E75EF7 /* VPLShelvesCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BFE1FCFBFCC00E75EF7 /* VPLShelvesCardView.m */; };
+		D0114C2A1FCFBFCD00E75EF7 /* VPLShelvesCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114BFE1FCFBFCC00E75EF7 /* VPLShelvesCardView.m */; };
+		D0114C2B1FCFBFCD00E75EF7 /* VPLThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114BFF1FCFBFCC00E75EF7 /* VPLThroughView.h */; };
+		D0114C2C1FCFBFCD00E75EF7 /* VPLThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C001FCFBFCC00E75EF7 /* VPLThroughView.m */; };
+		D0114C2D1FCFBFCD00E75EF7 /* VPLThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C001FCFBFCC00E75EF7 /* VPLThroughView.m */; };
+		D0114C2E1FCFBFCD00E75EF7 /* VPLViewHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C011FCFBFCC00E75EF7 /* VPLViewHeader.h */; };
+		D0114C2F1FCFBFCD00E75EF7 /* VPLWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C021FCFBFCC00E75EF7 /* VPLWebView.h */; };
+		D0114C301FCFBFCD00E75EF7 /* VPLWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C031FCFBFCC00E75EF7 /* VPLWebView.m */; };
+		D0114C311FCFBFCD00E75EF7 /* VPLWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C031FCFBFCC00E75EF7 /* VPLWebView.m */; };
+		D0114C321FCFBFCD00E75EF7 /* VPLBaseNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C051FCFBFCC00E75EF7 /* VPLBaseNode.h */; };
+		D0114C331FCFBFCD00E75EF7 /* VPLBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C061FCFBFCC00E75EF7 /* VPLBaseNode.m */; };
+		D0114C341FCFBFCD00E75EF7 /* VPLBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C061FCFBFCC00E75EF7 /* VPLBaseNode.m */; };
+		D0114C351FCFBFCD00E75EF7 /* VPLNativeBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C071FCFBFCC00E75EF7 /* VPLNativeBridge.h */; };
+		D0114C361FCFBFCD00E75EF7 /* VPLNativeBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C081FCFBFCC00E75EF7 /* VPLNativeBridge.m */; };
+		D0114C371FCFBFCD00E75EF7 /* VPLNativeBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C081FCFBFCC00E75EF7 /* VPLNativeBridge.m */; };
+		D0114C381FCFBFCD00E75EF7 /* VPLNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C091FCFBFCC00E75EF7 /* VPLNetworkManager.h */; };
+		D0114C391FCFBFCD00E75EF7 /* VPLNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C0A1FCFBFCC00E75EF7 /* VPLNetworkManager.m */; };
+		D0114C3A1FCFBFCD00E75EF7 /* VPLNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C0A1FCFBFCC00E75EF7 /* VPLNetworkManager.m */; };
+		D0114C3B1FCFBFCD00E75EF7 /* VPLNodeController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C0B1FCFBFCC00E75EF7 /* VPLNodeController.h */; };
+		D0114C3C1FCFBFCD00E75EF7 /* VPLNodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C0C1FCFBFCC00E75EF7 /* VPLNodeController.m */; };
+		D0114C3D1FCFBFCD00E75EF7 /* VPLNodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C0C1FCFBFCC00E75EF7 /* VPLNodeController.m */; };
+		D0114C3E1FCFBFCD00E75EF7 /* VPLTrackApi.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C0D1FCFBFCC00E75EF7 /* VPLTrackApi.h */; };
+		D0114C3F1FCFBFCD00E75EF7 /* VPLTrackApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C0E1FCFBFCC00E75EF7 /* VPLTrackApi.m */; };
+		D0114C401FCFBFCD00E75EF7 /* VPLTrackApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C0E1FCFBFCC00E75EF7 /* VPLTrackApi.m */; };
+		D0114C411FCFBFCD00E75EF7 /* VPLVideoInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C0F1FCFBFCC00E75EF7 /* VPLVideoInfo.h */; };
+		D0114C421FCFBFCD00E75EF7 /* VPLVideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C101FCFBFCC00E75EF7 /* VPLVideoInfo.m */; };
+		D0114C431FCFBFCD00E75EF7 /* VPLVideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C101FCFBFCC00E75EF7 /* VPLVideoInfo.m */; };
+		D0114C441FCFBFCD00E75EF7 /* VPLClickThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0114C121FCFBFCC00E75EF7 /* VPLClickThroughView.h */; };
+		D0114C451FCFBFCD00E75EF7 /* VPLClickThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C131FCFBFCC00E75EF7 /* VPLClickThroughView.m */; };
+		D0114C461FCFBFCD00E75EF7 /* VPLClickThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0114C131FCFBFCC00E75EF7 /* VPLClickThroughView.m */; };
+		D02A1DD622EEA58E00EF5CC2 /* VPLServiceVideoMode.h in Headers */ = {isa = PBXBuildFile; fileRef = D02A1DD422EEA58E00EF5CC2 /* VPLServiceVideoMode.h */; };
+		D02A1DD722EEA58E00EF5CC2 /* VPLServiceVideoMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DD522EEA58E00EF5CC2 /* VPLServiceVideoMode.m */; };
+		D02A1DD822EEA58E00EF5CC2 /* VPLServiceVideoMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DD522EEA58E00EF5CC2 /* VPLServiceVideoMode.m */; };
+		D02A1DDB22EEBD2200EF5CC2 /* VPLCapacityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D02A1DD922EEBD2200EF5CC2 /* VPLCapacityManager.h */; };
+		D02A1DDC22EEBD2200EF5CC2 /* VPLCapacityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DDA22EEBD2200EF5CC2 /* VPLCapacityManager.m */; };
+		D02A1DDD22EEBD2200EF5CC2 /* VPLCapacityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DDA22EEBD2200EF5CC2 /* VPLCapacityManager.m */; };
+		D02A1DE022EEBDB300EF5CC2 /* VPLServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D02A1DDE22EEBDB300EF5CC2 /* VPLServiceManager.h */; };
+		D02A1DE122EEBDB300EF5CC2 /* VPLServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DDF22EEBDB300EF5CC2 /* VPLServiceManager.m */; };
+		D02A1DE222EEBDB300EF5CC2 /* VPLServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A1DDF22EEBDB300EF5CC2 /* VPLServiceManager.m */; };
+		D05369982051067100A4F8C6 /* VPLMQTT.h in Headers */ = {isa = PBXBuildFile; fileRef = D05369962051067100A4F8C6 /* VPLMQTT.h */; };
+		D05369992051067100A4F8C6 /* VPLMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = D05369972051067100A4F8C6 /* VPLMQTT.m */; };
+		D053699A2051067100A4F8C6 /* VPLMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = D05369972051067100A4F8C6 /* VPLMQTT.m */; };
+		D05D93EB22811A1E003FBF3C /* VPLHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D05D93E922811A1E003FBF3C /* VPLHttpRequest.h */; };
+		D05D93EC22811A1E003FBF3C /* VPLHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D05D93EA22811A1E003FBF3C /* VPLHttpRequest.m */; };
+		D05DCC60200DDAC200E294F2 /* VPLTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = D05DCC5E200DDAC200E294F2 /* VPLTextField.h */; };
+		D05DCC61200DDAC200E294F2 /* VPLTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D05DCC5F200DDAC200E294F2 /* VPLTextField.m */; };
+		D05FA9172303C2FB00C24653 /* VPLTrackManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D05FA9152303C2FB00C24653 /* VPLTrackManager.h */; };
+		D05FA9182303C2FB00C24653 /* VPLTrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D05FA9162303C2FB00C24653 /* VPLTrackManager.m */; };
+		D05FA9192303C2FB00C24653 /* VPLTrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D05FA9162303C2FB00C24653 /* VPLTrackManager.m */; };
+		D08CBCD320A411B300BE5C9D /* VPLPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D08CBCD120A411B300BE5C9D /* VPLPlayer.h */; };
+		D08CBCD420A411B300BE5C9D /* VPLPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D08CBCD220A411B300BE5C9D /* VPLPlayer.m */; };
+		D08CBCD520A411B300BE5C9D /* VPLPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D08CBCD220A411B300BE5C9D /* VPLPlayer.m */; };
+		D0928C3F207CC135008AB5EC /* VPLPage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C3D207CC135008AB5EC /* VPLPage.h */; };
+		D0928C40207CC135008AB5EC /* VPLPage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C3E207CC135008AB5EC /* VPLPage.m */; };
+		D0928C41207CC135008AB5EC /* VPLPage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C3E207CC135008AB5EC /* VPLPage.m */; };
+		D09ADDC7205BA01A007DB3E7 /* VPLVideoPlayerSize.h in Headers */ = {isa = PBXBuildFile; fileRef = D09ADDC5205BA01A007DB3E7 /* VPLVideoPlayerSize.h */; };
+		D09ADDC8205BA01A007DB3E7 /* VPLVideoPlayerSize.m in Sources */ = {isa = PBXBuildFile; fileRef = D09ADDC6205BA01A007DB3E7 /* VPLVideoPlayerSize.m */; };
+		D09ADDC9205BA01A007DB3E7 /* VPLVideoPlayerSize.m in Sources */ = {isa = PBXBuildFile; fileRef = D09ADDC6205BA01A007DB3E7 /* VPLVideoPlayerSize.m */; };
+		D09F759120A98E7E001E89D3 /* VPLScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D09F758F20A98E7E001E89D3 /* VPLScrollView.h */; };
+		D09F759220A98E7E001E89D3 /* VPLScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F759020A98E7E001E89D3 /* VPLScrollView.m */; };
+		D09F759320A98E7E001E89D3 /* VPLScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F759020A98E7E001E89D3 /* VPLScrollView.m */; };
+		D0AAB13C22E5592600883F2A /* VPLDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0AAB13A22E5592600883F2A /* VPLDownloader.h */; };
+		D0AAB13D22E5592600883F2A /* VPLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AAB13B22E5592600883F2A /* VPLDownloader.m */; };
+		D0AAB13E22E5592600883F2A /* VPLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AAB13B22E5592600883F2A /* VPLDownloader.m */; };
+		D0AC0173236927C800EF805A /* VPLInteractiveView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0AC0171236927C800EF805A /* VPLInteractiveView.h */; };
+		D0AC0174236927C800EF805A /* VPLInteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AC0172236927C800EF805A /* VPLInteractiveView.m */; };
+		D0AC0175236927C800EF805A /* VPLInteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AC0172236927C800EF805A /* VPLInteractiveView.m */; };
+		D0AC0178236930E400EF805A /* VPLTopView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0AC0176236930E400EF805A /* VPLTopView.h */; };
+		D0AC0179236930E400EF805A /* VPLTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AC0177236930E400EF805A /* VPLTopView.m */; };
+		D0AC017A236930E400EF805A /* VPLTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AC0177236930E400EF805A /* VPLTopView.m */; };
+		D0ADC49222EA8BD40037A549 /* VPLConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = D0ADC49022EA8BD40037A549 /* VPLConstant.h */; };
+		D0ADC49322EA8BD40037A549 /* VPLConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC49122EA8BD40037A549 /* VPLConstant.m */; };
+		D0ADC49422EA8BD40037A549 /* VPLConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC49122EA8BD40037A549 /* VPLConstant.m */; };
+		D0ADC4A222ED82B70037A549 /* VPLServiceAd.h in Headers */ = {isa = PBXBuildFile; fileRef = D0ADC4A022ED82B70037A549 /* VPLServiceAd.h */; };
+		D0ADC4A322ED82B70037A549 /* VPLServiceAd.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC4A122ED82B70037A549 /* VPLServiceAd.m */; };
+		D0ADC4A622ED83270037A549 /* VPLService.h in Headers */ = {isa = PBXBuildFile; fileRef = D0ADC4A422ED83270037A549 /* VPLService.h */; };
+		D0ADC4A722ED83270037A549 /* VPLService.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC4A522ED83270037A549 /* VPLService.m */; };
+		D0ADC4A822ED83270037A549 /* VPLService.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC4A522ED83270037A549 /* VPLService.m */; };
+		D0BD1ABF2138DE2100A087F2 /* VPLSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BD1ABD2138DE2100A087F2 /* VPLSDK.h */; };
+		D0BD1AC02138DE2100A087F2 /* VPLSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1ABE2138DE2100A087F2 /* VPLSDK.m */; };
+		D0BD1AC12138DE2100A087F2 /* VPLSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1ABE2138DE2100A087F2 /* VPLSDK.m */; };
+		D0C3A1E0206B3E8800C21CA7 /* VPLSVGAView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C3A1DE206B3E8700C21CA7 /* VPLSVGAView.m */; };
+		D0C3A1E1206B3E8800C21CA7 /* VPLSVGAView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C3A1DE206B3E8700C21CA7 /* VPLSVGAView.m */; };
+		D0C3A1E2206B3E8800C21CA7 /* VPLSVGAView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0C3A1DF206B3E8800C21CA7 /* VPLSVGAView.h */; };
+		D0E8C2842317C2010020D6A5 /* VPLBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E8C2822317C2000020D6A5 /* VPLBubbleView.m */; };
+		D0E8C2852317C2010020D6A5 /* VPLBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E8C2822317C2000020D6A5 /* VPLBubbleView.m */; };
+		D0E8C2862317C2010020D6A5 /* VPLBubbleView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E8C2832317C2010020D6A5 /* VPLBubbleView.h */; };
+		D0E8C2892317C23F0020D6A5 /* VPLNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E8C2872317C23E0020D6A5 /* VPLNotification.h */; };
+		D0E8C28A2317C23F0020D6A5 /* VPLNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E8C2882317C23F0020D6A5 /* VPLNotification.m */; };
+		D0E8C28B2317C23F0020D6A5 /* VPLNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E8C2882317C23F0020D6A5 /* VPLNotification.m */; };
+		D0EE6468204D421E005D53C5 /* VPLOSView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0EE6466204D421E005D53C5 /* VPLOSView.h */; };
+		D0EE6469204D421E005D53C5 /* VPLOSView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE6467204D421E005D53C5 /* VPLOSView.m */; };
+		D0EE646A204D421E005D53C5 /* VPLOSView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE6467204D421E005D53C5 /* VPLOSView.m */; };
+		D0FA556320A13D0000105348 /* VPLMacroDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FA556220A13D0000105348 /* VPLMacroDefine.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -201,145 +197,141 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0614EAD522F020D8002DD6F4 /* VPLuaAppletsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletsView.h; sourceTree = "<group>"; };
-		0614EAD622F020D8002DD6F4 /* VPLuaAppletsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaAppletsView.m; sourceTree = "<group>"; };
-		063A124222F3CE230027B6A2 /* VPLuaAppletBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletBridge.h; sourceTree = "<group>"; };
-		063A124322F3CE230027B6A2 /* VPLuaAppletBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaAppletBridge.m; sourceTree = "<group>"; };
-		063ABC032004C6AC001A8B94 /* VPLuaGradientView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaGradientView.h; sourceTree = "<group>"; };
-		063ABC042004C6AC001A8B94 /* VPLuaGradientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaGradientView.m; sourceTree = "<group>"; };
-		0640FAE31FE8EDF90089825F /* VPLuaNormalRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaNormalRefreshHeader.h; sourceTree = "<group>"; };
-		0640FAE41FE8EDF90089825F /* VPLuaNormalRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaNormalRefreshHeader.m; sourceTree = "<group>"; };
-		064C92EF2314CB660050D862 /* VPAppletLandscapeNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPAppletLandscapeNavigationBar.h; sourceTree = "<group>"; };
-		064C92F02314CB660050D862 /* VPAppletLandscapeNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPAppletLandscapeNavigationBar.m; sourceTree = "<group>"; };
-		064C92F3231545B40050D862 /* VPAppletContainerNaviSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPAppletContainerNaviSetting.h; sourceTree = "<group>"; };
-		064C92F4231545B40050D862 /* VPAppletContainerNaviSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPAppletContainerNaviSetting.m; sourceTree = "<group>"; };
-		064C92F7231636370050D862 /* VPHybirdAppletLandscapeContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPHybirdAppletLandscapeContainer.h; sourceTree = "<group>"; };
-		064C92F8231636370050D862 /* VPHybirdAppletLandscapeContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPHybirdAppletLandscapeContainer.m; sourceTree = "<group>"; };
-		064C92FB23165BBF0050D862 /* VPAppletLandscapeContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPAppletLandscapeContainer.h; sourceTree = "<group>"; };
-		064C92FC23165BBF0050D862 /* VPAppletLandscapeContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPAppletLandscapeContainer.m; sourceTree = "<group>"; };
-		06571F9223851B4100C6C4D6 /* VPLuaRedirectAppletManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaRedirectAppletManager.h; sourceTree = "<group>"; };
-		06571F9323851B4100C6C4D6 /* VPLuaRedirectAppletManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaRedirectAppletManager.m; sourceTree = "<group>"; };
+		0614EAD522F020D8002DD6F4 /* VPLMPView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMPView.h; sourceTree = "<group>"; };
+		0614EAD622F020D8002DD6F4 /* VPLMPView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMPView.m; sourceTree = "<group>"; };
+		063A124222F3CE230027B6A2 /* VPLMPBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMPBridge.h; sourceTree = "<group>"; };
+		063A124322F3CE230027B6A2 /* VPLMPBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMPBridge.m; sourceTree = "<group>"; };
+		063ABC032004C6AC001A8B94 /* VPLGradientView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLGradientView.h; sourceTree = "<group>"; };
+		063ABC042004C6AC001A8B94 /* VPLGradientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLGradientView.m; sourceTree = "<group>"; };
+		0640FAE31FE8EDF90089825F /* VPLNormalRefreshHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLNormalRefreshHeader.h; sourceTree = "<group>"; };
+		0640FAE41FE8EDF90089825F /* VPLNormalRefreshHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLNormalRefreshHeader.m; sourceTree = "<group>"; };
+		064236242399F94000DF0EE2 /* VPMPContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPMPContainer.h; sourceTree = "<group>"; };
+		064C92EF2314CB660050D862 /* VPMPLandscapeNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPMPLandscapeNavigationBar.h; sourceTree = "<group>"; };
+		064C92F02314CB660050D862 /* VPMPLandscapeNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPMPLandscapeNavigationBar.m; sourceTree = "<group>"; };
+		064C92F3231545B40050D862 /* VPMPContainerNaviSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPMPContainerNaviSetting.h; sourceTree = "<group>"; };
+		064C92F4231545B40050D862 /* VPMPContainerNaviSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPMPContainerNaviSetting.m; sourceTree = "<group>"; };
+		064C92F7231636370050D862 /* VPHMPLandscapeContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPHMPLandscapeContainer.h; sourceTree = "<group>"; };
+		064C92F8231636370050D862 /* VPHMPLandscapeContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPHMPLandscapeContainer.m; sourceTree = "<group>"; };
+		064C92FB23165BBF0050D862 /* VPMPLandscapeContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPMPLandscapeContainer.h; sourceTree = "<group>"; };
+		064C92FC23165BBF0050D862 /* VPMPLandscapeContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPMPLandscapeContainer.m; sourceTree = "<group>"; };
+		06571F9223851B4100C6C4D6 /* VPLMPRedirectManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMPRedirectManager.h; sourceTree = "<group>"; };
+		06571F9323851B4100C6C4D6 /* VPLMPRedirectManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMPRedirectManager.m; sourceTree = "<group>"; };
 		06571F9A23867A7100C6C4D6 /* VPMiniAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPMiniAppInfo.h; sourceTree = "<group>"; };
 		06571F9B23867A7100C6C4D6 /* VPMiniAppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPMiniAppInfo.m; sourceTree = "<group>"; };
-		067A769622F03C5E008FC043 /* VPLuaAppletLandscapeContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletLandscapeContainer.h; sourceTree = "<group>"; };
-		067A769722F03C5E008FC043 /* VPLuaAppletLandscapeContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaAppletLandscapeContainer.m; sourceTree = "<group>"; };
-		067A769E22F03F48008FC043 /* VPLuaAppletPortraitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletPortraitViewController.h; sourceTree = "<group>"; };
-		067A769F22F03F48008FC043 /* VPLuaAppletPortraitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaAppletPortraitViewController.m; sourceTree = "<group>"; };
-		067A76A222F03FC7008FC043 /* VPLuaAppletPortraitNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletPortraitNavigationController.h; sourceTree = "<group>"; };
-		067A76A322F03FC7008FC043 /* VPLuaAppletPortraitNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaAppletPortraitNavigationController.m; sourceTree = "<group>"; };
-		067A76A622F04969008FC043 /* VPLuaAppletObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletObject.h; sourceTree = "<group>"; };
-		067A76A722F04969008FC043 /* VPLuaAppletObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaAppletObject.m; sourceTree = "<group>"; };
-		067A76AA22F131A2008FC043 /* VPLuaAppletRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletRequest.h; sourceTree = "<group>"; };
-		067A76AB22F131A2008FC043 /* VPLuaAppletRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaAppletRequest.m; sourceTree = "<group>"; };
-		067A76B022F13DDA008FC043 /* VPLuaAppletContainerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletContainerDelegate.h; sourceTree = "<group>"; };
-		0688E24B1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaRefreshCollectionView.h; sourceTree = "<group>"; };
-		0688E24C1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaRefreshCollectionView.m; sourceTree = "<group>"; };
-		0692ECFB1FF5EFA9008A3214 /* VPLuaNativeScanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaNativeScanner.h; sourceTree = "<group>"; };
-		0692ECFC1FF5EFA9008A3214 /* VPLuaNativeScanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaNativeScanner.m; sourceTree = "<group>"; };
-		069495BD22F2B89100AA1ACE /* VPLuaAppletContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletContainer.h; sourceTree = "<group>"; };
-		069D37CA20207CB700CB177D /* VPLuaWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaWindow.h; sourceTree = "<group>"; };
-		069D37CB20207CB700CB177D /* VPLuaWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaWindow.m; sourceTree = "<group>"; };
-		06B02A7623753D43004E546D /* UIView+VPLuaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+VPLuaView.h"; sourceTree = "<group>"; };
-		06B02A7723753D43004E546D /* UIView+VPLuaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+VPLuaView.m"; sourceTree = "<group>"; };
-		06B02A7A23753E1F004E546D /* NSObject+VPLuaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+VPLuaView.h"; sourceTree = "<group>"; };
-		06B02A7B23753E1F004E546D /* NSObject+VPLuaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+VPLuaView.m"; sourceTree = "<group>"; };
-		06B02A7F237A4D17004E546D /* VPLuaAppletWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletWebView.h; sourceTree = "<group>"; };
-		06B02A80237A4D17004E546D /* VPLuaAppletWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaAppletWebView.m; sourceTree = "<group>"; };
-		06D4749F22F4215C00C9DADD /* VPLuaAppletContainerLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletContainerLoadingView.h; sourceTree = "<group>"; };
-		06D474A022F4215C00C9DADD /* VPLuaAppletContainerLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaAppletContainerLoadingView.m; sourceTree = "<group>"; };
-		06D474A522F7D65900C9DADD /* VPLuaAppletContainerStatusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletContainerStatusView.h; sourceTree = "<group>"; };
-		06D474A622F7D65900C9DADD /* VPLuaAppletContainerStatusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaAppletContainerStatusView.m; sourceTree = "<group>"; };
-		06D474AA22F8088900C9DADD /* VPLuaAppletContainerNetworkView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletContainerNetworkView.h; sourceTree = "<group>"; };
-		06D474AB22F8088900C9DADD /* VPLuaAppletContainerNetworkView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaAppletContainerNetworkView.m; sourceTree = "<group>"; };
-		06D474B422F96F4A00C9DADD /* VPLuaAppletContainerErrorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaAppletContainerErrorView.h; sourceTree = "<group>"; };
-		06D474B522F96F4A00C9DADD /* VPLuaAppletContainerErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaAppletContainerErrorView.m; sourceTree = "<group>"; };
+		067A769622F03C5E008FC043 /* VPLMPLandscapeContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMPLandscapeContainer.h; sourceTree = "<group>"; };
+		067A769722F03C5E008FC043 /* VPLMPLandscapeContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMPLandscapeContainer.m; sourceTree = "<group>"; };
+		067A76A622F04969008FC043 /* VPLMPObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMPObject.h; sourceTree = "<group>"; };
+		067A76A722F04969008FC043 /* VPLMPObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMPObject.m; sourceTree = "<group>"; };
+		067A76AA22F131A2008FC043 /* VPLMPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMPRequest.h; sourceTree = "<group>"; };
+		067A76AB22F131A2008FC043 /* VPLMPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMPRequest.m; sourceTree = "<group>"; };
+		067A76B022F13DDA008FC043 /* VPMPContainerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPMPContainerDelegate.h; sourceTree = "<group>"; };
+		0688E24B1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLRefreshCollectionView.h; sourceTree = "<group>"; };
+		0688E24C1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLRefreshCollectionView.m; sourceTree = "<group>"; };
+		0692ECFB1FF5EFA9008A3214 /* VPLNativeScanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLNativeScanner.h; sourceTree = "<group>"; };
+		0692ECFC1FF5EFA9008A3214 /* VPLNativeScanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLNativeScanner.m; sourceTree = "<group>"; };
+		069D37CA20207CB700CB177D /* VPLWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLWindow.h; sourceTree = "<group>"; };
+		069D37CB20207CB700CB177D /* VPLWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLWindow.m; sourceTree = "<group>"; };
+		06B02A7623753D43004E546D /* UIView+VPLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+VPLView.h"; sourceTree = "<group>"; };
+		06B02A7723753D43004E546D /* UIView+VPLView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+VPLView.m"; sourceTree = "<group>"; };
+		06B02A7A23753E1F004E546D /* NSObject+VPLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+VPLView.h"; sourceTree = "<group>"; };
+		06B02A7B23753E1F004E546D /* NSObject+VPLView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+VPLView.m"; sourceTree = "<group>"; };
+		06B02A7F237A4D17004E546D /* VPLMPWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMPWebView.h; sourceTree = "<group>"; };
+		06B02A80237A4D17004E546D /* VPLMPWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMPWebView.m; sourceTree = "<group>"; };
+		06D4749F22F4215C00C9DADD /* VPMPContainerLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPMPContainerLoadingView.h; sourceTree = "<group>"; };
+		06D474A022F4215C00C9DADD /* VPMPContainerLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPMPContainerLoadingView.m; sourceTree = "<group>"; };
+		06D474A522F7D65900C9DADD /* VPMPContainerStatusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPMPContainerStatusView.h; sourceTree = "<group>"; };
+		06D474A622F7D65900C9DADD /* VPMPContainerStatusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPMPContainerStatusView.m; sourceTree = "<group>"; };
+		06D474AA22F8088900C9DADD /* VPMPContainerNetworkView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPMPContainerNetworkView.h; sourceTree = "<group>"; };
+		06D474AB22F8088900C9DADD /* VPMPContainerNetworkView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPMPContainerNetworkView.m; sourceTree = "<group>"; };
+		06D474B422F96F4A00C9DADD /* VPMPContainerErrorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPMPContainerErrorView.h; sourceTree = "<group>"; };
+		06D474B522F96F4A00C9DADD /* VPMPContainerErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPMPContainerErrorView.m; sourceTree = "<group>"; };
 		D004F6582093103000022E90 /* VPLuaServiceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaServiceManager.m; sourceTree = "<group>"; };
-		D00ED8E0202C41AB00B6C8C1 /* VPLuaScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaScriptManager.h; sourceTree = "<group>"; };
-		D00ED8E1202C41AC00B6C8C1 /* VPLuaScriptManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaScriptManager.m; sourceTree = "<group>"; };
-		D00ED8E5202DAB6700B6C8C1 /* VPLuaMedia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaMedia.h; sourceTree = "<group>"; };
-		D00ED8E6202DAB6700B6C8C1 /* VPLuaMedia.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaMedia.m; sourceTree = "<group>"; };
+		D00ED8E0202C41AB00B6C8C1 /* VPLScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLScriptManager.h; sourceTree = "<group>"; };
+		D00ED8E1202C41AC00B6C8C1 /* VPLScriptManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLScriptManager.m; sourceTree = "<group>"; };
+		D00ED8E5202DAB6700B6C8C1 /* VPLMedia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMedia.h; sourceTree = "<group>"; };
+		D00ED8E6202DAB6700B6C8C1 /* VPLMedia.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMedia.m; sourceTree = "<group>"; };
 		D0114BED1FCFBFCC00E75EF7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0114BEE1FCFBFCC00E75EF7 /* VideoPlsLuaViewSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlsLuaViewSDK.h; sourceTree = "<group>"; };
-		D0114BF11FCFBFCC00E75EF7 /* VPLuaBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaBaseView.h; sourceTree = "<group>"; };
-		D0114BF21FCFBFCC00E75EF7 /* VPLuaBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaBaseView.m; sourceTree = "<group>"; };
-		D0114BF31FCFBFCC00E75EF7 /* VPLuaButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaButton.h; sourceTree = "<group>"; };
-		D0114BF41FCFBFCC00E75EF7 /* VPLuaButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaButton.m; sourceTree = "<group>"; };
-		D0114BF51FCFBFCC00E75EF7 /* VPLuaCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaCollectionView.h; sourceTree = "<group>"; };
-		D0114BF61FCFBFCC00E75EF7 /* VPLuaCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaCollectionView.m; sourceTree = "<group>"; };
-		D0114BF71FCFBFCC00E75EF7 /* VPLuaImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaImageView.h; sourceTree = "<group>"; };
-		D0114BF81FCFBFCC00E75EF7 /* VPLuaImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaImageView.m; sourceTree = "<group>"; };
-		D0114BF91FCFBFCC00E75EF7 /* VPLuaLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaLabel.h; sourceTree = "<group>"; };
-		D0114BFA1FCFBFCC00E75EF7 /* VPLuaLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaLabel.m; sourceTree = "<group>"; };
-		D0114BFB1FCFBFCC00E75EF7 /* VPLuaLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaLoadingView.h; sourceTree = "<group>"; };
-		D0114BFC1FCFBFCC00E75EF7 /* VPLuaLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaLoadingView.m; sourceTree = "<group>"; };
-		D0114BFD1FCFBFCC00E75EF7 /* VPLuaShelvesCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaShelvesCardView.h; sourceTree = "<group>"; };
-		D0114BFE1FCFBFCC00E75EF7 /* VPLuaShelvesCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaShelvesCardView.m; sourceTree = "<group>"; };
-		D0114BFF1FCFBFCC00E75EF7 /* VPLuaThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaThroughView.h; sourceTree = "<group>"; };
-		D0114C001FCFBFCC00E75EF7 /* VPLuaThroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaThroughView.m; sourceTree = "<group>"; };
-		D0114C011FCFBFCC00E75EF7 /* VPLuaViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaViewHeader.h; sourceTree = "<group>"; };
-		D0114C021FCFBFCC00E75EF7 /* VPLuaWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaWebView.h; sourceTree = "<group>"; };
-		D0114C031FCFBFCC00E75EF7 /* VPLuaWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaWebView.m; sourceTree = "<group>"; };
-		D0114C051FCFBFCC00E75EF7 /* VPLuaBaseNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaBaseNode.h; sourceTree = "<group>"; };
-		D0114C061FCFBFCC00E75EF7 /* VPLuaBaseNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaBaseNode.m; sourceTree = "<group>"; };
-		D0114C071FCFBFCC00E75EF7 /* VPLuaNativeBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaNativeBridge.h; sourceTree = "<group>"; };
-		D0114C081FCFBFCC00E75EF7 /* VPLuaNativeBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaNativeBridge.m; sourceTree = "<group>"; };
-		D0114C091FCFBFCC00E75EF7 /* VPLuaNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaNetworkManager.h; sourceTree = "<group>"; };
-		D0114C0A1FCFBFCC00E75EF7 /* VPLuaNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaNetworkManager.m; sourceTree = "<group>"; };
-		D0114C0B1FCFBFCC00E75EF7 /* VPLuaNodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaNodeController.h; sourceTree = "<group>"; };
-		D0114C0C1FCFBFCC00E75EF7 /* VPLuaNodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaNodeController.m; sourceTree = "<group>"; };
-		D0114C0D1FCFBFCC00E75EF7 /* VPLuaTrackApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaTrackApi.h; sourceTree = "<group>"; };
-		D0114C0E1FCFBFCC00E75EF7 /* VPLuaTrackApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaTrackApi.m; sourceTree = "<group>"; };
-		D0114C0F1FCFBFCC00E75EF7 /* VPLuaVideoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaVideoInfo.h; sourceTree = "<group>"; };
-		D0114C101FCFBFCC00E75EF7 /* VPLuaVideoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaVideoInfo.m; sourceTree = "<group>"; };
-		D0114C121FCFBFCC00E75EF7 /* VPLuaClickThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaClickThroughView.h; sourceTree = "<group>"; };
-		D0114C131FCFBFCC00E75EF7 /* VPLuaClickThroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaClickThroughView.m; sourceTree = "<group>"; };
+		D0114BF11FCFBFCC00E75EF7 /* VPLBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLBaseView.h; sourceTree = "<group>"; };
+		D0114BF21FCFBFCC00E75EF7 /* VPLBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLBaseView.m; sourceTree = "<group>"; };
+		D0114BF31FCFBFCC00E75EF7 /* VPLButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLButton.h; sourceTree = "<group>"; };
+		D0114BF41FCFBFCC00E75EF7 /* VPLButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLButton.m; sourceTree = "<group>"; };
+		D0114BF51FCFBFCC00E75EF7 /* VPLCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLCollectionView.h; sourceTree = "<group>"; };
+		D0114BF61FCFBFCC00E75EF7 /* VPLCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLCollectionView.m; sourceTree = "<group>"; };
+		D0114BF71FCFBFCC00E75EF7 /* VPLImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLImageView.h; sourceTree = "<group>"; };
+		D0114BF81FCFBFCC00E75EF7 /* VPLImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLImageView.m; sourceTree = "<group>"; };
+		D0114BF91FCFBFCC00E75EF7 /* VPLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLLabel.h; sourceTree = "<group>"; };
+		D0114BFA1FCFBFCC00E75EF7 /* VPLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLLabel.m; sourceTree = "<group>"; };
+		D0114BFB1FCFBFCC00E75EF7 /* VPLLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLLoadingView.h; sourceTree = "<group>"; };
+		D0114BFC1FCFBFCC00E75EF7 /* VPLLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLLoadingView.m; sourceTree = "<group>"; };
+		D0114BFD1FCFBFCC00E75EF7 /* VPLShelvesCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLShelvesCardView.h; sourceTree = "<group>"; };
+		D0114BFE1FCFBFCC00E75EF7 /* VPLShelvesCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLShelvesCardView.m; sourceTree = "<group>"; };
+		D0114BFF1FCFBFCC00E75EF7 /* VPLThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLThroughView.h; sourceTree = "<group>"; };
+		D0114C001FCFBFCC00E75EF7 /* VPLThroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLThroughView.m; sourceTree = "<group>"; };
+		D0114C011FCFBFCC00E75EF7 /* VPLViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLViewHeader.h; sourceTree = "<group>"; };
+		D0114C021FCFBFCC00E75EF7 /* VPLWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLWebView.h; sourceTree = "<group>"; };
+		D0114C031FCFBFCC00E75EF7 /* VPLWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLWebView.m; sourceTree = "<group>"; };
+		D0114C051FCFBFCC00E75EF7 /* VPLBaseNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLBaseNode.h; sourceTree = "<group>"; };
+		D0114C061FCFBFCC00E75EF7 /* VPLBaseNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLBaseNode.m; sourceTree = "<group>"; };
+		D0114C071FCFBFCC00E75EF7 /* VPLNativeBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLNativeBridge.h; sourceTree = "<group>"; };
+		D0114C081FCFBFCC00E75EF7 /* VPLNativeBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLNativeBridge.m; sourceTree = "<group>"; };
+		D0114C091FCFBFCC00E75EF7 /* VPLNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLNetworkManager.h; sourceTree = "<group>"; };
+		D0114C0A1FCFBFCC00E75EF7 /* VPLNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLNetworkManager.m; sourceTree = "<group>"; };
+		D0114C0B1FCFBFCC00E75EF7 /* VPLNodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLNodeController.h; sourceTree = "<group>"; };
+		D0114C0C1FCFBFCC00E75EF7 /* VPLNodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLNodeController.m; sourceTree = "<group>"; };
+		D0114C0D1FCFBFCC00E75EF7 /* VPLTrackApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLTrackApi.h; sourceTree = "<group>"; };
+		D0114C0E1FCFBFCC00E75EF7 /* VPLTrackApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLTrackApi.m; sourceTree = "<group>"; };
+		D0114C0F1FCFBFCC00E75EF7 /* VPLVideoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLVideoInfo.h; sourceTree = "<group>"; };
+		D0114C101FCFBFCC00E75EF7 /* VPLVideoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLVideoInfo.m; sourceTree = "<group>"; };
+		D0114C121FCFBFCC00E75EF7 /* VPLClickThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLClickThroughView.h; sourceTree = "<group>"; };
+		D0114C131FCFBFCC00E75EF7 /* VPLClickThroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLClickThroughView.m; sourceTree = "<group>"; };
 		D018AF041FC6B8C600BC0BC8 /* VideoPlsLuaViewManagerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VideoPlsLuaViewManagerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D018AF131FC6B90B00BC0BC8 /* liblibVideoPlsLuaViewManagerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibVideoPlsLuaViewManagerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D02A1DD422EEA58E00EF5CC2 /* VPLuaServiceVideoMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaServiceVideoMode.h; sourceTree = "<group>"; };
-		D02A1DD522EEA58E00EF5CC2 /* VPLuaServiceVideoMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaServiceVideoMode.m; sourceTree = "<group>"; };
-		D02A1DD922EEBD2200EF5CC2 /* VPLuaCapacityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaCapacityManager.h; sourceTree = "<group>"; };
-		D02A1DDA22EEBD2200EF5CC2 /* VPLuaCapacityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaCapacityManager.m; sourceTree = "<group>"; };
-		D02A1DDE22EEBDB300EF5CC2 /* VPLuaServiceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaServiceManager.h; sourceTree = "<group>"; };
-		D02A1DDF22EEBDB300EF5CC2 /* VPLuaServiceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaServiceManager.m; sourceTree = "<group>"; };
-		D05369962051067100A4F8C6 /* VPLuaMQTT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaMQTT.h; sourceTree = "<group>"; };
-		D05369972051067100A4F8C6 /* VPLuaMQTT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaMQTT.m; sourceTree = "<group>"; };
-		D05D93E922811A1E003FBF3C /* VPLuaHttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaHttpRequest.h; sourceTree = "<group>"; };
-		D05D93EA22811A1E003FBF3C /* VPLuaHttpRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaHttpRequest.m; sourceTree = "<group>"; };
-		D05DCC5E200DDAC200E294F2 /* VPLuaTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaTextField.h; sourceTree = "<group>"; };
-		D05DCC5F200DDAC200E294F2 /* VPLuaTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaTextField.m; sourceTree = "<group>"; };
-		D05FA9152303C2FB00C24653 /* VPLuaTrackManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaTrackManager.h; sourceTree = "<group>"; };
-		D05FA9162303C2FB00C24653 /* VPLuaTrackManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaTrackManager.m; sourceTree = "<group>"; };
-		D08CBCD120A411B300BE5C9D /* VPLuaPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaPlayer.h; sourceTree = "<group>"; };
-		D08CBCD220A411B300BE5C9D /* VPLuaPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaPlayer.m; sourceTree = "<group>"; };
-		D0928C3D207CC135008AB5EC /* VPLuaPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaPage.h; sourceTree = "<group>"; };
-		D0928C3E207CC135008AB5EC /* VPLuaPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaPage.m; sourceTree = "<group>"; };
-		D09ADDC5205BA01A007DB3E7 /* VPLuaVideoPlayerSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaVideoPlayerSize.h; sourceTree = "<group>"; };
-		D09ADDC6205BA01A007DB3E7 /* VPLuaVideoPlayerSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaVideoPlayerSize.m; sourceTree = "<group>"; };
-		D09F758F20A98E7E001E89D3 /* VPLuaScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaScrollView.h; sourceTree = "<group>"; };
-		D09F759020A98E7E001E89D3 /* VPLuaScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaScrollView.m; sourceTree = "<group>"; };
-		D0AAB13A22E5592600883F2A /* VPLuaLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaLoader.h; sourceTree = "<group>"; };
-		D0AAB13B22E5592600883F2A /* VPLuaLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaLoader.m; sourceTree = "<group>"; };
-		D0AC0171236927C800EF805A /* VPLuaInteractiveView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaInteractiveView.h; sourceTree = "<group>"; };
-		D0AC0172236927C800EF805A /* VPLuaInteractiveView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaInteractiveView.m; sourceTree = "<group>"; };
-		D0AC0176236930E400EF805A /* VPLuaTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaTopView.h; sourceTree = "<group>"; };
-		D0AC0177236930E400EF805A /* VPLuaTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaTopView.m; sourceTree = "<group>"; };
-		D0ADC49022EA8BD40037A549 /* VPLuaConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaConstant.h; sourceTree = "<group>"; };
-		D0ADC49122EA8BD40037A549 /* VPLuaConstant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaConstant.m; sourceTree = "<group>"; };
-		D0ADC4A022ED82B70037A549 /* VPLuaServiceAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaServiceAd.h; sourceTree = "<group>"; };
-		D0ADC4A122ED82B70037A549 /* VPLuaServiceAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaServiceAd.m; sourceTree = "<group>"; };
-		D0ADC4A422ED83270037A549 /* VPLuaService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaService.h; sourceTree = "<group>"; };
-		D0ADC4A522ED83270037A549 /* VPLuaService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaService.m; sourceTree = "<group>"; };
-		D0BD1ABD2138DE2100A087F2 /* VPLuaSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaSDK.h; sourceTree = "<group>"; };
-		D0BD1ABE2138DE2100A087F2 /* VPLuaSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaSDK.m; sourceTree = "<group>"; };
-		D0C3A1DE206B3E8700C21CA7 /* VPLuaSVGAView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaSVGAView.m; sourceTree = "<group>"; };
-		D0C3A1DF206B3E8800C21CA7 /* VPLuaSVGAView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaSVGAView.h; sourceTree = "<group>"; };
-		D0E8C2822317C2000020D6A5 /* VPLuaDesktopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaDesktopView.m; sourceTree = "<group>"; };
-		D0E8C2832317C2010020D6A5 /* VPLuaDesktopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaDesktopView.h; sourceTree = "<group>"; };
-		D0E8C2872317C23E0020D6A5 /* VPLuaNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLuaNotification.h; sourceTree = "<group>"; };
-		D0E8C2882317C23F0020D6A5 /* VPLuaNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLuaNotification.m; sourceTree = "<group>"; };
-		D0EE6466204D421E005D53C5 /* VPLuaOSView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaOSView.h; sourceTree = "<group>"; };
-		D0EE6467204D421E005D53C5 /* VPLuaOSView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaOSView.m; sourceTree = "<group>"; };
-		D0FA556220A13D0000105348 /* VPLuaMacroDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLuaMacroDefine.h; sourceTree = "<group>"; };
+		D02A1DD422EEA58E00EF5CC2 /* VPLServiceVideoMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLServiceVideoMode.h; sourceTree = "<group>"; };
+		D02A1DD522EEA58E00EF5CC2 /* VPLServiceVideoMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLServiceVideoMode.m; sourceTree = "<group>"; };
+		D02A1DD922EEBD2200EF5CC2 /* VPLCapacityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLCapacityManager.h; sourceTree = "<group>"; };
+		D02A1DDA22EEBD2200EF5CC2 /* VPLCapacityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLCapacityManager.m; sourceTree = "<group>"; };
+		D02A1DDE22EEBDB300EF5CC2 /* VPLServiceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLServiceManager.h; sourceTree = "<group>"; };
+		D02A1DDF22EEBDB300EF5CC2 /* VPLServiceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLServiceManager.m; sourceTree = "<group>"; };
+		D05369962051067100A4F8C6 /* VPLMQTT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMQTT.h; sourceTree = "<group>"; };
+		D05369972051067100A4F8C6 /* VPLMQTT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMQTT.m; sourceTree = "<group>"; };
+		D05D93E922811A1E003FBF3C /* VPLHttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLHttpRequest.h; sourceTree = "<group>"; };
+		D05D93EA22811A1E003FBF3C /* VPLHttpRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLHttpRequest.m; sourceTree = "<group>"; };
+		D05DCC5E200DDAC200E294F2 /* VPLTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLTextField.h; sourceTree = "<group>"; };
+		D05DCC5F200DDAC200E294F2 /* VPLTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLTextField.m; sourceTree = "<group>"; };
+		D05FA9152303C2FB00C24653 /* VPLTrackManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLTrackManager.h; sourceTree = "<group>"; };
+		D05FA9162303C2FB00C24653 /* VPLTrackManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLTrackManager.m; sourceTree = "<group>"; };
+		D08CBCD120A411B300BE5C9D /* VPLPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLPlayer.h; sourceTree = "<group>"; };
+		D08CBCD220A411B300BE5C9D /* VPLPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLPlayer.m; sourceTree = "<group>"; };
+		D0928C3D207CC135008AB5EC /* VPLPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLPage.h; sourceTree = "<group>"; };
+		D0928C3E207CC135008AB5EC /* VPLPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLPage.m; sourceTree = "<group>"; };
+		D09ADDC5205BA01A007DB3E7 /* VPLVideoPlayerSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLVideoPlayerSize.h; sourceTree = "<group>"; };
+		D09ADDC6205BA01A007DB3E7 /* VPLVideoPlayerSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLVideoPlayerSize.m; sourceTree = "<group>"; };
+		D09F758F20A98E7E001E89D3 /* VPLScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLScrollView.h; sourceTree = "<group>"; };
+		D09F759020A98E7E001E89D3 /* VPLScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLScrollView.m; sourceTree = "<group>"; };
+		D0AAB13A22E5592600883F2A /* VPLDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLDownloader.h; sourceTree = "<group>"; };
+		D0AAB13B22E5592600883F2A /* VPLDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLDownloader.m; sourceTree = "<group>"; };
+		D0AC0171236927C800EF805A /* VPLInteractiveView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLInteractiveView.h; sourceTree = "<group>"; };
+		D0AC0172236927C800EF805A /* VPLInteractiveView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLInteractiveView.m; sourceTree = "<group>"; };
+		D0AC0176236930E400EF805A /* VPLTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLTopView.h; sourceTree = "<group>"; };
+		D0AC0177236930E400EF805A /* VPLTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLTopView.m; sourceTree = "<group>"; };
+		D0ADC49022EA8BD40037A549 /* VPLConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLConstant.h; sourceTree = "<group>"; };
+		D0ADC49122EA8BD40037A549 /* VPLConstant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLConstant.m; sourceTree = "<group>"; };
+		D0ADC4A022ED82B70037A549 /* VPLServiceAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLServiceAd.h; sourceTree = "<group>"; };
+		D0ADC4A122ED82B70037A549 /* VPLServiceAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLServiceAd.m; sourceTree = "<group>"; };
+		D0ADC4A422ED83270037A549 /* VPLService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLService.h; sourceTree = "<group>"; };
+		D0ADC4A522ED83270037A549 /* VPLService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLService.m; sourceTree = "<group>"; };
+		D0BD1ABD2138DE2100A087F2 /* VPLSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLSDK.h; sourceTree = "<group>"; };
+		D0BD1ABE2138DE2100A087F2 /* VPLSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLSDK.m; sourceTree = "<group>"; };
+		D0C3A1DE206B3E8700C21CA7 /* VPLSVGAView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLSVGAView.m; sourceTree = "<group>"; };
+		D0C3A1DF206B3E8800C21CA7 /* VPLSVGAView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLSVGAView.h; sourceTree = "<group>"; };
+		D0E8C2822317C2000020D6A5 /* VPLBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLBubbleView.m; sourceTree = "<group>"; };
+		D0E8C2832317C2010020D6A5 /* VPLBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLBubbleView.h; sourceTree = "<group>"; };
+		D0E8C2872317C23E0020D6A5 /* VPLNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLNotification.h; sourceTree = "<group>"; };
+		D0E8C2882317C23F0020D6A5 /* VPLNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLNotification.m; sourceTree = "<group>"; };
+		D0EE6466204D421E005D53C5 /* VPLOSView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLOSView.h; sourceTree = "<group>"; };
+		D0EE6467204D421E005D53C5 /* VPLOSView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLOSView.m; sourceTree = "<group>"; };
+		D0FA556220A13D0000105348 /* VPLMacroDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMacroDefine.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -363,12 +355,12 @@
 		0614EAD422F0206D002DD6F4 /* Applets */ = {
 			isa = PBXGroup;
 			children = (
-				0614EAD522F020D8002DD6F4 /* VPLuaAppletsView.h */,
-				0614EAD622F020D8002DD6F4 /* VPLuaAppletsView.m */,
+				0614EAD522F020D8002DD6F4 /* VPLMPView.h */,
+				0614EAD622F020D8002DD6F4 /* VPLMPView.m */,
 				06D4749D22F41F8E00C9DADD /* Model */,
 				06D4749722F41EA400C9DADD /* Network */,
-				069495BD22F2B89100AA1ACE /* VPLuaAppletContainer.h */,
-				067A76B022F13DDA008FC043 /* VPLuaAppletContainerDelegate.h */,
+				064236242399F94000DF0EE2 /* VPMPContainer.h */,
+				067A76B022F13DDA008FC043 /* VPMPContainerDelegate.h */,
 				06D4749822F41EB400C9DADD /* Landscape */,
 				06D4749A22F41F5700C9DADD /* Portrait */,
 				06D4749E22F420A200C9DADD /* ContainerStatusView */,
@@ -379,8 +371,8 @@
 		06B02A7E237A4BA7004E546D /* WebView */ = {
 			isa = PBXGroup;
 			children = (
-				06B02A7F237A4D17004E546D /* VPLuaAppletWebView.h */,
-				06B02A80237A4D17004E546D /* VPLuaAppletWebView.m */,
+				06B02A7F237A4D17004E546D /* VPLMPWebView.h */,
+				06B02A80237A4D17004E546D /* VPLMPWebView.m */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -388,8 +380,8 @@
 		06D4749722F41EA400C9DADD /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				067A76AA22F131A2008FC043 /* VPLuaAppletRequest.h */,
-				067A76AB22F131A2008FC043 /* VPLuaAppletRequest.m */,
+				067A76AA22F131A2008FC043 /* VPLMPRequest.h */,
+				067A76AB22F131A2008FC043 /* VPLMPRequest.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -397,14 +389,14 @@
 		06D4749822F41EB400C9DADD /* Landscape */ = {
 			isa = PBXGroup;
 			children = (
-				064C92EF2314CB660050D862 /* VPAppletLandscapeNavigationBar.h */,
-				064C92F02314CB660050D862 /* VPAppletLandscapeNavigationBar.m */,
-				064C92FB23165BBF0050D862 /* VPAppletLandscapeContainer.h */,
-				064C92FC23165BBF0050D862 /* VPAppletLandscapeContainer.m */,
-				067A769622F03C5E008FC043 /* VPLuaAppletLandscapeContainer.h */,
-				067A769722F03C5E008FC043 /* VPLuaAppletLandscapeContainer.m */,
-				064C92F7231636370050D862 /* VPHybirdAppletLandscapeContainer.h */,
-				064C92F8231636370050D862 /* VPHybirdAppletLandscapeContainer.m */,
+				064C92EF2314CB660050D862 /* VPMPLandscapeNavigationBar.h */,
+				064C92F02314CB660050D862 /* VPMPLandscapeNavigationBar.m */,
+				064C92FB23165BBF0050D862 /* VPMPLandscapeContainer.h */,
+				064C92FC23165BBF0050D862 /* VPMPLandscapeContainer.m */,
+				067A769622F03C5E008FC043 /* VPLMPLandscapeContainer.h */,
+				067A769722F03C5E008FC043 /* VPLMPLandscapeContainer.m */,
+				064C92F7231636370050D862 /* VPHMPLandscapeContainer.h */,
+				064C92F8231636370050D862 /* VPHMPLandscapeContainer.m */,
 			);
 			path = Landscape;
 			sourceTree = "<group>";
@@ -412,10 +404,6 @@
 		06D4749A22F41F5700C9DADD /* Portrait */ = {
 			isa = PBXGroup;
 			children = (
-				067A76A222F03FC7008FC043 /* VPLuaAppletPortraitNavigationController.h */,
-				067A76A322F03FC7008FC043 /* VPLuaAppletPortraitNavigationController.m */,
-				067A769E22F03F48008FC043 /* VPLuaAppletPortraitViewController.h */,
-				067A769F22F03F48008FC043 /* VPLuaAppletPortraitViewController.m */,
 			);
 			path = Portrait;
 			sourceTree = "<group>";
@@ -425,10 +413,10 @@
 			children = (
 				06571F9A23867A7100C6C4D6 /* VPMiniAppInfo.h */,
 				06571F9B23867A7100C6C4D6 /* VPMiniAppInfo.m */,
-				067A76A622F04969008FC043 /* VPLuaAppletObject.h */,
-				067A76A722F04969008FC043 /* VPLuaAppletObject.m */,
-				064C92F3231545B40050D862 /* VPAppletContainerNaviSetting.h */,
-				064C92F4231545B40050D862 /* VPAppletContainerNaviSetting.m */,
+				067A76A622F04969008FC043 /* VPLMPObject.h */,
+				067A76A722F04969008FC043 /* VPLMPObject.m */,
+				064C92F3231545B40050D862 /* VPMPContainerNaviSetting.h */,
+				064C92F4231545B40050D862 /* VPMPContainerNaviSetting.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -436,14 +424,14 @@
 		06D4749E22F420A200C9DADD /* ContainerStatusView */ = {
 			isa = PBXGroup;
 			children = (
-				06D474A522F7D65900C9DADD /* VPLuaAppletContainerStatusView.h */,
-				06D474A622F7D65900C9DADD /* VPLuaAppletContainerStatusView.m */,
-				06D4749F22F4215C00C9DADD /* VPLuaAppletContainerLoadingView.h */,
-				06D474A022F4215C00C9DADD /* VPLuaAppletContainerLoadingView.m */,
-				06D474AA22F8088900C9DADD /* VPLuaAppletContainerNetworkView.h */,
-				06D474AB22F8088900C9DADD /* VPLuaAppletContainerNetworkView.m */,
-				06D474B422F96F4A00C9DADD /* VPLuaAppletContainerErrorView.h */,
-				06D474B522F96F4A00C9DADD /* VPLuaAppletContainerErrorView.m */,
+				06D474A522F7D65900C9DADD /* VPMPContainerStatusView.h */,
+				06D474A622F7D65900C9DADD /* VPMPContainerStatusView.m */,
+				06D4749F22F4215C00C9DADD /* VPMPContainerLoadingView.h */,
+				06D474A022F4215C00C9DADD /* VPMPContainerLoadingView.m */,
+				06D474AA22F8088900C9DADD /* VPMPContainerNetworkView.h */,
+				06D474AB22F8088900C9DADD /* VPMPContainerNetworkView.m */,
+				06D474B422F96F4A00C9DADD /* VPMPContainerErrorView.h */,
+				06D474B522F96F4A00C9DADD /* VPMPContainerErrorView.m */,
 			);
 			path = ContainerStatusView;
 			sourceTree = "<group>";
@@ -482,45 +470,45 @@
 		D0114BF01FCFBFCC00E75EF7 /* LuaView */ = {
 			isa = PBXGroup;
 			children = (
-				D0C3A1DF206B3E8800C21CA7 /* VPLuaSVGAView.h */,
-				D0C3A1DE206B3E8700C21CA7 /* VPLuaSVGAView.m */,
-				D0114C011FCFBFCC00E75EF7 /* VPLuaViewHeader.h */,
-				D0114BF11FCFBFCC00E75EF7 /* VPLuaBaseView.h */,
-				D0114BF21FCFBFCC00E75EF7 /* VPLuaBaseView.m */,
-				D0114BF31FCFBFCC00E75EF7 /* VPLuaButton.h */,
-				D0114BF41FCFBFCC00E75EF7 /* VPLuaButton.m */,
-				D0114BF51FCFBFCC00E75EF7 /* VPLuaCollectionView.h */,
-				D0114BF61FCFBFCC00E75EF7 /* VPLuaCollectionView.m */,
-				0688E24B1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.h */,
-				0688E24C1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.m */,
-				0640FAE31FE8EDF90089825F /* VPLuaNormalRefreshHeader.h */,
-				0640FAE41FE8EDF90089825F /* VPLuaNormalRefreshHeader.m */,
-				D0114BF71FCFBFCC00E75EF7 /* VPLuaImageView.h */,
-				D0114BF81FCFBFCC00E75EF7 /* VPLuaImageView.m */,
-				D0114BF91FCFBFCC00E75EF7 /* VPLuaLabel.h */,
-				D0114BFA1FCFBFCC00E75EF7 /* VPLuaLabel.m */,
-				D0114BFB1FCFBFCC00E75EF7 /* VPLuaLoadingView.h */,
-				D0114BFC1FCFBFCC00E75EF7 /* VPLuaLoadingView.m */,
-				D0114BFD1FCFBFCC00E75EF7 /* VPLuaShelvesCardView.h */,
-				D0114BFE1FCFBFCC00E75EF7 /* VPLuaShelvesCardView.m */,
-				D0114BFF1FCFBFCC00E75EF7 /* VPLuaThroughView.h */,
-				D0114C001FCFBFCC00E75EF7 /* VPLuaThroughView.m */,
-				D0114C021FCFBFCC00E75EF7 /* VPLuaWebView.h */,
-				D0114C031FCFBFCC00E75EF7 /* VPLuaWebView.m */,
-				063ABC032004C6AC001A8B94 /* VPLuaGradientView.h */,
-				063ABC042004C6AC001A8B94 /* VPLuaGradientView.m */,
-				0692ECFB1FF5EFA9008A3214 /* VPLuaNativeScanner.h */,
-				0692ECFC1FF5EFA9008A3214 /* VPLuaNativeScanner.m */,
-				D05DCC5E200DDAC200E294F2 /* VPLuaTextField.h */,
-				D05DCC5F200DDAC200E294F2 /* VPLuaTextField.m */,
-				069D37CA20207CB700CB177D /* VPLuaWindow.h */,
-				069D37CB20207CB700CB177D /* VPLuaWindow.m */,
-				D0928C3D207CC135008AB5EC /* VPLuaPage.h */,
-				D0928C3E207CC135008AB5EC /* VPLuaPage.m */,
-				D08CBCD120A411B300BE5C9D /* VPLuaPlayer.h */,
-				D08CBCD220A411B300BE5C9D /* VPLuaPlayer.m */,
-				D09F758F20A98E7E001E89D3 /* VPLuaScrollView.h */,
-				D09F759020A98E7E001E89D3 /* VPLuaScrollView.m */,
+				D0C3A1DF206B3E8800C21CA7 /* VPLSVGAView.h */,
+				D0C3A1DE206B3E8700C21CA7 /* VPLSVGAView.m */,
+				D0114C011FCFBFCC00E75EF7 /* VPLViewHeader.h */,
+				D0114BF11FCFBFCC00E75EF7 /* VPLBaseView.h */,
+				D0114BF21FCFBFCC00E75EF7 /* VPLBaseView.m */,
+				D0114BF31FCFBFCC00E75EF7 /* VPLButton.h */,
+				D0114BF41FCFBFCC00E75EF7 /* VPLButton.m */,
+				D0114BF51FCFBFCC00E75EF7 /* VPLCollectionView.h */,
+				D0114BF61FCFBFCC00E75EF7 /* VPLCollectionView.m */,
+				0688E24B1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.h */,
+				0688E24C1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.m */,
+				0640FAE31FE8EDF90089825F /* VPLNormalRefreshHeader.h */,
+				0640FAE41FE8EDF90089825F /* VPLNormalRefreshHeader.m */,
+				D0114BF71FCFBFCC00E75EF7 /* VPLImageView.h */,
+				D0114BF81FCFBFCC00E75EF7 /* VPLImageView.m */,
+				D0114BF91FCFBFCC00E75EF7 /* VPLLabel.h */,
+				D0114BFA1FCFBFCC00E75EF7 /* VPLLabel.m */,
+				D0114BFB1FCFBFCC00E75EF7 /* VPLLoadingView.h */,
+				D0114BFC1FCFBFCC00E75EF7 /* VPLLoadingView.m */,
+				D0114BFD1FCFBFCC00E75EF7 /* VPLShelvesCardView.h */,
+				D0114BFE1FCFBFCC00E75EF7 /* VPLShelvesCardView.m */,
+				D0114BFF1FCFBFCC00E75EF7 /* VPLThroughView.h */,
+				D0114C001FCFBFCC00E75EF7 /* VPLThroughView.m */,
+				D0114C021FCFBFCC00E75EF7 /* VPLWebView.h */,
+				D0114C031FCFBFCC00E75EF7 /* VPLWebView.m */,
+				063ABC032004C6AC001A8B94 /* VPLGradientView.h */,
+				063ABC042004C6AC001A8B94 /* VPLGradientView.m */,
+				0692ECFB1FF5EFA9008A3214 /* VPLNativeScanner.h */,
+				0692ECFC1FF5EFA9008A3214 /* VPLNativeScanner.m */,
+				D05DCC5E200DDAC200E294F2 /* VPLTextField.h */,
+				D05DCC5F200DDAC200E294F2 /* VPLTextField.m */,
+				069D37CA20207CB700CB177D /* VPLWindow.h */,
+				069D37CB20207CB700CB177D /* VPLWindow.m */,
+				D0928C3D207CC135008AB5EC /* VPLPage.h */,
+				D0928C3E207CC135008AB5EC /* VPLPage.m */,
+				D08CBCD120A411B300BE5C9D /* VPLPlayer.h */,
+				D08CBCD220A411B300BE5C9D /* VPLPlayer.m */,
+				D09F758F20A98E7E001E89D3 /* VPLScrollView.h */,
+				D09F759020A98E7E001E89D3 /* VPLScrollView.m */,
 			);
 			path = LuaView;
 			sourceTree = "<group>";
@@ -528,51 +516,51 @@
 		D0114C041FCFBFCC00E75EF7 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				D0E8C2872317C23E0020D6A5 /* VPLuaNotification.h */,
-				D0E8C2882317C23F0020D6A5 /* VPLuaNotification.m */,
-				D02A1DD922EEBD2200EF5CC2 /* VPLuaCapacityManager.h */,
-				D02A1DDA22EEBD2200EF5CC2 /* VPLuaCapacityManager.m */,
-				D0ADC4A022ED82B70037A549 /* VPLuaServiceAd.h */,
-				D0ADC4A122ED82B70037A549 /* VPLuaServiceAd.m */,
-				D00ED8E5202DAB6700B6C8C1 /* VPLuaMedia.h */,
-				D00ED8E6202DAB6700B6C8C1 /* VPLuaMedia.m */,
-				D05369962051067100A4F8C6 /* VPLuaMQTT.h */,
-				D05369972051067100A4F8C6 /* VPLuaMQTT.m */,
-				D00ED8E0202C41AB00B6C8C1 /* VPLuaScriptManager.h */,
-				D00ED8E1202C41AC00B6C8C1 /* VPLuaScriptManager.m */,
-				D0114C051FCFBFCC00E75EF7 /* VPLuaBaseNode.h */,
-				D0114C061FCFBFCC00E75EF7 /* VPLuaBaseNode.m */,
-				D0114C071FCFBFCC00E75EF7 /* VPLuaNativeBridge.h */,
-				D0114C081FCFBFCC00E75EF7 /* VPLuaNativeBridge.m */,
-				063A124222F3CE230027B6A2 /* VPLuaAppletBridge.h */,
-				063A124322F3CE230027B6A2 /* VPLuaAppletBridge.m */,
-				D0114C091FCFBFCC00E75EF7 /* VPLuaNetworkManager.h */,
-				D0114C0A1FCFBFCC00E75EF7 /* VPLuaNetworkManager.m */,
-				D0114C0B1FCFBFCC00E75EF7 /* VPLuaNodeController.h */,
-				D0114C0C1FCFBFCC00E75EF7 /* VPLuaNodeController.m */,
-				D0114C0D1FCFBFCC00E75EF7 /* VPLuaTrackApi.h */,
-				D0114C0E1FCFBFCC00E75EF7 /* VPLuaTrackApi.m */,
-				D0114C0F1FCFBFCC00E75EF7 /* VPLuaVideoInfo.h */,
-				D0114C101FCFBFCC00E75EF7 /* VPLuaVideoInfo.m */,
-				D0FA556220A13D0000105348 /* VPLuaMacroDefine.h */,
-				D0BD1ABD2138DE2100A087F2 /* VPLuaSDK.h */,
-				D0BD1ABE2138DE2100A087F2 /* VPLuaSDK.m */,
-				D05D93E922811A1E003FBF3C /* VPLuaHttpRequest.h */,
-				D05D93EA22811A1E003FBF3C /* VPLuaHttpRequest.m */,
-				D0AAB13A22E5592600883F2A /* VPLuaLoader.h */,
-				D0AAB13B22E5592600883F2A /* VPLuaLoader.m */,
-				D0ADC49022EA8BD40037A549 /* VPLuaConstant.h */,
-				D0ADC49122EA8BD40037A549 /* VPLuaConstant.m */,
-				D0ADC4A422ED83270037A549 /* VPLuaService.h */,
-				D0ADC4A522ED83270037A549 /* VPLuaService.m */,
-				D02A1DD422EEA58E00EF5CC2 /* VPLuaServiceVideoMode.h */,
-				D02A1DD522EEA58E00EF5CC2 /* VPLuaServiceVideoMode.m */,
-				D02A1DDE22EEBDB300EF5CC2 /* VPLuaServiceManager.h */,
-				D02A1DDF22EEBDB300EF5CC2 /* VPLuaServiceManager.m */,
-				D05FA9152303C2FB00C24653 /* VPLuaTrackManager.h */,
-				D05FA9162303C2FB00C24653 /* VPLuaTrackManager.m */,
-				06571F9223851B4100C6C4D6 /* VPLuaRedirectAppletManager.h */,
-				06571F9323851B4100C6C4D6 /* VPLuaRedirectAppletManager.m */,
+				D0E8C2872317C23E0020D6A5 /* VPLNotification.h */,
+				D0E8C2882317C23F0020D6A5 /* VPLNotification.m */,
+				D02A1DD922EEBD2200EF5CC2 /* VPLCapacityManager.h */,
+				D02A1DDA22EEBD2200EF5CC2 /* VPLCapacityManager.m */,
+				D0ADC4A022ED82B70037A549 /* VPLServiceAd.h */,
+				D0ADC4A122ED82B70037A549 /* VPLServiceAd.m */,
+				D00ED8E5202DAB6700B6C8C1 /* VPLMedia.h */,
+				D00ED8E6202DAB6700B6C8C1 /* VPLMedia.m */,
+				D05369962051067100A4F8C6 /* VPLMQTT.h */,
+				D05369972051067100A4F8C6 /* VPLMQTT.m */,
+				D00ED8E0202C41AB00B6C8C1 /* VPLScriptManager.h */,
+				D00ED8E1202C41AC00B6C8C1 /* VPLScriptManager.m */,
+				D0114C051FCFBFCC00E75EF7 /* VPLBaseNode.h */,
+				D0114C061FCFBFCC00E75EF7 /* VPLBaseNode.m */,
+				D0114C071FCFBFCC00E75EF7 /* VPLNativeBridge.h */,
+				D0114C081FCFBFCC00E75EF7 /* VPLNativeBridge.m */,
+				063A124222F3CE230027B6A2 /* VPLMPBridge.h */,
+				063A124322F3CE230027B6A2 /* VPLMPBridge.m */,
+				D0114C091FCFBFCC00E75EF7 /* VPLNetworkManager.h */,
+				D0114C0A1FCFBFCC00E75EF7 /* VPLNetworkManager.m */,
+				D0114C0B1FCFBFCC00E75EF7 /* VPLNodeController.h */,
+				D0114C0C1FCFBFCC00E75EF7 /* VPLNodeController.m */,
+				D0114C0D1FCFBFCC00E75EF7 /* VPLTrackApi.h */,
+				D0114C0E1FCFBFCC00E75EF7 /* VPLTrackApi.m */,
+				D0114C0F1FCFBFCC00E75EF7 /* VPLVideoInfo.h */,
+				D0114C101FCFBFCC00E75EF7 /* VPLVideoInfo.m */,
+				D0FA556220A13D0000105348 /* VPLMacroDefine.h */,
+				D0BD1ABD2138DE2100A087F2 /* VPLSDK.h */,
+				D0BD1ABE2138DE2100A087F2 /* VPLSDK.m */,
+				D05D93E922811A1E003FBF3C /* VPLHttpRequest.h */,
+				D05D93EA22811A1E003FBF3C /* VPLHttpRequest.m */,
+				D0AAB13A22E5592600883F2A /* VPLDownloader.h */,
+				D0AAB13B22E5592600883F2A /* VPLDownloader.m */,
+				D0ADC49022EA8BD40037A549 /* VPLConstant.h */,
+				D0ADC49122EA8BD40037A549 /* VPLConstant.m */,
+				D0ADC4A422ED83270037A549 /* VPLService.h */,
+				D0ADC4A522ED83270037A549 /* VPLService.m */,
+				D02A1DD422EEA58E00EF5CC2 /* VPLServiceVideoMode.h */,
+				D02A1DD522EEA58E00EF5CC2 /* VPLServiceVideoMode.m */,
+				D02A1DDE22EEBDB300EF5CC2 /* VPLServiceManager.h */,
+				D02A1DDF22EEBDB300EF5CC2 /* VPLServiceManager.m */,
+				D05FA9152303C2FB00C24653 /* VPLTrackManager.h */,
+				D05FA9162303C2FB00C24653 /* VPLTrackManager.m */,
+				06571F9223851B4100C6C4D6 /* VPLMPRedirectManager.h */,
+				06571F9323851B4100C6C4D6 /* VPLMPRedirectManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -580,12 +568,12 @@
 		D0114C111FCFBFCC00E75EF7 /* NormalView */ = {
 			isa = PBXGroup;
 			children = (
-				D0114C121FCFBFCC00E75EF7 /* VPLuaClickThroughView.h */,
-				D0114C131FCFBFCC00E75EF7 /* VPLuaClickThroughView.m */,
-				06B02A7623753D43004E546D /* UIView+VPLuaView.h */,
-				06B02A7723753D43004E546D /* UIView+VPLuaView.m */,
-				06B02A7A23753E1F004E546D /* NSObject+VPLuaView.h */,
-				06B02A7B23753E1F004E546D /* NSObject+VPLuaView.m */,
+				D0114C121FCFBFCC00E75EF7 /* VPLClickThroughView.h */,
+				D0114C131FCFBFCC00E75EF7 /* VPLClickThroughView.m */,
+				06B02A7623753D43004E546D /* UIView+VPLView.h */,
+				06B02A7723753D43004E546D /* UIView+VPLView.m */,
+				06B02A7A23753E1F004E546D /* NSObject+VPLView.h */,
+				06B02A7B23753E1F004E546D /* NSObject+VPLView.m */,
 			);
 			path = NormalView;
 			sourceTree = "<group>";
@@ -611,16 +599,16 @@
 		D0EE6465204D41C1005D53C5 /* OS */ = {
 			isa = PBXGroup;
 			children = (
-				D0E8C2832317C2010020D6A5 /* VPLuaDesktopView.h */,
-				D0E8C2822317C2000020D6A5 /* VPLuaDesktopView.m */,
-				D0EE6466204D421E005D53C5 /* VPLuaOSView.h */,
-				D0EE6467204D421E005D53C5 /* VPLuaOSView.m */,
-				D09ADDC5205BA01A007DB3E7 /* VPLuaVideoPlayerSize.h */,
-				D09ADDC6205BA01A007DB3E7 /* VPLuaVideoPlayerSize.m */,
-				D0AC0171236927C800EF805A /* VPLuaInteractiveView.h */,
-				D0AC0172236927C800EF805A /* VPLuaInteractiveView.m */,
-				D0AC0176236930E400EF805A /* VPLuaTopView.h */,
-				D0AC0177236930E400EF805A /* VPLuaTopView.m */,
+				D0E8C2832317C2010020D6A5 /* VPLBubbleView.h */,
+				D0E8C2822317C2000020D6A5 /* VPLBubbleView.m */,
+				D0EE6466204D421E005D53C5 /* VPLOSView.h */,
+				D0EE6467204D421E005D53C5 /* VPLOSView.m */,
+				D09ADDC5205BA01A007DB3E7 /* VPLVideoPlayerSize.h */,
+				D09ADDC6205BA01A007DB3E7 /* VPLVideoPlayerSize.m */,
+				D0AC0171236927C800EF805A /* VPLInteractiveView.h */,
+				D0AC0172236927C800EF805A /* VPLInteractiveView.m */,
+				D0AC0176236930E400EF805A /* VPLTopView.h */,
+				D0AC0177236930E400EF805A /* VPLTopView.m */,
 			);
 			path = OS;
 			sourceTree = "<group>";
@@ -632,76 +620,74 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0EE6468204D421E005D53C5 /* VPLuaOSView.h in Headers */,
-				067A76AC22F131A2008FC043 /* VPLuaAppletRequest.h in Headers */,
-				D0114C221FCFBFCD00E75EF7 /* VPLuaLabel.h in Headers */,
-				D0114C1F1FCFBFCD00E75EF7 /* VPLuaImageView.h in Headers */,
-				D0114C411FCFBFCD00E75EF7 /* VPLuaVideoInfo.h in Headers */,
-				0692ECFD1FF5EFA9008A3214 /* VPLuaNativeScanner.h in Headers */,
-				067A76A022F03F48008FC043 /* VPLuaAppletPortraitViewController.h in Headers */,
-				D0ADC4A622ED83270037A549 /* VPLuaService.h in Headers */,
-				D0114C441FCFBFCD00E75EF7 /* VPLuaClickThroughView.h in Headers */,
-				069495BE22F2B89100AA1ACE /* VPLuaAppletContainer.h in Headers */,
-				D0114C381FCFBFCD00E75EF7 /* VPLuaNetworkManager.h in Headers */,
-				D02A1DDB22EEBD2200EF5CC2 /* VPLuaCapacityManager.h in Headers */,
-				D0E8C2892317C23F0020D6A5 /* VPLuaNotification.h in Headers */,
-				D0AC0173236927C800EF805A /* VPLuaInteractiveView.h in Headers */,
-				06B02A81237A4D17004E546D /* VPLuaAppletWebView.h in Headers */,
-				0640FAE51FE8EDF90089825F /* VPLuaNormalRefreshHeader.h in Headers */,
-				D08CBCD320A411B300BE5C9D /* VPLuaPlayer.h in Headers */,
-				D05DCC60200DDAC200E294F2 /* VPLuaTextField.h in Headers */,
-				0614EAD722F020D9002DD6F4 /* VPLuaAppletsView.h in Headers */,
+				D0EE6468204D421E005D53C5 /* VPLOSView.h in Headers */,
+				067A76AC22F131A2008FC043 /* VPLMPRequest.h in Headers */,
+				D0114C221FCFBFCD00E75EF7 /* VPLLabel.h in Headers */,
+				D0114C1F1FCFBFCD00E75EF7 /* VPLImageView.h in Headers */,
+				D0114C411FCFBFCD00E75EF7 /* VPLVideoInfo.h in Headers */,
+				064236252399F94000DF0EE2 /* VPMPContainer.h in Headers */,
+				0692ECFD1FF5EFA9008A3214 /* VPLNativeScanner.h in Headers */,
+				D0ADC4A622ED83270037A549 /* VPLService.h in Headers */,
+				D0114C441FCFBFCD00E75EF7 /* VPLClickThroughView.h in Headers */,
+				D0114C381FCFBFCD00E75EF7 /* VPLNetworkManager.h in Headers */,
+				D02A1DDB22EEBD2200EF5CC2 /* VPLCapacityManager.h in Headers */,
+				D0E8C2892317C23F0020D6A5 /* VPLNotification.h in Headers */,
+				D0AC0173236927C800EF805A /* VPLInteractiveView.h in Headers */,
+				06B02A81237A4D17004E546D /* VPLMPWebView.h in Headers */,
+				0640FAE51FE8EDF90089825F /* VPLNormalRefreshHeader.h in Headers */,
+				D08CBCD320A411B300BE5C9D /* VPLPlayer.h in Headers */,
+				D05DCC60200DDAC200E294F2 /* VPLTextField.h in Headers */,
+				0614EAD722F020D9002DD6F4 /* VPLMPView.h in Headers */,
 				D0114C151FCFBFCD00E75EF7 /* VideoPlsLuaViewSDK.h in Headers */,
-				064C92F12314CB660050D862 /* VPAppletLandscapeNavigationBar.h in Headers */,
-				06571F9423851B4100C6C4D6 /* VPLuaRedirectAppletManager.h in Headers */,
-				06B02A7C23753E1F004E546D /* NSObject+VPLuaView.h in Headers */,
-				D0AAB13C22E5592600883F2A /* VPLuaLoader.h in Headers */,
-				D0114C281FCFBFCD00E75EF7 /* VPLuaShelvesCardView.h in Headers */,
-				D02A1DD622EEA58E00EF5CC2 /* VPLuaServiceVideoMode.h in Headers */,
-				D09ADDC7205BA01A007DB3E7 /* VPLuaVideoPlayerSize.h in Headers */,
-				06D474A122F4215C00C9DADD /* VPLuaAppletContainerLoadingView.h in Headers */,
-				064C92F5231545B40050D862 /* VPAppletContainerNaviSetting.h in Headers */,
-				D0114C251FCFBFCD00E75EF7 /* VPLuaLoadingView.h in Headers */,
-				D0ADC49222EA8BD40037A549 /* VPLuaConstant.h in Headers */,
-				063A124422F3CE230027B6A2 /* VPLuaAppletBridge.h in Headers */,
-				069D37CC20207CB700CB177D /* VPLuaWindow.h in Headers */,
-				D0114C351FCFBFCD00E75EF7 /* VPLuaNativeBridge.h in Headers */,
-				D0ADC4A222ED82B70037A549 /* VPLuaServiceAd.h in Headers */,
-				067A769822F03C5E008FC043 /* VPLuaAppletLandscapeContainer.h in Headers */,
-				D00ED8E2202C41AC00B6C8C1 /* VPLuaScriptManager.h in Headers */,
-				D0114C191FCFBFCD00E75EF7 /* VPLuaButton.h in Headers */,
-				06D474A722F7D65900C9DADD /* VPLuaAppletContainerStatusView.h in Headers */,
-				D0114C321FCFBFCD00E75EF7 /* VPLuaBaseNode.h in Headers */,
-				D0114C1C1FCFBFCD00E75EF7 /* VPLuaCollectionView.h in Headers */,
-				067A76A822F04969008FC043 /* VPLuaAppletObject.h in Headers */,
-				D09F759120A98E7E001E89D3 /* VPLuaScrollView.h in Headers */,
-				064C92FD23165BBF0050D862 /* VPAppletLandscapeContainer.h in Headers */,
-				D0114C2F1FCFBFCD00E75EF7 /* VPLuaWebView.h in Headers */,
-				0688E24D1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.h in Headers */,
-				063ABC052004C6AC001A8B94 /* VPLuaGradientView.h in Headers */,
-				06D474AC22F8088900C9DADD /* VPLuaAppletContainerNetworkView.h in Headers */,
-				D0114C161FCFBFCD00E75EF7 /* VPLuaBaseView.h in Headers */,
-				D0114C3E1FCFBFCD00E75EF7 /* VPLuaTrackApi.h in Headers */,
-				D0928C3F207CC135008AB5EC /* VPLuaPage.h in Headers */,
-				06B02A7823753D43004E546D /* UIView+VPLuaView.h in Headers */,
-				D05369982051067100A4F8C6 /* VPLuaMQTT.h in Headers */,
-				D05FA9172303C2FB00C24653 /* VPLuaTrackManager.h in Headers */,
-				D05D93EB22811A1E003FBF3C /* VPLuaHttpRequest.h in Headers */,
-				D0114C2B1FCFBFCD00E75EF7 /* VPLuaThroughView.h in Headers */,
-				067A76A422F03FC7008FC043 /* VPLuaAppletPortraitNavigationController.h in Headers */,
-				064C92F9231636370050D862 /* VPHybirdAppletLandscapeContainer.h in Headers */,
-				06D474B622F96F4A00C9DADD /* VPLuaAppletContainerErrorView.h in Headers */,
-				D0BD1ABF2138DE2100A087F2 /* VPLuaSDK.h in Headers */,
-				067A76B122F13DDA008FC043 /* VPLuaAppletContainerDelegate.h in Headers */,
-				D0114C3B1FCFBFCD00E75EF7 /* VPLuaNodeController.h in Headers */,
-				D0FA556320A13D0000105348 /* VPLuaMacroDefine.h in Headers */,
-				D0AC0178236930E400EF805A /* VPLuaTopView.h in Headers */,
-				D00ED8E7202DAB6700B6C8C1 /* VPLuaMedia.h in Headers */,
-				D0114C2E1FCFBFCD00E75EF7 /* VPLuaViewHeader.h in Headers */,
-				D0C3A1E2206B3E8800C21CA7 /* VPLuaSVGAView.h in Headers */,
+				064C92F12314CB660050D862 /* VPMPLandscapeNavigationBar.h in Headers */,
+				06571F9423851B4100C6C4D6 /* VPLMPRedirectManager.h in Headers */,
+				06B02A7C23753E1F004E546D /* NSObject+VPLView.h in Headers */,
+				D0AAB13C22E5592600883F2A /* VPLDownloader.h in Headers */,
+				D0114C281FCFBFCD00E75EF7 /* VPLShelvesCardView.h in Headers */,
+				D02A1DD622EEA58E00EF5CC2 /* VPLServiceVideoMode.h in Headers */,
+				D09ADDC7205BA01A007DB3E7 /* VPLVideoPlayerSize.h in Headers */,
+				06D474A122F4215C00C9DADD /* VPMPContainerLoadingView.h in Headers */,
+				064C92F5231545B40050D862 /* VPMPContainerNaviSetting.h in Headers */,
+				D0114C251FCFBFCD00E75EF7 /* VPLLoadingView.h in Headers */,
+				D0ADC49222EA8BD40037A549 /* VPLConstant.h in Headers */,
+				063A124422F3CE230027B6A2 /* VPLMPBridge.h in Headers */,
+				069D37CC20207CB700CB177D /* VPLWindow.h in Headers */,
+				D0114C351FCFBFCD00E75EF7 /* VPLNativeBridge.h in Headers */,
+				D0ADC4A222ED82B70037A549 /* VPLServiceAd.h in Headers */,
+				067A769822F03C5E008FC043 /* VPLMPLandscapeContainer.h in Headers */,
+				D00ED8E2202C41AC00B6C8C1 /* VPLScriptManager.h in Headers */,
+				D0114C191FCFBFCD00E75EF7 /* VPLButton.h in Headers */,
+				06D474A722F7D65900C9DADD /* VPMPContainerStatusView.h in Headers */,
+				D0114C321FCFBFCD00E75EF7 /* VPLBaseNode.h in Headers */,
+				D0114C1C1FCFBFCD00E75EF7 /* VPLCollectionView.h in Headers */,
+				067A76A822F04969008FC043 /* VPLMPObject.h in Headers */,
+				D09F759120A98E7E001E89D3 /* VPLScrollView.h in Headers */,
+				064C92FD23165BBF0050D862 /* VPMPLandscapeContainer.h in Headers */,
+				D0114C2F1FCFBFCD00E75EF7 /* VPLWebView.h in Headers */,
+				0688E24D1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.h in Headers */,
+				063ABC052004C6AC001A8B94 /* VPLGradientView.h in Headers */,
+				06D474AC22F8088900C9DADD /* VPMPContainerNetworkView.h in Headers */,
+				D0114C161FCFBFCD00E75EF7 /* VPLBaseView.h in Headers */,
+				D0114C3E1FCFBFCD00E75EF7 /* VPLTrackApi.h in Headers */,
+				D0928C3F207CC135008AB5EC /* VPLPage.h in Headers */,
+				06B02A7823753D43004E546D /* UIView+VPLView.h in Headers */,
+				D05369982051067100A4F8C6 /* VPLMQTT.h in Headers */,
+				D05FA9172303C2FB00C24653 /* VPLTrackManager.h in Headers */,
+				D05D93EB22811A1E003FBF3C /* VPLHttpRequest.h in Headers */,
+				D0114C2B1FCFBFCD00E75EF7 /* VPLThroughView.h in Headers */,
+				064C92F9231636370050D862 /* VPHMPLandscapeContainer.h in Headers */,
+				06D474B622F96F4A00C9DADD /* VPMPContainerErrorView.h in Headers */,
+				D0BD1ABF2138DE2100A087F2 /* VPLSDK.h in Headers */,
+				067A76B122F13DDA008FC043 /* VPMPContainerDelegate.h in Headers */,
+				D0114C3B1FCFBFCD00E75EF7 /* VPLNodeController.h in Headers */,
+				D0FA556320A13D0000105348 /* VPLMacroDefine.h in Headers */,
+				D0AC0178236930E400EF805A /* VPLTopView.h in Headers */,
+				D00ED8E7202DAB6700B6C8C1 /* VPLMedia.h in Headers */,
+				D0114C2E1FCFBFCD00E75EF7 /* VPLViewHeader.h in Headers */,
+				D0C3A1E2206B3E8800C21CA7 /* VPLSVGAView.h in Headers */,
 				06571F9C23867A7100C6C4D6 /* VPMiniAppInfo.h in Headers */,
-				D02A1DE022EEBDB300EF5CC2 /* VPLuaServiceManager.h in Headers */,
-				D0E8C2862317C2010020D6A5 /* VPLuaDesktopView.h in Headers */,
+				D02A1DE022EEBDB300EF5CC2 /* VPLServiceManager.h in Headers */,
+				D0E8C2862317C2010020D6A5 /* VPLBubbleView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,72 +783,70 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				064C92FA231636370050D862 /* VPHybirdAppletLandscapeContainer.m in Sources */,
-				D0114C1A1FCFBFCD00E75EF7 /* VPLuaButton.m in Sources */,
-				0614EAD822F020D9002DD6F4 /* VPLuaAppletsView.m in Sources */,
-				06571F9523851B4100C6C4D6 /* VPLuaRedirectAppletManager.m in Sources */,
-				D0AC0179236930E400EF805A /* VPLuaTopView.m in Sources */,
-				D0114C2C1FCFBFCD00E75EF7 /* VPLuaThroughView.m in Sources */,
-				D05DCC61200DDAC200E294F2 /* VPLuaTextField.m in Sources */,
-				D0ADC4A722ED83270037A549 /* VPLuaService.m in Sources */,
-				D0E8C28A2317C23F0020D6A5 /* VPLuaNotification.m in Sources */,
-				067A76AD22F131A2008FC043 /* VPLuaAppletRequest.m in Sources */,
-				D05D93EC22811A1E003FBF3C /* VPLuaHttpRequest.m in Sources */,
-				D08CBCD420A411B300BE5C9D /* VPLuaPlayer.m in Sources */,
-				D0114C291FCFBFCD00E75EF7 /* VPLuaShelvesCardView.m in Sources */,
-				D0114C231FCFBFCD00E75EF7 /* VPLuaLabel.m in Sources */,
-				06D474AD22F8088900C9DADD /* VPLuaAppletContainerNetworkView.m in Sources */,
-				064C92F6231545B40050D862 /* VPAppletContainerNaviSetting.m in Sources */,
-				D0114C301FCFBFCD00E75EF7 /* VPLuaWebView.m in Sources */,
-				D0C3A1E0206B3E8800C21CA7 /* VPLuaSVGAView.m in Sources */,
-				D05369992051067100A4F8C6 /* VPLuaMQTT.m in Sources */,
-				0692ECFE1FF5EFA9008A3214 /* VPLuaNativeScanner.m in Sources */,
-				D00ED8E8202DAB6700B6C8C1 /* VPLuaMedia.m in Sources */,
-				D0114C331FCFBFCD00E75EF7 /* VPLuaBaseNode.m in Sources */,
-				0640FAE61FE8EDF90089825F /* VPLuaNormalRefreshHeader.m in Sources */,
-				D00ED8E3202C41AC00B6C8C1 /* VPLuaScriptManager.m in Sources */,
+				064C92FA231636370050D862 /* VPHMPLandscapeContainer.m in Sources */,
+				D0114C1A1FCFBFCD00E75EF7 /* VPLButton.m in Sources */,
+				0614EAD822F020D9002DD6F4 /* VPLMPView.m in Sources */,
+				06571F9523851B4100C6C4D6 /* VPLMPRedirectManager.m in Sources */,
+				D0AC0179236930E400EF805A /* VPLTopView.m in Sources */,
+				D0114C2C1FCFBFCD00E75EF7 /* VPLThroughView.m in Sources */,
+				D05DCC61200DDAC200E294F2 /* VPLTextField.m in Sources */,
+				D0ADC4A722ED83270037A549 /* VPLService.m in Sources */,
+				D0E8C28A2317C23F0020D6A5 /* VPLNotification.m in Sources */,
+				067A76AD22F131A2008FC043 /* VPLMPRequest.m in Sources */,
+				D05D93EC22811A1E003FBF3C /* VPLHttpRequest.m in Sources */,
+				D08CBCD420A411B300BE5C9D /* VPLPlayer.m in Sources */,
+				D0114C291FCFBFCD00E75EF7 /* VPLShelvesCardView.m in Sources */,
+				D0114C231FCFBFCD00E75EF7 /* VPLLabel.m in Sources */,
+				06D474AD22F8088900C9DADD /* VPMPContainerNetworkView.m in Sources */,
+				064C92F6231545B40050D862 /* VPMPContainerNaviSetting.m in Sources */,
+				D0114C301FCFBFCD00E75EF7 /* VPLWebView.m in Sources */,
+				D0C3A1E0206B3E8800C21CA7 /* VPLSVGAView.m in Sources */,
+				D05369992051067100A4F8C6 /* VPLMQTT.m in Sources */,
+				0692ECFE1FF5EFA9008A3214 /* VPLNativeScanner.m in Sources */,
+				D00ED8E8202DAB6700B6C8C1 /* VPLMedia.m in Sources */,
+				D0114C331FCFBFCD00E75EF7 /* VPLBaseNode.m in Sources */,
+				0640FAE61FE8EDF90089825F /* VPLNormalRefreshHeader.m in Sources */,
+				D00ED8E3202C41AC00B6C8C1 /* VPLScriptManager.m in Sources */,
 				06571F9D23867A7100C6C4D6 /* VPMiniAppInfo.m in Sources */,
-				D0114C421FCFBFCD00E75EF7 /* VPLuaVideoInfo.m in Sources */,
-				D0EE6469204D421E005D53C5 /* VPLuaOSView.m in Sources */,
-				06B02A7923753D43004E546D /* UIView+VPLuaView.m in Sources */,
-				D0114C201FCFBFCD00E75EF7 /* VPLuaImageView.m in Sources */,
-				064C92F22314CB660050D862 /* VPAppletLandscapeNavigationBar.m in Sources */,
-				067A769922F03C5E008FC043 /* VPLuaAppletLandscapeContainer.m in Sources */,
+				D0114C421FCFBFCD00E75EF7 /* VPLVideoInfo.m in Sources */,
+				D0EE6469204D421E005D53C5 /* VPLOSView.m in Sources */,
+				06B02A7923753D43004E546D /* UIView+VPLView.m in Sources */,
+				D0114C201FCFBFCD00E75EF7 /* VPLImageView.m in Sources */,
+				064C92F22314CB660050D862 /* VPMPLandscapeNavigationBar.m in Sources */,
+				067A769922F03C5E008FC043 /* VPLMPLandscapeContainer.m in Sources */,
 				D004F65A2093103000022E90 /* VPLuaServiceManager.m in Sources */,
-				D0BD1AC02138DE2100A087F2 /* VPLuaSDK.m in Sources */,
-				D05FA9182303C2FB00C24653 /* VPLuaTrackManager.m in Sources */,
-				D0ADC49322EA8BD40037A549 /* VPLuaConstant.m in Sources */,
-				06B02A82237A4D17004E546D /* VPLuaAppletWebView.m in Sources */,
-				D02A1DD722EEA58E00EF5CC2 /* VPLuaServiceVideoMode.m in Sources */,
-				D0114C361FCFBFCD00E75EF7 /* VPLuaNativeBridge.m in Sources */,
-				06B02A7D23753E1F004E546D /* NSObject+VPLuaView.m in Sources */,
-				063A124522F3CE230027B6A2 /* VPLuaAppletBridge.m in Sources */,
-				069D37CD20207CB700CB177D /* VPLuaWindow.m in Sources */,
-				067A76A922F04969008FC043 /* VPLuaAppletObject.m in Sources */,
-				D0114C1D1FCFBFCD00E75EF7 /* VPLuaCollectionView.m in Sources */,
-				D02A1DDC22EEBD2200EF5CC2 /* VPLuaCapacityManager.m in Sources */,
-				D0114C391FCFBFCD00E75EF7 /* VPLuaNetworkManager.m in Sources */,
-				067A76A522F03FC7008FC043 /* VPLuaAppletPortraitNavigationController.m in Sources */,
-				06D474B722F96F4A00C9DADD /* VPLuaAppletContainerErrorView.m in Sources */,
-				D0E8C2842317C2010020D6A5 /* VPLuaDesktopView.m in Sources */,
-				D09ADDC8205BA01A007DB3E7 /* VPLuaVideoPlayerSize.m in Sources */,
-				D0928C40207CC135008AB5EC /* VPLuaPage.m in Sources */,
-				D0114C261FCFBFCD00E75EF7 /* VPLuaLoadingView.m in Sources */,
-				06D474A822F7D65900C9DADD /* VPLuaAppletContainerStatusView.m in Sources */,
-				D0114C451FCFBFCD00E75EF7 /* VPLuaClickThroughView.m in Sources */,
-				063ABC062004C6AC001A8B94 /* VPLuaGradientView.m in Sources */,
-				0688E24E1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.m in Sources */,
-				06D474A222F4215C00C9DADD /* VPLuaAppletContainerLoadingView.m in Sources */,
-				064C92FE23165BBF0050D862 /* VPAppletLandscapeContainer.m in Sources */,
-				067A76A122F03F48008FC043 /* VPLuaAppletPortraitViewController.m in Sources */,
-				D0114C3C1FCFBFCD00E75EF7 /* VPLuaNodeController.m in Sources */,
-				D02A1DE122EEBDB300EF5CC2 /* VPLuaServiceManager.m in Sources */,
-				D0ADC4A322ED82B70037A549 /* VPLuaServiceAd.m in Sources */,
-				D0114C171FCFBFCD00E75EF7 /* VPLuaBaseView.m in Sources */,
-				D09F759220A98E7E001E89D3 /* VPLuaScrollView.m in Sources */,
-				D0114C3F1FCFBFCD00E75EF7 /* VPLuaTrackApi.m in Sources */,
-				D0AC0174236927C800EF805A /* VPLuaInteractiveView.m in Sources */,
-				D0AAB13D22E5592600883F2A /* VPLuaLoader.m in Sources */,
+				D0BD1AC02138DE2100A087F2 /* VPLSDK.m in Sources */,
+				D05FA9182303C2FB00C24653 /* VPLTrackManager.m in Sources */,
+				D0ADC49322EA8BD40037A549 /* VPLConstant.m in Sources */,
+				06B02A82237A4D17004E546D /* VPLMPWebView.m in Sources */,
+				D02A1DD722EEA58E00EF5CC2 /* VPLServiceVideoMode.m in Sources */,
+				D0114C361FCFBFCD00E75EF7 /* VPLNativeBridge.m in Sources */,
+				06B02A7D23753E1F004E546D /* NSObject+VPLView.m in Sources */,
+				063A124522F3CE230027B6A2 /* VPLMPBridge.m in Sources */,
+				069D37CD20207CB700CB177D /* VPLWindow.m in Sources */,
+				067A76A922F04969008FC043 /* VPLMPObject.m in Sources */,
+				D0114C1D1FCFBFCD00E75EF7 /* VPLCollectionView.m in Sources */,
+				D02A1DDC22EEBD2200EF5CC2 /* VPLCapacityManager.m in Sources */,
+				D0114C391FCFBFCD00E75EF7 /* VPLNetworkManager.m in Sources */,
+				06D474B722F96F4A00C9DADD /* VPMPContainerErrorView.m in Sources */,
+				D0E8C2842317C2010020D6A5 /* VPLBubbleView.m in Sources */,
+				D09ADDC8205BA01A007DB3E7 /* VPLVideoPlayerSize.m in Sources */,
+				D0928C40207CC135008AB5EC /* VPLPage.m in Sources */,
+				D0114C261FCFBFCD00E75EF7 /* VPLLoadingView.m in Sources */,
+				06D474A822F7D65900C9DADD /* VPMPContainerStatusView.m in Sources */,
+				D0114C451FCFBFCD00E75EF7 /* VPLClickThroughView.m in Sources */,
+				063ABC062004C6AC001A8B94 /* VPLGradientView.m in Sources */,
+				0688E24E1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.m in Sources */,
+				06D474A222F4215C00C9DADD /* VPMPContainerLoadingView.m in Sources */,
+				064C92FE23165BBF0050D862 /* VPMPLandscapeContainer.m in Sources */,
+				D0114C3C1FCFBFCD00E75EF7 /* VPLNodeController.m in Sources */,
+				D02A1DE122EEBDB300EF5CC2 /* VPLServiceManager.m in Sources */,
+				D0ADC4A322ED82B70037A549 /* VPLServiceAd.m in Sources */,
+				D0114C171FCFBFCD00E75EF7 /* VPLBaseView.m in Sources */,
+				D09F759220A98E7E001E89D3 /* VPLScrollView.m in Sources */,
+				D0114C3F1FCFBFCD00E75EF7 /* VPLTrackApi.m in Sources */,
+				D0AC0174236927C800EF805A /* VPLInteractiveView.m in Sources */,
+				D0AAB13D22E5592600883F2A /* VPLDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,48 +854,48 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0114C1B1FCFBFCD00E75EF7 /* VPLuaButton.m in Sources */,
-				0688E24F1FDAA5E4005B9DD2 /* VPLuaRefreshCollectionView.m in Sources */,
-				D0114C2D1FCFBFCD00E75EF7 /* VPLuaThroughView.m in Sources */,
-				D08CBCD520A411B300BE5C9D /* VPLuaPlayer.m in Sources */,
-				063ABC072004C6AC001A8B94 /* VPLuaGradientView.m in Sources */,
-				D0ADC49422EA8BD40037A549 /* VPLuaConstant.m in Sources */,
-				D0ADC4A822ED83270037A549 /* VPLuaService.m in Sources */,
-				D0114C2A1FCFBFCD00E75EF7 /* VPLuaShelvesCardView.m in Sources */,
-				D0114C241FCFBFCD00E75EF7 /* VPLuaLabel.m in Sources */,
-				D0C3A1E1206B3E8800C21CA7 /* VPLuaSVGAView.m in Sources */,
-				D053699A2051067100A4F8C6 /* VPLuaMQTT.m in Sources */,
-				D0114C311FCFBFCD00E75EF7 /* VPLuaWebView.m in Sources */,
-				D02A1DD822EEA58E00EF5CC2 /* VPLuaServiceVideoMode.m in Sources */,
-				D0AC017A236930E400EF805A /* VPLuaTopView.m in Sources */,
-				D00ED8E9202DAB6800B6C8C1 /* VPLuaMedia.m in Sources */,
-				D0AC0175236927C800EF805A /* VPLuaInteractiveView.m in Sources */,
-				D0114C341FCFBFCD00E75EF7 /* VPLuaBaseNode.m in Sources */,
-				D0114C431FCFBFCD00E75EF7 /* VPLuaVideoInfo.m in Sources */,
-				D00ED8E4202C41AC00B6C8C1 /* VPLuaScriptManager.m in Sources */,
-				D0E8C2852317C2010020D6A5 /* VPLuaDesktopView.m in Sources */,
-				0692ECFF1FF5EFA9008A3214 /* VPLuaNativeScanner.m in Sources */,
-				D0EE646A204D421E005D53C5 /* VPLuaOSView.m in Sources */,
-				D0114C211FCFBFCD00E75EF7 /* VPLuaImageView.m in Sources */,
-				D0114C371FCFBFCD00E75EF7 /* VPLuaNativeBridge.m in Sources */,
-				069D37CE20207CB700CB177D /* VPLuaWindow.m in Sources */,
-				D0114C1E1FCFBFCD00E75EF7 /* VPLuaCollectionView.m in Sources */,
-				D0114C3A1FCFBFCD00E75EF7 /* VPLuaNetworkManager.m in Sources */,
-				D09ADDC9205BA01A007DB3E7 /* VPLuaVideoPlayerSize.m in Sources */,
-				D05FA9192303C2FB00C24653 /* VPLuaTrackManager.m in Sources */,
-				D0928C41207CC135008AB5EC /* VPLuaPage.m in Sources */,
-				0640FAE71FE8EDF90089825F /* VPLuaNormalRefreshHeader.m in Sources */,
-				D0114C271FCFBFCD00E75EF7 /* VPLuaLoadingView.m in Sources */,
-				D0114C461FCFBFCD00E75EF7 /* VPLuaClickThroughView.m in Sources */,
-				D02A1DE222EEBDB300EF5CC2 /* VPLuaServiceManager.m in Sources */,
-				D0E8C28B2317C23F0020D6A5 /* VPLuaNotification.m in Sources */,
-				D0114C3D1FCFBFCD00E75EF7 /* VPLuaNodeController.m in Sources */,
-				D0AAB13E22E5592600883F2A /* VPLuaLoader.m in Sources */,
-				D02A1DDD22EEBD2200EF5CC2 /* VPLuaCapacityManager.m in Sources */,
-				D0BD1AC12138DE2100A087F2 /* VPLuaSDK.m in Sources */,
-				D0114C181FCFBFCD00E75EF7 /* VPLuaBaseView.m in Sources */,
-				D09F759320A98E7E001E89D3 /* VPLuaScrollView.m in Sources */,
-				D0114C401FCFBFCD00E75EF7 /* VPLuaTrackApi.m in Sources */,
+				D0114C1B1FCFBFCD00E75EF7 /* VPLButton.m in Sources */,
+				0688E24F1FDAA5E4005B9DD2 /* VPLRefreshCollectionView.m in Sources */,
+				D0114C2D1FCFBFCD00E75EF7 /* VPLThroughView.m in Sources */,
+				D08CBCD520A411B300BE5C9D /* VPLPlayer.m in Sources */,
+				063ABC072004C6AC001A8B94 /* VPLGradientView.m in Sources */,
+				D0ADC49422EA8BD40037A549 /* VPLConstant.m in Sources */,
+				D0ADC4A822ED83270037A549 /* VPLService.m in Sources */,
+				D0114C2A1FCFBFCD00E75EF7 /* VPLShelvesCardView.m in Sources */,
+				D0114C241FCFBFCD00E75EF7 /* VPLLabel.m in Sources */,
+				D0C3A1E1206B3E8800C21CA7 /* VPLSVGAView.m in Sources */,
+				D053699A2051067100A4F8C6 /* VPLMQTT.m in Sources */,
+				D0114C311FCFBFCD00E75EF7 /* VPLWebView.m in Sources */,
+				D02A1DD822EEA58E00EF5CC2 /* VPLServiceVideoMode.m in Sources */,
+				D0AC017A236930E400EF805A /* VPLTopView.m in Sources */,
+				D00ED8E9202DAB6800B6C8C1 /* VPLMedia.m in Sources */,
+				D0AC0175236927C800EF805A /* VPLInteractiveView.m in Sources */,
+				D0114C341FCFBFCD00E75EF7 /* VPLBaseNode.m in Sources */,
+				D0114C431FCFBFCD00E75EF7 /* VPLVideoInfo.m in Sources */,
+				D00ED8E4202C41AC00B6C8C1 /* VPLScriptManager.m in Sources */,
+				D0E8C2852317C2010020D6A5 /* VPLBubbleView.m in Sources */,
+				0692ECFF1FF5EFA9008A3214 /* VPLNativeScanner.m in Sources */,
+				D0EE646A204D421E005D53C5 /* VPLOSView.m in Sources */,
+				D0114C211FCFBFCD00E75EF7 /* VPLImageView.m in Sources */,
+				D0114C371FCFBFCD00E75EF7 /* VPLNativeBridge.m in Sources */,
+				069D37CE20207CB700CB177D /* VPLWindow.m in Sources */,
+				D0114C1E1FCFBFCD00E75EF7 /* VPLCollectionView.m in Sources */,
+				D0114C3A1FCFBFCD00E75EF7 /* VPLNetworkManager.m in Sources */,
+				D09ADDC9205BA01A007DB3E7 /* VPLVideoPlayerSize.m in Sources */,
+				D05FA9192303C2FB00C24653 /* VPLTrackManager.m in Sources */,
+				D0928C41207CC135008AB5EC /* VPLPage.m in Sources */,
+				0640FAE71FE8EDF90089825F /* VPLNormalRefreshHeader.m in Sources */,
+				D0114C271FCFBFCD00E75EF7 /* VPLLoadingView.m in Sources */,
+				D0114C461FCFBFCD00E75EF7 /* VPLClickThroughView.m in Sources */,
+				D02A1DE222EEBDB300EF5CC2 /* VPLServiceManager.m in Sources */,
+				D0E8C28B2317C23F0020D6A5 /* VPLNotification.m in Sources */,
+				D0114C3D1FCFBFCD00E75EF7 /* VPLNodeController.m in Sources */,
+				D0AAB13E22E5592600883F2A /* VPLDownloader.m in Sources */,
+				D02A1DDD22EEBD2200EF5CC2 /* VPLCapacityManager.m in Sources */,
+				D0BD1AC12138DE2100A087F2 /* VPLSDK.m in Sources */,
+				D0114C181FCFBFCD00E75EF7 /* VPLBaseView.m in Sources */,
+				D09F759320A98E7E001E89D3 /* VPLScrollView.m in Sources */,
+				D0114C401FCFBFCD00E75EF7 /* VPLTrackApi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

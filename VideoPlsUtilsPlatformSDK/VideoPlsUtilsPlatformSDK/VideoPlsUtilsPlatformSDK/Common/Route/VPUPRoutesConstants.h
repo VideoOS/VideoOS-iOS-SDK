@@ -22,7 +22,7 @@ extern NSString *const VPUPRoutesSDKSendRequest;
 /**
  Routes scheme for SDK create or load lua view.
  */
-extern NSString *const VPUPRoutesSDKLuaView;
+extern NSString *const VPUPRoutesSDKLView;
 
 /**
  Routes scheme for SDK create native view.

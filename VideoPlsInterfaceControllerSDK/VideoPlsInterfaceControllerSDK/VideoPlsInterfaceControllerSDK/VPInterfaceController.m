@@ -26,16 +26,16 @@
 #import "VPInterfaceController.h"
 #import "VPInterfaceClickThroughView.h"
 
-#import "VPLuaOSView.h"
-#import "VPLuaAppletsView.h"
-#import "VPLuaDesktopView.h"
-#import "VPLuaMedia.h"
-#import "VPLuaVideoInfo.h"
-#import "VPLuaTopView.h"
-#import "VPLuaPage.h"
-#import "VPLuaNativeBridge.h"
-#import "VPLuaSDK.h"
-#import "VPLuaScriptManager.h"
+#import "VPLOSView.h"
+#import "VPLMPView.h"
+#import "VPLBubbleView.h"
+#import "VPLMedia.h"
+#import "VPLVideoInfo.h"
+#import "VPLTopView.h"
+#import "VPLPage.h"
+#import "VPLNativeBridge.h"
+#import "VPLSDK.h"
+#import "VPLScriptManager.h"
 
 #import "VideoPlsUtilsPlatformSDK.h"
 #import "VPUPInterfaceDataServiceManager.h"
@@ -46,24 +46,24 @@
 #import "VPInterfaceStatusNotifyDelegate.h"
 #import "VPIUserLoginInterface.h"
 #import "VPIUserInfo.h"
-#import "VPLuaServiceAd.h"
+#import "VPLServiceAd.h"
 #import "VPIError.h"
-#import "VPLuaServiceManager.h"
+#import "VPLServiceManager.h"
 #import "VPUPJsonUtil.h"
 
-@interface VPInterfaceController()<VPUPInterfaceDataServiceManagerDelegate, VPLuaServiceManagerDelegate>
+@interface VPInterfaceController()<VPUPInterfaceDataServiceManagerDelegate, VPLServiceManagerDelegate>
 
 @end
 
 @interface VPInterfaceController()
 
-@property (nonatomic, strong) VPLuaOSView *osView;
+@property (nonatomic, strong) VPLOSView *osView;
 
-@property (nonatomic, strong) VPLuaAppletsView *appletsView;
+@property (nonatomic, strong) VPLMPView *mpView;
 
-@property (nonatomic, strong) VPLuaDesktopView *desktopView;
+@property (nonatomic, strong) VPLBubbleView *bubbleView;
 
-@property (nonatomic, strong) VPLuaTopView *topView;
+@property (nonatomic, strong) VPLTopView *topView;
 
 @property (nonatomic, readwrite, strong) VPInterfaceControllerConfig *config;
 
@@ -73,9 +73,9 @@
 
 @property (nonatomic, strong) NSDictionary *openUrlActionDict;
 
-@property (nonatomic, strong) VPLuaServiceManager *serviceManager;
+@property (nonatomic, strong) VPLServiceManager *serviceManager;
 
-@property (nonatomic, strong) VPLuaVideoInfo *videoInfo;
+@property (nonatomic, strong) VPLVideoInfo *videoInfo;
 
 @end
 
@@ -108,9 +108,9 @@
     }
 }
 
-- (VPLuaServiceManager *)serviceManager {
+- (VPLServiceManager *)serviceManager {
     if (!_serviceManager) {
-        _serviceManager = [[VPLuaServiceManager alloc] init];
+        _serviceManager = [[VPLServiceManager alloc] init];
     }
     return _serviceManager;
 }
@@ -149,22 +149,22 @@
     _view = [[VPInterfaceClickThroughView alloc] initWithFrame:frame];
     
     if (_config.types & VPInterfaceControllerTypeVideoOS) {
-        [VPLuaSDK setOSType:VPLuaOSTypeVideoOS];
+        [VPLSDK setOSType:VPLOSTypeVideoOS];
     }
     else {
-        [VPLuaSDK setOSType:VPLuaOSTypeLiveOS];
+        [VPLSDK setOSType:VPLOSTypeLiveOS];
     }
     
     [self initOSViewWithFrame:frame];
-    [self initAppletsViewWithFrame:frame];
-    [self initDesktopViewWithFrame:frame];
+    [self initMPViewWithFrame:frame];
+    [self initBubbleViewWithFrame:frame];
     [self initTopViewWithFrame:frame];
 }
 
 - (void)initOSViewWithFrame:(CGRect)frame {
     
-    _osView = [[VPLuaOSView alloc] initWithFrame:frame videoInfo:_videoInfo];
-    VPLuaVideoPlayerSize *vpSize = [[VPLuaVideoPlayerSize alloc] init];
+    _osView = [[VPLOSView alloc] initWithFrame:frame videoInfo:_videoInfo];
+    VPLVideoPlayerSize *vpSize = [[VPLVideoPlayerSize alloc] init];
     vpSize.portraitSmallScreenHeight = self.videoPlayerSize.portraitSmallScreenHeight;
     vpSize.portraitFullScreenWidth = self.videoPlayerSize.portraitFullScreenWidth;
     vpSize.portraitFullScreenHeight = self.videoPlayerSize.portraitFullScreenHeight;
@@ -177,43 +177,43 @@
     [_view addSubview:_osView];
 }
 
-- (void)initAppletsViewWithFrame:(CGRect)frame {
+- (void)initMPViewWithFrame:(CGRect)frame {
     
-    _appletsView = [[VPLuaAppletsView alloc] initWithFrame:frame videoInfo:_videoInfo];
-    VPLuaVideoPlayerSize *vpSize = [[VPLuaVideoPlayerSize alloc] init];
+    _mpView = [[VPLMPView alloc] initWithFrame:frame videoInfo:_videoInfo];
+    VPLVideoPlayerSize *vpSize = [[VPLVideoPlayerSize alloc] init];
     vpSize.portraitSmallScreenHeight = self.videoPlayerSize.portraitSmallScreenHeight;
     vpSize.portraitFullScreenWidth = self.videoPlayerSize.portraitFullScreenWidth;
     vpSize.portraitFullScreenHeight = self.videoPlayerSize.portraitFullScreenHeight;
     vpSize.portraitSmallScreenOriginY = self.videoPlayerSize.portraitSmallScreenOriginY;
-    _appletsView.videoPlayerSize = vpSize;
+    _mpView.videoPlayerSize = vpSize;
     __weak typeof(self) weakSelf = self;
-    [_appletsView setGetUserInfoBlock:^NSDictionary *(void) {
+    [_mpView setGetUserInfoBlock:^NSDictionary *(void) {
         return [weakSelf getUserInfoDictionary];
     }];
-    [_view addSubview:_appletsView];
+    [_view addSubview:_mpView];
 }
 
-- (void)initDesktopViewWithFrame:(CGRect)frame {
+- (void)initBubbleViewWithFrame:(CGRect)frame {
     
-    _desktopView = [[VPLuaDesktopView alloc] initWithFrame:frame videoInfo:_videoInfo];
-    VPLuaVideoPlayerSize *vpSize = [[VPLuaVideoPlayerSize alloc] init];
+    _bubbleView = [[VPLBubbleView alloc] initWithFrame:frame videoInfo:_videoInfo];
+    VPLVideoPlayerSize *vpSize = [[VPLVideoPlayerSize alloc] init];
     vpSize.portraitSmallScreenHeight = self.videoPlayerSize.portraitSmallScreenHeight;
     vpSize.portraitFullScreenWidth = self.videoPlayerSize.portraitFullScreenWidth;
     vpSize.portraitFullScreenHeight = self.videoPlayerSize.portraitFullScreenHeight;
     vpSize.portraitSmallScreenOriginY = self.videoPlayerSize.portraitSmallScreenOriginY;
-    _desktopView.videoPlayerSize = vpSize;
+    _bubbleView.videoPlayerSize = vpSize;
     __weak typeof(self) weakSelf = self;
-    [_desktopView setGetUserInfoBlock:^NSDictionary *(void) {
+    [_bubbleView setGetUserInfoBlock:^NSDictionary *(void) {
         return [weakSelf getUserInfoDictionary];
     }];
-    [_view addSubview:_desktopView];
-    [_view bringSubviewToFront:_desktopView];
+    [_view addSubview:_bubbleView];
+    [_view bringSubviewToFront:_bubbleView];
 }
 
 - (void)initTopViewWithFrame:(CGRect)frame {
 
-    _topView = [[VPLuaTopView alloc] initWithFrame:frame videoInfo:_videoInfo];
-    VPLuaVideoPlayerSize *vpSize = [[VPLuaVideoPlayerSize alloc] init];
+    _topView = [[VPLTopView alloc] initWithFrame:frame videoInfo:_videoInfo];
+    VPLVideoPlayerSize *vpSize = [[VPLVideoPlayerSize alloc] init];
     vpSize.portraitSmallScreenHeight = self.videoPlayerSize.portraitSmallScreenHeight;
     vpSize.portraitFullScreenWidth = self.videoPlayerSize.portraitFullScreenWidth;
     vpSize.portraitFullScreenHeight = self.videoPlayerSize.portraitFullScreenHeight;
@@ -227,11 +227,11 @@
     [_view bringSubviewToFront:_topView];
 }
 
-- (VPLuaVideoInfo *)interfaceControllerConfigToVideoInfo:(VPInterfaceControllerConfig *)config {
+- (VPLVideoInfo *)interfaceControllerConfigToVideoInfo:(VPInterfaceControllerConfig *)config {
     if (!config) {
         return nil;
     }
-    VPLuaVideoInfo *videoInfo = [[VPLuaVideoInfo alloc] init];
+    VPLVideoInfo *videoInfo = [[VPLVideoInfo alloc] init];
     videoInfo.nativeID = config.identifier;
     videoInfo.platformID = config.platformID;
     videoInfo.episode = config.episode;
@@ -278,17 +278,17 @@
     if (_osView) {
         [_osView startLoading];
     }
-    if (!_appletsView) {
-        [self initAppletsViewWithFrame:self.view.bounds];
+    if (!_mpView) {
+        [self initMPViewWithFrame:self.view.bounds];
     }
-    if (_appletsView) {
-        [_appletsView startLoading];
+    if (_mpView) {
+        [_mpView startLoading];
     }
-    if (!_desktopView) {
-        [self initDesktopViewWithFrame:self.view.bounds];
+    if (!_bubbleView) {
+        [self initBubbleViewWithFrame:self.view.bounds];
     }
-    if (_desktopView) {
-        [_desktopView startLoading];
+    if (_bubbleView) {
+        [_bubbleView startLoading];
     }
     if (!_topView) {
         [self initTopViewWithFrame:self.view.bounds];
@@ -308,16 +308,16 @@
     _orientationType = type;
 
     if (_osView) {
-        [_osView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
+        [_osView updateVideoPlayerOrientation:(VPLVideoPlayerOrientation)type];
     }
-    if (_appletsView) {
-        [_appletsView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
+    if (_mpView) {
+        [_mpView updateVideoPlayerOrientation:(VPLVideoPlayerOrientation)type];
     }
-    if (_desktopView) {
-        [_desktopView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
+    if (_bubbleView) {
+        [_bubbleView updateVideoPlayerOrientation:(VPLVideoPlayerOrientation)type];
     }
     if (_topView) {
-        [_topView updateVideoPlayerOrientation:(VPLuaVideoPlayerOrientation)type];
+        [_topView updateVideoPlayerOrientation:(VPLVideoPlayerOrientation)type];
     }
     CGFloat width = 0;
     CGFloat height = 0;
@@ -357,7 +357,7 @@
                            @"height":@(height),
                            @"orientation":@(type)
                            };
-    [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaMediaPlayerSizeNotification object:nil userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotificationName:VPLMediaPlayerSizeNotification object:nil userInfo:dict];
     
 }
 
@@ -376,16 +376,16 @@
         _osView = nil;
     }
     
-    if (_appletsView) {
-        [_appletsView stop];
-        [_appletsView removeFromSuperview];
-        _appletsView = nil;
+    if (_mpView) {
+        [_mpView stop];
+        [_mpView removeFromSuperview];
+        _mpView = nil;
     }
     
-    if (_desktopView) {
-        [_desktopView stop];
-        [_desktopView removeFromSuperview];
-        _desktopView = nil;
+    if (_bubbleView) {
+        [_bubbleView stop];
+        [_bubbleView removeFromSuperview];
+        _bubbleView = nil;
     }
     
     if (_topView) {
@@ -410,16 +410,16 @@
     if (_osView) {
         [_osView pauseVideoAd];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @(VPLuaOSActionTypePause), @"osActionType",
-                              @(VPLuaEventTypeOSAction), @"eventType",nil];
-        [_osView callLuaMethod:@"event" data:dict];
+                              @(VPLOSActionTypePause), @"osActionType",
+                              @(VPLEventTypeOSAction), @"eventType",nil];
+        [_osView callLMethod:@"event" data:dict];
     }
     if (_topView) {
         [_topView pauseVideoAd];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @(VPLuaOSActionTypePause), @"osActionType",
-                              @(VPLuaEventTypeOSAction), @"eventType",nil];
-        [_topView callLuaMethod:@"event" data:dict];
+                              @(VPLOSActionTypePause), @"osActionType",
+                              @(VPLEventTypeOSAction), @"eventType",nil];
+        [_topView callLMethod:@"event" data:dict];
     }
 }
 
@@ -427,16 +427,16 @@
     if (_osView) {
         [_osView playVideoAd];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @(VPLuaOSActionTypeResume),@"osActionType",
-                              @(VPLuaEventTypeOSAction), @"eventType",nil];
-        [_osView callLuaMethod:@"event" data:dict];
+                              @(VPLOSActionTypeResume),@"osActionType",
+                              @(VPLEventTypeOSAction), @"eventType",nil];
+        [_osView callLMethod:@"event" data:dict];
     }
     if (_topView) {
         [_topView playVideoAd];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @(VPLuaOSActionTypeResume),@"osActionType",
-                              @(VPLuaEventTypeOSAction), @"eventType",nil];
-        [_topView callLuaMethod:@"event" data:dict];
+                              @(VPLOSActionTypeResume),@"osActionType",
+                              @(VPLEventTypeOSAction), @"eventType",nil];
+        [_topView callLMethod:@"event" data:dict];
     }
 }
 
@@ -453,11 +453,11 @@
 - (void)registerStatusNotification {
 
     if(_osView) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(interfaceLoadComplete:) name:VPLuaOSLoadCompleteNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyUserLogined:) name:VPLuaNotifyUserLoginedNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyRequireLogin:) name:VPLuaRequireLoginNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyScreenChange:) name:VPLuaScreenChangeNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(interfaceActionNewNotify:) name:VPLuaActionNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(interfaceLoadComplete:) name:VPLOSLoadCompleteNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyUserLogined:) name:VPLNotifyUserLoginedNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyRequireLogin:) name:VPLRequireLoginNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyScreenChange:) name:VPLScreenChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(interfaceActionNewNotify:) name:VPLActionNotification object:nil];
     }
 
 }
@@ -465,11 +465,11 @@
 - (void)unregisterStatusNotification {
 
     if(_osView) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:VPLuaOSLoadCompleteNotification object:nil];
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:VPLuaNotifyUserLoginedNotification object:nil];
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:VPLuaRequireLoginNotification object:nil];
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:VPLuaScreenChangeNotification object:nil];
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:VPLuaActionNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:VPLOSLoadCompleteNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:VPLNotifyUserLoginedNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:VPLRequireLoginNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:VPLScreenChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:VPLActionNotification object:nil];
     }
 
 }
@@ -653,7 +653,7 @@
             if ([[actionDict objectForKey:@"eventType"] integerValue] == VPIEventTypeClose && self.serviceManager.serviceDict.count > 0) {
                 NSNumber *closeServiceKey = nil;
                 for (NSNumber *key in self.serviceManager.serviceDict.allKeys) {
-                    VPLuaService *service = [self.serviceManager.serviceDict objectForKey:key];
+                    VPLService *service = [self.serviceManager.serviceDict objectForKey:key];
                     if (service && [service.serviceId isEqualToString:[actionDict objectForKey:@"adID"]]) {
                         if (self.serviceDelegate && [self.serviceDelegate respondsToSelector:@selector(vp_didCompleteForService:)]) {
                             [self.serviceDelegate vp_didCompleteForService:(VPIServiceType)service.type];
@@ -662,7 +662,7 @@
                     }
                 }
                 if (closeServiceKey) {
-                    [self.serviceManager stopService:(VPLuaServiceType)[closeServiceKey integerValue]];
+                    [self.serviceManager stopService:(VPLServiceType)[closeServiceKey integerValue]];
                 }
             }
         }
@@ -695,21 +695,21 @@
 }
 
 - (void)videoPlayerDidStartVideo {
-    [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaMediaStartNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:VPLMediaStartNotification object:nil];
 }
 
 - (void)videoPlayerDidPlayVideo {
-    [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaMediaPlayNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:VPLMediaPlayNotification object:nil];
 }
 
 /// Tells the delegate that the video player has paused video.
 - (void)videoPlayerDidPauseVideo {
-    [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaMediaPauseNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:VPLMediaPauseNotification object:nil];
 }
 
 /// Tells the delegate that the video player's video playback has ended.
 - (void)videoPlayerDidStopVideo {
-    [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaMediaEndNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:VPLMediaEndNotification object:nil];
 }
 
 - (NSDictionary*)getUserInfo {
@@ -759,16 +759,16 @@
 }
 
 - (void)registerRoutes {
-    [self registerLuaViewRoutes];
+    [self registerLViewRoutes];
 }
 
 - (BOOL)canSet {
     return _canSet;
 }
 
-- (void)registerLuaViewRoutes {
+- (void)registerLViewRoutes {
     __weak typeof(self) weakSelf = self;
-    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLuaView] addRoute:@"/defaultLuaView" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLView] addRoute:@"/defaultLuaView" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
         
         if (!weakSelf) {
             return NO;
@@ -790,9 +790,9 @@
         }
     
         NSDictionary *queryParams = [parameters objectForKey:VPUPRouteQueryParamsKey];
-        NSString *luaFile = [queryParams objectForKey:@"template"];
-        if (!luaFile) {
-            luaFile = [data objectForKey:@"template"];
+        NSString *lFile = [queryParams objectForKey:@"template"];
+        if (!lFile) {
+            lFile = [data objectForKey:@"template"];
         }
         
         NSString *miniAppId = [queryParams objectForKey:@"miniAppId"];
@@ -800,38 +800,38 @@
             miniAppId = [[data objectForKey:@"miniAppInfo"] objectForKey:@"miniAppId"];
         }
         
-        NSString *luaFilePath = nil;
+        NSString *lFilePath = nil;
         if (miniAppId) {
-            luaFilePath = [miniAppId stringByAppendingPathComponent:luaFile];
+            lFilePath = [miniAppId stringByAppendingPathComponent:lFile];
         }
         else {
-            luaFilePath = luaFile;
+            lFilePath = lFile;
         }
         
-        [strongSelf.osView loadLua:luaFilePath data:parameters];
+        [strongSelf.osView loadLFile:lFilePath data:parameters];
         return YES;
     }];
     
     //跳转小程序   LuaView://applets?appletId=xxxx&type=x(type: 1横屏,2竖屏)&appType=x(appType: 1 lua,2 h5)
     //容器内部跳转 LuaView://applets?appletId=xxxx&template=xxxx.lua&id=xxxx&priority=x
-    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLuaView] addRoute:@"/applets" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLView] addRoute:@"/applets" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
         
         if (!weakSelf) {
             return NO;
         }
         __strong typeof(self) strongSelf = weakSelf;
         //判定osView是否存在，若不存在，先创建
-        if (!strongSelf.appletsView) {
-            [strongSelf initAppletsViewWithFrame:strongSelf.view.bounds];
+        if (!strongSelf.mpView) {
+            [strongSelf initMPViewWithFrame:strongSelf.view.bounds];
             
             if(!strongSelf.canSet) {
-                [strongSelf.appletsView startLoading];
+                [strongSelf.mpView startLoading];
             }
         }
         
         NSDictionary *queryParams = [parameters objectForKey:VPUPRouteQueryParamsKey];
-        NSString *appletID = [queryParams objectForKey:@"appletId"];
-        if (!appletID) {
+        NSString *mpID = [queryParams objectForKey:@"appletId"];
+        if (!mpID) {
             return NO;
         }
         id type = [queryParams objectForKey:@"type"];
@@ -844,30 +844,30 @@
         
         if (!type && template) {
             //没有type有入口
-            if (![strongSelf.appletsView checkContainerExistWithAppletID:appletID]) {
+            if (![strongSelf.mpView checkContainerExistWithMPID:mpID]) {
                 //没有对应的容器
                 return NO;
             }
         }
         
-        [strongSelf.appletsView loadAppletWithID:appletID data:parameters];
+        [strongSelf.mpView loadMPWithID:mpID data:parameters];
     
         return YES;
     }];
     
-    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLuaView] addRoute:@"/desktopLuaView" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLView] addRoute:@"/desktopLuaView" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
         
         if (!weakSelf) {
             return NO;
         }
         __strong typeof(self) strongSelf = weakSelf;
         //判定osView是否存在，若不存在，先创建
-        if (!strongSelf.desktopView) {
-            [strongSelf initDesktopViewWithFrame:strongSelf.view.bounds];
+        if (!strongSelf.bubbleView) {
+            [strongSelf initBubbleViewWithFrame:strongSelf.view.bounds];
             //TODO MQTT,如果_liveView不存在情况怎么处理
             
             if(!strongSelf.canSet) {
-                [strongSelf.desktopView startLoading];
+                [strongSelf.bubbleView startLoading];
             }
         }
         
@@ -877,9 +877,9 @@
         }
         
         NSDictionary *queryParams = [parameters objectForKey:VPUPRouteQueryParamsKey];
-        NSString *luaFile = [queryParams objectForKey:@"template"];
-        if (!luaFile) {
-            luaFile = [data objectForKey:@"template"];
+        NSString *lFile = [queryParams objectForKey:@"template"];
+        if (!lFile) {
+            lFile = [data objectForKey:@"template"];
         }
         
         NSString *miniAppId = [queryParams objectForKey:@"miniAppId"];
@@ -887,18 +887,18 @@
             miniAppId = [[data objectForKey:@"miniAppInfo"] objectForKey:@"miniAppId"];
         }
         
-        NSString *luaFilePath = nil;
+        NSString *lFilePath = nil;
         if (miniAppId) {
-            luaFilePath = [miniAppId stringByAppendingPathComponent:luaFile];
+            lFilePath = [miniAppId stringByAppendingPathComponent:lFile];
         }
         else {
-            luaFilePath = luaFile;
+            lFilePath = lFile;
         }
-        [strongSelf.desktopView loadLua:luaFilePath data:parameters];
+        [strongSelf.bubbleView loadLFile:lFilePath data:parameters];
         return YES;
     }];
     
-    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLuaView] addRoute:@"/topLuaView" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+    [[VPUPRoutes routesForScheme:VPUPRoutesSDKLView] addRoute:@"/topLuaView" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
         
         if (!weakSelf) {
             return NO;
@@ -920,9 +920,9 @@
         }
         
         NSDictionary *queryParams = [parameters objectForKey:VPUPRouteQueryParamsKey];
-        NSString *luaFile = [queryParams objectForKey:@"template"];
-        if (!luaFile) {
-            luaFile = [data objectForKey:@"template"];
+        NSString *lFile = [queryParams objectForKey:@"template"];
+        if (!lFile) {
+            lFile = [data objectForKey:@"template"];
         }
         
         NSString *miniAppId = [queryParams objectForKey:@"miniAppId"];
@@ -930,46 +930,46 @@
             miniAppId = [[data objectForKey:@"miniAppInfo"] objectForKey:@"miniAppId"];
         }
         
-        NSString *luaFilePath = nil;
+        NSString *lFilePath = nil;
         if (miniAppId) {
-            luaFilePath = [miniAppId stringByAppendingPathComponent:luaFile];
+            lFilePath = [miniAppId stringByAppendingPathComponent:lFile];
         }
         else {
-            luaFilePath = luaFile;
+            lFilePath = lFile;
         }
         
-        [strongSelf.topView loadLua:luaFilePath data:parameters];
+        [strongSelf.topView loadLFile:lFilePath data:parameters];
         return YES;
     }];
 }
 
 - (void)unregisterRoutes {
-    [self unregisterLuaViewRoutes];
+    [self unregisterLViewRoutes];
 }
 
-- (void)unregisterLuaViewRoutes {
-    [VPUPRoutes unregisterRouteScheme:VPUPRoutesSDKLuaView];
+- (void)unregisterLViewRoutes {
+    [VPUPRoutes unregisterRouteScheme:VPUPRoutesSDKLView];
 }
 
 #pragma mark - view controller life cycle
 - (void)viewWillAppear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaPageWillAppearNotification object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:VPLPageWillAppearNotification object:nil userInfo:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaPageDidAppearNotification object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:VPLPageDidAppearNotification object:nil userInfo:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaPageWillDisappearNotification object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:VPLPageWillDisappearNotification object:nil userInfo:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] postNotificationName:VPLuaPageDidDisappearNotification object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:VPLPageDidDisappearNotification object:nil userInfo:nil];
 }
 
 - (void)launchData {
-    [self navigationWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@://defaultLuaView?template=main.lua&id=main",VPUPRoutesSDKLuaView]] data:nil];
+    [self navigationWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@://defaultLuaView?template=main.lua&id=main",VPUPRoutesSDKLView]] data:nil];
 }
 
 - (void)navigationWithURL:(NSURL *)url data:(NSDictionary *)dict {
@@ -977,50 +977,31 @@
         
     }];
 }
-
-- (NSString *)luaForService:(VPIServiceType )type {
-    NSString *luaName = nil;
-    switch (type) {
-        case VPIServiceTypeVideoMode:
-        luaName = @"os_service_video_mode.lua";
-        break;
-        case VPIServiceTypePreAdvertising:
-        luaName = @"os_service_video_ad.lua";
-        break;
-        case VPIServiceTypePauseAd:
-        luaName = @"os_service_picture_ad.lua";
-        break;
-        
-        default:
-        break;
-    }
-    return luaName;
-}
     
 - (void)startService:(VPIServiceType )type config:(VPIServiceConfig *)config {
-    VPLuaServiceConfig *serviceConfig = [[VPLuaServiceConfig alloc] init];
+    VPLServiceConfig *serviceConfig = [[VPLServiceConfig alloc] init];
     if (config.identifier) {
         serviceConfig.identifier = config.identifier;
     }
     else {
         serviceConfig.identifier = self.config.identifier;
     }
-    serviceConfig.type = (VPLuaServiceType)config.type;
+    serviceConfig.type = (VPLServiceType)config.type;
     serviceConfig.duration = (VPIVideoAdTimeType)config.duration;
-    serviceConfig.videoModeType = (VPLuaVideoModeType)config.videoModeType;
+    serviceConfig.videoModeType = (VPLVideoModeType)config.videoModeType;
     serviceConfig.eyeOriginPoint = config.eyeOriginPoint;
     
     self.serviceManager.osView = self.osView;
-    self.serviceManager.desktopView = self.desktopView;
+    self.serviceManager.bubbleView = self.bubbleView;
     self.serviceManager.topView = self.topView;
     self.serviceManager.delegate = self;
     
-    [self.serviceManager startService:(VPLuaServiceType)type config:serviceConfig];
+    [self.serviceManager startService:(VPLServiceType)type config:serviceConfig];
     
 //    if (type == VPIServiceTypePreAdvertising || type == VPIServiceTypePostAdvertising || type == VPIServiceTypePauseAd) {
-//        VPLuaServiceAd *adService = [[VPLuaServiceAd alloc] init];
-//        VPLuaServiceConfig *serviceConfig = [[VPLuaServiceConfig alloc] init];
-//        serviceConfig.type = (VPLuaServiceType)config.type;
+//        VPLServiceAd *adService = [[VPLServiceAd alloc] init];
+//        VPLServiceConfig *serviceConfig = [[VPLServiceConfig alloc] init];
+//        serviceConfig.type = (VPLServiceType)config.type;
 //        serviceConfig.duration = (VPIVideoAdTimeType)config.duration;
 //        [self.serviceDict setObject:adService forKey:@(VPIServiceTypePreAdvertising)];
 //        __weak typeof(self) weakSelf = self;
@@ -1040,45 +1021,45 @@
 }
  
 - (void)resumeService:(VPIServiceType )type {
-    [self.serviceManager resumeService:(VPLuaServiceType)type];
-//    VPLuaService *service = [self.serviceDict objectForKey:@(type)];
+    [self.serviceManager resumeService:(VPLServiceType)type];
+//    VPLService *service = [self.serviceDict objectForKey:@(type)];
 //    if (service && _osView) {
 //        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-//                              @(VPLuaAdActionTypePause), @"ActionType",
-//                              @(VPLuaAdEventTypeAction), @"EventType",nil];
-//        [_osView callLuaMethod:@"event" nodeId:service.serviceId data:dict];
+//                              @(VPLAdActionTypePause), @"ActionType",
+//                              @(VPLAdEventTypeAction), @"EventType",nil];
+//        [_osView callLMethod:@"event" nodeId:service.serviceId data:dict];
 //    }
 }
     
 - (void)pauseService:(VPIServiceType )type {
-    [self.serviceManager pauseService:(VPLuaServiceType)type];
-//    VPLuaService *service = [self.serviceDict objectForKey:@(type)];
+    [self.serviceManager pauseService:(VPLServiceType)type];
+//    VPLService *service = [self.serviceDict objectForKey:@(type)];
 //    if (service && _osView) {
 //        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-//                              @(VPLuaAdActionTypeResume), @"ActionType",
-//                              @(VPLuaAdEventTypeAction), @"EventType",nil];
-//        [_osView callLuaMethod:@"event" nodeId:service.serviceId data:dict];
+//                              @(VPLAdActionTypeResume), @"ActionType",
+//                              @(VPLAdEventTypeAction), @"EventType",nil];
+//        [_osView callLMethod:@"event" nodeId:service.serviceId data:dict];
 //    }
 }
     
 - (void)stopService:(VPIServiceType)type {
-    [self.serviceManager stopService:(VPLuaServiceType)type];
-//    VPLuaService *service = [self.serviceDict objectForKey:@(type)];
+    [self.serviceManager stopService:(VPLServiceType)type];
+//    VPLService *service = [self.serviceDict objectForKey:@(type)];
 //    if (service && _osView) {
 //        [_osView removeViewWithNodeId:service.serviceId];
 //    }
 }
 
-#pragma mark - VPLuaServiceManagerDelegate
+#pragma mark - VPLServiceManagerDelegate
 
-- (void)vp_didCompleteForService:(VPLuaServiceType )type {
+- (void)vp_didCompleteForService:(VPLServiceType )type {
     if (self.serviceDelegate && [self.serviceDelegate respondsToSelector:@selector(vp_didCompleteForService:)]) {
         [self.serviceDelegate vp_didCompleteForService:(VPIServiceType)type];
     }
 }
 
 
-- (void)vp_didFailToCompleteForService:(VPLuaServiceType )type error:(NSError *)error {
+- (void)vp_didFailToCompleteForService:(VPLServiceType )type error:(NSError *)error {
     if (self.serviceDelegate && [self.serviceDelegate respondsToSelector:@selector(vp_didFailToCompleteForService:error:)]) {
         [self.serviceDelegate vp_didFailToCompleteForService:(VPIServiceType)type error:error];
     }

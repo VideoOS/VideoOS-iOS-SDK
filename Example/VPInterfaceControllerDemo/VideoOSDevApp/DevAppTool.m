@@ -52,8 +52,6 @@
 }
 
 + (void)copyLuaFile:(NSString*)bundlePath ToFilePath:(NSString*)destinationPath{
-    
-    NSLog(@"");
     NSFileManager * fileManger = [NSFileManager defaultManager];
     BOOL isDir;
     BOOL isExist = [fileManger fileExistsAtPath:bundlePath isDirectory:&isDir];
@@ -106,7 +104,7 @@
     
 }
 
-+ (NSString*)getInteractionLuaPath{
++ (NSString*)getInteractionLPath{
 
     return  [[[DevAppTool devAPPBundle].bundlePath stringByAppendingPathComponent:@"interactionLua"] stringByAppendingPathComponent:@""];
 }

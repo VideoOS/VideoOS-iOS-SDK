@@ -11,7 +11,7 @@
 #import "DevAppSettingView.h"
 #import "DevAppPlayerViewController.h"
 #import <VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
-#import <VideoOS/VideoPlsLuaViewManagerSDK/VPLuaSDK.h>
+#import <VideoOS/VideoPlsLuaViewManagerSDK/VPLSDK.h>
 #import <VideoOS/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK.h>
 #import <VideoOS/VideoPlsUtilsPlatformSDK/VPUPCommonInfo.h>
 #import <VideoOS/VideoPlsInterfaceControllerSDK/VPIConfigSDK.h>
@@ -153,7 +153,12 @@
                 NSDictionary *devApp_Dic = [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:path] options:NSJSONReadingMutableContainers error:nil];
                 [devApp_Dic setValue:adInfo forKey:@"data"];
                 [devApp_Dic setValue:template forKey:@"template"];
+                NSDictionary* miniAppInfoDic = [devApp_Dic objectForKey:@"miniAppInfo"];
+                [miniAppInfoDic setValue:[responseObject objectForKey:@"luaList"] forKey:@"luaList"];
+                [miniAppInfoDic setValue:[responseObject objectForKey:@"miniAppId"] forKey:@"miniAppId"];
+                [devApp_Dic setValue:miniAppInfoDic forKey:@"miniAppInfo"];
                 self.interaction_Data = devApp_Dic;
+                
 //                self.interaction_Data = [NSDictionary dictionaryWithObjectsAndKeys:adInfo,@"data",template,@"template", nil];;
             }
             
@@ -173,11 +178,13 @@
 -(void)receiveResponseObject:(NSDictionary *)responseObject{
     if (self.controllerType == Type_Interaction) {
         self.interaction_templateLua = [responseObject objectForKey:@"template"];
+        self.service_miniAppID = [responseObject objectForKey:@"miniAppId"];
         //downloatLuas
         DevLuaLoader * loader =[DevLuaLoader sharedLoader];
         NSArray* luaList = [responseObject objectForKey:@"luaList"];
         
-        [loader checkAndDownloadFilesList:luaList resumePath:[VPUPPathUtil luaOSPath] complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList * _Nonnull trafficList) {
+        self.service_miniAppID = [responseObject objectForKey:@"miniAppId"];
+        [loader checkAndDownloadFilesList:luaList resumePath:[VPUPPathUtil subPathOfLOSPath:self.service_miniAppID] complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList * _Nonnull trafficList) {
             if (error) {
                 NSLog(@"error : %@",error);
                 [self hudHiddenWithSucces:false];
@@ -193,6 +200,12 @@
         NSArray* luaList = [responseObject objectForKey:@"luaList"];
         
         self.service_miniAppID = [responseObject objectForKey:@"miniAppId"];
+        NSMutableDictionary* appInfoDic = [NSMutableDictionary dictionary];
+        [appInfoDic setValue:[responseObject objectForKey:@"miniAppId"] forKey:@"miniAppId"];
+        [appInfoDic setValue:[responseObject objectForKey:@"template"] forKey:@"template"];
+        [appInfoDic setValue:[responseObject objectForKey:@"luaList"] forKey:@"luaList"];
+        [responseObject setValue:appInfoDic forKey:@"miniAppInfo"];
+        
         NSString* jsonStr = [self convertToJsonData:responseObject];
         if ([[NSFileManager defaultManager] fileExistsAtPath:[VPUPPathUtil appDevConfigPath]]) {
             NSLog(@"config 文件存在 删除");
@@ -209,7 +222,7 @@
         }
         
         
-        [loader checkAndDownloadFilesList:luaList resumePath:[VPUPPathUtil subPathOfLuaApplets:self.service_miniAppID] complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList * _Nonnull trafficList) {
+        [loader checkAndDownloadFilesList:luaList resumePath:[VPUPPathUtil subPathOfLMP:self.service_miniAppID] complete:^(NSError * _Nonnull error, VPUPTrafficStatisticsList * _Nonnull trafficList) {
             if (error) {
                 NSLog(@"error : %@",error);
                 [self hudHiddenWithSucces:false];
@@ -299,14 +312,17 @@
         if (self.controllerType == Type_Interaction) {
             if (self.isLocal == true) {
                 //copy 文件至指定目录
-                [DevAppTool copyLuaFile:[DevAppTool getInteractionLuaPath] ToFilePath:[VPUPPathUtil luaOSPath]];
-                cor.interaction_templateLua = [self.resourceDataAry.firstObject lastPathComponent];
                 NSString *path =  [[DevAppTool devAPPBundle] pathForResource:@"devApp_json" ofType:@"json"];
                 NSDictionary *adInfo = [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:path] options:NSJSONReadingMutableContainers error:nil];
+                NSString* miniAppId = [[adInfo objectForKey:@"miniAppInfo"] objectForKey:@"miniAppId"];
+                [DevAppTool copyLuaFile:[DevAppTool getInteractionLPath] ToFilePath:[VPUPPathUtil subPathOfLOSPath:miniAppId]];
+                cor.interaction_templateLua = [self.resourceDataAry.firstObject lastPathComponent];
                 cor.interaction_Data = adInfo;
+                cor.service_miniAppID = miniAppId;
             }else{
                 cor.interaction_templateLua = self.interaction_templateLua;
                 cor.interaction_Data = self.interaction_Data;
+                cor.service_miniAppID = self.service_miniAppID;
             }
             
         }else{
@@ -314,16 +330,15 @@
                 //copy 文件至指定目录
                 NSString *path =  [[DevAppTool devAPPBundle] pathForResource:@"config" ofType:@"json"];
                 NSDictionary *config = [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:path] options:NSJSONReadingMutableContainers error:nil];
-                NSString* miniAppId = [config objectForKey:@"miniAppId"];
                 
-                NSArray *luaList = [config objectForKey:@"luaList"];
+                NSDictionary* appInfoDic = [config objectForKey:@"miniAppInfo"];
+                
+                NSString* miniAppId = [appInfoDic objectForKey:@"miniAppId"];
+                
+                NSArray *luaList = [appInfoDic objectForKey:@"luaList"];
                 for (NSDictionary* fileDic in luaList) {
-                    NSString* luaFile = [fileDic objectForKey:@"url"];
-                    
-                    
-                    
-                    [DevAppTool copyLuaFile:[[DevAppTool devAPPBundle] pathForResource:luaFile ofType:nil] ToFilePath:[[VPUPPathUtil subPathOfLuaApplets:miniAppId] stringByAppendingPathComponent:luaFile]];
-                    
+                    NSString* lFile = [fileDic objectForKey:@"url"];
+                    [DevAppTool copyLuaFile:[[DevAppTool devAPPBundle] pathForResource:lFile ofType:nil] ToFilePath:[[VPUPPathUtil subPathOfLMP:miniAppId] stringByAppendingPathComponent:lFile]];
                 }
                 [DevAppTool copyLuaFile:path ToFilePath:[VPUPPathUtil appDevConfigPath]];
                 cor.service_miniAppID = miniAppId;

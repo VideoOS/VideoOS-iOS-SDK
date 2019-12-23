@@ -26,28 +26,28 @@
 #import "VPIConfigSDK.h"
 
 #import "VideoPlsUtilsPlatformSDK.h"
-#import "VPLuaSDK.h"
+#import "VPLSDK.h"
 
 @implementation VPIConfigSDK
 
 + (void)initSDK {
-    [VPLuaSDK initSDK];
+    [VPLSDK initSDK];
 }
 
 + (void)setIDFA:(NSString *)IDFA {
-    [VPLuaSDK setIDFA:IDFA];
+    [VPLSDK setIDFA:IDFA];
 }
 
 + (void)setIdentity:(NSString *)identity {
-    [VPLuaSDK setIdentity:identity];
+    [VPLSDK setIdentity:identity];
 }
 
 + (void)setAppKey:(NSString *)appKey appSecret:(NSString *)appSecret {
-    [VPLuaSDK setAppKey:appKey appSecret:appSecret];
+    [VPLSDK setAppKey:appKey appSecret:appSecret];
 }
 
 + (void)setAppDevEnable:(BOOL)enable {
-    [VPLuaSDK setAppDevEnable:enable];
+    [VPLSDK setAppDevEnable:enable];
 }
 
 @end

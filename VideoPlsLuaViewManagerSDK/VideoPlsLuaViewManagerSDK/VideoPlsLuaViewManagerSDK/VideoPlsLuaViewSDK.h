@@ -17,25 +17,25 @@ FOUNDATION_EXPORT const unsigned char VideoPlsLuaViewSDKVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <VideoPlsLuaViewSDK/PublicHeader.h>
 
 //Lua View
-#import "VPLuaBaseView.h"
-#import "VPLuaButton.h"
-#import "VPLuaCollectionView.h"
-#import "VPLuaImageView.h"
-#import "VPLuaLabel.h"
-#import "VPLuaLoadingView.h"
-#import "VPLuaThroughView.h"
-#import "VPLuaWebView.h"
-#import "VPLuaRefreshCollectionView.h"
+#import "VPLBaseView.h"
+#import "VPLButton.h"
+#import "VPLCollectionView.h"
+#import "VPLImageView.h"
+#import "VPLLabel.h"
+#import "VPLLoadingView.h"
+#import "VPLThroughView.h"
+#import "VPLWebView.h"
+#import "VPLRefreshCollectionView.h"
 
 //Manager
-#import "VPLuaBaseNode.h"
-#import "VPLuaNativeBridge.h"
-#import "VPLuaNetworkManager.h"
-#import "VPLuaNodeController.h"
-#import "VPLuaTrackApi.h"
-#import "VPLuaVideoInfo.h"
-#import "VPLuaScriptManager.h"
+#import "VPLBaseNode.h"
+#import "VPLNativeBridge.h"
+#import "VPLNetworkManager.h"
+#import "VPLNodeController.h"
+#import "VPLTrackApi.h"
+#import "VPLVideoInfo.h"
+#import "VPLScriptManager.h"
 
 //NormalView
-#import "VPLuaClickThroughView.h"
+#import "VPLClickThroughView.h"
 
