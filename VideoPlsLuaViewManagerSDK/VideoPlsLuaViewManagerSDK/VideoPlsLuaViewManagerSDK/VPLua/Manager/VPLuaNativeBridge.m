@@ -1245,16 +1245,7 @@ static int phoneType(lua_State *L) {
 }
 
 static int phoneCarrier(lua_State *L) {
-    CTTelephonyNetworkInfo *info = [[CTTelephonyNetworkInfo alloc] init];
-    CTCarrier *carrier = [info subscriberCellularProvider];
-    NSString *mobile;
-    //先判断有没有SIM卡，如果没有则不获取本机运营商
-    if (!carrier.isoCountryCode) {
-        mobile = @"无运营商";
-    }else{
-        mobile = [carrier carrierName];
-    }
-    lua_pushstring(L, [mobile UTF8String]);
+    lua_pushstring(L, [[VPUPDeviceUtil phoneCarrier] UTF8String]);
     return 1;
 }
 
