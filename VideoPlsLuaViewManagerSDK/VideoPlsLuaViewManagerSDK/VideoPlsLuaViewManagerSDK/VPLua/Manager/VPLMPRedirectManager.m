@@ -44,11 +44,17 @@
     
     __block id data = [mpDict objectForKey:@"data"];
     
+    NSInteger level = -1;
+    if ([mpDict objectForKey:@"level"] && [[mpDict objectForKey:@"level"] integerValue]) {
+        level = [[mpDict objectForKey:@"level"] integerValue];
+    }
+    
     [self redirectMPWithMPID:mpID
                          appType:appType
                          appData:data
            needChangeOrientation:screenType
               currentOrientation:currentOrientation
+                       level:level
                    completeBlock:completeBlock];
     
 }
@@ -58,6 +64,7 @@
                            appData:(id)data
              needChangeOrientation:(VPLMPRedirectOrientation)changeOrientation
                 currentOrientation:(VPLMPRedirectOrientation)currentOrientation
+                                level:(NSInteger)level
                      completeBlock:(RedirectComplete)completeBlock {
     
     if (appType != VPLRedirectAppTypeTool) {
@@ -93,6 +100,10 @@
                 [params setObject:[blockAppInfo dictionaryValue] forKey:@"miniAppInfo"];
                 
                 NSString *schemePath = [NSString stringWithFormat:@"defaultLuaView?template=%@&id=%@%@", blockAppInfo.template, blockAppInfo.mpID, [VPUPRandomUtil randomStringByLength:3]];
+               
+               if (level >= 5) {
+                   schemePath = [schemePath stringByReplacingOccurrencesOfString:@"defaultLuaView" withString:@"topLuaView" options:0 range:NSMakeRange(0, 15)];
+               }
                 
                 [VPUPActionManager pushAction:VPUP_SchemeAddPath(schemePath, @"LuaView") data:params sender:weakSelf];
                 

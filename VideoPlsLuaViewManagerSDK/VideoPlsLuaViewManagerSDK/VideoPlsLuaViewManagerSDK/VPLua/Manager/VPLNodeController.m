@@ -281,6 +281,12 @@
     }
     
     NSDictionary *miniAppInfo = [luaData objectForKey:@"miniAppInfo"];
+    if (!miniAppInfo) {
+        //data里没有塞入，要从paramenters中取出
+        if ([parameters objectForKey:@"miniAppInfo"]) {
+            miniAppInfo = [parameters objectForKey:@"miniAppInfo"];
+        }
+    }
     NSString *developerUserId = @"10001001000";
     NSString *mpID = @"";
     if (miniAppInfo && [miniAppInfo objectForKey:@"developerUserId"] != nil) {

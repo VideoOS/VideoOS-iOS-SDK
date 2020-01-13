@@ -124,7 +124,7 @@ static VPLMPRequest *request = nil;
 }
 
 - (void)trackWithMPID:(NSString *)mpID
-               apiManager:(id<VPUPHTTPAPIManager>)apiManager {
+           apiManager:(id<VPUPHTTPAPIManager>)apiManager {
     
     [self createHTTPManagerWith:apiManager];
     

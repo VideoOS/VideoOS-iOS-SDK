@@ -19,12 +19,15 @@
 #import "VPHMPLandscapeContainer.h"
 #import "VPLOSView.h"
 #import "VPLMPRequest.h"
+#import "VPLMPAddRecent.h"
 
 @interface VPLMPView () <VPMPContainerDelegate>
 
 @property (nonatomic, weak) VPLNetworkManager *networkManager;
 
 @property (nonatomic) NSMutableDictionary<NSString *, id<VPMPContainer>> *containers;
+
+@property (nonatomic) NSMutableArray *currentMPIDs;
 
 @property (nonatomic,   copy) NSString *lPath;
 
@@ -228,6 +231,9 @@
         if (!self.containers) {
             self.containers = [NSMutableDictionary dictionary];
         }
+        if (!self.currentMPIDs) {
+            self.currentMPIDs = [NSMutableArray array];
+        }
         
         NSDictionary *queryParams = [data objectForKey:VPUPRouteQueryParamsKey];
         
@@ -302,7 +308,10 @@
             [container showInSuperview:self];
             
             //track appletId
-            [[VPLMPRequest request] trackWithMPID:mpID apiManager:self.networkManager.httpManager];
+//            [[VPLMPRequest request] trackWithMPID:mpID apiManager:self.networkManager.httpManager];
+            [VPLMPAddRecent addRecentWithMPID:mpID];
+            //send close & open applet
+            [self checkAndAddNewMPTrack:mpID];
             
             break;
         }
@@ -349,7 +358,10 @@
     [container refreshContainerWithData:data];
     
     //track appletId
-    [[VPLMPRequest request] trackWithMPID:mpID apiManager:self.networkManager.httpManager];
+//    [[VPLMPRequest request] trackWithMPID:mpID apiManager:self.networkManager.httpManager];
+    [VPLMPAddRecent addRecentWithMPID:mpID];
+    //send close & open applet
+    [self checkAndAddNewMPTrack:mpID];
 }
 
 - (BOOL)checkContainerExistWithMPID:(NSString *)mpID {
@@ -369,11 +381,56 @@
         [obj closeContainer];
     }];
     [self.containers removeAllObjects];
+    
+    //移除发送关闭
+    if (self.currentMPIDs.count > 0) {
+        [self closeMPTrack:[self.currentMPIDs lastObject]];
+        [self.currentMPIDs removeAllObjects];
+    }
 }
 
 - (void)deleteContainerWithMPID:(NSString *)mpID {
     if ([self checkContainerExistWithMPID:mpID]) {
         [self.containers removeObjectForKey:mpID];
+        
+        //移除单个发送单个关闭
+        [self checkAndCloseLastMPTrack:mpID];
+    }
+}
+
+- (void)closeMPTrack:(NSString *)mpID {
+    [[VPUPCommonTrack shared] sendTrackWithType:VPUPCommonTrackTypeCloseMP dataDict:@{@"appletId": mpID}];
+}
+
+- (void)openMPTrack:(NSString *)mpID {
+    [[VPUPCommonTrack shared] sendTrackWithType:VPUPCommonTrackTypeOpenMP dataDict:@{@"appletId": mpID}];
+}
+
+- (void)checkAndAddNewMPTrack:(NSString *)newMPID {
+    //打开新的，如果存在旧的则关闭旧的，如果是最后一个是当前小程序则什么都不发
+    if (self.currentMPIDs.count > 0) {
+        if ([[self.currentMPIDs lastObject] isEqualToString:newMPID]) {
+            return;
+        }
+        [self closeMPTrack:[self.currentMPIDs lastObject]];
+    }
+    
+    [self openMPTrack:newMPID];
+    
+    if ([self.currentMPIDs containsObject:newMPID]) {
+        [self.currentMPIDs removeObject:newMPID];
+    }
+    
+    [self.currentMPIDs addObject:newMPID];
+}
+
+- (void)checkAndCloseLastMPTrack:(NSString *)closeMPID {
+    //先关闭当前
+    [self closeMPTrack:closeMPID];
+    [self.currentMPIDs removeObject:closeMPID];
+    //再检测有没有需要打开的
+    if (self.currentMPIDs.count > 0) {
+        [self openMPTrack:[self.currentMPIDs lastObject]];
     }
 }
 

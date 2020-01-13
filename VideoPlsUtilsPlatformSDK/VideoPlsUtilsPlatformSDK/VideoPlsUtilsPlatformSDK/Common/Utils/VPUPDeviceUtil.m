@@ -52,6 +52,12 @@
     }else{
         mobile = [carrier carrierName];
     }
+    
+    //极少数的情况下（1/100000），手机有SIM卡，但是系统读取不到运营商信息
+    if (!mobile) {
+        mobile = @"无运营商";
+    }
+    
     return mobile;
 }
 

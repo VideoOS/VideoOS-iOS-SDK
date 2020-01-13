@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0614EAD722F020D9002DD6F4 /* VPLMPView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0614EAD522F020D8002DD6F4 /* VPLMPView.h */; };
 		0614EAD822F020D9002DD6F4 /* VPLMPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0614EAD622F020D8002DD6F4 /* VPLMPView.m */; };
+		0620393D23B1F1EB002256B1 /* VPLMPAddRecent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0620393B23B1F1EB002256B1 /* VPLMPAddRecent.h */; };
+		0620393E23B1F1EB002256B1 /* VPLMPAddRecent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0620393C23B1F1EB002256B1 /* VPLMPAddRecent.m */; };
+		0620394123B34AEA002256B1 /* VPLMPOpenAds.h in Headers */ = {isa = PBXBuildFile; fileRef = 0620393F23B34AEA002256B1 /* VPLMPOpenAds.h */; };
+		0620394223B34AEA002256B1 /* VPLMPOpenAds.m in Sources */ = {isa = PBXBuildFile; fileRef = 0620394023B34AEA002256B1 /* VPLMPOpenAds.m */; };
 		063A124422F3CE230027B6A2 /* VPLMPBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 063A124222F3CE230027B6A2 /* VPLMPBridge.h */; };
 		063A124522F3CE230027B6A2 /* VPLMPBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 063A124322F3CE230027B6A2 /* VPLMPBridge.m */; };
 		063ABC052004C6AC001A8B94 /* VPLGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = 063ABC032004C6AC001A8B94 /* VPLGradientView.h */; };
@@ -199,6 +203,10 @@
 /* Begin PBXFileReference section */
 		0614EAD522F020D8002DD6F4 /* VPLMPView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMPView.h; sourceTree = "<group>"; };
 		0614EAD622F020D8002DD6F4 /* VPLMPView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMPView.m; sourceTree = "<group>"; };
+		0620393B23B1F1EB002256B1 /* VPLMPAddRecent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMPAddRecent.h; sourceTree = "<group>"; };
+		0620393C23B1F1EB002256B1 /* VPLMPAddRecent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMPAddRecent.m; sourceTree = "<group>"; };
+		0620393F23B34AEA002256B1 /* VPLMPOpenAds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMPOpenAds.h; sourceTree = "<group>"; };
+		0620394023B34AEA002256B1 /* VPLMPOpenAds.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMPOpenAds.m; sourceTree = "<group>"; };
 		063A124222F3CE230027B6A2 /* VPLMPBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLMPBridge.h; sourceTree = "<group>"; };
 		063A124322F3CE230027B6A2 /* VPLMPBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLMPBridge.m; sourceTree = "<group>"; };
 		063ABC032004C6AC001A8B94 /* VPLGradientView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPLGradientView.h; sourceTree = "<group>"; };
@@ -561,6 +569,10 @@
 				D05FA9162303C2FB00C24653 /* VPLTrackManager.m */,
 				06571F9223851B4100C6C4D6 /* VPLMPRedirectManager.h */,
 				06571F9323851B4100C6C4D6 /* VPLMPRedirectManager.m */,
+				0620393B23B1F1EB002256B1 /* VPLMPAddRecent.h */,
+				0620393C23B1F1EB002256B1 /* VPLMPAddRecent.m */,
+				0620393F23B34AEA002256B1 /* VPLMPOpenAds.h */,
+				0620394023B34AEA002256B1 /* VPLMPOpenAds.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -651,6 +663,7 @@
 				D0114C251FCFBFCD00E75EF7 /* VPLLoadingView.h in Headers */,
 				D0ADC49222EA8BD40037A549 /* VPLConstant.h in Headers */,
 				063A124422F3CE230027B6A2 /* VPLMPBridge.h in Headers */,
+				0620393D23B1F1EB002256B1 /* VPLMPAddRecent.h in Headers */,
 				069D37CC20207CB700CB177D /* VPLWindow.h in Headers */,
 				D0114C351FCFBFCD00E75EF7 /* VPLNativeBridge.h in Headers */,
 				D0ADC4A222ED82B70037A549 /* VPLServiceAd.h in Headers */,
@@ -668,6 +681,7 @@
 				063ABC052004C6AC001A8B94 /* VPLGradientView.h in Headers */,
 				06D474AC22F8088900C9DADD /* VPMPContainerNetworkView.h in Headers */,
 				D0114C161FCFBFCD00E75EF7 /* VPLBaseView.h in Headers */,
+				0620394123B34AEA002256B1 /* VPLMPOpenAds.h in Headers */,
 				D0114C3E1FCFBFCD00E75EF7 /* VPLTrackApi.h in Headers */,
 				D0928C3F207CC135008AB5EC /* VPLPage.h in Headers */,
 				06B02A7823753D43004E546D /* UIView+VPLView.h in Headers */,
@@ -804,6 +818,7 @@
 				D05369992051067100A4F8C6 /* VPLMQTT.m in Sources */,
 				0692ECFE1FF5EFA9008A3214 /* VPLNativeScanner.m in Sources */,
 				D00ED8E8202DAB6700B6C8C1 /* VPLMedia.m in Sources */,
+				0620393E23B1F1EB002256B1 /* VPLMPAddRecent.m in Sources */,
 				D0114C331FCFBFCD00E75EF7 /* VPLBaseNode.m in Sources */,
 				0640FAE61FE8EDF90089825F /* VPLNormalRefreshHeader.m in Sources */,
 				D00ED8E3202C41AC00B6C8C1 /* VPLScriptManager.m in Sources */,
@@ -814,6 +829,7 @@
 				D0114C201FCFBFCD00E75EF7 /* VPLImageView.m in Sources */,
 				064C92F22314CB660050D862 /* VPMPLandscapeNavigationBar.m in Sources */,
 				067A769922F03C5E008FC043 /* VPLMPLandscapeContainer.m in Sources */,
+				0620394223B34AEA002256B1 /* VPLMPOpenAds.m in Sources */,
 				D004F65A2093103000022E90 /* VPLuaServiceManager.m in Sources */,
 				D0BD1AC02138DE2100A087F2 /* VPLSDK.m in Sources */,
 				D05FA9182303C2FB00C24653 /* VPLTrackManager.m in Sources */,

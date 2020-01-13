@@ -21,6 +21,10 @@
 #import "VPLSDK.h"
 #import "VPUPWKWebView.h"
 #import "VPLMPRedirectManager.h"
+#import "VPUPLocalStorage.h"
+#import "VPUPCommonTrack.h"
+#import "VPUPHTTPNetworking.h"
+#import "VPLMPOpenAds.h"
 
 @interface VPLMPWebView()<VPUPWebViewDelegate, WKScriptMessageHandler>
 
@@ -243,28 +247,13 @@
         return;
     }
     
+    
+    
     NSString *key = [dict objectForKey:@"key"];
     NSString *value = [dict objectForKey:@"value"];
     
-    NSString *filePath = [VPUPPathUtil localStoragePath];
-    NSString *fileNamePath = [filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", self.developUserId, @".plist"]];
+    [VPUPLocalStorage setStorageDataWithFile:self.developUserId key:key value:value];
     
-//    NSData *data = [[NSFileManager defaultManager] contentsAtPath:fileNamePath];
-    NSMutableDictionary *dataDict = [NSMutableDictionary dictionaryWithContentsOfFile:fileNamePath];
-    if (!dataDict) {
-        dataDict = [NSMutableDictionary dictionary];
-    }
-    
-    if (value != nil) {
-        [dataDict setValue:value forKey:key];
-    } else {
-        //value == nil, remove key
-        if ([dataDict objectForKey:key]) {
-            [dataDict removeObjectForKey:key];
-        }
-    }
-    
-    [dataDict writeToFile:fileNamePath atomically:YES];
 }
 
 - (void)getStorageDataWithParameters:(NSDictionary *)params {
@@ -279,42 +268,93 @@
         return;
     }
     
-    NSString *filePath = [VPUPPathUtil localStoragePath];
-    NSString *fileNamePath = [filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", self.developUserId, @".plist"]];
-        
-//    NSData *data = [[NSFileManager defaultManager] contentsAtPath:fileNamePath];
-    NSMutableDictionary *dataDict = [NSMutableDictionary dictionaryWithContentsOfFile:fileNamePath];
-    
-    if (!dataDict) {
-        [self jsCallMethod:jsCallback params:nil];
-        return;
-    }
-    
     NSString *key = nil;
     if ([dict objectForKey:@"key"]) {
         key = [dict objectForKey:@"key"];
     }
     
+    NSString *value = [VPUPLocalStorage getStorageDataWithFile:self.developUserId key:key];
+    
     NSArray *paramArray = nil;
     
-    if (key == nil) {
-        NSString *sendParamString = VPUP_DictionaryToJson(dataDict);
-        
-        if (sendParamString) {
-            paramArray = [NSArray arrayWithObject:sendParamString];
-        }
-    } else {
-        if ([dataDict objectForKey:key]) {
-            NSString *sendParamString = [dataDict objectForKey:key];
-            
-            if (sendParamString) {
-                paramArray = [NSArray arrayWithObject:sendParamString];
-            }
-        }
+    if (value) {
+        paramArray = [NSArray arrayWithObject:value];
     }
     
     [self jsCallMethod:jsCallback params:paramArray];
 }
 
+- (void)networkWithParameters:(NSDictionary *)params {
+    NSString *jsCallback = [self getJSCallback:params];
+    NSDictionary *dict = [params objectForKey:@"msg"];
+    if (!dict || ![dict objectForKey:@"url"]) {
+        [self jsCallMethod:jsCallback params:nil];
+        return;
+    }
+    
+    NSString *urlString = [dict objectForKey:@"url"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    if (!url) {
+        [self jsCallMethod:jsCallback params:nil];
+        return;
+    }
+    
+    NSString *method = @"get";
+    if ([dict objectForKey:@"method"]) {
+        method = [dict objectForKey:@"method"];
+    }
+    
+    NSDictionary *param = nil;
+    if ([dict objectForKey:@"param"]) {
+        param = [dict objectForKey:@"param"];
+    }
+    
+    VPUPHTTPGeneralAPI *api = [[VPUPHTTPGeneralAPI alloc] init];
+    api.requestMethod = urlString;
+    api.apiRequestMethodType = [[method lowercaseString] isEqualToString:@"post"] ? VPUPRequestMethodTypePOST : VPUPRequestMethodTypeGET;
+    api.requestParameters = param;
+    
+    api.apiCompletionHandler = ^(id  _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
+        if (!error) {
+            [self jsCallMethod:jsCallback params:@[responseObject]];
+        } else {
+            [self jsCallMethod:jsCallback params:@[[error localizedDescription]]];
+        }
+    };
+    
+    id<VPUPHTTPAPIManager> manager = [VPUPHTTPManagerFactory createHTTPAPIManagerWithType:VPUPHTTPManagerTypeAFN];
+    
+    [manager sendAPIRequest:api];
+    
+}
+
+- (void)commonTrackWithParameters:(NSDictionary *)params {
+    
+    NSDictionary *dict = [params objectForKey:@"msg"];
+    if (!dict) {
+        return;
+    }
+    
+    if (![dict objectForKey:@"type"] || ![dict objectForKey:@"data"]) {
+        return;
+    }
+    
+    NSInteger type = [[dict objectForKey:@"type"] integerValue];
+    NSDictionary *data = [dict objectForKey:@"data"];
+    
+    [[VPUPCommonTrack shared] sendTrackWithType:type dataDict:data];
+    
+}
+
+- (void)openAdsWithParameters:(NSDictionary *)params {
+    
+    NSDictionary *dict = [params objectForKey:@"msg"];
+    if (!dict) {
+        return;
+    }
+    
+    [VPLMPOpenAds openAdsWithParams:dict];
+    
+}
 
 @end

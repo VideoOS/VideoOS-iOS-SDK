@@ -28,11 +28,13 @@ typedef void (^RedirectComplete)(BOOL success, NSError *error);
               currentOrientation:(VPLMPRedirectOrientation)orientation
                    completeBlock:(RedirectComplete)completeBlock;
 
+//level -1 default
 + (void)redirectMPWithMPID:(NSString *)mpID
                    appType:(VPLRedirectAppType)appType
                    appData:(id)data
      needChangeOrientation:(VPLMPRedirectOrientation)changeOrientation
         currentOrientation:(VPLMPRedirectOrientation)currentOrientation
+                     level:(NSInteger)level
              completeBlock:(RedirectComplete)completeBlock;
 
 
