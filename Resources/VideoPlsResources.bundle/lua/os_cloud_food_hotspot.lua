@@ -9,6 +9,46 @@ local adTypeName = "cloud"
 local scale = getScale()
 local OS_ICON_WEDGE_CLOSE = "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"
 
+--widgetEvent版本兼容
+local function widgetEvent(eventType, adID, adName, actionType, linkUrl, deepLink, selfLink)
+
+    local actionString = ""
+    if (linkUrl ~= nil and string.len(linkUrl) > 0) then
+        actionString = linkUrl
+    elseif (deepLink ~= nil and string.len(deepLink) > 0) then
+        actionString = deepLink
+    elseif (selfLink ~= nil and string.len(selfLink) > 0) then
+        actionString = selfLink
+    end
+
+    if Native.widgetNotify then
+
+        local notifyTable = {}
+
+        notifyTable["eventType"] = eventType
+        notifyTable["adID"] = adID
+        notifyTable["adName"] = adName
+        notifyTable["actionType"] = actionType
+        notifyTable["actionString"] = actionString
+
+        if (linkUrl ~= nil) then
+            notifyTable["linkUrl"] = linkUrl
+        end
+
+        if (deepLink ~= nil) then
+            notifyTable["deepLink"] = deepLink
+        end
+
+        if (selfLink ~= nil) then
+            notifyTable["selfLink"] = selfLink
+        end
+
+        Native:widgetNotify(notifyTable)
+    else
+        Native:widgetEvent(eventType, adID, adName, actionType, actionString)
+    end
+end
+
 local function getHotspotExposureTrackLink(data, index)
     if (data == nil or index == nil) then
         return nil
@@ -41,10 +81,29 @@ end
 
 local function closeView()
     if Native:getCacheData(cloud.id) == tostring(eventTypeShow) then
-        Native:widgetEvent(eventTypeClose, cloud.id, adTypeName, actionTypeNone, "")
+        widgetEvent(eventTypeClose, cloud.id, adTypeName, actionTypeNone, "")
         Native:deleteBatchCacheData({ cloud.id })
     end
     Native:destroyView()
+end
+
+local function getMiniAppInfo(data)
+
+    print(data)
+    if (data == nil) then
+        return nil
+    end
+    local dataTable = data.data
+    if (dataTable == nil) then
+        return nil
+    end
+    local linkData = dataTable.linkData
+    if(linkData == nil) then
+        return nil
+    end
+    print(linkData)
+    local appInfo = linkData.appData
+    return appInfo
 end
 
 local function getLinkUrl(data)
@@ -55,12 +114,21 @@ local function getLinkUrl(data)
     if (dataTable == nil) then
         return nil
     end
-    local link = dataTable.linkUrl
-    if (link ~= nil and string.match(tostring(link), "http") == "http") then
-        return link
-    else
+    local linkData = dataTable.linkData
+    if(linkData == nil) then
         return nil
     end
+    local linkUrl = linkData.linkUrl
+    local deepLink = linkData.deepLink
+    local selfLink = linkData.selfLink
+    if (linkUrl ~= nil and string.len(linkUrl) > 0) then
+        return linkUrl
+    elseif (deepLink ~= nil and string.len(deepLink) > 0) then
+        return deepLink
+    elseif (selfLink ~= nil and string.len(selfLink) > 0) then
+        return selfLink
+    end
+    return nil
 end
 
 local function isShowAds(data)
@@ -114,7 +182,7 @@ local function setLuaViewSize(luaview, isPortrait) --设置当前容器大小
     if (luaview == nil) then
         return
     end
-    local screenWidth, screenHeight = System.screenSize()
+    local screenWidth, screenHeight = Native:getVideoSize(2)
     if (isPortrait) then
         local videoWidth, videoHight, y = Native:getVideoSize(0)
         if System.android() then
@@ -131,7 +199,7 @@ local function checkShowPosition(x, y, w, h, data, isPortrait)
     if (isPortrait) then
         maxWidth, maxHeight = Native:getVideoSize(0)
     else
-        local screenWidth, screenHeight = System.screenSize()
+        local screenWidth, screenHeight = Native:getVideoSize(2)
         maxWidth = math.max(screenWidth, screenHeight)
         maxHeight = math.min(screenWidth, screenHeight)
     end
@@ -179,7 +247,7 @@ local function getLandscapeLocation(data) --获取竖屏位置
     if (cloud.landscapeWidth ~= nil and cloud.landscapeHeight ~= nil and cloud.landscapeX ~= nil and cloud.landscapeY ~= nil) then
         return cloud.landscapeX, cloud.landscapeY, cloud.landscapeWidth, cloud.landscapeHeight
     end
-    local screenWidth, screenHeight = System.screenSize()
+    local screenWidth, screenHeight = Native:getVideoSize(2)
     local width = 0
     local height = 0
     local x = 0
@@ -242,7 +310,7 @@ local function getPortraitLocation(data) --获取竖屏位置
     if (cloud.portraitWidth ~= nil and cloud.portraitHeight ~= nil and cloud.portraitX ~= nil and cloud.portraitY ~= nil) then
         return cloud.portraitX, cloud.portraitY, cloud.portraitWidth, cloud.portraitHeight
     end
-    local screenWidth, screenHeight = System.screenSize()
+    local screenWidth, screenHeight = Native:getVideoSize(2)
     local videoWidth, videoHight = Native:getVideoSize(0)
     local sacleW = math.min(screenWidth, screenHeight) / math.max(screenWidth, screenHeight)
     local sacleH = videoHight / math.min(screenWidth, screenHeight)
@@ -366,7 +434,7 @@ local function rotationScreen(isPortrait)
         return
     end
     needShowOnPortrait(isPortrait)
-    local screenWidth, screenHeight = System.screenSize()
+    local screenWidth, screenHeight = Native:getVideoSize(2)
     local tempWidthSide, tempHeightSide
     if (isPortrait) then
         if (not cloud.needShowOnPortrait) then
@@ -511,7 +579,7 @@ local function onCreate(data)
     end
     if (cloud.launchPlanId ~= nil) then
         osTrack(cloud.launchPlanId, 1, 2)
-        if (getLinkUrl(data) ~= nil) then
+        if (getLinkUrl(data) ~= nil or getMiniAppInfo(data) ~= nil) then
             osTrack(cloud.launchPlanId, 2, 2)
         end
     end
@@ -540,14 +608,59 @@ local function onCreate(data)
     end
     fadeIn(cloud.luaView)
     cloud.cloudImage:onClick(function()
-        local linkUrl = getLinkUrl(data)
-        if (linkUrl == nil) then
-            return
+
+        local appInfo = getMiniAppInfo(data)
+        if (appInfo ~= nil) then
+            print("appinfo is not nil")
+            print(appInfo)
+
+            local miniAppLink = toTable(appInfo.appLink)
+            local appId = appInfo.appId         
+            if (appId == nil or string.len(appId)  == 0) then
+                return
+            end
+
+            local miniAppScreenType = "1"
+            if appInfo.miniAppScreenType ~= nil then
+                miniAppScreenType = appInfo.miniAppScreenType
+            end
+
+            local miniAppType = "1"
+            if appInfo.miniAppType ~= nil then
+                miniAppType = appInfo.miniAppType
+            end
+
+
+            local dic = {}
+            dic["miniAppId"] = appId
+
+            if (miniAppLink ~= nil and type(miniAppLink) == 'table') then
+                for k,v in pairs(miniAppLink) do
+                    dic[k] = v
+                end
+            end
+            local miniAppId = data.miniAppInfo.miniAppId;
+            if (miniAppId ~= nil and Native.commonTrack) then
+                local infoDic = {}
+                infoDic["originMiniAppId"] = miniAppId
+                infoDic["miniAppId"] = appId
+                Native:commonTrack(1,infoDic)
+            end
+            Native:sendAction(Native:base64Encode("LuaView://applets?appletId="..appId.."&type="..miniAppScreenType.."&appType="..miniAppType),dic)
+
+            
+        else
+            local linkUrl = getLinkUrl(data)
+            if (linkUrl == nil) then
+                return
+            end
+            local linkData = data.data.linkData;
+            widgetEvent(eventTypeClick, cloud.id, adTypeName, actionTypeOpenUrl, linkData.linkUrl,linkData.deepLink,linkData.selfLink)
+            --lua不打开连接，通知native操作
+            --local linkTable = { link = linkUrl, adId = data.id, adType = "os_cloud.lua" }
+            --Native:sendAction(Native:base64Encode("LuaView://defaultLuaView?template=" .. "os_win_link.lua" .. "&id=os_cloud" .. "&priority=2"), linkTable)
         end
-        Native:widgetEvent(eventTypeClick, cloud.id, adTypeName, actionTypeOpenUrl, linkUrl)
-        --lua不打开连接，通知native操作
-        --local linkTable = { link = linkUrl, adId = data.id, adType = "os_cloud.lua" }
-        --Native:sendAction(Native:base64Encode("LuaView://defaultLuaView?template=" .. "os_win_link.lua" .. "&id=os_cloud" .. "&priority=2"), linkTable)
+
         closeView()
         local clickLinkUrl = getHotspotClickTrackLink(data, 1)
         if (clickLinkUrl ~= nil) then
@@ -559,6 +672,91 @@ local function onCreate(data)
     end)
 end
 
+
+local function showHotspot(dataTable)
+    
+    cloud.id = dataTable.id
+    cloud.launchPlanId = dataTable.launchPlanId
+
+    setDefaultValue(dataTable)
+    widgetEvent(eventTypeShow, cloud.id, adTypeName, actionTypeNone, "") --todo 修改参数为table
+    Native:saveCacheData(cloud.id, tostring(eventTypeShow))
+
+    onCreate(dataTable)
+    cloud.media = registerMedia()
+    cloud.window = registerWindow()
+    checkMqttHotspotToSetClose(dataTable, function()
+        closeView()
+    end)
+end
+
+local function checkHotspotShow(data)
+
+    if (data == nil) then
+        return nil
+    end
+
+    local paramData = {
+        videoId = Native:nativeVideoID(),
+        id = data.id,
+        launchPlanId = data.launchPlanId,
+        createId = data.createId,
+        timestamp = data.videoStartTime,
+        commonParam = Native:commonParam()
+    }
+
+    local paramDataString = Native:tableToJson(paramData)
+    local OS_HTTP_POST_CHECK_HOTSPOT = OS_HTTP_HOST .. "/api/notice"
+
+    -- print("[LuaView] "..paramDataString)
+    -- print("[LuaView] "..OS_HTTP_POST_CHECK_HOTSPOT)
+    -- print("[LuaView] "..Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY))
+
+    local deviceType = 2
+    local buId = "videoos"
+
+    if System.ios() then
+        deviceType = 1
+    end
+
+    cloud.request:post(OS_HTTP_POST_CHECK_HOTSPOT, {
+        bu_id = buId,
+        device_type = deviceType,
+        data = Native:aesEncrypt(paramDataString, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
+    }, function(response, errorInfo)
+        -- print("luaview getVoteCountInfo")
+        if (response == nil) then
+            return
+        end
+        -- print("luaview getVoteCountInfo 11"..Native:tableToJson(response))
+        responseData = Native:aesDecrypt(response.encryptData, OS_HTTP_PUBLIC_KEY, OS_HTTP_PUBLIC_KEY)
+        print("luaview " .. responseData)
+        response = toTable(responseData)
+        if (response.resCode ~= "00") then
+            return
+        end
+        
+        if (response.status == "00") then
+            showHotspot(cloud.data)
+        else
+            Native:destroyView()
+        end
+        
+    end)
+end
+
+local function checkSDKVersion()
+
+    local version = {"1.1.0", "1.2.0", "1.2.1", "1.2.2", "3.0.0"}
+    local sdkVersion = Native:sdkVersion()
+    for i,v in ipairs(version) do
+        if (v == sdkVersion) then
+            return true
+        end
+    end
+    return false
+end 
+
 function show(args)
     if (args == nil or cloud.luaView ~= nil) then
         return
@@ -567,17 +765,14 @@ function show(args)
     if (dataTable == nil) then
         return
     end
-    cloud.id = dataTable.id
-    cloud.launchPlanId = dataTable.launchPlanId
 
-    setDefaultValue(dataTable)
-    Native:widgetEvent(eventTypeShow, cloud.id, adTypeName, actionTypeNone, "") --todo 修改参数为table
-    Native:saveCacheData(cloud.id, tostring(eventTypeShow))
     cloud.data = dataTable
-    onCreate(dataTable)
-    cloud.media = registerMedia()
-    cloud.window = registerWindow()
-    checkMqttHotspotToSetClose(dataTable, function()
-        closeView()
-    end)
+    cloud.request = HttpRequest()
+
+    --为ASMP，零时通过内部版本号，检测数据
+    if checkSDKVersion() then
+        checkHotspotShow(cloud.data)
+    else
+        showHotspot(cloud.data)
+    end
 end
