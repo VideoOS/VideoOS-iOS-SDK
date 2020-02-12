@@ -47,7 +47,7 @@ NSString *const VPLuaScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas
         [VPLuaSDK setIDFA:[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]];
     }
     [VPLuaSDK checkLuaFiles];
-    [[VPLuaSDK sharedSDK] luaScriptManager];
+//    [[VPLuaSDK sharedSDK] luaScriptManager];
 }
 
 + (void)setIDFA:(NSString *)IDFA {

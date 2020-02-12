@@ -150,31 +150,8 @@ NSString *const VPLuaOSLoadCompleteNotification = @"VPLuaOSLoadCompleteNotificat
     if(!self.networkManager) {
         [self initNetworkManager];
     }
-    
-    NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"VideoPlsOSResources" withExtension:@"bundle"];
-    if (bundleURL) {
-        self.luaPath = bundleURL.relativePath;
-        self.useUpdateVersion = NO;
-        self.downloadFinished = YES;
-    }
-
-    if (self.useUpdateVersion) {
-        //http://videojj-mobile.oss-cn-beijing.aliyuncs.com/huyu/developer/version.json
-        //https://videojj-mobile.oss-cn-beijing.aliyuncs.com/os/lua/version.json";
-        //http://videojj-mobile.oss-cn-beijing.aliyuncs.com/os/developer/version.json
-        //NSString *versionUrl = @"http://videojj-mobile.oss-cn-beijing.aliyuncs.com/os/developer/version.json";
-        //NSString *versionUrl = @"http://dev-videopublicapi.videojj.com/videoos/api/fileVersion";
-        NSString *versionUrl = VPLuaScriptServerUrl;
-        if ([[VPUPDebugSwitch sharedDebugSwitch] debugState] > 1) {
-            versionUrl = [NSString stringWithFormat:versionUrl, @"test"];
-        } else {
-            versionUrl = [NSString stringWithFormat:versionUrl, @""];
-        }
-        
-        VPLuaScriptManager *manager = [[VPLuaScriptManager alloc] initWithLuaStorePath:self.luaPath apiManager:self.networkManager.httpManager versionUrl:versionUrl nativeVersion:@"1.0"];
-        self.luaScriptManager = manager;
-        manager.delegate = self;
-    }
+    self.useUpdateVersion = NO;
+    self.downloadFinished = YES;
 }
 
 - (void)initNetworkManager {
