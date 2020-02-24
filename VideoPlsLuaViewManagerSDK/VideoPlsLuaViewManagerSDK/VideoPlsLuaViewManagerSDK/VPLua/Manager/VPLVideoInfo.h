@@ -15,8 +15,8 @@
 @property (nonatomic, copy) NSString *ssid;             //打开货架时生成 identity+unixtime+random(三个字母)
 @property (nonatomic, copy) NSString *projectID;
 @property (nonatomic, copy) NSString *channelID;
-@property (nonatomic, copy) NSString *category;
-@property (nonatomic, copy) NSString *extendJSONString;
+@property (nonatomic, copy) NSArray *category;
+@property (nonatomic, copy) NSDictionary *extendDict;
 @property (nonatomic, copy) NSString *episode;
 @property (nonatomic, copy) NSString *title;
 

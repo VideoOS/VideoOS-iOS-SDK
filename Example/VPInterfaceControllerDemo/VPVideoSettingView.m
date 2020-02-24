@@ -95,6 +95,15 @@
     self.urlTextField = urlTextField;
     urlTextField.dataArray = [VPVideoListData shared].videoUrlArray;
     
+    UILabel *categoryTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 100, 30)];
+    [categoryTitle setText:@"分类"];
+    [panel addSubview:categoryTitle];
+    
+    VPTextField *categoryTextField = [[VPTextField alloc] initWithFrame:CGRectMake(90, 20, 240, 40)];
+    categoryTextField.borderStyle = UITextBorderStyleRoundedRect;
+    [panel addSubview:categoryTextField];
+    self.categoryTextField = categoryTextField;
+    categoryTextField.dataArray = nil;
 
     NSArray *environmentArray = @[@"正式环境", @"预发布环境", @"测试环境", @"开发环境"];
     UISegmentedControl *environmentControl = [[UISegmentedControl alloc] initWithItems:environmentArray];
@@ -130,7 +139,7 @@
     //platformId
     [platformIdTitle mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(panel.mas_left).with.offset(widthSpace);
-        make.top.equalTo(panel.mas_top).with.offset(30);
+        make.top.equalTo(panel.mas_top).with.offset(20);
         make.width.mas_equalTo(90);
         make.height.mas_equalTo(30);
     }];
@@ -144,7 +153,7 @@
     //roomId
     [urlTitle mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(panel.mas_left).with.offset(widthSpace);
-        make.top.equalTo(platformIdTitle.mas_bottom).with.offset(30);
+        make.top.equalTo(platformIdTitle.mas_bottom).with.offset(20);
         make.width.mas_equalTo(90);
         make.height.mas_equalTo(30);
     }];
@@ -157,7 +166,7 @@
     
     [videoIdTitle mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(panel.mas_left).with.offset(widthSpace);
-        make.top.equalTo(urlTitle.mas_bottom).with.offset(30);
+        make.top.equalTo(urlTitle.mas_bottom).with.offset(20);
         make.width.mas_equalTo(90);
         make.height.mas_equalTo(30);
     }];
@@ -169,11 +178,25 @@
         make.centerY.equalTo(videoIdTitle.mas_centerY);
     }];
     
+    [categoryTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(panel.mas_left).with.offset(widthSpace);
+        make.top.equalTo(videoIdTitle.mas_bottom).with.offset(20);
+        make.width.mas_equalTo(90);
+        make.height.mas_equalTo(30);
+    }];
+    
+    [categoryTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(panel.mas_right).with.offset(-widthSpace);
+        make.left.equalTo(categoryTitle.mas_right).with.offset(10);
+        make.height.mas_equalTo(40);
+        make.centerY.equalTo(categoryTitle.mas_centerY);
+    }];
+    
     //
     [environmentControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(panel.mas_left).with.offset(widthSpace);
         make.right.equalTo(panel.mas_right).with.offset(-widthSpace);
-        make.top.equalTo(videoIdTitle.mas_bottom).with.offset(30);
+        make.top.equalTo(categoryTitle.mas_bottom).with.offset(30);
         make.height.mas_equalTo(40);
     }];
     

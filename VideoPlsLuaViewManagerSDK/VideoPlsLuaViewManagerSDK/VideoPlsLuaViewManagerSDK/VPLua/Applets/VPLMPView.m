@@ -55,11 +55,8 @@
     VPLVideoInfo *videoInfo = [[VPLVideoInfo alloc] init];
     videoInfo.platformID = platformId;
     videoInfo.nativeID = videoId;
-    if ([extendInfo objectForKey:@"category"]) {
-        videoInfo.category = [extendInfo objectForKey:@"category"];
-    }
     if (extendInfo) {
-        videoInfo.extendJSONString = VPUP_DictionaryToJson(extendInfo);
+        videoInfo.extendDict = extendInfo;
     }
     return [self initWithFrame:frame videoInfo:videoInfo];
 }

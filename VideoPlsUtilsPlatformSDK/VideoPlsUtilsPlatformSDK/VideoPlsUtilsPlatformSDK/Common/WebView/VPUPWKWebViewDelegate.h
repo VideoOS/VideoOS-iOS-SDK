@@ -42,6 +42,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setIsLandscape:(BOOL)isLandscape;
 
+- (void)setZoomScale:(double)scale;
+
 @end
 
 NS_ASSUME_NONNULL_END

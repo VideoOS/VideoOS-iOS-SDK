@@ -59,7 +59,7 @@ NSString *const VPLOSLoadCompleteNotification = @"VPLOSLoadCompleteNotification"
         videoInfo.category = [extendInfo objectForKey:@"category"];
     }
     if (extendInfo) {
-        videoInfo.extendJSONString = VPUP_DictionaryToJson(extendInfo);
+        videoInfo.extendDict = extendInfo;
     }
     return [self initWithFrame:frame videoInfo:videoInfo];
 }

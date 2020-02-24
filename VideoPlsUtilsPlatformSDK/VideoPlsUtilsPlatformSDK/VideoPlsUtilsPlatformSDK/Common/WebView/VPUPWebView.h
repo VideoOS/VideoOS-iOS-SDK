@@ -42,6 +42,7 @@ JSExportAs
 
 //不拦截url进行本地支付
 @property (nonatomic, assign) BOOL disableNativePayment;
+@property (nonatomic, assign) BOOL disableDeepLink;
 
 
 + (VPUPWebView *)initWebViewWithFrame:(CGRect)frame;
@@ -58,6 +59,8 @@ JSExportAs
 - (void)removeCache;
 
 - (void)setFrame:(CGRect)frame;
+
+- (void)setZoomScale:(double)scale;
 
 - (CGFloat)progress;
 

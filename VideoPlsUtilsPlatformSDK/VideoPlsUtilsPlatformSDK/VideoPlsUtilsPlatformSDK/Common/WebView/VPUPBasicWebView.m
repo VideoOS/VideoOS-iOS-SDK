@@ -74,6 +74,13 @@
     }
 }
 
+- (void)setDisableDeepLink:(BOOL)disableDeepLink {
+    _disableDeepLink = disableDeepLink;
+    if (_webView) {
+        _webView.disableDeepLink = disableDeepLink;
+    }
+}
+
 - (void)setJSCallOCDict:(NSDictionary<NSString *,VPUPWebViewCallback> *)JSCallOCDict {
     if(JSCallOCDict) {
         _JSCallOCDict = JSCallOCDict;
@@ -90,6 +97,10 @@
     }
     jsBridge.webView = _webView.webView;
     [((VPUPExtendWKWebView *)_webView.webView) addScriptMessageHandler:jsBridge name:jsBridge.messageName];
+}
+
+- (void)setZoomScale:(double)scale {
+    [_webView setZoomScale:scale];
 }
 
 - (void)loadUrl:(NSString *)url {

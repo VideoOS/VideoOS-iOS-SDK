@@ -5,13 +5,13 @@ OS_HTTP_HOST = Native:videoOShost()
 -- OS_HTTP_HOST = "http://dev-videopublicapi.videojj.com/videoos-api/"
 
 OS_HTTP_GET_CONFIG = OS_HTTP_HOST .. "/api/config"
-OS_HTTP_GET_TAG_LIST = OS_HTTP_HOST .. "/api/v2/queryLaunchInfo"
+OS_HTTP_GET_TAG_LIST = OS_HTTP_HOST .. "/api/v3/queryLaunchInfo"
 OS_HTTP_GET_RESOURCE_LIST = OS_HTTP_HOST .. "/api/preloadLaunchInfo"
 OS_HTTP_GET_MOBILE_QUERY = OS_HTTP_HOST .. "/api/mobileQuery"
 OS_HTTP_POST_MOBILE_QUERY = OS_HTTP_HOST .. "/api/mobileModify"
 OS_HTTP_GET_COMMON_QUERY = OS_HTTP_HOST .. "/api/commonQuery"
 OS_HTTP_GET_SIMULATION_TAG = OS_HTTP_HOST .. "/simulation/queryInfo"
-OS_HTTP_POST_CHECK_HOTSPOT = OS_HTTP_HOST .. "/api/notice"
+OS_HTTP_POST_CHECK_HOTSPOT = OS_HTTP_HOST .. "/api/v3/notice"
 OS_HTTP_POST_CHECK_HOTSPOT_TRACK = OS_HTTP_HOST .. "/statisticConfirmLaunch"
 
 --数据统计网络相关

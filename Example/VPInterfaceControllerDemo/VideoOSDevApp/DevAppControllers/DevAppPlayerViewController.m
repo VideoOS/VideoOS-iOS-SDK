@@ -255,26 +255,9 @@
         case Type_Service:
             return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
             break;
-            
         default:
             break;
     }
-}
-
-//一开始的方向  很重要
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
-    switch (self.controllerType) {
-        case Type_Interaction:
-            return UIInterfaceOrientationPortrait;
-            break;
-        case Type_Service:
-            return UIInterfaceOrientationLandscapeRight;
-            break;
-            
-        default:
-            break;
-    }
-    
 }
 
 - (void)setNewOrientation:(BOOL)fullscreen{

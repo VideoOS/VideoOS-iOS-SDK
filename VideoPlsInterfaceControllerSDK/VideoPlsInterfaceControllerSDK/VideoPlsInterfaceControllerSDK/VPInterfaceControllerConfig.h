@@ -39,20 +39,25 @@ typedef NS_ENUM(NSInteger, VPInterfaceControllerType) {
 //注意identifier，episode，title不能为空
 @property (nonatomic, copy) NSString *identifier;           //视频或房间ID
 
-@property (nonatomic, copy) NSString *episode;              //剧集名称
+@property (nonatomic, copy) NSString *episode;              //剧集名称，例如：邪恶力量第九季
 
-@property (nonatomic, copy) NSString *title;                //视频标题
+@property (nonatomic, copy) NSString *title;                //视频标题，例如：邪恶力量 第九季 第五集
 
 @property (nonatomic, copy) NSString *platformID;           //平台ID
 //默认为VPInterfaceControllerTypeDefault, 不需要传入
 @property (nonatomic, assign) VPInterfaceControllerType types;
 
-@property (nonatomic, copy) NSString *category;             //分区
-
-/** 现有参数不能满足需求时，使用拓展字段
- *  点播有title字段(初次播放时生成的标题文字), value为NSString
- *  直播有category字段(分区投放), value为NSString
- *  直播或互娱有userType(是否为主播), value为NSNumber(VPIUserType)
+/** 分层投放的参数通过extendDict字段传递
+ *  所有参数采用key:array方式传递，key为分层的层级关键字，array里面为层级对应的具体值
+ *  一些常见的参数，推荐使用下面的命名方式
+ *  标题title，例如 邪恶力量 第九季 第五集，[dict setObject:@[@"邪恶力量 第九季 第五集"] forKey:@"title"];
+ *  剧集，例如 邪恶力量第九季，[dict setObject:@[@"邪恶力量第九季"] forKey:@"episode"];
+ *  剧集Id，例如 628916289，[dict setObject:@[@"628916289"] forKey:@"episodeId"];
+ *  地区/区域，例如 美剧，[dict setObject:@[@"美剧"] forKey:@"area"];
+ *  年份，例如 2019，[dict setObject:@[@"2019"] forKey:@"years"];
+ *  类型，例如 科幻，武侠，[dict setObject:@[@"科幻", @"武侠"] forKey:@"episodeId"];
+ *  剧集Id，例如 628916289，[dict setObject:@[@"628916289"] forKey:@"episodeId"];
+ *  其他扩展字段也可以通过extendDict字段传递
  */
 @property (nonatomic, copy) NSDictionary *extendDict;
 

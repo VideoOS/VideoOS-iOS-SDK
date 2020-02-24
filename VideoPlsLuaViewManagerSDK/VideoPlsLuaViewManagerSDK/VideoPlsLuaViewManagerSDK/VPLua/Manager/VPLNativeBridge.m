@@ -1076,16 +1076,16 @@ static int unZipFile(lua_State *L) {
 }
 
 static int getVideoCategory(lua_State *L) {
-    NSString *category = [VPLSDK sharedSDK].videoInfo.category;
-    if(!category) {
-        category = @"";
+    NSString *category = @"";
+    if (VPUP_IsStrictExist([VPLSDK sharedSDK].videoInfo.category)) {
+        category = [[VPLSDK sharedSDK].videoInfo.category objectAtIndex:0];
     }
     lua_pushstring(L, category.UTF8String);
     return 1;
 }
 
 static int getConfigExtendJSONString(lua_State *L) {
-    NSString *extendJSONString = [VPLSDK sharedSDK].videoInfo.extendJSONString;
+    NSString *extendJSONString = VPUP_DictionaryToJson([VPLSDK sharedSDK].videoInfo.extendDict);
     if(!extendJSONString) {
         extendJSONString = @"";
     }
@@ -1112,46 +1112,7 @@ static int getVideoTitle(lua_State *L) {
 }
 
 static int getVideoInfo(lua_State *L) {
-    
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
-    
-    NSString *videoId = [VPLSDK sharedSDK].videoInfo.nativeID;
-    if(!videoId) {
-        videoId = @"";
-    }
-    [dict setValue:videoId forKey:@"videoId"];
-    
-    NSString *episode = [VPLSDK sharedSDK].videoInfo.episode;
-    if(!episode) {
-        episode = @"";
-    }
-    [dict setValue:episode forKey:@"episode"];
-    
-    NSString *title = [VPLSDK sharedSDK].videoInfo.title;
-    if(!title) {
-        title = @"";
-    }
-    [dict setValue:title forKey:@"title"];
-    
-    NSString *platformId = [VPLSDK sharedSDK].videoInfo.platformID;
-    if(!platformId) {
-        platformId = @"";
-    }
-    [dict setValue:platformId forKey:@"platformId"];
-    
-    NSString *category = [VPLSDK sharedSDK].videoInfo.category;
-    if(!category) {
-        category = @"";
-    }
-    [dict setValue:category forKey:@"category"];
-    
-    NSString *extendJSONString = [VPLSDK sharedSDK].videoInfo.extendJSONString;
-    if(!extendJSONString) {
-        extendJSONString = @"";
-    }
-    [dict setValue:extendJSONString forKey:@"extendJSONString"];
-    
-    lv_pushNativeObject(L, dict);
+    lv_pushNativeObject(L, [[VPLSDK sharedSDK].videoInfo dictionaryValue]);
     return 1;
 }
 
@@ -1629,7 +1590,15 @@ static int commonTrack(lua_State *L) {
     if( lua_gettop(L) >= 3) {
         if (lua_isnumber(L, 2) && lua_istable(L, 3)) {
             NSInteger type = lua_tonumber(L, 2);
-            NSDictionary *data = lv_luaTableToDictionary(L, 3);
+            NSMutableDictionary *data = lv_luaTableToDictionary(L, 3);
+            
+            if (VPUP_IsStrictExist(data)) {
+                data = [data mutableCopy];
+            }
+            else {
+                data = [NSMutableDictionary dictionaryWithCapacity:0];
+            }
+            [data setObject:[[VPLSDK sharedSDK].videoInfo dictionaryValue] forKey:@"videoInfo"];
             [[VPUPCommonTrack shared] sendTrackWithType:type dataDict:data];
         }
     }

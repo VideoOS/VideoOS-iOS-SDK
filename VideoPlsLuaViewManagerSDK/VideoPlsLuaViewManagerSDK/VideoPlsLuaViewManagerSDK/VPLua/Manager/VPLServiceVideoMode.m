@@ -284,6 +284,9 @@
     [data setObject:@(self.config.videoModeType) forKey:@"videoModeType"];
     if ([data objectForKey:@"data"]) {
         [data setObject:[self.configData objectForKey:@"videoModeMiniAppInfo"] forKey:@"miniAppInfo"];
+        if (self.configData) {
+            [data setValue:self.configData forKey:@"labelConfData"];
+        }
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://defaultLuaView?template=%@&id=%@&miniAppId=%@",
                                            VPUPRoutesSDKLView,
                                            [[dict objectForKey:@"videoModeMiniAppInfo"] objectForKey:@"template"],

@@ -266,6 +266,8 @@ static char *callbackWebViewKeys[] = { "", "onClose"};
         {"isLandscape", isLandscape},
         {"destroyView", destroyView},
         {"setInitData", setInitData },
+        {"setZoomScale", setZoomScale },
+        {"disableDeepLink", disableDeepLink},
         {NULL, NULL}
     };
     
@@ -309,6 +311,22 @@ static int lvNewWebView (lua_State *L){
 
 static int initParams (lua_State *L) {
     return lv_setCallbackByKey(L, nil, NO);
+}
+
+static int setZoomScale(lua_State *L) {
+    LVUserDataInfo * user = (LVUserDataInfo *)lua_touserdata(L, 1);
+    if( user ){
+        VPLWebView* webView = (__bridge VPLWebView *)(user->object);
+        if (webView) {
+            if(lua_gettop(L) >= 2) {
+                if (lua_isnumber(L, 2)) {
+                    float scale = lua_tonumber(L, 2);
+                    [webView setZoomScale:scale];
+                }
+            }
+        }
+    }
+    return 0;
 }
 
 static int loadUrl(lua_State *L) {
@@ -428,6 +446,22 @@ static int setInitData(lua_State *L) {
                 if (lua_istable(L, 2)) {
                     NSDictionary *dict = lv_luaValueToNativeObject(L, 2);
                     webView.rootData = dict;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+static int disableDeepLink(lua_State *L) {
+    LVUserDataInfo * user = (LVUserDataInfo *)lua_touserdata(L, 1);
+    if( user ){
+        VPLWebView* webView = (__bridge VPLWebView *)(user->object);
+        if (webView) {
+            if(lua_gettop(L) >= 2) {
+                if (lua_isboolean(L, 2)) {
+                    BOOL disableDeepLink = lua_toboolean(L, 2);
+                    webView.disableDeepLink = disableDeepLink;
                 }
             }
         }

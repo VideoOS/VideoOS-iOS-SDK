@@ -30,12 +30,15 @@ typedef void(^VPUPWebViewCallback)(id result);
 @property (nonatomic, assign, getter=isLandscape) BOOL landscape;
 
 @property (nonatomic, assign) BOOL disableNativePayment;
+@property (nonatomic, assign) BOOL disableDeepLink;
 
 
 - (instancetype)initWithFrame:(CGRect)frame url:(NSString *)url;
 - (instancetype)initWithFrame:(CGRect)frame url:(NSString *)url jsCallOCDictionary:(NSDictionary<NSString *,VPUPWebViewCallback> *)JSCallOCDictionary;
 
 - (void)addJSBridge:(VPUPWKWebViewJSBridge *)jsBridge;
+
+- (void)setZoomScale:(double)scale;
 
 - (void)loadUrl:(NSString *)url;
 

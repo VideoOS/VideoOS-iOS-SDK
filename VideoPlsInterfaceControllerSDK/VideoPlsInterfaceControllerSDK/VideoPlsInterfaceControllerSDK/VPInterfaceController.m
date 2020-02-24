@@ -236,8 +236,7 @@
     videoInfo.platformID = config.platformID;
     videoInfo.episode = config.episode;
     videoInfo.title = config.title;
-    videoInfo.category = config.category;
-    videoInfo.extendJSONString = VPUP_DictionaryToJson(config.extendDict);
+    videoInfo.extendDict = config.extendDict;
     return videoInfo;
 }
 
@@ -477,7 +476,10 @@
 
 
 - (NSDictionary *)getUserInfoDictionary {
-    VPIUserInfo * userInfo = [self.userDelegate vp_getUserInfo];
+    VPIUserInfo * userInfo = nil;
+    if (self.userDelegate && [self.userDelegate respondsToSelector:@selector(vp_getUserInfo)]) {
+        userInfo = [self.userDelegate vp_getUserInfo];
+    }
     if (!userInfo) {
         return nil;
     }
@@ -486,7 +488,7 @@
 }
 
 - (void)notifyScreenChange:(NSNotification *)sender {
-    if (self.delegate) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(vp_interfaceScreenChangedNotify:)]) {
         NSDictionary *dic = sender.userInfo;
         if (dic && [dic objectForKey:@"orientation"]) {
             [self.delegate vp_interfaceScreenChangedNotify:dic];
@@ -495,7 +497,7 @@
 }
 
 - (void)notifyUserLogined:(NSNotification *)sender {
-    if (self.userDelegate) {
+    if (self.userDelegate && [self.userDelegate respondsToSelector:@selector(vp_userLogined:)]) {
         NSDictionary *dic = sender.userInfo;
         if (dic) {
             VPIUserInfo *userInfo = [[VPIUserInfo alloc] init];
@@ -717,21 +719,21 @@
 }
 
 - (NSTimeInterval)videoPlayerCurrentItemAssetDuration {
-    if (self.videoPlayerDelegate) {
+    if (self.videoPlayerDelegate && [self.videoPlayerDelegate respondsToSelector:@selector(videoPlayerCurrentItemAssetDuration)]) {
         return [self.videoPlayerDelegate videoPlayerCurrentItemAssetDuration];
     }
     return 0;
 }
 
 - (NSTimeInterval)videoPlayerCurrentTime {
-    if (self.videoPlayerDelegate) {
+    if (self.videoPlayerDelegate && [self.videoPlayerDelegate respondsToSelector:@selector(videoPlayerCurrentTime)]) {
         return [self.videoPlayerDelegate videoPlayerCurrentTime];
     }
     return 0;
 }
 
 - (VPUPVideoPlayerSize *)videoPlayerSize {
-    if (self.videoPlayerDelegate) {
+    if (self.videoPlayerDelegate && [self.videoPlayerDelegate respondsToSelector:@selector(videoPlayerSize)]) {
         VPIVideoPlayerSize *vpiSize = [self.videoPlayerDelegate videoPlayerSize];
         VPUPVideoPlayerSize *vpupSize = [[VPUPVideoPlayerSize alloc] init];
         vpupSize.portraitFullScreenWidth = vpiSize.portraitFullScreenWidth;
@@ -752,7 +754,7 @@
 }
 
 - (CGRect)videoFrame {
-    if (self.videoPlayerDelegate) {
+    if (self.videoPlayerDelegate && [self.videoPlayerDelegate respondsToSelector:@selector(videoFrame)]) {
         return [self.videoPlayerDelegate videoFrame];
     }
     return self.view.frame;

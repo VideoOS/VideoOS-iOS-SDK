@@ -68,6 +68,10 @@
     }
 }
 
+- (void)setZoomScale:(double)scale {
+    [_webView setZoomScale:scale];
+}
+
 - (void)startLoadingWithUrl:(NSString *)url {
     _loadDate = [NSDate date];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:0];
@@ -141,6 +145,7 @@
     [_webView setIsLandscape:isLandscape];
 }
 
+
 #pragma WeKitDelegate
 
 - (void) webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
@@ -153,30 +158,45 @@
 
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-
-    if (!self.disableNativePayment) {
-        NSURL *requestURL = navigationAction.request.URL;
-        if(requestURL.scheme &&
-           ([requestURL.scheme rangeOfString:@"alipay"].location != NSNotFound ||
-           [requestURL.scheme rangeOfString:@"weixin"].location != NSNotFound)) {
-            UIApplication *application = [UIApplication sharedApplication];
-            if([application canOpenURL:requestURL]) {
-                if([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
-                    [application openURL:requestURL options:@{UIApplicationOpenURLOptionUniversalLinksOnly:@NO} completionHandler:^(BOOL success) {
-                        
-                    }];
+    NSURL *requestURL = navigationAction.request.URL;
+    BOOL needOpenDeepLink = NO;
+    
+    if (requestURL.scheme) {
+        //排除http
+        if ([requestURL.scheme rangeOfString:@"http"].location == NSNotFound) {
+            //排除支付宝，微信？？怎么知道支付宝微信一定是付款？
+            if ([requestURL.scheme rangeOfString:@"alipay"].location != NSNotFound
+                || [requestURL.scheme rangeOfString:@"weixin"].location != NSNotFound) {
+                if (!self.disableNativePayment) {
+                    //需要拉起支付宝、微信
+                    needOpenDeepLink = YES;
                 }
-                else {
-                    [application openURL:requestURL];
+            } else {
+                //其他的应用
+                if (!self.disableDeepLink) {
+                    needOpenDeepLink = YES;
                 }
-                decisionHandler(WKNavigationActionPolicyCancel);
-                return;
             }
         }
     }
-
+    
+    if (needOpenDeepLink) {
+        UIApplication *application = [UIApplication sharedApplication];
+        if([application canOpenURL:requestURL]) {
+            if (@available(iOS 10.0, *)) {
+                [application openURL:requestURL options:@{UIApplicationOpenURLOptionUniversalLinksOnly:@NO} completionHandler:^(BOOL success) {
+                    
+                }];
+            } else {
+                [application openURL:requestURL];
+            }
+            decisionHandler(WKNavigationActionPolicyCancel);
+            return;
+        }
+    }
+    
     decisionHandler(WKNavigationActionPolicyAllow);
-
+    
 }
 //
 //- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {

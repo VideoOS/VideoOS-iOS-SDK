@@ -14,6 +14,7 @@
 @property (nonatomic, weak) UIView *panel;
 @property (nonatomic, weak) VPTextField *urlTextField;
 @property (nonatomic, weak) VPTextField *videoIdTextField;
+@property (nonatomic, weak) VPTextField *categoryTextField;
 @property (nonatomic, weak) UITextField *platformIdTextField;
 @property (nonatomic, weak) UIButton *applyButton;
 @property (nonatomic, weak) UISegmentedControl *environmentControl;

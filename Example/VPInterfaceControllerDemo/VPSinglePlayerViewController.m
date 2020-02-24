@@ -309,7 +309,7 @@
     self.appInfoViewButton = appInfoViewButton;
     
     [settingButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view.mas_right);
+        make.centerX.equalTo(self.view.mas_centerX);
         make.bottom.equalTo(self.view.mas_bottom).with.offset(-40);
     }];
     
@@ -470,6 +470,7 @@
         }
         [PrivateConfig shareConfig].videoUrl = self.settingView.urlTextField.text;
         [PrivateConfig shareConfig].identifier = self.settingView.videoIdTextField.text;
+        [PrivateConfig shareConfig].cate = self.settingView.categoryTextField.text;
         [PrivateConfig shareConfig].environment = self.settingView.environmentControl.selectedSegmentIndex;
         [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:[PrivateConfig shareConfig].environment];
 //        [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];
@@ -493,6 +494,7 @@
         _interfaceController.config.extendDict = @{@"creativeName":[PrivateConfig shareConfig].creativeName};
     }
     _interfaceController.config.identifier = [PrivateConfig shareConfig].identifier;
+    _interfaceController.config.extendDict = VPUP_JsonToDictionary([PrivateConfig shareConfig].cate);
     _mediaControlView.hidden = NO;
     [_interfaceController start];
     if (_mediaControlView.videoSwitchButton.selected) {
@@ -611,13 +613,10 @@
     config.title = @"测试";
     config.types = _type;
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
-    if ([PrivateConfig shareConfig].cate) {
-        [dict setObject:[PrivateConfig shareConfig].cate forKey:@"category"];
-    }
     if ([PrivateConfig shareConfig].creativeName) {
         [dict setObject:[PrivateConfig shareConfig].creativeName forKey:@"creativeName"];
     }
-    config.extendDict = dict;
+    config.extendDict = VPUP_JsonToDictionary([PrivateConfig shareConfig].cate);
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     VPIVideoPlayerSize *videoPlayerSize = [[VPIVideoPlayerSize alloc] init];
     videoPlayerSize.portraitFullScreenWidth = screenSize.width < screenSize.height ? screenSize.width : screenSize.height;

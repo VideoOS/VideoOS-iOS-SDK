@@ -74,6 +74,10 @@
     }
 }
 
+- (void)setZoomScale:(double)scale {
+    self.scrollView.transform = CGAffineTransformMakeScale(scale, scale);
+}
+
 - (void)dealloc {
     
 }

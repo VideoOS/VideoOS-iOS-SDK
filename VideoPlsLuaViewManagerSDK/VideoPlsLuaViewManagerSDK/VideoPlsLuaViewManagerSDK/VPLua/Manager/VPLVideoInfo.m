@@ -7,6 +7,7 @@
 //
 
 #import "VPLVideoInfo.h"
+#import "VPUPValidator.h"
 
 @implementation VPLVideoInfo
 
@@ -18,7 +19,7 @@
     videoInfo.projectID = _projectID;
     videoInfo.channelID = _channelID;
     videoInfo.category = _category;
-    videoInfo.extendJSONString = _extendJSONString;
+    videoInfo.extendDict = _extendDict;
     videoInfo.title = _title;
     videoInfo.episode = _episode;
     
@@ -32,30 +33,34 @@
     }
     
     [dict setObject:self.nativeID forKey:@"videoID"];
+    
     if (self.title) {
         [dict setObject:self.title forKey:@"title"];
     } else {
         [dict setObject:@"" forKey:@"title"];
     }
+    
     if (self.episode) {
         [dict setObject:self.episode forKey:@"episode"];
     } else {
         [dict setObject:@"" forKey:@"episode"];
     }
     
-    if (self.category) {
-        [dict setObject:self.category forKey:@"category"];
+    if (VPUP_IsStrictExist(self.extendDict)) {
+        [dict setObject:self.extendDict forKey:@"extendDict"];
     }
+    
     if (self.platformID) {
         [dict setObject:self.platformID forKey:@"platformID"];
     }
+    
     if (self.projectID) {
         [dict setObject:self.projectID forKey:@"projectID"];
     }
+    
     if (self.channelID) {
         [dict setObject:self.channelID forKey:@"channelID"];
     }
-    
     
     return dict;
 }
