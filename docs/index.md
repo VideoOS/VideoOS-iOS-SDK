@@ -94,8 +94,29 @@ Photos.framework
 	* episode 为剧集名称，例如 陈情令
 	* title 为视频标题，例如 陈情令 第02集
 	* types 为视频类型（点播or直播），默认为点播（注：`VPInterfaceControllerTypeVideoOS` 表示点播，`VPInterfaceControllerTypeLiveOS` 表示直播）
+	* extendDict 分层投放的参数通过extendDict字段传递
 	
 	注：identifier，episode，title为必填字段
+	
+	分层投放的参数通过extendDict字段传递
+ 	
+ 	所有参数采用key:array方式传递，key为分层的层级关键字，array里面为层级对应的具体值
+ 	
+ 	一些常见的参数，推荐使用下面的命名方式
+ 	
+ 	标题(title)，例如 邪恶力量 第九季 第五集，[dict setObject:@[@"邪恶力量 第九季 第五集"] forKey:@"title"];
+ 	
+ 	剧集(episode)，例如 邪恶力量第九季，[dict setObject:@[@"邪恶力量第九季"] forKey:@"episode"];
+ 	
+ 	剧集Id，例如 628916289，[dict setObject:@[@"628916289"] forKey:@"episodeId"];
+ 	
+ 	地区/区域(area)，例如 美剧，[dict setObject:@[@"美剧"] forKey:@"area"];
+ 	
+ 	年份(year)，例如 2019，[dict setObject:@[@"2019"] forKey:@"years"];
+ 	
+ 	类型(type)，例如 科幻，武侠，[dict setObject:@[@"科幻", @"武侠"] forKey:@"episodeId"];
+ 	
+ 	其他扩展字段也可以通过extendDict字段传递
 
 2. 利用生成的`config`初始化`InterfaceController`， `interfaceController.view`就是生成的互动层，将这个`view`添加到播放器层之上就可以了。根据接入的`SDK`的需求可能有一些特殊的接口，放在相应的文件中，如需要调用，将对应文件`import`就可以调用了,详细作用请看注释。
 
