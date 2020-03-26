@@ -22,6 +22,8 @@
 #import "VPUPMD5Util.h"
 #import "VPUPPrefetchManager.h"
 #import "VPLDownloader.h"
+#import "VPUPReport.h"
+#import "VPLConstant.h"
 
 NSString *const VPLScriptManagerErrorDomain = @"VPLScriptManager.Error";
 
@@ -68,6 +70,7 @@ NSString *const VPLScriptManagerErrorDomain = @"VPLScriptManager.Error";
 - (void)preloadLFileFilesWithUrl:(NSString *)url {
     __weak typeof(self) weakSelf = self;
     VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
+    __weak typeof(api) weakApi = api;
     api.baseUrl = url;
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
     NSString *commonParamString = VPUP_DictionaryToJson(@{@"commonParam":[VPUPCommonInfo commonParam]});
@@ -80,8 +83,17 @@ NSString *const VPLScriptManagerErrorDomain = @"VPLScriptManager.Error";
         
         __strong typeof(self) strongSelf = weakSelf;
         
-        if (error || !responseObject || ![responseObject objectForKey:@"encryptData"]) {
+        if (error) {
+            [VPUPReport addHTTPErrorReportByReportClass:[strongSelf class] error:error api:weakApi];
             [strongSelf error:error type:VPLScriptManagerErrorTypeGetVersion];
+            return;
+        }
+        
+        
+        if (!responseObject || ![responseObject objectForKey:@"encryptData"]) {
+            NSError *error = [[NSError alloc] initWithDomain:VPLErrorDomain code:1001 userInfo:@{NSLocalizedDescriptionKey : @"Response data parsing failure"}];
+            [strongSelf error:error type:VPLScriptManagerErrorTypeGetVersion];
+            [VPUPReport addHTTPWarningReportByReportClass:[strongSelf class] error:error api:weakApi];
             return;
         }
         
@@ -89,7 +101,15 @@ NSString *const VPLScriptManagerErrorDomain = @"VPLScriptManager.Error";
         strongSelf.versionData = dataString;
         NSDictionary *data = VPUP_JsonToDictionary(dataString);
         
-        if ([[data objectForKey:@"resCode"] isEqualToString:@"00"] && [data objectForKey:@"miniAppInfoList"] > 0) {
+        if (![data objectForKey:@"resCode"] || ![[data objectForKey:@"resCode"] isEqualToString:@"00"]) {
+            //返回错误
+            NSError *error = [[NSError alloc] initWithDomain:VPLErrorDomain code:1002 userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Response data code failed, code:%@, msg:%@", [data objectForKey:@"resCode"], [data objectForKey:@"resMsg"]]}];
+            [strongSelf error:error type:VPLScriptManagerErrorTypeGetVersion];
+            [VPUPReport addHTTPWarningReportByReportClass:[strongSelf class] error:error api:weakApi];
+            return;
+        }
+        
+        if ([data objectForKey:@"miniAppInfoList"] > 0) {
             NSArray *miniAppInfoList = [data objectForKey:@"miniAppInfoList"];
             if (miniAppInfoList.count > 0) {
                 [strongSelf downloadMiniAppInfoList:miniAppInfoList];

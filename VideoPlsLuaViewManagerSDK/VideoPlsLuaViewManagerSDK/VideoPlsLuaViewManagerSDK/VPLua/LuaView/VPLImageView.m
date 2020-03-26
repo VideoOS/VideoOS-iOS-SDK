@@ -24,6 +24,7 @@
 #import "VPUPPathUtil.h"
 #import "VPUPTrafficStatistics.h"
 #import "VPUPMD5Util.h"
+#import "VPUPReport.h"
 
 
 static NSString *const VPDefaultImageBundle = @"VideoPlsDefaultImages";
@@ -74,6 +75,7 @@ static NSString *const VPDefaultImageBundle = @"VideoPlsDefaultImages";
 }
 
 -(void) setWebImageUrl:(NSURL *)url finished:(LVLoadFinished)finished {
+    __weak typeof(self) weakSelf = self;
     VPUPLoadImageBaseConfig *config = [[VPUPLoadImageBaseConfig alloc] init];
     config.url = url;
     config.view = self;
@@ -96,6 +98,10 @@ static NSString *const VPDefaultImageBundle = @"VideoPlsDefaultImages";
     }
     
     config.completedBlock = ^(UIImage *image, NSError *error, VPUPImageCacheType cacheType, NSURL *imageURL) {
+        if (error) {
+            [VPUPReport addImageWarningReportByReportClass:[weakSelf class] error:error url:imageURL.absoluteString];
+        }
+        
         if (!error && needStatistics) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {

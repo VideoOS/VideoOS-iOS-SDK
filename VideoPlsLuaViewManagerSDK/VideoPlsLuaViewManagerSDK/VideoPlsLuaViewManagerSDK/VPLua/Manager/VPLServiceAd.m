@@ -23,6 +23,7 @@
 #import "VPUPRoutesConstants.h"
 #import "VPLConstant.h"
 #import "VPMiniAppInfo.h"
+#import "VPUPReport.h"
 
 @interface VPLServiceAd()
 
@@ -62,6 +63,7 @@
 - (void)requestServiceAd {
     __weak typeof(self) weakSelf = self;
     VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
+    __weak typeof(api) weakApi = api;
     api.baseUrl = [NSString stringWithFormat:@"%@/%@", VPLServerHost, @"api/queryAllAds"];
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
     
@@ -80,11 +82,16 @@
             return;
         }
         
-        if (error || !responseObject || ![responseObject objectForKey:@"encryptData"]) {
-            if (!error) {
-                error = [NSError errorWithDomain:VPLErrorDomain code:-4101 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"queryAllAds error"]}];
-            }
+        if (error) {
             [strongSelf callbackComplete:strongSelf.complete withError:error];
+            [VPUPReport addHTTPErrorReportByReportClass:[strongSelf class] error:error api:weakApi];
+            return;
+        }
+        
+        if (!responseObject || ![responseObject objectForKey:@"encryptData"]) {
+            error = [NSError errorWithDomain:VPLErrorDomain code:-4101 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"queryAllAds error"]}];
+            [strongSelf callbackComplete:strongSelf.complete withError:error];
+            [VPUPReport addHTTPWarningReportByReportClass:[strongSelf class] error:error api:weakApi];
             return;
         }
         
@@ -94,6 +101,7 @@
         if (![data objectForKey:@"launchInfo"]) {
             NSError *error = [NSError errorWithDomain:VPLErrorDomain code:-4102 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"server do not have ad"]}];
             [strongSelf callbackComplete:strongSelf.complete withError:error];
+            [VPUPReport addHTTPWarningReportByReportClass:[strongSelf class] error:error api:weakApi];
         }
         else {
             strongSelf.serviceId = [[data objectForKey:@"launchInfo"] objectForKey:@"id"];

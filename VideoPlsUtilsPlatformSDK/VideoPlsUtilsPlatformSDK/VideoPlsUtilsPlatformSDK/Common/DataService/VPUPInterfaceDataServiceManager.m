@@ -78,4 +78,33 @@ static dispatch_once_t m_dataServiceManagerOnceToken;
     m_dataServiceManager = nil;
 }
 
++ (bool)acrDelegateEnable{
+    BOOL enable = NO;
+    if (m_dataServiceManager && m_dataServiceManager.delegate) {
+        enable =  [m_dataServiceManager.delegate acrDelegateEnable];
+    }
+    return enable;
+}
+
++ (int)acrRecordStart{
+    if (m_dataServiceManager && m_dataServiceManager.delegate) {
+        int code = [m_dataServiceManager.delegate acrRecordStart];
+        return code;
+    }else{
+        return 0;
+    }
+}
+
+
++ (void)acrRecordEndAndcallback:(VPUPACRResourcesCallback)resourcesCallback{
+    
+    if (m_dataServiceManager && m_dataServiceManager.delegate) {
+        [m_dataServiceManager.delegate acrRecordEndAndcallback:^(NSString *path) {
+            resourcesCallback(path);
+        }];
+    }
+    
+}
+
+
 @end

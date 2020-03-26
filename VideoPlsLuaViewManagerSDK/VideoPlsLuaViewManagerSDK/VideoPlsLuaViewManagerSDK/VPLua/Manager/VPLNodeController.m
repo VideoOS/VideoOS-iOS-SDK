@@ -30,6 +30,7 @@
 #import <VPLuaViewSDK/LuaViewCore.h>
 #import "VideoPlsUtilsPlatformSDK.h"
 #import "VPLConstant.h"
+#import "VPUPReport.h"
 
 //cont
 //static NSMutableArray<VPLNodeController *> *avaliableControllers;
@@ -333,7 +334,11 @@
     NSString *runFile = [node runLuaFile:filePath data:toLuaData];
 
     if(runFile) {
-        VPUPLogW(@"[load lua error], error:%@", runFile);
+        NSString *logString = [NSString stringWithFormat:@"[lua load error], error:%@\nfile:%@\nminiAppId:%@\ndeveloperUserId:%@", runFile, [fileName lastPathComponent], mpID, developerUserId];
+        
+        VPUPLogW(@"%@", logString);
+        [VPUPReport addReportByLevel:VPUPReportLevelWarning reportClass:[VPLNodeController class] message:logString];
+        
         [VPUPActionManager pushAction:VPUP_SchemeAddPath(@"error", @"Lua") data:node.lFile sender:self];
         if (self.nodeDelegate && [self.nodeDelegate respondsToSelector:@selector(loadLFileError:)]) {
             [self.nodeDelegate loadLFileError:runFile];

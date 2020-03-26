@@ -67,3 +67,6 @@
 
 //DataService
 #import "VPUPDataServiceHeader.h"
+
+//acrCloud
+#import "VPUPACRCloudAPIManager.h"

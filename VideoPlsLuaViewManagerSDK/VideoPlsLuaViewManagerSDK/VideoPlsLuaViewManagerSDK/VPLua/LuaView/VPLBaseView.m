@@ -29,6 +29,7 @@
 #import "VPLHttpRequest.h"
 #import "VPLMPBridge.h"
 #import "VPLNotification.h"
+#import "VPLACRCloud.h"
 
 @implementation VPLBaseView
 
@@ -58,6 +59,7 @@
         [VPLHttpRequest lvClassDefine:self.luaviewCore.l globalName:@"HttpRequest"];
         [VPLMPBridge lvClassDefine:self.luaviewCore.l globalName:@"Applet"];
         [VPLNotification lvClassDefine:self.luaviewCore.l globalName:@"Notification"];
+        [VPLACRCloud lvClassDefine:self.luaviewCore.l globalName:@"AcrCloud"];
     }
     return self;
 }

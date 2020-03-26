@@ -64,6 +64,8 @@
 		06D474AD22F8088900C9DADD /* VPMPContainerNetworkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474AB22F8088900C9DADD /* VPMPContainerNetworkView.m */; };
 		06D474B622F96F4A00C9DADD /* VPMPContainerErrorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D474B422F96F4A00C9DADD /* VPMPContainerErrorView.h */; };
 		06D474B722F96F4A00C9DADD /* VPMPContainerErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D474B522F96F4A00C9DADD /* VPMPContainerErrorView.m */; };
+		B620B33624065B1100788FAD /* VPLACRCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = B620B33424065B1100788FAD /* VPLACRCloud.m */; };
+		B620B33724065B1100788FAD /* VPLACRCloud.h in Headers */ = {isa = PBXBuildFile; fileRef = B620B33524065B1100788FAD /* VPLACRCloud.h */; };
 		D004F65A2093103000022E90 /* VPLuaServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F6582093103000022E90 /* VPLuaServiceManager.m */; };
 		D00ED8E2202C41AC00B6C8C1 /* VPLScriptManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8E0202C41AB00B6C8C1 /* VPLScriptManager.h */; };
 		D00ED8E3202C41AC00B6C8C1 /* VPLScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8E1202C41AC00B6C8C1 /* VPLScriptManager.m */; };
@@ -253,6 +255,8 @@
 		06D474AB22F8088900C9DADD /* VPMPContainerNetworkView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPMPContainerNetworkView.m; sourceTree = "<group>"; };
 		06D474B422F96F4A00C9DADD /* VPMPContainerErrorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPMPContainerErrorView.h; sourceTree = "<group>"; };
 		06D474B522F96F4A00C9DADD /* VPMPContainerErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPMPContainerErrorView.m; sourceTree = "<group>"; };
+		B620B33424065B1100788FAD /* VPLACRCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLACRCloud.m; sourceTree = "<group>"; };
+		B620B33524065B1100788FAD /* VPLACRCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLACRCloud.h; sourceTree = "<group>"; };
 		D004F6582093103000022E90 /* VPLuaServiceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPLuaServiceManager.m; sourceTree = "<group>"; };
 		D00ED8E0202C41AB00B6C8C1 /* VPLScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPLScriptManager.h; sourceTree = "<group>"; };
 		D00ED8E1202C41AC00B6C8C1 /* VPLScriptManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPLScriptManager.m; sourceTree = "<group>"; };
@@ -534,6 +538,8 @@
 				D00ED8E6202DAB6700B6C8C1 /* VPLMedia.m */,
 				D05369962051067100A4F8C6 /* VPLMQTT.h */,
 				D05369972051067100A4F8C6 /* VPLMQTT.m */,
+				B620B33524065B1100788FAD /* VPLACRCloud.h */,
+				B620B33424065B1100788FAD /* VPLACRCloud.m */,
 				D00ED8E0202C41AB00B6C8C1 /* VPLScriptManager.h */,
 				D00ED8E1202C41AC00B6C8C1 /* VPLScriptManager.m */,
 				D0114C051FCFBFCC00E75EF7 /* VPLBaseNode.h */,
@@ -701,6 +707,7 @@
 				D0C3A1E2206B3E8800C21CA7 /* VPLSVGAView.h in Headers */,
 				06571F9C23867A7100C6C4D6 /* VPMiniAppInfo.h in Headers */,
 				D02A1DE022EEBDB300EF5CC2 /* VPLServiceManager.h in Headers */,
+				B620B33724065B1100788FAD /* VPLACRCloud.h in Headers */,
 				D0E8C2862317C2010020D6A5 /* VPLBubbleView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -803,6 +810,7 @@
 				06571F9523851B4100C6C4D6 /* VPLMPRedirectManager.m in Sources */,
 				D0AC0179236930E400EF805A /* VPLTopView.m in Sources */,
 				D0114C2C1FCFBFCD00E75EF7 /* VPLThroughView.m in Sources */,
+				B620B33624065B1100788FAD /* VPLACRCloud.m in Sources */,
 				D05DCC61200DDAC200E294F2 /* VPLTextField.m in Sources */,
 				D0ADC4A722ED83270037A549 /* VPLService.m in Sources */,
 				D0E8C28A2317C23F0020D6A5 /* VPLNotification.m in Sources */,

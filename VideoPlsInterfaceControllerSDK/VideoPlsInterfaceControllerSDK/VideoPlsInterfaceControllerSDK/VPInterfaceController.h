@@ -32,7 +32,7 @@
 #import "VPIVideoPlayerSize.h"
 #import "VPIServiceDelegate.h"
 #import "VPIServiceConfig.h"
-
+#import "VPIACRCloudDelegate.h"
 @interface VPInterfaceController : NSObject <VPIVideoPlayerActionDelegate>
 
 /**
@@ -76,6 +76,9 @@
  *  获取服务相关的状态信息
  */
 @property (nonatomic, weak) id<VPIServiceDelegate> serviceDelegate;
+
+
+@property (nonatomic, weak) id<VPIACRCloudDelegate> acrDelegate;
 
 #pragma mark instance method
 #pragma mark init method

@@ -37,9 +37,9 @@
     //    [VPIConfigSDK setAppKey:@"93db5ef3-7fbc-485a-97b0-fc9f4e7209f5" appSecret:@"74f251d40a49468a"];
     //    [VPIConfigSDK setAppKey:@"d1af1f73-7b60-4141-8261-2d9ad20b2a23" appSecret:@"97154eab13424013"];
     //    [VPIConfigSDK setAppKey:@"7a741182-c30e-4edf-9eaa-ae8974093214" appSecret:@"8940b66d7052437b"];
-//    [VPIConfigSDK setAppKey:@"73d5a8f8-3682-4080-ad7c-996c4e19fc1e" appSecret:@"c276b70aba84491a"];
+    [VPIConfigSDK setAppKey:@"4bd773ed-ad39-4dc5-87b1-c9e35ceeee8f" appSecret:@"da1b1ff3a8e749e7"];
     
-    [VPIConfigSDK setAppKey:@"ca39f6b6-4626-4036-8518-59387636da60" appSecret:@"8e9db127a2644fba"];
+//    [VPIConfigSDK setAppKey:@"ca39f6b6-4626-4036-8518-59387636da60" appSecret:@"8e9db127a2644fba"];
     
     //    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateDevelop];
 //    [[VPUPDebugSwitch sharedDebugSwitch] switchEnvironment:VPUPDebugStateTest];

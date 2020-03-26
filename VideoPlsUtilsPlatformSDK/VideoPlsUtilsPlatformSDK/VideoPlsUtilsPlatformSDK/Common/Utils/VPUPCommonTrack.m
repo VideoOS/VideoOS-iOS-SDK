@@ -12,6 +12,7 @@
 #import "VPUPJsonUtil.h"
 #import "VPUPGeneralInfo.h"
 #import "VPUPEncryption.h"
+#import "VPUPReport.h"
 
 static VPUPCommonTrack *shared = nil;
 
@@ -39,8 +40,9 @@ static VPUPCommonTrack *shared = nil;
         return;
     }
     
+    __weak typeof(self) weakSelf = self;
     VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
-        
+    __weak typeof(api) weakApi = api;
     api.baseUrl = [NSString stringWithFormat:@"%@/%@", @"https://os-saas.videojj.com/os-api-saas", @"commonStats"];
     
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
@@ -53,7 +55,9 @@ static VPUPCommonTrack *shared = nil;
     NSString *secret = [VPUPGeneralInfo mainVPSDKAppSecret];
     api.requestParameters = @{@"data":[VPUPAESUtil aesEncryptString:commonParamString key:secret initVector:secret]};
     api.apiCompletionHandler = ^(id _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
-        
+        if (error) {
+            [VPUPReport addHTTPErrorReportByReportClass:[weakSelf class] error:error api:weakApi];
+        }
     };
     
     [_httpManager sendAPIRequest:api];

@@ -29,7 +29,7 @@
 #import <SVGAPlayer/SVGAParser.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface VPSinglePlayerViewController() <VPInterfaceStatusNotifyDelegate, VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate,VPIServiceDelegate,VPMediaControlViewDelegate,SVGAPlayerDelegate> {
+@interface VPSinglePlayerViewController() <VPInterfaceStatusNotifyDelegate, VPIUserLoginInterface,VPVideoPlayerDelegate,VPIVideoPlayerDelegate,VPIServiceDelegate,VPMediaControlViewDelegate,SVGAPlayerDelegate,VPIACRCloudDelegate> {
     NSString *_urlString;
     NSString *_platformUserID;
     BOOL _isLive;
@@ -60,6 +60,8 @@
 @property (nonatomic, weak) VPVideoSettingView *settingView;
 @property (nonatomic, weak) VPVideoAppSettingView *appSettingView;
 @property (nonatomic, strong) SVGAPlayer *svgPlayer;
+@property (nonatomic, assign) CMTime acrStartTime;
+
 
 @end
 
@@ -631,6 +633,7 @@
     _interfaceController.userDelegate = self;
     _interfaceController.videoPlayerDelegate = self;
     _interfaceController.serviceDelegate = self;
+    _interfaceController.acrDelegate = self;
 
     [_interfaceController start];
 }
@@ -793,6 +796,28 @@
     [self updateFrame];
 }
 
+#pragma mark -- VPIACRCloudDelegate
+- (void)acrRecordStart{
+    NSLog(@"playerController recive acrRecordStart func");
+    if (!_player.isPlaying) {
+        [_mediaControlView playButtonTapped:nil];
+        [_player play];
+    }
+    self.acrStartTime = [_player playerCurremtTime];
+}
+
+- (void)acrRecordEndAndcallback:(VPUPACRResourcesCallback)resourcesCallback{
+//    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"20191218104055_cropping.wav" ofType:nil];
+//    resourcesCallback(filePath);
+    if (_player.isPlaying) {
+        [_mediaControlView playButtonTapped:nil];
+        [_player pause];
+    }
+    [_player getWAVAudioWithStartTime:self.acrStartTime duration:CMTimeSubtract([_player playerCurremtTime],self.acrStartTime) WithWAVCompletionHandler:^(NSString *resultPath, int code) {
+        resourcesCallback(resultPath);
+
+    }];
+}
 
 #pragma mark -- VPInterfaceStatusChangeNotifyDelegate
 

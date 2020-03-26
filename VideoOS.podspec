@@ -26,13 +26,16 @@ Pod::Spec.new do |s|
   s.weak_frameworks = 'UIKit', 'Foundation','AVFoundation', 'CoreTelephony', 'SystemConfiguration', 'ImageIO', 'MobileCoreServices', 'WebKit', 'Photos', 'CoreData', 'WebKit','CoreMedia','Accelerate'
 
   s.requires_arc = true
-  s.default_subspec = 'Interface'
+
   s.dependency 'VPLuaViewSDK'
   s.resources    = "Resources/VideoPlsResources.bundle"
 
+  s.default_subspec = 'Interface'
+
   s.subspec 'Platform' do |spec|
+    spec.weak_frameworks = 'AVFoundation', 'Security', 'AudioToolbox'
     spec.source_files   = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/**/*.{h,m,c}"
-    #spec.exclude_files = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/Internal/FBSDKDynamicFrameworkLoader.m"
+    spec.exclude_files = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/Subspec/ACRCloud/*.*"
     spec.public_header_files = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/**/*.{h}"
     spec.header_dir = "VideoPlsUtilsPlatformSDK"
     spec.dependency 'AFNetworking'
@@ -41,18 +44,31 @@ Pod::Spec.new do |s|
     spec.dependency 'MQTTClient'
     spec.xcconfig = {'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1'}
   end
+
   s.subspec 'LuaManager' do |spec|
    spec.source_files   = "VideoPlsLuaViewManagerSDK/VideoPlsLuaViewManagerSDK/**/*.{h,m}"
    spec.public_header_files = "VideoPlsLuaViewManagerSDK/VideoPlsLuaViewManagerSDK/**/*.{h}"
    spec.header_dir = "VideoPlsLuaViewManagerSDK"
    spec.dependency 'VideoOS/Platform'
   end
+
   s.subspec 'Interface' do |spec|
    spec.source_files   = "VideoPlsInterfaceControllerSDK/VideoPlsInterfaceControllerSDK/**/*.{h,m}"
    spec.public_header_files = "VideoPlsInterfaceControllerSDK/VideoPlsInterfaceControllerSDK/**/*.{h}"
    spec.exclude_files = "VideoPlsInterfaceControllerSDK/VideoPlsInterfaceControllerSDK/VideoPlsInterfaceControllerSDK/{VPIPubWebView,VPIStoreAPIConfig}.{h,m}"
    spec.header_dir = "VideoPlsInterfaceControllerSDK"
    spec.dependency 'VideoOS/LuaManager'
+  end
+
+  s.subspec 'ACRCloud' do |spec|
+    
+    spec.libraries = 'c++'
+    spec.weak_frameworks = 'AVFoundation', 'Security', 'AudioToolbox'
+    spec.vendored_libraries = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/Subspec/ACRCloud/libACRCloud_IOS_SDK.a"
+    spec.source_files = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/Subspec/ACRCloud/*.{h,m,a}"
+    spec.public_header_files = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/Subspec/ACRCloud/*.{h}"
+    spec.header_dir = "ACRCloud"
+    spec.dependency 'VideoOS/Platform'
   end
 
 end

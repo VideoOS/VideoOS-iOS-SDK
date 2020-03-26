@@ -12,6 +12,7 @@
 #import "VPUPMD5Util.h"
 #import "VPUPPrefetchManager.h"
 #import "VPUPRandomUtil.h"
+#import "VPUPReport.h"
 
 NSInteger const VPLDownloaderRetryCount = 2;
 
@@ -202,6 +203,8 @@ NSInteger const VPLDownloaderRetryCount = 2;
                 NSString *fileMD5 = [VPUPMD5Util md5File:localPath size:0];
                 if (![[dict objectForKey:@"md5"] isEqualToString:fileMD5]) {
                     failedCount += 1;
+                    NSError *error = [[NSError alloc] initWithDomain:VPLErrorDomain code:-1002 userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"download file current md5:%@", fileMD5]}];
+                    [VPUPReport addMD5WarningReportByReportClass:[self class] error:error url:fileUrl];
                 } else {
                     [loaderObject.statisticsList addFileTrafficByName:fileName fileUrl:fileUrl filePath:localPath];
                 }

@@ -15,12 +15,14 @@
 #import "VPUPCommonInfo.h"
 #import "VPUPJsonUtil.h"
 #import "VPUPAESUtil.h"
+#import "VPUPReport.h"
 
 @implementation VPLTrackManager
 
 + (void)trackVideoModeSwitch:(BOOL)isOpen {
-
+    __weak typeof(self) weakSelf = self;
     VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
+    __weak typeof(api) weakApi = api;
     api.baseUrl = [NSString stringWithFormat:@"%@/%@", VPLServerHost, @"statistic/collectVisionSwitchTimes/v2"];
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
     
@@ -33,9 +35,11 @@
     api.requestParameters = @{@"data":[VPUPAESUtil aesEncryptString:paramString key:[VPLSDK sharedSDK].appSecret initVector:[VPLSDK sharedSDK].appSecret]};
     
     //track do not handle completion
-//    api.apiCompletionHandler = ^(id  _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
-//
-//    };
+    api.apiCompletionHandler = ^(id  _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
+        if (error) {
+            [VPUPReport addHTTPErrorReportByReportClass:[weakSelf class] error:error api:weakApi];
+        }
+    };
     [[VPLNetworkManager Manager].httpManager sendAPIRequest:api];
 }
 

@@ -209,6 +209,7 @@
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation  {
+    
     if(self.delegate) {
         if([self.delegate respondsToSelector:@selector(loadCompleteTitle:error:)]) {
             NSString *title = webView.title;
@@ -240,7 +241,8 @@
 }
 
 - (void)nativeCallWebviewWithJS:(NSString *)jsFuncName paramaters:(NSArray *)params callback:(VPUPWebViewCallback)callback {
-    [_jsBridge nativeCallWebviewWithJS:jsFuncName paramaters:params completionHandler:^(id data, NSError *error){
+    
+    void (^jsCompletionBlock)(id data, NSError *error) = ^(id data, NSError *error) {
         if(callback) {
             if (error) {
                 callback(error);
@@ -248,8 +250,14 @@
             }
             callback(data);
         }
-    }];
+    };
+    
+    if ([jsFuncName containsString:@"("] && [jsFuncName containsString:@")"] && (params == nil || params.count == 0)) {
+        //自带方法组合
+        [_jsBridge nativeCallWebviewWithJS:jsFuncName completionHandler:jsCompletionBlock];
+    } else {
+        [_jsBridge nativeCallWebviewWithJS:jsFuncName paramaters:params completionHandler:jsCompletionBlock];
+    }
 }
-
 
 @end

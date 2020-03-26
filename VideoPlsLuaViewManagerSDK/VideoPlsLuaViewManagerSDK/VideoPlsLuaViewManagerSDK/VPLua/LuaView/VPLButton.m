@@ -15,6 +15,10 @@
 
 #import "VPLNativeBridge.h"
 
+#import "VPUPPathUtil.h"
+#import "VPUPTrafficStatistics.h"
+#import "VPUPMD5Util.h"
+#import "VPUPReport.h"
 
 @interface VPLButton()
 
@@ -117,12 +121,37 @@ static int selectedImage (lua_State *L) {
 //}
 
 -(void) setWebImageUrl:(NSString *)url forState:(UIControlState)state finished:(LVLoadFinished)finished{
+    __weak typeof(self) weakSelf = self;
     VPUPLoadImageButtonConfig *config = [[VPUPLoadImageButtonConfig alloc] init];
     config.url = [NSURL URLWithString:url];
     config.view = self;
     config.state = state;
     config.backgroundImage = self.useBackgroundImage;
+    
+    __block BOOL needStatistics = YES;
+    NSString *destinationPath = [VPUPPathUtil imagePath];
+    NSString *fileName = [NSString stringWithFormat:@"%@.%@",[VPUPMD5Util md5HashString:url],[config.url pathExtension]];
+    NSString *filePath = [destinationPath stringByAppendingPathComponent:fileName];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        needStatistics = NO;
+    }
+    
     config.completedBlock = ^(UIImage *image, NSError *error, VPUPImageCacheType cacheType, NSURL *imageURL) {
+        if (error) {
+            [VPUPReport addImageWarningReportByReportClass:[weakSelf class] error:error url:imageURL.absoluteString];
+        }
+        
+        if (!error && needStatistics) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+                    VPUPTrafficStatisticsList *list = [[VPUPTrafficStatisticsList alloc] init];
+                    [list addFileTrafficByName:fileName fileUrl:url filePath:filePath];
+                    [VPUPTrafficStatistics sendTrafficeStatistics:list type:VPUPTrafficTypeRealTime];
+                }
+            });
+        }
+        
         if (finished) {
             finished(error);
         }

@@ -14,6 +14,7 @@
 #import "VPUPGeneralInfo.h"
 #import "VPUPCommonInfo.h"
 #import <AdSupport/AdSupport.h>
+#import "VPUPReport.h"
 
 NSString *const VPLServerHost = @"https://os-saas.videojj.com/os-api-saas";
 NSString *const VPLScriptServerUrl = @"https://os-saas.videojj.com/os-api-saas/api/v2/preloadLuaFileInfo";
@@ -40,6 +41,7 @@ NSString *const VPLRequestPublicKey = @"inekcndsaqwertyi";
         _sharedSDK = [[self alloc] init];
         _sharedSDK.appSecret = VPLRequestPublicKey;
         _sharedSDK.appDev = NO;
+        [VPUPReport sharedReport];
     });
     return _sharedSDK;
 }

@@ -760,6 +760,32 @@
     return self.view.frame;
 }
 
+- (BOOL)acrDelegateEnable{
+    if (self.acrDelegate) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+- (int)acrRecordStart{
+    if (self.acrDelegate && [self.acrDelegate respondsToSelector:@selector(acrRecordStart)]) {
+        [self.acrDelegate acrRecordStart];
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
+- (void)acrRecordEndAndcallback:(VPUPACRResourcesCallback)resourcesCallback{
+    
+    if (self.acrDelegate && [self.acrDelegate respondsToSelector:@selector(acrRecordEndAndcallback:)]) {
+        [self.acrDelegate acrRecordEndAndcallback:^(NSString * musicPath) {
+            resourcesCallback(musicPath);
+        }];
+    }
+}
+
 - (void)registerRoutes {
     [self registerLViewRoutes];
 }

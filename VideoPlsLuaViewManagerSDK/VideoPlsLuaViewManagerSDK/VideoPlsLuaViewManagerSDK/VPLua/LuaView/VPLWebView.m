@@ -249,7 +249,7 @@ static char *callbackWebViewKeys[] = { "", "onClose"};
     lv_pushUDataRef(l, USERDATA_KEY_DELEGATE);
     
     
-    [self lv_callLuaCallback:@"start" key2:nil argN:2];
+    [self lv_callLuaCallback:@"loadComplete" key2:nil argN:2];
 //    if([LVUtil call:l key1:STR_CALLBACK key2:"loadComplete" key3:NULL key4:NULL nargs:2 nrets:0 retType:LUA_TNONE] == 0) {
 //        
 //    }
@@ -268,6 +268,8 @@ static char *callbackWebViewKeys[] = { "", "onClose"};
         {"setInitData", setInitData },
         {"setZoomScale", setZoomScale },
         {"disableDeepLink", disableDeepLink},
+        {"canGoBack", canGoBack},
+        {"goBack", goBack},
         {NULL, NULL}
     };
     
@@ -464,6 +466,30 @@ static int disableDeepLink(lua_State *L) {
                     webView.disableDeepLink = disableDeepLink;
                 }
             }
+        }
+    }
+    return 0;
+}
+
+static int canGoBack(lua_State *L) {
+    LVUserDataInfo * user = (LVUserDataInfo *)lua_touserdata(L, 1);
+    if( user ){
+        VPLWebView* webView = (__bridge VPLWebView *)(user->object);
+        if (webView) {
+            BOOL canGoBack = [webView canGoBack];
+            lua_pushboolean(L, canGoBack);
+            return 1;
+        }
+    }
+    return 0;
+}
+
+static int goBack(lua_State *L) {
+    LVUserDataInfo * user = (LVUserDataInfo *)lua_touserdata(L, 1);
+    if( user ){
+        VPLWebView* webView = (__bridge VPLWebView *)(user->object);
+        if (webView) {
+            [webView goBack];
         }
     }
     return 0;

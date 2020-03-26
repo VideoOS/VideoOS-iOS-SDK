@@ -61,6 +61,8 @@
 #import "VPUPTrafficStatistics.h"
 #import "VPUPPrefetchImageManager.h"
 #import "VPUPCommonTrack.h"
+#import "VPUPLogUtil.h"
+#import "VPUPReport.h"
 
 #define IS_IOS11 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0)
 
@@ -314,8 +316,18 @@ static NSMutableDictionary* httpAPICache() {
         {"commonTrack", commonTrack},
         {"screenScale", screenScale},
 //        {"appletSize", getAppletSize},
+        {"logReport", logReport},
         {NULL, NULL}
     };
+//    {
+//        lua_settop(L, 0);
+//        NSDictionary* v = nil;
+//        v = @{
+//              @"INFO":@(VPUP_LOG_LEVEL_INFO),
+//              @"WARNING":@(VPUP_LOG_LEVEL_WARNING)
+//              };
+//        [LVUtil defineGlobal:@"LogLevel" value:v L:L];
+//    };
     lv_createClassMetaTable(L,META_TABLE_NativeObject);
     luaL_openlib(L, "Native", staticFunctions, 0);
     return 1;
@@ -1361,6 +1373,8 @@ static int px2Dpi(lua_State *L) {
     return 0;
 }
 
+
+
 static int screenScale(lua_State *L) {
     lua_pushnumber(L, [UIScreen mainScreen].scale);
     return 1;
@@ -1602,6 +1616,55 @@ static int commonTrack(lua_State *L) {
             [[VPUPCommonTrack shared] sendTrackWithType:type dataDict:data];
         }
     }
+    return 0;
+}
+
+
+static int logReport(lua_State *L) {
+    VPLBaseNode *luaNode = [VPLNativeBridge luaNodeFromLuaState:L];
+    if ( lua_gettop(L) >= 2 && lua_isstring(L, 2) ) {
+        
+        VPUPLogLevel logLevel = VPUP_LOG_LEVEL_INFO;
+        
+        if ( lua_gettop(L) >= 3 && lua_isnumber(L, 3) ) {
+            NSInteger level = lua_tonumber(L, 3);
+            
+            if (level < 0 || level > 2) {
+                level = 0;
+            }
+            
+            logLevel = (VPUPLogLevel)level;
+        }
+        
+        BOOL needReport = false;
+        if ( lua_gettop(L) >= 4 && lua_isboolean(L, 4) ) {
+            BOOL report = lua_toboolean(L, 4);
+            
+            needReport = report;
+        }
+        
+        
+        NSString *logString = lv_paramString(L, 2);
+        
+        if (logLevel == VPUP_LOG_LEVEL_INFO) {
+            NSString *infoLog = [NSString stringWithFormat:@"[lua log info],info:%@\nfile:%@\nminiAppId:%@\ndeveloperUserId:%@", logString, [luaNode.lFile lastPathComponent], luaNode.mpID, luaNode.developerUserId];
+            
+            VPUPLogIR(@"%@", infoLog);
+            if (needReport) {
+                [VPUPReport addReportByLevel:VPUPReportLevelInfo reportClass:[VPLNativeBridge class] message:infoLog];
+            }
+        } else {
+            NSString *warningLog = [NSString stringWithFormat:@"[lua log warning],info:%@\nfile:%@\nminiAppId:%@\ndeveloperUserId:%@", logString, [luaNode.lFile lastPathComponent], luaNode.mpID, luaNode.developerUserId];
+            
+            VPUPLogWR(@"%@", warningLog);
+            if (needReport) {
+                [VPUPReport addReportByLevel:VPUPReportLevelWarning reportClass:[VPLNativeBridge class] message:warningLog];
+            }
+        }
+        
+        
+    }
+    
     return 0;
 }
 

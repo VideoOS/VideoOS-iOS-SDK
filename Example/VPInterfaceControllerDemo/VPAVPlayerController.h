@@ -64,7 +64,9 @@ extern NSString *const VPAVPlayerPlayerbackDidSeekCompleteNotification;
 - (void)shutdown;
 - (void)setCurrentPlaybackTime:(NSTimeInterval)currentPlaybackTime;
 - (void)updateFrame:(CGRect)newFrame;
+- (CMTime)playerCurremtTime;
 
 - (void)changeContentURLString:(NSString *)urlString;
 
+- (void)getWAVAudioWithStartTime:(CMTime)startTime duration:(CMTime)videoDuration WithWAVCompletionHandler:(void (^)(NSString * resultPath, int code))wavHandler;
 @end

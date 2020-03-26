@@ -13,6 +13,7 @@ project 'Example/VPInterfaceControllerDemo'
 target 'VPInterfaceControllerDemo' do
 
 pod 'VideoOS', :path => '.'
+pod 'VideoOS/ACRCloud', :path => '.'
 
 pod 'Bugly'
 pod 'UMengAnalytics-NO-IDFA'
@@ -24,6 +25,7 @@ end
 target 'VideoOSDevApp' do
 
 pod 'VideoOS', :path => '.'
+pod 'VideoOS/ACRCloud', :path => '.'
 
 pod 'Bugly'
 pod 'UMengAnalytics-NO-IDFA'

@@ -18,4 +18,6 @@
 
 - (id)createService:(Protocol *)service;
 
+- (Class)serviceImplClass:(Protocol *)service;
+
 @end

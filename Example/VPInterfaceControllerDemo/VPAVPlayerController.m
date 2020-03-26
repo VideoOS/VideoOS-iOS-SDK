@@ -656,6 +656,175 @@ static const float kMaxHighWaterMarkMilli = 5 * 1000;
     }
 }
 
+- (CMTime)playerCurremtTime{
+    return _player.currentItem.currentTime;
+}
+
+- (void)getWAVAudioWithStartTime:(CMTime)startTime duration:(CMTime)videoDuration WithWAVCompletionHandler:(void (^)(NSString * resultPath, int code))wavHandle{
+    [VPAVPlayerController croppingVideo:_playAsset startTime:startTime duration:videoDuration WithCompletionHandler:^(NSString *xxx, int code) {
+        if (code != 0) {
+            wavHandle(xxx,code);
+            return ;
+        }
+        
+        NSString * docsdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        //    NSString* datePath = [docsdir stringByAppendingPathComponent:@"RelaVideo"];
+        NSString* datePath = docsdir;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *nowTimeStr = [formatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:0]];
+        NSString *filePath = [[datePath stringByAppendingPathComponent:nowTimeStr] stringByAppendingString:@"_cropping.wav"];
+        NSURL *croppingFileURL = [NSURL fileURLWithPath:filePath];
+        [self convetM4aToWav:[NSURL fileURLWithPath:xxx] destUrl:croppingFileURL WithConvertCompletionHandler:^(NSString *resultPath, int code) {
+            wavHandle(filePath,code);
+        }];
+    }];
+    
+}
+
+- (void)convetM4aToWav:(NSURL *)originalUrl destUrl:(NSURL *)destUrl WithConvertCompletionHandler:(void (^)(NSString * resultPath, int code))convertHandle {
+    
+    AVURLAsset *songAsset = [AVURLAsset URLAssetWithURL:originalUrl options:nil];
+    
+    //读取原始文件信息
+    NSError *error = nil;
+    AVAssetReader *assetReader = [AVAssetReader assetReaderWithAsset:songAsset error:&error];
+    if (error) {
+        NSLog (@"error: %@", error);
+        convertHandle(destUrl.absoluteString,error.code);
+        return;
+    }
+    
+    AVAssetReaderOutput *assetReaderOutput = [AVAssetReaderAudioMixOutput
+                                              assetReaderAudioMixOutputWithAudioTracks:songAsset.tracks
+                                              audioSettings: nil];
+    if (![assetReader canAddOutput:assetReaderOutput]) {
+        NSLog (@"can't add reader output... die!");
+        return;
+    }
+    [assetReader addOutput:assetReaderOutput];
+    
+    
+    AVAssetWriter *assetWriter = [AVAssetWriter assetWriterWithURL:destUrl
+                                                          fileType:AVFileTypeCoreAudioFormat
+                                                             error:&error];
+    if (error) {
+        NSLog (@"error: %@", error);
+        return;
+    }
+    AudioChannelLayout channelLayout;
+    memset(&channelLayout, 0, sizeof(AudioChannelLayout));
+    channelLayout.mChannelLayoutTag = kAudioChannelLayoutTag_Stereo;
+    NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
+                                    [NSNumber numberWithFloat:8000.0], AVSampleRateKey,
+                                    [NSNumber numberWithInt:1], AVNumberOfChannelsKey,
+//                                    [NSData dataWithBytes:&channelLayout length:sizeof(AudioChannelLayout)], AVChannelLayoutKey,
+                                    [NSNumber numberWithInt:16], AVLinearPCMBitDepthKey,
+                                    [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
+                                    [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,
+                                    [NSNumber numberWithBool:NO], AVLinearPCMIsBigEndianKey,
+                                    nil];
+    AVAssetWriterInput *assetWriterInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio
+                                                                              outputSettings:outputSettings];
+    if ([assetWriter canAddInput:assetWriterInput]) {
+        [assetWriter addInput:assetWriterInput];
+    } else {
+        NSLog (@"can't add asset writer input... die!");
+        return;
+    }
+    
+    assetWriterInput.expectsMediaDataInRealTime = NO;
+    
+    [assetWriter startWriting];
+    [assetReader startReading];
+    
+    AVAssetTrack *soundTrack = [songAsset.tracks objectAtIndex:0];
+    CMTime startTime = CMTimeMake (0, soundTrack.naturalTimeScale);
+    [assetWriter startSessionAtSourceTime:startTime];
+    
+    __block UInt64 convertedByteCount = 0;
+    
+    dispatch_queue_t mediaInputQueue = dispatch_queue_create("mediaInputQueue", NULL);
+    [assetWriterInput requestMediaDataWhenReadyOnQueue:mediaInputQueue
+                                            usingBlock: ^
+     {
+         while (assetWriterInput.readyForMoreMediaData) {
+             CMSampleBufferRef nextBuffer = [assetReaderOutput copyNextSampleBuffer];
+             if (nextBuffer) {
+                 // append buffer
+                 [assetWriterInput appendSampleBuffer: nextBuffer];
+                 NSLog (@"appended a buffer (%zu bytes)",
+                        CMSampleBufferGetTotalSampleSize (nextBuffer));
+                 convertedByteCount += CMSampleBufferGetTotalSampleSize (nextBuffer);
+                 
+                 
+             } else {
+                 [assetWriterInput markAsFinished];
+                 [assetWriter finishWritingWithCompletionHandler:^{
+                     
+                 }];
+                 [assetReader cancelReading];
+                 NSDictionary *outputFileAttributes = [[NSFileManager defaultManager]
+                                                       attributesOfItemAtPath:[destUrl path]
+                                                       error:nil];
+                 convertHandle(destUrl.absoluteString,0);
+                 NSLog (@"FlyElephant %lld",[outputFileAttributes fileSize]);
+                 break;
+             }
+         }
+         
+         
+     }];
+    
+}
+
++ (void)croppingVideo:(AVURLAsset*)asset startTime:(CMTime)videoStartTime duration:(CMTime)videoDuration WithCompletionHandler:(void (^)(NSString *, int))handler{
+    NSLog(@"starttime %lf duration %lf",CMTimeGetSeconds(videoStartTime),CMTimeGetSeconds(videoDuration));
+    AVMutableComposition *mixComposition = [AVMutableComposition composition];
+    AVMutableCompositionTrack *audioTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeAudio
+    preferredTrackID:kCMPersistentTrackID_Invalid];
+    
+    
+    NSError *erroraudio = nil;
+    //获取AVAsset中的音频 或者视频
+    AVAssetTrack *assetAudioTrack = [[asset tracksWithMediaType:AVMediaTypeAudio] firstObject];
+    //向通道内加入音频或者视频
+    BOOL ba = [audioTrack insertTimeRange:CMTimeRangeMake(videoStartTime, videoDuration)
+                                  ofTrack:assetAudioTrack
+                                   atTime:kCMTimeZero
+                                    error:&erroraudio];
+    
+    if (erroraudio) {
+        NSLog(@"errorVideo %@ , %@",erroraudio,ba?@"YES":@"NO");
+    }
+    
+    NSString * docsdir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//    NSString* datePath = [docsdir stringByAppendingPathComponent:@"RelaVideo"];
+    NSString* datePath = docsdir;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyyMMddHHmmss";
+    NSString *nowTimeStr = [formatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:0]];
+    NSString *filePath = [[datePath stringByAppendingPathComponent:nowTimeStr] stringByAppendingString:@"_temp.mov"];
+    NSURL *croppingFileURL = [NSURL fileURLWithPath:filePath];
+    AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset:mixComposition
+                                                                      presetName:AVAssetExportPresetHighestQuality];
+
+    exporter.outputURL = croppingFileURL;
+    exporter.outputFileType = AVFileTypeQuickTimeMovie;
+    exporter.shouldOptimizeForNetworkUse = true;
+    [exporter exportAsynchronouslyWithCompletionHandler:^{
+        
+        if (exporter.status != AVAssetExportSessionStatusCompleted) {
+                handler(filePath,exporter.error.code);
+                NSLog(@"exporter error %@",exporter.error);
+        }else{
+            handler(filePath,0);
+            NSLog(@"exporter file path %@",filePath);
+        }
+    }];
+    
+}
 
 
 @end

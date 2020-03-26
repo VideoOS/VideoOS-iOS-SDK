@@ -38,12 +38,12 @@
 
 //3.8.0
 typedef void(^progressBlock)(NSInteger receivedSize,NSInteger expectedSize);
-typedef void(^completed)(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL);
+typedef void(^completed)(UIImage *image, NSError *error, NSSDImageCacheType cacheType, BOOL finished, NSURL *imageURL);
 
 //4.2.2
 
 typedef void(^downloaderProgressBlock)(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL);
-typedef void(^internalCompletionBlock)(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL);
+typedef void(^internalCompletionBlock)(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSSDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL);
 
 // This is how the fastest browsers do it as per 2012: http://nullsleep.tumblr.com/post/16524517190/animated-gif-minimum-frame-delay-browser-compatibility
 const NSTimeInterval kVPUPFLAnimatedFrameImageDelayTimeIntervalMinimum = 0.02;
@@ -278,7 +278,7 @@ typedef NS_ENUM(NSUInteger, VPUPFLAnimatedFrameImageFrameCacheSize) {
     self.downloaderProgressBlock = ^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
         
     };
-    self.internalCompletionBlock = ^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+    self.internalCompletionBlock = ^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSSDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
         
         if (weakSelf.isPredrawingEnabled) {
             if([weakSelf respondsToSelector:NSSelectorFromString(@"predrawnImageFromImage:")]) {
@@ -301,7 +301,7 @@ typedef NS_ENUM(NSUInteger, VPUPFLAnimatedFrameImageFrameCacheSize) {
     self.progressblock = ^(NSInteger receivedSize, NSInteger expectedSize) {
         
     };
-    self.completedblock = ^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+    self.completedblock = ^(UIImage *image, NSError *error, NSSDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         if (weakSelf.isPredrawingEnabled) {
             if([weakSelf respondsToSelector:NSSelectorFromString(@"predrawnImageFromImage:")]) {
                 SEL selector = NSSelectorFromString(@"predrawnImageFromImage:");

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "VPUPVideoPlayerSize.h"
+typedef void (^VPUPACRResourcesCallback)(NSString*_Nullable);
 
 @protocol VPUPInterfaceDataServiceManagerDelegate<NSObject>
 
@@ -20,6 +21,12 @@
 - (VPUPVideoPlayerSize *)videoPlayerSize;
 
 - (CGRect)videoFrame;
+
+- (bool)acrDelegateEnable;
+
+- (int)acrRecordStart;
+
+- (void)acrRecordEndAndcallback:(VPUPACRResourcesCallback _Nonnull)resourcesCallback;
 
 @end
 
@@ -50,5 +57,11 @@
 + (CGRect)videoFrame;
 
 + (void)deallocManager;
+
++ (bool)acrDelegateEnable;
+
++ (int)acrRecordStart;
+
++ (void)acrRecordEndAndcallback:(VPUPACRResourcesCallback _Nonnull)resourcesCallback;
 
 @end

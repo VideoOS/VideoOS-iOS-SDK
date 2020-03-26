@@ -28,6 +28,7 @@
 		06B4D9EA1F0A23B700497726 /* VPInterfaceStatusNotifyDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 06B4D9E91F0A23B700497726 /* VPInterfaceStatusNotifyDelegate.h */; };
 		06CDE3001EFF8A8D008BA1EC /* VPInterfaceController.h in Headers */ = {isa = PBXBuildFile; fileRef = 06CDE2FE1EFF8A8D008BA1EC /* VPInterfaceController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06CDE3011EFF8A8D008BA1EC /* VPInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CDE2FF1EFF8A8D008BA1EC /* VPInterfaceController.m */; };
+		B620B312240507B200788FAD /* VPIACRCloudDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B620B311240507B100788FAD /* VPIACRCloudDelegate.h */; };
 		C402AE0A2007543100DF6603 /* VPInterfaceClickThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = C402AE082007543100DF6603 /* VPInterfaceClickThroughView.h */; };
 		C402AE0B2007543100DF6603 /* VPInterfaceClickThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = C402AE082007543100DF6603 /* VPInterfaceClickThroughView.h */; };
 		C402AE0C2007543100DF6603 /* VPInterfaceClickThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = C402AE092007543100DF6603 /* VPInterfaceClickThroughView.m */; };
@@ -81,6 +82,7 @@
 		06B4D9E91F0A23B700497726 /* VPInterfaceStatusNotifyDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPInterfaceStatusNotifyDelegate.h; sourceTree = "<group>"; };
 		06CDE2FE1EFF8A8D008BA1EC /* VPInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPInterfaceController.h; sourceTree = "<group>"; };
 		06CDE2FF1EFF8A8D008BA1EC /* VPInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPInterfaceController.m; sourceTree = "<group>"; };
+		B620B311240507B100788FAD /* VPIACRCloudDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPIACRCloudDelegate.h; sourceTree = "<group>"; };
 		C402AE082007543100DF6603 /* VPInterfaceClickThroughView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPInterfaceClickThroughView.h; sourceTree = "<group>"; };
 		C402AE092007543100DF6603 /* VPInterfaceClickThroughView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPInterfaceClickThroughView.m; sourceTree = "<group>"; };
 		D0171D5C22DDC0AF00368C83 /* VPIError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPIError.h; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		069FAE461EFF890B0032FF53 /* VideoPlsInterfaceControllerSDK */ = {
 			isa = PBXGroup;
 			children = (
+				B620B311240507B100788FAD /* VPIACRCloudDelegate.h */,
 				D09C749422DC4ECB00C253C8 /* VPIServiceDelegate.h */,
 				D0EE6436203EBCA7005D53C5 /* VPIVideoPlayerDelegate.h */,
 				D05DCC372008BF3400E294F2 /* VPIConfigSDK.h */,
@@ -216,6 +219,7 @@
 				D05DCC312008BB7A00E294F2 /* VPIUserInfo.h in Headers */,
 				06CDE3001EFF8A8D008BA1EC /* VPInterfaceController.h in Headers */,
 				D0928D11208F26BE008AB5EC /* VPIServiceManager.h in Headers */,
+				B620B312240507B200788FAD /* VPIACRCloudDelegate.h in Headers */,
 				D05DCC332008BB7A00E294F2 /* VPIUserLoginInterface.h in Headers */,
 				06B4D9EA1F0A23B700497726 /* VPInterfaceStatusNotifyDelegate.h in Headers */,
 				D0C5D9331FD8D97D0084EA56 /* VPInterfaceControllerConfig.h in Headers */,

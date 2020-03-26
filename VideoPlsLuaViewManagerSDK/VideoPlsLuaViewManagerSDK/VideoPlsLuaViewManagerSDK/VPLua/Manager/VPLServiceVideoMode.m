@@ -24,6 +24,7 @@
 #import "VPLConstant.h"
 #import "VPUPPathUtil.h"
 #import <VPLuaViewSDK/LVZipArchive.h>
+#import "VPUPReport.h"
 
 @interface VPLServiceVideoMode()
 
@@ -50,6 +51,7 @@
 - (void)requestServiceData {
     __weak typeof(self) weakSelf = self;
     VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
+    __weak typeof(api) weakApi = api;
     api.baseUrl = [NSString stringWithFormat:@"%@/%@", VPLServerHost, @"vision/v2/getLabelConf"];
 //    api.baseUrl =  @"http://mock.videojj.com/mock/5b029ad88e21c409b29a2114/api/getLabelConf#!method=POST&queryParameters=%5B%5D&body=&headers=%5B%5D";
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
@@ -67,11 +69,16 @@
             return;
         }
         
-        if (error || !responseObject || ![responseObject objectForKey:@"encryptData"]) {
-            if (!error) {
-                error = [NSError errorWithDomain:VPLErrorDomain code:-4201 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"getLabelConf error"]}];
-            }
+        if (error) {
             [strongSelf callbackComplete:strongSelf.complete withError:error];
+            [VPUPReport addHTTPErrorReportByReportClass:[strongSelf class] error:error api:weakApi];
+            return;
+        }
+        
+        if (!responseObject || ![responseObject objectForKey:@"encryptData"]) {
+            error = [NSError errorWithDomain:VPLErrorDomain code:-4201 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"getLabelConf error"]}];
+            [strongSelf callbackComplete:strongSelf.complete withError:error];
+            [VPUPReport addHTTPWarningReportByReportClass:[strongSelf class] error:error api:weakApi];
             return;
         }
         
@@ -104,8 +111,10 @@
 //        NSLog(@"%@", mock);
         
         if (![[data objectForKey:@"resCode"] isEqualToString:@"00"]) {
-            NSError *error = [NSError errorWithDomain:VPLErrorDomain code:-4202 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"server do not have data"]}];
+//            NSError *error = [NSError errorWithDomain:VPLErrorDomain code:-4202 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"server do not have data"]}];
+            NSError *error = [[NSError alloc] initWithDomain:VPLErrorDomain code:4202 userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Response data code failed, code:%@, msg:%@", [data objectForKey:@"resCode"], [data objectForKey:@"resMsg"]]}];
             [strongSelf callbackComplete:strongSelf.complete withError:error];
+            [VPUPReport addHTTPWarningReportByReportClass:[strongSelf class] error:error api:weakApi];
         }
         else {
 //            [strongSelf runLuaWithData:data];

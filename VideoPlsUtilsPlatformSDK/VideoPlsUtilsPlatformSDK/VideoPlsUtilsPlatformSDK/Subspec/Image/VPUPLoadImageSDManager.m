@@ -27,6 +27,7 @@
 #define NSSDWebImagePrefetcher VPUPSDWebImagePrefetcher
 #define NSSDImageCache VPUPSDImageCache
 #define NSSDWebImageDownloader VPUPSDWebImageDownloader
+#define NSSDImageCacheType VPUPSDImageCacheType
 
 #else
 
@@ -41,6 +42,7 @@
 #define NSSDWebImagePrefetcher SDWebImagePrefetcher
 #define NSSDImageCache SDImageCache
 #define NSSDWebImageDownloader SDWebImageDownloader
+#define NSSDImageCacheType SDImageCacheType
 
 #endif
 
@@ -65,11 +67,11 @@
 
 //3.8.0
 typedef void(^progressBlock)(NSInteger receivedSize,NSInteger expectedSize);
-typedef void(^completed)(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL);
+typedef void(^completed)(UIImage *image, NSError *error, NSSDImageCacheType cacheType, BOOL finished, NSURL *imageURL);
 
 //4.2.2 5.0.0
 typedef void(^downloaderProgressBlock)(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL);
-typedef void(^internalCompletionBlock)(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL);
+typedef void(^internalCompletionBlock)(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, NSSDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL);
 
 static NSSDWebImageManager* webImageManager() {
     static NSSDWebImageManager *webImageManager = nil;
@@ -89,7 +91,7 @@ static NSSDWebImageManager* webImageManager() {
             
             NSSDWebImageManager * manager = [[NSSDWebImageManager alloc]init];
             IMP imp = [manager methodForSelector:loader];
-            SDWebImageManager * (*func)(id,SEL,SDImageCache *,SDWebImageDownloader *) = (void *)imp;
+            NSSDWebImageManager * (*func)(id,SEL,NSSDImageCache *,NSSDWebImageDownloader *) = (void *)imp;
             webImageManager = func(manager,loader,imageCache,imageDownloader);
             
             //3.8.8  4.0.0
@@ -97,7 +99,7 @@ static NSSDWebImageManager* webImageManager() {
             
             NSSDWebImageManager * manager = [[NSSDWebImageManager alloc]init];
             IMP imp = [manager methodForSelector:downloader];
-            SDWebImageManager * (*func)(id,SEL,SDImageCache *,SDWebImageDownloader *) = (void *)imp;
+            NSSDWebImageManager * (*func)(id,SEL,NSSDImageCache *,NSSDWebImageDownloader *) = (void *)imp;
             webImageManager = func(manager,downloader,imageCache,imageDownloader);
         }
         
@@ -487,7 +489,7 @@ static NSSDWebImagePrefetcher* prefetchImageManager() {
 #endif
 
 - (void)clearMemory {
-    SDImageCache * cache = [webImageManager() imageCache];
+    NSSDImageCache * cache = [webImageManager() imageCache];
     [cache clearMemory];
     
 }

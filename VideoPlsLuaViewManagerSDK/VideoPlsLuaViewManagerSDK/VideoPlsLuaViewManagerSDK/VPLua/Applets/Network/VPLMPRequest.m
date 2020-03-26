@@ -15,6 +15,7 @@
 #import "VPUPEncryption.h"
 #import "VPUPJsonUtil.h"
 #import "VPUPHTTPManagerFactory.h"
+#import "VPUPReport.h"
 
 static VPLMPRequest *request = nil;
 
@@ -59,7 +60,7 @@ static VPLMPRequest *request = nil;
     
     __weak typeof(self) weakSelf = self;
     VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
-    
+    __weak typeof(api) weakApi = api;
     api.baseUrl = [NSString stringWithFormat:@"%@/%@", VPLServerHost, @"vision/v2/getMiniAppConf"];
     //mock
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
@@ -86,14 +87,16 @@ static VPLMPRequest *request = nil;
         if (error) {
             complete(nil, error);
             [strongSelf removeRequestID:requestID];
+            [VPUPReport addHTTPErrorReportByReportClass:[strongSelf class] error:error api:weakApi];
             return;
         }
         
         //TODO: change encrypt
         if (!responseObject || ![responseObject objectForKey:@"encryptData"]) {
-            NSError *error = [[NSError alloc] initWithDomain:@"com.videopls.LuaAppletRequest" code:1001 userInfo:@{@"reason":@"Response data parsing failure"}];
+            NSError *error = [[NSError alloc] initWithDomain:@"com.videopls.LMPRequest" code:1001 userInfo:@{NSLocalizedDescriptionKey : @"Response data parsing failure"}];
             complete(nil, error);
             [strongSelf removeRequestID:requestID];
+            [VPUPReport addHTTPWarningReportByReportClass:[strongSelf class] error:error api:weakApi];
             return;
         }
         NSString *dataString = [VPUPAESUtil aesDecryptString:[responseObject objectForKey:@"encryptData"] key:[VPLSDK sharedSDK].appSecret initVector:[VPLSDK sharedSDK].appSecret];
@@ -101,12 +104,10 @@ static VPLMPRequest *request = nil;
         
         if (![data objectForKey:@"resCode"] || ![[data objectForKey:@"resCode"] isEqualToString:@"00"]) {
             //返回错误
-            NSError *error = [[NSError alloc] initWithDomain:@"com.videopls.LuaAppletRequest" code:1002 userInfo:@{@"reason":@"Response data code failed"}];
-            if ([data objectForKey:@"resMsg"] != nil) {
-                error = [[NSError alloc] initWithDomain:@"com.videopls.LuaAppletRequest" code:1002 userInfo:@{@"reason":[data objectForKey:@"resMsg"]}];
-            }
+            NSError *error = [[NSError alloc] initWithDomain:@"com.videopls.LMPRequest" code:1002 userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Response data code failed, code:%@, msg:%@", [data objectForKey:@"resCode"], [data objectForKey:@"resMsg"]]}];
             complete(nil, error);
             [strongSelf removeRequestID:requestID];
+            [VPUPReport addHTTPWarningReportByReportClass:[strongSelf class] error:error api:weakApi];
             return;
         }
         
@@ -130,7 +131,7 @@ static VPLMPRequest *request = nil;
     
     __weak typeof(self) weakSelf = self;
     VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
-    
+    __weak typeof(api) weakApi = api;
     api.baseUrl = [NSString stringWithFormat:@"%@/%@", VPLServerHost, @"vision/addRecentMiniApp"];
     //mock
     api.apiRequestMethodType = VPUPRequestMethodTypePOST;
@@ -141,7 +142,9 @@ static VPLMPRequest *request = nil;
     NSString *commonParamString = VPUP_DictionaryToJson(param);
     api.requestParameters = @{@"data":[VPUPAESUtil aesEncryptString:commonParamString key:[VPLSDK sharedSDK].appSecret initVector:[VPLSDK sharedSDK].appSecret]};
     api.apiCompletionHandler = ^(id  _Nonnull responseObject, NSError * _Nullable error, NSURLResponse * _Nullable response) {
-        
+        if (error) {
+            [VPUPReport addHTTPErrorReportByReportClass:[weakSelf class] error:error api:weakApi];
+        }
     };
     [_httpManager sendAPIRequest:api];
 }
@@ -158,7 +161,7 @@ static VPLMPRequest *request = nil;
     
     __weak typeof(self) weakSelf = self;
     VPUPHTTPBusinessAPI *api = [[VPUPHTTPBusinessAPI alloc] init];
-    
+    __weak typeof(api) weakApi = api;
     api.baseUrl = [NSString stringWithFormat:@"%@/%@", VPLServerHost, @"api/getMiniAppInfo"];
         //mock
         api.apiRequestMethodType = VPUPRequestMethodTypePOST;
@@ -185,14 +188,16 @@ static VPLMPRequest *request = nil;
             if (error) {
                 complete(nil, error);
                 [strongSelf removeRequestID:requestID];
+                [VPUPReport addHTTPErrorReportByReportClass:[weakSelf class] error:error api:weakApi];
                 return;
             }
             
             //TODO: change encrypt
             if (!responseObject || ![responseObject objectForKey:@"encryptData"]) {
-                NSError *error = [[NSError alloc] initWithDomain:@"com.videopls.LuaToolRequest" code:1001 userInfo:@{@"reason":@"Response data parsing failure"}];
+                NSError *error = [[NSError alloc] initWithDomain:@"com.videopls.LMPRequest" code:1001 userInfo:@{NSLocalizedDescriptionKey : @"Response data parsing failure"}];
                 complete(nil, error);
                 [strongSelf removeRequestID:requestID];
+                [VPUPReport addHTTPWarningReportByReportClass:[weakSelf class] error:error api:weakApi];
                 return;
             }
             NSString *dataString = [VPUPAESUtil aesDecryptString:[responseObject objectForKey:@"encryptData"] key:[VPLSDK sharedSDK].appSecret initVector:[VPLSDK sharedSDK].appSecret];
@@ -200,12 +205,10 @@ static VPLMPRequest *request = nil;
             
             if (![data objectForKey:@"resCode"] || ![[data objectForKey:@"resCode"] isEqualToString:@"00"]) {
                 //返回错误
-                NSError *error = [[NSError alloc] initWithDomain:@"com.videopls.LuaToolRequest" code:1002 userInfo:@{@"reason":@"Response data code failed"}];
-                if ([data objectForKey:@"resMsg"] != nil) {
-                    error = [[NSError alloc] initWithDomain:@"com.videopls.LuaToolRequest" code:1002 userInfo:@{@"reason":[data objectForKey:@"resMsg"]}];
-                }
+                NSError *error = [[NSError alloc] initWithDomain:@"com.videopls.LMPRequest" code:1002 userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Response data code failed, code:%@, msg:%@", [data objectForKey:@"resCode"], [data objectForKey:@"resMsg"]]}];
                 complete(nil, error);
                 [strongSelf removeRequestID:requestID];
+                [VPUPReport addHTTPWarningReportByReportClass:[weakSelf class] error:error api:weakApi];
                 return;
             }
             

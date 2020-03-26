@@ -11,6 +11,7 @@
 #import "VPUPDownloadRequest.h"
 #import "VPUPDownloadBatchRequest.h"
 #import "VPUPDownloaderManager.h"
+#import "VPUPReport.h"
 
 @interface VPUPPrefetchManager ()
 
@@ -62,13 +63,17 @@
     VPUPDownloadBatchRequest *batchRequest = [[VPUPDownloadBatchRequest alloc] init];
     
     for (int i = 0; i < urls.count; i++) {
-        NSString *prefetchUrl = [urls objectAtIndex:i];
+        __block NSString *prefetchUrl = [urls objectAtIndex:i];
         NSString *fileName = [fileNames objectAtIndex:i];
         NSString *filePath = [destinationPath stringByAppendingPathComponent:fileName];
         VPUPDownloadRequest *request = [[VPUPDownloadRequest alloc] initWithDownloadUrl:prefetchUrl
                                                                             destination:filePath
                                                                                progress:nil
-                                                                      completionHandler:nil];
+                                                                      completionHandler:^(NSURL *filePath, NSError *error) {
+            if (error) {
+                [VPUPReport addDownloadWarningReportByReportClass:[VPUPPrefetchManager class] error:error url:prefetchUrl];
+            }
+        }];
         [batchRequest addRequest:request];
     }
     __weak typeof(self) weakSelf = self;

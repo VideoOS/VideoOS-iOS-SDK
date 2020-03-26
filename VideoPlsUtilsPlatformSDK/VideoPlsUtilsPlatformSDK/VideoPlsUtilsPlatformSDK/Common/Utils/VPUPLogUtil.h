@@ -9,11 +9,17 @@
 #import <Foundation/Foundation.h>
 
 //日志等级
-typedef enum {
+//typedef enum {
+//    VPUP_LOG_LEVEL_INFO     = 0,
+//    VPUP_LOG_LEVEL_WARNING  = 1,
+//    VPUP_LOG_LEVEL_ERROR    = 2
+//} VPUPLogLevel;
+
+typedef NS_ENUM(NSUInteger, VPUPLogLevel) {
     VPUP_LOG_LEVEL_INFO     = 0,
     VPUP_LOG_LEVEL_WARNING  = 1,
     VPUP_LOG_LEVEL_ERROR    = 2
-} VPUPLogLevel;
+};
 
 FOUNDATION_EXPORT void VPUPLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 FOUNDATION_EXPORT void VPUPLogI(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
