@@ -35,7 +35,10 @@ Pod::Spec.new do |s|
   s.subspec 'Platform' do |spec|
     spec.weak_frameworks = 'AVFoundation', 'Security', 'AudioToolbox'
     spec.source_files   = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/**/*.{h,m,c}"
-    spec.exclude_files = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/Subspec/ACRCloud/*.*"
+    spec.exclude_files = [
+      "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDKTests/**/*.*",
+      "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/Subspec/ACRCloud/*.*"
+    ]
     spec.public_header_files = "VideoPlsUtilsPlatformSDK/VideoPlsUtilsPlatformSDK/**/*.{h}"
     spec.header_dir = "VideoPlsUtilsPlatformSDK"
     spec.dependency 'AFNetworking'
