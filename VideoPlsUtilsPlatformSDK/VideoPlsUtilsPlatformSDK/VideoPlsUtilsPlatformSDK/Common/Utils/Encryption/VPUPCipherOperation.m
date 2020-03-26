@@ -89,14 +89,14 @@
     NSAssert(keyData.length == kCCKeySizeAES128 || keyData.length == kCCKeySizeAES192 || keyData.length == kCCKeySizeAES256, @"AES must have a key size of 128, 192, or 256 bits.");
     NSAssert1(initVectorData.length == kCCBlockSizeAES128, @"AES must have a fixed IV size of %d-bytes regardless key size.", kCCBlockSizeAES128);
     
-    size_t keySize = keyData.length;
+//    size_t keySize = keyData.length;
     return [self vpup_cipherOperationWithContent:contentData
                                              key:keyData
                                       initVector:initVectorData
                                        operation:operation
                                        algorithm:kCCAlgorithmAES
                                          options:kCCOptionPKCS7Padding                      //default is cbc
-                                         keySize:keySize
+                                         keySize:kCCKeySizeAES128
                                        blockSize:kCCBlockSizeAES128];
 }
 

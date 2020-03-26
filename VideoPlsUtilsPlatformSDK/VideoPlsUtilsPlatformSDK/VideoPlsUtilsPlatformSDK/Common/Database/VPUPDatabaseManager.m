@@ -49,7 +49,7 @@
 }
 
 - (void)close {
-    dispatch_sync(_queue, ^{
+    dispatch_async(_queue, ^{
         [self->_db close];
         self->_db = nil;
     });
@@ -70,25 +70,21 @@
 }
 
 - (NSString *)databasePath {
-    if(_path) {
-        return _path;
-    }
-    
-    return nil;
+    return _path;
 }
 
 - (void)inDatabase:(void (^)(VPUPDatabase *))block {
     VPUPDatabaseManager *currentManager = (__bridge id)dispatch_get_specific(self->_queueKey);
     assert(currentManager != self && "inDatabase: was called reentrantly on the same queue, which would lead to a deadlock");
     
-    dispatch_sync(_queue, ^{
+    dispatch_async(_queue, ^{
         VPUPDatabase *db = [self database];
         block(db);
     });
 }
 
 - (void)beginTransaction:(BOOL)useDeferred withBlock:(void (^)(VPUPDatabase *db, BOOL *rollback))block {
-    dispatch_sync(_queue, ^{
+    dispatch_async(_queue, ^{
         BOOL shouldRollback = NO;
         
         if (useDeferred) {
@@ -174,7 +170,13 @@
         dispatch_queue_t callbackQueue = completeQueue ?: dispatch_get_main_queue();
         NSArray *result = [_db executeQuery:@"PRAGMA user_version"];
         if(result && [result firstObject] && [[result firstObject] objectForKey:@"user_version"]) {
-            NSUInteger version = [[[result firstObject] objectForKey:@"user_version"] unsignedIntegerValue];
+            id targetVersion = [[result firstObject] objectForKey:@"user_version"];
+            NSUInteger version = 0;
+            if ([targetVersion isKindOfClass:[NSString class]]) {
+                version = [(NSString *)targetVersion intValue];
+            } else {
+                version = [(NSNumber *)targetVersion unsignedIntegerValue];
+            }
             dispatch_async(callbackQueue, ^{
                 completeBlock(YES, version);
             });

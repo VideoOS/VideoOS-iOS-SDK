@@ -80,10 +80,9 @@ NSString* VPUP_StringFromObjectNeedTrim(id obj, BOOL trim) {
 }
 
 BOOL VPUP_StringContainsString(NSString *string, NSString *insideString) {
-    if(([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)) {
+    if (@available(iOS 8.0, *)) {
         return [string containsString:insideString];
-    }
-    else {
+    } else {
         return [string rangeOfString:insideString].location != NSNotFound;
     }
 }

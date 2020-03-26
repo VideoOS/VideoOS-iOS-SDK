@@ -12,7 +12,7 @@
 @implementation VPUPReportLogMessage
 
 - (NSString *)jsonValue {
-    return [NSString stringWithFormat:@"%@%@\n", [VPUPServerUTCDate dateStringWithUnixTimeMillisecond:self.createTime], self.message];
+    return [NSString stringWithFormat:@"%@ %@\n", [VPUPServerUTCDate dateStringWithUnixTimeMillisecond:self.createTime], self.message];
 }
 
 @end

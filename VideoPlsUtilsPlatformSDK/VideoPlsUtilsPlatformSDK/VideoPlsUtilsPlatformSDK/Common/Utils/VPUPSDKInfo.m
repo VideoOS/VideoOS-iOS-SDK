@@ -40,6 +40,10 @@ static VPUPSDKInfo *sharedInfo = nil;
 
 - (void)setMainSDKNameByType:(VPUPMainSDKType)sdkType {
     _mainVPSDKType = sdkType;
+    //异常值默认为0, VideoOS
+    if (_mainVPSDKType > 2) {
+        _mainVPSDKType = 0;
+    }
     NSString *sdkName = @"";
     switch (_mainVPSDKType) {
         case VPUPMainSDKTypeVideoOS:

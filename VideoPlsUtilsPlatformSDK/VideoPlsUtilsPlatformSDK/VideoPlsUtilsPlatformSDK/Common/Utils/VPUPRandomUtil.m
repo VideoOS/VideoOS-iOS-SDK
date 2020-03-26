@@ -16,7 +16,7 @@
 }
 
 + (NSUInteger)randomNumberFrom:(NSUInteger)from to:(NSUInteger)to {
-    if(from < to) {
+    if(from > to) {
         return NSUIntegerMax;
     }
     return [self randomNumberByRange:NSMakeRange(from, to - from)];

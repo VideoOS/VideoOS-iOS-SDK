@@ -199,6 +199,7 @@ static VPUPDebugSwitch *sharedDebugSwitch = nil;
 }
 
 - (void)registerDebugSwitchObserver:(nonnull id<VPUPDebugSwitchProtocol>)observer {
+    [observer switchEnvironmentTo:_debugState];
     [self.switchObservers addObject:observer];
 }
 
@@ -276,7 +277,7 @@ static VPUPDebugSwitch *sharedDebugSwitch = nil;
 
 - (void)checkDebugPanelWithTouchEvent:(UIEvent *)touchEvent {
     __weak typeof(self) weakSelf = self;
-    dispatch_sync(self.touchQueue, ^{
+    dispatch_async(self.touchQueue, ^{
         if(!weakSelf.enableDebugPanelEntrance) {
             weakSelf.debugPanelTouchCount = 0;
             return;

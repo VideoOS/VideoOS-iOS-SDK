@@ -43,25 +43,58 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		061082601F3C3F25001E4656 /* VPUPImageFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610825C1F3C3F25001E4656 /* VPUPImageFrame.h */; };
+		061082601F3C3F25001E4656 /* VPUPImageFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610825C1F3C3F25001E4656 /* VPUPImageFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		061082611F3C3F25001E4656 /* VPUPImageFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610825C1F3C3F25001E4656 /* VPUPImageFrame.h */; };
 		061082621F3C3F25001E4656 /* VPUPImageFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610825C1F3C3F25001E4656 /* VPUPImageFrame.h */; };
 		061082631F3C3F25001E4656 /* VPUPImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610825D1F3C3F25001E4656 /* VPUPImageFrame.m */; };
 		061082641F3C3F25001E4656 /* VPUPImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610825D1F3C3F25001E4656 /* VPUPImageFrame.m */; };
 		061082651F3C3F25001E4656 /* VPUPImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610825D1F3C3F25001E4656 /* VPUPImageFrame.m */; };
-		061082661F3C3F25001E4656 /* VPUPImageFrameList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610825E1F3C3F25001E4656 /* VPUPImageFrameList.h */; };
+		061082661F3C3F25001E4656 /* VPUPImageFrameList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610825E1F3C3F25001E4656 /* VPUPImageFrameList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		061082671F3C3F25001E4656 /* VPUPImageFrameList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610825E1F3C3F25001E4656 /* VPUPImageFrameList.h */; };
 		061082681F3C3F25001E4656 /* VPUPImageFrameList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610825E1F3C3F25001E4656 /* VPUPImageFrameList.h */; };
 		061082691F3C3F25001E4656 /* VPUPImageFrameList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610825F1F3C3F25001E4656 /* VPUPImageFrameList.m */; };
 		0610826A1F3C3F25001E4656 /* VPUPImageFrameList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610825F1F3C3F25001E4656 /* VPUPImageFrameList.m */; };
 		0610826B1F3C3F25001E4656 /* VPUPImageFrameList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610825F1F3C3F25001E4656 /* VPUPImageFrameList.m */; };
-		0610826E1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610826C1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.h */; };
+		0610826E1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610826C1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0610826F1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610826C1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.h */; };
 		061082701F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610826C1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.h */; };
 		061082711F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610826D1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.m */; };
 		061082721F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610826D1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.m */; };
 		061082731F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0610826D1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.m */; };
-		0620393923ACB13D002256B1 /* VPUPLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 0620393723ACB13D002256B1 /* VPUPLocalStorage.h */; };
+		061944D82412230600921B41 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 061944D72412230600921B41 /* Security.framework */; };
+		061944D92412267300921B41 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 061944D72412230600921B41 /* Security.framework */; };
+		061C247E2418CC6500D1BF2A /* VPUPRSAUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24602418CC6500D1BF2A /* VPUPRSAUtilTests.m */; };
+		061C247F2418CC6500D1BF2A /* VPUPGZIPUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24612418CC6500D1BF2A /* VPUPGZIPUtilTests.m */; };
+		061C24802418CC6500D1BF2A /* VPUPBase64UtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24622418CC6500D1BF2A /* VPUPBase64UtilTests.m */; };
+		061C24812418CC6500D1BF2A /* VPUPCipherOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24632418CC6500D1BF2A /* VPUPCipherOperationTests.m */; };
+		061C24822418CC6500D1BF2A /* VPUPSHAUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24642418CC6500D1BF2A /* VPUPSHAUtilTests.m */; };
+		061C24832418CC6500D1BF2A /* VPUPAESUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24652418CC6500D1BF2A /* VPUPAESUtilTests.m */; };
+		061C24842418CC6500D1BF2A /* VPUPSecurityEncodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24662418CC6500D1BF2A /* VPUPSecurityEncodeTests.m */; };
+		061C24852418CC6500D1BF2A /* VPUPMD5UtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24672418CC6500D1BF2A /* VPUPMD5UtilTests.m */; };
+		061C24862418CC6500D1BF2A /* VPUPDebugSwitchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24682418CC6500D1BF2A /* VPUPDebugSwitchTests.m */; };
+		061C24872418CC6500D1BF2A /* VPUPReachabilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24692418CC6500D1BF2A /* VPUPReachabilityTests.m */; };
+		061C24882418CC6500D1BF2A /* VPUPDeviceUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C246A2418CC6500D1BF2A /* VPUPDeviceUtilTests.m */; };
+		061C24892418CC6500D1BF2A /* VPUPValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C246B2418CC6500D1BF2A /* VPUPValidatorTests.m */; };
+		061C248A2418CC6500D1BF2A /* VPUPTopViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C246C2418CC6500D1BF2A /* VPUPTopViewControllerTests.m */; };
+		061C248B2418CC6500D1BF2A /* VPUPLocalStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C246D2418CC6500D1BF2A /* VPUPLocalStorageTests.m */; };
+		061C248C2418CC6500D1BF2A /* VPUPPathUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C246E2418CC6500D1BF2A /* VPUPPathUtilTests.m */; };
+		061C248D2418CC6500D1BF2A /* VPUPNetworkReachabilityManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C246F2418CC6500D1BF2A /* VPUPNetworkReachabilityManagerTests.m */; };
+		061C248E2418CC6500D1BF2A /* VPUPGeneralInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24702418CC6500D1BF2A /* VPUPGeneralInfoTests.m */; };
+		061C248F2418CC6500D1BF2A /* VPUPServerUTCDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24712418CC6500D1BF2A /* VPUPServerUTCDateTests.m */; };
+		061C24902418CC6500D1BF2A /* VPUPCommonInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24722418CC6500D1BF2A /* VPUPCommonInfoTests.m */; };
+		061C24912418CC6500D1BF2A /* VPUPUrlUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24732418CC6500D1BF2A /* VPUPUrlUtilTests.m */; };
+		061C24922418CC6500D1BF2A /* VPUPCommonTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24742418CC6500D1BF2A /* VPUPCommonTrackTests.m */; };
+		061C24932418CC6500D1BF2A /* VPUPNotificationCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24752418CC6500D1BF2A /* VPUPNotificationCenterTests.m */; };
+		061C24942418CC6500D1BF2A /* VPUPSDKInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24762418CC6500D1BF2A /* VPUPSDKInfoTests.m */; };
+		061C24952418CC6500D1BF2A /* VPUPJsonUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24772418CC6500D1BF2A /* VPUPJsonUtilTests.m */; };
+		061C24962418CC6500D1BF2A /* VPUPTrafficStatisticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24782418CC6500D1BF2A /* VPUPTrafficStatisticsTests.m */; };
+		061C24972418CC6500D1BF2A /* VPUPAutoNumberIDUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C24792418CC6500D1BF2A /* VPUPAutoNumberIDUtilTests.m */; };
+		061C24982418CC6500D1BF2A /* VPUPViewScaleUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C247A2418CC6500D1BF2A /* VPUPViewScaleUtilTests.m */; };
+		061C24992418CC6500D1BF2A /* VPUPIPAddressUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C247B2418CC6500D1BF2A /* VPUPIPAddressUtilTests.m */; };
+		061C249A2418CC6500D1BF2A /* VPUPRandomUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C247C2418CC6500D1BF2A /* VPUPRandomUtilTests.m */; };
+		061C249B2418CC6500D1BF2A /* VPUPVibrationUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C247D2418CC6500D1BF2A /* VPUPVibrationUtilTests.m */; };
+		061C249F2418CE8600D1BF2A /* VPUPDBSQLStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061C249E2418CE8600D1BF2A /* VPUPDBSQLStringTests.m */; };
+		0620393923ACB13D002256B1 /* VPUPLocalStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 0620393723ACB13D002256B1 /* VPUPLocalStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0620393A23ACB13D002256B1 /* VPUPLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0620393823ACB13D002256B1 /* VPUPLocalStorage.m */; };
 		062BDA501F18B5D500CFA7D0 /* VPUPDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 062BDA4E1F18B5D500CFA7D0 /* VPUPDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		062BDA511F18B5D500CFA7D0 /* VPUPDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 062BDA4E1F18B5D500CFA7D0 /* VPUPDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -79,13 +112,16 @@
 		062DB6751F1E0DBE003788C1 /* VPUPDBHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 062DB6731F1E0DBE003788C1 /* VPUPDBHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		062DB6761F1E0DBE003788C1 /* VPUPDBHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 062DB6731F1E0DBE003788C1 /* VPUPDBHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		062DB6781F1E30BD003788C1 /* VPUPFLAnimatedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 063FDB901F0E17E800333B46 /* VPUPFLAnimatedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		062DB6791F1E30C2003788C1 /* VPUPFLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 063FDB8C1F0E17E800333B46 /* VPUPFLAnimatedImage.h */; };
+		062DB6791F1E30C2003788C1 /* VPUPFLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 063FDB8C1F0E17E800333B46 /* VPUPFLAnimatedImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		062EE9BA1EE4FE4C00E1404C /* VPUPReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 062EE9B81EE4FE4C00E1404C /* VPUPReachability.m */; };
 		062EE9BB1EE4FE4C00E1404C /* VPUPReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 062EE9B81EE4FE4C00E1404C /* VPUPReachability.m */; };
 		062EE9BC1EE4FE4C00E1404C /* VPUPReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 062EE9B81EE4FE4C00E1404C /* VPUPReachability.m */; };
-		063A124722F3F1240027B6A2 /* UIImageView+VPUPFillColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 063A124622F3F1240027B6A2 /* UIImageView+VPUPFillColor.h */; };
+		0636A76E2420CE1700B3FD27 /* VPUPDatabaseManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0636A76D2420CE1700B3FD27 /* VPUPDatabaseManagerTests.m */; };
+		0636A7712420D3D800B3FD27 /* XCTestCase+VPUPAsyncTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0636A7702420D3D800B3FD27 /* XCTestCase+VPUPAsyncTests.m */; };
+		0636A773242342DD00B3FD27 /* VPUPCommonEncryptionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0636A772242342DD00B3FD27 /* VPUPCommonEncryptionTests.m */; };
+		063A124722F3F1240027B6A2 /* UIImageView+VPUPFillColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 063A124622F3F1240027B6A2 /* UIImageView+VPUPFillColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		063A124922F3F2090027B6A2 /* UIImageView+VPUPFillColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 063A124822F3F2090027B6A2 /* UIImageView+VPUPFillColor.m */; };
-		063A125022F418BE0027B6A2 /* UIButton+VPUPFillColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 063A124E22F418BE0027B6A2 /* UIButton+VPUPFillColor.h */; };
+		063A125022F418BE0027B6A2 /* UIButton+VPUPFillColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 063A124E22F418BE0027B6A2 /* UIButton+VPUPFillColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		063A125122F418BE0027B6A2 /* UIButton+VPUPFillColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 063A124F22F418BE0027B6A2 /* UIButton+VPUPFillColor.m */; };
 		063FDB931F0E17E800333B46 /* VPUPFLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 063FDB8C1F0E17E800333B46 /* VPUPFLAnimatedImage.h */; };
 		063FDB941F0E17E800333B46 /* VPUPFLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 063FDB8C1F0E17E800333B46 /* VPUPFLAnimatedImage.h */; };
@@ -268,16 +304,16 @@
 		065503891EFA2997006FBADB /* VPUPHTTPGeneralAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A411771EC2B24900112082 /* VPUPHTTPGeneralAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0655038A1EFA2997006FBADB /* VPUPHTTPBusinessAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E2D7F31ECAF2E900E5D9CF /* VPUPHTTPBusinessAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0655038B1EFA29A6006FBADB /* VPUPHTTPManagerConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A411531EC1E18200112082 /* VPUPHTTPManagerConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0655038C1EFA3FFF006FBADB /* VPUPJsonUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E2D8011ECC3E2100E5D9CF /* VPUPJsonUtil.h */; };
-		0655038D1EFA4006006FBADB /* VPUPSecurityEncode.h in Headers */ = {isa = PBXBuildFile; fileRef = 064D56AD1EC80AC800C9DEC4 /* VPUPSecurityEncode.h */; };
-		0655038E1EFA4006006FBADB /* VPUPCipherOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 064D56D51EC839B600C9DEC4 /* VPUPCipherOperation.h */; };
+		0655038C1EFA3FFF006FBADB /* VPUPJsonUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E2D8011ECC3E2100E5D9CF /* VPUPJsonUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0655038D1EFA4006006FBADB /* VPUPSecurityEncode.h in Headers */ = {isa = PBXBuildFile; fileRef = 064D56AD1EC80AC800C9DEC4 /* VPUPSecurityEncode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0655038E1EFA4006006FBADB /* VPUPCipherOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 064D56D51EC839B600C9DEC4 /* VPUPCipherOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0655038F1EFA4006006FBADB /* vpup_hash_encode.h in Headers */ = {isa = PBXBuildFile; fileRef = 064D56961EC5D6F700C9DEC4 /* vpup_hash_encode.h */; };
 		065503901EFA4006006FBADB /* vpup_security_encode.h in Headers */ = {isa = PBXBuildFile; fileRef = 064D56B61EC8129700C9DEC4 /* vpup_security_encode.h */; };
 		065503911EFA4006006FBADB /* vpup_aes.h in Headers */ = {isa = PBXBuildFile; fileRef = 064D56C61EC823E300C9DEC4 /* vpup_aes.h */; };
 		065503921EFA4006006FBADB /* vpup_security_string.h in Headers */ = {isa = PBXBuildFile; fileRef = 064D56CE1EC8278000C9DEC4 /* vpup_security_string.h */; };
-		065503931EFA400D006FBADB /* VPUPLoadImageWebPURL.h in Headers */ = {isa = PBXBuildFile; fileRef = 065128D61EF9286400B7D896 /* VPUPLoadImageWebPURL.h */; };
-		0655039D1EFA4023006FBADB /* VPUPRPCProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A4115B1EC1E9B000112082 /* VPUPRPCProtocol.h */; };
-		0655039E1EFA4023006FBADB /* VPUPSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A411431EC1CC8B00112082 /* VPUPSecurityPolicy.h */; };
+		065503931EFA400D006FBADB /* VPUPLoadImageWebPURL.h in Headers */ = {isa = PBXBuildFile; fileRef = 065128D61EF9286400B7D896 /* VPUPLoadImageWebPURL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0655039D1EFA4023006FBADB /* VPUPRPCProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A4115B1EC1E9B000112082 /* VPUPRPCProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0655039E1EFA4023006FBADB /* VPUPSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A411431EC1CC8B00112082 /* VPUPSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		065503A21EFA4033006FBADB /* VPUPDBSQLString.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A4CBA31ECEC49D00710176 /* VPUPDBSQLString.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		065503B11EFA404E006FBADB /* VPUPHexColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 06FD4EA21EBC857900C65505 /* VPUPHexColors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		065504011EFA40D0006FBADB /* VPUPJsonUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E2D8011ECC3E2100E5D9CF /* VPUPJsonUtil.h */; };
@@ -307,13 +343,14 @@
 		0655051C1EFB6D93006FBADB /* VPUPHTTPNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 0655051B1EFB6D93006FBADB /* VPUPHTTPNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0655051D1EFB6D93006FBADB /* VPUPHTTPNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 0655051B1EFB6D93006FBADB /* VPUPHTTPNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0655051E1EFB6D93006FBADB /* VPUPHTTPNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 0655051B1EFB6D93006FBADB /* VPUPHTTPNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		065D7B411F556CD70075B450 /* VPUPActionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 065D7B321F556CD70075B450 /* VPUPActionManager.h */; };
+		06585FB323F532B700260BEE /* VideoPlsUtilsPlatformSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060BEBCD1EBC260200106EEB /* VideoPlsUtilsPlatformSDK.framework */; };
+		065D7B411F556CD70075B450 /* VPUPActionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 065D7B321F556CD70075B450 /* VPUPActionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		065D7B421F556CD70075B450 /* VPUPActionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 065D7B321F556CD70075B450 /* VPUPActionManager.h */; };
 		065D7B431F556CD70075B450 /* VPUPActionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 065D7B321F556CD70075B450 /* VPUPActionManager.h */; };
 		065D7B441F556CD70075B450 /* VPUPActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D7B331F556CD70075B450 /* VPUPActionManager.m */; };
 		065D7B451F556CD70075B450 /* VPUPActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D7B331F556CD70075B450 /* VPUPActionManager.m */; };
 		065D7B461F556CD70075B450 /* VPUPActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D7B331F556CD70075B450 /* VPUPActionManager.m */; };
-		065E53B41F46E6470016EB94 /* VPUPPathUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 065E53B21F46E6470016EB94 /* VPUPPathUtil.h */; };
+		065E53B41F46E6470016EB94 /* VPUPPathUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 065E53B21F46E6470016EB94 /* VPUPPathUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		065E53B51F46E6470016EB94 /* VPUPPathUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 065E53B21F46E6470016EB94 /* VPUPPathUtil.h */; };
 		065E53B61F46E6470016EB94 /* VPUPPathUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 065E53B21F46E6470016EB94 /* VPUPPathUtil.h */; };
 		065E53B71F46E6470016EB94 /* VPUPPathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E53B31F46E6470016EB94 /* VPUPPathUtil.m */; };
@@ -334,6 +371,9 @@
 		06789B171EE979530052A705 /* VPUPPrefetchVideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 06789B071EE979520052A705 /* VPUPPrefetchVideoManager.m */; };
 		06789B181EE979530052A705 /* VPUPPrefetchVideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 06789B071EE979520052A705 /* VPUPPrefetchVideoManager.m */; };
 		06789B191EE979530052A705 /* VPUPPrefetchVideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 06789B071EE979520052A705 /* VPUPPrefetchVideoManager.m */; };
+		068BE9DE241B97E800ED7F22 /* VPUPDatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 068BE9DD241B97E700ED7F22 /* VPUPDatabaseTests.m */; };
+		068D8FD22429E549004DDBC5 /* VPUPReportLogMessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 068D8FD12429E549004DDBC5 /* VPUPReportLogMessageTests.m */; };
+		068D8FD42429F496004DDBC5 /* VPUPCrashManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 068D8FD32429F495004DDBC5 /* VPUPCrashManagerTests.m */; };
 		06A411401EC1C59000112082 /* VPUPHTTPBatchAPIs.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A4113C1EC1C59000112082 /* VPUPHTTPBatchAPIs.m */; };
 		06A411411EC1C59000112082 /* VPUPHTTPBatchAPIs.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A4113C1EC1C59000112082 /* VPUPHTTPBatchAPIs.m */; };
 		06A411421EC1C59000112082 /* VPUPHTTPBatchAPIs.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A4113C1EC1C59000112082 /* VPUPHTTPBatchAPIs.m */; };
@@ -361,12 +401,12 @@
 		06AEC4C51EEA817B00C384F6 /* VPUPLifeCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AEC4C11EEA817B00C384F6 /* VPUPLifeCycle.m */; };
 		06AEC4C61EEA817B00C384F6 /* VPUPLifeCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AEC4C11EEA817B00C384F6 /* VPUPLifeCycle.m */; };
 		06AEC4C71EEA817B00C384F6 /* VPUPLifeCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AEC4C11EEA817B00C384F6 /* VPUPLifeCycle.m */; };
-		06B02A6C2373F622004E546D /* VPUPCommonTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 06B02A6A2373F621004E546D /* VPUPCommonTrack.h */; };
+		06B02A6C2373F622004E546D /* VPUPCommonTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 06B02A6A2373F621004E546D /* VPUPCommonTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06B02A6D2373F622004E546D /* VPUPCommonTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B02A6B2373F621004E546D /* VPUPCommonTrack.m */; };
-		06C2EF991FA9DB5A00248280 /* VPUPViewScaleUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C2EF971FA9DB5A00248280 /* VPUPViewScaleUtil.h */; };
+		06C2EF991FA9DB5A00248280 /* VPUPViewScaleUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C2EF971FA9DB5A00248280 /* VPUPViewScaleUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06C2EF9A1FA9DB5A00248280 /* VPUPViewScaleUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C2EF971FA9DB5A00248280 /* VPUPViewScaleUtil.h */; };
 		06C2EF9B1FA9DB5A00248280 /* VPUPViewScaleUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C2EF971FA9DB5A00248280 /* VPUPViewScaleUtil.h */; };
-		06C7E92E230A8A9C000FEC1C /* VPUPTrafficStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C7E92C230A8A9C000FEC1C /* VPUPTrafficStatistics.h */; };
+		06C7E92E230A8A9C000FEC1C /* VPUPTrafficStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C7E92C230A8A9C000FEC1C /* VPUPTrafficStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06C7E92F230A8A9C000FEC1C /* VPUPTrafficStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C7E92D230A8A9C000FEC1C /* VPUPTrafficStatistics.m */; };
 		06D57C251F18697E00C1C1BA /* VPUPOrderedDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D57C231F18697E00C1C1BA /* VPUPOrderedDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06D57C261F18697E00C1C1BA /* VPUPOrderedDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D57C231F18697E00C1C1BA /* VPUPOrderedDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -383,6 +423,8 @@
 		06E2D8061ECC3E2100E5D9CF /* VPUPJsonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E2D8021ECC3E2100E5D9CF /* VPUPJsonUtil.m */; };
 		06E2D8071ECC3E2100E5D9CF /* VPUPJsonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E2D8021ECC3E2100E5D9CF /* VPUPJsonUtil.m */; };
 		06E2D8081ECC3E2100E5D9CF /* VPUPJsonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E2D8021ECC3E2100E5D9CF /* VPUPJsonUtil.m */; };
+		06EB42BE2428C4680053CE35 /* VPUPBaseReportTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06EB42BD2428C4680053CE35 /* VPUPBaseReportTests.m */; };
+		06EB42C02428C4C30053CE35 /* VPUPReportMessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06EB42BF2428C4C30053CE35 /* VPUPReportMessageTests.m */; };
 		06FCE2B91EE6A5BA00783D24 /* VPUPLoadImageButtonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FCE2B51EE6A5BA00783D24 /* VPUPLoadImageButtonConfig.m */; };
 		06FCE2BA1EE6A5BA00783D24 /* VPUPLoadImageButtonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FCE2B51EE6A5BA00783D24 /* VPUPLoadImageButtonConfig.m */; };
 		06FCE2BB1EE6A5BA00783D24 /* VPUPLoadImageButtonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FCE2B51EE6A5BA00783D24 /* VPUPLoadImageButtonConfig.m */; };
@@ -392,6 +434,7 @@
 		06FD507E1EC1AA2800C65505 /* VPUPHTTPBaseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD507A1EC1AA2700C65505 /* VPUPHTTPBaseAPI.m */; };
 		06FD507F1EC1AA2800C65505 /* VPUPHTTPBaseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD507A1EC1AA2700C65505 /* VPUPHTTPBaseAPI.m */; };
 		06FD50801EC1AA2800C65505 /* VPUPHTTPBaseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD507A1EC1AA2700C65505 /* VPUPHTTPBaseAPI.m */; };
+		C44E8F001F6BBA1E0081F799 /* VPUPBasicWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = C44E8EFA1F6BBA1E0081F799 /* VPUPBasicWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6039CE12403B3E900841F42 /* ACRCloudConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B6039CDE2403B3E900841F42 /* ACRCloudConfig.h */; };
 		B6039CE22403B3E900841F42 /* libACRCloud_IOS_SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6039CDF2403B3E900841F42 /* libACRCloud_IOS_SDK.a */; };
 		B6039CE32403B3E900841F42 /* ACRCloudRecognition.h in Headers */ = {isa = PBXBuildFile; fileRef = B6039CE02403B3E900841F42 /* ACRCloudRecognition.h */; };
@@ -407,19 +450,19 @@
 		C44E8F031F6BBA1E0081F799 /* VPUPBasicWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C44E8EFB1F6BBA1E0081F799 /* VPUPBasicWebView.m */; };
 		C44E8F041F6BBA1E0081F799 /* VPUPBasicWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C44E8EFB1F6BBA1E0081F799 /* VPUPBasicWebView.m */; };
 		C44E8F051F6BBA1E0081F799 /* VPUPBasicWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C44E8EFB1F6BBA1E0081F799 /* VPUPBasicWebView.m */; };
-		C44E8F061F6BBA1E0081F799 /* VPUPWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = C44E8EFC1F6BBA1E0081F799 /* VPUPWebView.h */; };
+		C44E8F061F6BBA1E0081F799 /* VPUPWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = C44E8EFC1F6BBA1E0081F799 /* VPUPWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C44E8F071F6BBA1E0081F799 /* VPUPWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = C44E8EFC1F6BBA1E0081F799 /* VPUPWebView.h */; };
 		C44E8F081F6BBA1E0081F799 /* VPUPWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = C44E8EFC1F6BBA1E0081F799 /* VPUPWebView.h */; };
 		C44E8F091F6BBA1E0081F799 /* VPUPWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C44E8EFD1F6BBA1E0081F799 /* VPUPWebView.m */; };
 		C44E8F0A1F6BBA1E0081F799 /* VPUPWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C44E8EFD1F6BBA1E0081F799 /* VPUPWebView.m */; };
 		C44E8F0B1F6BBA1E0081F799 /* VPUPWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C44E8EFD1F6BBA1E0081F799 /* VPUPWebView.m */; };
-		C44E8F0C1F6BBA1E0081F799 /* VPUPWKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = C44E8EFE1F6BBA1E0081F799 /* VPUPWKWebView.h */; };
+		C44E8F0C1F6BBA1E0081F799 /* VPUPWKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = C44E8EFE1F6BBA1E0081F799 /* VPUPWKWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C44E8F0D1F6BBA1E0081F799 /* VPUPWKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = C44E8EFE1F6BBA1E0081F799 /* VPUPWKWebView.h */; };
 		C44E8F0E1F6BBA1E0081F799 /* VPUPWKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = C44E8EFE1F6BBA1E0081F799 /* VPUPWKWebView.h */; };
 		C44E8F0F1F6BBA1E0081F799 /* VPUPWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C44E8EFF1F6BBA1E0081F799 /* VPUPWKWebView.m */; };
 		C44E8F101F6BBA1E0081F799 /* VPUPWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C44E8EFF1F6BBA1E0081F799 /* VPUPWKWebView.m */; };
 		C44E8F111F6BBA1E0081F799 /* VPUPWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C44E8EFF1F6BBA1E0081F799 /* VPUPWKWebView.m */; };
-		C44F4B1F1FC4225400E5D6B1 /* VPUPVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = C44F4B1D1FC4225400E5D6B1 /* VPUPVideo.h */; };
+		C44F4B1F1FC4225400E5D6B1 /* VPUPVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = C44F4B1D1FC4225400E5D6B1 /* VPUPVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C44F4B201FC4225400E5D6B1 /* VPUPVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = C44F4B1E1FC4225400E5D6B1 /* VPUPVideo.m */; };
 		C44F4B211FC4225700E5D6B1 /* VPUPVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = C44F4B1E1FC4225400E5D6B1 /* VPUPVideo.m */; };
 		C44F4B221FC4225700E5D6B1 /* VPUPVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = C44F4B1E1FC4225400E5D6B1 /* VPUPVideo.m */; };
@@ -431,19 +474,19 @@
 		C4557D5A1EC447FF00D35D35 /* VPUPLoadImageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C4557D4D1EC447FF00D35D35 /* VPUPLoadImageFactory.m */; };
 		C4557D5B1EC447FF00D35D35 /* VPUPLoadImageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C4557D4D1EC447FF00D35D35 /* VPUPLoadImageFactory.m */; };
 		C4557D5C1EC447FF00D35D35 /* VPUPLoadImageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C4557D4D1EC447FF00D35D35 /* VPUPLoadImageFactory.m */; };
-		C4B2DAF91FA3063700626A50 /* VPUPPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = C4B2DAF71FA3063700626A50 /* VPUPPlayer.h */; };
+		C4B2DAF91FA3063700626A50 /* VPUPPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = C4B2DAF71FA3063700626A50 /* VPUPPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4B2DAFA1FA3063700626A50 /* VPUPPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = C4B2DAF71FA3063700626A50 /* VPUPPlayer.h */; };
 		C4B2DAFB1FA3063700626A50 /* VPUPPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = C4B2DAF71FA3063700626A50 /* VPUPPlayer.h */; };
 		C4B2DAFC1FA3063700626A50 /* VPUPPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B2DAF81FA3063700626A50 /* VPUPPlayer.m */; };
 		C4B2DAFD1FA3063700626A50 /* VPUPPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B2DAF81FA3063700626A50 /* VPUPPlayer.m */; };
 		C4B2DAFE1FA3063700626A50 /* VPUPPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B2DAF81FA3063700626A50 /* VPUPPlayer.m */; };
-		C4B2DB011FA6D32300626A50 /* VPUPVideoClip.h in Headers */ = {isa = PBXBuildFile; fileRef = C4B2DAFF1FA6D32300626A50 /* VPUPVideoClip.h */; };
+		C4B2DB011FA6D32300626A50 /* VPUPVideoClip.h in Headers */ = {isa = PBXBuildFile; fileRef = C4B2DAFF1FA6D32300626A50 /* VPUPVideoClip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4B2DB021FA6D32300626A50 /* VPUPVideoClip.h in Headers */ = {isa = PBXBuildFile; fileRef = C4B2DAFF1FA6D32300626A50 /* VPUPVideoClip.h */; };
 		C4B2DB031FA6D32300626A50 /* VPUPVideoClip.h in Headers */ = {isa = PBXBuildFile; fileRef = C4B2DAFF1FA6D32300626A50 /* VPUPVideoClip.h */; };
 		C4B2DB041FA6D32300626A50 /* VPUPVideoClip.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B2DB001FA6D32300626A50 /* VPUPVideoClip.m */; };
 		C4B2DB051FA6D32300626A50 /* VPUPVideoClip.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B2DB001FA6D32300626A50 /* VPUPVideoClip.m */; };
 		C4B2DB061FA6D32300626A50 /* VPUPVideoClip.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B2DB001FA6D32300626A50 /* VPUPVideoClip.m */; };
-		C91887D6237A819900C0CB81 /* VPUPVibrationUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = C91887D4237A819800C0CB81 /* VPUPVibrationUtil.h */; };
+		C91887D6237A819900C0CB81 /* VPUPVibrationUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = C91887D4237A819800C0CB81 /* VPUPVibrationUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C91887D7237A819900C0CB81 /* VPUPVibrationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C91887D5237A819900C0CB81 /* VPUPVibrationUtil.m */; };
 		D004F66320931A8C00022E90 /* VPUPPersistentConnectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F65C20931A8B00022E90 /* VPUPPersistentConnectionFactory.m */; };
 		D004F66420931A8C00022E90 /* VPUPPersistentConnectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F65C20931A8B00022E90 /* VPUPPersistentConnectionFactory.m */; };
@@ -451,22 +494,22 @@
 		D004F66920931A8C00022E90 /* VPUPMessageTransferStation.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F65E20931A8B00022E90 /* VPUPMessageTransferStation.m */; };
 		D004F66A20931A8C00022E90 /* VPUPMessageTransferStation.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F65E20931A8B00022E90 /* VPUPMessageTransferStation.m */; };
 		D004F66B20931A8C00022E90 /* VPUPMessageTransferStation.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F65E20931A8B00022E90 /* VPUPMessageTransferStation.m */; };
-		D004F66C20931A8C00022E90 /* VPUPPersistentConnectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F65F20931A8B00022E90 /* VPUPPersistentConnectionFactory.h */; };
+		D004F66C20931A8C00022E90 /* VPUPPersistentConnectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F65F20931A8B00022E90 /* VPUPPersistentConnectionFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F66D20931A8C00022E90 /* VPUPPersistentConnectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F65F20931A8B00022E90 /* VPUPPersistentConnectionFactory.h */; };
 		D004F66E20931A8C00022E90 /* VPUPPersistentConnectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F65F20931A8B00022E90 /* VPUPPersistentConnectionFactory.h */; };
-		D004F66F20931A8C00022E90 /* VPUPPersistentConnectionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F66020931A8B00022E90 /* VPUPPersistentConnectionDelegate.h */; };
+		D004F66F20931A8C00022E90 /* VPUPPersistentConnectionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F66020931A8B00022E90 /* VPUPPersistentConnectionDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F67020931A8C00022E90 /* VPUPPersistentConnectionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F66020931A8B00022E90 /* VPUPPersistentConnectionDelegate.h */; };
 		D004F67120931A8C00022E90 /* VPUPPersistentConnectionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F66020931A8B00022E90 /* VPUPPersistentConnectionDelegate.h */; };
-		D004F67220931A8C00022E90 /* VPUPMessageTransferStation.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F66120931A8C00022E90 /* VPUPMessageTransferStation.h */; };
+		D004F67220931A8C00022E90 /* VPUPMessageTransferStation.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F66120931A8C00022E90 /* VPUPMessageTransferStation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F67320931A8C00022E90 /* VPUPMessageTransferStation.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F66120931A8C00022E90 /* VPUPMessageTransferStation.h */; };
 		D004F67420931A8C00022E90 /* VPUPMessageTransferStation.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F66120931A8C00022E90 /* VPUPMessageTransferStation.h */; };
-		D004F6AD2099567700022E90 /* VPUPMQTTConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F67A2099567700022E90 /* VPUPMQTTConfig.h */; };
+		D004F6AD2099567700022E90 /* VPUPMQTTConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F67A2099567700022E90 /* VPUPMQTTConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F6AE2099567700022E90 /* VPUPMQTTConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F67A2099567700022E90 /* VPUPMQTTConfig.h */; };
 		D004F6AF2099567700022E90 /* VPUPMQTTConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F67A2099567700022E90 /* VPUPMQTTConfig.h */; };
-		D004F6B02099567700022E90 /* VPUPMQTTManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F67B2099567700022E90 /* VPUPMQTTManager.h */; };
+		D004F6B02099567700022E90 /* VPUPMQTTManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F67B2099567700022E90 /* VPUPMQTTManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F6B12099567700022E90 /* VPUPMQTTManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F67B2099567700022E90 /* VPUPMQTTManager.h */; };
 		D004F6B22099567700022E90 /* VPUPMQTTManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F67B2099567700022E90 /* VPUPMQTTManager.h */; };
-		D004F6B32099567700022E90 /* VPUPMQTTMosquittoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F67C2099567700022E90 /* VPUPMQTTMosquittoManager.h */; };
+		D004F6B32099567700022E90 /* VPUPMQTTMosquittoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F67C2099567700022E90 /* VPUPMQTTMosquittoManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F6B42099567700022E90 /* VPUPMQTTMosquittoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F67C2099567700022E90 /* VPUPMQTTMosquittoManager.h */; };
 		D004F6B52099567700022E90 /* VPUPMQTTMosquittoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F67C2099567700022E90 /* VPUPMQTTMosquittoManager.h */; };
 		D004F6B62099567700022E90 /* VPUPMQTTManagerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F67D2099567700022E90 /* VPUPMQTTManagerFactory.m */; };
@@ -484,16 +527,16 @@
 		D004F6C22099567700022E90 /* VPUPMQTTMosquittoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F6812099567700022E90 /* VPUPMQTTMosquittoManager.m */; };
 		D004F6C32099567700022E90 /* VPUPMQTTMosquittoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F6812099567700022E90 /* VPUPMQTTMosquittoManager.m */; };
 		D004F6C42099567700022E90 /* VPUPMQTTMosquittoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F6812099567700022E90 /* VPUPMQTTMosquittoManager.m */; };
-		D004F6C52099567700022E90 /* VPUPPersistentConnectionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6822099567700022E90 /* VPUPPersistentConnectionManager.h */; };
+		D004F6C52099567700022E90 /* VPUPPersistentConnectionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6822099567700022E90 /* VPUPPersistentConnectionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F6C62099567700022E90 /* VPUPPersistentConnectionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6822099567700022E90 /* VPUPPersistentConnectionManager.h */; };
 		D004F6C72099567700022E90 /* VPUPPersistentConnectionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6822099567700022E90 /* VPUPPersistentConnectionManager.h */; };
 		D004F6C82099567700022E90 /* vpup_mqtt_default_config.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6832099567700022E90 /* vpup_mqtt_default_config.h */; };
 		D004F6C92099567700022E90 /* vpup_mqtt_default_config.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6832099567700022E90 /* vpup_mqtt_default_config.h */; };
 		D004F6CA2099567700022E90 /* vpup_mqtt_default_config.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6832099567700022E90 /* vpup_mqtt_default_config.h */; };
-		D004F6CB2099567700022E90 /* VPUPMQTTManagerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6842099567700022E90 /* VPUPMQTTManagerFactory.h */; };
+		D004F6CB2099567700022E90 /* VPUPMQTTManagerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6842099567700022E90 /* VPUPMQTTManagerFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F6CC2099567700022E90 /* VPUPMQTTManagerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6842099567700022E90 /* VPUPMQTTManagerFactory.h */; };
 		D004F6CD2099567700022E90 /* VPUPMQTTManagerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6842099567700022E90 /* VPUPMQTTManagerFactory.h */; };
-		D004F6CE2099567700022E90 /* VPUPMQTTMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6862099567700022E90 /* VPUPMQTTMessage.h */; };
+		D004F6CE2099567700022E90 /* VPUPMQTTMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6862099567700022E90 /* VPUPMQTTMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F6CF2099567700022E90 /* VPUPMQTTMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6862099567700022E90 /* VPUPMQTTMessage.h */; };
 		D004F6D02099567700022E90 /* VPUPMQTTMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6862099567700022E90 /* VPUPMQTTMessage.h */; };
 		D004F6D12099567700022E90 /* VPUPMQTTSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F6872099567700022E90 /* VPUPMQTTSession.m */; };
@@ -598,100 +641,94 @@
 		D004F7342099567700022E90 /* vpup_net_mosq.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6A92099567700022E90 /* vpup_net_mosq.h */; };
 		D004F7352099567700022E90 /* vpup_net_mosq.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6A92099567700022E90 /* vpup_net_mosq.h */; };
 		D004F7362099567700022E90 /* vpup_net_mosq.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6A92099567700022E90 /* vpup_net_mosq.h */; };
-		D004F7372099567700022E90 /* VPUPMQTTEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6AA2099567700022E90 /* VPUPMQTTEnum.h */; };
+		D004F7372099567700022E90 /* VPUPMQTTEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6AA2099567700022E90 /* VPUPMQTTEnum.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F7382099567700022E90 /* VPUPMQTTEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6AA2099567700022E90 /* VPUPMQTTEnum.h */; };
 		D004F7392099567700022E90 /* VPUPMQTTEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6AA2099567700022E90 /* VPUPMQTTEnum.h */; };
 		D004F73A2099567700022E90 /* VPUPMQTTMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F6AB2099567700022E90 /* VPUPMQTTMessage.m */; };
 		D004F73B2099567700022E90 /* VPUPMQTTMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F6AB2099567700022E90 /* VPUPMQTTMessage.m */; };
 		D004F73C2099567700022E90 /* VPUPMQTTMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F6AB2099567700022E90 /* VPUPMQTTMessage.m */; };
-		D004F73D2099567700022E90 /* VPUPMQTTSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6AC2099567700022E90 /* VPUPMQTTSession.h */; };
+		D004F73D2099567700022E90 /* VPUPMQTTSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6AC2099567700022E90 /* VPUPMQTTSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F73E2099567700022E90 /* VPUPMQTTSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6AC2099567700022E90 /* VPUPMQTTSession.h */; };
 		D004F73F2099567700022E90 /* VPUPMQTTSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F6AC2099567700022E90 /* VPUPMQTTSession.h */; };
 		D004F74220995DC900022E90 /* VPUPExtendWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F74020995DC800022E90 /* VPUPExtendWKWebView.m */; };
 		D004F74320995DC900022E90 /* VPUPExtendWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F74020995DC800022E90 /* VPUPExtendWKWebView.m */; };
 		D004F74420995DC900022E90 /* VPUPExtendWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F74020995DC800022E90 /* VPUPExtendWKWebView.m */; };
-		D004F74520995DC900022E90 /* VPUPExtendWKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F74120995DC800022E90 /* VPUPExtendWKWebView.h */; };
+		D004F74520995DC900022E90 /* VPUPExtendWKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F74120995DC800022E90 /* VPUPExtendWKWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F74620995DC900022E90 /* VPUPExtendWKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F74120995DC800022E90 /* VPUPExtendWKWebView.h */; };
 		D004F74720995DC900022E90 /* VPUPExtendWKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F74120995DC800022E90 /* VPUPExtendWKWebView.h */; };
-		D004F789209AE4F400022E90 /* VPUPHTTPManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F787209AE4F300022E90 /* VPUPHTTPManager.h */; };
+		D004F789209AE4F400022E90 /* VPUPHTTPManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F787209AE4F300022E90 /* VPUPHTTPManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D004F78A209AE4F400022E90 /* VPUPHTTPManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F787209AE4F300022E90 /* VPUPHTTPManager.h */; };
 		D004F78B209AE4F400022E90 /* VPUPHTTPManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D004F787209AE4F300022E90 /* VPUPHTTPManager.h */; };
 		D004F78C209AE4F400022E90 /* VPUPHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F788209AE4F300022E90 /* VPUPHTTPManager.m */; };
 		D004F78D209AE4F400022E90 /* VPUPHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F788209AE4F300022E90 /* VPUPHTTPManager.m */; };
 		D004F78E209AE4F400022E90 /* VPUPHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D004F788209AE4F300022E90 /* VPUPHTTPManager.m */; };
-		D00ED8B72024186C00B6C8C1 /* VPUPServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8B52024186C00B6C8C1 /* VPUPServiceManager.h */; };
+		D00ED8B72024186C00B6C8C1 /* VPUPServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8B52024186C00B6C8C1 /* VPUPServiceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D00ED8B82024186C00B6C8C1 /* VPUPServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8B52024186C00B6C8C1 /* VPUPServiceManager.h */; };
 		D00ED8B92024186C00B6C8C1 /* VPUPServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8B52024186C00B6C8C1 /* VPUPServiceManager.h */; };
 		D00ED8BA2024186C00B6C8C1 /* VPUPServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8B62024186C00B6C8C1 /* VPUPServiceManager.m */; };
 		D00ED8BB2024186C00B6C8C1 /* VPUPServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8B62024186C00B6C8C1 /* VPUPServiceManager.m */; };
 		D00ED8BC2024186C00B6C8C1 /* VPUPServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8B62024186C00B6C8C1 /* VPUPServiceManager.m */; };
-		D00ED8BF2027F87500B6C8C1 /* VPUPDefaultRoutesRegister.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8BD2027F87500B6C8C1 /* VPUPDefaultRoutesRegister.h */; };
+		D00ED8BF2027F87500B6C8C1 /* VPUPDefaultRoutesRegister.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8BD2027F87500B6C8C1 /* VPUPDefaultRoutesRegister.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D00ED8C02027F87500B6C8C1 /* VPUPDefaultRoutesRegister.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8BD2027F87500B6C8C1 /* VPUPDefaultRoutesRegister.h */; };
 		D00ED8C12027F87500B6C8C1 /* VPUPDefaultRoutesRegister.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8BD2027F87500B6C8C1 /* VPUPDefaultRoutesRegister.h */; };
 		D00ED8C22027F87500B6C8C1 /* VPUPDefaultRoutesRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8BE2027F87500B6C8C1 /* VPUPDefaultRoutesRegister.m */; };
 		D00ED8C32027F87500B6C8C1 /* VPUPDefaultRoutesRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8BE2027F87500B6C8C1 /* VPUPDefaultRoutesRegister.m */; };
 		D00ED8C42027F87500B6C8C1 /* VPUPDefaultRoutesRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8BE2027F87500B6C8C1 /* VPUPDefaultRoutesRegister.m */; };
-		D00ED8C720299B3300B6C8C1 /* VPUPRoutesSendRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8C520299B3300B6C8C1 /* VPUPRoutesSendRequest.h */; };
+		D00ED8C720299B3300B6C8C1 /* VPUPRoutesSendRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8C520299B3300B6C8C1 /* VPUPRoutesSendRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D00ED8C820299B3300B6C8C1 /* VPUPRoutesSendRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8C520299B3300B6C8C1 /* VPUPRoutesSendRequest.h */; };
 		D00ED8C920299B3300B6C8C1 /* VPUPRoutesSendRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8C520299B3300B6C8C1 /* VPUPRoutesSendRequest.h */; };
 		D00ED8CA20299B3300B6C8C1 /* VPUPRoutesSendRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8C620299B3300B6C8C1 /* VPUPRoutesSendRequest.m */; };
 		D00ED8CB20299B3300B6C8C1 /* VPUPRoutesSendRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8C620299B3300B6C8C1 /* VPUPRoutesSendRequest.m */; };
 		D00ED8CC20299B3300B6C8C1 /* VPUPRoutesSendRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8C620299B3300B6C8C1 /* VPUPRoutesSendRequest.m */; };
-		D00ED8DA202AAC4A00B6C8C1 /* VPUPRoutesConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8D8202AAC4A00B6C8C1 /* VPUPRoutesConstants.h */; };
+		D00ED8DA202AAC4A00B6C8C1 /* VPUPRoutesConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8D8202AAC4A00B6C8C1 /* VPUPRoutesConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D00ED8DB202AAC4A00B6C8C1 /* VPUPRoutesConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8D8202AAC4A00B6C8C1 /* VPUPRoutesConstants.h */; };
 		D00ED8DC202AAC4A00B6C8C1 /* VPUPRoutesConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8D8202AAC4A00B6C8C1 /* VPUPRoutesConstants.h */; };
 		D00ED8DD202AAC4A00B6C8C1 /* VPUPRoutesConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8D9202AAC4A00B6C8C1 /* VPUPRoutesConstants.m */; };
 		D00ED8DE202AAC4A00B6C8C1 /* VPUPRoutesConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8D9202AAC4A00B6C8C1 /* VPUPRoutesConstants.m */; };
 		D00ED8DF202AAC4A00B6C8C1 /* VPUPRoutesConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8D9202AAC4A00B6C8C1 /* VPUPRoutesConstants.m */; };
-		D00ED8EF20317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8ED20317A6E00B6C8C1 /* VPUPWKWebViewJSBridge.h */; };
+		D00ED8EF20317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8ED20317A6E00B6C8C1 /* VPUPWKWebViewJSBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D00ED8F020317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8ED20317A6E00B6C8C1 /* VPUPWKWebViewJSBridge.h */; };
 		D00ED8F120317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8ED20317A6E00B6C8C1 /* VPUPWKWebViewJSBridge.h */; };
 		D00ED8F220317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8EE20317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.m */; };
 		D00ED8F320317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8EE20317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.m */; };
 		D00ED8F420317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8EE20317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.m */; };
-		D00ED8F72031928200B6C8C1 /* VPUPUIWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8F52031928200B6C8C1 /* VPUPUIWebViewJSBridge.h */; };
-		D00ED8F82031928300B6C8C1 /* VPUPUIWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8F52031928200B6C8C1 /* VPUPUIWebViewJSBridge.h */; };
-		D00ED8F92031928300B6C8C1 /* VPUPUIWebViewJSBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = D00ED8F52031928200B6C8C1 /* VPUPUIWebViewJSBridge.h */; };
-		D00ED8FA2031928300B6C8C1 /* VPUPUIWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8F62031928200B6C8C1 /* VPUPUIWebViewJSBridge.m */; };
-		D00ED8FB2031928300B6C8C1 /* VPUPUIWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8F62031928200B6C8C1 /* VPUPUIWebViewJSBridge.m */; };
-		D00ED8FC2031928300B6C8C1 /* VPUPUIWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D00ED8F62031928200B6C8C1 /* VPUPUIWebViewJSBridge.m */; };
-		D010FE6A2328D47C00E4177B /* VPUPCommonInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = D010FE682328D47C00E4177B /* VPUPCommonInfo.h */; };
+		D010FE6A2328D47C00E4177B /* VPUPCommonInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = D010FE682328D47C00E4177B /* VPUPCommonInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D010FE6B2328D47C00E4177B /* VPUPCommonInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D010FE692328D47C00E4177B /* VPUPCommonInfo.m */; };
 		D0150B52206C8B9D008CD3FD /* VPUPHTTPAFNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0150B50206C8B9C008CD3FD /* VPUPHTTPAFNManager.m */; };
 		D0150B53206C8B9D008CD3FD /* VPUPHTTPAFNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0150B50206C8B9C008CD3FD /* VPUPHTTPAFNManager.m */; };
 		D0150B54206C8B9D008CD3FD /* VPUPHTTPAFNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0150B50206C8B9C008CD3FD /* VPUPHTTPAFNManager.m */; };
-		D0150B55206C8B9D008CD3FD /* VPUPHTTPAFNManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0150B51206C8B9C008CD3FD /* VPUPHTTPAFNManager.h */; };
+		D0150B55206C8B9D008CD3FD /* VPUPHTTPAFNManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0150B51206C8B9C008CD3FD /* VPUPHTTPAFNManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0150B56206C8B9D008CD3FD /* VPUPHTTPAFNManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0150B51206C8B9C008CD3FD /* VPUPHTTPAFNManager.h */; };
 		D0150B57206C8B9D008CD3FD /* VPUPHTTPAFNManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0150B51206C8B9C008CD3FD /* VPUPHTTPAFNManager.h */; };
-		D0150B5B206CC312008CD3FD /* VPUPLoadImageSDManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0150B59206CC312008CD3FD /* VPUPLoadImageSDManager.h */; };
+		D0150B5B206CC312008CD3FD /* VPUPLoadImageSDManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0150B59206CC312008CD3FD /* VPUPLoadImageSDManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0150B5C206CC312008CD3FD /* VPUPLoadImageSDManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0150B59206CC312008CD3FD /* VPUPLoadImageSDManager.h */; };
 		D0150B5D206CC312008CD3FD /* VPUPLoadImageSDManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0150B59206CC312008CD3FD /* VPUPLoadImageSDManager.h */; };
 		D0150B5E206CC312008CD3FD /* VPUPLoadImageSDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0150B5A206CC312008CD3FD /* VPUPLoadImageSDManager.m */; };
 		D0150B5F206CC312008CD3FD /* VPUPLoadImageSDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0150B5A206CC312008CD3FD /* VPUPLoadImageSDManager.m */; };
 		D0150B60206CC312008CD3FD /* VPUPLoadImageSDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0150B5A206CC312008CD3FD /* VPUPLoadImageSDManager.m */; };
-		D0150B64206CD378008CD3FD /* VPUPFLAnimatedFrameImage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0150B62206CD378008CD3FD /* VPUPFLAnimatedFrameImage.h */; };
+		D0150B64206CD378008CD3FD /* VPUPFLAnimatedFrameImage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0150B62206CD378008CD3FD /* VPUPFLAnimatedFrameImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0150B65206CD378008CD3FD /* VPUPFLAnimatedFrameImage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0150B62206CD378008CD3FD /* VPUPFLAnimatedFrameImage.h */; };
 		D0150B66206CD378008CD3FD /* VPUPFLAnimatedFrameImage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0150B62206CD378008CD3FD /* VPUPFLAnimatedFrameImage.h */; };
 		D0150B67206CD378008CD3FD /* VPUPFLAnimatedFrameImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0150B63206CD378008CD3FD /* VPUPFLAnimatedFrameImage.m */; };
 		D0150B68206CD378008CD3FD /* VPUPFLAnimatedFrameImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0150B63206CD378008CD3FD /* VPUPFLAnimatedFrameImage.m */; };
 		D0150B69206CD378008CD3FD /* VPUPFLAnimatedFrameImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0150B63206CD378008CD3FD /* VPUPFLAnimatedFrameImage.m */; };
-		D01E219F223E8EF90018A1AE /* VPUPUrlUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D01E219D223E8EF90018A1AE /* VPUPUrlUtil.h */; };
+		D01E219F223E8EF90018A1AE /* VPUPUrlUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D01E219D223E8EF90018A1AE /* VPUPUrlUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D01E21A0223E8EF90018A1AE /* VPUPUrlUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D01E219D223E8EF90018A1AE /* VPUPUrlUtil.h */; };
 		D01E21A1223E8EF90018A1AE /* VPUPUrlUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D01E219E223E8EF90018A1AE /* VPUPUrlUtil.m */; };
 		D01E21A2223E8EF90018A1AE /* VPUPUrlUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D01E219E223E8EF90018A1AE /* VPUPUrlUtil.m */; };
 		D022A0A720BE6CA600F46029 /* VPUPFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0A120BE6CA500F46029 /* VPUPFileHandle.m */; };
 		D022A0A820BE6CA600F46029 /* VPUPFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0A120BE6CA500F46029 /* VPUPFileHandle.m */; };
 		D022A0A920BE6CA600F46029 /* VPUPFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0A120BE6CA500F46029 /* VPUPFileHandle.m */; };
-		D022A0AA20BE6CA600F46029 /* VPUPVideoRequestTask.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0A220BE6CA500F46029 /* VPUPVideoRequestTask.h */; };
+		D022A0AA20BE6CA600F46029 /* VPUPVideoRequestTask.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0A220BE6CA500F46029 /* VPUPVideoRequestTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D022A0AB20BE6CA600F46029 /* VPUPVideoRequestTask.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0A220BE6CA500F46029 /* VPUPVideoRequestTask.h */; };
 		D022A0AC20BE6CA600F46029 /* VPUPVideoRequestTask.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0A220BE6CA500F46029 /* VPUPVideoRequestTask.h */; };
-		D022A0AD20BE6CA600F46029 /* VPUPAVAssetResourceLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0A320BE6CA600F46029 /* VPUPAVAssetResourceLoader.h */; };
+		D022A0AD20BE6CA600F46029 /* VPUPAVAssetResourceLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0A320BE6CA600F46029 /* VPUPAVAssetResourceLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D022A0AE20BE6CA600F46029 /* VPUPAVAssetResourceLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0A320BE6CA600F46029 /* VPUPAVAssetResourceLoader.h */; };
 		D022A0AF20BE6CA600F46029 /* VPUPAVAssetResourceLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0A320BE6CA600F46029 /* VPUPAVAssetResourceLoader.h */; };
 		D022A0B020BE6CA600F46029 /* VPUPVideoRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0A420BE6CA600F46029 /* VPUPVideoRequestTask.m */; };
 		D022A0B120BE6CA600F46029 /* VPUPVideoRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0A420BE6CA600F46029 /* VPUPVideoRequestTask.m */; };
 		D022A0B220BE6CA600F46029 /* VPUPVideoRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0A420BE6CA600F46029 /* VPUPVideoRequestTask.m */; };
-		D022A0B320BE6CA600F46029 /* VPUPFileHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0A520BE6CA600F46029 /* VPUPFileHandle.h */; };
+		D022A0B320BE6CA600F46029 /* VPUPFileHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0A520BE6CA600F46029 /* VPUPFileHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D022A0B420BE6CA600F46029 /* VPUPFileHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0A520BE6CA600F46029 /* VPUPFileHandle.h */; };
 		D022A0B520BE6CA600F46029 /* VPUPFileHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0A520BE6CA600F46029 /* VPUPFileHandle.h */; };
 		D022A0B620BE6CA600F46029 /* VPUPAVAssetResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0A620BE6CA600F46029 /* VPUPAVAssetResourceLoader.m */; };
@@ -700,66 +737,70 @@
 		D022A0BB20BE70A400F46029 /* NSURL+VPUPPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0B920BE70A400F46029 /* NSURL+VPUPPlayer.m */; };
 		D022A0BC20BE70A400F46029 /* NSURL+VPUPPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0B920BE70A400F46029 /* NSURL+VPUPPlayer.m */; };
 		D022A0BD20BE70A400F46029 /* NSURL+VPUPPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D022A0B920BE70A400F46029 /* NSURL+VPUPPlayer.m */; };
-		D022A0BE20BE70A400F46029 /* NSURL+VPUPPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0BA20BE70A400F46029 /* NSURL+VPUPPlayer.h */; };
+		D022A0BE20BE70A400F46029 /* NSURL+VPUPPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0BA20BE70A400F46029 /* NSURL+VPUPPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D022A0BF20BE70A400F46029 /* NSURL+VPUPPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0BA20BE70A400F46029 /* NSURL+VPUPPlayer.h */; };
 		D022A0C020BE70A400F46029 /* NSURL+VPUPPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D022A0BA20BE70A400F46029 /* NSURL+VPUPPlayer.h */; };
-		D02832161FDA310300A705C2 /* VPUPClickThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = D02832141FDA310300A705C2 /* VPUPClickThroughView.h */; };
+		D02832161FDA310300A705C2 /* VPUPClickThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = D02832141FDA310300A705C2 /* VPUPClickThroughView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D02832171FDA310300A705C2 /* VPUPClickThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = D02832141FDA310300A705C2 /* VPUPClickThroughView.h */; };
 		D02832181FDA310300A705C2 /* VPUPClickThroughView.h in Headers */ = {isa = PBXBuildFile; fileRef = D02832141FDA310300A705C2 /* VPUPClickThroughView.h */; };
 		D02832191FDA310300A705C2 /* VPUPClickThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D02832151FDA310300A705C2 /* VPUPClickThroughView.m */; };
 		D028321A1FDA310300A705C2 /* VPUPClickThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D02832151FDA310300A705C2 /* VPUPClickThroughView.m */; };
 		D028321B1FDA310300A705C2 /* VPUPClickThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = D02832151FDA310300A705C2 /* VPUPClickThroughView.m */; };
-		D03F61892019DDF100DB0615 /* VPUPRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61872019DDF100DB0615 /* VPUPRoutes.h */; };
+		D03F61892019DDF100DB0615 /* VPUPRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61872019DDF100DB0615 /* VPUPRoutes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03F618A2019DDF100DB0615 /* VPUPRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61872019DDF100DB0615 /* VPUPRoutes.h */; };
 		D03F618B2019DDF100DB0615 /* VPUPRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61872019DDF100DB0615 /* VPUPRoutes.h */; };
 		D03F618C2019DDF100DB0615 /* VPUPRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61882019DDF100DB0615 /* VPUPRoutes.m */; };
 		D03F618D2019DDF100DB0615 /* VPUPRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61882019DDF100DB0615 /* VPUPRoutes.m */; };
 		D03F618E2019DDF100DB0615 /* VPUPRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61882019DDF100DB0615 /* VPUPRoutes.m */; };
-		D03F61912019E87800DB0615 /* VPUPRouteDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F618F2019E87800DB0615 /* VPUPRouteDefinition.h */; };
+		D03F61912019E87800DB0615 /* VPUPRouteDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F618F2019E87800DB0615 /* VPUPRouteDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03F61922019E87800DB0615 /* VPUPRouteDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F618F2019E87800DB0615 /* VPUPRouteDefinition.h */; };
 		D03F61932019E87800DB0615 /* VPUPRouteDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F618F2019E87800DB0615 /* VPUPRouteDefinition.h */; };
 		D03F61942019E87800DB0615 /* VPUPRouteDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61902019E87800DB0615 /* VPUPRouteDefinition.m */; };
 		D03F61952019E87800DB0615 /* VPUPRouteDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61902019E87800DB0615 /* VPUPRouteDefinition.m */; };
 		D03F61962019E87800DB0615 /* VPUPRouteDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61902019E87800DB0615 /* VPUPRouteDefinition.m */; };
-		D03F61992019E9AA00DB0615 /* VPUPRouteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61972019E9AA00DB0615 /* VPUPRouteRequest.h */; };
+		D03F61992019E9AA00DB0615 /* VPUPRouteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61972019E9AA00DB0615 /* VPUPRouteRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03F619A2019E9AA00DB0615 /* VPUPRouteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61972019E9AA00DB0615 /* VPUPRouteRequest.h */; };
 		D03F619B2019E9AA00DB0615 /* VPUPRouteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61972019E9AA00DB0615 /* VPUPRouteRequest.h */; };
 		D03F619C2019E9AA00DB0615 /* VPUPRouteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61982019E9AA00DB0615 /* VPUPRouteRequest.m */; };
 		D03F619D2019E9AA00DB0615 /* VPUPRouteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61982019E9AA00DB0615 /* VPUPRouteRequest.m */; };
 		D03F619E2019E9AA00DB0615 /* VPUPRouteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61982019E9AA00DB0615 /* VPUPRouteRequest.m */; };
-		D03F61A12019E9C400DB0615 /* VPUPRouteResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F619F2019E9C400DB0615 /* VPUPRouteResponse.h */; };
+		D03F61A12019E9C400DB0615 /* VPUPRouteResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F619F2019E9C400DB0615 /* VPUPRouteResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03F61A22019E9C400DB0615 /* VPUPRouteResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F619F2019E9C400DB0615 /* VPUPRouteResponse.h */; };
 		D03F61A32019E9C400DB0615 /* VPUPRouteResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F619F2019E9C400DB0615 /* VPUPRouteResponse.h */; };
 		D03F61A42019E9C400DB0615 /* VPUPRouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61A02019E9C400DB0615 /* VPUPRouteResponse.m */; };
 		D03F61A52019E9C400DB0615 /* VPUPRouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61A02019E9C400DB0615 /* VPUPRouteResponse.m */; };
 		D03F61A62019E9C400DB0615 /* VPUPRouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61A02019E9C400DB0615 /* VPUPRouteResponse.m */; };
-		D03F61A92019E9EE00DB0615 /* VPUPParsingUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61A72019E9EE00DB0615 /* VPUPParsingUtilities.h */; };
+		D03F61A92019E9EE00DB0615 /* VPUPParsingUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61A72019E9EE00DB0615 /* VPUPParsingUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03F61AA2019E9EE00DB0615 /* VPUPParsingUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61A72019E9EE00DB0615 /* VPUPParsingUtilities.h */; };
 		D03F61AB2019E9EE00DB0615 /* VPUPParsingUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61A72019E9EE00DB0615 /* VPUPParsingUtilities.h */; };
 		D03F61AC2019E9EE00DB0615 /* VPUPParsingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61A82019E9EE00DB0615 /* VPUPParsingUtilities.m */; };
 		D03F61AD2019E9EE00DB0615 /* VPUPParsingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61A82019E9EE00DB0615 /* VPUPParsingUtilities.m */; };
 		D03F61AE2019E9EE00DB0615 /* VPUPParsingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61A82019E9EE00DB0615 /* VPUPParsingUtilities.m */; };
-		D03F61B12019EE2300DB0615 /* VPUPRouteHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61AF2019EE2300DB0615 /* VPUPRouteHandler.h */; };
+		D03F61B12019EE2300DB0615 /* VPUPRouteHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61AF2019EE2300DB0615 /* VPUPRouteHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03F61B22019EE2300DB0615 /* VPUPRouteHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61AF2019EE2300DB0615 /* VPUPRouteHandler.h */; };
 		D03F61B32019EE2300DB0615 /* VPUPRouteHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = D03F61AF2019EE2300DB0615 /* VPUPRouteHandler.h */; };
 		D03F61B42019EE2300DB0615 /* VPUPRouteHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61B02019EE2300DB0615 /* VPUPRouteHandler.m */; };
 		D03F61B52019EE2300DB0615 /* VPUPRouteHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61B02019EE2300DB0615 /* VPUPRouteHandler.m */; };
 		D03F61B62019EE2300DB0615 /* VPUPRouteHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D03F61B02019EE2300DB0615 /* VPUPRouteHandler.m */; };
-		D04674972003533500E811E4 /* VPUPDownloadHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D04674962003533500E811E4 /* VPUPDownloadHeader.h */; };
+		D04674972003533500E811E4 /* VPUPDownloadHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D04674962003533500E811E4 /* VPUPDownloadHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D04674982003533500E811E4 /* VPUPDownloadHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D04674962003533500E811E4 /* VPUPDownloadHeader.h */; };
 		D04674992003533500E811E4 /* VPUPDownloadHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D04674962003533500E811E4 /* VPUPDownloadHeader.h */; };
 		D05369C320576B6200A4F8C6 /* VPUPHTTPHost.m in Sources */ = {isa = PBXBuildFile; fileRef = D05369C120576B6200A4F8C6 /* VPUPHTTPHost.m */; };
 		D05369C420576B6200A4F8C6 /* VPUPHTTPHost.m in Sources */ = {isa = PBXBuildFile; fileRef = D05369C120576B6200A4F8C6 /* VPUPHTTPHost.m */; };
 		D05369C520576B6200A4F8C6 /* VPUPHTTPHost.m in Sources */ = {isa = PBXBuildFile; fileRef = D05369C120576B6200A4F8C6 /* VPUPHTTPHost.m */; };
-		D05369C620576B6200A4F8C6 /* VPUPHTTPHost.h in Headers */ = {isa = PBXBuildFile; fileRef = D05369C220576B6200A4F8C6 /* VPUPHTTPHost.h */; };
+		D05369C620576B6200A4F8C6 /* VPUPHTTPHost.h in Headers */ = {isa = PBXBuildFile; fileRef = D05369C220576B6200A4F8C6 /* VPUPHTTPHost.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D05369C720576B6200A4F8C6 /* VPUPHTTPHost.h in Headers */ = {isa = PBXBuildFile; fileRef = D05369C220576B6200A4F8C6 /* VPUPHTTPHost.h */; };
 		D05369C820576B6200A4F8C6 /* VPUPHTTPHost.h in Headers */ = {isa = PBXBuildFile; fileRef = D05369C220576B6200A4F8C6 /* VPUPHTTPHost.h */; };
-		D05DCC47200CA50B00E294F2 /* VPUPHTTPBaseResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = D05DCC45200CA50B00E294F2 /* VPUPHTTPBaseResponse.h */; };
+		D05DCC47200CA50B00E294F2 /* VPUPHTTPBaseResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = D05DCC45200CA50B00E294F2 /* VPUPHTTPBaseResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D05DCC48200CA50B00E294F2 /* VPUPHTTPBaseResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = D05DCC45200CA50B00E294F2 /* VPUPHTTPBaseResponse.h */; };
 		D05DCC49200CA50B00E294F2 /* VPUPHTTPBaseResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = D05DCC45200CA50B00E294F2 /* VPUPHTTPBaseResponse.h */; };
 		D05DCC4A200CA50B00E294F2 /* VPUPHTTPBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D05DCC46200CA50B00E294F2 /* VPUPHTTPBaseResponse.m */; };
 		D05DCC4B200CA50B00E294F2 /* VPUPHTTPBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D05DCC46200CA50B00E294F2 /* VPUPHTTPBaseResponse.m */; };
 		D05DCC4C200CA50B00E294F2 /* VPUPHTTPBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D05DCC46200CA50B00E294F2 /* VPUPHTTPBaseResponse.m */; };
+		D0666BB023B223D100B5EA85 /* VPUPReport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BA023B223D100B5EA85 /* VPUPReport.m */; };
+		D0666BB123B223D100B5EA85 /* VPUPReport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BA023B223D100B5EA85 /* VPUPReport.m */; };
+		D0666BB223B223D100B5EA85 /* VPUPReport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BA023B223D100B5EA85 /* VPUPReport.m */; };
+		D0666BB323B223D100B5EA85 /* VPUPLogReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA123B223D100B5EA85 /* VPUPLogReport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0666BB323B223D100B5EA85 /* VPUPLogReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA123B223D100B5EA85 /* VPUPLogReport.h */; };
 		D0666BB423B223D100B5EA85 /* VPUPLogReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA123B223D100B5EA85 /* VPUPLogReport.h */; };
 		D0666BB523B223D100B5EA85 /* VPUPLogReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA123B223D100B5EA85 /* VPUPLogReport.h */; };
@@ -769,10 +810,10 @@
 		D0666BB923B223D100B5EA85 /* VPUPBusinessReport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BA323B223D100B5EA85 /* VPUPBusinessReport.m */; };
 		D0666BBA23B223D100B5EA85 /* VPUPBusinessReport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BA323B223D100B5EA85 /* VPUPBusinessReport.m */; };
 		D0666BBB23B223D100B5EA85 /* VPUPBusinessReport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BA323B223D100B5EA85 /* VPUPBusinessReport.m */; };
-		D0666BBC23B223D100B5EA85 /* VPUPReportLogMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA423B223D100B5EA85 /* VPUPReportLogMessage.h */; };
+		D0666BBC23B223D100B5EA85 /* VPUPReportLogMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA423B223D100B5EA85 /* VPUPReportLogMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0666BBD23B223D100B5EA85 /* VPUPReportLogMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA423B223D100B5EA85 /* VPUPReportLogMessage.h */; };
 		D0666BBE23B223D100B5EA85 /* VPUPReportLogMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA423B223D100B5EA85 /* VPUPReportLogMessage.h */; };
-		D0666BBF23B223D100B5EA85 /* VPUPReportHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA523B223D100B5EA85 /* VPUPReportHeader.h */; };
+		D0666BBF23B223D100B5EA85 /* VPUPReportHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA523B223D100B5EA85 /* VPUPReportHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0666BC023B223D100B5EA85 /* VPUPReportHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA523B223D100B5EA85 /* VPUPReportHeader.h */; };
 		D0666BC123B223D100B5EA85 /* VPUPReportHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA523B223D100B5EA85 /* VPUPReportHeader.h */; };
 		D0666BC223B223D100B5EA85 /* VPUPCrashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BA623B223D100B5EA85 /* VPUPCrashManager.m */; };
@@ -781,31 +822,34 @@
 		D0666BC523B223D100B5EA85 /* VPUPReportMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BA723B223D100B5EA85 /* VPUPReportMessage.m */; };
 		D0666BC623B223D100B5EA85 /* VPUPReportMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BA723B223D100B5EA85 /* VPUPReportMessage.m */; };
 		D0666BC723B223D100B5EA85 /* VPUPReportMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BA723B223D100B5EA85 /* VPUPReportMessage.m */; };
-		D0666BC823B223D100B5EA85 /* VPUPBusinessReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA823B223D100B5EA85 /* VPUPBusinessReport.h */; };
+		D0666BC823B223D100B5EA85 /* VPUPBusinessReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA823B223D100B5EA85 /* VPUPBusinessReport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0666BC923B223D100B5EA85 /* VPUPBusinessReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA823B223D100B5EA85 /* VPUPBusinessReport.h */; };
 		D0666BCA23B223D100B5EA85 /* VPUPBusinessReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA823B223D100B5EA85 /* VPUPBusinessReport.h */; };
-		D0666BCB23B223D100B5EA85 /* VPUPBaseReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA923B223D100B5EA85 /* VPUPBaseReport.h */; };
+		D0666BCB23B223D100B5EA85 /* VPUPBaseReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA923B223D100B5EA85 /* VPUPBaseReport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0666BCC23B223D100B5EA85 /* VPUPBaseReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA923B223D100B5EA85 /* VPUPBaseReport.h */; };
 		D0666BCD23B223D100B5EA85 /* VPUPBaseReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BA923B223D100B5EA85 /* VPUPBaseReport.h */; };
 		D0666BCE23B223D100B5EA85 /* VPUPLogReport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BAA23B223D100B5EA85 /* VPUPLogReport.m */; };
 		D0666BCF23B223D100B5EA85 /* VPUPLogReport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BAA23B223D100B5EA85 /* VPUPLogReport.m */; };
 		D0666BD023B223D100B5EA85 /* VPUPLogReport.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BAA23B223D100B5EA85 /* VPUPLogReport.m */; };
+		D0666BD123B223D100B5EA85 /* VPUPReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAB23B223D100B5EA85 /* VPUPReport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0666BD223B223D100B5EA85 /* VPUPReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAB23B223D100B5EA85 /* VPUPReport.h */; };
+		D0666BD323B223D100B5EA85 /* VPUPReport.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAB23B223D100B5EA85 /* VPUPReport.h */; };
 		D0666BD423B223D100B5EA85 /* VPUPReportLogMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BAC23B223D100B5EA85 /* VPUPReportLogMessage.m */; };
 		D0666BD523B223D100B5EA85 /* VPUPReportLogMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BAC23B223D100B5EA85 /* VPUPReportLogMessage.m */; };
 		D0666BD623B223D100B5EA85 /* VPUPReportLogMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0666BAC23B223D100B5EA85 /* VPUPReportLogMessage.m */; };
-		D0666BD723B223D100B5EA85 /* VPUPReportMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAD23B223D100B5EA85 /* VPUPReportMessage.h */; };
+		D0666BD723B223D100B5EA85 /* VPUPReportMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAD23B223D100B5EA85 /* VPUPReportMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0666BD823B223D100B5EA85 /* VPUPReportMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAD23B223D100B5EA85 /* VPUPReportMessage.h */; };
 		D0666BD923B223D100B5EA85 /* VPUPReportMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAD23B223D100B5EA85 /* VPUPReportMessage.h */; };
-		D0666BDA23B223D100B5EA85 /* VPUPCrashManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAE23B223D100B5EA85 /* VPUPCrashManager.h */; };
+		D0666BDA23B223D100B5EA85 /* VPUPCrashManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAE23B223D100B5EA85 /* VPUPCrashManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0666BDB23B223D100B5EA85 /* VPUPCrashManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAE23B223D100B5EA85 /* VPUPCrashManager.h */; };
 		D0666BDC23B223D100B5EA85 /* VPUPCrashManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAE23B223D100B5EA85 /* VPUPCrashManager.h */; };
-		D0666BDD23B223D100B5EA85 /* VPUPReportEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAF23B223D100B5EA85 /* VPUPReportEnum.h */; };
+		D0666BDD23B223D100B5EA85 /* VPUPReportEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAF23B223D100B5EA85 /* VPUPReportEnum.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0666BDE23B223D100B5EA85 /* VPUPReportEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAF23B223D100B5EA85 /* VPUPReportEnum.h */; };
 		D0666BDF23B223D100B5EA85 /* VPUPReportEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = D0666BAF23B223D100B5EA85 /* VPUPReportEnum.h */; };
-		D07CB7AA207B1511001C3E6A /* VPUPSVGAParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D07CB7A3207B1511001C3E6A /* VPUPSVGAParser.h */; };
+		D07CB7AA207B1511001C3E6A /* VPUPSVGAParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D07CB7A3207B1511001C3E6A /* VPUPSVGAParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D07CB7AB207B1511001C3E6A /* VPUPSVGAParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D07CB7A3207B1511001C3E6A /* VPUPSVGAParser.h */; };
 		D07CB7AC207B1511001C3E6A /* VPUPSVGAParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D07CB7A3207B1511001C3E6A /* VPUPSVGAParser.h */; };
-		D07CB7AD207B1511001C3E6A /* VPUPSVGAPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D07CB7A4207B1511001C3E6A /* VPUPSVGAPlayer.h */; };
+		D07CB7AD207B1511001C3E6A /* VPUPSVGAPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D07CB7A4207B1511001C3E6A /* VPUPSVGAPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D07CB7AE207B1511001C3E6A /* VPUPSVGAPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D07CB7A4207B1511001C3E6A /* VPUPSVGAPlayer.h */; };
 		D07CB7AF207B1511001C3E6A /* VPUPSVGAPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D07CB7A4207B1511001C3E6A /* VPUPSVGAPlayer.h */; };
 		D07CB7B0207B1511001C3E6A /* VPUPSVGAParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CB7A5207B1511001C3E6A /* VPUPSVGAParser.m */; };
@@ -814,43 +858,43 @@
 		D07CB7B3207B1511001C3E6A /* VPUPSVGAPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CB7A6207B1511001C3E6A /* VPUPSVGAPlayer.m */; };
 		D07CB7B4207B1511001C3E6A /* VPUPSVGAPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CB7A6207B1511001C3E6A /* VPUPSVGAPlayer.m */; };
 		D07CB7B5207B1511001C3E6A /* VPUPSVGAPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CB7A6207B1511001C3E6A /* VPUPSVGAPlayer.m */; };
-		D0928C44207DAA4E008AB5EC /* VPUPVideoPlayerSize.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C42207DAA4E008AB5EC /* VPUPVideoPlayerSize.h */; };
+		D0928C44207DAA4E008AB5EC /* VPUPVideoPlayerSize.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C42207DAA4E008AB5EC /* VPUPVideoPlayerSize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928C45207DAA4E008AB5EC /* VPUPVideoPlayerSize.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C42207DAA4E008AB5EC /* VPUPVideoPlayerSize.h */; };
 		D0928C46207DAA4E008AB5EC /* VPUPVideoPlayerSize.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C42207DAA4E008AB5EC /* VPUPVideoPlayerSize.h */; };
 		D0928C47207DAA4E008AB5EC /* VPUPVideoPlayerSize.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C43207DAA4E008AB5EC /* VPUPVideoPlayerSize.m */; };
 		D0928C48207DAA4E008AB5EC /* VPUPVideoPlayerSize.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C43207DAA4E008AB5EC /* VPUPVideoPlayerSize.m */; };
 		D0928C49207DAA4E008AB5EC /* VPUPVideoPlayerSize.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C43207DAA4E008AB5EC /* VPUPVideoPlayerSize.m */; };
-		D0928C4B207DAACA008AB5EC /* VPUPDataServiceHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C4A207DAACA008AB5EC /* VPUPDataServiceHeader.h */; };
+		D0928C4B207DAACA008AB5EC /* VPUPDataServiceHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C4A207DAACA008AB5EC /* VPUPDataServiceHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928C4C207DAACA008AB5EC /* VPUPDataServiceHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C4A207DAACA008AB5EC /* VPUPDataServiceHeader.h */; };
 		D0928C4D207DAACA008AB5EC /* VPUPDataServiceHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C4A207DAACA008AB5EC /* VPUPDataServiceHeader.h */; };
 		D0928C55208471A1008AB5EC /* VPUPNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C53208471A0008AB5EC /* VPUPNetworkReachabilityManager.m */; };
 		D0928C56208471A1008AB5EC /* VPUPNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C53208471A0008AB5EC /* VPUPNetworkReachabilityManager.m */; };
 		D0928C57208471A1008AB5EC /* VPUPNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C53208471A0008AB5EC /* VPUPNetworkReachabilityManager.m */; };
-		D0928C58208471A1008AB5EC /* VPUPNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C54208471A1008AB5EC /* VPUPNetworkReachabilityManager.h */; };
+		D0928C58208471A1008AB5EC /* VPUPNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C54208471A1008AB5EC /* VPUPNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928C59208471A1008AB5EC /* VPUPNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C54208471A1008AB5EC /* VPUPNetworkReachabilityManager.h */; };
 		D0928C5A208471A1008AB5EC /* VPUPNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C54208471A1008AB5EC /* VPUPNetworkReachabilityManager.h */; };
-		D0928C982088A0C2008AB5EC /* VPUPSDWebImagePrefetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C732088A0C1008AB5EC /* VPUPSDWebImagePrefetcher.h */; };
+		D0928C982088A0C2008AB5EC /* VPUPSDWebImagePrefetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C732088A0C1008AB5EC /* VPUPSDWebImagePrefetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928C992088A0C2008AB5EC /* VPUPSDWebImagePrefetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C732088A0C1008AB5EC /* VPUPSDWebImagePrefetcher.h */; };
 		D0928C9A2088A0C2008AB5EC /* VPUPSDWebImagePrefetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C732088A0C1008AB5EC /* VPUPSDWebImagePrefetcher.h */; };
-		D0928C9B2088A0C2008AB5EC /* VPUPSDImageCacheConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C742088A0C1008AB5EC /* VPUPSDImageCacheConfig.h */; };
+		D0928C9B2088A0C2008AB5EC /* VPUPSDImageCacheConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C742088A0C1008AB5EC /* VPUPSDImageCacheConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928C9C2088A0C2008AB5EC /* VPUPSDImageCacheConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C742088A0C1008AB5EC /* VPUPSDImageCacheConfig.h */; };
 		D0928C9D2088A0C2008AB5EC /* VPUPSDImageCacheConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C742088A0C1008AB5EC /* VPUPSDImageCacheConfig.h */; };
-		D0928C9E2088A0C2008AB5EC /* VPUPSDWebImageGIFCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C752088A0C1008AB5EC /* VPUPSDWebImageGIFCoder.h */; };
+		D0928C9E2088A0C2008AB5EC /* VPUPSDWebImageGIFCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C752088A0C1008AB5EC /* VPUPSDWebImageGIFCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928C9F2088A0C2008AB5EC /* VPUPSDWebImageGIFCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C752088A0C1008AB5EC /* VPUPSDWebImageGIFCoder.h */; };
 		D0928CA02088A0C2008AB5EC /* VPUPSDWebImageGIFCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C752088A0C1008AB5EC /* VPUPSDWebImageGIFCoder.h */; };
 		D0928CA12088A0C2008AB5EC /* NSData+VPUPImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C762088A0C1008AB5EC /* NSData+VPUPImageContentType.m */; };
 		D0928CA22088A0C2008AB5EC /* NSData+VPUPImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C762088A0C1008AB5EC /* NSData+VPUPImageContentType.m */; };
 		D0928CA32088A0C2008AB5EC /* NSData+VPUPImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C762088A0C1008AB5EC /* NSData+VPUPImageContentType.m */; };
-		D0928CA42088A0C2008AB5EC /* VPUPSDWebImageCodersManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C772088A0C1008AB5EC /* VPUPSDWebImageCodersManager.h */; };
+		D0928CA42088A0C2008AB5EC /* VPUPSDWebImageCodersManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C772088A0C1008AB5EC /* VPUPSDWebImageCodersManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CA52088A0C2008AB5EC /* VPUPSDWebImageCodersManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C772088A0C1008AB5EC /* VPUPSDWebImageCodersManager.h */; };
 		D0928CA62088A0C2008AB5EC /* VPUPSDWebImageCodersManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C772088A0C1008AB5EC /* VPUPSDWebImageCodersManager.h */; };
-		D0928CA72088A0C2008AB5EC /* VPUPSDImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C782088A0C1008AB5EC /* VPUPSDImageCache.h */; };
+		D0928CA72088A0C2008AB5EC /* VPUPSDImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C782088A0C1008AB5EC /* VPUPSDImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CA82088A0C2008AB5EC /* VPUPSDImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C782088A0C1008AB5EC /* VPUPSDImageCache.h */; };
 		D0928CA92088A0C2008AB5EC /* VPUPSDImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C782088A0C1008AB5EC /* VPUPSDImageCache.h */; };
-		D0928CAA2088A0C2008AB5EC /* VPUPSDWebImageOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C792088A0C1008AB5EC /* VPUPSDWebImageOperation.h */; };
+		D0928CAA2088A0C2008AB5EC /* VPUPSDWebImageOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C792088A0C1008AB5EC /* VPUPSDWebImageOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CAB2088A0C2008AB5EC /* VPUPSDWebImageOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C792088A0C1008AB5EC /* VPUPSDWebImageOperation.h */; };
 		D0928CAC2088A0C2008AB5EC /* VPUPSDWebImageOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C792088A0C1008AB5EC /* VPUPSDWebImageOperation.h */; };
-		D0928CAD2088A0C2008AB5EC /* VPUPSDWebImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C7A2088A0C1008AB5EC /* VPUPSDWebImageDownloader.h */; };
+		D0928CAD2088A0C2008AB5EC /* VPUPSDWebImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C7A2088A0C1008AB5EC /* VPUPSDWebImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CAE2088A0C2008AB5EC /* VPUPSDWebImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C7A2088A0C1008AB5EC /* VPUPSDWebImageDownloader.h */; };
 		D0928CAF2088A0C2008AB5EC /* VPUPSDWebImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C7A2088A0C1008AB5EC /* VPUPSDWebImageDownloader.h */; };
 		D0928CB02088A0C2008AB5EC /* UIImage+VPUPMultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C7B2088A0C1008AB5EC /* UIImage+VPUPMultiFormat.m */; };
@@ -865,28 +909,28 @@
 		D0928CB92088A0C2008AB5EC /* VPUPSDWebImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C7E2088A0C1008AB5EC /* VPUPSDWebImageFrame.m */; };
 		D0928CBA2088A0C2008AB5EC /* VPUPSDWebImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C7E2088A0C1008AB5EC /* VPUPSDWebImageFrame.m */; };
 		D0928CBB2088A0C2008AB5EC /* VPUPSDWebImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C7E2088A0C1008AB5EC /* VPUPSDWebImageFrame.m */; };
-		D0928CBC2088A0C2008AB5EC /* VPUPSDWebImageDownloaderOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C7F2088A0C1008AB5EC /* VPUPSDWebImageDownloaderOperation.h */; };
+		D0928CBC2088A0C2008AB5EC /* VPUPSDWebImageDownloaderOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C7F2088A0C1008AB5EC /* VPUPSDWebImageDownloaderOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CBD2088A0C2008AB5EC /* VPUPSDWebImageDownloaderOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C7F2088A0C1008AB5EC /* VPUPSDWebImageDownloaderOperation.h */; };
 		D0928CBE2088A0C2008AB5EC /* VPUPSDWebImageDownloaderOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C7F2088A0C1008AB5EC /* VPUPSDWebImageDownloaderOperation.h */; };
-		D0928CBF2088A0C2008AB5EC /* VPUPSDWebImageImageIOCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C802088A0C1008AB5EC /* VPUPSDWebImageImageIOCoder.h */; };
+		D0928CBF2088A0C2008AB5EC /* VPUPSDWebImageImageIOCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C802088A0C1008AB5EC /* VPUPSDWebImageImageIOCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CC02088A0C2008AB5EC /* VPUPSDWebImageImageIOCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C802088A0C1008AB5EC /* VPUPSDWebImageImageIOCoder.h */; };
 		D0928CC12088A0C2008AB5EC /* VPUPSDWebImageImageIOCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C802088A0C1008AB5EC /* VPUPSDWebImageImageIOCoder.h */; };
-		D0928CC22088A0C2008AB5EC /* VPUPSDWebImageCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C812088A0C1008AB5EC /* VPUPSDWebImageCoder.h */; };
+		D0928CC22088A0C2008AB5EC /* VPUPSDWebImageCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C812088A0C1008AB5EC /* VPUPSDWebImageCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CC32088A0C2008AB5EC /* VPUPSDWebImageCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C812088A0C1008AB5EC /* VPUPSDWebImageCoder.h */; };
 		D0928CC42088A0C2008AB5EC /* VPUPSDWebImageCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C812088A0C1008AB5EC /* VPUPSDWebImageCoder.h */; };
 		D0928CC52088A0C2008AB5EC /* NSImage+VPUPWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C822088A0C1008AB5EC /* NSImage+VPUPWebCache.m */; };
 		D0928CC62088A0C2008AB5EC /* NSImage+VPUPWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C822088A0C1008AB5EC /* NSImage+VPUPWebCache.m */; };
 		D0928CC72088A0C2008AB5EC /* NSImage+VPUPWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C822088A0C1008AB5EC /* NSImage+VPUPWebCache.m */; };
-		D0928CC82088A0C2008AB5EC /* VPUPSDWebImageCoderHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C832088A0C1008AB5EC /* VPUPSDWebImageCoderHelper.h */; };
+		D0928CC82088A0C2008AB5EC /* VPUPSDWebImageCoderHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C832088A0C1008AB5EC /* VPUPSDWebImageCoderHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CC92088A0C2008AB5EC /* VPUPSDWebImageCoderHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C832088A0C1008AB5EC /* VPUPSDWebImageCoderHelper.h */; };
 		D0928CCA2088A0C2008AB5EC /* VPUPSDWebImageCoderHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C832088A0C1008AB5EC /* VPUPSDWebImageCoderHelper.h */; };
 		D0928CCB2088A0C2008AB5EC /* VPUPSDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C842088A0C1008AB5EC /* VPUPSDWebImageWebPCoder.m */; };
 		D0928CCC2088A0C2008AB5EC /* VPUPSDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C842088A0C1008AB5EC /* VPUPSDWebImageWebPCoder.m */; };
 		D0928CCD2088A0C2008AB5EC /* VPUPSDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C842088A0C1008AB5EC /* VPUPSDWebImageWebPCoder.m */; };
-		D0928CCE2088A0C2008AB5EC /* UIView+VPUPWebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C852088A0C1008AB5EC /* UIView+VPUPWebCacheOperation.h */; };
+		D0928CCE2088A0C2008AB5EC /* UIView+VPUPWebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C852088A0C1008AB5EC /* UIView+VPUPWebCacheOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CCF2088A0C2008AB5EC /* UIView+VPUPWebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C852088A0C1008AB5EC /* UIView+VPUPWebCacheOperation.h */; };
 		D0928CD02088A0C2008AB5EC /* UIView+VPUPWebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C852088A0C1008AB5EC /* UIView+VPUPWebCacheOperation.h */; };
-		D0928CD12088A0C2008AB5EC /* NSData+VPUPImageContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C862088A0C1008AB5EC /* NSData+VPUPImageContentType.h */; };
+		D0928CD12088A0C2008AB5EC /* NSData+VPUPImageContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C862088A0C1008AB5EC /* NSData+VPUPImageContentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CD22088A0C2008AB5EC /* NSData+VPUPImageContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C862088A0C1008AB5EC /* NSData+VPUPImageContentType.h */; };
 		D0928CD32088A0C2008AB5EC /* NSData+VPUPImageContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C862088A0C1008AB5EC /* NSData+VPUPImageContentType.h */; };
 		D0928CD42088A0C2008AB5EC /* VPUPSDWebImageGIFCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C872088A0C1008AB5EC /* VPUPSDWebImageGIFCoder.m */; };
@@ -913,51 +957,52 @@
 		D0928CE92088A0C2008AB5EC /* VPUPSDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C8E2088A0C1008AB5EC /* VPUPSDWebImageDownloaderOperation.m */; };
 		D0928CEA2088A0C2008AB5EC /* VPUPSDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C8E2088A0C1008AB5EC /* VPUPSDWebImageDownloaderOperation.m */; };
 		D0928CEB2088A0C2008AB5EC /* VPUPSDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C8E2088A0C1008AB5EC /* VPUPSDWebImageDownloaderOperation.m */; };
-		D0928CEC2088A0C2008AB5EC /* VPUPSDWebImageFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C8F2088A0C1008AB5EC /* VPUPSDWebImageFrame.h */; };
+		D0928CEC2088A0C2008AB5EC /* VPUPSDWebImageFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C8F2088A0C1008AB5EC /* VPUPSDWebImageFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CED2088A0C2008AB5EC /* VPUPSDWebImageFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C8F2088A0C1008AB5EC /* VPUPSDWebImageFrame.h */; };
 		D0928CEE2088A0C2008AB5EC /* VPUPSDWebImageFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C8F2088A0C1008AB5EC /* VPUPSDWebImageFrame.h */; };
-		D0928CEF2088A0C2008AB5EC /* VPUPSDWebImageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C902088A0C1008AB5EC /* VPUPSDWebImageManager.h */; };
+		D0928CEF2088A0C2008AB5EC /* VPUPSDWebImageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C902088A0C1008AB5EC /* VPUPSDWebImageManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CF02088A0C2008AB5EC /* VPUPSDWebImageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C902088A0C1008AB5EC /* VPUPSDWebImageManager.h */; };
 		D0928CF12088A0C2008AB5EC /* VPUPSDWebImageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C902088A0C1008AB5EC /* VPUPSDWebImageManager.h */; };
-		D0928CF22088A0C2008AB5EC /* VPUPSDWebImageCompat.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C912088A0C1008AB5EC /* VPUPSDWebImageCompat.h */; };
+		D0928CF22088A0C2008AB5EC /* VPUPSDWebImageCompat.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C912088A0C1008AB5EC /* VPUPSDWebImageCompat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CF32088A0C2008AB5EC /* VPUPSDWebImageCompat.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C912088A0C1008AB5EC /* VPUPSDWebImageCompat.h */; };
 		D0928CF42088A0C2008AB5EC /* VPUPSDWebImageCompat.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C912088A0C1008AB5EC /* VPUPSDWebImageCompat.h */; };
-		D0928CF52088A0C2008AB5EC /* UIImage+VPUPMultiFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C922088A0C1008AB5EC /* UIImage+VPUPMultiFormat.h */; };
+		D0928CF52088A0C2008AB5EC /* UIImage+VPUPMultiFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C922088A0C1008AB5EC /* UIImage+VPUPMultiFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CF62088A0C2008AB5EC /* UIImage+VPUPMultiFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C922088A0C1008AB5EC /* UIImage+VPUPMultiFormat.h */; };
 		D0928CF72088A0C2008AB5EC /* UIImage+VPUPMultiFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C922088A0C1008AB5EC /* UIImage+VPUPMultiFormat.h */; };
 		D0928CF82088A0C2008AB5EC /* UIView+VPUPWebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C932088A0C1008AB5EC /* UIView+VPUPWebCacheOperation.m */; };
 		D0928CF92088A0C2008AB5EC /* UIView+VPUPWebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C932088A0C1008AB5EC /* UIView+VPUPWebCacheOperation.m */; };
 		D0928CFA2088A0C2008AB5EC /* UIView+VPUPWebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C932088A0C1008AB5EC /* UIView+VPUPWebCacheOperation.m */; };
-		D0928CFB2088A0C2008AB5EC /* VPUPSDWebImageWebPCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C942088A0C1008AB5EC /* VPUPSDWebImageWebPCoder.h */; };
+		D0928CFB2088A0C2008AB5EC /* VPUPSDWebImageWebPCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C942088A0C1008AB5EC /* VPUPSDWebImageWebPCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928CFC2088A0C2008AB5EC /* VPUPSDWebImageWebPCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C942088A0C1008AB5EC /* VPUPSDWebImageWebPCoder.h */; };
 		D0928CFD2088A0C2008AB5EC /* VPUPSDWebImageWebPCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C942088A0C1008AB5EC /* VPUPSDWebImageWebPCoder.h */; };
 		D0928CFE2088A0C2008AB5EC /* VPUPSDWebImageCoderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C952088A0C1008AB5EC /* VPUPSDWebImageCoderHelper.m */; };
 		D0928CFF2088A0C2008AB5EC /* VPUPSDWebImageCoderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C952088A0C1008AB5EC /* VPUPSDWebImageCoderHelper.m */; };
 		D0928D002088A0C2008AB5EC /* VPUPSDWebImageCoderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C952088A0C1008AB5EC /* VPUPSDWebImageCoderHelper.m */; };
-		D0928D012088A0C2008AB5EC /* NSImage+VPUPWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C962088A0C1008AB5EC /* NSImage+VPUPWebCache.h */; };
+		D0928D012088A0C2008AB5EC /* NSImage+VPUPWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C962088A0C1008AB5EC /* NSImage+VPUPWebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928D022088A0C2008AB5EC /* NSImage+VPUPWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C962088A0C1008AB5EC /* NSImage+VPUPWebCache.h */; };
 		D0928D032088A0C2008AB5EC /* NSImage+VPUPWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928C962088A0C1008AB5EC /* NSImage+VPUPWebCache.h */; };
 		D0928D042088A0C2008AB5EC /* VPUPSDWebImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C972088A0C1008AB5EC /* VPUPSDWebImageCoder.m */; };
 		D0928D052088A0C2008AB5EC /* VPUPSDWebImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C972088A0C1008AB5EC /* VPUPSDWebImageCoder.m */; };
 		D0928D062088A0C2008AB5EC /* VPUPSDWebImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928C972088A0C1008AB5EC /* VPUPSDWebImageCoder.m */; };
-		D0928D09208ED28E008AB5EC /* VPUPDeviceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928D07208ED28D008AB5EC /* VPUPDeviceUtil.h */; };
+		D0928D09208ED28E008AB5EC /* VPUPDeviceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928D07208ED28D008AB5EC /* VPUPDeviceUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0928D0A208ED28E008AB5EC /* VPUPDeviceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928D07208ED28D008AB5EC /* VPUPDeviceUtil.h */; };
 		D0928D0B208ED28E008AB5EC /* VPUPDeviceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D0928D07208ED28D008AB5EC /* VPUPDeviceUtil.h */; };
 		D0928D0C208ED28E008AB5EC /* VPUPDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928D08208ED28D008AB5EC /* VPUPDeviceUtil.m */; };
 		D0928D0D208ED28E008AB5EC /* VPUPDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928D08208ED28D008AB5EC /* VPUPDeviceUtil.m */; };
 		D0928D0E208ED28E008AB5EC /* VPUPDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0928D08208ED28D008AB5EC /* VPUPDeviceUtil.m */; };
-		D0BD1AAA212FE60600A087F2 /* VPUPRSAUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BD1AA8212FE60600A087F2 /* VPUPRSAUtil.h */; };
+		D0BD1AAA212FE60600A087F2 /* VPUPRSAUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BD1AA8212FE60600A087F2 /* VPUPRSAUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0BD1AAB212FE60600A087F2 /* VPUPRSAUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BD1AA8212FE60600A087F2 /* VPUPRSAUtil.h */; };
 		D0BD1AAC212FE60600A087F2 /* VPUPRSAUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BD1AA8212FE60600A087F2 /* VPUPRSAUtil.h */; };
 		D0BD1AAD212FE60600A087F2 /* VPUPRSAUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1AA9212FE60600A087F2 /* VPUPRSAUtil.m */; };
 		D0BD1AAE212FE60600A087F2 /* VPUPRSAUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1AA9212FE60600A087F2 /* VPUPRSAUtil.m */; };
 		D0BD1AAF212FE60600A087F2 /* VPUPRSAUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1AA9212FE60600A087F2 /* VPUPRSAUtil.m */; };
-		D0BD1AB72130129F00A087F2 /* VPUPIPAddressUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BD1AB52130129F00A087F2 /* VPUPIPAddressUtil.h */; };
+		D0BD1AB72130129F00A087F2 /* VPUPIPAddressUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BD1AB52130129F00A087F2 /* VPUPIPAddressUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0BD1AB82130129F00A087F2 /* VPUPIPAddressUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BD1AB52130129F00A087F2 /* VPUPIPAddressUtil.h */; };
 		D0BD1AB92130129F00A087F2 /* VPUPIPAddressUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BD1AB52130129F00A087F2 /* VPUPIPAddressUtil.h */; };
 		D0BD1ABA2130129F00A087F2 /* VPUPIPAddressUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1AB62130129F00A087F2 /* VPUPIPAddressUtil.m */; };
 		D0BD1ABB2130129F00A087F2 /* VPUPIPAddressUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1AB62130129F00A087F2 /* VPUPIPAddressUtil.m */; };
 		D0BD1ABC2130129F00A087F2 /* VPUPIPAddressUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BD1AB62130129F00A087F2 /* VPUPIPAddressUtil.m */; };
+		D0C3A1DB206B3C9100C21CA7 /* VPUPRoutesHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0C3A1DA206B3C9100C21CA7 /* VPUPRoutesHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0BF9BC524286A4E006B4521 /* VPUPACRCloudAPIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BF9BC424286A4E006B4521 /* VPUPACRCloudAPIManager.h */; };
 		D0BF9BC624286A4E006B4521 /* VPUPACRCloudAPIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BF9BC424286A4E006B4521 /* VPUPACRCloudAPIManager.h */; };
 		D0BF9BC724286A4E006B4521 /* VPUPACRCloudAPIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0BF9BC424286A4E006B4521 /* VPUPACRCloudAPIManager.h */; };
@@ -973,124 +1018,124 @@
 		D0D6813F206E29AB0053E42A /* VPUPSVGAPlayerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D6813B206E29AB0053E42A /* VPUPSVGAPlayerFactory.m */; };
 		D0D68140206E29AB0053E42A /* VPUPSVGAPlayerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D6813B206E29AB0053E42A /* VPUPSVGAPlayerFactory.m */; };
 		D0D68141206E29AB0053E42A /* VPUPSVGAPlayerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D6813B206E29AB0053E42A /* VPUPSVGAPlayerFactory.m */; };
-		D0D68142206E29AB0053E42A /* VPUPSVGAPlayerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D6813C206E29AB0053E42A /* VPUPSVGAPlayerProtocol.h */; };
+		D0D68142206E29AB0053E42A /* VPUPSVGAPlayerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D6813C206E29AB0053E42A /* VPUPSVGAPlayerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0D68143206E29AB0053E42A /* VPUPSVGAPlayerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D6813C206E29AB0053E42A /* VPUPSVGAPlayerProtocol.h */; };
 		D0D68144206E29AB0053E42A /* VPUPSVGAPlayerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D6813C206E29AB0053E42A /* VPUPSVGAPlayerProtocol.h */; };
-		D0D68145206E29AB0053E42A /* VPUPSVGAPlayerHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D6813D206E29AB0053E42A /* VPUPSVGAPlayerHeader.h */; };
+		D0D68145206E29AB0053E42A /* VPUPSVGAPlayerHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D6813D206E29AB0053E42A /* VPUPSVGAPlayerHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0D68146206E29AB0053E42A /* VPUPSVGAPlayerHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D6813D206E29AB0053E42A /* VPUPSVGAPlayerHeader.h */; };
 		D0D68147206E29AB0053E42A /* VPUPSVGAPlayerHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D6813D206E29AB0053E42A /* VPUPSVGAPlayerHeader.h */; };
-		D0D68148206E29AB0053E42A /* VPUPSVGAPlayerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D6813E206E29AB0053E42A /* VPUPSVGAPlayerFactory.h */; };
+		D0D68148206E29AB0053E42A /* VPUPSVGAPlayerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D6813E206E29AB0053E42A /* VPUPSVGAPlayerFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0D68149206E29AB0053E42A /* VPUPSVGAPlayerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D6813E206E29AB0053E42A /* VPUPSVGAPlayerFactory.h */; };
 		D0D6814A206E29AB0053E42A /* VPUPSVGAPlayerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D6813E206E29AB0053E42A /* VPUPSVGAPlayerFactory.h */; };
-		D0E4922A1FBECC7300BE73A9 /* VPUPDownloadBatchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492221FBECC7300BE73A9 /* VPUPDownloadBatchRequest.h */; };
+		D0E4922A1FBECC7300BE73A9 /* VPUPDownloadBatchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492221FBECC7300BE73A9 /* VPUPDownloadBatchRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E4922B1FBECC7300BE73A9 /* VPUPDownloadBatchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492221FBECC7300BE73A9 /* VPUPDownloadBatchRequest.h */; };
 		D0E4922C1FBECC7300BE73A9 /* VPUPDownloadBatchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492221FBECC7300BE73A9 /* VPUPDownloadBatchRequest.h */; };
 		D0E4922D1FBECC7300BE73A9 /* VPUPDownloadBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E492231FBECC7300BE73A9 /* VPUPDownloadBatchRequest.m */; };
 		D0E4922E1FBECC7300BE73A9 /* VPUPDownloadBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E492231FBECC7300BE73A9 /* VPUPDownloadBatchRequest.m */; };
 		D0E4922F1FBECC7300BE73A9 /* VPUPDownloadBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E492231FBECC7300BE73A9 /* VPUPDownloadBatchRequest.m */; };
-		D0E492301FBECC7300BE73A9 /* VPUPDownloaderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492241FBECC7300BE73A9 /* VPUPDownloaderManager.h */; };
+		D0E492301FBECC7300BE73A9 /* VPUPDownloaderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492241FBECC7300BE73A9 /* VPUPDownloaderManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E492311FBECC7300BE73A9 /* VPUPDownloaderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492241FBECC7300BE73A9 /* VPUPDownloaderManager.h */; };
 		D0E492321FBECC7300BE73A9 /* VPUPDownloaderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492241FBECC7300BE73A9 /* VPUPDownloaderManager.h */; };
 		D0E492331FBECC7300BE73A9 /* VPUPDownloaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E492251FBECC7300BE73A9 /* VPUPDownloaderManager.m */; };
 		D0E492341FBECC7300BE73A9 /* VPUPDownloaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E492251FBECC7300BE73A9 /* VPUPDownloaderManager.m */; };
 		D0E492351FBECC7300BE73A9 /* VPUPDownloaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E492251FBECC7300BE73A9 /* VPUPDownloaderManager.m */; };
-		D0E492361FBECC7300BE73A9 /* VPUPDownloadRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492261FBECC7300BE73A9 /* VPUPDownloadRequest.h */; };
+		D0E492361FBECC7300BE73A9 /* VPUPDownloadRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492261FBECC7300BE73A9 /* VPUPDownloadRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E492371FBECC7300BE73A9 /* VPUPDownloadRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492261FBECC7300BE73A9 /* VPUPDownloadRequest.h */; };
 		D0E492381FBECC7300BE73A9 /* VPUPDownloadRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492261FBECC7300BE73A9 /* VPUPDownloadRequest.h */; };
 		D0E492391FBECC7300BE73A9 /* VPUPDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E492271FBECC7300BE73A9 /* VPUPDownloadRequest.m */; };
 		D0E4923A1FBECC7300BE73A9 /* VPUPDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E492271FBECC7300BE73A9 /* VPUPDownloadRequest.m */; };
 		D0E4923B1FBECC7300BE73A9 /* VPUPDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E492271FBECC7300BE73A9 /* VPUPDownloadRequest.m */; };
-		D0E4923C1FBECC7300BE73A9 /* VPUPResumeDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492281FBECC7300BE73A9 /* VPUPResumeDownloader.h */; };
+		D0E4923C1FBECC7300BE73A9 /* VPUPResumeDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492281FBECC7300BE73A9 /* VPUPResumeDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E4923D1FBECC7300BE73A9 /* VPUPResumeDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492281FBECC7300BE73A9 /* VPUPResumeDownloader.h */; };
 		D0E4923E1FBECC7300BE73A9 /* VPUPResumeDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E492281FBECC7300BE73A9 /* VPUPResumeDownloader.h */; };
 		D0E4923F1FBECC7300BE73A9 /* VPUPResumeDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E492291FBECC7300BE73A9 /* VPUPResumeDownloader.m */; };
 		D0E492401FBECC7300BE73A9 /* VPUPResumeDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E492291FBECC7300BE73A9 /* VPUPResumeDownloader.m */; };
 		D0E492411FBECC7300BE73A9 /* VPUPResumeDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E492291FBECC7300BE73A9 /* VPUPResumeDownloader.m */; };
-		D0E9431E1FF0E1B50038BD8B /* VPUPClippingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943021FF0E1B50038BD8B /* VPUPClippingView.h */; };
+		D0E9431E1FF0E1B50038BD8B /* VPUPClippingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943021FF0E1B50038BD8B /* VPUPClippingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E9431F1FF0E1B50038BD8B /* VPUPClippingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943021FF0E1B50038BD8B /* VPUPClippingView.h */; };
 		D0E943201FF0E1B50038BD8B /* VPUPClippingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943021FF0E1B50038BD8B /* VPUPClippingView.h */; };
 		D0E943211FF0E1B50038BD8B /* VPUPClippingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943031FF0E1B50038BD8B /* VPUPClippingView.m */; };
 		D0E943221FF0E1B50038BD8B /* VPUPClippingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943031FF0E1B50038BD8B /* VPUPClippingView.m */; };
 		D0E943231FF0E1B50038BD8B /* VPUPClippingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943031FF0E1B50038BD8B /* VPUPClippingView.m */; };
-		D0E943241FF0E1B50038BD8B /* VPUPEditingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943041FF0E1B50038BD8B /* VPUPEditingView.h */; };
+		D0E943241FF0E1B50038BD8B /* VPUPEditingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943041FF0E1B50038BD8B /* VPUPEditingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E943251FF0E1B50038BD8B /* VPUPEditingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943041FF0E1B50038BD8B /* VPUPEditingView.h */; };
 		D0E943261FF0E1B50038BD8B /* VPUPEditingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943041FF0E1B50038BD8B /* VPUPEditingView.h */; };
 		D0E943271FF0E1B50038BD8B /* VPUPEditingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943051FF0E1B50038BD8B /* VPUPEditingView.m */; };
 		D0E943281FF0E1B50038BD8B /* VPUPEditingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943051FF0E1B50038BD8B /* VPUPEditingView.m */; };
 		D0E943291FF0E1B50038BD8B /* VPUPEditingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943051FF0E1B50038BD8B /* VPUPEditingView.m */; };
-		D0E9432A1FF0E1B50038BD8B /* VPUPGridLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943061FF0E1B50038BD8B /* VPUPGridLayer.h */; };
+		D0E9432A1FF0E1B50038BD8B /* VPUPGridLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943061FF0E1B50038BD8B /* VPUPGridLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E9432B1FF0E1B50038BD8B /* VPUPGridLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943061FF0E1B50038BD8B /* VPUPGridLayer.h */; };
 		D0E9432C1FF0E1B50038BD8B /* VPUPGridLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943061FF0E1B50038BD8B /* VPUPGridLayer.h */; };
 		D0E9432D1FF0E1B50038BD8B /* VPUPGridLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943071FF0E1B50038BD8B /* VPUPGridLayer.m */; };
 		D0E9432E1FF0E1B50038BD8B /* VPUPGridLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943071FF0E1B50038BD8B /* VPUPGridLayer.m */; };
 		D0E9432F1FF0E1B50038BD8B /* VPUPGridLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943071FF0E1B50038BD8B /* VPUPGridLayer.m */; };
-		D0E943301FF0E1B50038BD8B /* VPUPGridMaskLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943081FF0E1B50038BD8B /* VPUPGridMaskLayer.h */; };
+		D0E943301FF0E1B50038BD8B /* VPUPGridMaskLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943081FF0E1B50038BD8B /* VPUPGridMaskLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E943311FF0E1B50038BD8B /* VPUPGridMaskLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943081FF0E1B50038BD8B /* VPUPGridMaskLayer.h */; };
 		D0E943321FF0E1B50038BD8B /* VPUPGridMaskLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943081FF0E1B50038BD8B /* VPUPGridMaskLayer.h */; };
 		D0E943331FF0E1B50038BD8B /* VPUPGridMaskLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943091FF0E1B50038BD8B /* VPUPGridMaskLayer.m */; };
 		D0E943341FF0E1B50038BD8B /* VPUPGridMaskLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943091FF0E1B50038BD8B /* VPUPGridMaskLayer.m */; };
 		D0E943351FF0E1B50038BD8B /* VPUPGridMaskLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943091FF0E1B50038BD8B /* VPUPGridMaskLayer.m */; };
-		D0E943361FF0E1B50038BD8B /* VPUPGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9430A1FF0E1B50038BD8B /* VPUPGridView.h */; };
+		D0E943361FF0E1B50038BD8B /* VPUPGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9430A1FF0E1B50038BD8B /* VPUPGridView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E943371FF0E1B50038BD8B /* VPUPGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9430A1FF0E1B50038BD8B /* VPUPGridView.h */; };
 		D0E943381FF0E1B50038BD8B /* VPUPGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9430A1FF0E1B50038BD8B /* VPUPGridView.h */; };
 		D0E943391FF0E1B50038BD8B /* VPUPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9430B1FF0E1B50038BD8B /* VPUPGridView.m */; };
 		D0E9433A1FF0E1B50038BD8B /* VPUPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9430B1FF0E1B50038BD8B /* VPUPGridView.m */; };
 		D0E9433B1FF0E1B50038BD8B /* VPUPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9430B1FF0E1B50038BD8B /* VPUPGridView.m */; };
-		D0E9433C1FF0E1B50038BD8B /* VPUPPhotoEditingController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9430C1FF0E1B50038BD8B /* VPUPPhotoEditingController.h */; };
+		D0E9433C1FF0E1B50038BD8B /* VPUPPhotoEditingController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9430C1FF0E1B50038BD8B /* VPUPPhotoEditingController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E9433D1FF0E1B50038BD8B /* VPUPPhotoEditingController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9430C1FF0E1B50038BD8B /* VPUPPhotoEditingController.h */; };
 		D0E9433E1FF0E1B50038BD8B /* VPUPPhotoEditingController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9430C1FF0E1B50038BD8B /* VPUPPhotoEditingController.h */; };
 		D0E9433F1FF0E1B50038BD8B /* VPUPPhotoEditingController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9430D1FF0E1B50038BD8B /* VPUPPhotoEditingController.m */; };
 		D0E943401FF0E1B50038BD8B /* VPUPPhotoEditingController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9430D1FF0E1B50038BD8B /* VPUPPhotoEditingController.m */; };
 		D0E943411FF0E1B50038BD8B /* VPUPPhotoEditingController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9430D1FF0E1B50038BD8B /* VPUPPhotoEditingController.m */; };
-		D0E943421FF0E1B50038BD8B /* VPUPResizeControl.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9430E1FF0E1B50038BD8B /* VPUPResizeControl.h */; };
+		D0E943421FF0E1B50038BD8B /* VPUPResizeControl.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9430E1FF0E1B50038BD8B /* VPUPResizeControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E943431FF0E1B50038BD8B /* VPUPResizeControl.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9430E1FF0E1B50038BD8B /* VPUPResizeControl.h */; };
 		D0E943441FF0E1B50038BD8B /* VPUPResizeControl.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9430E1FF0E1B50038BD8B /* VPUPResizeControl.h */; };
 		D0E943451FF0E1B50038BD8B /* VPUPResizeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9430F1FF0E1B50038BD8B /* VPUPResizeControl.m */; };
 		D0E943461FF0E1B50038BD8B /* VPUPResizeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9430F1FF0E1B50038BD8B /* VPUPResizeControl.m */; };
 		D0E943471FF0E1B50038BD8B /* VPUPResizeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9430F1FF0E1B50038BD8B /* VPUPResizeControl.m */; };
-		D0E943481FF0E1B50038BD8B /* VPUPScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943101FF0E1B50038BD8B /* VPUPScrollView.h */; };
+		D0E943481FF0E1B50038BD8B /* VPUPScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943101FF0E1B50038BD8B /* VPUPScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E943491FF0E1B50038BD8B /* VPUPScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943101FF0E1B50038BD8B /* VPUPScrollView.h */; };
 		D0E9434A1FF0E1B50038BD8B /* VPUPScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943101FF0E1B50038BD8B /* VPUPScrollView.h */; };
 		D0E9434B1FF0E1B50038BD8B /* VPUPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943111FF0E1B50038BD8B /* VPUPScrollView.m */; };
 		D0E9434C1FF0E1B50038BD8B /* VPUPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943111FF0E1B50038BD8B /* VPUPScrollView.m */; };
 		D0E9434D1FF0E1B50038BD8B /* VPUPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943111FF0E1B50038BD8B /* VPUPScrollView.m */; };
-		D0E9434E1FF0E1B50038BD8B /* VPUPZoomingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943121FF0E1B50038BD8B /* VPUPZoomingView.h */; };
+		D0E9434E1FF0E1B50038BD8B /* VPUPZoomingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943121FF0E1B50038BD8B /* VPUPZoomingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E9434F1FF0E1B50038BD8B /* VPUPZoomingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943121FF0E1B50038BD8B /* VPUPZoomingView.h */; };
 		D0E943501FF0E1B50038BD8B /* VPUPZoomingView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943121FF0E1B50038BD8B /* VPUPZoomingView.h */; };
 		D0E943511FF0E1B50038BD8B /* VPUPZoomingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943131FF0E1B50038BD8B /* VPUPZoomingView.m */; };
 		D0E943521FF0E1B50038BD8B /* VPUPZoomingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943131FF0E1B50038BD8B /* VPUPZoomingView.m */; };
 		D0E943531FF0E1B50038BD8B /* VPUPZoomingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943131FF0E1B50038BD8B /* VPUPZoomingView.m */; };
-		D0E943541FF0E1B50038BD8B /* VPUPAssetCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943141FF0E1B50038BD8B /* VPUPAssetCell.h */; };
+		D0E943541FF0E1B50038BD8B /* VPUPAssetCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943141FF0E1B50038BD8B /* VPUPAssetCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E943551FF0E1B50038BD8B /* VPUPAssetCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943141FF0E1B50038BD8B /* VPUPAssetCell.h */; };
 		D0E943561FF0E1B50038BD8B /* VPUPAssetCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943141FF0E1B50038BD8B /* VPUPAssetCell.h */; };
 		D0E943571FF0E1B50038BD8B /* VPUPAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943151FF0E1B50038BD8B /* VPUPAssetCell.m */; };
 		D0E943581FF0E1B50038BD8B /* VPUPAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943151FF0E1B50038BD8B /* VPUPAssetCell.m */; };
 		D0E943591FF0E1B50038BD8B /* VPUPAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943151FF0E1B50038BD8B /* VPUPAssetCell.m */; };
-		D0E9435A1FF0E1B50038BD8B /* VPUPAssetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943161FF0E1B50038BD8B /* VPUPAssetModel.h */; };
+		D0E9435A1FF0E1B50038BD8B /* VPUPAssetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943161FF0E1B50038BD8B /* VPUPAssetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E9435B1FF0E1B50038BD8B /* VPUPAssetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943161FF0E1B50038BD8B /* VPUPAssetModel.h */; };
 		D0E9435C1FF0E1B50038BD8B /* VPUPAssetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943161FF0E1B50038BD8B /* VPUPAssetModel.h */; };
 		D0E9435D1FF0E1B60038BD8B /* VPUPAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943171FF0E1B50038BD8B /* VPUPAssetModel.m */; };
 		D0E9435E1FF0E1B60038BD8B /* VPUPAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943171FF0E1B50038BD8B /* VPUPAssetModel.m */; };
 		D0E9435F1FF0E1B60038BD8B /* VPUPAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943171FF0E1B50038BD8B /* VPUPAssetModel.m */; };
-		D0E943601FF0E1B60038BD8B /* VPUPImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943181FF0E1B50038BD8B /* VPUPImagePickerController.h */; };
+		D0E943601FF0E1B60038BD8B /* VPUPImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943181FF0E1B50038BD8B /* VPUPImagePickerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E943611FF0E1B60038BD8B /* VPUPImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943181FF0E1B50038BD8B /* VPUPImagePickerController.h */; };
 		D0E943621FF0E1B60038BD8B /* VPUPImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943181FF0E1B50038BD8B /* VPUPImagePickerController.h */; };
 		D0E943631FF0E1B60038BD8B /* VPUPImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943191FF0E1B50038BD8B /* VPUPImagePickerController.m */; };
 		D0E943641FF0E1B60038BD8B /* VPUPImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943191FF0E1B50038BD8B /* VPUPImagePickerController.m */; };
 		D0E943651FF0E1B60038BD8B /* VPUPImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943191FF0E1B50038BD8B /* VPUPImagePickerController.m */; };
-		D0E943661FF0E1B60038BD8B /* VPUPImagePickerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9431A1FF0E1B50038BD8B /* VPUPImagePickerManager.h */; };
+		D0E943661FF0E1B60038BD8B /* VPUPImagePickerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9431A1FF0E1B50038BD8B /* VPUPImagePickerManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E943671FF0E1B60038BD8B /* VPUPImagePickerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9431A1FF0E1B50038BD8B /* VPUPImagePickerManager.h */; };
 		D0E943681FF0E1B60038BD8B /* VPUPImagePickerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9431A1FF0E1B50038BD8B /* VPUPImagePickerManager.h */; };
 		D0E943691FF0E1B60038BD8B /* VPUPImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9431B1FF0E1B50038BD8B /* VPUPImagePickerManager.m */; };
 		D0E9436A1FF0E1B60038BD8B /* VPUPImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9431B1FF0E1B50038BD8B /* VPUPImagePickerManager.m */; };
 		D0E9436B1FF0E1B60038BD8B /* VPUPImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9431B1FF0E1B50038BD8B /* VPUPImagePickerManager.m */; };
-		D0E9436C1FF0E1B60038BD8B /* VPUPPhotoPickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9431C1FF0E1B50038BD8B /* VPUPPhotoPickerController.h */; };
+		D0E9436C1FF0E1B60038BD8B /* VPUPPhotoPickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9431C1FF0E1B50038BD8B /* VPUPPhotoPickerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E9436D1FF0E1B60038BD8B /* VPUPPhotoPickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9431C1FF0E1B50038BD8B /* VPUPPhotoPickerController.h */; };
 		D0E9436E1FF0E1B60038BD8B /* VPUPPhotoPickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E9431C1FF0E1B50038BD8B /* VPUPPhotoPickerController.h */; };
 		D0E9436F1FF0E1B60038BD8B /* VPUPPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9431D1FF0E1B50038BD8B /* VPUPPhotoPickerController.m */; };
 		D0E943701FF0E1B60038BD8B /* VPUPPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9431D1FF0E1B50038BD8B /* VPUPPhotoPickerController.m */; };
 		D0E943711FF0E1B60038BD8B /* VPUPPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E9431D1FF0E1B50038BD8B /* VPUPPhotoPickerController.m */; };
-		D0E943741FF0E9DE0038BD8B /* VPUPTopViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943721FF0E9DE0038BD8B /* VPUPTopViewController.h */; };
+		D0E943741FF0E9DE0038BD8B /* VPUPTopViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943721FF0E9DE0038BD8B /* VPUPTopViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E943751FF0E9DE0038BD8B /* VPUPTopViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943721FF0E9DE0038BD8B /* VPUPTopViewController.h */; };
 		D0E943761FF0E9DE0038BD8B /* VPUPTopViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E943721FF0E9DE0038BD8B /* VPUPTopViewController.h */; };
 		D0E943771FF0E9DE0038BD8B /* VPUPTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E943731FF0E9DE0038BD8B /* VPUPTopViewController.m */; };
@@ -1099,13 +1144,23 @@
 		D0EE644420411161005D53C5 /* VPUPInterfaceDataServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE644220411161005D53C5 /* VPUPInterfaceDataServiceManager.m */; };
 		D0EE644520411161005D53C5 /* VPUPInterfaceDataServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE644220411161005D53C5 /* VPUPInterfaceDataServiceManager.m */; };
 		D0EE644620411161005D53C5 /* VPUPInterfaceDataServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE644220411161005D53C5 /* VPUPInterfaceDataServiceManager.m */; };
-		D0EE644720411161005D53C5 /* VPUPInterfaceDataServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0EE644320411161005D53C5 /* VPUPInterfaceDataServiceManager.h */; };
+		D0EE644720411161005D53C5 /* VPUPInterfaceDataServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0EE644320411161005D53C5 /* VPUPInterfaceDataServiceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0EE644820411161005D53C5 /* VPUPInterfaceDataServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0EE644320411161005D53C5 /* VPUPInterfaceDataServiceManager.h */; };
 		D0EE644920411161005D53C5 /* VPUPInterfaceDataServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0EE644320411161005D53C5 /* VPUPInterfaceDataServiceManager.h */; };
-		D0EE6462204D3AB0005D53C5 /* VPUPWKWebViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D0EE6461204D3AAF005D53C5 /* VPUPWKWebViewDelegate.h */; };
+		D0EE6462204D3AB0005D53C5 /* VPUPWKWebViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D0EE6461204D3AAF005D53C5 /* VPUPWKWebViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0EE6463204D3AB0005D53C5 /* VPUPWKWebViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D0EE6461204D3AAF005D53C5 /* VPUPWKWebViewDelegate.h */; };
 		D0EE6464204D3AB0005D53C5 /* VPUPWKWebViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D0EE6461204D3AAF005D53C5 /* VPUPWKWebViewDelegate.h */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		06585FB423F532B700260BEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 060BEBC41EBC260200106EEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 060BEBCC1EBC260200106EEB;
+			remoteInfo = VideoPlsUtilsPlatformSDK;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		060BEBCD1EBC260200106EEB /* VideoPlsUtilsPlatformSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VideoPlsUtilsPlatformSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1119,6 +1174,38 @@
 		0610825F1F3C3F25001E4656 /* VPUPImageFrameList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPImageFrameList.m; sourceTree = "<group>"; };
 		0610826C1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPLoadImageFrameListConfig.h; sourceTree = "<group>"; };
 		0610826D1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPLoadImageFrameListConfig.m; sourceTree = "<group>"; };
+		061944D72412230600921B41 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		061C24602418CC6500D1BF2A /* VPUPRSAUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPRSAUtilTests.m; sourceTree = "<group>"; };
+		061C24612418CC6500D1BF2A /* VPUPGZIPUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPGZIPUtilTests.m; sourceTree = "<group>"; };
+		061C24622418CC6500D1BF2A /* VPUPBase64UtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPBase64UtilTests.m; sourceTree = "<group>"; };
+		061C24632418CC6500D1BF2A /* VPUPCipherOperationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPCipherOperationTests.m; sourceTree = "<group>"; };
+		061C24642418CC6500D1BF2A /* VPUPSHAUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPSHAUtilTests.m; sourceTree = "<group>"; };
+		061C24652418CC6500D1BF2A /* VPUPAESUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPAESUtilTests.m; sourceTree = "<group>"; };
+		061C24662418CC6500D1BF2A /* VPUPSecurityEncodeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPSecurityEncodeTests.m; sourceTree = "<group>"; };
+		061C24672418CC6500D1BF2A /* VPUPMD5UtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPMD5UtilTests.m; sourceTree = "<group>"; };
+		061C24682418CC6500D1BF2A /* VPUPDebugSwitchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPDebugSwitchTests.m; sourceTree = "<group>"; };
+		061C24692418CC6500D1BF2A /* VPUPReachabilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPReachabilityTests.m; sourceTree = "<group>"; };
+		061C246A2418CC6500D1BF2A /* VPUPDeviceUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPDeviceUtilTests.m; sourceTree = "<group>"; };
+		061C246B2418CC6500D1BF2A /* VPUPValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPValidatorTests.m; sourceTree = "<group>"; };
+		061C246C2418CC6500D1BF2A /* VPUPTopViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPTopViewControllerTests.m; sourceTree = "<group>"; };
+		061C246D2418CC6500D1BF2A /* VPUPLocalStorageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPLocalStorageTests.m; sourceTree = "<group>"; };
+		061C246E2418CC6500D1BF2A /* VPUPPathUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPPathUtilTests.m; sourceTree = "<group>"; };
+		061C246F2418CC6500D1BF2A /* VPUPNetworkReachabilityManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPNetworkReachabilityManagerTests.m; sourceTree = "<group>"; };
+		061C24702418CC6500D1BF2A /* VPUPGeneralInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPGeneralInfoTests.m; sourceTree = "<group>"; };
+		061C24712418CC6500D1BF2A /* VPUPServerUTCDateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPServerUTCDateTests.m; sourceTree = "<group>"; };
+		061C24722418CC6500D1BF2A /* VPUPCommonInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPCommonInfoTests.m; sourceTree = "<group>"; };
+		061C24732418CC6500D1BF2A /* VPUPUrlUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPUrlUtilTests.m; sourceTree = "<group>"; };
+		061C24742418CC6500D1BF2A /* VPUPCommonTrackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPCommonTrackTests.m; sourceTree = "<group>"; };
+		061C24752418CC6500D1BF2A /* VPUPNotificationCenterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPNotificationCenterTests.m; sourceTree = "<group>"; };
+		061C24762418CC6500D1BF2A /* VPUPSDKInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPSDKInfoTests.m; sourceTree = "<group>"; };
+		061C24772418CC6500D1BF2A /* VPUPJsonUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPJsonUtilTests.m; sourceTree = "<group>"; };
+		061C24782418CC6500D1BF2A /* VPUPTrafficStatisticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPTrafficStatisticsTests.m; sourceTree = "<group>"; };
+		061C24792418CC6500D1BF2A /* VPUPAutoNumberIDUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPAutoNumberIDUtilTests.m; sourceTree = "<group>"; };
+		061C247A2418CC6500D1BF2A /* VPUPViewScaleUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPViewScaleUtilTests.m; sourceTree = "<group>"; };
+		061C247B2418CC6500D1BF2A /* VPUPIPAddressUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPIPAddressUtilTests.m; sourceTree = "<group>"; };
+		061C247C2418CC6500D1BF2A /* VPUPRandomUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPRandomUtilTests.m; sourceTree = "<group>"; };
+		061C247D2418CC6500D1BF2A /* VPUPVibrationUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPVibrationUtilTests.m; sourceTree = "<group>"; };
+		061C249E2418CE8600D1BF2A /* VPUPDBSQLStringTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPDBSQLStringTests.m; sourceTree = "<group>"; };
 		0620393723ACB13D002256B1 /* VPUPLocalStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPUPLocalStorage.h; sourceTree = "<group>"; };
 		0620393823ACB13D002256B1 /* VPUPLocalStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPLocalStorage.m; sourceTree = "<group>"; };
 		062BDA4E1F18B5D500CFA7D0 /* VPUPDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPDatabase.h; sourceTree = "<group>"; };
@@ -1128,6 +1215,10 @@
 		062DB6731F1E0DBE003788C1 /* VPUPDBHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPDBHeader.h; sourceTree = "<group>"; };
 		062EE9B81EE4FE4C00E1404C /* VPUPReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPReachability.m; sourceTree = "<group>"; };
 		062EE9B91EE4FE4C00E1404C /* VPUPReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPReachability.h; sourceTree = "<group>"; };
+		0636A76D2420CE1700B3FD27 /* VPUPDatabaseManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPDatabaseManagerTests.m; sourceTree = "<group>"; };
+		0636A76F2420D3D800B3FD27 /* XCTestCase+VPUPAsyncTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+VPUPAsyncTests.h"; sourceTree = "<group>"; };
+		0636A7702420D3D800B3FD27 /* XCTestCase+VPUPAsyncTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+VPUPAsyncTests.m"; sourceTree = "<group>"; };
+		0636A772242342DD00B3FD27 /* VPUPCommonEncryptionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPCommonEncryptionTests.m; sourceTree = "<group>"; };
 		063A124622F3F1240027B6A2 /* UIImageView+VPUPFillColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+VPUPFillColor.h"; sourceTree = "<group>"; };
 		063A124822F3F2090027B6A2 /* UIImageView+VPUPFillColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+VPUPFillColor.m"; sourceTree = "<group>"; };
 		063A124E22F418BE0027B6A2 /* UIButton+VPUPFillColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+VPUPFillColor.h"; sourceTree = "<group>"; };
@@ -1177,6 +1268,8 @@
 		065504F61EFA50BA006FBADB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		065504F81EFA50CE006FBADB /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		0655051B1EFB6D93006FBADB /* VPUPHTTPNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPHTTPNetworking.h; sourceTree = "<group>"; };
+		06585FAE23F532B700260BEE /* VideoPlsUtilsPlatformSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoPlsUtilsPlatformSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		06585FB223F532B700260BEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		065D7B321F556CD70075B450 /* VPUPActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPActionManager.h; sourceTree = "<group>"; };
 		065D7B331F556CD70075B450 /* VPUPActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPActionManager.m; sourceTree = "<group>"; };
 		065E53B21F46E6470016EB94 /* VPUPPathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPPathUtil.h; sourceTree = "<group>"; };
@@ -1196,6 +1289,9 @@
 		06789B061EE979520052A705 /* VPUPPrefetchVideoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPPrefetchVideoManager.h; sourceTree = "<group>"; };
 		06789B071EE979520052A705 /* VPUPPrefetchVideoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPPrefetchVideoManager.m; sourceTree = "<group>"; };
 		06789B1A1EEA47DF0052A705 /* VPUPPrefetchHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPPrefetchHeader.h; sourceTree = "<group>"; };
+		068BE9DD241B97E700ED7F22 /* VPUPDatabaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPDatabaseTests.m; sourceTree = "<group>"; };
+		068D8FD12429E549004DDBC5 /* VPUPReportLogMessageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPReportLogMessageTests.m; sourceTree = "<group>"; };
+		068D8FD32429F495004DDBC5 /* VPUPCrashManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPCrashManagerTests.m; sourceTree = "<group>"; };
 		06A411271EC1BC2B00112082 /* VPUPHTTPAPIEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPHTTPAPIEnum.h; sourceTree = "<group>"; };
 		06A411331EC1C1F800112082 /* VPUPHTTPAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPHTTPAPIManager.h; sourceTree = "<group>"; };
 		06A4113B1EC1C59000112082 /* VPUPHTTPBatchAPIs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPHTTPBatchAPIs.h; sourceTree = "<group>"; };
@@ -1231,6 +1327,8 @@
 		06E2D7F41ECAF2E900E5D9CF /* VPUPHTTPBusinessAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPHTTPBusinessAPI.m; sourceTree = "<group>"; };
 		06E2D8011ECC3E2100E5D9CF /* VPUPJsonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPJsonUtil.h; sourceTree = "<group>"; };
 		06E2D8021ECC3E2100E5D9CF /* VPUPJsonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPJsonUtil.m; sourceTree = "<group>"; };
+		06EB42BD2428C4680053CE35 /* VPUPBaseReportTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPBaseReportTests.m; sourceTree = "<group>"; };
+		06EB42BF2428C4C30053CE35 /* VPUPReportMessageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPReportMessageTests.m; sourceTree = "<group>"; };
 		06FCE2B41EE6A5BA00783D24 /* VPUPLoadImageButtonConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPLoadImageButtonConfig.h; sourceTree = "<group>"; };
 		06FCE2B51EE6A5BA00783D24 /* VPUPLoadImageButtonConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPLoadImageButtonConfig.m; sourceTree = "<group>"; };
 		06FD4EA21EBC857900C65505 /* VPUPHexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPHexColors.h; sourceTree = "<group>"; };
@@ -1334,8 +1432,6 @@
 		D00ED8D9202AAC4A00B6C8C1 /* VPUPRoutesConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPRoutesConstants.m; sourceTree = "<group>"; };
 		D00ED8ED20317A6E00B6C8C1 /* VPUPWKWebViewJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPUPWKWebViewJSBridge.h; sourceTree = "<group>"; };
 		D00ED8EE20317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPWKWebViewJSBridge.m; sourceTree = "<group>"; };
-		D00ED8F52031928200B6C8C1 /* VPUPUIWebViewJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPUPUIWebViewJSBridge.h; sourceTree = "<group>"; };
-		D00ED8F62031928200B6C8C1 /* VPUPUIWebViewJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPUPUIWebViewJSBridge.m; sourceTree = "<group>"; };
 		D010FE682328D47C00E4177B /* VPUPCommonInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPUPCommonInfo.h; sourceTree = "<group>"; };
 		D010FE692328D47C00E4177B /* VPUPCommonInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPCommonInfo.m; sourceTree = "<group>"; };
 		D0150B50206C8B9C008CD3FD /* VPUPHTTPAFNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPUPHTTPAFNManager.m; sourceTree = "<group>"; };
@@ -1495,6 +1591,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				061944D92412267300921B41 /* Security.framework in Frameworks */,
 				B6039CE22403B3E900841F42 /* libACRCloud_IOS_SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1513,6 +1610,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		06585FAB23F532B700260BEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				061944D82412230600921B41 /* Security.framework in Frameworks */,
+				06585FB323F532B700260BEE /* VideoPlsUtilsPlatformSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1520,6 +1626,7 @@
 			isa = PBXGroup;
 			children = (
 				060BEBCF1EBC260200106EEB /* VideoPlsUtilsPlatformSDK */,
+				06585FAF23F532B700260BEE /* VideoPlsUtilsPlatformSDKTests */,
 				060BEBCE1EBC260200106EEB /* Products */,
 				065504ED1EFA5076006FBADB /* Frameworks */,
 			);
@@ -1531,6 +1638,7 @@
 				060BEBCD1EBC260200106EEB /* VideoPlsUtilsPlatformSDK.framework */,
 				060BEBEA1EBC282300106EEB /* VideoPlsUtilsPlatformDynamicSDK.framework */,
 				060BEBF61EBC286000106EEB /* libVideoPlsUtilsPlatformSDK.a */,
+				06585FAE23F532B700260BEE /* VideoPlsUtilsPlatformSDKTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1556,6 +1664,80 @@
 				0610825F1F3C3F25001E4656 /* VPUPImageFrameList.m */,
 			);
 			path = FrameList;
+			sourceTree = "<group>";
+		};
+		061C245D2418CC6500D1BF2A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				06EB42B8242883420053CE35 /* Report */,
+				061C249C2418CC7A00D1BF2A /* Database */,
+				061C245E2418CC6500D1BF2A /* Utils */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		061C245E2418CC6500D1BF2A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				061C245F2418CC6500D1BF2A /* Encryption */,
+				061C24682418CC6500D1BF2A /* VPUPDebugSwitchTests.m */,
+				061C24692418CC6500D1BF2A /* VPUPReachabilityTests.m */,
+				061C246A2418CC6500D1BF2A /* VPUPDeviceUtilTests.m */,
+				061C246B2418CC6500D1BF2A /* VPUPValidatorTests.m */,
+				061C246C2418CC6500D1BF2A /* VPUPTopViewControllerTests.m */,
+				061C246D2418CC6500D1BF2A /* VPUPLocalStorageTests.m */,
+				061C246E2418CC6500D1BF2A /* VPUPPathUtilTests.m */,
+				061C246F2418CC6500D1BF2A /* VPUPNetworkReachabilityManagerTests.m */,
+				061C24702418CC6500D1BF2A /* VPUPGeneralInfoTests.m */,
+				061C24712418CC6500D1BF2A /* VPUPServerUTCDateTests.m */,
+				061C24722418CC6500D1BF2A /* VPUPCommonInfoTests.m */,
+				061C24732418CC6500D1BF2A /* VPUPUrlUtilTests.m */,
+				061C24742418CC6500D1BF2A /* VPUPCommonTrackTests.m */,
+				061C24752418CC6500D1BF2A /* VPUPNotificationCenterTests.m */,
+				061C24762418CC6500D1BF2A /* VPUPSDKInfoTests.m */,
+				061C24772418CC6500D1BF2A /* VPUPJsonUtilTests.m */,
+				061C24782418CC6500D1BF2A /* VPUPTrafficStatisticsTests.m */,
+				061C24792418CC6500D1BF2A /* VPUPAutoNumberIDUtilTests.m */,
+				061C247A2418CC6500D1BF2A /* VPUPViewScaleUtilTests.m */,
+				061C247B2418CC6500D1BF2A /* VPUPIPAddressUtilTests.m */,
+				061C247C2418CC6500D1BF2A /* VPUPRandomUtilTests.m */,
+				061C247D2418CC6500D1BF2A /* VPUPVibrationUtilTests.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		061C245F2418CC6500D1BF2A /* Encryption */ = {
+			isa = PBXGroup;
+			children = (
+				061C24602418CC6500D1BF2A /* VPUPRSAUtilTests.m */,
+				061C24612418CC6500D1BF2A /* VPUPGZIPUtilTests.m */,
+				061C24622418CC6500D1BF2A /* VPUPBase64UtilTests.m */,
+				061C24632418CC6500D1BF2A /* VPUPCipherOperationTests.m */,
+				061C24642418CC6500D1BF2A /* VPUPSHAUtilTests.m */,
+				061C24652418CC6500D1BF2A /* VPUPAESUtilTests.m */,
+				061C24662418CC6500D1BF2A /* VPUPSecurityEncodeTests.m */,
+				061C24672418CC6500D1BF2A /* VPUPMD5UtilTests.m */,
+				0636A772242342DD00B3FD27 /* VPUPCommonEncryptionTests.m */,
+			);
+			path = Encryption;
+			sourceTree = "<group>";
+		};
+		061C249C2418CC7A00D1BF2A /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				061C249D2418CC8B00D1BF2A /* Base */,
+				0636A76D2420CE1700B3FD27 /* VPUPDatabaseManagerTests.m */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		061C249D2418CC8B00D1BF2A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				061C249E2418CE8600D1BF2A /* VPUPDBSQLStringTests.m */,
+				068BE9DD241B97E700ED7F22 /* VPUPDatabaseTests.m */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		063FDB8B1F0E17E800333B46 /* FLAnimatedImage */ = {
@@ -1607,6 +1789,7 @@
 		065504ED1EFA5076006FBADB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				061944D72412230600921B41 /* Security.framework */,
 				B620B3232405165700788FAD /* libc++.tbd */,
 				B620B3212405164700788FAD /* AudioToolbox.framework */,
 				B620B31F2405163B00788FAD /* AVFoundation.framework */,
@@ -1619,6 +1802,17 @@
 				065504EE1EFA5076006FBADB /* libz.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		06585FAF23F532B700260BEE /* VideoPlsUtilsPlatformSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				0636A76F2420D3D800B3FD27 /* XCTestCase+VPUPAsyncTests.h */,
+				0636A7702420D3D800B3FD27 /* XCTestCase+VPUPAsyncTests.m */,
+				061C245D2418CC6500D1BF2A /* Common */,
+				06585FB223F532B700260BEE /* Info.plist */,
+			);
+			path = VideoPlsUtilsPlatformSDKTests;
 			sourceTree = "<group>";
 		};
 		065D7B301F556CD70075B450 /* Route */ = {
@@ -1761,6 +1955,17 @@
 			path = OrderedDictionary;
 			sourceTree = "<group>";
 		};
+		06EB42B8242883420053CE35 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				068D8FD32429F495004DDBC5 /* VPUPCrashManagerTests.m */,
+				06EB42BF2428C4C30053CE35 /* VPUPReportMessageTests.m */,
+				068D8FD12429E549004DDBC5 /* VPUPReportLogMessageTests.m */,
+				06EB42BD2428C4680053CE35 /* VPUPBaseReportTests.m */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
 		06FD4E8F1EBC857900C65505 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1891,8 +2096,6 @@
 				C44E8EFF1F6BBA1E0081F799 /* VPUPWKWebView.m */,
 				D00ED8ED20317A6E00B6C8C1 /* VPUPWKWebViewJSBridge.h */,
 				D00ED8EE20317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.m */,
-				D00ED8F52031928200B6C8C1 /* VPUPUIWebViewJSBridge.h */,
-				D00ED8F62031928200B6C8C1 /* VPUPUIWebViewJSBridge.m */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -2241,39 +2444,42 @@
 				065502FF1EFA252E006FBADB /* VideoPlsUtilsPlatformSDK.h in Headers */,
 				065503001EFA252E006FBADB /* VPUPUtils.h in Headers */,
 				065503031EFA252E006FBADB /* VPUPLoadImageHeader.h in Headers */,
+				0655051C1EFB6D93006FBADB /* VPUPHTTPNetworking.h in Headers */,
+				065503051EFA252E006FBADB /* VPUPPrefetchHeader.h in Headers */,
+				065503071EFA252E006FBADB /* VPUPMQTTHeader.h in Headers */,
+				062DB6741F1E0DBE003788C1 /* VPUPDBHeader.h in Headers */,
+				065503081EFA25A6006FBADB /* VPUPLifeCycle.h in Headers */,
+				065503091EFA25A6006FBADB /* VPUPDebugSwitch.h in Headers */,
+				0655030A1EFA25A6006FBADB /* VPUPGeneralInfo.h in Headers */,
+				0655030B1EFA25A6006FBADB /* VPUPSDKInfo.h in Headers */,
+				065503011EFA252E006FBADB /* VPUPEncryption.h in Headers */,
+				D004F70A2099567700022E90 /* vpup_mqtt_config.h in Headers */,
+				065503021EFA252E006FBADB /* VPUPCommonEncryption.h in Headers */,
+				065503261EFA2680006FBADB /* VPUPLogUtil.h in Headers */,
+				D004F6E92099567700022E90 /* vpup_messages_mosq.h in Headers */,
+				065503271EFA2680006FBADB /* VPUPValidator.h in Headers */,
+				065503281EFA2680006FBADB /* VPUPServerUTCDate.h in Headers */,
 				D0928CF52088A0C2008AB5EC /* UIImage+VPUPMultiFormat.h in Headers */,
 				D0E9432A1FF0E1B50038BD8B /* VPUPGridLayer.h in Headers */,
 				D0E943361FF0E1B50038BD8B /* VPUPGridView.h in Headers */,
 				D0666BB323B223D100B5EA85 /* VPUPLogReport.h in Headers */,
-				0655051C1EFB6D93006FBADB /* VPUPHTTPNetworking.h in Headers */,
 				D00ED8BF2027F87500B6C8C1 /* VPUPDefaultRoutesRegister.h in Headers */,
-				065503051EFA252E006FBADB /* VPUPPrefetchHeader.h in Headers */,
-				065503071EFA252E006FBADB /* VPUPMQTTHeader.h in Headers */,
 				D0150B55206C8B9D008CD3FD /* VPUPHTTPAFNManager.h in Headers */,
 				061082601F3C3F25001E4656 /* VPUPImageFrame.h in Headers */,
 				D0928C4B207DAACA008AB5EC /* VPUPDataServiceHeader.h in Headers */,
-				062DB6741F1E0DBE003788C1 /* VPUPDBHeader.h in Headers */,
 				D004F6CB2099567700022E90 /* VPUPMQTTManagerFactory.h in Headers */,
 				D00ED8C720299B3300B6C8C1 /* VPUPRoutesSendRequest.h in Headers */,
-				065503081EFA25A6006FBADB /* VPUPLifeCycle.h in Headers */,
 				D0928CF22088A0C2008AB5EC /* VPUPSDWebImageCompat.h in Headers */,
-				065503091EFA25A6006FBADB /* VPUPDebugSwitch.h in Headers */,
-				0655030A1EFA25A6006FBADB /* VPUPGeneralInfo.h in Headers */,
 				D0E9435A1FF0E1B50038BD8B /* VPUPAssetModel.h in Headers */,
-				0655030B1EFA25A6006FBADB /* VPUPSDKInfo.h in Headers */,
 				D0E943601FF0E1B60038BD8B /* VPUPImagePickerController.h in Headers */,
-				065503011EFA252E006FBADB /* VPUPEncryption.h in Headers */,
 				D0150B64206CD378008CD3FD /* VPUPFLAnimatedFrameImage.h in Headers */,
-				D004F70A2099567700022E90 /* vpup_mqtt_config.h in Headers */,
 				D004F6C52099567700022E90 /* VPUPPersistentConnectionManager.h in Headers */,
 				D004F7372099567700022E90 /* VPUPMQTTEnum.h in Headers */,
 				D03F61A12019E9C400DB0615 /* VPUPRouteResponse.h in Headers */,
-				065503021EFA252E006FBADB /* VPUPCommonEncryption.h in Headers */,
 				D04674972003533500E811E4 /* VPUPDownloadHeader.h in Headers */,
 				D0928D09208ED28E008AB5EC /* VPUPDeviceUtil.h in Headers */,
 				C4B2DB011FA6D32300626A50 /* VPUPVideoClip.h in Headers */,
 				D0EE6462204D3AB0005D53C5 /* VPUPWKWebViewDelegate.h in Headers */,
-				065503261EFA2680006FBADB /* VPUPLogUtil.h in Headers */,
 				063A124722F3F1240027B6A2 /* UIImageView+VPUPFillColor.h in Headers */,
 				D0E9436C1FF0E1B60038BD8B /* VPUPPhotoPickerController.h in Headers */,
 				D0928CC22088A0C2008AB5EC /* VPUPSDWebImageCoder.h in Headers */,
@@ -2284,98 +2490,58 @@
 				D0BF9BC524286A4E006B4521 /* VPUPACRCloudAPIManager.h in Headers */,
 				065503271EFA2680006FBADB /* VPUPValidator.h in Headers */,
 				D0928CAA2088A0C2008AB5EC /* VPUPSDWebImageOperation.h in Headers */,
-				065503281EFA2680006FBADB /* VPUPServerUTCDate.h in Headers */,
 				D0E492301FBECC7300BE73A9 /* VPUPDownloaderManager.h in Headers */,
 				D0E943241FF0E1B50038BD8B /* VPUPEditingView.h in Headers */,
-				D004F6F52099567700022E90 /* vpup_time_mosq.h in Headers */,
 				D00ED8B72024186C00B6C8C1 /* VPUPServiceManager.h in Headers */,
-				065503291EFA2680006FBADB /* VPUPAutoNumberIDUtil.h in Headers */,
 				D0BD1AB72130129F00A087F2 /* VPUPIPAddressUtil.h in Headers */,
-				0655032A1EFA2680006FBADB /* VPUPRandomUtil.h in Headers */,
-				D004F7012099567700022E90 /* vpup_read_handle.h in Headers */,
-				0655032B1EFA2680006FBADB /* VPUPNotificationCenter.h in Headers */,
-				0655032C1EFA2680006FBADB /* VPUPReachability.h in Headers */,
 				D004F6AD2099567700022E90 /* VPUPMQTTConfig.h in Headers */,
-				0655033B1EFA27BC006FBADB /* VPUPBase64Util.h in Headers */,
-				0655033C1EFA27BC006FBADB /* VPUPMD5Util.h in Headers */,
-				0655033D1EFA27BC006FBADB /* VPUPSHAUtil.h in Headers */,
 				D0E943661FF0E1B60038BD8B /* VPUPImagePickerManager.h in Headers */,
 				C44E8F061F6BBA1E0081F799 /* VPUPWebView.h in Headers */,
-				0655033E1EFA27BC006FBADB /* VPUPAESUtil.h in Headers */,
-				0655033F1EFA27BC006FBADB /* VPUPGZIPUtil.h in Headers */,
-				065503501EFA2854006FBADB /* VPUPLoadImageBaseConfig.h in Headers */,
-				065503511EFA2854006FBADB /* VPUPLoadImageButtonConfig.h in Headers */,
 				D0666BDD23B223D100B5EA85 /* VPUPReportEnum.h in Headers */,
 				C91887D6237A819900C0CB81 /* VPUPVibrationUtil.h in Headers */,
-				065503531EFA2854006FBADB /* VPUPLoadImageManager.h in Headers */,
-				065503521EFA2854006FBADB /* VPUPLoadImageFactory.h in Headers */,
 				D0666BD723B223D100B5EA85 /* VPUPReportMessage.h in Headers */,
 				0610826E1F3C5D33001E4656 /* VPUPLoadImageFrameListConfig.h in Headers */,
-				062DB6781F1E30BD003788C1 /* VPUPFLAnimatedImageView.h in Headers */,
-				D00ED8F72031928200B6C8C1 /* VPUPUIWebViewJSBridge.h in Headers */,
 				06C7E92E230A8A9C000FEC1C /* VPUPTrafficStatistics.h in Headers */,
 				D0928CBC2088A0C2008AB5EC /* VPUPSDWebImageDownloaderOperation.h in Headers */,
 				D00ED8EF20317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.h in Headers */,
 				D004F789209AE4F400022E90 /* VPUPHTTPManager.h in Headers */,
 				D0EE644720411161005D53C5 /* VPUPInterfaceDataServiceManager.h in Headers */,
 				C44E8F001F6BBA1E0081F799 /* VPUPBasicWebView.h in Headers */,
-				D004F6C82099567700022E90 /* vpup_mqtt_default_config.h in Headers */,
-				D004F7162099567700022E90 /* vpup_tls_mosq.h in Headers */,
-				D004F72B2099567700022E90 /* vpup_mosquitto_internal.h in Headers */,
 				D0666BDA23B223D100B5EA85 /* VPUPCrashManager.h in Headers */,
 				D02832161FDA310300A705C2 /* VPUPClickThroughView.h in Headers */,
 				06B02A6C2373F622004E546D /* VPUPCommonTrack.h in Headers */,
-				D004F6FB2099567700022E90 /* vpup_util_mosq.h in Headers */,
 				D01E219F223E8EF90018A1AE /* VPUPUrlUtil.h in Headers */,
-				0655035C1EFA28A0006FBADB /* VPUPPrefetchManager.h in Headers */,
-				0655035D1EFA28A0006FBADB /* VPUPPrefetchImageManager.h in Headers */,
-				0655035E1EFA28A0006FBADB /* VPUPPrefetchVideoManager.h in Headers */,
 				D0928CC82088A0C2008AB5EC /* VPUPSDWebImageCoderHelper.h in Headers */,
-				065503661EFA28E4006FBADB /* VPUPMQTTObserverProtocol.h in Headers */,
 				D03F61B12019EE2300DB0615 /* VPUPRouteHandler.h in Headers */,
-				D004F7342099567700022E90 /* vpup_net_mosq.h in Headers */,
 				D05369C620576B6200A4F8C6 /* VPUPHTTPHost.h in Headers */,
+				D0666BD123B223D100B5EA85 /* VPUPReport.h in Headers */,
 				D004F7192099567700022E90 /* vpup_mosquitto.h in Headers */,
 				065D7B411F556CD70075B450 /* VPUPActionManager.h in Headers */,
 				D022A0BE20BE70A400F46029 /* NSURL+VPUPPlayer.h in Headers */,
-				065503711EFA294B006FBADB /* VPUPHTTPAPIEnum.h in Headers */,
 				D004F66C20931A8C00022E90 /* VPUPPersistentConnectionFactory.h in Headers */,
-				065503721EFA294B006FBADB /* VPUPHTTPBaseAPI.h in Headers */,
 				D0928CFB2088A0C2008AB5EC /* VPUPSDWebImageWebPCoder.h in Headers */,
 				D0D68145206E29AB0053E42A /* VPUPSVGAPlayerHeader.h in Headers */,
 				D0928C44207DAA4E008AB5EC /* VPUPVideoPlayerSize.h in Headers */,
 				D0666BBF23B223D100B5EA85 /* VPUPReportHeader.h in Headers */,
 				D07CB7AD207B1511001C3E6A /* VPUPSVGAPlayer.h in Headers */,
 				D03F61912019E87800DB0615 /* VPUPRouteDefinition.h in Headers */,
-				065503731EFA294B006FBADB /* VPUPHTTPBatchAPIs.h in Headers */,
-				065503781EFA294B006FBADB /* VPUPHTTPGeneralAPI.h in Headers */,
 				D0E4923C1FBECC7300BE73A9 /* VPUPResumeDownloader.h in Headers */,
-				065503791EFA294B006FBADB /* VPUPHTTPBusinessAPI.h in Headers */,
-				065503741EFA294B006FBADB /* VPUPHTTPAPIManager.h in Headers */,
-				065503751EFA294B006FBADB /* VPUPNetworkErrorObserverProtocol.h in Headers */,
-				065503761EFA294B006FBADB /* VPUPHTTPManagerConfig.h in Headers */,
 				D004F66F20931A8C00022E90 /* VPUPPersistentConnectionDelegate.h in Headers */,
 				D05DCC47200CA50B00E294F2 /* VPUPHTTPBaseResponse.h in Headers */,
 				D0E943421FF0E1B50038BD8B /* VPUPResizeControl.h in Headers */,
-				065503771EFA294B006FBADB /* VPUPHTTPManagerFactory.h in Headers */,
 				D03F61A92019E9EE00DB0615 /* VPUPParsingUtilities.h in Headers */,
 				B679FC25242459F90010AFEB /* VPUPReport.h in Headers */,
 				065E53B41F46E6470016EB94 /* VPUPPathUtil.h in Headers */,
-				062BDA501F18B5D500CFA7D0 /* VPUPDatabase.h in Headers */,
 				D022A0B320BE6CA600F46029 /* VPUPFileHandle.h in Headers */,
 				D0BF9BCD24286C9C006B4521 /* VPUPACRCloudManager.h in Headers */,
 				065503A21EFA4033006FBADB /* VPUPDBSQLString.h in Headers */,
 				D0E943301FF0E1B50038BD8B /* VPUPGridMaskLayer.h in Headers */,
-				062BDA581F1DAE1300CFA7D0 /* VPUPDatabaseManager.h in Headers */,
 				D0BD1AAA212FE60600A087F2 /* VPUPRSAUtil.h in Headers */,
 				D0C3A1DB206B3C9100C21CA7 /* VPUPRoutesHeader.h in Headers */,
 				0620393923ACB13D002256B1 /* VPUPLocalStorage.h in Headers */,
 				D0D68148206E29AB0053E42A /* VPUPSVGAPlayerFactory.h in Headers */,
-				D004F6DA2099567700022E90 /* vpup_memory_mosq.h in Headers */,
-				06D57C251F18697E00C1C1BA /* VPUPOrderedDictionary.h in Headers */,
 				D0666BC823B223D100B5EA85 /* VPUPBusinessReport.h in Headers */,
 				D0928C9B2088A0C2008AB5EC /* VPUPSDImageCacheConfig.h in Headers */,
-				065503B11EFA404E006FBADB /* VPUPHexColors.h in Headers */,
 				D010FE6A2328D47C00E4177B /* VPUPCommonInfo.h in Headers */,
 				D0E943541FF0E1B50038BD8B /* VPUPAssetCell.h in Headers */,
 				B6039CE12403B3E900841F42 /* ACRCloudConfig.h in Headers */,
@@ -2384,12 +2550,10 @@
 				D0928D012088A0C2008AB5EC /* NSImage+VPUPWebCache.h in Headers */,
 				D0928CBF2088A0C2008AB5EC /* VPUPSDWebImageImageIOCoder.h in Headers */,
 				D0928CA72088A0C2008AB5EC /* VPUPSDImageCache.h in Headers */,
-				D004F6F82099567700022E90 /* vpup_will_mosq.h in Headers */,
 				D004F74520995DC900022E90 /* VPUPExtendWKWebView.h in Headers */,
 				061082661F3C3F25001E4656 /* VPUPImageFrameList.h in Headers */,
 				D03F61892019DDF100DB0615 /* VPUPRoutes.h in Headers */,
 				063A125022F418BE0027B6A2 /* UIButton+VPUPFillColor.h in Headers */,
-				D004F7222099567700022E90 /* vpup_socks_mosq.h in Headers */,
 				D0928CEC2088A0C2008AB5EC /* VPUPSDWebImageFrame.h in Headers */,
 				06C2EF991FA9DB5A00248280 /* VPUPViewScaleUtil.h in Headers */,
 				D004F6B32099567700022E90 /* VPUPMQTTMosquittoManager.h in Headers */,
@@ -2407,8 +2571,6 @@
 				D0E943481FF0E1B50038BD8B /* VPUPScrollView.h in Headers */,
 				D0928CEF2088A0C2008AB5EC /* VPUPSDWebImageManager.h in Headers */,
 				D0928CD12088A0C2008AB5EC /* NSData+VPUPImageContentType.h in Headers */,
-				D004F70D2099567700022E90 /* vpup_send_mosq.h in Headers */,
-				D004F6EF2099567700022E90 /* vpup_mqtt3_protocol.h in Headers */,
 				D004F73D2099567700022E90 /* VPUPMQTTSession.h in Headers */,
 				D022A0AD20BE6CA600F46029 /* VPUPAVAssetResourceLoader.h in Headers */,
 				C44F4B1F1FC4225400E5D6B1 /* VPUPVideo.h in Headers */,
@@ -2419,22 +2581,67 @@
 				0655038D1EFA4006006FBADB /* VPUPSecurityEncode.h in Headers */,
 				0655038E1EFA4006006FBADB /* VPUPCipherOperation.h in Headers */,
 				D07CB7AA207B1511001C3E6A /* VPUPSVGAParser.h in Headers */,
-				0655038F1EFA4006006FBADB /* vpup_hash_encode.h in Headers */,
 				D0E9433C1FF0E1B50038BD8B /* VPUPPhotoEditingController.h in Headers */,
 				D0928CAD2088A0C2008AB5EC /* VPUPSDWebImageDownloader.h in Headers */,
 				D0928CCE2088A0C2008AB5EC /* UIView+VPUPWebCacheOperation.h in Headers */,
 				D0928CA42088A0C2008AB5EC /* VPUPSDWebImageCodersManager.h in Headers */,
-				D004F6EC2099567700022E90 /* vpup_logging_mosq.h in Headers */,
 				D0928C982088A0C2008AB5EC /* VPUPSDWebImagePrefetcher.h in Headers */,
 				D0666BBC23B223D100B5EA85 /* VPUPReportLogMessage.h in Headers */,
-				D004F71C2099567700022E90 /* vpup_dummypthread.h in Headers */,
-				065503901EFA4006006FBADB /* vpup_security_encode.h in Headers */,
-				065503911EFA4006006FBADB /* vpup_aes.h in Headers */,
 				D004F6B02099567700022E90 /* VPUPMQTTManager.h in Headers */,
 				D0D68142206E29AB0053E42A /* VPUPSVGAPlayerProtocol.h in Headers */,
 				D004F6CE2099567700022E90 /* VPUPMQTTMessage.h in Headers */,
-				065503921EFA4006006FBADB /* vpup_security_string.h in Headers */,
 				0655038C1EFA3FFF006FBADB /* VPUPJsonUtil.h in Headers */,
+				D004F6F52099567700022E90 /* vpup_time_mosq.h in Headers */,
+				065503291EFA2680006FBADB /* VPUPAutoNumberIDUtil.h in Headers */,
+				0655032A1EFA2680006FBADB /* VPUPRandomUtil.h in Headers */,
+				D004F7012099567700022E90 /* vpup_read_handle.h in Headers */,
+				0655032B1EFA2680006FBADB /* VPUPNotificationCenter.h in Headers */,
+				0655032C1EFA2680006FBADB /* VPUPReachability.h in Headers */,
+				0655033B1EFA27BC006FBADB /* VPUPBase64Util.h in Headers */,
+				0655033C1EFA27BC006FBADB /* VPUPMD5Util.h in Headers */,
+				0655033D1EFA27BC006FBADB /* VPUPSHAUtil.h in Headers */,
+				0655033E1EFA27BC006FBADB /* VPUPAESUtil.h in Headers */,
+				0655033F1EFA27BC006FBADB /* VPUPGZIPUtil.h in Headers */,
+				065503501EFA2854006FBADB /* VPUPLoadImageBaseConfig.h in Headers */,
+				065503511EFA2854006FBADB /* VPUPLoadImageButtonConfig.h in Headers */,
+				065503531EFA2854006FBADB /* VPUPLoadImageManager.h in Headers */,
+				065503521EFA2854006FBADB /* VPUPLoadImageFactory.h in Headers */,
+				062DB6781F1E30BD003788C1 /* VPUPFLAnimatedImageView.h in Headers */,
+				D004F6C82099567700022E90 /* vpup_mqtt_default_config.h in Headers */,
+				D004F7162099567700022E90 /* vpup_tls_mosq.h in Headers */,
+				D004F72B2099567700022E90 /* vpup_mosquitto_internal.h in Headers */,
+				D004F6FB2099567700022E90 /* vpup_util_mosq.h in Headers */,
+				0655035C1EFA28A0006FBADB /* VPUPPrefetchManager.h in Headers */,
+				0655035D1EFA28A0006FBADB /* VPUPPrefetchImageManager.h in Headers */,
+				0655035E1EFA28A0006FBADB /* VPUPPrefetchVideoManager.h in Headers */,
+				065503661EFA28E4006FBADB /* VPUPMQTTObserverProtocol.h in Headers */,
+				D004F7342099567700022E90 /* vpup_net_mosq.h in Headers */,
+				D004F7192099567700022E90 /* vpup_mosquitto.h in Headers */,
+				065503711EFA294B006FBADB /* VPUPHTTPAPIEnum.h in Headers */,
+				065503721EFA294B006FBADB /* VPUPHTTPBaseAPI.h in Headers */,
+				065503731EFA294B006FBADB /* VPUPHTTPBatchAPIs.h in Headers */,
+				065503781EFA294B006FBADB /* VPUPHTTPGeneralAPI.h in Headers */,
+				065503791EFA294B006FBADB /* VPUPHTTPBusinessAPI.h in Headers */,
+				065503741EFA294B006FBADB /* VPUPHTTPAPIManager.h in Headers */,
+				065503751EFA294B006FBADB /* VPUPNetworkErrorObserverProtocol.h in Headers */,
+				065503761EFA294B006FBADB /* VPUPHTTPManagerConfig.h in Headers */,
+				065503771EFA294B006FBADB /* VPUPHTTPManagerFactory.h in Headers */,
+				062BDA501F18B5D500CFA7D0 /* VPUPDatabase.h in Headers */,
+				065503A21EFA4033006FBADB /* VPUPDBSQLString.h in Headers */,
+				062BDA581F1DAE1300CFA7D0 /* VPUPDatabaseManager.h in Headers */,
+				D004F6DA2099567700022E90 /* vpup_memory_mosq.h in Headers */,
+				06D57C251F18697E00C1C1BA /* VPUPOrderedDictionary.h in Headers */,
+				065503B11EFA404E006FBADB /* VPUPHexColors.h in Headers */,
+				D004F6F82099567700022E90 /* vpup_will_mosq.h in Headers */,
+				D004F7222099567700022E90 /* vpup_socks_mosq.h in Headers */,
+				D004F70D2099567700022E90 /* vpup_send_mosq.h in Headers */,
+				D004F6EF2099567700022E90 /* vpup_mqtt3_protocol.h in Headers */,
+				0655038F1EFA4006006FBADB /* vpup_hash_encode.h in Headers */,
+				D004F6EC2099567700022E90 /* vpup_logging_mosq.h in Headers */,
+				D004F71C2099567700022E90 /* vpup_dummypthread.h in Headers */,
+				065503901EFA4006006FBADB /* vpup_security_encode.h in Headers */,
+				065503911EFA4006006FBADB /* vpup_aes.h in Headers */,
+				065503921EFA4006006FBADB /* vpup_security_string.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2519,7 +2726,6 @@
 				C44E8F021F6BBA1E0081F799 /* VPUPBasicWebView.h in Headers */,
 				D0E943761FF0E9DE0038BD8B /* VPUPTopViewController.h in Headers */,
 				D0928CBE2088A0C2008AB5EC /* VPUPSDWebImageDownloaderOperation.h in Headers */,
-				D00ED8F92031928300B6C8C1 /* VPUPUIWebViewJSBridge.h in Headers */,
 				D004F78B209AE4F400022E90 /* VPUPHTTPManager.h in Headers */,
 				D00ED8F120317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.h in Headers */,
 				D0EE644920411161005D53C5 /* VPUPInterfaceDataServiceManager.h in Headers */,
@@ -2707,7 +2913,6 @@
 				C44E8F011F6BBA1E0081F799 /* VPUPBasicWebView.h in Headers */,
 				D0E943751FF0E9DE0038BD8B /* VPUPTopViewController.h in Headers */,
 				D0928CBD2088A0C2008AB5EC /* VPUPSDWebImageDownloaderOperation.h in Headers */,
-				D00ED8F82031928300B6C8C1 /* VPUPUIWebViewJSBridge.h in Headers */,
 				D004F78A209AE4F400022E90 /* VPUPHTTPManager.h in Headers */,
 				D00ED8F020317A6F00B6C8C1 /* VPUPWKWebViewJSBridge.h in Headers */,
 				D0EE644820411161005D53C5 /* VPUPInterfaceDataServiceManager.h in Headers */,
@@ -2883,6 +3088,24 @@
 			productReference = 060BEBF61EBC286000106EEB /* libVideoPlsUtilsPlatformSDK.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		06585FAD23F532B700260BEE /* VideoPlsUtilsPlatformSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06585FB823F532B700260BEE /* Build configuration list for PBXNativeTarget "VideoPlsUtilsPlatformSDKTests" */;
+			buildPhases = (
+				06585FAA23F532B700260BEE /* Sources */,
+				06585FAB23F532B700260BEE /* Frameworks */,
+				06585FAC23F532B700260BEE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				06585FB523F532B700260BEE /* PBXTargetDependency */,
+			);
+			name = VideoPlsUtilsPlatformSDKTests;
+			productName = VideoPlsUtilsPlatformSDKTests;
+			productReference = 06585FAE23F532B700260BEE /* VideoPlsUtilsPlatformSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2916,6 +3139,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 					};
+					06585FAD23F532B700260BEE = {
+						CreatedOnToolsVersion = 11.0;
+						DevelopmentTeam = Y59HB6VK6F;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 060BEBC71EBC260200106EEB /* Build configuration list for PBXProject "VideoPlsUtilsPlatformSDK" */;
@@ -2937,6 +3165,7 @@
 				0654187B1EBC2A1A000D131E /* UtilsPlatformStaticFrameworkAggregate */,
 				0654187F1EBC2A43000D131E /* UtilsPlatformStaticLibraryAggregate */,
 				065418831EBC2A5D000D131E /* UtilsPlatformDynamicFrameworkAggregate */,
+				06585FAD23F532B700260BEE /* VideoPlsUtilsPlatformSDKTests */,
 			);
 		};
 /* End PBXProject section */
@@ -2950,6 +3179,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		060BEBE81EBC282300106EEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06585FAC23F532B700260BEE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3005,7 +3241,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D00ED8FA2031928300B6C8C1 /* VPUPUIWebViewJSBridge.m in Sources */,
 				06A4117C1EC2B24900112082 /* VPUPHTTPGeneralAPI.m in Sources */,
 				064D56DA1EC839B600C9DEC4 /* VPUPCipherOperation.m in Sources */,
 				062BDA531F18B5D500CFA7D0 /* VPUPDatabase.m in Sources */,
@@ -3181,7 +3416,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0666BC423B223D100B5EA85 /* VPUPCrashManager.m in Sources */,
-				D00ED8FC2031928300B6C8C1 /* VPUPUIWebViewJSBridge.m in Sources */,
 				06A4117E1EC2B24900112082 /* VPUPHTTPGeneralAPI.m in Sources */,
 				D0BF9BCC24286C9C006B4521 /* VPUPACRCloudManager.m in Sources */,
 				D0E9433B1FF0E1B50038BD8B /* VPUPGridView.m in Sources */,
@@ -3347,7 +3581,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D00ED8FB2031928300B6C8C1 /* VPUPUIWebViewJSBridge.m in Sources */,
 				06A4117D1EC2B24900112082 /* VPUPHTTPGeneralAPI.m in Sources */,
 				D0E9433A1FF0E1B50038BD8B /* VPUPGridView.m in Sources */,
 				063FDBA21F0E17E800333B46 /* VPUPFLAnimatedImageView.m in Sources */,
@@ -3511,7 +3744,61 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		06585FAA23F532B700260BEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				061C24862418CC6500D1BF2A /* VPUPDebugSwitchTests.m in Sources */,
+				068BE9DE241B97E800ED7F22 /* VPUPDatabaseTests.m in Sources */,
+				0636A773242342DD00B3FD27 /* VPUPCommonEncryptionTests.m in Sources */,
+				061C247F2418CC6500D1BF2A /* VPUPGZIPUtilTests.m in Sources */,
+				061C24802418CC6500D1BF2A /* VPUPBase64UtilTests.m in Sources */,
+				061C248E2418CC6500D1BF2A /* VPUPGeneralInfoTests.m in Sources */,
+				061C24982418CC6500D1BF2A /* VPUPViewScaleUtilTests.m in Sources */,
+				061C249B2418CC6500D1BF2A /* VPUPVibrationUtilTests.m in Sources */,
+				061C24952418CC6500D1BF2A /* VPUPJsonUtilTests.m in Sources */,
+				061C248F2418CC6500D1BF2A /* VPUPServerUTCDateTests.m in Sources */,
+				0636A76E2420CE1700B3FD27 /* VPUPDatabaseManagerTests.m in Sources */,
+				061C24892418CC6500D1BF2A /* VPUPValidatorTests.m in Sources */,
+				061C248D2418CC6500D1BF2A /* VPUPNetworkReachabilityManagerTests.m in Sources */,
+				061C248B2418CC6500D1BF2A /* VPUPLocalStorageTests.m in Sources */,
+				061C24912418CC6500D1BF2A /* VPUPUrlUtilTests.m in Sources */,
+				061C24942418CC6500D1BF2A /* VPUPSDKInfoTests.m in Sources */,
+				061C24872418CC6500D1BF2A /* VPUPReachabilityTests.m in Sources */,
+				061C249F2418CE8600D1BF2A /* VPUPDBSQLStringTests.m in Sources */,
+				061C24922418CC6500D1BF2A /* VPUPCommonTrackTests.m in Sources */,
+				061C24992418CC6500D1BF2A /* VPUPIPAddressUtilTests.m in Sources */,
+				061C248A2418CC6500D1BF2A /* VPUPTopViewControllerTests.m in Sources */,
+				061C249A2418CC6500D1BF2A /* VPUPRandomUtilTests.m in Sources */,
+				061C247E2418CC6500D1BF2A /* VPUPRSAUtilTests.m in Sources */,
+				061C24842418CC6500D1BF2A /* VPUPSecurityEncodeTests.m in Sources */,
+				061C24932418CC6500D1BF2A /* VPUPNotificationCenterTests.m in Sources */,
+				061C24972418CC6500D1BF2A /* VPUPAutoNumberIDUtilTests.m in Sources */,
+				061C24812418CC6500D1BF2A /* VPUPCipherOperationTests.m in Sources */,
+				061C24902418CC6500D1BF2A /* VPUPCommonInfoTests.m in Sources */,
+				061C24832418CC6500D1BF2A /* VPUPAESUtilTests.m in Sources */,
+				061C24822418CC6500D1BF2A /* VPUPSHAUtilTests.m in Sources */,
+				06EB42C02428C4C30053CE35 /* VPUPReportMessageTests.m in Sources */,
+				061C24882418CC6500D1BF2A /* VPUPDeviceUtilTests.m in Sources */,
+				068D8FD42429F496004DDBC5 /* VPUPCrashManagerTests.m in Sources */,
+				0636A7712420D3D800B3FD27 /* XCTestCase+VPUPAsyncTests.m in Sources */,
+				06EB42BE2428C4680053CE35 /* VPUPBaseReportTests.m in Sources */,
+				068D8FD22429E549004DDBC5 /* VPUPReportLogMessageTests.m in Sources */,
+				061C24962418CC6500D1BF2A /* VPUPTrafficStatisticsTests.m in Sources */,
+				061C248C2418CC6500D1BF2A /* VPUPPathUtilTests.m in Sources */,
+				061C24852418CC6500D1BF2A /* VPUPMD5UtilTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		06585FB523F532B700260BEE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 060BEBCC1EBC260200106EEB /* VideoPlsUtilsPlatformSDK */;
+			targetProxy = 06585FB423F532B700260BEE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		060BEBD31EBC260200106EEB /* Debug */ = {
@@ -3555,7 +3842,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -3600,7 +3887,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3613,7 +3900,7 @@
 		060BEBD61EBC260200106EEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEFINES_MODULE = YES;
@@ -3623,7 +3910,8 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Headers/Public\"";
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../Pods/Headers/Public\"";
 				INFOPLIST_FILE = VideoPlsUtilsPlatformSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -3643,7 +3931,7 @@
 		060BEBD71EBC260200106EEB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEFINES_MODULE = YES;
@@ -3652,7 +3940,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Headers/Public\"";
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../Pods/Headers/Public\"";
 				INFOPLIST_FILE = VideoPlsUtilsPlatformSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -3671,13 +3960,14 @@
 		060BEBF01EBC282300106EEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Headers/Public\"";
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../Pods/Headers/Public\"";
 				INFOPLIST_FILE = "$(SRCROOT)/VideoPlsUtilsPlatformSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -3692,13 +3982,14 @@
 		060BEBF11EBC282300106EEB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Headers/Public\"";
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../Pods/Headers/Public\"";
 				INFOPLIST_FILE = "$(SRCROOT)/VideoPlsUtilsPlatformSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -3714,9 +4005,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				COPY_PHASE_STRIP = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Pods/Headers/Public\"";
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../Pods/Headers/Public\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
@@ -3729,9 +4021,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				COPY_PHASE_STRIP = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Pods/Headers/Public\"";
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../Pods/Headers/Public\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
@@ -3779,6 +4072,69 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		06585FB623F532B700260BEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y59HB6VK6F;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../Pods/Headers/Public\"";
+				INFOPLIST_FILE = VideoPlsUtilsPlatformSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.videopls.VideoPlsUtilsPlatformSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		06585FB723F532B700260BEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y59HB6VK6F;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../Pods/Headers/Public\"";
+				INFOPLIST_FILE = VideoPlsUtilsPlatformSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.videopls.VideoPlsUtilsPlatformSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -3844,6 +4200,15 @@
 			buildConfigurations = (
 				065418851EBC2A5D000D131E /* Debug */,
 				065418861EBC2A5D000D131E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06585FB823F532B700260BEE /* Build configuration list for PBXNativeTarget "VideoPlsUtilsPlatformSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06585FB623F532B700260BEE /* Debug */,
+				06585FB723F532B700260BEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

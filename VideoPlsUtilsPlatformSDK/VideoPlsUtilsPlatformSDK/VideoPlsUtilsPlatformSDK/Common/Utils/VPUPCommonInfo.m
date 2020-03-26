@@ -11,6 +11,7 @@
 #import "VPUPDeviceUtil.h"
 #import "VPUPNetworkReachabilityManager.h"
 #import "VPUPGeneralInfo.h"
+#import <UIKit/UIKit.h>
 
 static NSMutableDictionary *_commonParam;
 

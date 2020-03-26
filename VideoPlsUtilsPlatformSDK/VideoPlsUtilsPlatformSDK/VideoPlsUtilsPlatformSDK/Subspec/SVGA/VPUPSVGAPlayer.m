@@ -7,7 +7,8 @@
 //
 
 #import "VPUPSVGAPlayer.h"
-#import <SVGAPlayer/SVGA.h>
+//#import <SVGAPlayer/SVGA.h>
+#import <SVGAPlayer/SVGAPlayer.h>
 #import <SVGAPlayer/SVGAVideoEntity.h>
 #import <CommonCrypto/CommonCrypto.h>
 #import "VPUPSVGAParser.h"

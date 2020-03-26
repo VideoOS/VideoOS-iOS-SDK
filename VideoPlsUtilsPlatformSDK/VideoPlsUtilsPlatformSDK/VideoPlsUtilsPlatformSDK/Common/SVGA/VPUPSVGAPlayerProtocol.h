@@ -9,6 +9,9 @@
 #ifndef VPUPSVGAPlayerProtocol_h
 #define VPUPSVGAPlayerProtocol_h
 
+#import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
+
 @protocol VPUPSVGAPlayerProtocol;
 
 @protocol VPUPSVGAPlayerDelegate <NSObject>

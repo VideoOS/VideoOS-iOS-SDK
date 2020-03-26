@@ -66,22 +66,22 @@
     if(self) {
         _orderType = orderType;
         _tableName = [tableName copy];
-        if(columNames) {
+        if(columNames && [columNames isKindOfClass:[NSArray class]]) {
             _columNames = [NSArray arrayWithArray:columNames];
         }
-        if(columTypes) {
+        if(columTypes && [columTypes isKindOfClass:[NSArray class]]) {
             _columTypes = [NSArray arrayWithArray:columTypes];
         }
-        if(primaryKeys) {
+        if(primaryKeys && [primaryKeys isKindOfClass:[NSArray class]]) {
             _primaryKeys = [NSArray arrayWithArray:primaryKeys];
         }
-        if(values) {
+        if(values && [values isKindOfClass:[NSArray class]]) {
             _values = [NSArray arrayWithArray:values];
         }
-        if(whereKeys) {
+        if(whereKeys && [whereKeys isKindOfClass:[NSArray class]]) {
             _whereKeys = [NSArray arrayWithArray:whereKeys];
         }
-        if(whereValues) {
+        if(whereValues && [whereValues isKindOfClass:[NSArray class]]) {
             _whereValues = [NSArray arrayWithArray:whereValues];
         }
         if(orderByColum) {
@@ -194,6 +194,14 @@
 - (NSString *)sqlString {
     NSAssert(_orderType <= 4, @"wrong SQL orderType");
     NSAssert(_tableName, @"tableName could not be nil");
+    
+    NSAssert(!_columNames || [_columNames isKindOfClass:[NSArray class]], @"columNames must be Array or nil");
+    NSAssert(!_columTypes || [_columTypes isKindOfClass:[NSArray class]], @"columTypes must be Array or nil");
+    NSAssert(!_primaryKeys || [_primaryKeys isKindOfClass:[NSArray class]], @"primaryKeys must be Array or nil");
+    NSAssert(!_values || [_values isKindOfClass:[NSArray class]], @"values must be Array or nil");
+    NSAssert(!_whereKeys || [_whereKeys isKindOfClass:[NSArray class]], @"whereKeys must be Array or nil");
+    NSAssert(!_whereValues || [_whereValues isKindOfClass:[NSArray class]], @"whereKeys must be Array or nil");
+    
     NSAssert(_orderType == VPUPSQLOrderDelete || (_columNames && [_columNames count] != 0), @"columNames could not be nil or zero size");
     NSAssert([_whereKeys count] == [_whereValues count], @"whereKeys count must equal to whereValues count");
     if(_values && [_values count] != 0) {
@@ -202,6 +210,48 @@
     if(_columTypes && [_columTypes count] != 0) {
         NSAssert([_columTypes count] == [_columNames count], @"columTypes count must equal to columNames count");
     }
+    
+    if (_orderType > 4) {
+        return nil;
+    }
+    if (!_tableName) {
+        return nil;
+    }
+    if (_columNames && ![_columNames isKindOfClass:[NSArray class]]) {
+        return nil;
+    }
+    if (_columTypes && ![_columTypes isKindOfClass:[NSArray class]]) {
+        return nil;
+    }
+    if (_primaryKeys && ![_primaryKeys isKindOfClass:[NSArray class]]) {
+        return nil;
+    }
+    if (_values && ![_values isKindOfClass:[NSArray class]]) {
+        return nil;
+    }
+    if (_whereKeys && ![_whereKeys isKindOfClass:[NSArray class]]) {
+        return nil;
+    }
+    if (_whereValues && ![_whereValues isKindOfClass:[NSArray class]]) {
+        return nil;
+    }
+    
+    if (_orderType != VPUPSQLOrderDelete && (!_columNames || [_columNames count] == 0)) {
+        return nil;
+    }
+    
+    if ([_whereKeys count] != [_whereValues count]) {
+        return nil;
+    }
+    
+    if(_values && [_values count] != 0 && [_values count] != [_columNames count]) {
+        return nil;
+    }
+    
+    if (_columTypes && [_columTypes count] != 0 && [_columTypes count] != [_columNames count]) {
+        return nil;
+    }
+    
     
     NSMutableString *sql = [NSMutableString string];
     
@@ -231,7 +281,10 @@
     }
     
     if(_orderType == VPUPSQLOrderCreate) {
-        NSAssert(_columTypes, @"create table types could not be nil");
+        NSAssert(_columTypes && [_columTypes count] != 0, @"create table types could not be nil");
+        if (!_columTypes || [_columTypes count] == 0) {
+            return nil;
+        }
         NSMutableString *createSql = [NSMutableString stringWithString:@"("];
         [_columNames enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *colum = (NSString *)obj;
@@ -260,24 +313,26 @@
     }
     
     if(_orderType == VPUPSQLOrderInsert) {
-        NSAssert(_values, @"insert values could not be nil");
+        NSAssert(_values && [_values count] != 0, @"insert values could not be nil");
+        if (!_values || [_values count] == 0) {
+            return nil;
+        }
         NSMutableString *insertSql = [NSMutableString stringWithString:@"("];
         [_columNames enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            if ([obj isKindOfClass:[NSNumber class]]) {
-                [insertSql appendFormat:@"%@",obj];
-            } else {
-                [insertSql appendFormat:@"'%@'", obj];
-            }
+            NSString *columName = (NSString *)obj;
+            [insertSql appendFormat:@"'%@'", columName];
             if(idx != [_columNames count] - 1) {
                 [insertSql appendString:@","];
             }
         }];
         [insertSql appendString:@") VALUES ("];
         [_values enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSString *value = (NSString *)obj;
-            [insertSql appendFormat:@"'%@'", value];
-            if(idx != [_values count] - 1) {
+            if ([obj isKindOfClass:[NSNumber class]]) {
+                [insertSql appendFormat:@"%@",obj];
+            } else {
+                [insertSql appendFormat:@"'%@'", obj];
+            }
+            if(idx != [_columNames count] - 1) {
                 [insertSql appendString:@","];
             }
         }];
@@ -288,13 +343,16 @@
     }
     
     if(_orderType == VPUPSQLOrderUpdate) {
-        NSAssert(_values, @"update values could not be nil");
+        NSAssert(_values && [_values count] != 0, @"update values could not be nil");
+        if (!_values || [_values count] == 0) {
+            return nil;
+        }
         NSMutableString *updateSql = [NSMutableString stringWithString:@"SET "];
         [_columNames enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 
             NSString *value = [_values objectAtIndex:idx];
             if ([value isKindOfClass:[NSNumber class]]) {
-                [updateSql appendFormat:@"%@ = %@", obj, value];
+                [updateSql appendFormat:@"%@ = %@ ", obj, value];
             } else {
                 [updateSql appendFormat:@"%@ = '%@' ", obj, value];
             }
@@ -332,13 +390,17 @@
         [_whereKeys enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *key = (NSString *)obj;
             NSString *value = [_whereValues objectAtIndex:idx];
-            if(VPUP_StringContainsString(value, @"%") ||
-               VPUP_StringContainsString(value, @"_") ||
-               (VPUP_StringContainsString(value, @"[") && VPUP_StringContainsString(value, @"]"))) {
-                [whereSql appendFormat:@"%@ LIKE '%@' ", key, value];
-            }
-            else {
-                [whereSql appendFormat:@"%@ = '%@' ", key, value];
+            if ([value isKindOfClass:[NSString class]]) {
+                if(VPUP_StringContainsString(value, @"%") ||
+                   VPUP_StringContainsString(value, @"_") ||
+                   (VPUP_StringContainsString(value, @"[") && VPUP_StringContainsString(value, @"]"))) {
+                    [whereSql appendFormat:@"%@ LIKE '%@' ", key, value];
+                }
+                else {
+                    [whereSql appendFormat:@"%@ = '%@' ", key, value];
+                }
+            } else {
+                [whereSql appendFormat:@"%@ = %@ ", key, value];
             }
             if(idx != [_whereKeys count] - 1) {
                 [whereSql appendString:@"AND "];
@@ -362,13 +424,14 @@
             }
             case NSOrderedDescending: {
                 orderString = @"DESC";
+                break;
             }
             default: {
                 orderString = @"ASC";
                 break;
             }
         }
-        NSString *orderSql = [NSString stringWithFormat:@"orderby %@ %@", _orderByColum, orderString];
+        NSString *orderSql = [NSString stringWithFormat:@"order by %@ %@", _orderByColum, orderString];
         
         [sql appendString:orderSql];
     }

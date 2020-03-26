@@ -32,7 +32,11 @@ static NSString *_userIdentity = nil;
         if(_currentSDKInfo) {
             [[VPUPNotificationCenter defaultCenter] postNotificationName:VPUPGeneralInfoSDKChangedNotification object:nil];
         }
-        _currentSDKInfo = sdkInfo;
+        if (sdkInfo.mainVPSDKAppKey == nil) {
+            _currentSDKInfo = nil;
+        } else {
+            _currentSDKInfo = sdkInfo;
+        }
     }
 }
 
@@ -48,19 +52,19 @@ static NSString *_userIdentity = nil;
 }
 
 + (NSString *)appName {
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"] ?: @"";
 }
 
 + (NSString *)appBundleID {
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"] ?: @"";
 }
 
 + (NSString *)appBundleName {
-    return [[NSBundle mainBundle] infoDictionary][(__bridge NSString *)kCFBundleExecutableKey] ?: [[NSBundle mainBundle] infoDictionary][(__bridge NSString *)kCFBundleIdentifierKey];
+    return ([[NSBundle mainBundle] infoDictionary][(__bridge NSString *)kCFBundleExecutableKey] ?: [[NSBundle mainBundle] infoDictionary][(__bridge NSString *)kCFBundleIdentifierKey]) ?: @"";
 }
 
 + (NSString *)appBundleVersion {
-    return [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"] ?: [[NSBundle mainBundle] infoDictionary][(__bridge NSString *)kCFBundleVersionKey];
+    return ([[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"] ?: [[NSBundle mainBundle] infoDictionary][(__bridge NSString *)kCFBundleVersionKey]) ?: @"";
 }
 
 
@@ -81,7 +85,7 @@ static NSString *_userIdentity = nil;
 }
 
 + (NSString *)appDeviceLanguage {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] firstObject];
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] firstObject] ?: @"";
 }
 
 + (NSString *)iPhoneDeviceType {
@@ -142,6 +146,9 @@ static NSString *_userIdentity = nil;
 }
 
 + (NSString *)IDFA {
+    if (!IDFA) {
+        IDFA = @"00000000-0000-0000-0000-000000000000";
+    }
     return IDFA;
 }
 

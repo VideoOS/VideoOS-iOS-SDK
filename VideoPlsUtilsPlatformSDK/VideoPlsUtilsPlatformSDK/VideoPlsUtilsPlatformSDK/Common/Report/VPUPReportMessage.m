@@ -61,8 +61,8 @@
 - (NSString *)jsonValue {
     NSString *levelString = [self levelString];
     NSDictionary *jsonDict = @{@"level"         : levelString,
-                               @"tag"           : _reportClass,
-                               @"message"       : _message,
+                               @"tag"           : _reportClass ?: @"",
+                               @"message"       : _message ?: @"",
                                @"create_time"   : [NSString stringWithFormat:@"%0.0lf",_createTime]};
     
     NSString *json = VPUP_DictionaryToJson(jsonDict);

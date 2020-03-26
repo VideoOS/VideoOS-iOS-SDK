@@ -10,6 +10,7 @@
 #import "VPUPDBSQLString.h"
 #import <sqlite3.h>
 #import "VPUPLogUtil.h"
+#import "VPUPValidator.h"
 
 @interface VPUPDatabase() {
     void*   _db;
@@ -42,6 +43,10 @@
 - (BOOL)open {
     if (_db) {
         return YES;
+    }
+    
+    if (![self databasePath]) {
+        return NO;
     }
     
     int err = sqlite3_open([[self databasePath] UTF8String], (sqlite3**)&_db );
@@ -130,6 +135,9 @@
 #pragma mark -- excute Update
 - (BOOL)executeUpdate:(NSString *)sql {
     if(![self databaseExists]) {
+        return NO;
+    }
+    if(!VPUP_IsStrictExist(sql)) {
         return NO;
     }
     char *err;
@@ -284,7 +292,7 @@
     return b;
 }
 
-- (BOOL)inTransaction {
+- (BOOL)isInTransaction {
     return _inTransaction;
 }
 

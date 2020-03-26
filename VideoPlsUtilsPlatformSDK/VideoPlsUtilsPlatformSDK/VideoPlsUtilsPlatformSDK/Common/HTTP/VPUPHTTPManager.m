@@ -17,7 +17,7 @@
 #import "VPUPNetworkReachabilityManager.h"
 #import "VPUPHTTPBaseResponse.h"
 #import "VPUPServiceManager.h"
-
+#import <UIKit/UIKit.h>
 
 static NSString * VPUPCreateMultipartFormBoundary() {
     return [NSString stringWithFormat:@"Boundary+%08X%08X", arc4random(), arc4random()];
